@@ -166,10 +166,13 @@ INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
 INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
 INPUT /usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 INPUT /usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+INPUT YaRrr.out
+INPUT YaRrr.out
+INPUT YaRrr.out
+INPUT YaRrr.out
 OUTPUT YaRrr.out
-OUTPUT YaRrr.toc
-INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/euenc/eu1lmtt.fd
-INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/euenc/eu1lmtt.fd
+INPUT YaRrr.toc
+INPUT YaRrr.toc
 INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/lm/ot1lmr.fd
 INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/lm/ot1lmr.fd
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/lm/rm-lmr10.tfm
@@ -202,4 +205,5 @@ INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/microtype/mt-msb.cfg
 INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/microtype/mt-msb.cfg
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
-INPUT YaRrr.aux
+OUTPUT YaRrr.toc
+INPUT images/YaRrr_Cover.jpg

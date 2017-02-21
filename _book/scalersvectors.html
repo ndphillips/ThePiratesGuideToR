@@ -516,14 +516,14 @@ my.vec
 <p>Let’s use <code>sample()</code> to draw 10 samples from a vector of integers from 1 to 10.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># From the integers 1:10, draw 5 numbers</span>
 <span class="kw">sample</span>(<span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">10</span>, <span class="dt">size  =</span> <span class="dv">5</span>)
-## [1] 4 9 8 2 6</code></pre></div>
+## [1] 4 7 1 8 2</code></pre></div>
 <div id="replace-true" class="section level4">
 <h4><span class="header-section-number">5.3.1.1</span> replace = TRUE</h4>
 <p>If you don’t specify the <code>replace</code> argument, R will assume that you are sampling <em>without</em> replacement. In other words, each element can only be sampled once. If you want to sample with replacement, use the <code>replace = TRUE</code> argument:</p>
 <p>Think about replacement like drawing balls from a bag. Sampling <em>with</em> replacement (<code>replace = TRUE</code>) means that each time you draw a ball, you return the ball back into the bag before drawing another ball. Sampling <em>without</em> replacement (<code>replace = FALSE</code>) means that after you draw a ball, you remove that ball from the bag so you can never draw it again.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Draw 30 samples from the integers 1:5 with replacement</span>
 <span class="kw">sample</span>(<span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">5</span>, <span class="dt">size =</span> <span class="dv">10</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
-##  [1] 5 2 2 3 4 2 3 2 4 4</code></pre></div>
+##  [1] 4 3 2 2 2 4 4 4 5 3</code></pre></div>
 <p>If you try to draw a large sample from a vector  replacement, R will return an error because it runs out of things to draw:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># You CAN&#39;T draw 10 samples without replacement from</span>
 <span class="co">#  a vector with length 5</span>
@@ -535,7 +535,7 @@ Error: cannot take a sample larger than the population when ‘replace = FALSE�
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># You CAN draw 10 samples with replacement from a</span>
 <span class="co">#  vector of length 5</span>
 <span class="kw">sample</span>(<span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">5</span>, <span class="dt">size =</span> <span class="dv">10</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
-##  [1] 1 4 3 1 1 4 4 1 2 3</code></pre></div>
+##  [1] 2 3 4 2 5 5 5 2 1 3</code></pre></div>
 <p>To specify how likely each element in the vector <code>x</code> should be selected, use the <code>prob</code> argument. The length of the <code>prob</code> argument should be as long as the <code>x</code> argument. For example, let’s draw 10 samples (with replacement) from the vector [“a”, “b”], but we’ll make the probability of selecting “a” to be .90, and the probability of selecting “b” to be .10</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>), 
        <span class="dt">prob =</span> <span class="kw">c</span>(.<span class="dv">9</span>, .<span class="dv">1</span>),
@@ -549,13 +549,13 @@ Error: cannot take a sample larger than the population when ‘replace = FALSE�
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="st">&quot;H&quot;</span>, <span class="st">&quot;T&quot;</span>), <span class="co"># The possible values of the coin</span>
        <span class="dt">size =</span> <span class="dv">10</span>,  <span class="co"># 10 flips</span>
        <span class="dt">replace =</span> <span class="ot">TRUE</span>) <span class="co"># Sampling with replacement</span>
-##  [1] &quot;H&quot; &quot;T&quot; &quot;H&quot; &quot;T&quot; &quot;T&quot; &quot;H&quot; &quot;T&quot; &quot;T&quot; &quot;H&quot; &quot;H&quot;</code></pre></div>
+##  [1] &quot;T&quot; &quot;T&quot; &quot;H&quot; &quot;H&quot; &quot;H&quot; &quot;T&quot; &quot;H&quot; &quot;T&quot; &quot;T&quot; &quot;T&quot;</code></pre></div>
 <p>Now let’s change it by simulating flips of a biased coin, where the probability of Heads is 0.8, and the probability of Tails is 0.2. Because the probabilities of each outcome are no longer equal, we’ll need to specify them with the <code>prob</code> argument:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="st">&quot;H&quot;</span>, <span class="st">&quot;T&quot;</span>),
        <span class="dt">prob =</span> <span class="kw">c</span>(.<span class="dv">8</span>, .<span class="dv">2</span>), <span class="co"># Make the coin biased for Heads</span>
        <span class="dt">size =</span> <span class="dv">10</span>,
        <span class="dt">replace =</span> <span class="ot">TRUE</span>)
-##  [1] &quot;T&quot; &quot;H&quot; &quot;T&quot; &quot;T&quot; &quot;H&quot; &quot;H&quot; &quot;H&quot; &quot;T&quot; &quot;T&quot; &quot;H&quot;</code></pre></div>
+##  [1] &quot;H&quot; &quot;H&quot; &quot;T&quot; &quot;T&quot; &quot;H&quot; &quot;T&quot; &quot;T&quot; &quot;H&quot; &quot;H&quot; &quot;H&quot;</code></pre></div>
 <p>As you can see, our function returned a vector of 10 values corresponding to our sample size of 10.</p>
 </div>
 <div id="ex-coins-from-a-chest" class="section level4">
@@ -571,8 +571,8 @@ chest &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">r
 <span class="co"># Draw 10 coins from the chest</span>
 <span class="kw">sample</span>(<span class="dt">x =</span> chest,
        <span class="dt">size =</span> <span class="dv">10</span>)
-##  [1] &quot;bronze&quot; &quot;bronze&quot; &quot;bronze&quot; &quot;bronze&quot; &quot;bronze&quot; &quot;bronze&quot; &quot;bronze&quot;
-##  [8] &quot;gold&quot;   &quot;silver&quot; &quot;silver&quot;</code></pre></div>
+##  [1] &quot;bronze&quot; &quot;silver&quot; &quot;bronze&quot; &quot;silver&quot; &quot;silver&quot; &quot;gold&quot;   &quot;gold&quot;  
+##  [8] &quot;silver&quot; &quot;silver&quot; &quot;bronze&quot;</code></pre></div>
 <p>The output of the  function above is a vector of 10 strings indicating the type of coin we drew on each sample. And like any random sampling function, this code will likely give you different results every time you run it! See how long it takes you to get 10 gold coins…</p>
 <p>In the next section, we’ll cover how to generate random data from specified <em>probability distributions</em>. What is a probability distribution? Well, it’s simply an equation – also called a likelihood function – that indicates how likely certain numerical values are to be drawn.</p>
 <p>We can use probability distributions to represent different types of data. For example, imagine you need to hire a new group of pirates for your crew. You have the option of hiring people form one of two different pirate training colleges that produce pirates of varying quality. One college “Pirate Training Unlimited” might tend to pirates that are generally ok - never great but never terrible. While another college “Unlimited Pirate Training” might produce pirates with a wide variety of quality, from very low to very high. In Figure~ I plotted 5 example pirates from each college, where each pirate is shown as a ball with a number written on it. As you can see, pirates from PTU all tend to be clustered between 40 and 60 (not terrible but not great), while pirates from UPT are all over the map, from 0 to 100. We can use probability distributions (in this case, the uniform distribution) to mathematically define how likely any possible value is to be drawn at random from a distribution. We could describe Pirate Training Unlimited with a uniform distribution with a small range, and Unlimited Pirate Training with a second uniform distribution with a wide range.</p>
@@ -620,11 +620,11 @@ Figure 5.5: Three different normal distributions with different means and standa
 <p>The Normal (a.k.a “Gaussian”) distribution is probably the most important distribution in all of statistics. The Normal distribution is bell-shaped, and has two parameters: a mean and a standard deviation. To generate samples from a normal distribution in R, we use the function <code>rnorm()</code></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 5 samples from a Normal dist with mean = 0, sd = 1</span>
 <span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
-## [1] -0.40  0.01  0.93 -1.56  0.32
+## [1]  0.54 -1.32 -0.16  0.16 -0.52
 
 <span class="co"># 3 samples from a Normal dist with mean = -10, sd = 15</span>
 <span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">3</span>, <span class="dt">mean =</span> -<span class="dv">10</span>, <span class="dt">sd =</span> <span class="dv">15</span>)
-## [1]  37 -13 -25</code></pre></div>
+## [1] -42.0   5.2 -14.0</code></pre></div>
 <p>Again, because the sampling is done randomly, you’ll get different values each time you run <code>rnorm()</code></p>
 </div>
 <div id="uniform" class="section level3">
@@ -665,11 +665,11 @@ Figure 5.6: The Uniform distribution - known colloquially as the Anthony Davis d
 <p>Here are some samples from two different Uniform distributions:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 5 samples from Uniform dist with bounds at 0 and 1</span>
 <span class="kw">runif</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="dv">1</span>)
-## [1] 0.922 0.966 0.932 0.095 0.635
+## [1] 0.44 0.22 0.37 0.88 0.69
 
 <span class="co"># 10 samples from Uniform dist with bounds at -100 and +100</span>
 <span class="kw">runif</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">min =</span> -<span class="dv">100</span>, <span class="dt">max =</span> <span class="dv">100</span>)
-##  [1] -86  58  31 -33 -93  55  12  45  39  95</code></pre></div>
+##  [1]  63.7  43.9  62.5 -64.2 -99.0  12.2  20.8  62.5   5.6  11.1</code></pre></div>
 </div>
 <div id="notes-on-random-samples" class="section level3">
 <h3><span class="header-section-number">5.3.4</span> Notes on random samples</h3>
@@ -678,11 +678,11 @@ Figure 5.6: The Uniform distribution - known colloquially as the Anthony Davis d
 <p>Every time you draw a sample from a probability distribution, you’ll (likely) get a different result. For example, see what happens when I run the following two commands (you’ll learn the  function on the next page…)</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Draw a sample of size 5 from a normal distribution with mean 100 and sd 10</span>
 <span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">mean =</span> <span class="dv">100</span>, <span class="dt">sd =</span> <span class="dv">10</span>)
-## [1]  99 118  99  92 107
+## [1] 113  90  98 109 113
 
 <span class="co"># Do it again!</span>
 <span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">mean =</span> <span class="dv">100</span>, <span class="dt">sd =</span> <span class="dv">10</span>)
-## [1]  93 115 103  99 107</code></pre></div>
+## [1] 101  86  90 106  98</code></pre></div>
 <p>As you can see, the exact same code produced different results – and that’s exactly what we want! Each time you run <code>rnorm()</code>, or another distribution function, you’ll get a new random sample.</p>
 </div>
 <div id="use-set.seed-to-control-random-samples" class="section level4">
@@ -755,7 +755,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ndphillips/YaRrrBook/master/05-scalersvectors.Rmd",
+"link": "https://github.com/ndphillips/ThePiratesGuideToR/master/05-scalersvectors.Rmd",
 "text": "Edit"
 },
 "download": ["YaRrr.pdf"],
