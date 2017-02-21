@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>YaRrr! The Pirate’s Guide to R</title>
+  <meta name="description" content="An introductory book to R written by, and for, R pirates">
+  <meta name="generator" content="bookdown 0.3.9 and GitBook 2.6.7">
+
+  <meta property="og:title" content="YaRrr! The Pirate’s Guide to R" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://bookdown.org/ndphillips/YaRrr/" />
+  <meta property="og:image" content="https://bookdown.org/ndphillips/YaRrr/images/YaRrr_Cover.jpg" />
+  <meta property="og:description" content="An introductory book to R written by, and for, R pirates" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="YaRrr! The Pirate’s Guide to R" />
+  
+  <meta name="twitter:description" content="An introductory book to R written by, and for, R pirates" />
+  <meta name="twitter:image" content="https://bookdown.org/ndphillips/YaRrr/images/YaRrr_Cover.jpg" />
+
+<meta name="author" content="Nathaniel D. Phillips">
+
+
+<meta name="date" content="2017-02-21">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="jumpin.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">YaRrr! The Pirate's Guide to R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#where-did-this-book-come-from"><i class="fa fa-check"></i><b>1.1</b> Where did this book come from?</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#who-is-this-book-for"><i class="fa fa-check"></i><b>1.2</b> Who is this book for?</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#why-is-r-so-great"><i class="fa fa-check"></i><b>1.3</b> Why is R so great?</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#r-is-like-a-relationship"><i class="fa fa-check"></i><b>1.4</b> R is like a relationship…</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#who-am-i"><i class="fa fa-check"></i><b>1.5</b> Who am I?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="started.html"><a href="started.html"><i class="fa fa-check"></i><b>2</b> Getting Started</a><ul>
+<li class="chapter" data-level="2.1" data-path="started.html"><a href="started.html#installing-base-r-and-rstudio"><i class="fa fa-check"></i><b>2.1</b> Installing (Base) R and RStudio</a></li>
+<li class="chapter" data-level="2.2" data-path="started.html"><a href="started.html#the-four-rstudio-windows"><i class="fa fa-check"></i><b>2.2</b> The four RStudio Windows</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="started.html"><a href="started.html#source---your-notepad-for-code"><i class="fa fa-check"></i><b>2.2.1</b> Source - Your notepad for code</a></li>
+<li class="chapter" data-level="2.2.2" data-path="started.html"><a href="started.html#console-rs-heart"><i class="fa fa-check"></i><b>2.2.2</b> Console: R’s Heart</a></li>
+<li class="chapter" data-level="2.2.3" data-path="started.html"><a href="started.html#environment-history"><i class="fa fa-check"></i><b>2.2.3</b> Environment / History</a></li>
+<li class="chapter" data-level="2.2.4" data-path="started.html"><a href="started.html#files-plots-packages-help"><i class="fa fa-check"></i><b>2.2.4</b> Files / Plots / Packages / Help</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="started.html"><a href="started.html#packages"><i class="fa fa-check"></i><b>2.3</b> Packages</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="started.html"><a href="started.html#installing-a-new-package"><i class="fa fa-check"></i><b>2.3.1</b> Installing a new package</a></li>
+<li class="chapter" data-level="2.3.2" data-path="started.html"><a href="started.html#loading-a-package"><i class="fa fa-check"></i><b>2.3.2</b> Loading a package</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="started.html"><a href="started.html#cheatsheets-and-getting-help"><i class="fa fa-check"></i><b>2.4</b> Cheatsheets and getting help</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="started.html"><a href="started.html#r-cheatsheets"><i class="fa fa-check"></i><b>2.4.1</b> R Cheatsheets</a></li>
+<li class="chapter" data-level="2.4.2" data-path="started.html"><a href="started.html#getting-r-help-online"><i class="fa fa-check"></i><b>2.4.2</b> Getting R help online</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="jumpin.html"><a href="jumpin.html"><i class="fa fa-check"></i><b>3</b> Jump In!</a><ul>
+<li class="chapter" data-level="3.1" data-path="jumpin.html"><a href="jumpin.html#exploring-data"><i class="fa fa-check"></i><b>3.1</b> Exploring data</a></li>
+<li class="chapter" data-level="3.2" data-path="jumpin.html"><a href="jumpin.html#descriptive-statistics"><i class="fa fa-check"></i><b>3.2</b> Descriptive statistics</a></li>
+<li class="chapter" data-level="3.3" data-path="jumpin.html"><a href="jumpin.html#plotting"><i class="fa fa-check"></i><b>3.3</b> Plotting</a></li>
+<li class="chapter" data-level="3.4" data-path="jumpin.html"><a href="jumpin.html#hypothesis-tests"><i class="fa fa-check"></i><b>3.4</b> Hypothesis tests</a></li>
+<li class="chapter" data-level="3.5" data-path="jumpin.html"><a href="jumpin.html#regression"><i class="fa fa-check"></i><b>3.5</b> Regression</a></li>
+<li class="chapter" data-level="3.6" data-path="jumpin.html"><a href="jumpin.html#bayesian-statistics"><i class="fa fa-check"></i><b>3.6</b> Bayesian Statistics</a></li>
+<li class="chapter" data-level="3.7" data-path="jumpin.html"><a href="jumpin.html#wasnt-that-easy"><i class="fa fa-check"></i><b>3.7</b> Wasn’t that easy?!</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>4</b> The Basics</a><ul>
+<li class="chapter" data-level="4.1" data-path="basics.html"><a href="basics.html#the-command-line-console"><i class="fa fa-check"></i><b>4.1</b> The command-line (Console)</a></li>
+<li class="chapter" data-level="4.2" data-path="basics.html"><a href="basics.html#writing-r-scripts-in-an-editor"><i class="fa fa-check"></i><b>4.2</b> Writing R scripts in an editor</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="basics.html"><a href="basics.html#send-code-from-an-editor-to-the-console"><i class="fa fa-check"></i><b>4.2.1</b> Send code from an editor to the console</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="basics.html"><a href="basics.html#a-brief-style-guide-commenting-and-spacing"><i class="fa fa-check"></i><b>4.3</b> A brief style guide: Commenting and spacing</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="basics.html"><a href="basics.html#commenting-code-with-the-pound-sign"><i class="fa fa-check"></i><b>4.3.1</b> Commenting code with the # (pound) sign</a></li>
+<li class="chapter" data-level="4.3.2" data-path="basics.html"><a href="basics.html#spacing"><i class="fa fa-check"></i><b>4.3.2</b> Spacing</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="basics.html"><a href="basics.html#objects-and-functions"><i class="fa fa-check"></i><b>4.4</b> Objects and functions</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="basics.html"><a href="basics.html#numbers-versus-characters"><i class="fa fa-check"></i><b>4.4.1</b> Numbers versus characters</a></li>
+<li class="chapter" data-level="4.4.2" data-path="basics.html"><a href="basics.html#creating-new-objects-with--"><i class="fa fa-check"></i><b>4.4.2</b> Creating new objects with &lt;-</a></li>
+<li class="chapter" data-level="4.4.3" data-path="basics.html"><a href="basics.html#how-to-name-objects"><i class="fa fa-check"></i><b>4.4.3</b> How to name objects</a></li>
+<li class="chapter" data-level="4.4.4" data-path="basics.html"><a href="basics.html#example-pirates-of-the-caribbean"><i class="fa fa-check"></i><b>4.4.4</b> Example: Pirates of The Caribbean</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="basics.html"><a href="basics.html#test-your-r-might"><i class="fa fa-check"></i><b>4.5</b> Test your R might!</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="scalersvectors.html"><a href="scalersvectors.html"><i class="fa fa-check"></i><b>5</b> Scalers and vectors</a><ul>
+<li class="chapter" data-level="5.1" data-path="scalersvectors.html"><a href="scalersvectors.html#scalars"><i class="fa fa-check"></i><b>5.1</b> Scalars</a></li>
+<li class="chapter" data-level="5.2" data-path="scalersvectors.html"><a href="scalersvectors.html#vectors"><i class="fa fa-check"></i><b>5.2</b> Vectors</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="scalersvectors.html"><a href="scalersvectors.html#ab"><i class="fa fa-check"></i><b>5.2.1</b> a:b</a></li>
+<li class="chapter" data-level="5.2.2" data-path="scalersvectors.html"><a href="scalersvectors.html#seq"><i class="fa fa-check"></i><b>5.2.2</b> seq()</a></li>
+<li class="chapter" data-level="5.2.3" data-path="scalersvectors.html"><a href="scalersvectors.html#rep"><i class="fa fa-check"></i><b>5.2.3</b> rep()</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="scalersvectors.html"><a href="scalersvectors.html#generating-random-data"><i class="fa fa-check"></i><b>5.3</b> Generating random data</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="scalersvectors.html"><a href="scalersvectors.html#sample"><i class="fa fa-check"></i><b>5.3.1</b> sample()</a></li>
+<li class="chapter" data-level="5.3.2" data-path="scalersvectors.html"><a href="scalersvectors.html#normal-gaussian"><i class="fa fa-check"></i><b>5.3.2</b> Normal (Gaussian)</a></li>
+<li class="chapter" data-level="5.3.3" data-path="scalersvectors.html"><a href="scalersvectors.html#uniform"><i class="fa fa-check"></i><b>5.3.3</b> Uniform</a></li>
+<li class="chapter" data-level="5.3.4" data-path="scalersvectors.html"><a href="scalersvectors.html#notes-on-random-samples"><i class="fa fa-check"></i><b>5.3.4</b> Notes on random samples</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="scalersvectors.html"><a href="scalersvectors.html#test-your-r-might-1"><i class="fa fa-check"></i><b>5.4</b> Test your R might!</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="vectorfunctions.html"><a href="vectorfunctions.html"><i class="fa fa-check"></i><b>6</b> Vector functions</a><ul>
+<li class="chapter" data-level="6.1" data-path="vectorfunctions.html"><a href="vectorfunctions.html#arithmetic-operations-on-vectors"><i class="fa fa-check"></i><b>6.1</b> Arithmetic operations on vectors</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="vectorfunctions.html"><a href="vectorfunctions.html#basic-math-with-multiple-vectors"><i class="fa fa-check"></i><b>6.1.1</b> Basic math with multiple vectors</a></li>
+<li class="chapter" data-level="6.1.2" data-path="vectorfunctions.html"><a href="vectorfunctions.html#ex-pirate-bake-sale"><i class="fa fa-check"></i><b>6.1.2</b> Ex: Pirate Bake Sale</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="vectorfunctions.html"><a href="vectorfunctions.html#summary-statistics"><i class="fa fa-check"></i><b>6.2</b> Summary statistics</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="vectorfunctions.html"><a href="vectorfunctions.html#length"><i class="fa fa-check"></i><b>6.2.1</b> length()</a></li>
+<li class="chapter" data-level="6.2.2" data-path="vectorfunctions.html"><a href="vectorfunctions.html#additional-numeric-vector-functions"><i class="fa fa-check"></i><b>6.2.2</b> Additional numeric vector functions</a></li>
+<li class="chapter" data-level="6.2.3" data-path="vectorfunctions.html"><a href="vectorfunctions.html#sample-statistics-from-random-samples"><i class="fa fa-check"></i><b>6.2.3</b> Sample statistics from random samples</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="vectorfunctions.html"><a href="vectorfunctions.html#counting-statistics"><i class="fa fa-check"></i><b>6.3</b> Counting statistics</a></li>
+<li class="chapter" data-level="6.4" data-path="vectorfunctions.html"><a href="vectorfunctions.html#missing-na-values"><i class="fa fa-check"></i><b>6.4</b> Missing (NA) values</a></li>
+<li class="chapter" data-level="6.5" data-path="vectorfunctions.html"><a href="vectorfunctions.html#standardization-z-score"><i class="fa fa-check"></i><b>6.5</b> Standardization (z-score)</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="vectorfunctions.html"><a href="vectorfunctions.html#ex-evaluating-a-competition"><i class="fa fa-check"></i><b>6.5.1</b> Ex: Evaluating a competition</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="vectorfunctions.html"><a href="vectorfunctions.html#test-your-r-might-2"><i class="fa fa-check"></i><b>6.6</b> Test your R Might!</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="vectorindexing.html"><a href="vectorindexing.html"><i class="fa fa-check"></i><b>7</b> Indexing Vectors with [ ]</a><ul>
+<li class="chapter" data-level="7.1" data-path="vectorindexing.html"><a href="vectorindexing.html#numerical-indexing"><i class="fa fa-check"></i><b>7.1</b> Numerical Indexing</a></li>
+<li class="chapter" data-level="7.2" data-path="vectorindexing.html"><a href="vectorindexing.html#logical-indexing"><i class="fa fa-check"></i><b>7.2</b> Logical Indexing</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="vectorindexing.html"><a href="vectorindexing.html#and-or-in"><i class="fa fa-check"></i><b>7.2.1</b> <code>&amp;</code> (and), <code>|</code> (or), <code>%in%</code></a></li>
+<li class="chapter" data-level="7.2.2" data-path="vectorindexing.html"><a href="vectorindexing.html#counts-and-percentages-from-logical-vectors"><i class="fa fa-check"></i><b>7.2.2</b> Counts and percentages from logical vectors</a></li>
+<li class="chapter" data-level="7.2.3" data-path="vectorindexing.html"><a href="vectorindexing.html#additional-logical-functions"><i class="fa fa-check"></i><b>7.2.3</b> Additional Logical functions</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="vectorindexing.html"><a href="vectorindexing.html#changing-values-of-a-vector"><i class="fa fa-check"></i><b>7.3</b> Changing values of a vector</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="vectorindexing.html"><a href="vectorindexing.html#ex-fixing-invalid-responses-to-a-happiness-survey"><i class="fa fa-check"></i><b>7.3.1</b> Ex: Fixing invalid responses to a Happiness survey</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="vectorindexing.html"><a href="vectorindexing.html#test-your-r-might-movie-data"><i class="fa fa-check"></i><b>7.4</b> Test your R Might!: Movie data</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="matricesdataframes.html"><a href="matricesdataframes.html"><i class="fa fa-check"></i><b>8</b> Matrices and Dataframes</a><ul>
+<li class="chapter" data-level="8.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#what-are-matrices-and-dataframes"><i class="fa fa-check"></i><b>8.1</b> What are matrices and dataframes?</a></li>
+<li class="chapter" data-level="8.2" data-path="matricesdataframes.html"><a href="matricesdataframes.html#creating-matrices-and-dataframes"><i class="fa fa-check"></i><b>8.2</b> Creating matrices and dataframes</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#cbind-rbind"><i class="fa fa-check"></i><b>8.2.1</b> <code>cbind()</code>, <code>rbind()</code></a></li>
+<li class="chapter" data-level="8.2.2" data-path="matricesdataframes.html"><a href="matricesdataframes.html#matrix"><i class="fa fa-check"></i><b>8.2.2</b> <code>matrix()</code></a></li>
+<li class="chapter" data-level="8.2.3" data-path="matricesdataframes.html"><a href="matricesdataframes.html#data.frame"><i class="fa fa-check"></i><b>8.2.3</b> <code>data.frame()</code></a></li>
+<li class="chapter" data-level="8.2.4" data-path="matricesdataframes.html"><a href="matricesdataframes.html#dataframes-pre-loaded-in-r"><i class="fa fa-check"></i><b>8.2.4</b> Dataframes pre-loaded in R</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="matricesdataframes.html"><a href="matricesdataframes.html#matrix-and-dataframe-functions"><i class="fa fa-check"></i><b>8.3</b> Matrix and dataframe functions</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#head-tail-view"><i class="fa fa-check"></i><b>8.3.1</b> <code>head(), tail(), View()</code></a></li>
+<li class="chapter" data-level="8.3.2" data-path="matricesdataframes.html"><a href="matricesdataframes.html#summary-str"><i class="fa fa-check"></i><b>8.3.2</b> <code>summary()</code>, <code>str()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="matricesdataframes.html"><a href="matricesdataframes.html#dataframe-column-names"><i class="fa fa-check"></i><b>8.4</b> Dataframe column names</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#adding-new-columns"><i class="fa fa-check"></i><b>8.4.1</b> Adding new columns</a></li>
+<li class="chapter" data-level="8.4.2" data-path="matricesdataframes.html"><a href="matricesdataframes.html#changing-column-names"><i class="fa fa-check"></i><b>8.4.2</b> Changing column names</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="matricesdataframes.html"><a href="matricesdataframes.html#slicing-dataframes"><i class="fa fa-check"></i><b>8.5</b> Slicing dataframes</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#slicing-with"><i class="fa fa-check"></i><b>8.5.1</b> Slicing with <code>[, ]</code></a></li>
+<li class="chapter" data-level="8.5.2" data-path="matricesdataframes.html"><a href="matricesdataframes.html#slicing-with-logical-vectors"><i class="fa fa-check"></i><b>8.5.2</b> Slicing with logical vectors</a></li>
+<li class="chapter" data-level="8.5.3" data-path="matricesdataframes.html"><a href="matricesdataframes.html#slicing-with-subset"><i class="fa fa-check"></i><b>8.5.3</b> Slicing with <code>subset()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="matricesdataframes.html"><a href="matricesdataframes.html#combining-slicing-with-functions"><i class="fa fa-check"></i><b>8.6</b> Combining slicing with functions</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#with"><i class="fa fa-check"></i><b>8.6.1</b> <code>with()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="matricesdataframes.html"><a href="matricesdataframes.html#test-your-r-might-pirates-and-superheroes"><i class="fa fa-check"></i><b>8.7</b> Test your R might! Pirates and superheroes</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="test-your-r-might-solutions.html"><a href="test-your-r-might-solutions.html"><i class="fa fa-check"></i><b>9</b> Test your R might! Solutions</a><ul>
+<li class="chapter" data-level="9.1" data-path="test-your-r-might-solutions.html"><a href="test-your-r-might-solutions.html#chapter-4-the-basics"><i class="fa fa-check"></i><b>9.1</b> Chapter 4: The Basics</a></li>
+<li class="chapter" data-level="9.2" data-path="test-your-r-might-solutions.html"><a href="test-your-r-might-solutions.html#chapter-5-scalers-and-vectors"><i class="fa fa-check"></i><b>9.2</b> Chapter 5: Scalers and vectors</a></li>
+<li class="chapter" data-level="9.3" data-path="test-your-r-might-solutions.html"><a href="test-your-r-might-solutions.html#chapter-6-vector-functions"><i class="fa fa-check"></i><b>9.3</b> Chapter 6: Vector Functions</a></li>
+<li class="chapter" data-level="9.4" data-path="test-your-r-might-solutions.html"><a href="test-your-r-might-solutions.html#chapter-7-indexing-vectors-with"><i class="fa fa-check"></i><b>9.4</b> Chapter 7: Indexing vectors with []</a></li>
+<li class="chapter" data-level="9.5" data-path="test-your-r-might-solutions.html"><a href="test-your-r-might-solutions.html#chapter-8-matrices-and-dataframes"><i class="fa fa-check"></i><b>9.5</b> Chapter 8: Matrices and Dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">YaRrr! The Pirate’s Guide to R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="started" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Getting Started</h1>
+<div id="installing-base-r-and-rstudio" class="section level2">
+<h2><span class="header-section-number">2.1</span> Installing (Base) R and RStudio</h2>
+<p>First things first, let’s download both Base R and Rstudio. Again, R is the basic software which contains the R programming language. RStudio is software that makes R programming easier. Of course, they are totally free and open source.</p>
+<p><img src="images/Rlogo.png" width="200px" /></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Operating System</th>
+<th align="left">Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Windows</td>
+<td align="left"><a href="http://cran.r-project.org/bin/windows/base/" class="uri">http://cran.r-project.org/bin/windows/base/</a></td>
+</tr>
+<tr class="even">
+<td align="left">Mac</td>
+<td align="left"><a href="http://cran.r-project.org/bin/macosx/" class="uri">http://cran.r-project.org/bin/macosx/</a></td>
+</tr>
+</tbody>
+</table>
+<p>Once you’ve installed base R on your computer, try opening it. When you do you should see a screen like the one in Figure <a href="#fig:rscreenshot"><strong>??</strong></a> (this is the Mac version). As you can see, base R is very much bare-bones software. It’s kind of the equivalent of a simple text editor that comes with your computer.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-8"></span>
+<img src="images/RScreenshot.png" alt="{Here is how the base R application looks. While you can use the base R application alone, most people I know use RStudio -- software that helps you to write and use R code more efficiently!" width="400px" />
+<p class="caption">
+Figure 2.1: {Here is how the base R application looks. While you can use the base R application alone, most people I know use RStudio – software that helps you to write and use R code more efficiently!
+</p>
+</div>
+<p>While you can do pretty much everything you want within base R, you’ll find that most people these days do their R programming in an application called RStudio. RStudio is a graphical user interface (GUI)-like interface for R that makes programming in R a bit easier. In fact, once you’ve installed RStudio, you’ll likely never need to open the base R application again. To download and install RStudio (around 40mb), go to one of the links above and follow the instructions.</p>
+<p><img src="images/RStudio.png" width="200px" /></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Operating System</th>
+<th align="left">Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">All</td>
+<td align="left"><a href="http://www.rstudio.com/products/rstudio/download/" class="uri">http://www.rstudio.com/products/rstudio/download/</a></td>
+</tr>
+</tbody>
+</table>
+<p>Let’s go ahead and boot up RStudio and see how she looks!</p>
+</div>
+<div id="the-four-rstudio-windows" class="section level2">
+<h2><span class="header-section-number">2.2</span> The four RStudio Windows</h2>
+<p>When you open RStudio, you’ll see the following four windows (also called panes) shown in in Figure <a href="started.html#fig:rstudiowindows">2.2</a>. However, your windows might be in a different order that those in Figure <a href="started.html#fig:rstudiowindows">2.2</a>. If you’d like, you can change the order of the windows under RStudio preferences. You can also change their shape by either clicking the minimize or maximize buttons on the top right of each panel, or by clicking and dragging the middle of the borders of the windows.</p>
+<div class="figure"><span id="fig:rstudiowindows"></span>
+<img src="images/RStudio_Screenshot_Labels.png" alt="The four panes of RStudio." width="600px" />
+<p class="caption">
+Figure 2.2: The four panes of RStudio.
+</p>
+</div>
+<p>Now, let’s see what each window does in detail.</p>
+<div id="source---your-notepad-for-code" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Source - Your notepad for code</h3>
+<div class="figure"><span id="fig:sourcewindow"></span>
+<img src="images/piratesanalysisss.png" alt="The Source contains all of your individual R scripts." width="600px" />
+<p class="caption">
+Figure 2.3: The Source contains all of your individual R scripts.
+</p>
+</div>
+<p>The source pane is where you create and edit ``R Scripts&quot; - your collections of code. Don’t worry, R scripts are just text files with the “.R” extension. When you open RStudio, it will automatically start a new Untitled script. Before you start typing in an untitled R script, you should always save the file under a new file name (like, “2015PirateSurvey.R”). That way, if something on your computer crashes while you’re working, R will have your code waiting for you when you re-open RStudio.</p>
+<p>You’ll notice that when you’re typing code in a script in the Source panel, R won’t actually evaluate the code as you type. To have R actually evaluate your code, you need to first ‘send’ the code to the Console (we’ll talk about this in the next section).</p>
+<p>There are many ways to send your code from the Source to the console. The slowest way is to copy and paste. A faster way is to highlight the code you wish to evaluate and clicking on the “Run” button on the top right of the Source. Alternatively, you can use the hot-key “Command + Return” on Mac, or “Control + Enter” on PC to send all highlighted code to the console.</p>
+</div>
+<div id="console-rs-heart" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> Console: R’s Heart</h3>
+<div class="figure"><span id="fig:consolewindow"></span>
+<img src="images/consoless.png" alt="The console the calculation heart of R. All of your code will (eventually) go through here." width="600px" />
+<p class="caption">
+Figure 2.4: The console the calculation heart of R. All of your code will (eventually) go through here.
+</p>
+</div>
+<p>The console is the heart of R. Here is where R actually evaluates code. At the beginning of the console you’ll see the character . This is a prompt that tells you that R is ready for new code. You can type code directly into the console after the  prompt and get an immediate response. For example, if you type 1+1 into the console and press enter, you’ll see that R immediately gives an output of 2.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1+1</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p>Try calculating 1+1 by typing the code directly into the console - then press Enter. You should see the result [1] 2. Don’t worry about the [1] for now, we’ll get to that later. For now, we’re happy if we just see the 2. Then, type the same code into the Source, and then send the code to the Console by highlighting the code and clicking the ``Run&quot; button on the top right hand corner of the Source window. Alternatively, you can use the hot-key “Command + Return” on Mac or “Control + Enter” on Windows.</p>
+<p><strong>Tip</strong>: Try to write most of your code in a document in the Source. Only type directly into the Console to de-bug or do quick analyses.}</p>
+<p>So as you can see, you can execute code either by running it from the Source or by typing it directly into the Console. However, 99% most of the time, you should be using the Source rather than the Console. The reason for this is straightforward: If you type code into the console, it won’t be saved (though you can look back on your command History). And if you make a mistake in typing code into the console, you’d have to re-type everything all over again. Instead, it’s better to write all your code in the Source. When you are ready to execute some code, you can then send “Run” it to the console.</p>
+</div>
+<div id="environment-history" class="section level3">
+<h3><span class="header-section-number">2.2.3</span> Environment / History</h3>
+<div class="figure"><span id="fig:environment"></span>
+<img src="images/environmentss.png" alt="The environment panel shows you all the objects you have defined in your current workspace. You'll learn more about workspaces in Chapter 7." width="600px" />
+<p class="caption">
+Figure 2.5: The environment panel shows you all the objects you have defined in your current workspace. You’ll learn more about workspaces in Chapter 7.
+</p>
+</div>
+<p>The Environment tab of this panel shows you the names of all the data objects (like vectors, matrices, and dataframes) that you’ve defined in your current R session. You can also see information like the number of observations and rows in data objects. The tab also has a few clickable actions like ``Import Dataset&quot; which will open a graphical user interface (GUI) for important data into R. However, I almost never look at this menu.</p>
+<p>The History tab of this panel simply shows you a history of all the code you’ve previously evaluated in the Console. To be honest, I never look at this. In fact, I didn’t realize it was even there until I started writing this tutorial.</p>
+<p>As you get more comfortable with R, you might find the Environment / History panel useful. But for now you can just ignore it. If you want to declutter your screen, you can even just minimize the window by clicking the minimize button on the top right of the panel.</p>
+</div>
+<div id="files-plots-packages-help" class="section level3">
+<h3><span class="header-section-number">2.2.4</span> Files / Plots / Packages / Help</h3>
+<p>The Files / Plots / Packages / Help panel shows you lots of helpful information. Let’s go through each tab in detail:</p>
+<ol style="list-style-type: decimal">
+<li><p>Files - The files panel gives you access to the file directory on your harddrive. One nice feature of the “Files” panel is that you can use it to set your working directory - once you navigate to a folder you want to read and save files to, click “More” and then “Set As Working Directory.” We’ll talk about working directories in more detail soon.</p></li>
+<li><p>Plots - The Plots panel (no big surprise), shows all your plots. There are buttons for opening the plot in a separate window and exporting the plot as a pdf or jpeg (though you can also do this with code using the <code>pdf()</code> or <code>jpeg()</code> functions.)</p></li>
+</ol>
+<p>Let’s see how plots are displayed in the Plots panel. Run the code on the right to display a histogram of the weights of chickens stored in the <code>ChickWeight</code> dataset. When you do, you should see a plot similar to the one in Figure <a href="started.html#fig:plotpanel">2.6</a> show up in the Plots panel.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(<span class="dt">x =</span> ChickWeight$weight,
+     <span class="dt">main =</span> <span class="st">&quot;Chicken Weights&quot;</span>,
+     <span class="dt">xlab =</span> <span class="st">&quot;Weight&quot;</span>,
+     <span class="dt">col =</span> <span class="st">&quot;skyblue&quot;</span>,
+     <span class="dt">border =</span> <span class="st">&quot;white&quot;</span>)</code></pre></div>
+<div class="figure"><span id="fig:plotpanel"></span>
+<img src="images/plotpanelss.png" alt="The plot panel contains all of your plots, like this histogram of the distribution of chicken weights." width="600px" />
+<p class="caption">
+Figure 2.6: The plot panel contains all of your plots, like this histogram of the distribution of chicken weights.
+</p>
+</div>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Packages - Shows a list of all the R packages installed on your harddrive and indicates whether or not they are currently loaded. Packages that are loaded in the current session are checked while those that are installed but not yet loaded are unchecked. We’ll discuss packages in more detail in the next section.</p></li>
+<li><p>Help - Help menu for R functions. You can either type the name of a function in the search window, or use the code  to search for a function with the name </p></li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?hist   <span class="co"># How does the histogram function work?</span>
+?t.test <span class="co"># What about a t-test?</span></code></pre></div>
+</div>
+</div>
+<div id="packages" class="section level2">
+<h2><span class="header-section-number">2.3</span> Packages</h2>
+<p>When you download and install R for the first time, you are installing the Base R software. Base R will will contain most of the functions you’ll use on a daily basis like <code>mean()</code> and <code>hist()</code>. However, only functions written by the original authors of the R language will appear here. If you want to access data and code written by other people, you’ll need to install it as a <em>package</em>. An R package is simply a bunch of data, from functions, to help menus, to vignettes (examples), stored in one neat package.</p>
+<div class="figure" style="text-align: center"><span id="fig:package"></span>
+<img src="images/packagebulb.png" alt="An R package is light a lightbulb. First you need to order it with install.packages(). Then, every time you want to use it, you need to turn it on with library()" width="300px" />
+<p class="caption">
+Figure 2.7: An R package is light a lightbulb. First you need to order it with install.packages(). Then, every time you want to use it, you need to turn it on with library()
+</p>
+</div>
+<p>A package is like a lightbulb. In order to use it, you first need to order it to your house (i.e.; your computer) by <em>installing</em> it. Once you’ve installed a package, you never need to install it again. However, every time you want to actually use the package, you need to turn it on by <em>loading</em> it. Here’s how to do it.</p>
+<div id="installing-a-new-package" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> Installing a new package</h3>
+<p>Installing a package simply means downloading the package code onto your personal computer. There are two main ways to install new packages. The first, and most common, method is to download them from the Comprehensive R Archive Network (CRAN). CRAN is the central repository for R packages. To install a new R package from CRAN, you can simply run the code <code>install.packages(&quot;name&quot;)</code>, where “name” is the name of the package. For example, to download the <code>yarrr</code> package, which contains several data sets and functions we will use in this book, you should run the following:</p>
+<div class="figure" style="text-align: center"><span id="fig:cran"></span>
+<img src="images/cran.png" alt="CRAN (Comprehensive R Archive Network) is the main source of R packages" width="200px" />
+<p class="caption">
+Figure 2.8: CRAN (Comprehensive R Archive Network) is the main source of R packages
+</p>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Install the yarrr package from CRAN</span>
+<span class="co">#   You only need to install a package once!</span>
+<span class="kw">install.packages</span>(<span class="st">&quot;yarrr&quot;</span>)</code></pre></div>
+<p>When you run <code>install.packages(&quot;name&quot;)</code> R will download the package from CRAN. If everything works, you should see some information about where the package is being downloaded from, in addition to a progress bar.</p>
+<div class="figure" style="text-align: center"><span id="fig:installingpackages"></span>
+<img src="images/installingpackages.png" alt="When you install a new package, you'll see some random text like this you the download progress. You don't need to memorize this." width="500px" />
+<p class="caption">
+Figure 2.9: When you install a new package, you’ll see some random text like this you the download progress. You don’t need to memorize this.
+</p>
+</div>
+<p>Like ordering a lightbulb, once you’ve installed a package on your computer you never need to install it again (unless you want to try to install a new version of the package). However, every time you want to use it, you need to turn it on by loading it.</p>
+</div>
+<div id="loading-a-package" class="section level3">
+<h3><span class="header-section-number">2.3.2</span> Loading a package</h3>
+<p>Once you’ve installed a package, it’s on your computer. However, just because it’s on your computer doesn’t mean R is ready to use it. If you want to use something, like a function or dataset, from a package you <em>always</em> need to <em>load</em> the package in your R session first. Just like a lightbulb, you need to turn it on to use it!</p>
+<p>To load a package, you use the <code>library()</code> function. For example, now that we’ve installed the <code>yarrr</code> package, we can load it with <code>library(&quot;yarrr&quot;)</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Load the yarrr package so I can use it!</span>
+<span class="co">#   You have to load a package in every new R session!</span>
+<span class="kw">library</span>(<span class="st">&quot;yarrr&quot;</span>)</code></pre></div>
+<p>Now that you’ve loaded the <code>yarrr</code> package, you can use any of its functions! One of the coolest functions in this package is called <code>pirateplot()</code>. Rather than telling you what a pirateplot is, let’s just make one. Run the following code chunk to make your own pirateplot. Don’t worry about the specifics of the code below, you’ll learn more about how all this works later. For now, just run the code and marvel at your pirateplot.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Make a pirateplot using the pirateplot() function</span>
+<span class="co">#  from the yarrr package!</span>
+
+<span class="kw">pirateplot</span>(<span class="dt">formula =</span> weight ~<span class="st"> </span>Time, 
+           <span class="dt">data =</span> ChickWeight,
+           <span class="dt">pal =</span> <span class="st">&quot;xmen&quot;</span>)</code></pre></div>
+<p><img src="yarrr_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>There is one way in R to temporarily load a package without using the <code>library()</code> function. To do this, you can simply use the notation <code>package::function</code> notation. This notation simply tells R to load the package just for this one chunk of code. For example, I could use the <code>pirateplot</code> function from <code>yarrr</code> package as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Use the pirateplot() function without loading the yarrr package first</span>
+yarrr::<span class="kw">pirateplot</span>(<span class="dt">formula =</span> weight ~<span class="st"> </span>Diet,
+                  <span class="dt">data =</span> ChickWeight)</code></pre></div>
+<p><img src="yarrr_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p>Again, you can think about the <code>package::function</code> method as a way to temporarily loading a package for a single line of code. One benefit of using the <code>package::function</code> notation is that it’s immediately clear to anyone reading the code which package contains the function. However, a drawback is that if you are using a function from a package often, it forces you to constantly retype the package name. You can use whichever method makes sense for you.</p>
+</div>
+</div>
+<div id="cheatsheets-and-getting-help" class="section level2">
+<h2><span class="header-section-number">2.4</span> Cheatsheets and getting help</h2>
+<div id="r-cheatsheets" class="section level3">
+<h3><span class="header-section-number">2.4.1</span> R Cheatsheets</h3>
+<div class="figure" style="text-align: center"><span id="fig:rreferencecard"></span>
+<img src="images/rreferencess.png" alt="The R reference card written by Tom Short is absolutely indispensable!" width="500px" />
+<p class="caption">
+Figure 2.10: The R reference card written by Tom Short is absolutely indispensable!
+</p>
+</div>
+<p>Over the course of this book, you will be learning <em>lots</em> of new functions. Wouldn’t it be nice if someone created a Cheatsheet / Dictionary of many common R functions? Yes it would, and thankfully several friendly R programmers have done just that. Below is a table of some of them that I recommend. I highly encourage you to print these out and start highlighting functions as you learn them!</p>
+<table style="width:44%;">
+<colgroup>
+<col width="30%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">CheatSheet</th>
+<th align="left">Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">R Basics by Tom Short</td>
+<td align="left"><a href="https://cran.r-project.org/doc/contrib/Short-refcard.pdf" class="uri">https://cran.r-project.org/doc/contrib/Short-refcard.pdf</a></td>
+</tr>
+<tr class="even">
+<td align="left">R Basics by Mhairi McNeill</td>
+<td align="left"><a href="http://github.com/rstudio/cheatsheets/raw/master/source/pdfs/base-r.pdf" class="uri">http://github.com/rstudio/cheatsheets/raw/master/source/pdfs/base-r.pdf</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Advanced R by Arianne Colton and Sean Chen</td>
+<td align="left"><a href="https://www.rstudio.com/wp-content/uploads/2016/02/advancedR.pdf">hhttps://www.rstudio.com/wp-content/uploads/2016/02/advancedR.pdf</a></td>
+</tr>
+<tr class="even">
+<td align="left">Plotting</td>
+<td align="left"><a href="https://www.rstudio.com/wp-content/uploads/2016/10/how-big-is-your-graph.pdf" class="uri">https://www.rstudio.com/wp-content/uploads/2016/10/how-big-is-your-graph.pdf</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="getting-r-help-online" class="section level3">
+<h3><span class="header-section-number">2.4.2</span> Getting R help online</h3>
+<p>Here are some resources for R help and inspiration that I can highly recommend</p>
+<ol style="list-style-type: decimal">
+<li><p><a href="http://www.r-bloggers.com" class="uri">http://www.r-bloggers.com</a>: R bloggers is my go-to place to discover the latest and greatest with R.</p></li>
+<li><p><a href="http://blog.revolutionanalytics.com" class="uri">http://blog.revolutionanalytics.com</a>: Revolution analytics always has great R related material.</p></li>
+<li><p><a href="http://www.kaggle.com" class="uri">http://www.kaggle.com</a>: Kaggle is a really cool website that posts data analysis challenges that anyone can try to solve. It also contains a wide range of real-world datasets and tutorials.</p></li>
+<li><p><a href="https://www.r-bloggers.com/learning-statistics-on-youtube/" class="uri">https://www.r-bloggers.com/learning-statistics-on-youtube/</a>: If you like to learn with YouTube, this page contains many links to R related YouTube channels.</p></li>
+</ol>
+<!-- ## Reading and writing Code -->
+<!-- In this book, R code is (almost) always presented in a separate gray box like this one: -->
+<!-- ```{r, eval = FALSE} -->
+<!-- # This is a code chunk! You should always be able to -->
+<!-- #  copy and paste code chunks into R -->
+<!-- 1 + 2 + 3 + 4 + 5 -->
+<!-- a <- 1 + 2 + 3 + 4 + 5 -->
+<!-- a -->
+<!-- ``` -->
+<!-- This is called a *code chunk*. You should always be able to directly copy and paste code chunks directly into R. If you copy a chunk and it does not work for you, it is most likely because the code refers to a package, function, or object that I defined in a previous chunk. If so, read back and look for a previous chunk that contains the missing definition. As you'll soon learn, lines that begin with \# are either comments or output from prior code that R will ignore. -->
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="jumpin.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ndphillips/YaRrrBook/master/02-gettingstarted.Rmd",
+"text": "Edit"
+},
+"download": ["YaRrr.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>YaRrr! The Pirate’s Guide to R</title>
+  <meta name="description" content="An introductory book to R written by, and for, R pirates">
+  <meta name="generator" content="bookdown 0.3.9 and GitBook 2.6.7">
+
+  <meta property="og:title" content="YaRrr! The Pirate’s Guide to R" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://bookdown.org/ndphillips/YaRrr/" />
+  <meta property="og:image" content="https://bookdown.org/ndphillips/YaRrr/images/YaRrr_Cover.jpg" />
+  <meta property="og:description" content="An introductory book to R written by, and for, R pirates" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="YaRrr! The Pirate’s Guide to R" />
+  
+  <meta name="twitter:description" content="An introductory book to R written by, and for, R pirates" />
+  <meta name="twitter:image" content="https://bookdown.org/ndphillips/YaRrr/images/YaRrr_Cover.jpg" />
+
+<meta name="author" content="Nathaniel D. Phillips">
+
+
+<meta name="date" content="2017-02-21">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="scalersvectors.html">
+<link rel="next" href="vectorindexing.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">YaRrr! The Pirate's Guide to R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#where-did-this-book-come-from"><i class="fa fa-check"></i><b>1.1</b> Where did this book come from?</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#who-is-this-book-for"><i class="fa fa-check"></i><b>1.2</b> Who is this book for?</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#why-is-r-so-great"><i class="fa fa-check"></i><b>1.3</b> Why is R so great?</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#r-is-like-a-relationship"><i class="fa fa-check"></i><b>1.4</b> R is like a relationship…</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#who-am-i"><i class="fa fa-check"></i><b>1.5</b> Who am I?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="started.html"><a href="started.html"><i class="fa fa-check"></i><b>2</b> Getting Started</a><ul>
+<li class="chapter" data-level="2.1" data-path="started.html"><a href="started.html#installing-base-r-and-rstudio"><i class="fa fa-check"></i><b>2.1</b> Installing (Base) R and RStudio</a></li>
+<li class="chapter" data-level="2.2" data-path="started.html"><a href="started.html#the-four-rstudio-windows"><i class="fa fa-check"></i><b>2.2</b> The four RStudio Windows</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="started.html"><a href="started.html#source---your-notepad-for-code"><i class="fa fa-check"></i><b>2.2.1</b> Source - Your notepad for code</a></li>
+<li class="chapter" data-level="2.2.2" data-path="started.html"><a href="started.html#console-rs-heart"><i class="fa fa-check"></i><b>2.2.2</b> Console: R’s Heart</a></li>
+<li class="chapter" data-level="2.2.3" data-path="started.html"><a href="started.html#environment-history"><i class="fa fa-check"></i><b>2.2.3</b> Environment / History</a></li>
+<li class="chapter" data-level="2.2.4" data-path="started.html"><a href="started.html#files-plots-packages-help"><i class="fa fa-check"></i><b>2.2.4</b> Files / Plots / Packages / Help</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="started.html"><a href="started.html#packages"><i class="fa fa-check"></i><b>2.3</b> Packages</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="started.html"><a href="started.html#installing-a-new-package"><i class="fa fa-check"></i><b>2.3.1</b> Installing a new package</a></li>
+<li class="chapter" data-level="2.3.2" data-path="started.html"><a href="started.html#loading-a-package"><i class="fa fa-check"></i><b>2.3.2</b> Loading a package</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="started.html"><a href="started.html#cheatsheets-and-getting-help"><i class="fa fa-check"></i><b>2.4</b> Cheatsheets and getting help</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="started.html"><a href="started.html#r-cheatsheets"><i class="fa fa-check"></i><b>2.4.1</b> R Cheatsheets</a></li>
+<li class="chapter" data-level="2.4.2" data-path="started.html"><a href="started.html#getting-r-help-online"><i class="fa fa-check"></i><b>2.4.2</b> Getting R help online</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="jumpin.html"><a href="jumpin.html"><i class="fa fa-check"></i><b>3</b> Jump In!</a><ul>
+<li class="chapter" data-level="3.1" data-path="jumpin.html"><a href="jumpin.html#exploring-data"><i class="fa fa-check"></i><b>3.1</b> Exploring data</a></li>
+<li class="chapter" data-level="3.2" data-path="jumpin.html"><a href="jumpin.html#descriptive-statistics"><i class="fa fa-check"></i><b>3.2</b> Descriptive statistics</a></li>
+<li class="chapter" data-level="3.3" data-path="jumpin.html"><a href="jumpin.html#plotting"><i class="fa fa-check"></i><b>3.3</b> Plotting</a></li>
+<li class="chapter" data-level="3.4" data-path="jumpin.html"><a href="jumpin.html#hypothesis-tests"><i class="fa fa-check"></i><b>3.4</b> Hypothesis tests</a></li>
+<li class="chapter" data-level="3.5" data-path="jumpin.html"><a href="jumpin.html#regression"><i class="fa fa-check"></i><b>3.5</b> Regression</a></li>
+<li class="chapter" data-level="3.6" data-path="jumpin.html"><a href="jumpin.html#bayesian-statistics"><i class="fa fa-check"></i><b>3.6</b> Bayesian Statistics</a></li>
+<li class="chapter" data-level="3.7" data-path="jumpin.html"><a href="jumpin.html#wasnt-that-easy"><i class="fa fa-check"></i><b>3.7</b> Wasn’t that easy?!</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>4</b> The Basics</a><ul>
+<li class="chapter" data-level="4.1" data-path="basics.html"><a href="basics.html#the-command-line-console"><i class="fa fa-check"></i><b>4.1</b> The command-line (Console)</a></li>
+<li class="chapter" data-level="4.2" data-path="basics.html"><a href="basics.html#writing-r-scripts-in-an-editor"><i class="fa fa-check"></i><b>4.2</b> Writing R scripts in an editor</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="basics.html"><a href="basics.html#send-code-from-an-editor-to-the-console"><i class="fa fa-check"></i><b>4.2.1</b> Send code from an editor to the console</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="basics.html"><a href="basics.html#a-brief-style-guide-commenting-and-spacing"><i class="fa fa-check"></i><b>4.3</b> A brief style guide: Commenting and spacing</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="basics.html"><a href="basics.html#commenting-code-with-the-pound-sign"><i class="fa fa-check"></i><b>4.3.1</b> Commenting code with the # (pound) sign</a></li>
+<li class="chapter" data-level="4.3.2" data-path="basics.html"><a href="basics.html#spacing"><i class="fa fa-check"></i><b>4.3.2</b> Spacing</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="basics.html"><a href="basics.html#objects-and-functions"><i class="fa fa-check"></i><b>4.4</b> Objects and functions</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="basics.html"><a href="basics.html#numbers-versus-characters"><i class="fa fa-check"></i><b>4.4.1</b> Numbers versus characters</a></li>
+<li class="chapter" data-level="4.4.2" data-path="basics.html"><a href="basics.html#creating-new-objects-with--"><i class="fa fa-check"></i><b>4.4.2</b> Creating new objects with &lt;-</a></li>
+<li class="chapter" data-level="4.4.3" data-path="basics.html"><a href="basics.html#how-to-name-objects"><i class="fa fa-check"></i><b>4.4.3</b> How to name objects</a></li>
+<li class="chapter" data-level="4.4.4" data-path="basics.html"><a href="basics.html#example-pirates-of-the-caribbean"><i class="fa fa-check"></i><b>4.4.4</b> Example: Pirates of The Caribbean</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="basics.html"><a href="basics.html#test-your-r-might"><i class="fa fa-check"></i><b>4.5</b> Test your R might!</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="scalersvectors.html"><a href="scalersvectors.html"><i class="fa fa-check"></i><b>5</b> Scalers and vectors</a><ul>
+<li class="chapter" data-level="5.1" data-path="scalersvectors.html"><a href="scalersvectors.html#scalars"><i class="fa fa-check"></i><b>5.1</b> Scalars</a></li>
+<li class="chapter" data-level="5.2" data-path="scalersvectors.html"><a href="scalersvectors.html#vectors"><i class="fa fa-check"></i><b>5.2</b> Vectors</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="scalersvectors.html"><a href="scalersvectors.html#ab"><i class="fa fa-check"></i><b>5.2.1</b> a:b</a></li>
+<li class="chapter" data-level="5.2.2" data-path="scalersvectors.html"><a href="scalersvectors.html#seq"><i class="fa fa-check"></i><b>5.2.2</b> seq()</a></li>
+<li class="chapter" data-level="5.2.3" data-path="scalersvectors.html"><a href="scalersvectors.html#rep"><i class="fa fa-check"></i><b>5.2.3</b> rep()</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="scalersvectors.html"><a href="scalersvectors.html#generating-random-data"><i class="fa fa-check"></i><b>5.3</b> Generating random data</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="scalersvectors.html"><a href="scalersvectors.html#sample"><i class="fa fa-check"></i><b>5.3.1</b> sample()</a></li>
+<li class="chapter" data-level="5.3.2" data-path="scalersvectors.html"><a href="scalersvectors.html#normal-gaussian"><i class="fa fa-check"></i><b>5.3.2</b> Normal (Gaussian)</a></li>
+<li class="chapter" data-level="5.3.3" data-path="scalersvectors.html"><a href="scalersvectors.html#uniform"><i class="fa fa-check"></i><b>5.3.3</b> Uniform</a></li>
+<li class="chapter" data-level="5.3.4" data-path="scalersvectors.html"><a href="scalersvectors.html#notes-on-random-samples"><i class="fa fa-check"></i><b>5.3.4</b> Notes on random samples</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="scalersvectors.html"><a href="scalersvectors.html#test-your-r-might-1"><i class="fa fa-check"></i><b>5.4</b> Test your R might!</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="vectorfunctions.html"><a href="vectorfunctions.html"><i class="fa fa-check"></i><b>6</b> Vector functions</a><ul>
+<li class="chapter" data-level="6.1" data-path="vectorfunctions.html"><a href="vectorfunctions.html#arithmetic-operations-on-vectors"><i class="fa fa-check"></i><b>6.1</b> Arithmetic operations on vectors</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="vectorfunctions.html"><a href="vectorfunctions.html#basic-math-with-multiple-vectors"><i class="fa fa-check"></i><b>6.1.1</b> Basic math with multiple vectors</a></li>
+<li class="chapter" data-level="6.1.2" data-path="vectorfunctions.html"><a href="vectorfunctions.html#ex-pirate-bake-sale"><i class="fa fa-check"></i><b>6.1.2</b> Ex: Pirate Bake Sale</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="vectorfunctions.html"><a href="vectorfunctions.html#summary-statistics"><i class="fa fa-check"></i><b>6.2</b> Summary statistics</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="vectorfunctions.html"><a href="vectorfunctions.html#length"><i class="fa fa-check"></i><b>6.2.1</b> length()</a></li>
+<li class="chapter" data-level="6.2.2" data-path="vectorfunctions.html"><a href="vectorfunctions.html#additional-numeric-vector-functions"><i class="fa fa-check"></i><b>6.2.2</b> Additional numeric vector functions</a></li>
+<li class="chapter" data-level="6.2.3" data-path="vectorfunctions.html"><a href="vectorfunctions.html#sample-statistics-from-random-samples"><i class="fa fa-check"></i><b>6.2.3</b> Sample statistics from random samples</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="vectorfunctions.html"><a href="vectorfunctions.html#counting-statistics"><i class="fa fa-check"></i><b>6.3</b> Counting statistics</a></li>
+<li class="chapter" data-level="6.4" data-path="vectorfunctions.html"><a href="vectorfunctions.html#missing-na-values"><i class="fa fa-check"></i><b>6.4</b> Missing (NA) values</a></li>
+<li class="chapter" data-level="6.5" data-path="vectorfunctions.html"><a href="vectorfunctions.html#standardization-z-score"><i class="fa fa-check"></i><b>6.5</b> Standardization (z-score)</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="vectorfunctions.html"><a href="vectorfunctions.html#ex-evaluating-a-competition"><i class="fa fa-check"></i><b>6.5.1</b> Ex: Evaluating a competition</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="vectorfunctions.html"><a href="vectorfunctions.html#test-your-r-might-2"><i class="fa fa-check"></i><b>6.6</b> Test your R Might!</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="vectorindexing.html"><a href="vectorindexing.html"><i class="fa fa-check"></i><b>7</b> Indexing Vectors with [ ]</a><ul>
+<li class="chapter" data-level="7.1" data-path="vectorindexing.html"><a href="vectorindexing.html#numerical-indexing"><i class="fa fa-check"></i><b>7.1</b> Numerical Indexing</a></li>
+<li class="chapter" data-level="7.2" data-path="vectorindexing.html"><a href="vectorindexing.html#logical-indexing"><i class="fa fa-check"></i><b>7.2</b> Logical Indexing</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="vectorindexing.html"><a href="vectorindexing.html#and-or-in"><i class="fa fa-check"></i><b>7.2.1</b> <code>&amp;</code> (and), <code>|</code> (or), <code>%in%</code></a></li>
+<li class="chapter" data-level="7.2.2" data-path="vectorindexing.html"><a href="vectorindexing.html#counts-and-percentages-from-logical-vectors"><i class="fa fa-check"></i><b>7.2.2</b> Counts and percentages from logical vectors</a></li>
+<li class="chapter" data-level="7.2.3" data-path="vectorindexing.html"><a href="vectorindexing.html#additional-logical-functions"><i class="fa fa-check"></i><b>7.2.3</b> Additional Logical functions</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="vectorindexing.html"><a href="vectorindexing.html#changing-values-of-a-vector"><i class="fa fa-check"></i><b>7.3</b> Changing values of a vector</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="vectorindexing.html"><a href="vectorindexing.html#ex-fixing-invalid-responses-to-a-happiness-survey"><i class="fa fa-check"></i><b>7.3.1</b> Ex: Fixing invalid responses to a Happiness survey</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="vectorindexing.html"><a href="vectorindexing.html#test-your-r-might-movie-data"><i class="fa fa-check"></i><b>7.4</b> Test your R Might!: Movie data</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="matricesdataframes.html"><a href="matricesdataframes.html"><i class="fa fa-check"></i><b>8</b> Matrices and Dataframes</a><ul>
+<li class="chapter" data-level="8.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#what-are-matrices-and-dataframes"><i class="fa fa-check"></i><b>8.1</b> What are matrices and dataframes?</a></li>
+<li class="chapter" data-level="8.2" data-path="matricesdataframes.html"><a href="matricesdataframes.html#creating-matrices-and-dataframes"><i class="fa fa-check"></i><b>8.2</b> Creating matrices and dataframes</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#cbind-rbind"><i class="fa fa-check"></i><b>8.2.1</b> <code>cbind()</code>, <code>rbind()</code></a></li>
+<li class="chapter" data-level="8.2.2" data-path="matricesdataframes.html"><a href="matricesdataframes.html#matrix"><i class="fa fa-check"></i><b>8.2.2</b> <code>matrix()</code></a></li>
+<li class="chapter" data-level="8.2.3" data-path="matricesdataframes.html"><a href="matricesdataframes.html#data.frame"><i class="fa fa-check"></i><b>8.2.3</b> <code>data.frame()</code></a></li>
+<li class="chapter" data-level="8.2.4" data-path="matricesdataframes.html"><a href="matricesdataframes.html#dataframes-pre-loaded-in-r"><i class="fa fa-check"></i><b>8.2.4</b> Dataframes pre-loaded in R</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="matricesdataframes.html"><a href="matricesdataframes.html#matrix-and-dataframe-functions"><i class="fa fa-check"></i><b>8.3</b> Matrix and dataframe functions</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#head-tail-view"><i class="fa fa-check"></i><b>8.3.1</b> <code>head(), tail(), View()</code></a></li>
+<li class="chapter" data-level="8.3.2" data-path="matricesdataframes.html"><a href="matricesdataframes.html#summary-str"><i class="fa fa-check"></i><b>8.3.2</b> <code>summary()</code>, <code>str()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="matricesdataframes.html"><a href="matricesdataframes.html#dataframe-column-names"><i class="fa fa-check"></i><b>8.4</b> Dataframe column names</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#adding-new-columns"><i class="fa fa-check"></i><b>8.4.1</b> Adding new columns</a></li>
+<li class="chapter" data-level="8.4.2" data-path="matricesdataframes.html"><a href="matricesdataframes.html#changing-column-names"><i class="fa fa-check"></i><b>8.4.2</b> Changing column names</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="matricesdataframes.html"><a href="matricesdataframes.html#slicing-dataframes"><i class="fa fa-check"></i><b>8.5</b> Slicing dataframes</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#slicing-with"><i class="fa fa-check"></i><b>8.5.1</b> Slicing with <code>[, ]</code></a></li>
+<li class="chapter" data-level="8.5.2" data-path="matricesdataframes.html"><a href="matricesdataframes.html#slicing-with-logical-vectors"><i class="fa fa-check"></i><b>8.5.2</b> Slicing with logical vectors</a></li>
+<li class="chapter" data-level="8.5.3" data-path="matricesdataframes.html"><a href="matricesdataframes.html#slicing-with-subset"><i class="fa fa-check"></i><b>8.5.3</b> Slicing with <code>subset()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="matricesdataframes.html"><a href="matricesdataframes.html#combining-slicing-with-functions"><i class="fa fa-check"></i><b>8.6</b> Combining slicing with functions</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#with"><i class="fa fa-check"></i><b>8.6.1</b> <code>with()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="matricesdataframes.html"><a href="matricesdataframes.html#test-your-r-might-pirates-and-superheroes"><i class="fa fa-check"></i><b>8.7</b> Test your R might! Pirates and superheroes</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="test-your-r-might-solutions.html"><a href="test-your-r-might-solutions.html"><i class="fa fa-check"></i><b>9</b> Test your R might! Solutions</a><ul>
+<li class="chapter" data-level="9.1" data-path="test-your-r-might-solutions.html"><a href="test-your-r-might-solutions.html#chapter-4-the-basics"><i class="fa fa-check"></i><b>9.1</b> Chapter 4: The Basics</a></li>
+<li class="chapter" data-level="9.2" data-path="test-your-r-might-solutions.html"><a href="test-your-r-might-solutions.html#chapter-5-scalers-and-vectors"><i class="fa fa-check"></i><b>9.2</b> Chapter 5: Scalers and vectors</a></li>
+<li class="chapter" data-level="9.3" data-path="test-your-r-might-solutions.html"><a href="test-your-r-might-solutions.html#chapter-6-vector-functions"><i class="fa fa-check"></i><b>9.3</b> Chapter 6: Vector Functions</a></li>
+<li class="chapter" data-level="9.4" data-path="test-your-r-might-solutions.html"><a href="test-your-r-might-solutions.html#chapter-7-indexing-vectors-with"><i class="fa fa-check"></i><b>9.4</b> Chapter 7: Indexing vectors with []</a></li>
+<li class="chapter" data-level="9.5" data-path="test-your-r-might-solutions.html"><a href="test-your-r-might-solutions.html#chapter-8-matrices-and-dataframes"><i class="fa fa-check"></i><b>9.5</b> Chapter 8: Matrices and Dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">YaRrr! The Pirate’s Guide to R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="vectorfunctions" class="section level1">
+<h1><span class="header-section-number">Chapter 6</span> Vector functions</h1>
+<p>In this chapter, we’ll cover the core functions for vector objects. The code below uses the functions you’ll learn to calculate summary statistics from two exams.</p>
+<p><img src="images/fuckexam.jpg" width="400px" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 10 students from two different classes took two exams.</span>
+<span class="co">#  Here are three vectors showing the data</span>
+midterm &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">62</span>, <span class="dv">68</span>, <span class="dv">75</span>, <span class="dv">79</span>, <span class="dv">55</span>, <span class="dv">62</span>, <span class="dv">89</span>, <span class="dv">76</span>, <span class="dv">45</span>, <span class="dv">67</span>)
+final &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">78</span>, <span class="dv">72</span>, <span class="dv">97</span>, <span class="dv">82</span>, <span class="dv">60</span>, <span class="dv">83</span>, <span class="dv">92</span>, <span class="dv">73</span>, <span class="dv">50</span>, <span class="dv">88</span>)
+
+<span class="co"># How many students are there?</span>
+<span class="kw">length</span>(midterm)
+## [1] 10
+
+<span class="co"># Add 5 to each midterm score (extra credit!)</span>
+midterm &lt;-<span class="st"> </span>midterm +<span class="st"> </span><span class="dv">5</span>
+midterm
+##  [1] 67 73 80 84 60 67 94 81 50 72
+
+<span class="co"># Difference between final and midterm scores</span>
+final -<span class="st"> </span>midterm
+##  [1] 11 -1 17 -2  0 16 -2 -8  0 16
+
+<span class="co"># Each student&#39;s average score</span>
+(midterm +<span class="st"> </span>final) /<span class="st"> </span><span class="dv">2</span>
+##  [1] 72 72 88 83 60 75 93 77 50 80
+
+<span class="co"># Mean midterm grade</span>
+<span class="kw">mean</span>(midterm)
+## [1] 73
+
+<span class="co"># Standard deviation of midterm grades</span>
+<span class="kw">sd</span>(midterm)
+## [1] 13
+
+<span class="co"># Highest final grade</span>
+<span class="kw">max</span>(final)
+## [1] 97
+
+<span class="co"># z-scores</span>
+midterm.z &lt;-<span class="st"> </span>(midterm -<span class="st"> </span><span class="kw">mean</span>(midterm)) /<span class="st"> </span><span class="kw">sd</span>(midterm)
+final.z &lt;-<span class="st"> </span>(final -<span class="st"> </span><span class="kw">mean</span>(final)) /<span class="st"> </span><span class="kw">sd</span>(final)</code></pre></div>
+<div id="arithmetic-operations-on-vectors" class="section level2">
+<h2><span class="header-section-number">6.1</span> Arithmetic operations on vectors</h2>
+<p>So far, you know how to do basic arithmetic operations like + (addition), - (subtraction), and * (multiplication) on scalars. Thankfully, R makes it just as easy to do arithmetic operations on numeric vectors:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)
+b &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>)
+
+a +<span class="st"> </span><span class="dv">100</span>
+## [1] 101 102 103 104 105
+a +<span class="st"> </span>b
+## [1] 11 22 33 44 55
+(a +<span class="st"> </span>b) /<span class="st"> </span><span class="dv">10</span>
+## [1] 1.1 2.2 3.3 4.4 5.5</code></pre></div>
+<p>If you do an operation on a vector with a scalar, R will apply the scalar to each element in the vector. For example, if you have a vector and want to add 10 to each element in the vector, just add the vector and scalar objects. Let’s create a vector with the integers from 1 to 10, and add then add 100 to each element:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Take the integers from 1 to 10, then add 100 to each</span>
+<span class="dv">1</span>:<span class="dv">10</span> +<span class="st"> </span><span class="dv">100</span>
+##  [1] 101 102 103 104 105 106 107 108 109 110</code></pre></div>
+<p>As you can see, the result is [1 + 100, 2 + 100, … 10 + 100]. Of course, we could have made this vector with the <code>a:b</code> function like this: <code>101:110</code>, but you get the idea.</p>
+<p>Of course, this doesn’t only work with addition…oh no. Let’s try division, multiplication, and exponents. Let’s create a vector <code>a</code> with the integers from 1 to 10 and then change it up:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
+a /<span class="st"> </span><span class="dv">100</span>
+##  [1] 0.01 0.02 0.03 0.04 0.05 0.06 0.07 0.08 0.09 0.10
+a ^<span class="st"> </span><span class="dv">2</span>
+##  [1]   1   4   9  16  25  36  49  64  81 100</code></pre></div>
+<p>Again, if you perform an algebraic operation on a vector with a scalar, R will just apply the operation to every element in the vector.</p>
+<div id="basic-math-with-multiple-vectors" class="section level3">
+<h3><span class="header-section-number">6.1.1</span> Basic math with multiple vectors</h3>
+<p>What if you want to do some operation on two vectors of the same length? Easy. Just apply the operation to both vectors. R will then combine them element–by–element. For example, if you add the vector [1, 2, 3, 4, 5] to the vector [5, 4, 3, 2, 1], the resulting vector will have the values [1 + 5, 2 + 4, 3 + 3, 4 + 2, 5 + 1] = [6, 6, 6, 6, 6]:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>) +<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>)
+## [1] 6 6 6 6 6</code></pre></div>
+<p>Let’s create two vectors a and b where each vector contains the integers from 1 to 5. We’ll then create two new vectors <code>ab.sum</code>, the sum of the two vectors and <code>ab.diff</code>, the difference of the two vectors, and <code>ab.prod</code>, the product of the two vectors:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">5</span>
+b &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">5</span>
+
+ab.sum &lt;-<span class="st"> </span>a +<span class="st"> </span>b
+ab.diff &lt;-<span class="st"> </span>a -<span class="st"> </span>b
+ab.prod &lt;-<span class="st"> </span>a *<span class="st"> </span>b
+
+ab.sum
+## [1]  2  4  6  8 10
+ab.diff
+## [1] 0 0 0 0 0
+ab.prod
+## [1]  1  4  9 16 25</code></pre></div>
+</div>
+<div id="ex-pirate-bake-sale" class="section level3">
+<h3><span class="header-section-number">6.1.2</span> Ex: Pirate Bake Sale</h3>
+<p><img src="images/piratecookies.jpg" width="400px" style="display: block; margin: auto;" /></p>
+<p>Let’s say you had a bake sale on your ship where 5 pirates sold both pies and cookies. You could record the total number of pies and cookies sold in two vectors:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pies &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">10</span>, <span class="dv">4</span>)
+cookies &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">70</span>, <span class="dv">40</span>, <span class="dv">40</span>, <span class="dv">200</span>, <span class="dv">60</span>)</code></pre></div>
+<p>Now, let’s say you want to know how many total items each pirate sold. You can do this by just adding the two vectors:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">total.sold &lt;-<span class="st"> </span>pies +<span class="st"> </span>cookies
+total.sold
+## [1]  73  46  42 210  64</code></pre></div>
+<p>Crazy.</p>
+</div>
+</div>
+<div id="summary-statistics" class="section level2">
+<h2><span class="header-section-number">6.2</span> Summary statistics</h2>
+<p>Ok, now that we can create vectors, let’s learn the basic descriptive statistics functions. We’ll start with functions that apply to continuous data. Continuous data is data that, generally speaking, can take on an infinite number of values. Height and weight are good examples of continuous data. Table <a href="vectorfunctions.html#tab:continuousvectorfunctiontable">6.1</a> contains common functions for continuous, numeric vectors. Each of them takes a numeric vector as an argument, and returns either a scalar (or in the case of <code>summary()</code>, a <code>table</code>) as a result.</p>
+<table style="width:97%;">
+<caption><span id="tab:continuousvectorfunctiontable">Table 6.1: </span> Summary statistic functions for continuous data.</caption>
+<colgroup>
+<col width="29%" />
+<col width="33%" />
+<col width="34%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Example</th>
+<th align="left">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>sum(x), product(x)</code></td>
+<td align="left"><code>sum(1:10)</code></td>
+<td align="left">55</td>
+</tr>
+<tr class="even">
+<td align="left"><code>min(x), max(x)</code></td>
+<td align="left"><code>min(1:10)</code></td>
+<td align="left">1</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>mean(x), median(x)</code></td>
+<td align="left"><code>mean(1:10)</code></td>
+<td align="left">5.5</td>
+</tr>
+<tr class="even">
+<td align="left"><code>sd(x), var(x), range(x)</code></td>
+<td align="left"><code>sd(1:10)</code></td>
+<td align="left">3.03</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>quantile(x, probs)</code></td>
+<td align="left"><code>quantile(1:10, probs = .2)</code></td>
+<td align="left">2.8</td>
+</tr>
+<tr class="even">
+<td align="left"><code>summary(x)</code></td>
+<td align="left"><code>summary(1:10)</code></td>
+<td align="left"><code>Min = 1.00. 1st Qu. = 3.25, Median = 5.50, Mean = 5.50, 3rd Qu. = 7.75, Max = 10.0</code></td>
+</tr>
+</tbody>
+</table>
+<p>Let’s calculate some descriptive statistics from some pirate related data. I’ll create a vector called <code>x</code> that contains the number of tattoos from 10 random pirates.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tattoos &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">50</span>, <span class="dv">2</span>, <span class="dv">39</span>, <span class="dv">4</span>, <span class="dv">20</span>, <span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">100</span>)</code></pre></div>
+<p>Now, we can calculate several descriptive statistics on this vector by using the summary statistics functions:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">min</span>(tattoos)
+## [1] 2
+<span class="kw">mean</span>(tattoos)
+## [1] 24
+<span class="kw">sd</span>(tattoos)
+## [1] 31</code></pre></div>
+<div id="length" class="section level3">
+<h3><span class="header-section-number">6.2.1</span> length()</h3>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-105"></span>
+<img src="images/penissize.png" alt="According to this article published in 2015 in Plos One, when it comes to people, length may matter for some. But trust me, for vectors it always does." width="400px" />
+<p class="caption">
+Figure 6.1: According to this article published in 2015 in Plos One, when it comes to people, length may matter for some. But trust me, for vectors it always does.
+</p>
+</div>
+<p>Vectors have one dimension: their length. Later on, when you combine vectors into more higher dimensional objects, like matrices and dataframes, you will need to make sure that all the vectors you combine have the same length. But, when you want to know the length of a vector, don’t stare at your computer screen and count the elements one by one! (That said, I must admit that I still do this sometimes…). Instead, use <code>length()</code> function. The <code>length()</code> function takes a vector as an argument, and returns a scalar representing the number of elements in the vector:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
+<span class="kw">length</span>(a)  <span class="co"># How many elements are in a?</span>
+## [1] 10
+
+b &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">100</span>, <span class="dt">length.out =</span> <span class="dv">20</span>)
+<span class="kw">length</span>(b)  <span class="co"># How many elements are in b?</span>
+## [1] 20
+
+<span class="kw">length</span>(<span class="kw">c</span>(<span class="st">&quot;This&quot;</span>, <span class="st">&quot;character&quot;</span>, <span class="st">&quot;vector&quot;</span>, <span class="st">&quot;has&quot;</span>, <span class="st">&quot;six&quot;</span>, <span class="st">&quot;elements.&quot;</span>))
+## [1] 6
+<span class="kw">length</span>(<span class="st">&quot;This character scalar has just one element.&quot;</span>)
+## [1] 1</code></pre></div>
+<p>Get used to the <code>length()</code> function people, you’ll be using it a lot!</p>
+</div>
+<div id="additional-numeric-vector-functions" class="section level3">
+<h3><span class="header-section-number">6.2.2</span> Additional numeric vector functions</h3>
+<p>Table <a href="vectorfunctions.html#tab:morenumericfunctions">6.2</a> contains additional functions that you will find useful when managing numeric vectors:</p>
+<table>
+<caption><span id="tab:morenumericfunctions">Table 6.2: </span> Vector summary functions for continuous data.</caption>
+<colgroup>
+<col width="19%" />
+<col width="27%" />
+<col width="36%" />
+<col width="16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+<th align="left">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>round(x, digits)</code></td>
+<td align="left">Round elements in x to <code>digits</code> digits</td>
+<td align="left"><code>round(c(2.231, 3.1415), digits = 1)</code></td>
+<td align="left">2.2, 3.1</td>
+</tr>
+<tr class="even">
+<td align="left"><code>ceiling(x), floor(x)</code></td>
+<td align="left">Round elements x to the next highest (or lowest) integer</td>
+<td align="left"><code>ceiling(c(5.1, 7.9))</code></td>
+<td align="left">6, 8</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>x %% y</code></td>
+<td align="left">Modular arithmetic (ie. x mod y)</td>
+<td align="left"><code>7 %% 3</code></td>
+<td align="left">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="sample-statistics-from-random-samples" class="section level3">
+<h3><span class="header-section-number">6.2.3</span> Sample statistics from random samples</h3>
+<p>Now that you know how to calculate summary statistics, let’s take a closer look at how R draws random samples using the <code>rnorm()</code> and <code>runif()</code> functions. In the next code chunk, I’ll calculate some summary statistics from a vector of 5 values from a Normal distribution with a mean of 10 and a standard deviation of 5. I’ll then calculate summary statistics from this sample using <code>mean()</code> and <code>sd()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 5 samples from a Normal dist with mean = 10 and sd = 5</span>
+x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="dv">5</span>)
+
+<span class="co"># What are the mean and standard deviation of the sample?</span>
+<span class="kw">mean</span>(x)
+## [1] 11
+<span class="kw">sd</span>(x)
+## [1] 2.5</code></pre></div>
+<p>As you can see, the mean and standard deviation of our sample vector are close to the population values of 10 and 5 – but they aren’t exactly the same because these are sample data. If we take a much larger sample (say, 100,000), the sample statistics should get much closer to the population values:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 100,000 samples from a Normal dist with mean = 10, sd = 5</span>
+y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">100000</span>, <span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="dv">5</span>)
+
+<span class="kw">mean</span>(y)
+## [1] 10
+<span class="kw">sd</span>(y)
+## [1] 5</code></pre></div>
+<p>Yep, sure enough our new sample y (containing 100,000 values) has a sample mean and standard deviation much closer (almost identical) to the population values than our sample x (containing only 5 values). This is an example of what is called the law of large numbers. Google it.</p>
+</div>
+</div>
+<div id="counting-statistics" class="section level2">
+<h2><span class="header-section-number">6.3</span> Counting statistics</h2>
+<p>Next, we’ll move on to common counting functions for vectors with discrete or non-numeric data. Discrete data are those like gender, occupation, and monkey farts, that only allow for a finite (or at least, plausibly finite) set of responses. Common functions for discrete vectors are in Table <a href="vectorfunctions.html#tab:discretevectorfunctiontable">6.3</a>. Each of these vectors takes a vector as an argument – however, unlike the previous functions we looked at, the used as arguments to these functions can be either numeric or character.</p>
+<table>
+<caption><span id="tab:discretevectorfunctiontable">Table 6.3: </span> Counting functions for discrete data.</caption>
+<colgroup>
+<col width="14%" />
+<col width="26%" />
+<col width="32%" />
+<col width="26%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+<th align="left">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>unique(x)</code></td>
+<td align="left">Returns a vector of all unique values.</td>
+<td align="left"><code>unique(c(1, 1, 2, 10))</code></td>
+<td align="left">1, 2, 10</td>
+</tr>
+<tr class="even">
+<td align="left"><code>table(x, exclude)</code></td>
+<td align="left">Returns a table showing all the unique values as well as a count of each occurrence. To include a count of NA values, include the argument <code>exclude = NULL</code></td>
+<td align="left"><code>table(c(&quot;a&quot;, &quot;a&quot;, &quot;b&quot;, &quot;c&quot;))</code></td>
+<td align="left"><code>2-&quot;a&quot;, 1-&quot;b&quot;, 1-&quot;c&quot;</code></td>
+</tr>
+</tbody>
+</table>
+<p>Let’s test these functions by starting with two vectors of discrete data:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">10</span>)
+gender &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>)</code></pre></div>
+<p>The function <code>unique(x)</code> will tell you all the unique values in the vector, but won’t tell you anything about how often each value occurs.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">unique</span>(vec)
+## [1]  1  5 10
+<span class="kw">unique</span>(gender)
+## [1] &quot;M&quot; &quot;F&quot;</code></pre></div>
+<p>The function <code>table()</code> does the same thing as <code>unique()</code>, but goes a step further in telling you how often each of the unique values occurs:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(vec)
+## vec
+##  1  5 10 
+##  5  1  3
+<span class="kw">table</span>(gender)
+## gender
+## F M 
+## 5 4</code></pre></div>
+<p>If you want to get a table of percentages instead of counts, you can just divide the result of the <code>table()</code> function by the sum of the result:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(vec) /<span class="st"> </span><span class="kw">sum</span>(<span class="kw">table</span>(vec))
+## vec
+##    1    5   10 
+## 0.56 0.11 0.33
+<span class="kw">table</span>(gender) /<span class="st"> </span><span class="kw">sum</span>(<span class="kw">table</span>(gender))
+## gender
+##    F    M 
+## 0.56 0.44</code></pre></div>
+</div>
+<div id="missing-na-values" class="section level2">
+<h2><span class="header-section-number">6.4</span> Missing (NA) values</h2>
+<p>In R, missing data are coded as NA. In real datasets, NA values turn up all the time. Unfortunately, most descriptive statistics functions will freak out if there is a missing (NA) value in the data. For example, the following code will return NA as a result because there is an NA value in the data vector:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="ot">NA</span>, <span class="dv">2</span>, <span class="dv">10</span>)
+<span class="kw">mean</span>(a)
+## [1] NA</code></pre></div>
+<p>Thankfully, there’s a way we can work around this. To tell a descriptive statistic function to ignore missing (NA) values, include the argument <code>na.rm = TRUE</code> in the function. This argument explicitly tells the function to ignore NA values. Let’s try calculating the mean of the vector <code>a</code> again, this time with the additional<code>na.rm = TRUE</code> argument:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(a, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
+## [1] 4.5</code></pre></div>
+<p>Now, the function ignored the NA value and returned the mean of the remaining data. While this may seem trivial now (why did we include an NA value in the vector if we wanted to ignore it?!), it will be become very important when we apply the function to real data which, very often, contains missing values.</p>
+</div>
+<div id="standardization-z-score" class="section level2">
+<h2><span class="header-section-number">6.5</span> Standardization (z-score)</h2>
+<p>A common task in statistics is to standardize variables – also known as calculating z-scores. The purpose of standardizing a vector is to put it on a common scale which allows you to compare it to other (standardized) variables. To standardize a vector, you simply subtract the vector by its mean, and then divide the result by the vector’s standard deviation.</p>
+<p>If the concept of z-scores is new to you – don’t worry. In the next worked example, you’ll see how it can help you compare two sets of data. But for now, let’s see how easy it is to standardize a vector using basic arithmetic.</p>
+<p>Let’s say you have a vector a containing some data. We’ll assign the vector to a new object called <code>a</code> then calculate the mean and standard deviation with the <code>mean()</code> and <code>sd()</code> functions:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">4</span>)
+<span class="kw">mean</span>(a)
+## [1] 4.6
+<span class="kw">sd</span>(a)
+## [1] 1.4</code></pre></div>
+<p>Ok. Now we’ll create a new vector called <code>a.z</code> which is a standardized version of a. To do this, we’ll simply subtract the mean of the vector, then divide by the standard deviation.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a.z &lt;-<span class="st"> </span>(a -<span class="st"> </span><span class="kw">mean</span>(a)) /<span class="st"> </span><span class="kw">sd</span>(a)</code></pre></div>
+<p>Now let’s look at the standardized values:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a.z
+## [1]  0.31 -1.12  1.74  0.31  0.31 -1.12 -0.41</code></pre></div>
+<p>The mean of <code>a.z</code> should now be 0, and the standard deviation of <code>a.z</code> should now be 1. Let’s make sure:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(a.z)
+## [1] 2e-16
+<span class="kw">sd</span>(a.z)
+## [1] 1</code></pre></div>
+<p>Sweet. Oh, don’t worry that the mean of <code>a.z</code> doesn’t look like exactly zero. Using non-scientific notation, the result is 0.000000000000000198. For all intents and purposes, that’s 0. The reason the result is not exactly 0 is due to computer science theoretical reasons that I cannot explain (because I don’t understand them).</p>
+<div id="ex-evaluating-a-competition" class="section level3">
+<h3><span class="header-section-number">6.5.1</span> Ex: Evaluating a competition</h3>
+<p>Your gluten-intolerant first mate just perished in a tragic soy sauce incident and it’s time to promote another member of your crew to the newly vacated position. Of course, only two qualities really matter for a pirate: rope-climbing, and grogg drinking. Therefore, to see which of your crew deserves the promotion, you decide to hold a climbing and drinking competition. In the climbing competition, you measure how many feet of rope a pirate can climb in an hour. In the drinking competition, you measure how many mugs of grogg they can drink in a minute. Five pirates volunteer for the competition – here are their results:</p>
+<table>
+<caption><span id="tab:unnamed-chunk-120">Table 6.4: </span>Scores from a pirate competition</caption>
+<thead>
+<tr class="header">
+<th align="left">pirate</th>
+<th align="right">grogg</th>
+<th align="right">climbing</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Heidi</td>
+<td align="right">12</td>
+<td align="right">100</td>
+</tr>
+<tr class="even">
+<td align="left">Andrew</td>
+<td align="right">8</td>
+<td align="right">520</td>
+</tr>
+<tr class="odd">
+<td align="left">Becki</td>
+<td align="right">1</td>
+<td align="right">430</td>
+</tr>
+<tr class="even">
+<td align="left">Madisen</td>
+<td align="right">6</td>
+<td align="right">200</td>
+</tr>
+<tr class="odd">
+<td align="left">David</td>
+<td align="right">2</td>
+<td align="right">700</td>
+</tr>
+</tbody>
+</table>
+<p>We can represent the main results with two vectors <code>grogg</code> and <code>climbing</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grogg &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">8</span>, <span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">2</span>)
+climbing &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">100</span>, <span class="dv">520</span>, <span class="dv">430</span>, <span class="dv">200</span>, <span class="dv">700</span>)</code></pre></div>
+<p>Now you’ve got the data, but there’s a problem: the scales of the numbers are very different. While the grogg numbers range from 1 to 12, the climbing numbers have a much larger range from 100 to 700. This makes it difficult to compare the two sets of numbers directly.</p>
+<p>To solve this problem, we’ll use standardization. Let’s create new standardized vectors called <code>grogg.z</code> and <code>climbing.z</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grogg.z &lt;-<span class="st"> </span>(grogg -<span class="st"> </span><span class="kw">mean</span>(grogg)) /<span class="st"> </span><span class="kw">sd</span>(grogg)
+climbing.z &lt;-<span class="st"> </span>(climbing -<span class="st"> </span><span class="kw">mean</span>(climbing)) /<span class="st"> </span><span class="kw">sd</span>(climbing)</code></pre></div>
+<p>Now let’s look at the final results</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grogg.z
+## [1]  1.379  0.489 -1.068  0.044 -0.845
+climbing.z
+## [1] -1.20  0.54  0.17 -0.78  1.28</code></pre></div>
+<p>It looks like there were two outstanding performances in particular. In the grogg drinking competition, the first pirate (Heidi) had a z-score of 1.4. We can interpret this by saying that Heidi drank 1.4 more standard deviations of mugs of grogg than the average pirate. In the climbing competition, the fifth pirate (David) had a z-score of 1.3. Here, we would conclude that David climbed 1.3 standard deviations more than the average pirate.</p>
+<p>But which pirate was the best on average across both events? To answer this, let’s create a combined z-score for each pirate which calculates the average z-scores for each pirate across the two events. We’ll do this by adding two performances and dividing by two. This will tell us, how good, on average, each pirate did relative to her fellow pirates.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">average.z &lt;-<span class="st"> </span>(grogg.z +<span class="st"> </span>(climbing.z)) /<span class="st"> </span><span class="dv">2</span></code></pre></div>
+<p>Let’s look at the result:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(average.z, <span class="dv">1</span>)
+## [1]  0.1  0.5 -0.5 -0.4  0.2</code></pre></div>
+<p>The highest average z-score belongs to the second pirate (Andrew) who had an average z-score value of 0.5. The first and last pirates, who did well in one event, seemed to have done poorly in the other event.</p>
+<p>Moral of the story: promote the pirate who can drink <em>and</em> climb.</p>
+</div>
+</div>
+<div id="test-your-r-might-2" class="section level2">
+<h2><span class="header-section-number">6.6</span> Test your R Might!</h2>
+<ol style="list-style-type: decimal">
+<li><p>Create a vector that shows the square root of the integers from 1 to 10.</p></li>
+<li><p>Renata thinks that she finds more treasure when she’s had a mug of grogg than when she doesn’t. To test this, she recorded how much treasure she found over 7 days without drinking any grogg (ie., sober), and then did the same over 7 days while drinking grogg (ie., drunk). Here are her results:</p></li>
+</ol>
+<table>
+<caption><span id="tab:unnamed-chunk-127">Table 6.5: </span>Renata’s treasure haul when she was sober and when she was drunk</caption>
+<thead>
+<tr class="header">
+<th align="left">day</th>
+<th align="right">sober</th>
+<th align="right">drunk</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Monday</td>
+<td align="right">2</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Tuesday</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Wednesday</td>
+<td align="right">3</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">Thursday</td>
+<td align="right">1</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Friday</td>
+<td align="right">0</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">Saturday</td>
+<td align="right">3</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="left">Sunday</td>
+<td align="right">5</td>
+<td align="right">2</td>
+</tr>
+</tbody>
+</table>
+<p>How much treasure did Renata find on average whe she was sober? What about when she was drunk?</p>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Using Renata’s data again, create a new vector called <code>difference</code> that shows how much more treasure Renata found when she was drunk and when she was not. What was the mean, median, and standard deviation of the difference?</p></li>
+<li><p>There’s an old parable that goes something like this. A man does some work for a king and needs to be paid. Because the man loves rice (who doesn’t?!), the man offers the king two different ways that he can be paid. <em>You can either pay me 100 kilograms of rice, or, you can pay me as follows: get a chessboard and put one grain of rice in the top left square. Then put 2 grains of rice on the next square, followed by 4 grains on the next, 8 grains on the next…and so on, where the amount of rice doubles on each square, until you get to the last square. When you are finished, give me all the grains of rice that would (in theory), fit on the chessboard.</em> The king, sensing that the man was an idiot for making such a stupid offer, immediately accepts the second option. He summons a chessboard, and begins counting out grains of rice one by one… Assuming that there are 64 squares on a chessboard, calculate how many grains of rice the main will receive. If one grain of rice weights 1/64000 kilograms, how many kilograms of rice did he get? <em>Hint: If you have trouble coming up with the answer, imagine how many grains are on the first, second, third and fourth squares, then try to create the vector that shows the number of grains on each square. Once you come up with that vector, you can easily calculate the final answer with the <code>sum()</code> function.</em></p></li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="scalersvectors.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="vectorindexing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ndphillips/YaRrrBook/master/06-vectorfunctions.Rmd",
+"text": "Edit"
+},
+"download": ["YaRrr.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>YaRrr! The Pirate’s Guide to R</title>
+  <meta name="description" content="An introductory book to R written by, and for, R pirates">
+  <meta name="generator" content="bookdown 0.3.9 and GitBook 2.6.7">
+
+  <meta property="og:title" content="YaRrr! The Pirate’s Guide to R" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://bookdown.org/ndphillips/YaRrr/" />
+  <meta property="og:image" content="https://bookdown.org/ndphillips/YaRrr/images/YaRrr_Cover.jpg" />
+  <meta property="og:description" content="An introductory book to R written by, and for, R pirates" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="YaRrr! The Pirate’s Guide to R" />
+  
+  <meta name="twitter:description" content="An introductory book to R written by, and for, R pirates" />
+  <meta name="twitter:image" content="https://bookdown.org/ndphillips/YaRrr/images/YaRrr_Cover.jpg" />
+
+<meta name="author" content="Nathaniel D. Phillips">
+
+
+<meta name="date" content="2017-02-21">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="vectorfunctions.html">
+<link rel="next" href="matricesdataframes.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">YaRrr! The Pirate's Guide to R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#where-did-this-book-come-from"><i class="fa fa-check"></i><b>1.1</b> Where did this book come from?</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#who-is-this-book-for"><i class="fa fa-check"></i><b>1.2</b> Who is this book for?</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#why-is-r-so-great"><i class="fa fa-check"></i><b>1.3</b> Why is R so great?</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#r-is-like-a-relationship"><i class="fa fa-check"></i><b>1.4</b> R is like a relationship…</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#who-am-i"><i class="fa fa-check"></i><b>1.5</b> Who am I?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="started.html"><a href="started.html"><i class="fa fa-check"></i><b>2</b> Getting Started</a><ul>
+<li class="chapter" data-level="2.1" data-path="started.html"><a href="started.html#installing-base-r-and-rstudio"><i class="fa fa-check"></i><b>2.1</b> Installing (Base) R and RStudio</a></li>
+<li class="chapter" data-level="2.2" data-path="started.html"><a href="started.html#the-four-rstudio-windows"><i class="fa fa-check"></i><b>2.2</b> The four RStudio Windows</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="started.html"><a href="started.html#source---your-notepad-for-code"><i class="fa fa-check"></i><b>2.2.1</b> Source - Your notepad for code</a></li>
+<li class="chapter" data-level="2.2.2" data-path="started.html"><a href="started.html#console-rs-heart"><i class="fa fa-check"></i><b>2.2.2</b> Console: R’s Heart</a></li>
+<li class="chapter" data-level="2.2.3" data-path="started.html"><a href="started.html#environment-history"><i class="fa fa-check"></i><b>2.2.3</b> Environment / History</a></li>
+<li class="chapter" data-level="2.2.4" data-path="started.html"><a href="started.html#files-plots-packages-help"><i class="fa fa-check"></i><b>2.2.4</b> Files / Plots / Packages / Help</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="started.html"><a href="started.html#packages"><i class="fa fa-check"></i><b>2.3</b> Packages</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="started.html"><a href="started.html#installing-a-new-package"><i class="fa fa-check"></i><b>2.3.1</b> Installing a new package</a></li>
+<li class="chapter" data-level="2.3.2" data-path="started.html"><a href="started.html#loading-a-package"><i class="fa fa-check"></i><b>2.3.2</b> Loading a package</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="started.html"><a href="started.html#cheatsheets-and-getting-help"><i class="fa fa-check"></i><b>2.4</b> Cheatsheets and getting help</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="started.html"><a href="started.html#r-cheatsheets"><i class="fa fa-check"></i><b>2.4.1</b> R Cheatsheets</a></li>
+<li class="chapter" data-level="2.4.2" data-path="started.html"><a href="started.html#getting-r-help-online"><i class="fa fa-check"></i><b>2.4.2</b> Getting R help online</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="jumpin.html"><a href="jumpin.html"><i class="fa fa-check"></i><b>3</b> Jump In!</a><ul>
+<li class="chapter" data-level="3.1" data-path="jumpin.html"><a href="jumpin.html#exploring-data"><i class="fa fa-check"></i><b>3.1</b> Exploring data</a></li>
+<li class="chapter" data-level="3.2" data-path="jumpin.html"><a href="jumpin.html#descriptive-statistics"><i class="fa fa-check"></i><b>3.2</b> Descriptive statistics</a></li>
+<li class="chapter" data-level="3.3" data-path="jumpin.html"><a href="jumpin.html#plotting"><i class="fa fa-check"></i><b>3.3</b> Plotting</a></li>
+<li class="chapter" data-level="3.4" data-path="jumpin.html"><a href="jumpin.html#hypothesis-tests"><i class="fa fa-check"></i><b>3.4</b> Hypothesis tests</a></li>
+<li class="chapter" data-level="3.5" data-path="jumpin.html"><a href="jumpin.html#regression"><i class="fa fa-check"></i><b>3.5</b> Regression</a></li>
+<li class="chapter" data-level="3.6" data-path="jumpin.html"><a href="jumpin.html#bayesian-statistics"><i class="fa fa-check"></i><b>3.6</b> Bayesian Statistics</a></li>
+<li class="chapter" data-level="3.7" data-path="jumpin.html"><a href="jumpin.html#wasnt-that-easy"><i class="fa fa-check"></i><b>3.7</b> Wasn’t that easy?!</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>4</b> The Basics</a><ul>
+<li class="chapter" data-level="4.1" data-path="basics.html"><a href="basics.html#the-command-line-console"><i class="fa fa-check"></i><b>4.1</b> The command-line (Console)</a></li>
+<li class="chapter" data-level="4.2" data-path="basics.html"><a href="basics.html#writing-r-scripts-in-an-editor"><i class="fa fa-check"></i><b>4.2</b> Writing R scripts in an editor</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="basics.html"><a href="basics.html#send-code-from-an-editor-to-the-console"><i class="fa fa-check"></i><b>4.2.1</b> Send code from an editor to the console</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="basics.html"><a href="basics.html#a-brief-style-guide-commenting-and-spacing"><i class="fa fa-check"></i><b>4.3</b> A brief style guide: Commenting and spacing</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="basics.html"><a href="basics.html#commenting-code-with-the-pound-sign"><i class="fa fa-check"></i><b>4.3.1</b> Commenting code with the # (pound) sign</a></li>
+<li class="chapter" data-level="4.3.2" data-path="basics.html"><a href="basics.html#spacing"><i class="fa fa-check"></i><b>4.3.2</b> Spacing</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="basics.html"><a href="basics.html#objects-and-functions"><i class="fa fa-check"></i><b>4.4</b> Objects and functions</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="basics.html"><a href="basics.html#numbers-versus-characters"><i class="fa fa-check"></i><b>4.4.1</b> Numbers versus characters</a></li>
+<li class="chapter" data-level="4.4.2" data-path="basics.html"><a href="basics.html#creating-new-objects-with--"><i class="fa fa-check"></i><b>4.4.2</b> Creating new objects with &lt;-</a></li>
+<li class="chapter" data-level="4.4.3" data-path="basics.html"><a href="basics.html#how-to-name-objects"><i class="fa fa-check"></i><b>4.4.3</b> How to name objects</a></li>
+<li class="chapter" data-level="4.4.4" data-path="basics.html"><a href="basics.html#example-pirates-of-the-caribbean"><i class="fa fa-check"></i><b>4.4.4</b> Example: Pirates of The Caribbean</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="basics.html"><a href="basics.html#test-your-r-might"><i class="fa fa-check"></i><b>4.5</b> Test your R might!</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="scalersvectors.html"><a href="scalersvectors.html"><i class="fa fa-check"></i><b>5</b> Scalers and vectors</a><ul>
+<li class="chapter" data-level="5.1" data-path="scalersvectors.html"><a href="scalersvectors.html#scalars"><i class="fa fa-check"></i><b>5.1</b> Scalars</a></li>
+<li class="chapter" data-level="5.2" data-path="scalersvectors.html"><a href="scalersvectors.html#vectors"><i class="fa fa-check"></i><b>5.2</b> Vectors</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="scalersvectors.html"><a href="scalersvectors.html#ab"><i class="fa fa-check"></i><b>5.2.1</b> a:b</a></li>
+<li class="chapter" data-level="5.2.2" data-path="scalersvectors.html"><a href="scalersvectors.html#seq"><i class="fa fa-check"></i><b>5.2.2</b> seq()</a></li>
+<li class="chapter" data-level="5.2.3" data-path="scalersvectors.html"><a href="scalersvectors.html#rep"><i class="fa fa-check"></i><b>5.2.3</b> rep()</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="scalersvectors.html"><a href="scalersvectors.html#generating-random-data"><i class="fa fa-check"></i><b>5.3</b> Generating random data</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="scalersvectors.html"><a href="scalersvectors.html#sample"><i class="fa fa-check"></i><b>5.3.1</b> sample()</a></li>
+<li class="chapter" data-level="5.3.2" data-path="scalersvectors.html"><a href="scalersvectors.html#normal-gaussian"><i class="fa fa-check"></i><b>5.3.2</b> Normal (Gaussian)</a></li>
+<li class="chapter" data-level="5.3.3" data-path="scalersvectors.html"><a href="scalersvectors.html#uniform"><i class="fa fa-check"></i><b>5.3.3</b> Uniform</a></li>
+<li class="chapter" data-level="5.3.4" data-path="scalersvectors.html"><a href="scalersvectors.html#notes-on-random-samples"><i class="fa fa-check"></i><b>5.3.4</b> Notes on random samples</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="scalersvectors.html"><a href="scalersvectors.html#test-your-r-might-1"><i class="fa fa-check"></i><b>5.4</b> Test your R might!</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="vectorfunctions.html"><a href="vectorfunctions.html"><i class="fa fa-check"></i><b>6</b> Vector functions</a><ul>
+<li class="chapter" data-level="6.1" data-path="vectorfunctions.html"><a href="vectorfunctions.html#arithmetic-operations-on-vectors"><i class="fa fa-check"></i><b>6.1</b> Arithmetic operations on vectors</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="vectorfunctions.html"><a href="vectorfunctions.html#basic-math-with-multiple-vectors"><i class="fa fa-check"></i><b>6.1.1</b> Basic math with multiple vectors</a></li>
+<li class="chapter" data-level="6.1.2" data-path="vectorfunctions.html"><a href="vectorfunctions.html#ex-pirate-bake-sale"><i class="fa fa-check"></i><b>6.1.2</b> Ex: Pirate Bake Sale</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="vectorfunctions.html"><a href="vectorfunctions.html#summary-statistics"><i class="fa fa-check"></i><b>6.2</b> Summary statistics</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="vectorfunctions.html"><a href="vectorfunctions.html#length"><i class="fa fa-check"></i><b>6.2.1</b> length()</a></li>
+<li class="chapter" data-level="6.2.2" data-path="vectorfunctions.html"><a href="vectorfunctions.html#additional-numeric-vector-functions"><i class="fa fa-check"></i><b>6.2.2</b> Additional numeric vector functions</a></li>
+<li class="chapter" data-level="6.2.3" data-path="vectorfunctions.html"><a href="vectorfunctions.html#sample-statistics-from-random-samples"><i class="fa fa-check"></i><b>6.2.3</b> Sample statistics from random samples</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="vectorfunctions.html"><a href="vectorfunctions.html#counting-statistics"><i class="fa fa-check"></i><b>6.3</b> Counting statistics</a></li>
+<li class="chapter" data-level="6.4" data-path="vectorfunctions.html"><a href="vectorfunctions.html#missing-na-values"><i class="fa fa-check"></i><b>6.4</b> Missing (NA) values</a></li>
+<li class="chapter" data-level="6.5" data-path="vectorfunctions.html"><a href="vectorfunctions.html#standardization-z-score"><i class="fa fa-check"></i><b>6.5</b> Standardization (z-score)</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="vectorfunctions.html"><a href="vectorfunctions.html#ex-evaluating-a-competition"><i class="fa fa-check"></i><b>6.5.1</b> Ex: Evaluating a competition</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="vectorfunctions.html"><a href="vectorfunctions.html#test-your-r-might-2"><i class="fa fa-check"></i><b>6.6</b> Test your R Might!</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="vectorindexing.html"><a href="vectorindexing.html"><i class="fa fa-check"></i><b>7</b> Indexing Vectors with [ ]</a><ul>
+<li class="chapter" data-level="7.1" data-path="vectorindexing.html"><a href="vectorindexing.html#numerical-indexing"><i class="fa fa-check"></i><b>7.1</b> Numerical Indexing</a></li>
+<li class="chapter" data-level="7.2" data-path="vectorindexing.html"><a href="vectorindexing.html#logical-indexing"><i class="fa fa-check"></i><b>7.2</b> Logical Indexing</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="vectorindexing.html"><a href="vectorindexing.html#and-or-in"><i class="fa fa-check"></i><b>7.2.1</b> <code>&amp;</code> (and), <code>|</code> (or), <code>%in%</code></a></li>
+<li class="chapter" data-level="7.2.2" data-path="vectorindexing.html"><a href="vectorindexing.html#counts-and-percentages-from-logical-vectors"><i class="fa fa-check"></i><b>7.2.2</b> Counts and percentages from logical vectors</a></li>
+<li class="chapter" data-level="7.2.3" data-path="vectorindexing.html"><a href="vectorindexing.html#additional-logical-functions"><i class="fa fa-check"></i><b>7.2.3</b> Additional Logical functions</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="vectorindexing.html"><a href="vectorindexing.html#changing-values-of-a-vector"><i class="fa fa-check"></i><b>7.3</b> Changing values of a vector</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="vectorindexing.html"><a href="vectorindexing.html#ex-fixing-invalid-responses-to-a-happiness-survey"><i class="fa fa-check"></i><b>7.3.1</b> Ex: Fixing invalid responses to a Happiness survey</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="vectorindexing.html"><a href="vectorindexing.html#test-your-r-might-movie-data"><i class="fa fa-check"></i><b>7.4</b> Test your R Might!: Movie data</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="matricesdataframes.html"><a href="matricesdataframes.html"><i class="fa fa-check"></i><b>8</b> Matrices and Dataframes</a><ul>
+<li class="chapter" data-level="8.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#what-are-matrices-and-dataframes"><i class="fa fa-check"></i><b>8.1</b> What are matrices and dataframes?</a></li>
+<li class="chapter" data-level="8.2" data-path="matricesdataframes.html"><a href="matricesdataframes.html#creating-matrices-and-dataframes"><i class="fa fa-check"></i><b>8.2</b> Creating matrices and dataframes</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#cbind-rbind"><i class="fa fa-check"></i><b>8.2.1</b> <code>cbind()</code>, <code>rbind()</code></a></li>
+<li class="chapter" data-level="8.2.2" data-path="matricesdataframes.html"><a href="matricesdataframes.html#matrix"><i class="fa fa-check"></i><b>8.2.2</b> <code>matrix()</code></a></li>
+<li class="chapter" data-level="8.2.3" data-path="matricesdataframes.html"><a href="matricesdataframes.html#data.frame"><i class="fa fa-check"></i><b>8.2.3</b> <code>data.frame()</code></a></li>
+<li class="chapter" data-level="8.2.4" data-path="matricesdataframes.html"><a href="matricesdataframes.html#dataframes-pre-loaded-in-r"><i class="fa fa-check"></i><b>8.2.4</b> Dataframes pre-loaded in R</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="matricesdataframes.html"><a href="matricesdataframes.html#matrix-and-dataframe-functions"><i class="fa fa-check"></i><b>8.3</b> Matrix and dataframe functions</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#head-tail-view"><i class="fa fa-check"></i><b>8.3.1</b> <code>head(), tail(), View()</code></a></li>
+<li class="chapter" data-level="8.3.2" data-path="matricesdataframes.html"><a href="matricesdataframes.html#summary-str"><i class="fa fa-check"></i><b>8.3.2</b> <code>summary()</code>, <code>str()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="matricesdataframes.html"><a href="matricesdataframes.html#dataframe-column-names"><i class="fa fa-check"></i><b>8.4</b> Dataframe column names</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#adding-new-columns"><i class="fa fa-check"></i><b>8.4.1</b> Adding new columns</a></li>
+<li class="chapter" data-level="8.4.2" data-path="matricesdataframes.html"><a href="matricesdataframes.html#changing-column-names"><i class="fa fa-check"></i><b>8.4.2</b> Changing column names</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="matricesdataframes.html"><a href="matricesdataframes.html#slicing-dataframes"><i class="fa fa-check"></i><b>8.5</b> Slicing dataframes</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#slicing-with"><i class="fa fa-check"></i><b>8.5.1</b> Slicing with <code>[, ]</code></a></li>
+<li class="chapter" data-level="8.5.2" data-path="matricesdataframes.html"><a href="matricesdataframes.html#slicing-with-logical-vectors"><i class="fa fa-check"></i><b>8.5.2</b> Slicing with logical vectors</a></li>
+<li class="chapter" data-level="8.5.3" data-path="matricesdataframes.html"><a href="matricesdataframes.html#slicing-with-subset"><i class="fa fa-check"></i><b>8.5.3</b> Slicing with <code>subset()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="matricesdataframes.html"><a href="matricesdataframes.html#combining-slicing-with-functions"><i class="fa fa-check"></i><b>8.6</b> Combining slicing with functions</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#with"><i class="fa fa-check"></i><b>8.6.1</b> <code>with()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="matricesdataframes.html"><a href="matricesdataframes.html#test-your-r-might-pirates-and-superheroes"><i class="fa fa-check"></i><b>8.7</b> Test your R might! Pirates and superheroes</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="test-your-r-might-solutions.html"><a href="test-your-r-might-solutions.html"><i class="fa fa-check"></i><b>9</b> Test your R might! Solutions</a><ul>
+<li class="chapter" data-level="9.1" data-path="test-your-r-might-solutions.html"><a href="test-your-r-might-solutions.html#chapter-4-the-basics"><i class="fa fa-check"></i><b>9.1</b> Chapter 4: The Basics</a></li>
+<li class="chapter" data-level="9.2" data-path="test-your-r-might-solutions.html"><a href="test-your-r-might-solutions.html#chapter-5-scalers-and-vectors"><i class="fa fa-check"></i><b>9.2</b> Chapter 5: Scalers and vectors</a></li>
+<li class="chapter" data-level="9.3" data-path="test-your-r-might-solutions.html"><a href="test-your-r-might-solutions.html#chapter-6-vector-functions"><i class="fa fa-check"></i><b>9.3</b> Chapter 6: Vector Functions</a></li>
+<li class="chapter" data-level="9.4" data-path="test-your-r-might-solutions.html"><a href="test-your-r-might-solutions.html#chapter-7-indexing-vectors-with"><i class="fa fa-check"></i><b>9.4</b> Chapter 7: Indexing vectors with []</a></li>
+<li class="chapter" data-level="9.5" data-path="test-your-r-might-solutions.html"><a href="test-your-r-might-solutions.html#chapter-8-matrices-and-dataframes"><i class="fa fa-check"></i><b>9.5</b> Chapter 8: Matrices and Dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">YaRrr! The Pirate’s Guide to R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="vectorindexing" class="section level1">
+<h1><span class="header-section-number">Chapter 7</span> Indexing Vectors with [ ]</h1>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-129"></span>
+<img src="images/beard.jpeg" alt="Traditionally, a pirate will steal a Beard Bauble from every pirate he beats in a game of Mario Kart. This pirate is is the Mario Kart champion of Missionsstrasse." width="300px" />
+<p class="caption">
+Figure 7.1: Traditionally, a pirate will steal a Beard Bauble from every pirate he beats in a game of Mario Kart. This pirate is is the Mario Kart champion of Missionsstrasse.
+</p>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">boat.names</th>
+<th align="left">boat.colors</th>
+<th align="right">boat.ages</th>
+<th align="right">boat.prices</th>
+<th align="right">boat.costs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">a</td>
+<td align="left">black</td>
+<td align="right">143</td>
+<td align="right">53</td>
+<td align="right">52</td>
+</tr>
+<tr class="even">
+<td align="left">b</td>
+<td align="left">green</td>
+<td align="right">53</td>
+<td align="right">87</td>
+<td align="right">80</td>
+</tr>
+<tr class="odd">
+<td align="left">c</td>
+<td align="left">pink</td>
+<td align="right">356</td>
+<td align="right">54</td>
+<td align="right">20</td>
+</tr>
+<tr class="even">
+<td align="left">d</td>
+<td align="left">blue</td>
+<td align="right">23</td>
+<td align="right">66</td>
+<td align="right">100</td>
+</tr>
+<tr class="odd">
+<td align="left">e</td>
+<td align="left">blue</td>
+<td align="right">647</td>
+<td align="right">264</td>
+<td align="right">189</td>
+</tr>
+<tr class="even">
+<td align="left">f</td>
+<td align="left">green</td>
+<td align="right">24</td>
+<td align="right">32</td>
+<td align="right">12</td>
+</tr>
+<tr class="odd">
+<td align="left">g</td>
+<td align="left">green</td>
+<td align="right">532</td>
+<td align="right">532</td>
+<td align="right">520</td>
+</tr>
+<tr class="even">
+<td align="left">h</td>
+<td align="left">yellow</td>
+<td align="right">43</td>
+<td align="right">58</td>
+<td align="right">68</td>
+</tr>
+<tr class="odd">
+<td align="left">i</td>
+<td align="left">black</td>
+<td align="right">66</td>
+<td align="right">99</td>
+<td align="right">80</td>
+</tr>
+<tr class="even">
+<td align="left">j</td>
+<td align="left">black</td>
+<td align="right">86</td>
+<td align="right">132</td>
+<td align="right">100</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Boat sale. Creating the data vectors</span>
+boat.names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;f&quot;</span>, <span class="st">&quot;g&quot;</span>, <span class="st">&quot;h&quot;</span>, <span class="st">&quot;i&quot;</span>, <span class="st">&quot;j&quot;</span>)
+boat.colors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;pink&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;blue&quot;</span>, 
+                <span class="st">&quot;green&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;black&quot;</span>)
+boat.ages &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">143</span>, <span class="dv">53</span>, <span class="dv">356</span>, <span class="dv">23</span>, <span class="dv">647</span>, <span class="dv">24</span>, <span class="dv">532</span>, <span class="dv">43</span>, <span class="dv">66</span>, <span class="dv">86</span>)
+boat.prices &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">53</span>, <span class="dv">87</span>, <span class="dv">54</span>, <span class="dv">66</span>, <span class="dv">264</span>, <span class="dv">32</span>, <span class="dv">532</span>, <span class="dv">58</span>, <span class="dv">99</span>, <span class="dv">132</span>)
+boat.costs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">52</span>, <span class="dv">80</span>, <span class="dv">20</span>, <span class="dv">100</span>, <span class="dv">189</span>, <span class="dv">12</span>, <span class="dv">520</span>, <span class="dv">68</span>, <span class="dv">80</span>, <span class="dv">100</span>)
+
+<span class="co"># What was the price of the first boat?</span>
+boat.prices[<span class="dv">1</span>]
+## [1] 53
+
+<span class="co"># What were the ages of the first 5 boats?</span>
+boat.ages[<span class="dv">1</span>:<span class="dv">5</span>]
+## [1] 143  53 356  23 647
+
+<span class="co"># What were the names of the black boats?</span>
+boat.names[boat.colors ==<span class="st"> &quot;black&quot;</span>]
+## [1] &quot;a&quot; &quot;i&quot; &quot;j&quot;
+
+<span class="co"># What were the prices of either green or yellow boats?</span>
+boat.prices[boat.colors ==<span class="st"> &quot;green&quot;</span> |<span class="st"> </span>boat.colors ==<span class="st"> &quot;yellow&quot;</span>]
+## [1]  87  32 532  58
+
+<span class="co"># Change the price of boat &quot;s&quot; to 100</span>
+boat.prices[boat.names ==<span class="st"> &quot;s&quot;</span>] &lt;-<span class="st"> </span><span class="dv">100</span>
+
+<span class="co"># What was the median price of black boats less than 100 years old?</span>
+<span class="kw">median</span>(boat.prices[boat.colors ==<span class="st"> &quot;black&quot;</span> &amp;<span class="st"> </span>boat.ages &lt;<span class="st"> </span><span class="dv">100</span>])
+## [1] 116
+
+<span class="co"># How many pink boats were there?</span>
+<span class="kw">sum</span>(boat.colors ==<span class="st"> &quot;pink&quot;</span>)
+## [1] 1
+
+<span class="co"># What percent of boats were older than 100 years old?</span>
+<span class="kw">mean</span>(boat.ages &lt;<span class="st"> </span><span class="dv">100</span>)
+## [1] 0.6</code></pre></div>
+<p>By now you should be a whiz at applying functions like <code>mean()</code> and <code>table()</code> to vectors. However, in many analyses, you won’t want to calculate statistics of an entire vector. Instead, you will want to access specific <em>subsets</em> of values of a vector based on some criteria. For example, you may want to access values in a specific location in the vector (i.e.; the first 10 elements) or based on some criteria within that vector (i.e.; all values greater than 0), or based on criterion from values in a <em>different</em> vector (e.g.; All values of age where sex is Female). To access specific values of a vector in R, we use <em>indexing</em> using brackets <code>[]</code>. In general, whatever you put inside the brackets, tells R which values of the vector object you want. There are two main ways that you can use indexing to access subsets of data in a vector: numerical and logical indexing.</p>
+<div id="numerical-indexing" class="section level2">
+<h2><span class="header-section-number">7.1</span> Numerical Indexing</h2>
+<p>With numerical indexing, you enter a vector of integers corresponding to the values in the vector you want to access in the form <code>a[index]</code>, where <code>a</code> is the vector, and <code>index</code> is a vector of index values. For example, let’s use numerical indexing to get values from our boat vectors.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># What is the first boat name?</span>
+boat.names[<span class="dv">1</span>]
+## [1] &quot;a&quot;
+
+<span class="co"># What are the first five boat colors?</span>
+boat.colors[<span class="dv">1</span>:<span class="dv">5</span>]
+## [1] &quot;black&quot; &quot;green&quot; &quot;pink&quot;  &quot;blue&quot;  &quot;blue&quot;
+
+<span class="co"># What is every second boat age?</span>
+boat.ages[<span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dt">by =</span> <span class="dv">2</span>)]
+## [1] 143 356 647</code></pre></div>
+<p>You can use any indexing vector as long as it contains integers. You can even access the same elements multiple times:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># What is the first boat age (3 times)</span>
+boat.ages[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)]
+## [1] 143 143 143</code></pre></div>
+<p>It it makes your code clearer, you can define an indexing object before doing your actual indexing. For example, let’s define an object called <code>my.index</code> and use this object to index our data vector:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my.index &lt;-<span class="st"> </span><span class="dv">3</span>:<span class="dv">5</span>
+boat.names[my.index]
+## [1] &quot;c&quot; &quot;d&quot; &quot;e&quot;</code></pre></div>
+</div>
+<div id="logical-indexing" class="section level2">
+<h2><span class="header-section-number">7.2</span> Logical Indexing</h2>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-135"></span>
+<img src="images/logic.jpg" alt="Logical indexing. Good for R aliens and R pirates." width="300px" />
+<p class="caption">
+Figure 7.2: Logical indexing. Good for R aliens and R pirates.
+</p>
+</div>
+<p>The second way to index vectors is with <em>logical vectors</em>. A logical vector is a vector that <em>only</em> contains TRUE and FALSE values. In R, true values are designated with TRUE, and false values with FALSE. When you index a vector with a logical vector, R will return values of the vector for which the indexing vector is TRUE. If that was confusing, think about it this way: a logical vector, combined with the brackets <code>[ ]</code>, acts as a <em>filter</em> for the vector it is indexing. It only lets values of the vector pass through for which the logical vector is TRUE.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-136"></span>
+<img src="images/indexgandolf.png" alt="FALSE values in a logical vector are like lots of mini-Gandolfs. In this example, I am indexing a vector    exttt{x} with a logical vector y (y for example could be x &gt; 0, so all positive values of x are TRUE and all negative values are FALSE). The result is a vector of length 2, which are the values of x for which the logical vector y was true. Gandolf stopped all the values of x for which y was FALSE." width="500px" />
+<p class="caption">
+Figure 7.3: FALSE values in a logical vector are like lots of mini-Gandolfs. In this example, I am indexing a vector exttt{x} with a logical vector y (y for example could be x &gt; 0, so all positive values of x are TRUE and all negative values are FALSE). The result is a vector of length 2, which are the values of x for which the logical vector y was true. Gandolf stopped all the values of x for which y was FALSE.
+</p>
+</div>
+<p>You could create logical vectors directly using <code>c()</code>. For example, I could access every other value of the following vector as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)
+a[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)]
+## [1] 1 3 5</code></pre></div>
+<p>As you can see, R returns all values of the vector <code>a</code> for which the logical vector is TRUE.</p>
+<div class="figure"><span id="fig:unnamed-chunk-138"></span>
+<img src="yarrr_files/figure-html/unnamed-chunk-138-1.png" alt="Logical comparison operators in R" width="672" />
+<p class="caption">
+Figure 7.4: Logical comparison operators in R
+</p>
+</div>
+<p>However, creating logical vectors using <code>c()</code> is tedious. Instead, it’s better to create logical vectors from <em>existing vectors</em> using comparison operators like &lt; (less than), == (equals to), and != (not equal to). A complete list of the most common comparison operators is in Figure~. For example, let’s create some logical vectors from our <code>boat.ages</code> vector:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Which ages are &gt; 100?</span>
+boat.ages &gt;<span class="st"> </span><span class="dv">100</span>
+##  [1]  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE
+
+<span class="co"># Which ages are equal to 23?</span>
+boat.ages ==<span class="st"> </span><span class="dv">23</span>
+##  [1] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
+
+<span class="co"># Which boat names are equal to c?</span>
+boat.names ==<span class="st"> &quot;c&quot;</span>
+##  [1] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre></div>
+<p>You can also create logical vectors by comparing a vector to another vector of the same length. When you do this, R will compare values in the same position (e.g.; the first values will be compared, then the second values, etc.). For example, we can compare the <code>boat.cost</code> and <code>boat.price</code> vectors to see which boats sold for a higher price than their cost:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Which boats had a higher price than cost?</span>
+boat.prices &gt;<span class="st"> </span>boat.costs
+##  [1]  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE
+
+<span class="co"># Which boats had a lower price than cost?</span>
+boat.prices &lt;<span class="st"> </span>boat.costs
+##  [1] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE</code></pre></div>
+<p>Once you’ve created a logical vector using a comparison operator, you can use it to index any vector with the same length. Here, I’ll use logical vectors to get the prices of boats whose ages were greater than 100:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># What were the prices of boats older than 100?</span>
+boat.prices[boat.ages &gt;<span class="st"> </span><span class="dv">100</span>]
+## [1]  53  54 264 532</code></pre></div>
+<p>Here’s how logical indexing works step-by-step:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Which boat prices are greater than 100?</span>
+boat.ages &gt;<span class="st"> </span><span class="dv">100</span>
+##  [1]  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE
+
+<span class="co"># Writing the logical index by hand (you&#39;d never do this!)</span>
+boat.prices[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>)]
+## [1]  53  54 264 532
+
+<span class="co"># Doing it all in one step! You get the same answer</span>
+boat.prices[boat.ages &gt;<span class="st"> </span><span class="dv">100</span>]
+## [1]  53  54 264 532</code></pre></div>
+<div id="and-or-in" class="section level3">
+<h3><span class="header-section-number">7.2.1</span> <code>&amp;</code> (and), <code>|</code> (or), <code>%in%</code></h3>
+<p>In addition to using single comparison operators, you can combine multiple logical vectors using the OR (which looks like <code>|</code> and AND <code>\&amp;</code> commands. The OR <code>|</code> operation will return TRUE if any of the logical vectors is TRUE, while the AND <code>&amp;</code> operation will only return TRUE if all of the values in the logical vectors is TRUE. This is especially powerful when you want to create a logical vector based on criteria from multiple vectors.</p>
+<p>For example, let’s create a logical vector indicating which boats had a price greater than 200 OR less than 100, and then use that vector to see what the names of these boats were:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Which boats had prices greater than 400 OR less than 100?</span>
+boat.prices &gt;<span class="st"> </span><span class="dv">200</span> |<span class="st"> </span>boat.prices &lt;<span class="st"> </span><span class="dv">100</span>
+##  [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE
+
+<span class="co"># What were the NAMES of these boats</span>
+boat.names[boat.prices &gt;<span class="st"> </span><span class="dv">200</span> |<span class="st"> </span>boat.prices &lt;<span class="st"> </span><span class="dv">100</span>]
+## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot;</code></pre></div>
+<p>You can combine as many logical vectors as you want (as long as they all have the same length!):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Boat names of boats with a color of black OR with a price &gt; 100</span>
+boat.names[boat.colors ==<span class="st"> &quot;black&quot;</span> |<span class="st"> </span>boat.prices &gt;<span class="st"> </span><span class="dv">100</span>]
+## [1] &quot;a&quot; &quot;e&quot; &quot;g&quot; &quot;i&quot; &quot;j&quot;
+
+<span class="co"># Names of blue boats with a price greater than 200</span>
+boat.names[boat.colors ==<span class="st"> &quot;blue&quot;</span> &amp;<span class="st"> </span>boat.prices &gt;<span class="st"> </span><span class="dv">200</span>]
+## [1] &quot;e&quot;</code></pre></div>
+<p>You can combine as many logical vectors as you want to create increasingly complex selection criteria. For example, the following logical vector returns TRUE for cases where the boat colors are black OR brown, AND where the price was not equal to 100:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Which boats were eithe black or brown, AND had a price less than 100?</span>
+(boat.colors ==<span class="st"> &quot;black&quot;</span> |<span class="st"> </span>boat.colors ==<span class="st"> &quot;brown&quot;</span>) &amp;<span class="st"> </span>boat.prices &lt;<span class="st"> </span><span class="dv">100</span>
+##  [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE
+
+<span class="co"># What were the names of these boats?</span>
+boat.names[(boat.colors ==<span class="st"> &quot;black&quot;</span> |<span class="st"> </span>boat.colors ==<span class="st"> &quot;brown&quot;</span>) &amp;<span class="st"> </span>boat.prices &lt;<span class="st"> </span><span class="dv">100</span>]
+## [1] &quot;a&quot; &quot;i&quot;</code></pre></div>
+<p>When using multiple criteria, make sure to use parentheses when appropriate. If I didn’t use parentheses above, I would get a different answer.</p>
+<p>The <code>%in%</code> operation helps you to easily create multiple OR arguments.Imagine you have a vector of categorical data that can take on many different values. For example, you could have a vector x indicating people’s favorite letters.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;t&quot;</span>, <span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;z&quot;</span>)</code></pre></div>
+<p>Now, let’s say you want to create a logical vector indicating which values are either a or b or c or d. You could create this logical vector with multiple | (OR) commands:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x ==<span class="st"> &quot;a&quot;</span> |<span class="st"> </span>x ==<span class="st"> &quot;b&quot;</span> |<span class="st"> </span>x ==<span class="st"> &quot;c&quot;</span> |<span class="st"> </span>x ==<span class="st"> &quot;d&quot;</span>
+## [1]  TRUE FALSE  TRUE  TRUE FALSE</code></pre></div>
+<p>However, this takes a long time to write. Thankfully, the <code>%in%</code> operation allows you to combine multiple OR comparisons much faster. To use the <code>%in%</code> function, just put it in between the original vector, and a new vector of possible values. The <code>%in%</code> function goes through every value in the vector x, and returns TRUE if it finds it in the vector of possible values – otherwise it returns FALSE.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x %in%<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>)
+## [1]  TRUE FALSE  TRUE  TRUE FALSE</code></pre></div>
+<p>As you can see, the result is identical to our previous result.</p>
+</div>
+<div id="counts-and-percentages-from-logical-vectors" class="section level3">
+<h3><span class="header-section-number">7.2.2</span> Counts and percentages from logical vectors</h3>
+<p>Many (if not all) R functions will interpret TRUE values as 1 and FALSE values as 0. This allows us to easily answer questions like “How many values in a data vector are greater than 0?” or “What percentage of values are equal to 5?” by applying the <code>sum()</code> or <code>mean()</code> function to a logical vector.</p>
+<p>We’ll start with a vector x of length 10, containing 3 positive numbers and 5 negative numbers.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, -<span class="dv">5</span>, -<span class="dv">5</span>, -<span class="dv">5</span>, -<span class="dv">5</span>, -<span class="dv">5</span>)</code></pre></div>
+<p>We can create a logical vector to see which values are greater than 0:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &gt;<span class="st"> </span><span class="dv">0</span>
+## [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE</code></pre></div>
+<p>Now, we’ll use <code>sum()</code> and <code>mean()</code> on that logical vector to see how many of the values in x are positive, and what percent are positive. We should find that there are 5 TRUE values, and that 50% of the values (5 / 10) are TRUE.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(x &gt;<span class="st"> </span><span class="dv">0</span>)
+## [1] 3
+<span class="kw">mean</span>(x &gt;<span class="st"> </span><span class="dv">0</span>)
+## [1] 0.38</code></pre></div>
+<p>This is a <em>really</em> powerful tool. Pretty much <em>any</em> time you want to answer a question like “How many of X are Y” or “What percent of X are Y”, you use <code>sum()</code> or <code>mean()</code> function with a logical vector as an argument.</p>
+</div>
+<div id="additional-logical-functions" class="section level3">
+<h3><span class="header-section-number">7.2.3</span> Additional Logical functions</h3>
+<p>R has lots of special functions that take vectors as arguments, and return logical vectors based on multiple criteria. For example, you can use the <code>is.na()</code> function to test which values of a vector are missing. Table <a href="vectorindexing.html#tab:logicalfunctions">7.1</a> contains some that I frequently use:</p>
+<table style="width:90%;">
+<caption><span id="tab:logicalfunctions">Table 7.1: </span> Functions to create and use logical vectors.</caption>
+<colgroup>
+<col width="22%" />
+<col width="26%" />
+<col width="34%" />
+<col width="6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>is.na(x)</code></td>
+<td align="left">Which values in x are NA?</td>
+<td align="left"><code>is.na(c(2, NA, 5))</code></td>
+<td>FALSE, TRUE, FALSE</td>
+</tr>
+<tr class="even">
+<td align="left"><code>is.finite(x)</code></td>
+<td align="left">Which values in x are numbers?</td>
+<td align="left"><code>is.finite(c(NA, 89, 0))</code></td>
+<td>FALSE, TRUE, TRUE</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>duplicated(x)</code></td>
+<td align="left">Which values in x are duplicated?</td>
+<td align="left"><code>duplicated(c(1, 4, 1, 2))</code></td>
+<td>FALSE, FALSE, TRUE, FALSE</td>
+</tr>
+<tr class="even">
+<td align="left"><code>which(x)</code></td>
+<td align="left">Which values in x are TRUE?</td>
+<td align="left"><code>which(c(TRUE, FALSE, TRUE))</code></td>
+<td>1, 3</td>
+</tr>
+</tbody>
+</table>
+<p>Logical vectors aren’t just good for indexing, you can also use them to figure out which values in a vector satisfy some criteria. To do this, use the function <code>which()</code>. If you apply the function <code>which()</code> to a logical vector, R will tell you which values of the index are TRUE. For example:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># A vector of sex information</span>
+sex &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;m&quot;</span>, <span class="st">&quot;m&quot;</span>, <span class="st">&quot;f&quot;</span>, <span class="st">&quot;m&quot;</span>, <span class="st">&quot;f&quot;</span>, <span class="st">&quot;f&quot;</span>)
+
+<span class="co"># Which values of sex are m?</span>
+<span class="kw">which</span>(sex ==<span class="st"> &quot;m&quot;</span>)
+## [1] 1 2 4
+
+<span class="co"># Which values of sex are f?</span>
+<span class="kw">which</span>(sex ==<span class="st"> &quot;f&quot;</span>)
+## [1] 3 5 6</code></pre></div>
+</div>
+</div>
+<div id="changing-values-of-a-vector" class="section level2">
+<h2><span class="header-section-number">7.3</span> Changing values of a vector</h2>
+<p>Now that you know how to index a vector, you can easily change specific values in a vector using the assignment (<code>&lt;-</code>) operation. To do this, just assign a vector of new values to the indexed values of the original vector:</p>
+<p>Let’s create a vector <code>a</code> which contains 10 1s:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">10</span>)</code></pre></div>
+<p>Now, let’s change the first 5 values in the vector to 9s by indexing the first five values, and assigning the value of 9:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a[<span class="dv">1</span>:<span class="dv">5</span>] &lt;-<span class="st"> </span><span class="dv">9</span>
+a
+##  [1] 9 9 9 9 9 1 1 1 1 1</code></pre></div>
+<p>Now let’s change the last 5 values to 0s. We’ll index the values 6 through 10, and assign a value of 0.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a[<span class="dv">6</span>:<span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">0</span>
+a
+##  [1] 9 9 9 9 9 0 0 0 0 0</code></pre></div>
+<p>Of course, you can also change values of a vector using a logical indexing vector. For example, let’s say you have a vector of numbers that should be from 1 to 10. If values are outside of this range, you want to set them to either the minimum (1) or maximum (10) value:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># x is a vector of numbers that should be from 1 to 10</span>
+x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, -<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">11</span>, <span class="dv">5</span>, -<span class="dv">2</span>)
+
+<span class="co"># Assign values less than 1 to 1</span>
+x[x &lt;<span class="st"> </span><span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
+
+<span class="co"># Assign values greater than 10 to 10</span>
+x[x &gt;<span class="st"> </span><span class="dv">10</span>] &lt;-<span class="st"> </span><span class="dv">10</span>
+
+<span class="co"># Print the result!</span>
+x
+## [1]  5  1  7  4 10  5  1</code></pre></div>
+<p>As you can see, our new values of x are now never less than 1 or greater than 10!</p>
+<p><strong>A note on indexing…</strong></p>
+<p>Technically, when you assign new values to a vector, you should always assign a vector of the same length as the number of values that you are updating. For example, given a vector a with 10 1s:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">10</span>)</code></pre></div>
+<p>To update the first 5 values with 5 9s, we should assign a new vector of 5 9s</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a[<span class="dv">1</span>:<span class="dv">5</span>] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">9</span>, <span class="dv">9</span>, <span class="dv">9</span>, <span class="dv">9</span>)
+a
+##  [1] 9 9 9 9 9 1 1 1 1 1</code></pre></div>
+<p>However, if we repeat this code but just assign a single 9, R will repeat the value as many times as necessary to fill the indexed value of the vector. That’s why the following code still works:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a[<span class="dv">1</span>:<span class="dv">5</span>] &lt;-<span class="st"> </span><span class="dv">9</span>
+a
+##  [1] 9 9 9 9 9 1 1 1 1 1</code></pre></div>
+<p>In other languages this code wouldn’t work because we’re trying to replace 5 values with just 1. However, this is a case where R bends the rules a bit.</p>
+<div id="ex-fixing-invalid-responses-to-a-happiness-survey" class="section level3">
+<h3><span class="header-section-number">7.3.1</span> Ex: Fixing invalid responses to a Happiness survey</h3>
+<p><img src="images/happiness.png" width="300px" style="display: block; margin: auto;" /></p>
+<p>Assigning and indexing is a particularly helpful tool when, for example, you want to remove invalid values in a vector before performing an analysis. For example, let’s say you asked 10 people how happy they were on a scale of 1 to 5 and received the following responses:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">happy &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">999</span>, <span class="dv">2</span>, <span class="dv">3</span>, -<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">999</span>)</code></pre></div>
+<p>As you can see, we have some invalid values (999 and -2) in this vector. To remove them, we’ll use logical indexing to change the invalid values (999 and -2) to NA. We’ll create a logical vector indicating which values of <code>happy</code> are <em>invalid</em> using the <code>%in%</code> operation. Because we want to see which values are <em>invalid</em>, we’ll add the <code>== FALSE</code> condition (If we don’t, the index will tell us which values <em>are</em> valid).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Which values of happy are NOT in the set 1:5?</span>
+invalid &lt;-<span class="st"> </span>(happy %in%<span class="st"> </span><span class="dv">1</span>:<span class="dv">5</span>) ==<span class="st"> </span><span class="ot">FALSE</span>
+invalid
+##  [1] FALSE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE</code></pre></div>
+<p>Now that we have a logical index <code>invalid</code> telling us which values are invalid (that is, not in the set 1 through 5), we’ll index <code>happy</code> with <code>invalid</code>, and assign the invalid values as NA:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Convert any invalid values in happy to NA</span>
+happy[invalid] &lt;-<span class="st"> </span><span class="ot">NA</span>
+happy
+##  [1]  1  4  2 NA  2  3 NA  3  2 NA</code></pre></div>
+<p>We can also recode all the invalid values of  in one line as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Convert all values of happy that are NOT integers from 1 to 5 to NA</span>
+happy[(happy %in%<span class="st"> </span><span class="dv">1</span>:<span class="dv">5</span>) ==<span class="st"> </span><span class="ot">FALSE</span>] &lt;-<span class="st"> </span><span class="ot">NA</span></code></pre></div>
+<p>As you can see, <code>happy</code> now has NAs for previously invalid values. Now we can take a <code>mean()</code> of the vector and see the mean of the valid responses.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Include na.rm = TRUE to ignore NA values</span>
+<span class="kw">mean</span>(happy, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
+## [1] 2.4</code></pre></div>
+</div>
+</div>
+<div id="test-your-r-might-movie-data" class="section level2">
+<h2><span class="header-section-number">7.4</span> Test your R Might!: Movie data</h2>
+<p><img src="images/moviecollage.png" width="600px" style="display: block; margin: auto;" /></p>
+<p>Table <a href="vectorindexing.html#tab:moviedata">7.2</a> contains data about 10 of my favorite movies.</p>
+<table>
+<caption><span id="tab:moviedata">Table 7.2: </span>Some of my favorite movies</caption>
+<thead>
+<tr class="header">
+<th align="left">movie</th>
+<th align="right">year</th>
+<th align="right">boxoffice</th>
+<th align="left">genre</th>
+<th align="right">time</th>
+<th align="left">rating</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Whatever Works</td>
+<td align="right">2009</td>
+<td align="right">35.0</td>
+<td align="left">Comedy</td>
+<td align="right">92</td>
+<td align="left">PG-13</td>
+</tr>
+<tr class="even">
+<td align="left">It Follows</td>
+<td align="right">2015</td>
+<td align="right">15.0</td>
+<td align="left">Horror</td>
+<td align="right">97</td>
+<td align="left">R</td>
+</tr>
+<tr class="odd">
+<td align="left">Love and Mercy</td>
+<td align="right">2015</td>
+<td align="right">15.0</td>
+<td align="left">Drama</td>
+<td align="right">120</td>
+<td align="left">R</td>
+</tr>
+<tr class="even">
+<td align="left">The Goonies</td>
+<td align="right">1985</td>
+<td align="right">62.0</td>
+<td align="left">Adventure</td>
+<td align="right">90</td>
+<td align="left">PG</td>
+</tr>
+<tr class="odd">
+<td align="left">Jiro Dreams of Sushi</td>
+<td align="right">2012</td>
+<td align="right">3.0</td>
+<td align="left">Documentary</td>
+<td align="right">81</td>
+<td align="left">G</td>
+</tr>
+<tr class="even">
+<td align="left">There Will be Blood</td>
+<td align="right">2007</td>
+<td align="right">10.0</td>
+<td align="left">Drama</td>
+<td align="right">158</td>
+<td align="left">R</td>
+</tr>
+<tr class="odd">
+<td align="left">Moon</td>
+<td align="right">2009</td>
+<td align="right">321.0</td>
+<td align="left">Science Fiction</td>
+<td align="right">97</td>
+<td align="left">R</td>
+</tr>
+<tr class="even">
+<td align="left">Spice World</td>
+<td align="right">1988</td>
+<td align="right">79.0</td>
+<td align="left">Comedy</td>
+<td align="right">-84</td>
+<td align="left">PG-13</td>
+</tr>
+<tr class="odd">
+<td align="left">Serenity</td>
+<td align="right">2005</td>
+<td align="right">39.0</td>
+<td align="left">Science Fiction</td>
+<td align="right">119</td>
+<td align="left">PG-13</td>
+</tr>
+<tr class="even">
+<td align="left">Finding Vivian Maier</td>
+<td align="right">2014</td>
+<td align="right">1.5</td>
+<td align="left">Documentary</td>
+<td align="right">84</td>
+<td align="left">Unrated</td>
+</tr>
+</tbody>
+</table>
+<ol start="0" style="list-style-type: decimal">
+<li><p>Create new data vectors for each column.</p></li>
+<li><p>What is the name of the 10th movie in the list?</p></li>
+<li><p>What are the genres of the first 4 movies?</p></li>
+<li><p>Some joker put Spice World in the movie names – it should be ``The Naked Gun’’ Please correct the name.</p></li>
+<li><p>What were the names of the movies made before 1990?</p></li>
+<li><p>How many movies were Dramas? What percent of the 10 movies were Dramas?</p></li>
+<li><p>One of the values in the <code>time</code> vector is invalid. Convert any invalid values in this vector to NA. Then, calculate the mean movie time</p></li>
+<li><p>What were the names of the Comedy movies? What were their boxoffice totals? (Two separate questions)</p></li>
+<li><p>What were the names of the movies that made less than $50 Million dollars AND were Comedies?</p></li>
+<li><p>What was the median boxoffice revenue of movies rated either G or PG?</p></li>
+<li><p>What percent of the movies were rated R OR were comedies?</p></li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="vectorfunctions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="matricesdataframes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ndphillips/YaRrrBook/master/07-indexingvectors.Rmd",
+"text": "Edit"
+},
+"download": ["YaRrr.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,192 @@
+# Jump In! {#jumpin}
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+
+
+```{r, fig.cap= "Despite what you might find at family friendly waterparks -- this is NOT how real pirate swimming lessons look.", fig.margin = TRUE, echo = FALSE, out.width = "400px", fig.align='center'}
+knitr::include_graphics(c("images/pirateswimming.jpg"))
+```
+
+
+What's the first exercise on the first day of pirate swimming lessons? While it would be cute if they all had little inflatible pirate ships to swim around in -- unfortunately this is not the case. Instead, those baby pirates take a walk off their baby planks so they can get a taste of what they're in for. Turns out, learning R is the same way. Let's jump in. In this chapter, you'll see how easy it is to calculate basic statistics and create plots in R. Don't worry if the code you're running doesn't make immediate sense -- just marvel at how easy it is to do this in R!
+
+In this section, we'll analyze a dataset called...wait for it...pirates! The dataset contains data from a survey of 1,000 pirates. The data is contained in the `yarrr` package, so make sure you've installed and loaded the package:
+
+```{r, eval = FALSE}
+# Install the yarrr package
+install.packages('yarrr')
+
+# Load the package
+library(yarrr)
+```
+
+## Exploring data
+
+Next, we'll look at the help menu for the pirates dataset using the question mark `?pirates`. When you run this, you should see a small help window open up in RStudio that gives you some information about the dataset.
+
+```{r, eval = FALSE}
+?pirates
+```
+
+
+First, let's take a look at the first few rows of the dataset using the `head()` function. This will show you the first few rows of the data.
+
+```{r}
+# Look at the first few rows of the data
+head(pirates)
+```
+
+You can look at the names of the columns in the dataset with the `names()` function
+
+```{r}
+# What are the names of the columns?
+names(pirates)
+```
+
+Finally, you can also view the entire dataset in a separate window using the `View()` function:
+
+```{r eval = FALSE}
+# View the entire dataset in a new window
+View(pirates)
+```
+
+
+## Descriptive statistics
+
+Now let's calculate some basic statistics on the entire dataset. We'll calculate the mean age, maximum height, and number of pirates of each sex:
+
+```{r}
+# What is the mean age?
+mean(pirates$age)
+
+# What was the tallest pirate?
+max(pirates$height)
+
+# How many pirates are there of each sex?
+table(pirates$sex)
+```
+
+Now, let's calculate statistics for different groups of pirates. For example, the following code will use the `aggregate()` function to calculate the mean age of pirates, separately for each sex.
+
+```{r}
+# Calculate the mean age, separately for each sex
+aggregate(formula = age ~ sex,
+          data = pirates,
+          FUN = mean)
+```
+
+
+## Plotting
+
+Cool stuff, now let's make a plot! We'll plot the relationship between pirate's height and weight using the `plot()` function. We'll also include a blue regression line to measure the strength of the relationship.
+
+```{r}
+# Create scatterplot
+plot(x = pirates$height,        # X coordinates
+     y = pirates$weight,        # y-coordinates
+     main = 'My first scatterplot of pirate data!',
+     xlab = 'Height (in cm)',   # x-axis label
+     ylab = 'Weight (in kg)',   # y-axis label
+     pch = 16,                  # Filled circles
+     col = gray(.0, .1))        # Transparent gray
+
+grid()        # Add gridlines
+
+# Create a linear regression model
+model <- lm(formula = weight ~ height, 
+            data = pirates)
+
+abline(model, col = 'blue')      # Add regression to plot
+```
+
+
+Scatterplots are great for showing the relationship between two continuous variables, but what if your independent variable is not continuous? In this case, pirateplots are a good option. Let's create a pirateplot using the `pirateplot()` function to show the distribution of pirate's age based on their favorite sword:
+
+```{r}
+pirateplot(formula = age ~ sword.type, 
+           data = pirates,
+           main = "Pirateplot of ages by favorite sword")
+```
+
+
+## Hypothesis tests
+
+Now, let's do some basic hypothesis tests. First, let's conduct a two-sample t-test to see if there is a significant difference between the ages of pirates who do wear a headband, and those who do not:
+
+```{r}
+# Age by headband t-test
+t.test(formula = age ~ headband,
+       data = pirates,
+       alternative = 'two.sided')
+```
+
+With a p-value of 0.7259, we don't have sufficient evidence say there is a difference in the men age of pirates who wear headbands and those that do not.
+
+Next, let's test if there a significant correlation between a pirate's height and weight using the `cor.test()` function:
+
+```{r}
+cor.test(formula = ~ height + weight,
+         data = pirates)
+```
+
+We got a p-value of `p < 2.2e-16`, that's scientific notation for `p < .00000000000000016` -- which is pretty much 0. Thus, we'd conclude that there is a significant (positive) relationship between a pirate's height and weight.
+
+Now, let's do an ANOVA testing if there is a difference between the number of tattoos pirates have based on their favorite sword
+
+```{r}
+# Create tattoos model
+tat.sword.lm <- lm(formula = tattoos ~ sword.type,
+                   data = pirates)
+
+# Get ANOVA table
+anova(tat.sword.lm)
+```
+
+Sure enough, we see another very small p-value of `p < 2.2e-16`, suggesting that the number of tattoos pirate's have are different based on their favorite sword.
+
+## Regression
+
+Finally, let's run a regression analysis to see if a pirate's age, weight, and number of tattoos (s)he has predicts how many treasure chests he/she's found:
+
+```{r}
+# Create a linear regression model: DV = tchests, IV = age, weight, tattoos
+tchests.model <- lm(formula = tchests ~ age + weight + tattoos,
+                    data = pirates)
+
+# Show summary statistics
+summary(tchests.model)
+```
+
+It looks like the only significant predictor of the number of treasure chests that a pirate has found is his/her age. There does not seem to be significant effect of weight or tattoos.
+
+## Bayesian Statistics
+
+Now, let's repeat some of our previous analyses with Bayesian versions. First we'll install and load the \texttt{BayesFactor} package which contains the Bayesian statistics functions we'll use:
+
+```{r eval = FALSE}
+# Install and load the BayesFactor package
+install.packages('BayesFactor')
+library(BayesFactor)
+```
+
+Now that the packages is installed and loaded, we're good to go! Let's do a Bayesian version of our earlier t-test asking if pirates who wear a headband are older or younger than those who do not.
+
+```{r}
+# Bayesian t-test comparing the age of pirates with and without headbands
+ttestBF(formula = age ~ headband,
+        data = pirates)
+```
+
+It looks like we got a Bayes factor of 0.12 which is strong evidence *for* the null hypothesis (that the mean age does not differ between pirates with and without headbands)
+
+
+## Wasn't that easy?!
+
+Wait...wait...WAIT! Did you seriously just calculate descriptive statistics, a t-test, an ANOVA, and a regression, create a scatterplot and a pirateplot, AND do both a Bayesian t-test and regression analysis. Yup. Imagine how long it would have taken to explain how to do all that in SPSS. And while you haven't really learned how R works yet, I'd bet my beard that you could easily alter the previous code to do lots of other analyses. Of course, don't worry if some or all of the previous code didn't make sense. Soon...it will all be clear.
+
+Now that you've jumped in, let's learn how to swim.
+
+

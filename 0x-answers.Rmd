@@ -1,0 +1,441 @@
+# Test your R might! Solutions
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+
+
+## Chapter 4: The Basics
+
+
+2. Which (if any) of the following objects names is/are invalid?
+
+```{r, eval = FALSE}
+thisone <- 1
+THISONE <- 2
+this.one <- 3
+This.1 <- 4
+ThIS.....ON...E <- 5
+This!One! <- 6           # only this one!
+lkjasdfkjsdf <- 7
+```
+
+
+3. 2015 was a good year for pirate booty - your ship collected 100,000 gold coins. Create an object called \texttt{gold.in.2015} and assign the correct value to it.
+
+```{r}
+gold.in.2015 <- 100800
+```
+
+
+4. Oops, during the last inspection we discovered that one of your pirates Skippy McGee hid 800 gold coins in his underwear. Go ahead and add those gold coins to the object `gold.in.2015`. Next, create an object called `plank.list` with the name of the pirate thief.
+
+```{r}
+gold.in.2015 <- gold.in.2015 + 800
+plank.list <- "Skippy McGee"
+```
+
+5. Look at the code below. What will R return after the third line? Make a prediction, then test the code yourself.
+
+```{r, eval = FALSE}
+a <- 10
+a + 10
+a       # It will return 10 because we never re-assigned a!
+```
+
+## Chapter 5: Scalers and vectors
+
+1. Create the vector [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] in three ways: once using `c()`, once using `a:b`, and once using `seq()`.
+
+```{r}
+c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+1:10
+
+seq(from = 1, to = 10, by = 1)
+```
+
+
+2. Create the vector [2.1, 4.1, 6.1, 8.1] in two ways, once using `c()` and once using `seq()`
+
+```{r}
+
+c(2.1, 6.1, 6.1, 8.1)
+
+seq(from = 2.1, to = 8.1, by = 2)
+
+```
+
+
+3. Create the vector [0, 5, 10, 15] in 3 ways: using `c()`, `seq()` with a `by` argument, and `seq()` with a `length.out` argument.
+
+```{r}
+c(0, 5, 10, 15)
+
+seq(from = 0, to = 15, by = 5)
+
+seq(from = 0, to = 15, length.out = 4)
+```
+
+4. Create the vector [101, 102, 103, 200, 205, 210, 1000, 1100, 1200] using a combination of the `c()` and `seq()` functions
+
+```{r}
+c(seq(from = 101, to = 103, by = 3), 
+  seq(from = 200, to = 210, by = 5), 
+  seq(from = 1000, to = 1200, by = 100))
+```
+
+5. A new batch of 100 pirates are boarding your ship and need new swords. You have 10 scimitars, 40 broadswords, and 50 cutlasses that you need to distribute evenly to the 100 pirates as they board. Create a vector of length 100 where there is 1 scimitar, 4 broadswords, and 5 cutlasses in each group of 10. That is, in the first 10 elements there should be exactly 1 scimitar, 4 broadswords and 5 cutlasses. The next 10 elements should also have the same number of each sword (and so on).
+
+```{r}
+swords <- rep(c("scimitar", rep("broadswoard", 4), rep("cutlass", 5)), times = 100)
+head(swords)
+```
+
+
+6. Create a vector that repeats the integers from 1 to 5, 10 times. That is [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, ...]. The length of the vector should be 50!
+
+```{r}
+rep(1:5, times = 10)
+```
+
+
+7. Now, create the same vector as before, but this time repeat 1, 10 times, then 2, 10 times, etc., That is [1, 1, 1, ..., 2, 2, 2, ..., ... 5, 5, 5]. The length of the vector should also be 50
+
+```{r}
+rep(1:5, each = 10)
+```
+
+
+8. Create a vector containing 50 samples from a Normal distribution with a population mean of 20 and standard deviation of 2.
+
+```{r}
+rnorm(n = 50, mean = 20, sd = 2)
+```
+
+9. Create a vector containing 25 samples from a Uniform distribution with a lower bound of -100 and an upper bound of -50.
+
+```{r}
+runif(n = 25, min = -100, max = -50)
+```
+
+
+## Chapter 6: Vector Functions
+
+
+1. Create a vector that shows the square root of the integers from 1 to 10.
+
+```{r}
+(1:10) ^ .5
+
+#or
+
+sqrt(1:10)
+```
+
+
+2. Renata thinks that she finds more treasure when she's had a mug of grogg than when she doesn't. To test this, she recorded how much treasure she found over 7 days without drinking any grogg (ie., sober), and then did the same over 7 days while drinking grogg (ie., drunk). Here are her results:
+
+```{r, echo = FALSE}
+renata.score <- data.frame(
+                          day = c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"),
+                          sober = c(2, 0, 3, 1, 0, 3, 5),
+                           drunk = c(0, 0, 1, 0, 1, 2, 2))
+
+knitr::kable(renata.score, caption = "Renata's treasure haul when she was sober and when she was drunk")
+```
+
+How much treasure did Renata find on average whe she was sober? What about when she was drunk?
+
+```{r}
+sober <- c(2, 0, 3, 1, 0, 3, 5)
+drunk <- c(0, 0, 1, 0, 1, 2, 2)
+
+mean(sober)
+mean(drunk)
+```
+
+3. Using Renata's data again, create a new vector called `difference` that shows how much more treasure Renata found when she was drunk and when she was not. What was the mean, median, and standard deviation of the difference?
+
+```{r}
+difference <- sober - drunk
+
+mean(difference)
+median(difference)
+sd(difference)
+```
+
+
+4. There's an old parable that goes something like this. A man does some work for a king and needs to be paid. Because the man loves rice (who doesn't?!), the man offers the king two different ways that he can be paid. *You can either pay me 100 kilograms of rice, or, you can pay me as follows: get a chessboard and put one grain of rice in the top left square. Then put 2 grains of rice on the next square, followed by 4 grains on the next, 8 grains on the next...and so on, where the amount of rice doubles on each square, until you get to the last square. When you are finished, give me all the grains of rice that would (in theory), fit on the chessboard.* The king, sensing that the man was an idiot for making such a stupid offer, immediately accepts the second option. He summons a chessboard, and begins counting out grains of rice one by one... Assuming that there are 64 squares on a chessboard, calculate how many grains of rice the main will receive. If one grain of rice weights 1/64000 kilograms, how many kilograms of rice did he get? *Hint: If you have trouble coming up with the answer, imagine how many grains are on the first, second, third and fourth squares, then try to create the vector that shows the number of grains on each square. Once you come up with that vector, you can easily calculate the final answer with the `sum()` function.*
+
+```{r, collapse=TRUE}
+# First, let's create a vector of the amount of rice on each square:
+rice <- 2 ^ (1:64)
+
+# Here are the first few spaces
+head(rice)
+
+# The result is just the sum!
+rice.total <- sum(rice)
+rice.total
+
+# How much does that weigh? Each grain weights 1/6400 kilograms:
+rice.kg <- sum(rice) * 1/6400
+rice.kg
+
+# That's 5,800,000,000,000,000 kilograms of rice. Let's keep going....
+# A kg of rice is 1,300 calories
+
+rice.cal <- rice.kg * 1300
+rice.cal
+
+# How many people can that feed for a year?
+# A person needs about 2,250 calories a day, or 2,250 * 365 per year
+
+rice.people.year <- rice.cal / (2250 * 365)
+rice.people.year
+
+# So, that amount of rice could feed 9,100,000,000,000 for a year
+# Assuming that the averge lifespan is 70 years, how many lifespans could this feed?
+
+rice.people.life <- rice.people.year / 70
+rice.people.life
+
+# Ok...so it could feed 130,000,000,000 (130 billion) people over their lives
+
+# Conclusion: King done screwed up.
+```
+
+
+## Chapter 7: Indexing vectors with []
+
+
+```{r, echo = FALSE}
+movie.data <- data.frame("movie" = c("Whatever Works", "It Follows", "Love and Mercy", 
+             "The Goonies", "Jiro Dreams of Sushi",
+             "There Will be Blood", "Moon", 
+             "Spice World", "Serenity", "Finding Vivian Maier"),
+             year = c(2009, 2015, 2015, 1985, 2012, 2007, 2009, 1988, 2005, 2014),
+             boxoffice = c(35, 15, 15, 62, 3, 10, 321, 79, 39, 1.5),
+             genre = c("Comedy", "Horror", "Drama", "Adventure", "Documentary", 
+           "Drama", "Science Fiction", "Comedy", "Science Fiction", 
+           "Documentary"),
+           time = c(92, 97, 120, 90, 81, 158, 97, -84, 119, 84),
+           rating = c("PG-13", "R", "R", "PG", "G", "R", "R", 
+            "PG-13", "PG-13", "Unrated"))
+
+
+knitr::kable(movie.data, caption = "Some of my favorite movies")
+```
+
+0. Create new data vectors for each column.
+
+```{r}
+movie <- c("Whatever Works", "It Follows", "Love and Mercy", 
+             "The Goonies", "Jiro Dreams of Sushi",
+             "There Will be Blood", "Moon", 
+             "Spice World", "Serenity", "Finding Vivian Maier")
+
+year <- c(2009, 2015, 2015, 1985, 2012, 2007, 2009, 1988, 2005, 2014)
+
+boxoffice <- c(35, 15, 15, 62, 3, 10, 321, 79, 39, 1.5)
+
+genre <- c("Comedy", "Horror", "Drama", "Adventure", "Documentary", 
+           "Drama", "Science Fiction", "Comedy", "Science Fiction", 
+           "Documentary")
+
+time <- c(92, 97, 120, 90, 81, 158, 97, -84, 119, 84)
+
+rating <- c("PG-13", "R", "R", "PG", "G", "R", "R", 
+            "PG-13", "PG-13", "Unrated")
+
+```
+
+1. What is the name of the 10th movie in the list?
+
+```{r}
+movie[10]
+```
+
+
+2. What are the genres of the first 4 movies?
+
+```{r}
+genre[1:4]
+```
+
+3. Some joker put Spice World in the movie names -- it should be ``The Naked Gun'' Please correct the name.
+
+```{r}
+movie[movie == "Spice World"] <- "The Naked Gun"
+```
+
+4. What were the names of the movies made before 1990?
+
+```{r}
+movie[year < 1990]
+```
+
+5. How many movies were Dramas? What percent of the 10 movies were Comedies?
+
+```{r}
+sum(genre == "Drama")
+
+mean(genre == "Comedy")
+```
+
+6. One of the values in the `time` vector is invalid. Convert any invalid values in this vector to NA. Then, calculate the mean movie time
+
+```{r}
+time[time < 0] <- NA
+
+mean(time, na.rm = TRUE)
+```
+
+7. What were the names of the Comedy movies? What were their boxoffice totals? (Two separate questions)
+
+```{r}
+movie[genre == "Comedy"]
+
+boxoffice[genre == "Comedy"]
+```
+
+8. What were the names of the movies that made less than \$50 Million dollars AND were Comedies?
+
+```{r}
+movie[boxoffice < 50 & genre == "Comedy"]
+```
+
+9. What was the median boxoffice revenue of movies rated either G or PG?
+
+```{r}
+median(boxoffice[rating %in% c("G", "PG")])
+
+# OR
+
+median(boxoffice[rating == "G" | rating == "PG"])
+```
+
+10. What percent of the movies were either rated R OR were comedies?
+
+```{r}
+mean(rating == "R" | genre == "Comedy")
+```
+
+
+## Chapter 8: Matrices and Dataframes
+
+
+The following table shows the results of a survey of 10 pirates. In addition to some basic demographic information, the survey asked each pirate "What is your favorite superhero?"" and "How many tattoos do you have?""
+
+```{r echo = FALSE}
+superhero <- data.frame(
+  Name = c("Astrid", "Lea", "Sarina", "Remon", "Letizia", "Babice", "Jonas", "Wendy", "Niveditha", "Gioia"),
+  Sex = c("F", "F", "F", "M", "F", "F", "M", "F", "F", "F"),
+  Age = c(30, 25, 25, 29, 22, 22, 35, 19, 32, 21),
+  Superhero = c("Batman", "Superman", "Batman", "Spiderman", "Batman",
+               "Antman", "Batman", "Superman", "Maggott", "Superman"),
+  Tattoos = c(11, 15, 12, 5, 65, 3, 9, 13, 900, 0)
+)
+
+knitr::kable(superhero)
+```
+
+
+1. Combine the data into a single dataframe. Complete all the following exercises from the dataframe!
+  
+```{r}
+piratesurvey <- data.frame(
+  name = c("Astrid", "Lea", "Sarina", "Remon", "Letizia", "Babice", "Jonas", "Wendy", "Niveditha", "Gioia"),
+  sex = c("F", "F", "F", "M", "F", "F", "M", "F", "F", "F"),
+  age = c(30, 25, 25, 29, 22, 22, 35, 19, 32, 21),
+  superhero = c("Batman", "Superman", "Batman", "Spiderman", "Batman",
+               "Antman", "Batman", "Superman", "Maggott", "Superman"),
+  tattoos = c(11, 15, 12, 5, 65, 3, 9, 13, 900, 0),
+  stringsAsFactors = FALSE
+)
+```
+
+2. What is the median age of the 10 pirates?
+  
+```{r}
+median(piratesurvey$age)
+```
+
+  
+3. What was the mean age of female and male pirates separately?
+
+```{r}
+mean(piratesurvey$age[piratesurvey$sex == "F"])
+mean(piratesurvey$age[piratesurvey$sex == "M"])
+
+## OR
+with(piratesurvey, 
+     mean(age[sex == "F"]))
+
+with(piratesurvey, 
+     mean(age[sex == "M"]))
+
+## OR
+
+mean(subset(piratesurvey,
+       subset = sex == "F")$age)
+
+mean(subset(piratesurvey,
+       subset = sex == "M")$age)
+```
+
+  
+4. What was the most number of tattoos owned by a male pirate?
+
+```{r}
+with(piratesurvey, 
+     max(tattoos[sex == "M"]))
+
+# OR
+
+max(subset(piratesurvey, 
+           subset = sex == "M")$tattoos)
+```
+
+
+5. What percent of pirates under the age of 32 were female?
+
+```{r}
+with(piratesurvey, 
+     mean(sex[age < 32] == "F"))
+```
+
+6. What percent of female pirates are under the age of 32?
+  
+```{r}
+with(piratesurvey, 
+     mean(sex[age < 32] == "F"))
+```
+
+  
+7. Add a new column to the dataframe called `tattoos.per.year` which shows how many tattoos each pirate has for each year in their life.
+
+```{r}
+piratesurvey$tattoos.per.year <- with(piratesurvey, tattoos / age)
+```
+
+8. Which pirate had the most number of tattoos per year?
+
+```{r}
+piratesurvey$name[piratesurvey$tattoos.per.year == max(piratesurvey$tattoos.per.year)]
+```
+
+9. What are the names of the female pirates whose favorite piratesurvey is Superman?
+  
+```{r}
+piratesurvey$name[with(piratesurvey, sex == "F" & superhero == "Superman")]
+```
+  
+10. What was the median number of tattoos of pirates over the age of 20 whose favorite piratesurvey is Spiderman?
+
+```{r}
+with(piratesurvey, (tattoos[age > 20 & superhero == "Spiderman"]))
+```
+

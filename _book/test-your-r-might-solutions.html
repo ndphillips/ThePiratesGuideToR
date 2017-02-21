@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>YaRrr! The Pirate’s Guide to R</title>
+  <meta name="description" content="An introductory book to R written by, and for, R pirates">
+  <meta name="generator" content="bookdown 0.3.9 and GitBook 2.6.7">
+
+  <meta property="og:title" content="YaRrr! The Pirate’s Guide to R" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://bookdown.org/ndphillips/YaRrr/" />
+  <meta property="og:image" content="https://bookdown.org/ndphillips/YaRrr/images/YaRrr_Cover.jpg" />
+  <meta property="og:description" content="An introductory book to R written by, and for, R pirates" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="YaRrr! The Pirate’s Guide to R" />
+  
+  <meta name="twitter:description" content="An introductory book to R written by, and for, R pirates" />
+  <meta name="twitter:image" content="https://bookdown.org/ndphillips/YaRrr/images/YaRrr_Cover.jpg" />
+
+<meta name="author" content="Nathaniel D. Phillips">
+
+
+<meta name="date" content="2017-02-21">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="matricesdataframes.html">
+<link rel="next" href="references.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">YaRrr! The Pirate's Guide to R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#where-did-this-book-come-from"><i class="fa fa-check"></i><b>1.1</b> Where did this book come from?</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#who-is-this-book-for"><i class="fa fa-check"></i><b>1.2</b> Who is this book for?</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#why-is-r-so-great"><i class="fa fa-check"></i><b>1.3</b> Why is R so great?</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#r-is-like-a-relationship"><i class="fa fa-check"></i><b>1.4</b> R is like a relationship…</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#who-am-i"><i class="fa fa-check"></i><b>1.5</b> Who am I?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="started.html"><a href="started.html"><i class="fa fa-check"></i><b>2</b> Getting Started</a><ul>
+<li class="chapter" data-level="2.1" data-path="started.html"><a href="started.html#installing-base-r-and-rstudio"><i class="fa fa-check"></i><b>2.1</b> Installing (Base) R and RStudio</a></li>
+<li class="chapter" data-level="2.2" data-path="started.html"><a href="started.html#the-four-rstudio-windows"><i class="fa fa-check"></i><b>2.2</b> The four RStudio Windows</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="started.html"><a href="started.html#source---your-notepad-for-code"><i class="fa fa-check"></i><b>2.2.1</b> Source - Your notepad for code</a></li>
+<li class="chapter" data-level="2.2.2" data-path="started.html"><a href="started.html#console-rs-heart"><i class="fa fa-check"></i><b>2.2.2</b> Console: R’s Heart</a></li>
+<li class="chapter" data-level="2.2.3" data-path="started.html"><a href="started.html#environment-history"><i class="fa fa-check"></i><b>2.2.3</b> Environment / History</a></li>
+<li class="chapter" data-level="2.2.4" data-path="started.html"><a href="started.html#files-plots-packages-help"><i class="fa fa-check"></i><b>2.2.4</b> Files / Plots / Packages / Help</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="started.html"><a href="started.html#packages"><i class="fa fa-check"></i><b>2.3</b> Packages</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="started.html"><a href="started.html#installing-a-new-package"><i class="fa fa-check"></i><b>2.3.1</b> Installing a new package</a></li>
+<li class="chapter" data-level="2.3.2" data-path="started.html"><a href="started.html#loading-a-package"><i class="fa fa-check"></i><b>2.3.2</b> Loading a package</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="started.html"><a href="started.html#cheatsheets-and-getting-help"><i class="fa fa-check"></i><b>2.4</b> Cheatsheets and getting help</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="started.html"><a href="started.html#r-cheatsheets"><i class="fa fa-check"></i><b>2.4.1</b> R Cheatsheets</a></li>
+<li class="chapter" data-level="2.4.2" data-path="started.html"><a href="started.html#getting-r-help-online"><i class="fa fa-check"></i><b>2.4.2</b> Getting R help online</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="jumpin.html"><a href="jumpin.html"><i class="fa fa-check"></i><b>3</b> Jump In!</a><ul>
+<li class="chapter" data-level="3.1" data-path="jumpin.html"><a href="jumpin.html#exploring-data"><i class="fa fa-check"></i><b>3.1</b> Exploring data</a></li>
+<li class="chapter" data-level="3.2" data-path="jumpin.html"><a href="jumpin.html#descriptive-statistics"><i class="fa fa-check"></i><b>3.2</b> Descriptive statistics</a></li>
+<li class="chapter" data-level="3.3" data-path="jumpin.html"><a href="jumpin.html#plotting"><i class="fa fa-check"></i><b>3.3</b> Plotting</a></li>
+<li class="chapter" data-level="3.4" data-path="jumpin.html"><a href="jumpin.html#hypothesis-tests"><i class="fa fa-check"></i><b>3.4</b> Hypothesis tests</a></li>
+<li class="chapter" data-level="3.5" data-path="jumpin.html"><a href="jumpin.html#regression"><i class="fa fa-check"></i><b>3.5</b> Regression</a></li>
+<li class="chapter" data-level="3.6" data-path="jumpin.html"><a href="jumpin.html#bayesian-statistics"><i class="fa fa-check"></i><b>3.6</b> Bayesian Statistics</a></li>
+<li class="chapter" data-level="3.7" data-path="jumpin.html"><a href="jumpin.html#wasnt-that-easy"><i class="fa fa-check"></i><b>3.7</b> Wasn’t that easy?!</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>4</b> The Basics</a><ul>
+<li class="chapter" data-level="4.1" data-path="basics.html"><a href="basics.html#the-command-line-console"><i class="fa fa-check"></i><b>4.1</b> The command-line (Console)</a></li>
+<li class="chapter" data-level="4.2" data-path="basics.html"><a href="basics.html#writing-r-scripts-in-an-editor"><i class="fa fa-check"></i><b>4.2</b> Writing R scripts in an editor</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="basics.html"><a href="basics.html#send-code-from-an-editor-to-the-console"><i class="fa fa-check"></i><b>4.2.1</b> Send code from an editor to the console</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="basics.html"><a href="basics.html#a-brief-style-guide-commenting-and-spacing"><i class="fa fa-check"></i><b>4.3</b> A brief style guide: Commenting and spacing</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="basics.html"><a href="basics.html#commenting-code-with-the-pound-sign"><i class="fa fa-check"></i><b>4.3.1</b> Commenting code with the # (pound) sign</a></li>
+<li class="chapter" data-level="4.3.2" data-path="basics.html"><a href="basics.html#spacing"><i class="fa fa-check"></i><b>4.3.2</b> Spacing</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="basics.html"><a href="basics.html#objects-and-functions"><i class="fa fa-check"></i><b>4.4</b> Objects and functions</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="basics.html"><a href="basics.html#numbers-versus-characters"><i class="fa fa-check"></i><b>4.4.1</b> Numbers versus characters</a></li>
+<li class="chapter" data-level="4.4.2" data-path="basics.html"><a href="basics.html#creating-new-objects-with--"><i class="fa fa-check"></i><b>4.4.2</b> Creating new objects with &lt;-</a></li>
+<li class="chapter" data-level="4.4.3" data-path="basics.html"><a href="basics.html#how-to-name-objects"><i class="fa fa-check"></i><b>4.4.3</b> How to name objects</a></li>
+<li class="chapter" data-level="4.4.4" data-path="basics.html"><a href="basics.html#example-pirates-of-the-caribbean"><i class="fa fa-check"></i><b>4.4.4</b> Example: Pirates of The Caribbean</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="basics.html"><a href="basics.html#test-your-r-might"><i class="fa fa-check"></i><b>4.5</b> Test your R might!</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="scalersvectors.html"><a href="scalersvectors.html"><i class="fa fa-check"></i><b>5</b> Scalers and vectors</a><ul>
+<li class="chapter" data-level="5.1" data-path="scalersvectors.html"><a href="scalersvectors.html#scalars"><i class="fa fa-check"></i><b>5.1</b> Scalars</a></li>
+<li class="chapter" data-level="5.2" data-path="scalersvectors.html"><a href="scalersvectors.html#vectors"><i class="fa fa-check"></i><b>5.2</b> Vectors</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="scalersvectors.html"><a href="scalersvectors.html#ab"><i class="fa fa-check"></i><b>5.2.1</b> a:b</a></li>
+<li class="chapter" data-level="5.2.2" data-path="scalersvectors.html"><a href="scalersvectors.html#seq"><i class="fa fa-check"></i><b>5.2.2</b> seq()</a></li>
+<li class="chapter" data-level="5.2.3" data-path="scalersvectors.html"><a href="scalersvectors.html#rep"><i class="fa fa-check"></i><b>5.2.3</b> rep()</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="scalersvectors.html"><a href="scalersvectors.html#generating-random-data"><i class="fa fa-check"></i><b>5.3</b> Generating random data</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="scalersvectors.html"><a href="scalersvectors.html#sample"><i class="fa fa-check"></i><b>5.3.1</b> sample()</a></li>
+<li class="chapter" data-level="5.3.2" data-path="scalersvectors.html"><a href="scalersvectors.html#normal-gaussian"><i class="fa fa-check"></i><b>5.3.2</b> Normal (Gaussian)</a></li>
+<li class="chapter" data-level="5.3.3" data-path="scalersvectors.html"><a href="scalersvectors.html#uniform"><i class="fa fa-check"></i><b>5.3.3</b> Uniform</a></li>
+<li class="chapter" data-level="5.3.4" data-path="scalersvectors.html"><a href="scalersvectors.html#notes-on-random-samples"><i class="fa fa-check"></i><b>5.3.4</b> Notes on random samples</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="scalersvectors.html"><a href="scalersvectors.html#test-your-r-might-1"><i class="fa fa-check"></i><b>5.4</b> Test your R might!</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="vectorfunctions.html"><a href="vectorfunctions.html"><i class="fa fa-check"></i><b>6</b> Vector functions</a><ul>
+<li class="chapter" data-level="6.1" data-path="vectorfunctions.html"><a href="vectorfunctions.html#arithmetic-operations-on-vectors"><i class="fa fa-check"></i><b>6.1</b> Arithmetic operations on vectors</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="vectorfunctions.html"><a href="vectorfunctions.html#basic-math-with-multiple-vectors"><i class="fa fa-check"></i><b>6.1.1</b> Basic math with multiple vectors</a></li>
+<li class="chapter" data-level="6.1.2" data-path="vectorfunctions.html"><a href="vectorfunctions.html#ex-pirate-bake-sale"><i class="fa fa-check"></i><b>6.1.2</b> Ex: Pirate Bake Sale</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="vectorfunctions.html"><a href="vectorfunctions.html#summary-statistics"><i class="fa fa-check"></i><b>6.2</b> Summary statistics</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="vectorfunctions.html"><a href="vectorfunctions.html#length"><i class="fa fa-check"></i><b>6.2.1</b> length()</a></li>
+<li class="chapter" data-level="6.2.2" data-path="vectorfunctions.html"><a href="vectorfunctions.html#additional-numeric-vector-functions"><i class="fa fa-check"></i><b>6.2.2</b> Additional numeric vector functions</a></li>
+<li class="chapter" data-level="6.2.3" data-path="vectorfunctions.html"><a href="vectorfunctions.html#sample-statistics-from-random-samples"><i class="fa fa-check"></i><b>6.2.3</b> Sample statistics from random samples</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="vectorfunctions.html"><a href="vectorfunctions.html#counting-statistics"><i class="fa fa-check"></i><b>6.3</b> Counting statistics</a></li>
+<li class="chapter" data-level="6.4" data-path="vectorfunctions.html"><a href="vectorfunctions.html#missing-na-values"><i class="fa fa-check"></i><b>6.4</b> Missing (NA) values</a></li>
+<li class="chapter" data-level="6.5" data-path="vectorfunctions.html"><a href="vectorfunctions.html#standardization-z-score"><i class="fa fa-check"></i><b>6.5</b> Standardization (z-score)</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="vectorfunctions.html"><a href="vectorfunctions.html#ex-evaluating-a-competition"><i class="fa fa-check"></i><b>6.5.1</b> Ex: Evaluating a competition</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="vectorfunctions.html"><a href="vectorfunctions.html#test-your-r-might-2"><i class="fa fa-check"></i><b>6.6</b> Test your R Might!</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="vectorindexing.html"><a href="vectorindexing.html"><i class="fa fa-check"></i><b>7</b> Indexing Vectors with [ ]</a><ul>
+<li class="chapter" data-level="7.1" data-path="vectorindexing.html"><a href="vectorindexing.html#numerical-indexing"><i class="fa fa-check"></i><b>7.1</b> Numerical Indexing</a></li>
+<li class="chapter" data-level="7.2" data-path="vectorindexing.html"><a href="vectorindexing.html#logical-indexing"><i class="fa fa-check"></i><b>7.2</b> Logical Indexing</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="vectorindexing.html"><a href="vectorindexing.html#and-or-in"><i class="fa fa-check"></i><b>7.2.1</b> <code>&amp;</code> (and), <code>|</code> (or), <code>%in%</code></a></li>
+<li class="chapter" data-level="7.2.2" data-path="vectorindexing.html"><a href="vectorindexing.html#counts-and-percentages-from-logical-vectors"><i class="fa fa-check"></i><b>7.2.2</b> Counts and percentages from logical vectors</a></li>
+<li class="chapter" data-level="7.2.3" data-path="vectorindexing.html"><a href="vectorindexing.html#additional-logical-functions"><i class="fa fa-check"></i><b>7.2.3</b> Additional Logical functions</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="vectorindexing.html"><a href="vectorindexing.html#changing-values-of-a-vector"><i class="fa fa-check"></i><b>7.3</b> Changing values of a vector</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="vectorindexing.html"><a href="vectorindexing.html#ex-fixing-invalid-responses-to-a-happiness-survey"><i class="fa fa-check"></i><b>7.3.1</b> Ex: Fixing invalid responses to a Happiness survey</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="vectorindexing.html"><a href="vectorindexing.html#test-your-r-might-movie-data"><i class="fa fa-check"></i><b>7.4</b> Test your R Might!: Movie data</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="matricesdataframes.html"><a href="matricesdataframes.html"><i class="fa fa-check"></i><b>8</b> Matrices and Dataframes</a><ul>
+<li class="chapter" data-level="8.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#what-are-matrices-and-dataframes"><i class="fa fa-check"></i><b>8.1</b> What are matrices and dataframes?</a></li>
+<li class="chapter" data-level="8.2" data-path="matricesdataframes.html"><a href="matricesdataframes.html#creating-matrices-and-dataframes"><i class="fa fa-check"></i><b>8.2</b> Creating matrices and dataframes</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#cbind-rbind"><i class="fa fa-check"></i><b>8.2.1</b> <code>cbind()</code>, <code>rbind()</code></a></li>
+<li class="chapter" data-level="8.2.2" data-path="matricesdataframes.html"><a href="matricesdataframes.html#matrix"><i class="fa fa-check"></i><b>8.2.2</b> <code>matrix()</code></a></li>
+<li class="chapter" data-level="8.2.3" data-path="matricesdataframes.html"><a href="matricesdataframes.html#data.frame"><i class="fa fa-check"></i><b>8.2.3</b> <code>data.frame()</code></a></li>
+<li class="chapter" data-level="8.2.4" data-path="matricesdataframes.html"><a href="matricesdataframes.html#dataframes-pre-loaded-in-r"><i class="fa fa-check"></i><b>8.2.4</b> Dataframes pre-loaded in R</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="matricesdataframes.html"><a href="matricesdataframes.html#matrix-and-dataframe-functions"><i class="fa fa-check"></i><b>8.3</b> Matrix and dataframe functions</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#head-tail-view"><i class="fa fa-check"></i><b>8.3.1</b> <code>head(), tail(), View()</code></a></li>
+<li class="chapter" data-level="8.3.2" data-path="matricesdataframes.html"><a href="matricesdataframes.html#summary-str"><i class="fa fa-check"></i><b>8.3.2</b> <code>summary()</code>, <code>str()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="matricesdataframes.html"><a href="matricesdataframes.html#dataframe-column-names"><i class="fa fa-check"></i><b>8.4</b> Dataframe column names</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#adding-new-columns"><i class="fa fa-check"></i><b>8.4.1</b> Adding new columns</a></li>
+<li class="chapter" data-level="8.4.2" data-path="matricesdataframes.html"><a href="matricesdataframes.html#changing-column-names"><i class="fa fa-check"></i><b>8.4.2</b> Changing column names</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="matricesdataframes.html"><a href="matricesdataframes.html#slicing-dataframes"><i class="fa fa-check"></i><b>8.5</b> Slicing dataframes</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#slicing-with"><i class="fa fa-check"></i><b>8.5.1</b> Slicing with <code>[, ]</code></a></li>
+<li class="chapter" data-level="8.5.2" data-path="matricesdataframes.html"><a href="matricesdataframes.html#slicing-with-logical-vectors"><i class="fa fa-check"></i><b>8.5.2</b> Slicing with logical vectors</a></li>
+<li class="chapter" data-level="8.5.3" data-path="matricesdataframes.html"><a href="matricesdataframes.html#slicing-with-subset"><i class="fa fa-check"></i><b>8.5.3</b> Slicing with <code>subset()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="matricesdataframes.html"><a href="matricesdataframes.html#combining-slicing-with-functions"><i class="fa fa-check"></i><b>8.6</b> Combining slicing with functions</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#with"><i class="fa fa-check"></i><b>8.6.1</b> <code>with()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="matricesdataframes.html"><a href="matricesdataframes.html#test-your-r-might-pirates-and-superheroes"><i class="fa fa-check"></i><b>8.7</b> Test your R might! Pirates and superheroes</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="test-your-r-might-solutions.html"><a href="test-your-r-might-solutions.html"><i class="fa fa-check"></i><b>9</b> Test your R might! Solutions</a><ul>
+<li class="chapter" data-level="9.1" data-path="test-your-r-might-solutions.html"><a href="test-your-r-might-solutions.html#chapter-4-the-basics"><i class="fa fa-check"></i><b>9.1</b> Chapter 4: The Basics</a></li>
+<li class="chapter" data-level="9.2" data-path="test-your-r-might-solutions.html"><a href="test-your-r-might-solutions.html#chapter-5-scalers-and-vectors"><i class="fa fa-check"></i><b>9.2</b> Chapter 5: Scalers and vectors</a></li>
+<li class="chapter" data-level="9.3" data-path="test-your-r-might-solutions.html"><a href="test-your-r-might-solutions.html#chapter-6-vector-functions"><i class="fa fa-check"></i><b>9.3</b> Chapter 6: Vector Functions</a></li>
+<li class="chapter" data-level="9.4" data-path="test-your-r-might-solutions.html"><a href="test-your-r-might-solutions.html#chapter-7-indexing-vectors-with"><i class="fa fa-check"></i><b>9.4</b> Chapter 7: Indexing vectors with []</a></li>
+<li class="chapter" data-level="9.5" data-path="test-your-r-might-solutions.html"><a href="test-your-r-might-solutions.html#chapter-8-matrices-and-dataframes"><i class="fa fa-check"></i><b>9.5</b> Chapter 8: Matrices and Dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">YaRrr! The Pirate’s Guide to R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="test-your-r-might-solutions" class="section level1">
+<h1><span class="header-section-number">Chapter 9</span> Test your R might! Solutions</h1>
+<div id="chapter-4-the-basics" class="section level2">
+<h2><span class="header-section-number">9.1</span> Chapter 4: The Basics</h2>
+<ol start="2" style="list-style-type: decimal">
+<li>Which (if any) of the following objects names is/are invalid?</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">thisone &lt;-<span class="st"> </span><span class="dv">1</span>
+THISONE &lt;-<span class="st"> </span><span class="dv">2</span>
+this.one &lt;-<span class="st"> </span><span class="dv">3</span>
+This<span class="fl">.1</span> &lt;-<span class="st"> </span><span class="dv">4</span>
+ThIS.....ON...E &lt;-<span class="st"> </span><span class="dv">5</span>
+This!One!<span class="st"> </span><span class="er">&lt;</span>-<span class="st"> </span><span class="dv">6</span>           <span class="co"># only this one!</span>
+lkjasdfkjsdf &lt;-<span class="st"> </span><span class="dv">7</span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>2015 was a good year for pirate booty - your ship collected 100,000 gold coins. Create an object called  and assign the correct value to it.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gold.in<span class="fl">.2015</span> &lt;-<span class="st"> </span><span class="dv">100800</span></code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li>Oops, during the last inspection we discovered that one of your pirates Skippy McGee hid 800 gold coins in his underwear. Go ahead and add those gold coins to the object <code>gold.in.2015</code>. Next, create an object called <code>plank.list</code> with the name of the pirate thief.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gold.in<span class="fl">.2015</span> &lt;-<span class="st"> </span>gold.in<span class="fl">.2015</span> +<span class="st"> </span><span class="dv">800</span>
+plank.list &lt;-<span class="st"> &quot;Skippy McGee&quot;</span></code></pre></div>
+<ol start="5" style="list-style-type: decimal">
+<li>Look at the code below. What will R return after the third line? Make a prediction, then test the code yourself.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="dv">10</span>
+a +<span class="st"> </span><span class="dv">10</span>
+a       <span class="co"># It will return 10 because we never re-assigned a!</span></code></pre></div>
+</div>
+<div id="chapter-5-scalers-and-vectors" class="section level2">
+<h2><span class="header-section-number">9.2</span> Chapter 5: Scalers and vectors</h2>
+<ol style="list-style-type: decimal">
+<li>Create the vector [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] in three ways: once using <code>c()</code>, once using <code>a:b</code>, and once using <code>seq()</code>.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>)
+##  [1]  1  2  3  4  5  6  7  8  9 10
+
+<span class="dv">1</span>:<span class="dv">10</span>
+##  [1]  1  2  3  4  5  6  7  8  9 10
+
+<span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">10</span>, <span class="dt">by =</span> <span class="dv">1</span>)
+##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Create the vector [2.1, 4.1, 6.1, 8.1] in two ways, once using <code>c()</code> and once using <code>seq()</code></li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
+<span class="kw">c</span>(<span class="fl">2.1</span>, <span class="fl">6.1</span>, <span class="fl">6.1</span>, <span class="fl">8.1</span>)
+## [1] 2.1 6.1 6.1 8.1
+
+<span class="kw">seq</span>(<span class="dt">from =</span> <span class="fl">2.1</span>, <span class="dt">to =</span> <span class="fl">8.1</span>, <span class="dt">by =</span> <span class="dv">2</span>)
+## [1] 2.1 4.1 6.1 8.1</code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Create the vector [0, 5, 10, 15] in 3 ways: using <code>c()</code>, <code>seq()</code> with a <code>by</code> argument, and <code>seq()</code> with a <code>length.out</code> argument.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>)
+## [1]  0  5 10 15
+
+<span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">0</span>, <span class="dt">to =</span> <span class="dv">15</span>, <span class="dt">by =</span> <span class="dv">5</span>)
+## [1]  0  5 10 15
+
+<span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">0</span>, <span class="dt">to =</span> <span class="dv">15</span>, <span class="dt">length.out =</span> <span class="dv">4</span>)
+## [1]  0  5 10 15</code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li>Create the vector [101, 102, 103, 200, 205, 210, 1000, 1100, 1200] using a combination of the <code>c()</code> and <code>seq()</code> functions</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">c</span>(<span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">101</span>, <span class="dt">to =</span> <span class="dv">103</span>, <span class="dt">by =</span> <span class="dv">3</span>), 
+  <span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">200</span>, <span class="dt">to =</span> <span class="dv">210</span>, <span class="dt">by =</span> <span class="dv">5</span>), 
+  <span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1000</span>, <span class="dt">to =</span> <span class="dv">1200</span>, <span class="dt">by =</span> <span class="dv">100</span>))
+## [1]  101  200  205  210 1000 1100 1200</code></pre></div>
+<ol start="5" style="list-style-type: decimal">
+<li>A new batch of 100 pirates are boarding your ship and need new swords. You have 10 scimitars, 40 broadswords, and 50 cutlasses that you need to distribute evenly to the 100 pirates as they board. Create a vector of length 100 where there is 1 scimitar, 4 broadswords, and 5 cutlasses in each group of 10. That is, in the first 10 elements there should be exactly 1 scimitar, 4 broadswords and 5 cutlasses. The next 10 elements should also have the same number of each sword (and so on).</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">swords &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;scimitar&quot;</span>, <span class="kw">rep</span>(<span class="st">&quot;broadswoard&quot;</span>, <span class="dv">4</span>), <span class="kw">rep</span>(<span class="st">&quot;cutlass&quot;</span>, <span class="dv">5</span>)), <span class="dt">times =</span> <span class="dv">100</span>)
+<span class="kw">head</span>(swords)
+## [1] &quot;scimitar&quot;    &quot;broadswoard&quot; &quot;broadswoard&quot; &quot;broadswoard&quot; &quot;broadswoard&quot;
+## [6] &quot;cutlass&quot;</code></pre></div>
+<ol start="6" style="list-style-type: decimal">
+<li>Create a vector that repeats the integers from 1 to 5, 10 times. That is [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, …]. The length of the vector should be 50!</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rep</span>(<span class="dv">1</span>:<span class="dv">5</span>, <span class="dt">times =</span> <span class="dv">10</span>)
+##  [1] 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5
+## [36] 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5</code></pre></div>
+<ol start="7" style="list-style-type: decimal">
+<li>Now, create the same vector as before, but this time repeat 1, 10 times, then 2, 10 times, etc., That is [1, 1, 1, …, 2, 2, 2, …, … 5, 5, 5]. The length of the vector should also be 50</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rep</span>(<span class="dv">1</span>:<span class="dv">5</span>, <span class="dt">each =</span> <span class="dv">10</span>)
+##  [1] 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3 4 4 4 4 4
+## [36] 4 4 4 4 4 5 5 5 5 5 5 5 5 5 5</code></pre></div>
+<ol start="8" style="list-style-type: decimal">
+<li>Create a vector containing 50 samples from a Normal distribution with a population mean of 20 and standard deviation of 2.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">50</span>, <span class="dt">mean =</span> <span class="dv">20</span>, <span class="dt">sd =</span> <span class="dv">2</span>)
+##  [1] 22 22 19 19 19 20 19 15 19 19 18 20 21 21 21 22 20 21 20 20 21 17 18
+## [24] 22 20 20 24 22 18 22 23 22 20 19 21 19 18 22 22 24 19 19 15 23 20 22
+## [47] 21 20 22 17</code></pre></div>
+<ol start="9" style="list-style-type: decimal">
+<li>Create a vector containing 25 samples from a Uniform distribution with a lower bound of -100 and an upper bound of -50.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">runif</span>(<span class="dt">n =</span> <span class="dv">25</span>, <span class="dt">min =</span> -<span class="dv">100</span>, <span class="dt">max =</span> -<span class="dv">50</span>)
+##  [1] -61 -88 -69 -75 -88 -94 -82 -93 -56 -50 -94 -60 -62 -80 -65 -78 -90
+## [18] -57 -57 -73 -62 -82 -56 -86 -99</code></pre></div>
+</div>
+<div id="chapter-6-vector-functions" class="section level2">
+<h2><span class="header-section-number">9.3</span> Chapter 6: Vector Functions</h2>
+<ol style="list-style-type: decimal">
+<li>Create a vector that shows the square root of the integers from 1 to 10.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dv">1</span>:<span class="dv">10</span>) ^<span class="st"> </span>.<span class="dv">5</span>
+##  [1] 1.0 1.4 1.7 2.0 2.2 2.4 2.6 2.8 3.0 3.2
+
+<span class="co">#or</span>
+
+<span class="kw">sqrt</span>(<span class="dv">1</span>:<span class="dv">10</span>)
+##  [1] 1.0 1.4 1.7 2.0 2.2 2.4 2.6 2.8 3.0 3.2</code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Renata thinks that she finds more treasure when she’s had a mug of grogg than when she doesn’t. To test this, she recorded how much treasure she found over 7 days without drinking any grogg (ie., sober), and then did the same over 7 days while drinking grogg (ie., drunk). Here are her results:</li>
+</ol>
+<table>
+<caption><span id="tab:unnamed-chunk-227">Table 9.1: </span>Renata’s treasure haul when she was sober and when she was drunk</caption>
+<thead>
+<tr class="header">
+<th align="left">day</th>
+<th align="right">sober</th>
+<th align="right">drunk</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Monday</td>
+<td align="right">2</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Tuesday</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Wednesday</td>
+<td align="right">3</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">Thursday</td>
+<td align="right">1</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Friday</td>
+<td align="right">0</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">Saturday</td>
+<td align="right">3</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="left">Sunday</td>
+<td align="right">5</td>
+<td align="right">2</td>
+</tr>
+</tbody>
+</table>
+<p>How much treasure did Renata find on average whe she was sober? What about when she was drunk?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sober &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">5</span>)
+drunk &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)
+
+<span class="kw">mean</span>(sober)
+## [1] 2
+<span class="kw">mean</span>(drunk)
+## [1] 0.86</code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Using Renata’s data again, create a new vector called <code>difference</code> that shows how much more treasure Renata found when she was drunk and when she was not. What was the mean, median, and standard deviation of the difference?</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">difference &lt;-<span class="st"> </span>sober -<span class="st"> </span>drunk
+
+<span class="kw">mean</span>(difference)
+## [1] 1.1
+<span class="kw">median</span>(difference)
+## [1] 1
+<span class="kw">sd</span>(difference)
+## [1] 1.3</code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li>There’s an old parable that goes something like this. A man does some work for a king and needs to be paid. Because the man loves rice (who doesn’t?!), the man offers the king two different ways that he can be paid. <em>You can either pay me 100 kilograms of rice, or, you can pay me as follows: get a chessboard and put one grain of rice in the top left square. Then put 2 grains of rice on the next square, followed by 4 grains on the next, 8 grains on the next…and so on, where the amount of rice doubles on each square, until you get to the last square. When you are finished, give me all the grains of rice that would (in theory), fit on the chessboard.</em> The king, sensing that the man was an idiot for making such a stupid offer, immediately accepts the second option. He summons a chessboard, and begins counting out grains of rice one by one… Assuming that there are 64 squares on a chessboard, calculate how many grains of rice the main will receive. If one grain of rice weights 1/64000 kilograms, how many kilograms of rice did he get? <em>Hint: If you have trouble coming up with the answer, imagine how many grains are on the first, second, third and fourth squares, then try to create the vector that shows the number of grains on each square. Once you come up with that vector, you can easily calculate the final answer with the <code>sum()</code> function.</em></li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># First, let&#39;s create a vector of the amount of rice on each square:</span>
+rice &lt;-<span class="st"> </span><span class="dv">2</span> ^<span class="st"> </span>(<span class="dv">1</span>:<span class="dv">64</span>)
+
+<span class="co"># Here are the first few spaces</span>
+<span class="kw">head</span>(rice)
+## [1]  2  4  8 16 32 64
+
+<span class="co"># The result is just the sum!</span>
+rice.total &lt;-<span class="st"> </span><span class="kw">sum</span>(rice)
+rice.total
+## [1] 3.7e+19
+
+<span class="co"># How much does that weigh? Each grain weights 1/6400 kilograms:</span>
+rice.kg &lt;-<span class="st"> </span><span class="kw">sum</span>(rice) *<span class="st"> </span><span class="dv">1</span>/<span class="dv">6400</span>
+rice.kg
+## [1] 5.8e+15
+
+<span class="co"># That&#39;s 5,800,000,000,000,000 kilograms of rice. Let&#39;s keep going....</span>
+<span class="co"># A kg of rice is 1,300 calories</span>
+
+rice.cal &lt;-<span class="st"> </span>rice.kg *<span class="st"> </span><span class="dv">1300</span>
+rice.cal
+## [1] 7.5e+18
+
+<span class="co"># How many people can that feed for a year?</span>
+<span class="co"># A person needs about 2,250 calories a day, or 2,250 * 365 per year</span>
+
+rice.people.year &lt;-<span class="st"> </span>rice.cal /<span class="st"> </span>(<span class="dv">2250</span> *<span class="st"> </span><span class="dv">365</span>)
+rice.people.year
+## [1] 9.1e+12
+
+<span class="co"># So, that amount of rice could feed 9,100,000,000,000 for a year</span>
+<span class="co"># Assuming that the averge lifespan is 70 years, how many lifespans could this feed?</span>
+
+rice.people.life &lt;-<span class="st"> </span>rice.people.year /<span class="st"> </span><span class="dv">70</span>
+rice.people.life
+## [1] 1.3e+11
+
+<span class="co"># Ok...so it could feed 130,000,000,000 (130 billion) people over their lives</span>
+
+<span class="co"># Conclusion: King done screwed up.</span></code></pre></div>
+</div>
+<div id="chapter-7-indexing-vectors-with" class="section level2">
+<h2><span class="header-section-number">9.4</span> Chapter 7: Indexing vectors with []</h2>
+<table>
+<caption><span id="tab:unnamed-chunk-231">Table 9.2: </span>Some of my favorite movies</caption>
+<thead>
+<tr class="header">
+<th align="left">movie</th>
+<th align="right">year</th>
+<th align="right">boxoffice</th>
+<th align="left">genre</th>
+<th align="right">time</th>
+<th align="left">rating</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Whatever Works</td>
+<td align="right">2009</td>
+<td align="right">35.0</td>
+<td align="left">Comedy</td>
+<td align="right">92</td>
+<td align="left">PG-13</td>
+</tr>
+<tr class="even">
+<td align="left">It Follows</td>
+<td align="right">2015</td>
+<td align="right">15.0</td>
+<td align="left">Horror</td>
+<td align="right">97</td>
+<td align="left">R</td>
+</tr>
+<tr class="odd">
+<td align="left">Love and Mercy</td>
+<td align="right">2015</td>
+<td align="right">15.0</td>
+<td align="left">Drama</td>
+<td align="right">120</td>
+<td align="left">R</td>
+</tr>
+<tr class="even">
+<td align="left">The Goonies</td>
+<td align="right">1985</td>
+<td align="right">62.0</td>
+<td align="left">Adventure</td>
+<td align="right">90</td>
+<td align="left">PG</td>
+</tr>
+<tr class="odd">
+<td align="left">Jiro Dreams of Sushi</td>
+<td align="right">2012</td>
+<td align="right">3.0</td>
+<td align="left">Documentary</td>
+<td align="right">81</td>
+<td align="left">G</td>
+</tr>
+<tr class="even">
+<td align="left">There Will be Blood</td>
+<td align="right">2007</td>
+<td align="right">10.0</td>
+<td align="left">Drama</td>
+<td align="right">158</td>
+<td align="left">R</td>
+</tr>
+<tr class="odd">
+<td align="left">Moon</td>
+<td align="right">2009</td>
+<td align="right">321.0</td>
+<td align="left">Science Fiction</td>
+<td align="right">97</td>
+<td align="left">R</td>
+</tr>
+<tr class="even">
+<td align="left">Spice World</td>
+<td align="right">1988</td>
+<td align="right">79.0</td>
+<td align="left">Comedy</td>
+<td align="right">-84</td>
+<td align="left">PG-13</td>
+</tr>
+<tr class="odd">
+<td align="left">Serenity</td>
+<td align="right">2005</td>
+<td align="right">39.0</td>
+<td align="left">Science Fiction</td>
+<td align="right">119</td>
+<td align="left">PG-13</td>
+</tr>
+<tr class="even">
+<td align="left">Finding Vivian Maier</td>
+<td align="right">2014</td>
+<td align="right">1.5</td>
+<td align="left">Documentary</td>
+<td align="right">84</td>
+<td align="left">Unrated</td>
+</tr>
+</tbody>
+</table>
+<ol start="0" style="list-style-type: decimal">
+<li>Create new data vectors for each column.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">movie &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Whatever Works&quot;</span>, <span class="st">&quot;It Follows&quot;</span>, <span class="st">&quot;Love and Mercy&quot;</span>, 
+             <span class="st">&quot;The Goonies&quot;</span>, <span class="st">&quot;Jiro Dreams of Sushi&quot;</span>,
+             <span class="st">&quot;There Will be Blood&quot;</span>, <span class="st">&quot;Moon&quot;</span>, 
+             <span class="st">&quot;Spice World&quot;</span>, <span class="st">&quot;Serenity&quot;</span>, <span class="st">&quot;Finding Vivian Maier&quot;</span>)
+
+year &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2009</span>, <span class="dv">2015</span>, <span class="dv">2015</span>, <span class="dv">1985</span>, <span class="dv">2012</span>, <span class="dv">2007</span>, <span class="dv">2009</span>, <span class="dv">1988</span>, <span class="dv">2005</span>, <span class="dv">2014</span>)
+
+boxoffice &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">35</span>, <span class="dv">15</span>, <span class="dv">15</span>, <span class="dv">62</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">321</span>, <span class="dv">79</span>, <span class="dv">39</span>, <span class="fl">1.5</span>)
+
+genre &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Comedy&quot;</span>, <span class="st">&quot;Horror&quot;</span>, <span class="st">&quot;Drama&quot;</span>, <span class="st">&quot;Adventure&quot;</span>, <span class="st">&quot;Documentary&quot;</span>, 
+           <span class="st">&quot;Drama&quot;</span>, <span class="st">&quot;Science Fiction&quot;</span>, <span class="st">&quot;Comedy&quot;</span>, <span class="st">&quot;Science Fiction&quot;</span>, 
+           <span class="st">&quot;Documentary&quot;</span>)
+
+time &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">92</span>, <span class="dv">97</span>, <span class="dv">120</span>, <span class="dv">90</span>, <span class="dv">81</span>, <span class="dv">158</span>, <span class="dv">97</span>, -<span class="dv">84</span>, <span class="dv">119</span>, <span class="dv">84</span>)
+
+rating &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;PG-13&quot;</span>, <span class="st">&quot;R&quot;</span>, <span class="st">&quot;R&quot;</span>, <span class="st">&quot;PG&quot;</span>, <span class="st">&quot;G&quot;</span>, <span class="st">&quot;R&quot;</span>, <span class="st">&quot;R&quot;</span>, 
+            <span class="st">&quot;PG-13&quot;</span>, <span class="st">&quot;PG-13&quot;</span>, <span class="st">&quot;Unrated&quot;</span>)</code></pre></div>
+<ol style="list-style-type: decimal">
+<li>What is the name of the 10th movie in the list?</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">movie[<span class="dv">10</span>]
+## [1] &quot;Finding Vivian Maier&quot;</code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>What are the genres of the first 4 movies?</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">genre[<span class="dv">1</span>:<span class="dv">4</span>]
+## [1] &quot;Comedy&quot;    &quot;Horror&quot;    &quot;Drama&quot;     &quot;Adventure&quot;</code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Some joker put Spice World in the movie names – it should be ``The Naked Gun’’ Please correct the name.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">movie[movie ==<span class="st"> &quot;Spice World&quot;</span>] &lt;-<span class="st"> &quot;The Naked Gun&quot;</span></code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li>What were the names of the movies made before 1990?</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">movie[year &lt;<span class="st"> </span><span class="dv">1990</span>]
+## [1] &quot;The Goonies&quot;   &quot;The Naked Gun&quot;</code></pre></div>
+<ol start="5" style="list-style-type: decimal">
+<li>How many movies were Dramas? What percent of the 10 movies were Comedies?</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(genre ==<span class="st"> &quot;Drama&quot;</span>)
+## [1] 2
+
+<span class="kw">mean</span>(genre ==<span class="st"> &quot;Comedy&quot;</span>)
+## [1] 0.2</code></pre></div>
+<ol start="6" style="list-style-type: decimal">
+<li>One of the values in the <code>time</code> vector is invalid. Convert any invalid values in this vector to NA. Then, calculate the mean movie time</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">time[time &lt;<span class="st"> </span><span class="dv">0</span>] &lt;-<span class="st"> </span><span class="ot">NA</span>
+
+<span class="kw">mean</span>(time, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
+## [1] 104</code></pre></div>
+<ol start="7" style="list-style-type: decimal">
+<li>What were the names of the Comedy movies? What were their boxoffice totals? (Two separate questions)</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">movie[genre ==<span class="st"> &quot;Comedy&quot;</span>]
+## [1] &quot;Whatever Works&quot; &quot;The Naked Gun&quot;
+
+boxoffice[genre ==<span class="st"> &quot;Comedy&quot;</span>]
+## [1] 35 79</code></pre></div>
+<ol start="8" style="list-style-type: decimal">
+<li>What were the names of the movies that made less than $50 Million dollars AND were Comedies?</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">movie[boxoffice &lt;<span class="st"> </span><span class="dv">50</span> &amp;<span class="st"> </span>genre ==<span class="st"> &quot;Comedy&quot;</span>]
+## [1] &quot;Whatever Works&quot;</code></pre></div>
+<ol start="9" style="list-style-type: decimal">
+<li>What was the median boxoffice revenue of movies rated either G or PG?</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median</span>(boxoffice[rating %in%<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;G&quot;</span>, <span class="st">&quot;PG&quot;</span>)])
+## [1] 32
+
+<span class="co"># OR</span>
+
+<span class="kw">median</span>(boxoffice[rating ==<span class="st"> &quot;G&quot;</span> |<span class="st"> </span>rating ==<span class="st"> &quot;PG&quot;</span>])
+## [1] 32</code></pre></div>
+<ol start="10" style="list-style-type: decimal">
+<li>What percent of the movies were either rated R OR were comedies?</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(rating ==<span class="st"> &quot;R&quot;</span> |<span class="st"> </span>genre ==<span class="st"> &quot;Comedy&quot;</span>)
+## [1] 0.6</code></pre></div>
+</div>
+<div id="chapter-8-matrices-and-dataframes" class="section level2">
+<h2><span class="header-section-number">9.5</span> Chapter 8: Matrices and Dataframes</h2>
+<p>The following table shows the results of a survey of 10 pirates. In addition to some basic demographic information, the survey asked each pirate “What is your favorite superhero?”&quot; and “How many tattoos do you have?”&quot;</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Sex</th>
+<th align="right">Age</th>
+<th align="left">Superhero</th>
+<th align="right">Tattoos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Astrid</td>
+<td align="left">F</td>
+<td align="right">30</td>
+<td align="left">Batman</td>
+<td align="right">11</td>
+</tr>
+<tr class="even">
+<td align="left">Lea</td>
+<td align="left">F</td>
+<td align="right">25</td>
+<td align="left">Superman</td>
+<td align="right">15</td>
+</tr>
+<tr class="odd">
+<td align="left">Sarina</td>
+<td align="left">F</td>
+<td align="right">25</td>
+<td align="left">Batman</td>
+<td align="right">12</td>
+</tr>
+<tr class="even">
+<td align="left">Remon</td>
+<td align="left">M</td>
+<td align="right">29</td>
+<td align="left">Spiderman</td>
+<td align="right">5</td>
+</tr>
+<tr class="odd">
+<td align="left">Letizia</td>
+<td align="left">F</td>
+<td align="right">22</td>
+<td align="left">Batman</td>
+<td align="right">65</td>
+</tr>
+<tr class="even">
+<td align="left">Babice</td>
+<td align="left">F</td>
+<td align="right">22</td>
+<td align="left">Antman</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="left">Jonas</td>
+<td align="left">M</td>
+<td align="right">35</td>
+<td align="left">Batman</td>
+<td align="right">9</td>
+</tr>
+<tr class="even">
+<td align="left">Wendy</td>
+<td align="left">F</td>
+<td align="right">19</td>
+<td align="left">Superman</td>
+<td align="right">13</td>
+</tr>
+<tr class="odd">
+<td align="left">Niveditha</td>
+<td align="left">F</td>
+<td align="right">32</td>
+<td align="left">Maggott</td>
+<td align="right">900</td>
+</tr>
+<tr class="even">
+<td align="left">Gioia</td>
+<td align="left">F</td>
+<td align="right">21</td>
+<td align="left">Superman</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: decimal">
+<li>Combine the data into a single dataframe. Complete all the following exercises from the dataframe!</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">piratesurvey &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+  <span class="dt">name =</span> <span class="kw">c</span>(<span class="st">&quot;Astrid&quot;</span>, <span class="st">&quot;Lea&quot;</span>, <span class="st">&quot;Sarina&quot;</span>, <span class="st">&quot;Remon&quot;</span>, <span class="st">&quot;Letizia&quot;</span>, <span class="st">&quot;Babice&quot;</span>, <span class="st">&quot;Jonas&quot;</span>, <span class="st">&quot;Wendy&quot;</span>, <span class="st">&quot;Niveditha&quot;</span>, <span class="st">&quot;Gioia&quot;</span>),
+  <span class="dt">sex =</span> <span class="kw">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;F&quot;</span>),
+  <span class="dt">age =</span> <span class="kw">c</span>(<span class="dv">30</span>, <span class="dv">25</span>, <span class="dv">25</span>, <span class="dv">29</span>, <span class="dv">22</span>, <span class="dv">22</span>, <span class="dv">35</span>, <span class="dv">19</span>, <span class="dv">32</span>, <span class="dv">21</span>),
+  <span class="dt">superhero =</span> <span class="kw">c</span>(<span class="st">&quot;Batman&quot;</span>, <span class="st">&quot;Superman&quot;</span>, <span class="st">&quot;Batman&quot;</span>, <span class="st">&quot;Spiderman&quot;</span>, <span class="st">&quot;Batman&quot;</span>,
+               <span class="st">&quot;Antman&quot;</span>, <span class="st">&quot;Batman&quot;</span>, <span class="st">&quot;Superman&quot;</span>, <span class="st">&quot;Maggott&quot;</span>, <span class="st">&quot;Superman&quot;</span>),
+  <span class="dt">tattoos =</span> <span class="kw">c</span>(<span class="dv">11</span>, <span class="dv">15</span>, <span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">65</span>, <span class="dv">3</span>, <span class="dv">9</span>, <span class="dv">13</span>, <span class="dv">900</span>, <span class="dv">0</span>),
+  <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>
+)</code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>What is the median age of the 10 pirates?</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median</span>(piratesurvey$age)
+## [1] 25</code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>What was the mean age of female and male pirates separately?</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(piratesurvey$age[piratesurvey$sex ==<span class="st"> &quot;F&quot;</span>])
+## [1] 24
+<span class="kw">mean</span>(piratesurvey$age[piratesurvey$sex ==<span class="st"> &quot;M&quot;</span>])
+## [1] 32
+
+## OR
+<span class="kw">with</span>(piratesurvey, 
+     <span class="kw">mean</span>(age[sex ==<span class="st"> &quot;F&quot;</span>]))
+## [1] 24
+
+<span class="kw">with</span>(piratesurvey, 
+     <span class="kw">mean</span>(age[sex ==<span class="st"> &quot;M&quot;</span>]))
+## [1] 32
+
+## OR
+
+<span class="kw">mean</span>(<span class="kw">subset</span>(piratesurvey,
+       <span class="dt">subset =</span> sex ==<span class="st"> &quot;F&quot;</span>)$age)
+## [1] 24
+
+<span class="kw">mean</span>(<span class="kw">subset</span>(piratesurvey,
+       <span class="dt">subset =</span> sex ==<span class="st"> &quot;M&quot;</span>)$age)
+## [1] 32</code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li>What was the most number of tattoos owned by a male pirate?</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">with</span>(piratesurvey, 
+     <span class="kw">max</span>(tattoos[sex ==<span class="st"> &quot;M&quot;</span>]))
+## [1] 9
+
+<span class="co"># OR</span>
+
+<span class="kw">max</span>(<span class="kw">subset</span>(piratesurvey, 
+           <span class="dt">subset =</span> sex ==<span class="st"> &quot;M&quot;</span>)$tattoos)
+## [1] 9</code></pre></div>
+<ol start="5" style="list-style-type: decimal">
+<li>What percent of pirates under the age of 32 were female?</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">with</span>(piratesurvey, 
+     <span class="kw">mean</span>(sex[age &lt;<span class="st"> </span><span class="dv">32</span>] ==<span class="st"> &quot;F&quot;</span>))
+## [1] 0.88</code></pre></div>
+<ol start="6" style="list-style-type: decimal">
+<li>What percent of female pirates are under the age of 32?</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">with</span>(piratesurvey, 
+     <span class="kw">mean</span>(sex[age &lt;<span class="st"> </span><span class="dv">32</span>] ==<span class="st"> &quot;F&quot;</span>))
+## [1] 0.88</code></pre></div>
+<ol start="7" style="list-style-type: decimal">
+<li>Add a new column to the dataframe called <code>tattoos.per.year</code> which shows how many tattoos each pirate has for each year in their life.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">piratesurvey$tattoos.per.year &lt;-<span class="st"> </span><span class="kw">with</span>(piratesurvey, tattoos /<span class="st"> </span>age)</code></pre></div>
+<ol start="8" style="list-style-type: decimal">
+<li>Which pirate had the most number of tattoos per year?</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">piratesurvey$name[piratesurvey$tattoos.per.year ==<span class="st"> </span><span class="kw">max</span>(piratesurvey$tattoos.per.year)]
+## [1] &quot;Niveditha&quot;</code></pre></div>
+<ol start="9" style="list-style-type: decimal">
+<li>What are the names of the female pirates whose favorite piratesurvey is Superman?</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">piratesurvey$name[<span class="kw">with</span>(piratesurvey, sex ==<span class="st"> &quot;F&quot;</span> &amp;<span class="st"> </span>superhero ==<span class="st"> &quot;Superman&quot;</span>)]
+## [1] &quot;Lea&quot;   &quot;Wendy&quot; &quot;Gioia&quot;</code></pre></div>
+<ol start="10" style="list-style-type: decimal">
+<li>What was the median number of tattoos of pirates over the age of 20 whose favorite piratesurvey is Spiderman?</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">with</span>(piratesurvey, (tattoos[age &gt;<span class="st"> </span><span class="dv">20</span> &amp;<span class="st"> </span>superhero ==<span class="st"> &quot;Spiderman&quot;</span>]))
+## [1] 5</code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="matricesdataframes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ndphillips/YaRrrBook/master/0x-answers.Rmd",
+"text": "Edit"
+},
+"download": ["YaRrr.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,433 @@
+# Vector functions {#vectorfunctions}
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+
+In this chapter, we'll cover the core functions for vector objects. The code below uses the functions you'll learn to calculate summary statistics from two exams.
+
+
+```{r, fig.cap= "", fig.margin = TRUE, echo = FALSE, out.width = "400px", fig.align='center'}
+knitr::include_graphics(c("images/fuckexam.jpg"))
+```
+
+
+
+
+```{r, eval = TRUE}
+# 10 students from two different classes took two exams.
+#  Here are three vectors showing the data
+midterm <- c(62, 68, 75, 79, 55, 62, 89, 76, 45, 67)
+final <- c(78, 72, 97, 82, 60, 83, 92, 73, 50, 88)
+
+# How many students are there?
+length(midterm)
+
+# Add 5 to each midterm score (extra credit!)
+midterm <- midterm + 5
+midterm
+
+# Difference between final and midterm scores
+final - midterm
+
+# Each student's average score
+(midterm + final) / 2
+
+# Mean midterm grade
+mean(midterm)
+
+# Standard deviation of midterm grades
+sd(midterm)
+
+# Highest final grade
+max(final)
+
+# z-scores
+midterm.z <- (midterm - mean(midterm)) / sd(midterm)
+final.z <- (final - mean(final)) / sd(final)
+```
+
+
+## Arithmetic operations on vectors
+
+So far, you know how to do basic arithmetic operations like + (addition), - (subtraction), and * (multiplication) on scalars. Thankfully, R makes it just as easy to do arithmetic operations on numeric vectors:
+
+```{r}
+a <- c(1, 2, 3, 4, 5)
+b <- c(10, 20, 30, 40, 50)
+
+a + 100
+a + b
+(a + b) / 10
+```
+
+If you do an operation on a vector with a scalar, R will apply the scalar to each element in the vector. For example, if you have a vector and want to add 10 to each element in the vector, just add the vector and scalar objects. Let's create a vector with the integers from 1 to 10, and add then add 100 to each element:
+
+```{r}
+# Take the integers from 1 to 10, then add 100 to each
+1:10 + 100
+```
+
+
+As you can see, the result is [1 + 100, 2 + 100, ... 10 + 100]. Of course, we could have made this vector with the `a:b` function like this: `101:110`, but you get the idea.
+
+Of course, this doesn't only work with addition...oh no. Let's try division, multiplication, and exponents. Let's create a vector `a` with the integers from 1 to 10 and then change it up:
+
+```{r}
+a <- 1:10
+a / 100
+a ^ 2
+```
+
+
+Again, if you perform an algebraic operation on a vector with a scalar, R will just apply the operation to every element in the vector.
+
+
+
+### Basic math with multiple vectors
+
+What if you want to do some operation on two vectors of the same length? Easy. Just apply the operation to both vectors. R will then combine them element--by--element. For example, if you add the vector [1, 2, 3, 4, 5] to the vector [5, 4, 3, 2, 1], the resulting vector will have the values [1 + 5, 2 + 4, 3 + 3, 4 + 2, 5 + 1] = [6, 6, 6, 6, 6]:
+
+```{r}
+c(1, 2, 3, 4, 5) + c(5, 4, 3, 2, 1)
+
+```
+
+
+Let's create two vectors a and b where each vector contains the integers from 1 to 5. We'll then create two new vectors `ab.sum`, the sum of the two vectors and `ab.diff`, the difference of the two vectors, and `ab.prod`, the product of the two vectors:
+
+```{r}
+a <- 1:5
+b <- 1:5
+
+ab.sum <- a + b
+ab.diff <- a - b
+ab.prod <- a * b
+
+ab.sum
+ab.diff
+ab.prod
+```
+
+
+
+
+### Ex: Pirate Bake Sale
+
+```{r, fig.cap= "", fig.margin = TRUE, echo = FALSE, out.width = "400px", fig.align='center'}
+knitr::include_graphics(c("images/piratecookies.jpg"))
+```
+
+
+Let's say you had a bake sale on your ship where 5 pirates sold both pies and cookies. You could record the total number of pies and cookies sold in two vectors:
+
+```{r}
+pies <- c(3, 6, 2, 10, 4)
+cookies <- c(70, 40, 40, 200, 60)
+```
+
+Now, let's say you want to know how many total items each pirate sold. You can do this by just adding the two vectors:
+
+```{r}
+total.sold <- pies + cookies
+total.sold
+```
+
+
+Crazy.
+
+
+
+## Summary statistics
+
+
+Ok, now that we can create vectors, let's learn the basic descriptive statistics functions. We'll start with functions that apply to continuous data. Continuous data is data that, generally speaking, can take on an infinite number of values. Height and weight are good examples of continuous data. Table \@ref(tab:continuousvectorfunctiontable) contains common functions for continuous, numeric vectors. Each of them takes a numeric vector as an argument, and returns either a scalar (or in the case of `summary()`, a `table`) as a result.
+
+
+
+| Function| Example|Result |
+|:-------------------|:----------------------|:-----------------------|
+|     `sum(x), product(x)`|    `sum(1:10)` |`r sum(1:10)`     |
+|     `min(x), max(x)`|    `min(1:10)`|`r min(1:10)`    |
+|     `mean(x), median(x)`|    `mean(1:10)`     | `r mean(1:10)` |
+|     `sd(x), var(x), range(x)`|    `sd(1:10)` | `r sd(1:10)` |
+|     `quantile(x, probs)`|    `quantile(1:10, probs = .2)`|`r quantile(1:10, probs = .2)`     |
+|     `summary(x)`|    `summary(1:10)`|`Min = 1.00. 1st Qu. = 3.25, Median = 5.50, Mean = 5.50, 3rd Qu. = 7.75, Max = 10.0`     |
+
+Table: (\#tab:continuousvectorfunctiontable) Summary statistic functions for continuous data.
+
+
+Let's calculate some descriptive statistics from some pirate related data. I'll create a vector called `x` that contains the number of tattoos from 10 random pirates.
+
+```{r}
+tattoos <- c(4, 50, 2, 39, 4, 20, 4, 8, 10, 100)
+```
+
+Now, we can calculate several descriptive statistics on this vector by using the summary statistics functions:
+
+```{r}
+min(tattoos)
+mean(tattoos)
+sd(tattoos)
+```
+
+
+### length()
+
+```{r, fig.cap= "According to this article published in 2015 in Plos One, when it comes to people, length may matter for some. But trust me, for vectors it always does.", fig.margin = TRUE, echo = FALSE, out.width = "400px", fig.align='center'}
+knitr::include_graphics(c("images/penissize.png"))
+```
+
+Vectors have one dimension: their length. Later on, when you combine vectors into more higher dimensional objects, like matrices and dataframes, you will need to make sure that all the vectors you combine have the same length. But, when you want to know the length of a vector, don't stare at your computer screen and count the elements one by one! (That said, I must admit that I still do this sometimes...). Instead, use `length()` function. The `length()` function takes a vector as an argument, and returns a scalar representing the number of elements in the vector:
+
+```{r}
+a <- 1:10
+length(a)  # How many elements are in a?
+
+b <- seq(from = 1, to = 100, length.out = 20)
+length(b)  # How many elements are in b?
+
+length(c("This", "character", "vector", "has", "six", "elements."))
+length("This character scalar has just one element.")
+```
+
+Get used to the `length()` function people, you'll be using it a lot!
+
+
+
+
+### Additional numeric vector functions
+
+Table \@ref(tab:morenumericfunctions) contains additional functions that you will find useful when managing numeric vectors:
+
+| Function| Description | Example|Result |
+|:------------|:------------------|:-------------------------|:----------|
+|     `round(x, digits)`|  Round elements in x to `digits` digits |   `round(c(2.231, 3.1415), digits = 1)` |`r round(c(2.231, 3.1415), digits = 1)`     |
+|     `ceiling(x), floor(x)`|  Round elements x to the next highest (or lowest) integer |  `ceiling(c(5.1, 7.9))`| `r ceiling(c(5.1, 7.9))`|
+|     `x %% y`|  Modular arithmetic (ie. x mod y) |  `7 %% 3`|`r 7 %% 3` |    
+
+Table: (\#tab:morenumericfunctions) Vector summary functions for continuous data.
+
+
+
+### Sample statistics from random samples
+
+Now that you know how to calculate summary statistics, let's take a closer look at how R draws random samples using the `rnorm()` and `runif()` functions. In the next code chunk, I'll calculate some summary statistics from a vector of 5 values from a Normal distribution with a mean of 10 and a standard deviation of 5. I'll then calculate summary statistics from this sample using `mean()` and `sd()`:
+
+```{r, echo = FALSE}
+set.seed(100)
+```
+
+```{r}
+# 5 samples from a Normal dist with mean = 10 and sd = 5
+x <- rnorm(n = 5, mean = 10, sd = 5)
+
+# What are the mean and standard deviation of the sample?
+mean(x)
+sd(x)
+```
+
+
+As you can see, the mean and standard deviation of our sample vector are close to the population values of 10 and 5 -- but they aren't exactly the same because these are sample data. If we take a much larger sample (say, 100,000), the sample statistics should get much closer to the population values:
+
+```{r}
+# 100,000 samples from a Normal dist with mean = 10, sd = 5
+y <- rnorm(n = 100000, mean = 10, sd = 5)
+
+mean(y)
+sd(y)
+```
+
+
+Yep, sure enough our new sample y (containing 100,000 values) has a sample mean and standard deviation much closer (almost identical) to the population values than our sample x (containing only 5 values). This is an example of what is called the law of large numbers. Google it.
+
+
+## Counting statistics
+
+Next, we'll move on to common counting functions for vectors with discrete or non-numeric data. Discrete data are those like gender, occupation, and monkey farts, that only allow for a finite (or at least, plausibly finite) set of responses. Common functions for discrete vectors are in Table \@ref(tab:discretevectorfunctiontable). Each of these vectors takes a vector as an argument -- however, unlike the previous functions we looked at, the used as arguments to these functions can be either numeric or character.
+
+
+| Function| Description | Example|Result |
+|:----------|:--------------------|:-------------------------|:--------------------|
+|     `unique(x)`|  Returns a vector of all unique values. |   `unique(c(1, 1, 2, 10))` |`r unique(c(1, 1, 2, 10))`     |
+|     `table(x, exclude)`|  Returns a table showing all the unique values as well as a count of each occurrence. To include a count of NA values, include the argument `exclude = NULL` |  `table(c("a", "a", "b", "c"))`|` 2-"a", 1-"b", 1-"c"`    |
+
+Table: (\#tab:discretevectorfunctiontable) Counting functions for discrete data.
+
+
+Let's test these functions by starting with two vectors of discrete data:
+
+```{r}
+vec <- c(1, 1, 1, 5, 1, 1, 10, 10, 10)
+gender <- c("M", "M", "F", "F", "F", "M", "F", "M", "F")
+```
+
+
+
+The function `unique(x)` will tell you all the unique values in the vector, but won't tell you anything about how often each value occurs.
+
+```{r}
+unique(vec)
+unique(gender)
+```
+
+
+
+The function `table()` does the same thing as `unique()`, but goes a step further in telling you how often each of the unique values occurs:
+
+```{r}
+table(vec)
+table(gender)
+```
+
+
+If you want to get a table of percentages instead of counts, you can just divide the result of the `table()` function by the sum of the result:
+
+```{r}
+table(vec) / sum(table(vec))
+table(gender) / sum(table(gender))
+```
+
+## Missing (NA) values
+
+In R, missing data are coded as NA. In real datasets, NA values turn up all the time. Unfortunately, most descriptive statistics functions will freak out if there is a missing (NA) value in the data. For example, the following code will return NA as a result because there is an NA value in the data vector:
+
+```{r}
+a <- c(1, 5, NA, 2, 10)
+mean(a)
+```
+
+Thankfully, there's a way we can work around this. To tell a descriptive statistic function to ignore missing (NA) values, include the argument `na.rm = TRUE` in the function. This argument explicitly tells the function to ignore NA values. Let's try calculating the mean of the vector `a` again, this time with the additional`na.rm = TRUE` argument:
+
+```{r}
+mean(a, na.rm = TRUE)
+```
+
+Now, the function ignored the NA value and returned the mean of the remaining data. While this may seem trivial now (why did we include an NA value in the vector if we wanted to ignore it?!), it will be become very important when we apply the function to real data which, very often, contains missing values.
+
+
+
+
+
+## Standardization (z-score)
+
+A common task in statistics is to standardize variables -- also known as calculating z-scores. The purpose of standardizing a vector is to put it on a common scale which allows you to compare it to other (standardized) variables. To standardize a vector, you simply subtract the vector by its mean, and then divide the result by the vector's standard deviation. 
+
+If the concept of z-scores is new to you -- don't worry. In the next worked example, you'll see how it can help you compare two sets of data. But for now, let's see how easy it is to standardize a vector using basic arithmetic.
+
+Let's say you have a vector a containing some data. We'll assign the vector to a new object called `a` then calculate the mean and standard deviation with the `mean()` and `sd()` functions:
+
+```{r}
+a <- c(5, 3, 7, 5, 5, 3, 4)
+mean(a)
+sd(a)
+```
+
+Ok. Now we'll create a new vector called `a.z` which is a standardized version of a. To do this, we'll simply subtract the mean of the vector, then divide by the standard deviation.
+
+```{r}
+a.z <- (a - mean(a)) / sd(a)
+```
+
+Now let's look at the standardized values:
+
+```{r}
+a.z
+```
+
+The mean of `a.z` should now be 0, and the standard deviation of `a.z` should now be 1. Let's make sure:
+
+```{r}
+mean(a.z)
+sd(a.z)
+```
+
+
+Sweet. Oh, don't worry that the mean of `a.z` doesn't look like exactly zero. Using non-scientific notation, the result is 0.000000000000000198. For all intents and purposes, that's 0. The reason the result is not exactly 0 is due to computer science theoretical reasons that I cannot explain (because I don't understand them).
+
+
+
+
+### Ex: Evaluating a competition
+
+
+Your gluten-intolerant first mate just perished in a tragic soy sauce incident and it's time to promote another member of your crew to the newly vacated position. Of course, only two qualities really matter for a pirate: rope-climbing, and grogg drinking. Therefore, to see which of your crew deserves the promotion, you decide to hold a climbing and drinking competition. In the climbing competition, you measure how many feet of rope a pirate can climb in an hour. In the drinking competition, you measure how many mugs of grogg they can drink in a minute. Five pirates volunteer for the competition -- here are their results:
+
+```{r echo = FALSE}
+competition <- data.frame("pirate" = c("Heidi", "Andrew", "Becki", "Madisen", "David"),
+                          grogg =  c(12, 8, 1, 6, 2),
+                          climbing = c(100, 520, 430, 200, 700))
+
+knitr::kable(competition, caption = "Scores from a pirate competition")
+```
+
+We can represent the main results with two vectors `grogg` and `climbing`:
+
+```{r}
+grogg <- c(12, 8, 1, 6, 2)
+climbing <- c(100, 520, 430, 200, 700)
+```
+
+Now you've got the data, but there's a problem: the scales of the numbers are very different. While the grogg numbers range from 1 to 12, the climbing numbers have a much larger range from 100 to 700. This makes it difficult to compare the two sets of numbers directly.
+
+To solve this problem, we'll use standardization. Let's create new standardized vectors called `grogg.z` and `climbing.z`
+
+```{r}
+grogg.z <- (grogg - mean(grogg)) / sd(grogg)
+climbing.z <- (climbing - mean(climbing)) / sd(climbing)
+```
+
+Now let's look at the final results
+
+```{r, echo = FALSE}
+options(digits = 2)
+```
+
+
+```{r}
+grogg.z
+climbing.z
+```
+
+It looks like there were two outstanding performances in particular. In the grogg drinking competition, the first pirate (Heidi) had a z-score of 1.4. We can interpret this by saying that Heidi drank 1.4 more standard deviations of mugs of grogg than the average pirate. In the climbing competition, the fifth pirate (David) had a z-score of 1.3. Here, we would conclude that David climbed 1.3 standard deviations more than the average pirate.
+
+But which pirate was the best on average across both events? To answer this, let's create a combined z-score for each pirate which calculates the average z-scores for each pirate across the two events. We'll do this by adding two performances and dividing by two. This will tell us, how good, on average, each pirate did relative to her fellow pirates.
+
+```{r}
+average.z <- (grogg.z + (climbing.z)) / 2
+```
+
+
+Let's look at the result:
+
+```{r}
+round(average.z, 1)
+```
+
+
+The highest average z-score belongs to the second pirate (Andrew) who had an average z-score value of 0.5. The first and last pirates, who did well in one event, seemed to have done poorly in the other event.
+
+Moral of the story: promote the pirate who can drink *and* climb.
+
+## Test your R Might!
+
+1. Create a vector that shows the square root of the integers from 1 to 10.
+
+2. Renata thinks that she finds more treasure when she's had a mug of grogg than when she doesn't. To test this, she recorded how much treasure she found over 7 days without drinking any grogg (ie., sober), and then did the same over 7 days while drinking grogg (ie., drunk). Here are her results:
+
+```{r, echo = FALSE}
+renata.score <- data.frame(
+                          day = c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"),
+                          sober = c(2, 0, 3, 1, 0, 3, 5),
+                           drunk = c(0, 0, 1, 0, 1, 2, 2))
+
+knitr::kable(renata.score, caption = "Renata's treasure haul when she was sober and when she was drunk")
+```
+
+How much treasure did Renata find on average whe she was sober? What about when she was drunk?
+
+3. Using Renata's data again, create a new vector called `difference` that shows how much more treasure Renata found when she was drunk and when she was not. What was the mean, median, and standard deviation of the difference?
+
+4. There's an old parable that goes something like this. A man does some work for a king and needs to be paid. Because the man loves rice (who doesn't?!), the man offers the king two different ways that he can be paid. *You can either pay me 100 kilograms of rice, or, you can pay me as follows: get a chessboard and put one grain of rice in the top left square. Then put 2 grains of rice on the next square, followed by 4 grains on the next, 8 grains on the next...and so on, where the amount of rice doubles on each square, until you get to the last square. When you are finished, give me all the grains of rice that would (in theory), fit on the chessboard.* The king, sensing that the man was an idiot for making such a stupid offer, immediately accepts the second option. He summons a chessboard, and begins counting out grains of rice one by one... Assuming that there are 64 squares on a chessboard, calculate how many grains of rice the main will receive. If one grain of rice weights 1/64000 kilograms, how many kilograms of rice did he get? *Hint: If you have trouble coming up with the answer, imagine how many grains are on the first, second, third and fourth squares, then try to create the vector that shows the number of grains on each square. Once you come up with that vector, you can easily calculate the final answer with the `sum()` function.*
+

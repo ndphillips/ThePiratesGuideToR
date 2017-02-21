@@ -1,0 +1,262 @@
+# Getting Started {#started}
+
+## Installing (Base) R and RStudio
+
+First things first, let's download both Base R and Rstudio. Again, R is the basic software which contains the R programming language. RStudio is software that makes R programming easier. Of course, they are totally free and open source.
+
+
+```{r, fig.cap= "", fig.margin = TRUE, echo = FALSE, out.width = "200px"}
+knitr::include_graphics(c("images/rlogo.png"))
+```
+
+| Operating System| Link|
+|:------|:----|
+|     Windows|    [http://cran.r-project.org/bin/windows/base/](http://cran.r-project.org/bin/windows/base/)|
+|     Mac|    [http://cran.r-project.org/bin/macosx/](http://cran.r-project.org/bin/macosx/)|
+
+
+Once you've installed base R on your computer, try opening it. When you do you should see a screen like the one in Figure \@ref(fig:rscreenshot) (this is the Mac version). As you can see, base R is very much bare-bones software. It's kind of the equivalent of a simple text editor that comes with your computer.
+
+
+```{r, fig.cap= "{Here is how the base R application looks. While you can use the base R application alone, most people I know use RStudio -- software that helps you to write and use R code more efficiently!", fig.margin = TRUE, echo = FALSE, out.width = "400px", fig.align ="center"}
+knitr::include_graphics(c("images/RScreenshot.png"))
+```
+
+While you can do pretty much everything you want within base R, you'll find that most people these days do their R programming in an application called RStudio. RStudio is a graphical user interface (GUI)-like interface for R that makes programming in R a bit easier. In fact, once you've installed RStudio, you'll likely never need to open the base R application again. To download and install RStudio (around 40mb), go to one of the links above and follow the instructions.
+
+```{r, fig.cap= "", fig.margin = TRUE, echo = FALSE, out.width = "200px"}
+knitr::include_graphics(c("images/RStudio.png"))
+```
+
+
+| Operating System| Link|
+|:------|:----|
+|     All|    [http://www.rstudio.com/products/rstudio/download/](http://www.rstudio.com/products/rstudio/download/)|
+
+Let's go ahead and boot up RStudio and see how she looks!
+
+## The four RStudio Windows
+
+When you open RStudio, you'll see the following four windows (also called panes) shown in in Figure \@ref(fig:rstudiowindows). However, your windows might be in a different order that those in Figure \@ref(fig:rstudiowindows). If you'd like, you can change the order of the windows under RStudio preferences. You can also change their shape by either clicking the minimize or maximize buttons on the top right of each panel, or by clicking and dragging the middle of the borders of the windows.
+
+
+```{r rstudiowindows, fig.cap= "The four panes of RStudio.", fig.margin = TRUE, echo = FALSE, out.width = "600px"}
+knitr::include_graphics(c("images/RStudio_Screenshot_Labels.png"))
+```
+
+Now, let's see what each window does in detail.
+
+### Source - Your notepad for code
+
+```{r sourcewindow, fig.cap= "The Source contains all of your individual R scripts.", fig.margin = TRUE, echo = FALSE, out.width = "600px"}
+knitr::include_graphics(c("images/piratesanalysisss.png"))
+```
+
+The source pane is where you create and edit ``R Scripts" - your collections of code. Don't worry, R scripts are just text files with the ".R" extension. When you open RStudio, it will automatically start a new Untitled script. Before you start typing in an untitled R script, you should always save the file under a new file name (like, "2015PirateSurvey.R"). That way, if something on your computer crashes while you're working, R will have your code waiting for you when you re-open RStudio.
+
+You'll notice that when you're typing code in a script in the Source panel, R won't actually evaluate the code as you type. To have R actually evaluate your code, you need to first 'send' the code to the Console (we'll talk about this in the next section).
+
+There are many ways to send your code from the Source to the console. The slowest way is to copy and paste. A faster way is to highlight the code you wish to evaluate and clicking on the "Run" button on the top right of the Source. Alternatively, you can use the hot-key "Command + Return" on Mac, or "Control + Enter" on PC to send all highlighted code to the console.
+
+
+### Console: R's Heart
+
+```{r consolewindow, fig.cap= "The console the calculation heart of R. All of your code will (eventually) go through here.", fig.margin = TRUE, echo = FALSE, out.width = "600px"}
+knitr::include_graphics(c("images/consoless.png"))
+```
+
+
+The console is the heart of R. Here is where R actually evaluates code. At the beginning of the console you'll see the character \texttt{>}. This is a prompt that tells you that R is ready for new code. You can type code directly into the console after the \texttt{>} prompt and get an immediate response. For example, if you type 1+1 into the console and press enter, you'll see that R immediately gives an output of 2.
+
+```{r}
+1+1
+```
+
+
+Try calculating 1+1 by typing the code directly into the console - then press Enter. You should see the result [1] 2. Don't worry about the [1] for now, we'll get to that later. For now, we're happy if we just see the 2. Then, type the same code into the Source, and then send the code to the Console by highlighting the code and clicking the ``Run" button on the top right hand corner of the Source window. Alternatively, you can use the hot-key "Command + Return" on Mac or "Control + Enter" on Windows.
+
+**Tip**: Try to write most of your code in a document in the Source. Only type directly into the Console to de-bug or do quick analyses.}
+
+So as you can see, you can execute code either by running it from the Source or by typing it directly into the Console. However, 99\% most of the time, you should be using the Source rather than the Console. The reason for this is straightforward: If you type code into the console, it won't be saved (though you can look back on your command History). And if you make a mistake in typing code into the console, you'd have to re-type everything all over again. Instead, it's better to write all your code in the Source. When you are ready to execute some code, you can then send "Run" it to the console.
+
+
+### Environment / History
+
+
+```{r environment, fig.cap= "The environment panel shows you all the objects you have defined in your current workspace. You'll learn more about workspaces in Chapter 7.", fig.margin = TRUE, echo = FALSE, out.width = "600px"}
+knitr::include_graphics(c("images/environmentss.png"))
+```
+
+The Environment tab of this panel shows you the names of all the data objects (like vectors, matrices, and dataframes) that you've defined in your current R session. You can also see information like the number of observations and rows in data objects. The tab also has a few clickable actions like ``Import Dataset" which will open a graphical user interface (GUI) for important data into R. However, I almost never look at this menu.
+
+The History tab of this panel simply shows you a history of all the code you've previously evaluated in the Console. To be honest, I never look at this. In fact, I didn't realize it was even there until I started writing this tutorial.
+
+As you get more comfortable with R, you might find the Environment / History panel useful. But for now you can just ignore it. If you want to declutter your screen, you can even just minimize the window by clicking the minimize button on the top right of the panel.
+
+
+### Files / Plots / Packages / Help
+
+The Files / Plots / Packages / Help panel shows you lots of helpful information. Let's go through each tab in detail:
+
+1. Files - The files panel gives you access to the file directory on your harddrive. One nice feature of the "Files" panel is that you can use it to set your working directory - once you navigate to a folder you want to read and save files to, click "More" and then "Set As Working Directory." We'll talk about working directories in more detail soon.
+
+2. Plots - The Plots panel (no big surprise), shows all your plots. There are buttons for opening the plot in a separate window and exporting the plot as a pdf or jpeg (though you can also do this with code using the `pdf()` or `jpeg()` functions.)
+
+Let's see how plots are displayed in the Plots panel. Run the code on the right to display a histogram of the weights of chickens stored in the `ChickWeight` dataset. When you do, you should see a plot similar to the one in Figure \@ref(fig:plotpanel) show up in the Plots panel.
+
+```{r, eval = FALSE}
+hist(x = ChickWeight$weight,
+     main = "Chicken Weights",
+     xlab = "Weight",
+     col = "skyblue",
+     border = "white")
+```
+
+
+```{r plotpanel, fig.cap= "The plot panel contains all of your plots, like this histogram of the distribution of chicken weights.", fig.margin = TRUE, echo = FALSE, out.width = "600px"}
+knitr::include_graphics(c("images/plotpanelss.png"))
+```
+
+
+
+3. Packages - Shows a list of all the R packages installed on your harddrive and indicates whether or not they are currently loaded. Packages that are loaded in the current session are checked while those that are installed but not yet loaded are unchecked. We'll discuss packages in more detail in the next section.
+
+4. Help - Help menu for R functions. You can either type the name of a function in the search window, or use the code \texttt{?function.name} to search for a function with the name \texttt{function.name}
+
+
+```{r, eval = FALSE}
+?hist   # How does the histogram function work?
+?t.test # What about a t-test?
+```
+
+
+## Packages
+
+When you download and install R for the first time, you are installing the Base R software. Base R will will contain most of the functions you'll use on a daily basis like `mean()` and `hist()`. However, only functions written by the original authors of the R language will appear here. If you want to access data and code written by other people, you'll need to install it as a *package*. An R package is simply a bunch of data, from functions, to help menus, to vignettes (examples), stored in one neat package.
+
+
+```{r package, fig.cap= "An R package is light a lightbulb. First you need to order it with install.packages(). Then, every time you want to use it, you need to turn it on with library()", fig.margin = TRUE, fig.align = 'center', echo = FALSE, out.width = "300px"}
+knitr::include_graphics(c("images/packagebulb.png"))
+```
+
+
+A package is like a lightbulb. In order to use it, you first need to order it to your house (i.e.; your computer) by *installing* it. Once you've installed a package, you never need to install it again. However, every time you want to actually use the package, you need to turn it on  by *loading* it. Here's how to do it.
+
+
+### Installing a new package
+
+Installing a package simply means downloading the package code onto your personal computer. There are two main ways to install new packages. The first, and most common, method is to download them from the Comprehensive R Archive Network (CRAN). CRAN is the central repository for R packages. To install a new R package from CRAN, you can simply run the code `install.packages("name")`, where "name" is the name of the package. For example, to download the `yarrr` package, which contains several data sets and functions we will use in this book, you should run the following:
+
+
+```{r cran, fig.cap= "CRAN (Comprehensive R Archive Network) is the main source of R packages", fig.margin = TRUE, fig.align = 'center', echo = FALSE, out.width = "200px"}
+knitr::include_graphics(c("images/cran.png"))
+```
+
+
+
+
+```{r eval = FALSE}
+# Install the yarrr package from CRAN
+#   You only need to install a package once!
+install.packages("yarrr")
+```
+
+
+When you run `install.packages("name")` R will download the package from CRAN. If everything works, you should see some information about where the package is being downloaded from, in addition to a progress bar.
+
+```{r installingpackages, fig.cap= "When you install a new package, you'll see some random text like this you the download progress. You don't need to memorize this.", fig.margin = TRUE, fig.align = 'center', echo = FALSE, out.width = "500px"}
+knitr::include_graphics(c("images/installingpackages.png"))
+```
+
+
+Like ordering a lightbulb, once you've installed a package on your computer you never need to install it again (unless you want to try to install a new version of the package). However, every time you want to use it, you need to turn it on by loading it.
+
+
+### Loading a package
+
+Once you've installed a package, it's on your computer. However, just because it's on your computer doesn't mean R is ready to use it. If you want to use something, like a function or dataset, from a package you *always* need to *load* the package in your R session first. Just like a lightbulb, you need to turn it on to use it!
+
+To load a package, you use the `library()` function. For example, now that we've installed the `yarrr` package, we can load it with `library("yarrr")`:
+
+```{r, message = FALSE}
+# Load the yarrr package so I can use it!
+#   You have to load a package in every new R session!
+library("yarrr")
+```
+
+
+Now that you've loaded the `yarrr` package, you can use any of its functions! One of the coolest functions in this package is called `pirateplot()`. Rather than telling you what a pirateplot is, let's just make one. Run the following code chunk to make your own pirateplot. Don't worry about the specifics of the code below, you'll learn more about how all this works later. For now, just run the code and marvel at your pirateplot.
+
+```{r}
+# Make a pirateplot using the pirateplot() function
+#  from the yarrr package!
+
+pirateplot(formula = weight ~ Time, 
+           data = ChickWeight,
+           pal = "xmen")
+```
+
+There is one way in R to temporarily load a package without using the `library()` function. To do this, you can simply use the notation `package::function` notation. This notation simply tells R to load the package just for this one chunk of code. For example, I could use the `pirateplot` function from `yarrr` package as follows:
+
+```{r}
+# Use the pirateplot() function without loading the yarrr package first
+yarrr::pirateplot(formula = weight ~ Diet,
+                  data = ChickWeight)
+```
+
+
+Again, you can think about the `package::function` method as a way to temporarily loading a package for a single line of code. One benefit of using the `package::function` notation is that it's immediately clear to anyone reading the code which package contains the function. However, a drawback is that if you are using a function from a package often, it forces you to constantly retype the package name. You can use whichever method makes sense for you.
+
+
+
+## Cheatsheets and getting help
+
+
+### R Cheatsheets
+
+```{r rreferencecard, fig.cap= "The R reference card written by Tom Short is absolutely indispensable!", fig.margin = TRUE, fig.align = 'center', echo = FALSE, out.width = "500px"}
+knitr::include_graphics(c("images/rreferencess.png"))
+```
+
+Over the course of this book, you will be learning *lots* of new functions. Wouldn't it be nice if someone created a Cheatsheet / Dictionary of many common R functions? Yes it would, and thankfully several friendly R programmers have done just that. Below is a table of some of them that I recommend. I highly encourage you to print these out and start highlighting functions as you learn them!
+
+| CheatSheet| Link|
+|:--------------------|:--------|
+|     R Basics by Tom Short|    [https://cran.r-project.org/doc/contrib/Short-refcard.pdf](https://cran.r-project.org/doc/contrib/Short-refcard.pdf)|
+|     R Basics by Mhairi McNeill|    [http://github.com/rstudio/cheatsheets/raw/master/source/pdfs/base-r.pdf](http://github.com/rstudio/cheatsheets/raw/master/source/pdfs/base-r.pdf)|
+|    Advanced R by Arianne Colton and Sean Chen|    [hhttps://www.rstudio.com/wp-content/uploads/2016/02/advancedR.pdf](https://www.rstudio.com/wp-content/uploads/2016/02/advancedR.pdf)|
+|     Plotting|    [https://www.rstudio.com/wp-content/uploads/2016/10/how-big-is-your-graph.pdf](https://www.rstudio.com/wp-content/uploads/2016/10/how-big-is-your-graph.pdf)|
+
+
+### Getting R help online
+
+Here are some resources for R help and inspiration that I can highly recommend
+
+1. http://www.r-bloggers.com: R bloggers is my go-to place to discover the latest and greatest with R.
+
+2. http://blog.revolutionanalytics.com: Revolution analytics always has great R related material.
+
+3. http://www.kaggle.com: Kaggle is a really cool website that posts data analysis challenges that anyone can try to solve. It also contains a wide range of real-world datasets and tutorials.
+
+4. https://www.r-bloggers.com/learning-statistics-on-youtube/: If you like to learn with YouTube, this page contains many links to R related YouTube channels.
+
+<!-- ## Reading and writing Code -->
+
+<!-- In this book, R code is (almost) always presented in a separate gray box like this one: -->
+
+<!-- ```{r, eval = FALSE} -->
+<!-- # This is a code chunk! You should always be able to -->
+<!-- #  copy and paste code chunks into R -->
+
+<!-- 1 + 2 + 3 + 4 + 5 -->
+
+<!-- a <- 1 + 2 + 3 + 4 + 5 -->
+
+<!-- a -->
+<!-- ``` -->
+
+<!-- This is called a *code chunk*. You should always be able to directly copy and paste code chunks directly into R. If you copy a chunk and it does not work for you, it is most likely because the code refers to a package, function, or object that I defined in a previous chunk. If so, read back and look for a previous chunk that contains the missing definition. As you'll soon learn, lines that begin with \# are either comments or output from prior code that R will ignore. -->
+
+
+
+

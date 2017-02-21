@@ -1,0 +1,619 @@
+# Matrices and Dataframes {#matricesdataframes}
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+```{r, fig.cap= "Did you actually think I could talk about matrices without a Matrix reference?!", fig.margin = TRUE, echo = FALSE, out.width = "300px", fig.align='center'}
+knitr::include_graphics(c("images/matrix.jpg"))
+```
+
+
+## What are matrices and dataframes?
+
+By now, you should be comfortable with scalar and vector objects. However, you may have noticed that neither object types are appropriate for storing lots of data -- such as the results of a survey or experiment. Thankfully, R has two object types that represent large data structures much better: **matrices** and **dataframes*}**.
+
+Matrices and dataframes are very similar to spreadsheets in Excel or data files in SPSS. Every matrix or dataframe contains rows (call that number m) and columns (n). Thus, wile a vector has 1 dimension (its length), matrices and dataframes both have 2-dimensions -- representing their width and height. You can think of a matrix or dataframe as a combination of `n` vectors, where each vector has a length of `m`. See Figure \@ref(fig:scalervectormatrix) to see the shocking difference between these data objects.
+
+
+```{r scalervectormatrix, fig.cap = "scalar, Vector, Matrix... ::drops mike::", echo = FALSE}
+# scalar v vector v matrix
+
+par(mar = rep(1, 4))
+plot(1, xlim = c(0, 10), ylim = c(-.5, 5),
+     xlab = "", ylab = "",
+     xaxt = "n", yaxt = "n",
+     bty = "n", type = "n")
+
+# scalar
+rect(rep(0, 1), rep(0, 1), rep(1, 1), rep(1, 1))
+text(.5, -.5, "scalar")
+
+# Vector
+rect(rep(2, 5), 0:4, rep(3, 5), 1:5)
+text(2.5, -.5, "Vector")
+
+# Matrix
+rect(rep(4:8, each = 5),
+     rep(0:4, times = 5),
+     rep(5:9, each = 5),
+     rep(1:5, times = 5))
+text(6.5, -.5, "Matrix / Data Frame"
+     )
+```
+
+While matrices and dataframes look very similar, they aren't exactly the same. While a matrix can contain *either* character *or* numeric columns, a dataframe can contain *both* numeric and character columns. Because dataframes are more flexible, most real-world datasets, such as surveys containing both numeric (e.g.; age, response times) and character (e.g.; sex, favorite movie) data, will be stored as dataframes in R.
+
+**WTF** -- If dataframes are more flexible than matrices, why do we use matrices at all? The answer is that, because they are simpler, matrices take up less computational space than dataframes. Additionally, some functions require matrices as inputs to ensure that they work correctly.
+
+In the next section, we'll cover the most common functions for creating matrix and dataframe objects. We'll then move on to functions that take matrices and dataframes as inputs.
+
+
+
+## Creating matrices and dataframes
+
+There are a number of ways to create your own matrix and dataframe objects in R. The most common functions are presented in Table \@ref(tab:matrixfunctions). Because matrices and dataframes are just combinations of vectors, each function takes one or more vectors as inputs, and returns a matrix or a dataframe.
+
+
+| Function| Description| Example |
+|:-------------|:-------------------|:------------------------------|
+|     `cbind(a, b, c)`| Combine vectors as columns in a matrix |`cbind(1:5, 6:10, 11:15)`     |
+|     `rbind(a, b, c)`| Combine vectors as rows in a matrix|`rbind(1:5, 6:10, 11:15)`    |
+|     `matrix(x, nrow, ncol, byrow)`| Create a matrix from a vector `x`   | `matrix(x = 1:12, nrow = 3, ncol = 4)` |
+|     `data.frame()`|  Create a dataframe from named columns | `data.frame("age" = c(19, 21),` <br>`sex = c("m", "f"))` |
+
+Table: (\#tab:matrixfunctions) Functions to create matrices and dataframes.
+
+### `cbind()`, `rbind()`
+
+`cbind()` and `rbind()` both create matrices by combining several vectors of the same length. `cbind()` combines vectors as columns, while `rbind()` combines them as rows.
+
+Let's use these functions to create a matrix with the numbers 1 through 30. First, we'll create three vectors of length 10, then we'll combine them into one matrix. As you will see, the `cbind()` function will combine the vectors as columns in the final matrix, while the `rbind()` function will combine them as rows.
+
+
+```{r}
+x <- 1:5
+y <- 6:10
+z <- 11:15
+
+# Create a matrix where x, y and z are columns
+cbind(x, y, z)
+
+# Create a matrix where x, y and z are rows
+rbind(x, y, z)
+```
+
+
+### `matrix()`
+
+**Remember**: Matrices can either contain numbers *or* character vectors, not both!. If you try to create a matrix with both numbers and characters, it will turn all the numbers into characters:
+
+```{r}
+# Creating a matrix with numeric and character columns will make everything a character:
+
+cbind(c(1, 2, 3, 4, 5),
+      c("a", "b", "c", "d", "e"))
+```
+
+
+The `matrix()` function creates a matrix form a single vector of data. The function has 3 main inputs: `data` -- a vector of data, `nrow` -- the number of rows you want in the matrix, and `ncol` -- the number of columns you want in the matrix, and `byrow` -- a logical value indicating whether you want to fill the matrix by rows. Check out the help menu for the matrix function (`?matrix) to see some additional inputs.
+
+Let's use the `matrix()` function to re-create a matrix containing the values from 1 to 10.
+
+```{r}
+# Create a matrix of the integers 1:10,
+#  with 5 rows and 2 columns
+
+matrix(data = 1:10,
+       nrow = 5,
+       ncol = 2)
+
+# Now with 2 rows and 5 columns
+matrix(data = 1:10,
+       nrow = 2,
+       ncol = 5)
+
+# Now with 2 rows and 5 columns, but fill by row instead of columns
+matrix(data = 1:10,
+       nrow = 2,
+       ncol = 5,
+       byrow = TRUE)
+```
+
+
+### `data.frame()`
+
+To create a dataframe from vectors, use the `data.frame()` function. The `data.frame()` function works very similarly to `cbind()` -- the only difference is that in `data.frame()` you specify names to each of the columns as you define them. Again, unlike matrices, dataframes can contain *both* string vectors and numeric vectors within the same object. Because they are more flexible than matrices, most large datasets in R will be stored as dataframes.
+
+Let's create a simple dataframe called `survey` using the `data.frame()` function with a mixture of text and numeric columns:
+
+```{r}
+# Create a dataframe of survey data
+
+survey <- data.frame("index" = c(1, 2, 3, 4, 5),
+                     "sex" = c("m", "m", "m", "f", "f"),
+                     "age" = c(99, 46, 23, 54, 23))
+survey
+```
+
+
+#### `stringsAsFactors = FALSE`
+
+Thre is one key argument to `data.frame()` and similar functions called `stringsAsFactors`. By default, the `data.frame()` function will automctailly convert any string columns to a specific type of object called a **factor** in R. A factor is nominal variable that has a well-specified possible set of values that it can take on. For example, one can create a factor `sex` that can *only* take on the values `"male"` and `"female"`.
+
+However, as I'm sure you're discover, having R automatically convert your string data to factors can lead to lots of strange results. For example: if you have a factor of sex data, but then you want to add a new value called `other`, R will yell at you and return an error. I *hate*, *hate*, *HATE* when this happens. While there are very, very rare cases when I find factors use ful, I almost always don't want or need them. For this reason, I avoid them at all costs.
+
+To tell R to *not* convert your string columns to factors, you need to include the argument `stringsAsFactors = FALSE` when using functions such as `data.frame()`
+
+For example, let's look at the clases of the columns in the dataframe `survey` that we just created using the `str()` function (we'll go over this function in section XXX)
+
+```{r}
+# Show me the structure of the survey dataframe
+str(survey)
+```
+
+AAAAA!!! R has converted the column `sex` to a factor with *only* two possible levels! This can cause major problems later! Let's create the dataframe again using the argument `stringsAsFactors = FALSE` to make sure that this doesn't happen:
+
+```{r}
+# Create a dataframe of survey data WITHOUT factors
+survey <- data.frame("index" = c(1, 2, 3, 4, 5),
+                     "sex" = c("m", "m", "m", "f", "f"),
+                     "age" = c(99, 46, 23, 54, 23),
+                     stringsAsFactors = FALSE)
+```
+
+Now let's look at the new version and make sure there are no factors:
+
+```{r}
+# Print the result (it looks the same as before)
+survey
+
+# Look at the structure: no more factors!
+str(survey)
+```
+
+
+### Dataframes pre-loaded in R
+
+Now you know how to use functions like `cbind()` and `data.frame()` to manually create your own matrices and dataframes in R. However, for demonstration purposes, it's frequently easier to use existing dataframes rather than always having to create your own. Thankfully, R has us covered: R has several datasets that come pre-installed in a package called `datasets` -- you don't need to install this package, it's included in the base R software. While you probably won't make any major scientific discoveries with these datasets, they allow all R users to test and compare code on the same sets of data. To see a complete list of all the datasets included in the `datasets` package, run the code: `library(help = "datasets")`. Table \@ref(tab:datasets) shows a few datasets that we will be using in future examples:
+
+
+| Dataset| Description| Rows | Columns | 
+|:-----------|:-----------------------------|:----|:-----|
+|     `ChickWeight`|  Experiment on the effect of diet on early growth of chicks. | 578 | 4 |
+|     `InsectSprays`| The counts of insects in agricultural experimental units treated with different insecticides. | 72 | 2 |
+|     `ToothGrowth`| Length of odontoblasts (cells responsible for tooth growth) in 60 guinea pigs.  | 60 | 3 |
+|     `PlantGrowth`|Results from an experiment to compare yields (as measured by dried weight of plants) obtained under a control and two different treatment conditions. | 30 | 2 |
+
+Table: (\#tab:datasets) A few datasets you can access in R.
+
+## Matrix and dataframe functions
+
+R has lots of functions for viewing matrices and dataframes and returning information about them. Table \@ref(tab:dataframefunctions) shows some of the most common:
+
+| Function| Description| 
+|:------------------------|:-----------------------------|
+|     `head(x), tail(x)`| Print the first few rows (or last few rows). | 
+|     `View(x)`| Open the entire object in a new window | 
+|     `nrow(x), ncol(x), dim(x)`| Count the number of rows and columns  | 
+|     `rownames(), colnames(), names()`| Show the row (or column) names   | 
+|     `str(x), summary(x)`| Show the structure of the dataframe (ie., dimensions and classes) and summary statistics| 
+
+Table: (\#tab:dataframefunctions) Important functions for understanding matrices and dataframes.
+
+### `head(), tail(), View()`
+
+To see the first few rows of a dataframe, use `head()`, to see the last few rows, use `tail()`
+
+```{r}
+# head() shows the first few rows
+head(ChickWeight)
+
+# tail() shows he last few rows
+tail(ChickWeight)
+```
+
+
+To see an entire dataframe in a separate window that looks like spreadsheet, use `View()`
+
+```{r, eval = FALSE}
+# View() opens the entire dataframe in a new window
+View(ChickWeight)
+```
+
+When you run `View()`, you'll see a new window like the one in Figure \@ref(fig:viewchicks)
+
+
+```{r viewchicks, fig.cap= "Screenshot of the window from View(ChickWeight). You can use this window to visually sort and filter the data to get an idea of how it looks, but you can't add or remove data and nothing you do will actually change the dataframe.", fig.margin = TRUE, echo = FALSE, out.width = "500px", fig.align='center'}
+knitr::include_graphics(c("images/chickweightscreenshot.png"))
+```
+
+### `summary()`, `str()`
+
+To get summary statistics on all columns in a dataframe, use the `summary()` function:
+
+```{r}
+# Print summary statistics of ToothGrowth to the console
+summary(ToothGrowth)
+```
+
+To learn about the classes of columns in a dataframe, in addition to some other summary information, use the `str()` (structure) function. This function returns information for more advanced R users, so don't worry if the output looks confusing.
+
+```{r}
+# Print additional information about ToothGrowth to the console
+str(ToothGrowth)
+```
+
+Here, we can see that `ToothGrowth` is a dataframe with 60 observations (ie., rows) and 3 variables (ie., columns). We can also see that the column names are `len`, `supp`, and `dose`
+
+
+
+## Dataframe column names
+
+One of the nice things about dataframes is that each column will have a name. You can use these name to access specific columns by name without having to know which column number it is.
+
+
+To access the names of a dataframe, use the function `names()`. This will return a string vector with the names of the dataframe. Let's use `names()` to get the names of the `ToothGrowth` dataframe:
+
+```{r}
+# What are the names of columns in the ToothGrowth dataframe?
+names(ToothGrowth)
+```
+
+
+To access a specific column in a dataframe by name, you use the `$` operator in the form `df$name` where `df` is the name of the dataframe, and `name` is the name of the column you are interested in. This operation will then return the column you want as a vector.
+
+
+Let's use the `$` operator to get a vector of just the length column (called `len`) from the `ToothGrowth` dataframe:
+
+```{r}
+# Return the len column of ToothGrowth
+ToothGrowth$len
+```
+
+Because the `$` operator returns a vector, you can easily calculate descriptive statistics on columns of a dataframe by applying your favorite vector function (like `mean()` or `table()`) to a column using `$`. Let's calculate the mean tooth length with `mean()`, and the frequency of each supplement with `table()`:
+
+```{r}
+# What is the mean of the len column of ToothGrowth?
+mean(ToothGrowth$len)
+
+# Give me a table of the supp column of ToothGrowth.
+table(ToothGrowth$supp)
+```
+
+
+If you want to access several columns by name, you can forgo the \$ operator, and put a character vector of column names in brackets: 
+```{r}
+# Give me the len AND supp columns of ToothGrowth
+head(ToothGrowth[c("len", "supp")])
+```
+
+
+### Adding new columns
+
+You can add new columns to a dataframe using the `$` and assignment `<-` operators. To do this, just use the `df$name` notation and assign a new vector of data to it. 
+
+For example, let's create a dataframe called `survey` with two columns: `index` and `age`:
+```{r}
+# Create a new dataframe called survey
+survey <- data.frame("index" = c(1, 2, 3, 4, 5),
+                     "age" = c(24, 25, 42, 56, 22))
+
+survey
+```
+
+Now, let's add a new column called `sex` with a vector of sex data:
+
+```{r}
+# Add a new column called sex to survey
+survey$sex <- c("m", "m", "f", "f", "m")
+```
+
+Here's the result
+
+```{r}
+# survey with new sex column
+survey
+```
+
+As you can see, `survey` has a new column with the name `sex` with the values we specified earlier. 
+
+### Changing column names
+
+To change the name of a column in a dataframe, just use a combination of the `names()` function, indexing, and reassignment. 
+
+```{r eval = FALSE}
+# Change name of 1st column of df to "a"
+names(df)[1] <- "a"
+
+# Change name of 2nd column of df to "b"
+names(df)[2] <- "b"
+```
+
+For example, let's change the name of the first column of `survey` from `index` to `participant.number`
+
+```{r}
+# Change the name of the first column of survey to "participant.number"
+names(survey)[1] <- "participant.number"
+survey
+```
+
+**Warning!!!**: Change column names with logical indexing to avoid errors!
+
+Now, there is one major potential problem with my method above -- I had to manually enter the value of 1. But what if the column I want to change isn't in the first column (either because I typed it wrong or because the order of the columns changed)? This could lead to serious problems later on.
+
+To avoid these issues, it's better to change column names using a logical vector using the format `names(df)[names(df) == "old.name"] <- "new.name"`. Here's how to read this: "Change the names of `df`, but only where the original name was `"old.name"`, to `"new.name"`.
+
+Let's use logical indexing to change the name of the column `survey$age` to `survey$years`:
+
+```{r}
+# Change the column name from age to age.years
+names(survey)[names(survey) == "age"] <- "years"
+survey
+```
+
+
+
+## Slicing dataframes
+
+Once you have a dataset stored as a matrix or dataframe in R, you'll want to start accessing specific parts of the data based on some criteria. For example, if your dataset contains the result of an experiment comparing different experimental groups, you'll want to calculate statistics for each experimental group separately. The process of selecting specific rows and columns of data based on some criteria is commonly known as *slicing*. 
+
+
+```{r, fig.cap= "Slicing and dicing data. The turnip represents your data, and the knife represents indexing with brackets, or subsetting functions like subset(). The red-eyed clown holding the knife is just off camera.", fig.margin = TRUE, echo = FALSE, out.width = "250px", fig.align='center'}
+knitr::include_graphics(c("images/turnip.jpg"))
+```
+
+
+
+### Slicing with `[, ]`
+
+Just like vectors, you can access specific data in dataframes using brackets. But now, instead of just using one indexing vector, we use two indexing vectors: one for the rows and one for the columns. To do this, use the notation `data[rows, columns]`, where `rows` and `columns` are vectors of integers.
+
+```{r eval = FALSE}
+# Return row 1
+df[1, ]
+
+# Return column 5
+df[, 5]
+
+# Rows 1:5 and column 2
+df[1:5, 2]
+```
+
+
+
+
+```{r, fig.cap= "Ah the ToothGrowth dataframe. Yes, one of the dataframes stored in R contains data from an experiment testing the effectiveness of different doses of Vitamin C supplements on the growth of guinea pig teeth. The images I found by Googling ``guinea pig teeth'' were all pretty horrifying, so let's just go with this one.", fig.margin = TRUE, echo = FALSE, out.width = "300px", fig.align='center'}
+knitr::include_graphics(c("images/guineapig.jpg"))
+```
+
+
+```{r echo = FALSE}
+knitr::kable(head(ToothGrowth), caption = "First few rows of the ToothGrowth dataframe.")
+```
+
+
+
+Let's try indexing the `ToothGrowth` dataframe. Again, the `ToothGrowth` dataframe represents the results of a study testing the effectiveness of different types of supplements on the length of guinea pig's teeth. First, let's look at the entries in rows 1 through 5, and column 1:
+
+
+```{r}
+# Give me the rows 1-6 and column 1 of ToothGrowth
+ToothGrowth[1:6, 1]
+```
+
+
+Because the first column is `len`, the primary dependent measure, this means that the tooth lengths in the first 5 observations are `r ToothGrowth[1:6, 1]`.
+
+Of course, you can index matrices and dataframes with longer vectors to get more data. Now, let's look at the first 3 rows of columns 1 and 3:
+
+```{r}
+# Give me rows 1-3 and columns 1 and 3 of ToothGrowth
+ToothGrowth[1:3, c(1,3)]
+```
+
+If you want to look at an entire row or an entire column of a matrix or dataframe, you can leave the corresponding index blank. For example, to see the entire 1st row of the `ToothGrowth` dataframe, we can set the row index to 1, and leave the column index blank:
+
+```{r}
+# Give me the 1st row (and all columns) of ToothGrowth
+ToothGrowth[1, ]
+```
+
+Similarly, to get the entire 2nd column, set the column index to 2 and leave the row index blank:
+
+```{r}
+# Give me the 2nd column (and all rows) of ToothGrowth
+ToothGrowth[, 2]
+```
+
+
+Many, if not all, of the analyses you will be doing will be on subsets of data, rather than entire datasets. For example, if you have data from an experiment, you may wish to calculate the mean of participants in one group separately from another. To do this, we'll use *subsetting* -- selecting subsets of data based on some criteria. To do this, we can use one of two methods: indexing with logical vectors, or the `subset()` function. We'll start with logical indexing first.
+
+
+### Slicing with logical vectors
+
+Indexing dataframes with logical vectors is almost identical to indexing single vectors. First, we create a logical vector containing only TRUE and FALSE values. Next, we index a dataframe (typically the rows) using the logical vector to return *only* values for which the logical vector is TRUE.
+
+For example, to create a new dataframe called `ToothGrowth.VC` containing only data from the guinea pigs who were given the VC supplement, we'd run the following code:
+
+```{r}
+# Create a new df with only the rows of ToothGrowth
+#  where supp equals VC
+ToothGrowth.VC <- ToothGrowth[ToothGrowth$supp == "VC", ]
+```
+
+Of course, just like we did with vectors, we can make logical vectors based on multiple criteria -- and then index a dataframe based on those criteria. For example, let's create a dataframe called `ToothGrowth.OJ.a` that contains data from the guinea pigs who were given an OJ supplement with a dose less than 1.0:
+
+```{r}
+# Create a new df with only the rows of ToothGrowth
+#  where supp equals OJ and dose < 1
+
+ToothGrowth.VC.a <- ToothGrowth[ToothGrowth$supp == "OJ" &
+                                ToothGrowth$dose < 1, ]
+```
+
+
+Indexing with brackets is the standard way to slice and dice dataframes. However, the code can get a bit messy. A more elegant method is to use the `subset()` function.
+
+### Slicing with `subset()`
+
+```{r, fig.cap= "The subset() function is like a lightsaber. An elegant function from a more civilized age.", fig.margin = TRUE, echo = FALSE, out.width = "400px", fig.align='center'}
+knitr::include_graphics(c("images/saber.jpeg"))
+```
+
+The `subset()` function is one of the most useful data management functions in R. It allows you to slice and dice datasets just like you would with brackets, but the code is much easier to write: Table \@ref(tab:subsetfunction) shows the main arguments to the `subset()` function:
+
+| Argument| Description| 
+|:------------------------|:-----------------------------|
+|     `x`| A dataframe you want to subset| 
+|     `subset`| A logical vector indicating the rows to keep | 
+|     `select`| The columns you want to keep | 
+
+Table: (\#tab:subsetfunction) Main arguments for the `subset()` function.
+
+
+Let's use the `subset()` function to create a new, subsetted dataset from the `ToothGrowth` dataframe containing data from guinea pigs who had a tooth length less than 20cm (`len < 20`), given the OJ supplement (`supp == "OJ"`), and with a dose greater than or equal to 1 (`dose >= 1`):
+
+```{r}
+# Get rows of ToothGrowth where len < 20 AND supp == "OJ" AND dose >= 1
+
+subset(x = ToothGrowth,
+      subset = len < 20 &
+               supp == "OJ" &
+               dose >= 1)
+```
+
+As you can see, there were only two cases that satisfied all 3 of our selection criteria.
+
+In the example above, I didn't specify an input to the `select` argument because I wanted all columns. However, if you just want certain columns, you can just name the columns you want in the `select` argument:
+
+```{r}
+# Get rows of ToothGrowth where len > 30 AND supp == "VC", but only return the len and index columns
+
+subset(x = ToothGrowth,
+      subset = len > 30 &
+               supp == "VC",
+      select = c(len, index))
+```
+
+
+## Combining slicing with functions
+
+Now that you know how to slice and dice dataframes using indexing and `subset()`, you can easily combine slicing and dicing with statistical functions to calculate summary statistics on groups of data. For example, the following code will calculate the mean tooth length of guinea pigs with the OJ supplement using the `subset()` function:
+
+```{r}
+# What is the mean tooth length of Guinea pigs given OJ?
+
+# Step 1: Create a subsettted dataframe called oj
+
+oj <- subset(x = ToothGrowth,
+             subset = supp == "OJ")
+
+# Step 2: Calculate the mean of the len column from
+#  the new subsetted dataset
+
+mean(oj$len)
+```
+
+We can also get the same solution using logical indexing:
+
+```{r}
+# Step 1: Create a subsettted dataframe called oj
+oj <- ToothGrowth[ToothGrowth$supp == "OJ",]
+
+# Step 2: Calculate the mean of the len column from
+#  the new subsetted dataset
+mean(oj$len)
+```
+
+Or heck, we can do it all in one line by only referring to column vectors:
+
+```{r}
+mean(ToothGrowth$len[ToothGrowth$supp == "OJ"])
+```
+
+As you can see, R allows for many methods to accomplish the same task. The choice is up to you.
+
+### `with()`
+
+The `with()` function helps to save you some typing when you are using multiple columns from a dataframe. Specifically, it allows you to specify a dataframe (or any other object in R) once at the beginning of a line -- then, for every object you refer to in the code in that line, R will assume you're referring to that object in an expression.
+
+For example, let's create a dataframe called `health` with some health information:
+
+```{r}
+health <- data.frame("age" = c(32, 24, 43, 19, 43),
+                     "height" = c(1.75, 1.65, 1.50, 1.92, 1.80),
+                     "weight" = c(70, 65, 62, 79, 85))
+
+health
+```
+
+Now let's say we want to add a new column called `bmi` which represents a person's body mass index. The formula for bmi is $bmi = \frac{height}{weight^{2}} \times 703$. If we wanted to calculate the bmi of each person, we'd need to write `health$height / health$weight ^ 2`:
+
+```{r}
+# Calculate bmi
+health$weight / health$height ^ 2
+```
+
+As you can see, we have to retype the name of the dataframe for each column. However, using the `with()` function, we can make it a bit easier by saying the name of the dataframe once.
+
+```{r}
+# Save typing by using with()
+with(health, weight / height ^ 2)
+```
+
+As you can see, the results are identical. In this case, we didn't save so much typing. But if you are doing many calculations, then `with()` can save you a lot of typing. For example, contrast these two lines of code that perform identical calculations:
+
+```{r}
+# Long code
+health$weight + health$height / health$age + 2 * health$height
+
+# Short code that does the same thing
+with(health, weight + height / age + 2 * height)
+```
+
+## Test your R might! Pirates and superheroes
+
+
+```{r, fig.cap= "This is a lesser-known superhero named Maggott who could 'transform his body to get superhuman strength and endurance, but to do so he needed to release two huge parasitic worms from his stomach cavity and have them eat things' (http://heavy.com/comedy/2010/04/the-20-worst-superheroes/). Yeah...I'm shocked this guy wasn't a hit.", fig.margin = TRUE, echo = FALSE, out.width = "300px", fig.align='center'}
+knitr::include_graphics(c("images/maggot.jpg"))
+```
+
+
+
+The following table shows the results of a survey of 10 pirates. In addition to some basic demographic information, the survey asked each pirate "What is your favorite superhero?"" and "How many tattoos do you have?""
+
+```{r echo = FALSE}
+superhero <- data.frame(
+  Name = c("Astrid", "Lea", "Sarina", "Remon", "Letizia", "Babice", "Jonas", "Wendy", "Niveditha", "Gioia"),
+  Sex = c("F", "F", "F", "M", "F", "F", "M", "F", "F", "F"),
+  Age = c(30, 25, 25, 29, 22, 22, 35, 19, 32, 21),
+  Superhero = c("Batman", "Superman", "Batman", "Spiderman", "Batman",
+               "Antman", "Batman", "Superman", "Maggott", "Superman"),
+  Tattoos = c(11, 15, 12, 5, 65, 3, 9, 13, 900, 0)
+)
+
+knitr::kable(superhero)
+```
+
+
+1. Combine the data into a single dataframe. Complete all the following exercises from the dataframe!
+  
+2. What is the median age of the 10 pirates?
+  
+3. What was the mean age of female and male pirates separately?
+  
+4. What was the most number of tattoos owned by a male pirate?
+  
+5. What percent of pirates under the age of 32 were female?
+  
+6. What percent of female pirates are under the age of 32?
+  
+7. Add a new column to the dataframe called `tattoos.per.year` which shows how many tattoos each pirate has for each year in their life.
+  
+8. Which pirate had the most number of tattoos per year?
+  
+9. What are the names of the female pirates whose favorite superhero is Superman?
+  
+10. What was the median number of tattoos of pirates over the age of 20 whose favorite superhero is Spiderman?
+  

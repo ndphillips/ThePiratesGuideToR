@@ -1,0 +1,768 @@
+\documentclass[]{book}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={YaRrr! The Pirate's Guide to R},
+            pdfauthor={Nathaniel D. Phillips},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{natbib}
+\bibliographystyle{apalike}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{{#1}}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{{#1}}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
+\newcommand{\ImportTok}[1]{{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{{#1}}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{{#1}}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{{#1}}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{{#1}}}}
+\newcommand{\BuiltInTok}[1]{{#1}}
+\newcommand{\ExtensionTok}[1]{{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{{#1}}}
+\newcommand{\RegionMarkerTok}[1]{{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{{#1}}}}
+\newcommand{\NormalTok}[1]{{#1}}
+\usepackage{longtable,booktabs}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+  \title{YaRrr! The Pirate's Guide to R}
+  \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+  \author{Nathaniel D. Phillips}
+  \preauthor{\centering\large\emph}
+  \postauthor{\par}
+  \predate{\centering\large\emph}
+  \postdate{\par}
+  \date{2017-02-21}
+
+\usepackage{booktabs}
+\usepackage{amsthm}
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=8pt plus 2pt minus 4pt
+  \thm@postskip=\thm@preskip
+}
+\makeatother
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\chapter{Preface}\label{intro}
+
+\chapter{Getting Started}\label{started}
+
+\chapter{Jump In!}\label{jumpin}
+
+\chapter{The Basics}\label{basics}
+
+\chapter{Scalers and vectors}\label{scalersvectors}
+
+\chapter{Vector functions}\label{vectorfunctions}
+
+\chapter{Indexing Vectors}\label{vectorindexing}
+
+\chapter{Chapter solutions}\label{chapter-solutions}
+
+\section{Chapter 4: The Basics}\label{chapter-4-the-basics}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Which (if any) of the following objects names is/are invalid?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{thisone <-}\StringTok{ }\DecValTok{1}
+\NormalTok{THISONE <-}\StringTok{ }\DecValTok{2}
+\NormalTok{this.one <-}\StringTok{ }\DecValTok{3}
+\NormalTok{This}\FloatTok{.1} \NormalTok{<-}\StringTok{ }\DecValTok{4}
+\NormalTok{ThIS.....ON...E <-}\StringTok{ }\DecValTok{5}
+\NormalTok{This!One!}\StringTok{ }\ErrorTok{<}\NormalTok{-}\StringTok{ }\DecValTok{6}           \CommentTok{# only this one!}
+\NormalTok{lkjasdfkjsdf <-}\StringTok{ }\DecValTok{7}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  2015 was a good year for pirate booty - your ship collected 100,000
+  gold coins. Create an object called \texttt{gold.in.2015} and assign
+  the correct value to it.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gold.in}\FloatTok{.2015} \NormalTok{<-}\StringTok{ }\DecValTok{100800}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Oops, during the last inspection we discovered that one of your
+  pirates Skippy McGee hid 800 gold coins in his underwear. Go ahead and
+  add those gold coins to the object \texttt{gold.in.2015}. Next, create
+  an object called \texttt{plank.list} with the name of the pirate
+  thief.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gold.in}\FloatTok{.2015} \NormalTok{<-}\StringTok{ }\NormalTok{gold.in}\FloatTok{.2015} \NormalTok{+}\StringTok{ }\DecValTok{800}
+\NormalTok{plank.list <-}\StringTok{ "Skippy McGee"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Look at the code below. What will R return after the third line? Make
+  a prediction, then test the code yourself.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a <-}\StringTok{ }\DecValTok{10}
+\NormalTok{a +}\StringTok{ }\DecValTok{10}
+\NormalTok{a       }\CommentTok{# It will return 10 because we never re-assigned a!}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Chapter 5: Scalers and
+vectors}\label{chapter-5-scalers-and-vectors}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Create the vector {[}1, 2, 3, 4, 5, 6, 7, 8, 9, 10{]} in three ways:
+  once using \texttt{c()}, once using \texttt{a:b}, and once using
+  \texttt{seq()}.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  1  2  3  4  5  6  7  8  9 10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\NormalTok{:}\DecValTok{10}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  1  2  3  4  5  6  7  8  9 10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{seq}\NormalTok{(}\DataTypeTok{from =} \DecValTok{1}\NormalTok{, }\DataTypeTok{to =} \DecValTok{10}\NormalTok{, }\DataTypeTok{by =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  1  2  3  4  5  6  7  8  9 10
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Create the vector {[}2.1, 4.1, 6.1, 8.1{]} in two ways, once using
+  \texttt{c()} and once using \texttt{seq()}
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{c}\NormalTok{(}\FloatTok{2.1}\NormalTok{, }\FloatTok{6.1}\NormalTok{, }\FloatTok{6.1}\NormalTok{, }\FloatTok{8.1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2.1 6.1 6.1 8.1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{seq}\NormalTok{(}\DataTypeTok{from =} \FloatTok{2.1}\NormalTok{, }\DataTypeTok{to =} \FloatTok{8.1}\NormalTok{, }\DataTypeTok{by =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2.1 4.1 6.1 8.1
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Create the vector {[}0, 5, 10, 15{]} in 3 ways: using \texttt{c()},
+  \texttt{seq()} with a \texttt{by} argument, and \texttt{seq()} with a
+  \texttt{length.out} argument.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{15}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  0  5 10 15
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{seq}\NormalTok{(}\DataTypeTok{from =} \DecValTok{0}\NormalTok{, }\DataTypeTok{to =} \DecValTok{15}\NormalTok{, }\DataTypeTok{by =} \DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  0  5 10 15
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{seq}\NormalTok{(}\DataTypeTok{from =} \DecValTok{0}\NormalTok{, }\DataTypeTok{to =} \DecValTok{15}\NormalTok{, }\DataTypeTok{length.out =} \DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  0  5 10 15
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Create the vector {[}101, 102, 103, 200, 205, 210, 1000, 1100, 1200{]}
+  using a combination of the \texttt{c()} and \texttt{seq()} functions
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{c}\NormalTok{(}\KeywordTok{seq}\NormalTok{(}\DataTypeTok{from =} \DecValTok{101}\NormalTok{, }\DataTypeTok{to =} \DecValTok{103}\NormalTok{, }\DataTypeTok{by =} \DecValTok{3}\NormalTok{), }
+  \KeywordTok{seq}\NormalTok{(}\DataTypeTok{from =} \DecValTok{200}\NormalTok{, }\DataTypeTok{to =} \DecValTok{210}\NormalTok{, }\DataTypeTok{by =} \DecValTok{5}\NormalTok{), }
+  \KeywordTok{seq}\NormalTok{(}\DataTypeTok{from =} \DecValTok{1000}\NormalTok{, }\DataTypeTok{to =} \DecValTok{1200}\NormalTok{, }\DataTypeTok{by =} \DecValTok{100}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  101  200  205  210 1000 1100 1200
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  A new batch of 100 pirates are boarding your ship and need new swords.
+  You have 10 scimitars, 40 broadswords, and 50 cutlasses that you need
+  to distribute evenly to the 100 pirates as they board. Create a vector
+  of length 100 where there is 1 scimitar, 4 broadswords, and 5
+  cutlasses in each group of 10. That is, in the first 10 elements there
+  should be exactly 1 scimitar, 4 broadswords and 5 cutlasses. The next
+  10 elements should also have the same number of each sword (and so
+  on).
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{swords <-}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"scimitar"}\NormalTok{, }\KeywordTok{rep}\NormalTok{(}\StringTok{"broadswoard"}\NormalTok{, }\DecValTok{4}\NormalTok{), }\KeywordTok{rep}\NormalTok{(}\StringTok{"cutlass"}\NormalTok{, }\DecValTok{5}\NormalTok{)), }\DataTypeTok{times =} \DecValTok{100}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(swords)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "scimitar"    "broadswoard" "broadswoard" "broadswoard" "broadswoard"
+## [6] "cutlass"
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Create a vector that repeats the integers from 1 to 5, 10 times. That
+  is {[}1, 2, 3, 4, 5, 1, 2, 3, 4, 5, \ldots{}{]}. The length of the
+  vector should be 50!
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{:}\DecValTok{5}\NormalTok{, }\DataTypeTok{times =} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5
+## [36] 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  Now, create the same vector as before, but this time repeat 1, 10
+  times, then 2, 10 times, etc., That is {[}1, 1, 1, \ldots{}, 2, 2, 2,
+  \ldots{}, \ldots{} 5, 5, 5{]}. The length of the vector should also be
+  50
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{:}\DecValTok{5}\NormalTok{, }\DataTypeTok{each =} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3 4 4 4 4 4
+## [36] 4 4 4 4 4 5 5 5 5 5 5 5 5 5 5
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{7}
+\tightlist
+\item
+  Create a vector containing 50 samples from a Normal distribution with
+  a population mean of 20 and standard deviation of 2.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rnorm}\NormalTok{(}\DataTypeTok{n =} \DecValTok{50}\NormalTok{, }\DataTypeTok{mean =} \DecValTok{20}\NormalTok{, }\DataTypeTok{sd =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 21.57679 20.27152 21.59335 20.20740 18.87735 21.82037 19.17224
+##  [8] 24.48366 18.45996 24.64259 23.44068 17.63007 22.00316 19.94066
+## [15] 21.83414 22.18860 21.30814 24.53073 19.67244 19.92957 19.83128
+## [22] 21.01343 20.08321 21.34635 17.73714 18.42768 20.19274 18.39513
+## [29] 20.73091 20.67682 16.01616 21.96972 21.88846 17.06943 16.90655
+## [36] 19.18042 19.06928 19.39397 19.52724 22.59737 19.13177 19.22890
+## [43] 21.58850 20.38277 18.30072 20.11989 19.89328 22.10367 19.42043
+## [50] 19.57934
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{8}
+\tightlist
+\item
+  Create a vector containing 25 samples from a Uniform distribution with
+  a lower bound of -100 and an upper bound of -50.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{runif}\NormalTok{(}\DataTypeTok{n =} \DecValTok{25}\NormalTok{, }\DataTypeTok{min =} \NormalTok{-}\DecValTok{100}\NormalTok{, }\DataTypeTok{max =} \NormalTok{-}\DecValTok{50}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] -58.42677 -63.11824 -61.29505 -96.01717 -79.79146 -81.19144 -61.69489
+##  [8] -64.18679 -52.28968 -55.43486 -80.57633 -70.13589 -68.45541 -83.98283
+## [15] -90.09987 -68.60028 -78.45546 -98.83198 -95.89134 -88.96217 -82.36385
+## [22] -86.61534 -90.95168 -67.64108 -64.61321
+\end{verbatim}
+
+\section{Chapter 4: Vector Functions}\label{chapter-4-vector-functions}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Create a vector that shows the square root of the integers from 1 to
+  10.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(}\DecValTok{1}\NormalTok{:}\DecValTok{10}\NormalTok{) ^}\StringTok{ }\NormalTok{.}\DecValTok{5}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 1.000000 1.414214 1.732051 2.000000 2.236068 2.449490 2.645751
+##  [8] 2.828427 3.000000 3.162278
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#or}
+
+\KeywordTok{sqrt}\NormalTok{(}\DecValTok{1}\NormalTok{:}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 1.000000 1.414214 1.732051 2.000000 2.236068 2.449490 2.645751
+##  [8] 2.828427 3.000000 3.162278
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Renata thinks that she finds more treasure when she's had a mug of
+  grogg than when she doesn't. To test this, she recorded how much
+  treasure she found over 7 days without drinking any grogg (ie.,
+  sober), and then did the same over 7 days while drinking grogg (ie.,
+  drunk). Here are her results:
+\end{enumerate}
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-15}Renata's treasure haul when she was sober and when she was drunk}
+\centering
+\begin{tabular}[t]{l|r|r}
+\hline
+day & sober & drunk\\
+\hline
+Monday & 2 & 0\\
+\hline
+Tuesday & 0 & 0\\
+\hline
+Wednesday & 3 & 1\\
+\hline
+Thursday & 1 & 0\\
+\hline
+Friday & 0 & 1\\
+\hline
+Saturday & 3 & 2\\
+\hline
+Sunday & 5 & 2\\
+\hline
+\end{tabular}
+\end{table}
+
+How much treasure did Renata find on average whe she was sober? What
+about when she was drunk?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sober <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{)}
+\NormalTok{drunk <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+
+\KeywordTok{mean}\NormalTok{(sober)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{mean}\NormalTok{(drunk)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.8571429
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Using Renata's data again, create a new vector called
+  \texttt{difference} that shows how much more treasure Renata found
+  when she was drunk and when she was not. What was the mean, median,
+  and standard deviation of the difference?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{difference <-}\StringTok{ }\NormalTok{sober -}\StringTok{ }\NormalTok{drunk}
+
+\KeywordTok{mean}\NormalTok{(difference)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.142857
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{median}\NormalTok{(difference)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sd}\NormalTok{(difference)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.345185
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  There's an old parable that goes something like this. A man does some
+  work for a king and needs to be paid. Because the man loves rice (who
+  doesn't?!), the man offers the king two different ways that he can be
+  paid. \emph{You can either pay me 100 kilograms of rice, or, you can
+  pay me as follows: get a chessboard and put one grain of rice in the
+  top left square. Then put 2 grains of rice on the next square,
+  followed by 4 grains on the next, 8 grains on the next\ldots{}and so
+  on, where the amount of rice doubles on each square, until you get to
+  the last square. When you are finished, give me all the grains of rice
+  that would (in theory), fit on the chessboard.} The king, sensing that
+  the man was an idiot for making such a stupid offer, immediately
+  accepts the second option. He summons a chessboard, and begins
+  counting out grains of rice one by one\ldots{} Assuming that there are
+  64 squares on a chessboard, calculate how many grains of rice the main
+  will receive. If one grain of rice weights 1/64000 kilograms, how many
+  kilograms of rice did he get? \emph{Hint: If you have trouble coming
+  up with the answer, imagine how many grains are on the first, second,
+  third and fourth squares, then try to create the vector that shows the
+  number of grains on each square. Once you come up with that vector,
+  you can easily calculate the final answer with the \texttt{sum()}
+  function.}
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# First, let's create a vector of the amount of rice on each square:}
+\NormalTok{rice <-}\StringTok{ }\DecValTok{2} \NormalTok{^}\StringTok{ }\NormalTok{(}\DecValTok{1}\NormalTok{:}\DecValTok{64}\NormalTok{)}
+
+\CommentTok{# Here are the first few spaces}
+\KeywordTok{head}\NormalTok{(rice)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  2  4  8 16 32 64
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# The result is just the sum!}
+\NormalTok{rice.total <-}\StringTok{ }\KeywordTok{sum}\NormalTok{(rice)}
+\NormalTok{rice.total}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3.689349e+19
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# How much does that weigh? Each grain weights 1/6400 kilograms:}
+\NormalTok{rice.kg <-}\StringTok{ }\KeywordTok{sum}\NormalTok{(rice) *}\StringTok{ }\DecValTok{1}\NormalTok{/}\DecValTok{6400}
+\NormalTok{rice.kg}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5.764608e+15
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# That's 5,800,000,000,000,000 kilograms of rice. Let's keep going....}
+\CommentTok{# A kg of rice is 1,300 calories}
+
+\NormalTok{rice.cal <-}\StringTok{ }\NormalTok{rice.kg *}\StringTok{ }\DecValTok{1300}
+\NormalTok{rice.cal}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 7.49399e+18
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# How many people can that feed for a year?}
+\CommentTok{# A person needs about 2,250 calories a day, or 2,250 * 365 per year}
+
+\NormalTok{rice.people.year <-}\StringTok{ }\NormalTok{rice.cal /}\StringTok{ }\NormalTok{(}\DecValTok{2250} \NormalTok{*}\StringTok{ }\DecValTok{365}\NormalTok{)}
+\NormalTok{rice.people.year}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 9.125102e+12
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# So, that amount of rice could feed 9,100,000,000,000 for a year}
+\CommentTok{# Assuming that the averge lifespan is 70 years, how many lifespans could this feed?}
+
+\NormalTok{rice.people.life <-}\StringTok{ }\NormalTok{rice.people.year /}\StringTok{ }\DecValTok{70}
+\NormalTok{rice.people.life}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 130358595868
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Ok...so it could feed 130,000,000,000 (130 billion) people over their lives}
+
+\CommentTok{# Conclusion: King done screwed up.}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# I want to remove the white separations from the following chunk output}
+
+\DecValTok{1+1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2+4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 6
+\end{verbatim}
+
+\chapter{Placeholder}\label{placeholder}
+
+\bibliography{packages.bib,book.bib}
+
+
+\end{document}
