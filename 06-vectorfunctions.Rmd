@@ -2,13 +2,14 @@
 
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(collapse = TRUE)
+library(yarrr)
 ```
 
 
 In this chapter, we'll cover the core functions for vector objects. The code below uses the functions you'll learn to calculate summary statistics from two exams.
 
 
-```{r, fig.cap= "", fig.margin = TRUE, echo = FALSE, out.width = "400px", fig.align='center'}
+```{r, fig.cap= "", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
 knitr::include_graphics(c("images/fuckexam.jpg"))
 ```
 
@@ -115,7 +116,7 @@ ab.prod
 
 ### Ex: Pirate Bake Sale
 
-```{r, fig.cap= "", fig.margin = TRUE, echo = FALSE, out.width = "400px", fig.align='center'}
+```{r, fig.cap= "", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
 knitr::include_graphics(c("images/piratecookies.jpg"))
 ```
 
@@ -175,7 +176,7 @@ sd(tattoos)
 
 ### length()
 
-```{r, fig.cap= "According to this article published in 2015 in Plos One, when it comes to people, length may matter for some. But trust me, for vectors it always does.", fig.margin = TRUE, echo = FALSE, out.width = "400px", fig.align='center'}
+```{r, fig.cap= "According to this article published in 2015 in Plos One, when it comes to people, length may matter for some. But trust me, for vectors it always does.", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
 knitr::include_graphics(c("images/penissize.png"))
 ```
 

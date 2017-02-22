@@ -1,4 +1,4 @@
-# Test your R might! Solutions
+# Solutions
 
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(collapse = TRUE)

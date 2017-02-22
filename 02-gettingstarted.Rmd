@@ -1,11 +1,17 @@
 # Getting Started {#started}
 
+```{r, echo = FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+library(yarrr)
+```
+
+
 ## Installing (Base) R and RStudio
 
 First things first, let's download both Base R and Rstudio. Again, R is the basic software which contains the R programming language. RStudio is software that makes R programming easier. Of course, they are totally free and open source.
 
 
-```{r, fig.cap= "", fig.margin = TRUE, echo = FALSE, out.width = "200px"}
+```{r, fig.cap= "", fig.margin = TRUE, echo = FALSE, out.width = "20%"}
 knitr::include_graphics(c("images/rlogo.png"))
 ```
 
@@ -18,13 +24,13 @@ knitr::include_graphics(c("images/rlogo.png"))
 Once you've installed base R on your computer, try opening it. When you do you should see a screen like the one in Figure \@ref(fig:rscreenshot) (this is the Mac version). As you can see, base R is very much bare-bones software. It's kind of the equivalent of a simple text editor that comes with your computer.
 
 
-```{r, fig.cap= "{Here is how the base R application looks. While you can use the base R application alone, most people I know use RStudio -- software that helps you to write and use R code more efficiently!", fig.margin = TRUE, echo = FALSE, out.width = "400px", fig.align ="center"}
+```{r rscreenshot, fig.cap= "{Here is how the base R application looks. While you can use the base R application alone, most people I know use RStudio -- software that helps you to write and use R code more efficiently!", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align ="center"}
 knitr::include_graphics(c("images/RScreenshot.png"))
 ```
 
 While you can do pretty much everything you want within base R, you'll find that most people these days do their R programming in an application called RStudio. RStudio is a graphical user interface (GUI)-like interface for R that makes programming in R a bit easier. In fact, once you've installed RStudio, you'll likely never need to open the base R application again. To download and install RStudio (around 40mb), go to one of the links above and follow the instructions.
 
-```{r, fig.cap= "", fig.margin = TRUE, echo = FALSE, out.width = "200px"}
+```{r, fig.cap= "", fig.margin = TRUE, echo = FALSE, out.width = "20%"}
 knitr::include_graphics(c("images/RStudio.png"))
 ```
 
@@ -40,7 +46,7 @@ Let's go ahead and boot up RStudio and see how she looks!
 When you open RStudio, you'll see the following four windows (also called panes) shown in in Figure \@ref(fig:rstudiowindows). However, your windows might be in a different order that those in Figure \@ref(fig:rstudiowindows). If you'd like, you can change the order of the windows under RStudio preferences. You can also change their shape by either clicking the minimize or maximize buttons on the top right of each panel, or by clicking and dragging the middle of the borders of the windows.
 
 
-```{r rstudiowindows, fig.cap= "The four panes of RStudio.", fig.margin = TRUE, echo = FALSE, out.width = "600px"}
+```{r rstudiowindows, fig.cap= "The four panes of RStudio.", fig.margin = TRUE, echo = FALSE, out.width = "80%"}
 knitr::include_graphics(c("images/RStudio_Screenshot_Labels.png"))
 ```
 
@@ -48,7 +54,7 @@ Now, let's see what each window does in detail.
 
 ### Source - Your notepad for code
 
-```{r sourcewindow, fig.cap= "The Source contains all of your individual R scripts.", fig.margin = TRUE, echo = FALSE, out.width = "600px"}
+```{r sourcewindow, fig.cap= "The Source contains all of your individual R scripts. The code won't be evaluated until you send it to the Console.", fig.margin = TRUE, echo = FALSE, out.width = "75%"}
 knitr::include_graphics(c("images/piratesanalysisss.png"))
 ```
 
@@ -61,7 +67,7 @@ There are many ways to send your code from the Source to the console. The slowes
 
 ### Console: R's Heart
 
-```{r consolewindow, fig.cap= "The console the calculation heart of R. All of your code will (eventually) go through here.", fig.margin = TRUE, echo = FALSE, out.width = "600px"}
+```{r consolewindow, fig.cap= "The console the calculation heart of R. All of your code will (eventually) go through here.", fig.margin = TRUE, echo = FALSE, out.width = "75%"}
 knitr::include_graphics(c("images/consoless.png"))
 ```
 
@@ -83,7 +89,7 @@ So as you can see, you can execute code either by running it from the Source or 
 ### Environment / History
 
 
-```{r environment, fig.cap= "The environment panel shows you all the objects you have defined in your current workspace. You'll learn more about workspaces in Chapter 7.", fig.margin = TRUE, echo = FALSE, out.width = "600px"}
+```{r environment, fig.cap= "The environment panel shows you all the objects you have defined in your current workspace. You'll learn more about workspaces in Chapter 7.", fig.margin = TRUE, echo = FALSE, out.width = "75%"}
 knitr::include_graphics(c("images/environmentss.png"))
 ```
 
@@ -113,7 +119,7 @@ hist(x = ChickWeight$weight,
 ```
 
 
-```{r plotpanel, fig.cap= "The plot panel contains all of your plots, like this histogram of the distribution of chicken weights.", fig.margin = TRUE, echo = FALSE, out.width = "600px"}
+```{r plotpanel, fig.cap= "The plot panel contains all of your plots, like this histogram of the distribution of chicken weights.", fig.margin = TRUE, echo = FALSE, out.width = "75%"}
 knitr::include_graphics(c("images/plotpanelss.png"))
 ```
 
@@ -135,7 +141,7 @@ knitr::include_graphics(c("images/plotpanelss.png"))
 When you download and install R for the first time, you are installing the Base R software. Base R will will contain most of the functions you'll use on a daily basis like `mean()` and `hist()`. However, only functions written by the original authors of the R language will appear here. If you want to access data and code written by other people, you'll need to install it as a *package*. An R package is simply a bunch of data, from functions, to help menus, to vignettes (examples), stored in one neat package.
 
 
-```{r package, fig.cap= "An R package is light a lightbulb. First you need to order it with install.packages(). Then, every time you want to use it, you need to turn it on with library()", fig.margin = TRUE, fig.align = 'center', echo = FALSE, out.width = "300px"}
+```{r package, fig.cap= "An R package is light a lightbulb. First you need to order it with install.packages(). Then, every time you want to use it, you need to turn it on with library()", fig.margin = TRUE, fig.align = 'center', echo = FALSE, out.width = "50%"}
 knitr::include_graphics(c("images/packagebulb.png"))
 ```
 
@@ -148,7 +154,7 @@ A package is like a lightbulb. In order to use it, you first need to order it to
 Installing a package simply means downloading the package code onto your personal computer. There are two main ways to install new packages. The first, and most common, method is to download them from the Comprehensive R Archive Network (CRAN). CRAN is the central repository for R packages. To install a new R package from CRAN, you can simply run the code `install.packages("name")`, where "name" is the name of the package. For example, to download the `yarrr` package, which contains several data sets and functions we will use in this book, you should run the following:
 
 
-```{r cran, fig.cap= "CRAN (Comprehensive R Archive Network) is the main source of R packages", fig.margin = TRUE, fig.align = 'center', echo = FALSE, out.width = "200px"}
+```{r cran, fig.cap= "CRAN (Comprehensive R Archive Network) is the main source of R packages", fig.margin = TRUE, fig.align = 'center', echo = FALSE, out.width = "50%"}
 knitr::include_graphics(c("images/cran.png"))
 ```
 
@@ -164,7 +170,7 @@ install.packages("yarrr")
 
 When you run `install.packages("name")` R will download the package from CRAN. If everything works, you should see some information about where the package is being downloaded from, in addition to a progress bar.
 
-```{r installingpackages, fig.cap= "When you install a new package, you'll see some random text like this you the download progress. You don't need to memorize this.", fig.margin = TRUE, fig.align = 'center', echo = FALSE, out.width = "500px"}
+```{r installingpackages, fig.cap= "When you install a new package, you'll see some random text like this you the download progress. You don't need to memorize this.", fig.margin = TRUE, fig.align = 'center', echo = FALSE, out.width = "75%"}
 knitr::include_graphics(c("images/installingpackages.png"))
 ```
 
@@ -208,55 +214,195 @@ yarrr::pirateplot(formula = weight ~ Diet,
 Again, you can think about the `package::function` method as a way to temporarily loading a package for a single line of code. One benefit of using the `package::function` notation is that it's immediately clear to anyone reading the code which package contains the function. However, a drawback is that if you are using a function from a package often, it forces you to constantly retype the package name. You can use whichever method makes sense for you.
 
 
+## Reading and writing Code
 
-## Cheatsheets and getting help
+### Code Chunks
+
+In this book, R code is (almost) always presented in a separate gray box like this one:
+
+```{r, eval = TRUE}
+# A code chunk
+
+# Define a vector a as the integers from 1 to 5
+a <- 1:5
+
+# Print a
+a
+
+# What is the mean of a?
+mean(a)
+```
+
+This is called a *code chunk*. You should always be able to copy and paste code chunks directly into R. If you copy a chunk and it does not work for you, it is most likely because the code refers to a package, function, or object that I defined in a previous chunk. If so, read back and look for a previous chunk that contains the missing definition.
+
+### Comments with \#
+
+Lines that begin with \# are comments. If you evaluate any code that starts with \#, R will just ignore that line. In this book, comments will be either be literal comments that I write directly to explain code, or they will be *output* generated automatically from R. For example, in the code chunk below, you see lines starting with \#\#. These are the output from the previous line(s) of code. When you run the code yourself, you should see the same output in your *console*.
+
+```{r}
+# This is a comment I wrote
+
+1 + 2
+
+# The line above (## [1] 3) is the output from the previous code that has been 'commented out'
+```
+
+
+### Element numbers in output [1] 
+
+The output you see will often start with one or more number(s) in brackets such as [1]. This is just a visual way of telling you where the numbers occur in the output. For example, in the code below, I will print a long vector containing the multiples of 2 from 0 to 100:
+
+```{r}
+seq(from = 0, to = 100, by = 2)
+```
+
+As you can see, the first line of the output starts with \#\# [1], and the next two lines start with [18] and [35]. This is just telling you that 0 is the [1]st element, 34 is the [18]th element, and 68 is the [35]th element. Sometimes this information will be helpful, but most of the time you can just ignore it.
+
+## Debugging
+
+When you are programming, you will always, and I do mean always, make errors (also called bugs) in your code. You might misspell a function, include an extra comma, or some days...R just won't want to work with you  (again, see section [Why R is like a Relationship](#rrelationship)).
+
+Debugging will always be a challenge. However, over time you'll learn which bugs are the most common and get faster and faster at finding and correcting them. 
+
+Here are the most common bugs you'll run into as you start your R journey.
+
+
+### R is not ready (>)
+
+Another very common problem occurs when R does not seem to be responding to your code. That is, you might run some code like `mean(x)` expecting some output, but instead, nothing happens. This can be very frustrating because, rather than getting an error, just nothing happens at all. The most common reason for this is because R isn't *ready* for new code, instead, it is *waiting* for you to finish code you started earlier, but never properly finished. 
+
+Think about it this way, R can be in one of two states: it is either **Ready** (>) for new code, or it is **Waiting** (+) for you to finish old code. To see which state R is in, all you have to do is look at the symbol on the console. The `>` symbol means that R is Ready for new code -- this is usually what you want to see. The `+` symbol means that R is Waiting for you to (properly) finish code you started before. If you see the `+` symbol, then no matter how much new code you write, R won't actually evaluate it until you finish the code you started before.
+
+Thankfully there is an easy solution to this problem (See Figure \@ref(fig:rstate)): Just hit the escape key on your keyboard. This will cancel R's waiting state and make it Ready!
+
+
+```{r rstate, echo = FALSE, out.width = "50%", fig.align='center', fig.cap = "To turn R from a Waiting (+) state to a Ready (>) state, just hit Escape."}
+knitr::include_graphics("images/escapesolution.png")
+```
+
+
+### Misspelled object or function
+
+If you spell an object or function incorrectly, you'll receive an error like `Error: could not find function` or `Error: object 'x' not found`.
+
+In the code below, I'll try to take the mean of a vector `data`, but I will misspell the function `mean()`
+
+```{r, eval = FALSE}
+data <- c(1, 4, 3, 2, 1)
+
+# Misspelled function: should be mean(x), not meeen(x)
+meeen(data)
+```
+<div class="error">Error: cound not find function "meeen"</div>
+
+Now, I'll misspell the object `data` as `dta`:
+
+```{r, eval = FALSE}
+# Misspelled object: should be data, not dta
+mean(dta)
+```
+
+<div class="error">Error: object 'dta' not found</div>
+
+R is case-sensitive, so if you don't use the correct capitalization you'll receive an error. In the code below, I'll use `Mean()` instead of the correct version `mean()`
+
+```{r, eval = FALSE}
+# Capitalization is wrong: should be mean(), not Mean()
+Mean(data)
+```
+<div class="error">Error: could not find function "Mean"</div>
+
+Here is the correct version where both the object `data` and function `mean()` are correctly spelled:
+
+```{r echo = FALSE}
+data <- c(1, 4, 3, 2, 1)
+```
+
+
+```{r}
+# Correct: both the object and function are correctly spelled
+mean(data)
+```
+
+
+### Punctuation problems
+
+Another common error is having bad coding "punctuation". By that, I mean having an extra space, missing a comma, or using a comma (,) instead of a period (.). In the code below, I'll try to create a vector using periods instead of commas:
+
+```{r, eval = FALSE}
+# Wrong: Using periods (.) instead of commas (,)
+mean(c(1. 4. 2))
+```
+<div class="error">Error: unexpected numeric constant in "mean(c(1. 4."</div>
+
+Because I used periods instead of commas, I get the above error. Here is the correct version
+
+```{r}
+# Correct
+mean(c(1, 4, 2))
+```
+
+If you include an extra space in the middle of the name of an object or function, you'll receive an error. In the code below, I'll accidently write `Chick Weight` instead of `ChickWeight`:
+
+```{r, eval = FALSE}
+# Wrong: Extra space in the ChickWeight object name
+head(Chick Weight)
+```
+
+<div class="error">Error: unexpected symbol in "head(Chick Weight"</div>
+
+Because I had an extra space in the object name, I get the above error. Here is the correction:
+
+```{r, eval = FALSE}
+# Correct:
+head(ChickWeight)
+```
+
+
+
+## R resources
 
 
 ### R Cheatsheets
 
-```{r rreferencecard, fig.cap= "The R reference card written by Tom Short is absolutely indispensable!", fig.margin = TRUE, fig.align = 'center', echo = FALSE, out.width = "500px"}
+```{r rreferencecard, fig.cap= "The R reference card written by Tom Short is absolutely indispensable!", fig.margin = TRUE, fig.align = 'center', echo = FALSE, out.width = "75%"}
 knitr::include_graphics(c("images/rreferencess.png"))
 ```
 
 Over the course of this book, you will be learning *lots* of new functions. Wouldn't it be nice if someone created a Cheatsheet / Dictionary of many common R functions? Yes it would, and thankfully several friendly R programmers have done just that. Below is a table of some of them that I recommend. I highly encourage you to print these out and start highlighting functions as you learn them!
 
 | CheatSheet| Link|
-|:--------------------|:--------|
+|:----------------------------|:--------|
 |     R Basics by Tom Short|    [https://cran.r-project.org/doc/contrib/Short-refcard.pdf](https://cran.r-project.org/doc/contrib/Short-refcard.pdf)|
 |     R Basics by Mhairi McNeill|    [http://github.com/rstudio/cheatsheets/raw/master/source/pdfs/base-r.pdf](http://github.com/rstudio/cheatsheets/raw/master/source/pdfs/base-r.pdf)|
 |    Advanced R by Arianne Colton and Sean Chen|    [hhttps://www.rstudio.com/wp-content/uploads/2016/02/advancedR.pdf](https://www.rstudio.com/wp-content/uploads/2016/02/advancedR.pdf)|
 |     Plotting|    [https://www.rstudio.com/wp-content/uploads/2016/10/how-big-is-your-graph.pdf](https://www.rstudio.com/wp-content/uploads/2016/10/how-big-is-your-graph.pdf)|
 
 
-### Getting R help online
+### Getting R help and inspiration online
 
-Here are some resources for R help and inspiration that I can highly recommend
+Here are some great resources for R help and inspiration:
 
-1. http://www.r-bloggers.com: R bloggers is my go-to place to discover the latest and greatest with R.
+| Site| Description|
+|:----------------------------|:-----------------------------------|
+|     [www.google.com](http://www.google.com)| If you haven't heard of it, Google is this amazing site that gives you access to all R knowledge that has ever existed. Just ask it an R question and 99.9\% of the time it will give you the answer!|
+|     [www.r-bloggers.com](http://www.r-bloggers.com)| R bloggers is my go-to place to discover the latest and greatest with R.|
+|     [blog.revolutionanalytics.com](http://blog.revolutionanalytics.com)| Revolution analytics always has great R related material.|
+|     [www.kaggle.com](http://www.kaggle.com)|Kaggle is a really cool website that posts data analysis challenges that anyone can try to solve. It also contains a wide range of real-world datasets and tutorials.|
 
-2. http://blog.revolutionanalytics.com: Revolution analytics always has great R related material.
 
-3. http://www.kaggle.com: Kaggle is a really cool website that posts data analysis challenges that anyone can try to solve. It also contains a wide range of real-world datasets and tutorials.
 
-4. https://www.r-bloggers.com/learning-statistics-on-youtube/: If you like to learn with YouTube, this page contains many links to R related YouTube channels.
+### Other R books
 
-<!-- ## Reading and writing Code -->
+There are many, many excellent (non-pirate) books on R, some of which are available online for free. Here are some that I highly recommend:
 
-<!-- In this book, R code is (almost) always presented in a separate gray box like this one: -->
-
-<!-- ```{r, eval = FALSE} -->
-<!-- # This is a code chunk! You should always be able to -->
-<!-- #  copy and paste code chunks into R -->
-
-<!-- 1 + 2 + 3 + 4 + 5 -->
-
-<!-- a <- 1 + 2 + 3 + 4 + 5 -->
-
-<!-- a -->
-<!-- ``` -->
-
-<!-- This is called a *code chunk*. You should always be able to directly copy and paste code chunks directly into R. If you copy a chunk and it does not work for you, it is most likely because the code refers to a package, function, or object that I defined in a previous chunk. If so, read back and look for a previous chunk that contains the missing definition. As you'll soon learn, lines that begin with \# are either comments or output from prior code that R will ignore. -->
-
+| Book| Description|
+|:----------------------------|:-----------------------------------|
+|     [R for Data Science by Garrett Grolemund and Hadley Wickham](http://r4ds.had.co.nz/)| The best book to learn the latest tools for elegantly doing data science.|
+|     [The R Book by Michael Crawley](https://www.amazon.com/R-Book-Michael-J-Crawley/dp/0470973927/ref=sr_1_1?ie=UTF8&qid=1487759048&sr=8-1&keywords=the+r+book)| As close to an R bible as you can get.|
+|     [Advanced R by Hadley Wickham](http://adv-r.had.co.nz/)|A truly advanced book for expert R users, especially those with a programming background. Hadley Wickham is *the* R guru.|
+|     [Discovering Statistics with R by Field, Miles and Field](https://www.amazon.com/Discovering-Statistics-Using-Andy-Field/dp/1446200469/ref=sr_1_2?ie=UTF8&qid=1487759316&sr=8-2&keywords=statistics+with+r)| A classic text focusing on the theory and practice of statistical analysis with R|
+|     [Applied Predictive Modeling by Kuhn and Johnson](https://www.amazon.com/Applied-Predictive-Modeling-Max-Kuhn/dp/1461468485/ref=sr_1_1?ie=UTF8&qid=1487759459&sr=8-1&keywords=applied+predictive+modeling)| A great text specializing in statistical learning aka predictive modeling aka machine learning with R.|
 
 
 

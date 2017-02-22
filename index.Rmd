@@ -16,7 +16,7 @@ url: 'https\://bookdown.org/ndphillips/YaRrr/'
 
 # Preface {#intro}
 
-```{r fig.align='center', echo=FALSE, out.width = "600px"}
+```{r fig.align='center', echo=FALSE, out.width = '75%'}
 knitr::include_graphics('images/YaRrr_Cover.jpg')
 ```
 
@@ -74,7 +74,7 @@ circlize::chordDiagram(matrix(sample(10),
 
 
 
-## R is like a relationship...
+## Why R is like a relationship... {#rrelationship}
 
 Yes, R is very much like a relationship. Like relationships, there are two major truths to R programming:
 

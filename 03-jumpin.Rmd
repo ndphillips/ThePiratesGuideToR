@@ -2,16 +2,17 @@
 
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(collapse = TRUE)
+library(yarrr)
 ```
 
 
 
-```{r, fig.cap= "Despite what you might find at family friendly waterparks -- this is NOT how real pirate swimming lessons look.", fig.margin = TRUE, echo = FALSE, out.width = "400px", fig.align='center'}
+```{r, fig.cap= "Despite what you might find at family friendly waterparks -- this is NOT how real pirate swimming lessons look.", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
 knitr::include_graphics(c("images/pirateswimming.jpg"))
 ```
 
 
-What's the first exercise on the first day of pirate swimming lessons? While it would be cute if they all had little inflatible pirate ships to swim around in -- unfortunately this is not the case. Instead, those baby pirates take a walk off their baby planks so they can get a taste of what they're in for. Turns out, learning R is the same way. Let's jump in. In this chapter, you'll see how easy it is to calculate basic statistics and create plots in R. Don't worry if the code you're running doesn't make immediate sense -- just marvel at how easy it is to do this in R!
+What's the first exercise on the first day of pirate swimming lessons? While it would be cute if they all had little inflatable pirate ships to swim around in -- unfortunately this is not the case. Instead, those baby pirates take a walk off their baby planks so they can get a taste of what they're in for. Turns out, learning R is the same way. Let's jump in. In this chapter, you'll see how easy it is to calculate basic statistics and create plots in R. Don't worry if the code you're running doesn't make immediate sense -- just marvel at how easy it is to do this in R!
 
 In this section, we'll analyze a dataset called...wait for it...pirates! The dataset contains data from a survey of 1,000 pirates. The data is contained in the `yarrr` package, so make sure you've installed and loaded the package:
 
@@ -81,7 +82,28 @@ aggregate(formula = age ~ sex,
 
 ## Plotting
 
-Cool stuff, now let's make a plot! We'll plot the relationship between pirate's height and weight using the `plot()` function. We'll also include a blue regression line to measure the strength of the relationship.
+Cool stuff, now let's make a plot! We'll plot the relationship between pirate's height and weight using the `plot()` function
+
+```{r}
+# Create scatterplot
+plot(x = pirates$height,        # X coordinates
+     y = pirates$weight)        # y-coordinates
+```
+
+Now let's make a fancier version of the same plot by adding some customization 
+
+```{r}
+# Create scatterplot
+plot(x = pirates$height,        # X coordinates
+     y = pirates$weight,        # y-coordinates
+     main = 'My first scatterplot of pirate data!',
+     xlab = 'Height (in cm)',   # x-axis label
+     ylab = 'Weight (in kg)',   # y-axis label
+     pch = 16,                  # Filled circles
+     col = gray(.0, .1))        # Transparent gray
+```
+
+Now let's make it even better by adding gridlines and a blue regression line to measure the strength of the relationship.
 
 ```{r}
 # Create scatterplot
@@ -109,6 +131,25 @@ Scatterplots are great for showing the relationship between two continuous varia
 pirateplot(formula = age ~ sword.type, 
            data = pirates,
            main = "Pirateplot of ages by favorite sword")
+```
+
+Now let's make another pirateplot showing the relatinoship between sex and height using a different plotting theme and the `"pony"` color palette:
+
+```{r}
+pirateplot(formula = height ~ sex,               # Plot weight as a function of sex
+           data = pirates,                       
+           main = "Pirateplot of height by sex",
+           pal = "pony",                         # Use the info color palette
+           theme = 3)                            # Use theme 3
+```
+
+The `"pony"` palette is contained in the `piratepal()` function. Let's see where the `"pony"` palette comes from...
+
+```{r}
+# Show me the pony palette!
+piratepal(palette = "pony",
+          plot.result = TRUE,   # Plot the result
+          trans = .1)           # Slightly transparent
 ```
 
 

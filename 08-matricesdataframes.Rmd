@@ -4,7 +4,7 @@
 knitr::opts_chunk$set(collapse = TRUE)
 ```
 
-```{r, fig.cap= "Did you actually think I could talk about matrices without a Matrix reference?!", fig.margin = TRUE, echo = FALSE, out.width = "300px", fig.align='center'}
+```{r, fig.cap= "Did you actually think I could talk about matrices without a Matrix reference?!", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
 knitr::include_graphics(c("images/matrix.jpg"))
 ```
 
@@ -224,7 +224,7 @@ View(ChickWeight)
 When you run `View()`, you'll see a new window like the one in Figure \@ref(fig:viewchicks)
 
 
-```{r viewchicks, fig.cap= "Screenshot of the window from View(ChickWeight). You can use this window to visually sort and filter the data to get an idea of how it looks, but you can't add or remove data and nothing you do will actually change the dataframe.", fig.margin = TRUE, echo = FALSE, out.width = "500px", fig.align='center'}
+```{r viewchicks, fig.cap= "Screenshot of the window from View(ChickWeight). You can use this window to visually sort and filter the data to get an idea of how it looks, but you can't add or remove data and nothing you do will actually change the dataframe.", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
 knitr::include_graphics(c("images/chickweightscreenshot.png"))
 ```
 
@@ -359,7 +359,7 @@ survey
 Once you have a dataset stored as a matrix or dataframe in R, you'll want to start accessing specific parts of the data based on some criteria. For example, if your dataset contains the result of an experiment comparing different experimental groups, you'll want to calculate statistics for each experimental group separately. The process of selecting specific rows and columns of data based on some criteria is commonly known as *slicing*. 
 
 
-```{r, fig.cap= "Slicing and dicing data. The turnip represents your data, and the knife represents indexing with brackets, or subsetting functions like subset(). The red-eyed clown holding the knife is just off camera.", fig.margin = TRUE, echo = FALSE, out.width = "250px", fig.align='center'}
+```{r, fig.cap= "Slicing and dicing data. The turnip represents your data, and the knife represents indexing with brackets, or subsetting functions like subset(). The red-eyed clown holding the knife is just off camera.", fig.margin = TRUE, echo = FALSE, out.width = "30%", fig.align='center'}
 knitr::include_graphics(c("images/turnip.jpg"))
 ```
 
@@ -383,7 +383,7 @@ df[1:5, 2]
 
 
 
-```{r, fig.cap= "Ah the ToothGrowth dataframe. Yes, one of the dataframes stored in R contains data from an experiment testing the effectiveness of different doses of Vitamin C supplements on the growth of guinea pig teeth. The images I found by Googling ``guinea pig teeth'' were all pretty horrifying, so let's just go with this one.", fig.margin = TRUE, echo = FALSE, out.width = "300px", fig.align='center'}
+```{r, fig.cap= "Ah the ToothGrowth dataframe. Yes, one of the dataframes stored in R contains data from an experiment testing the effectiveness of different doses of Vitamin C supplements on the growth of guinea pig teeth. The images I found by Googling ``guinea pig teeth'' were all pretty horrifying, so let's just go with this one.", fig.margin = TRUE, echo = FALSE, out.width = "30%", fig.align='center'}
 knitr::include_graphics(c("images/guineapig.jpg"))
 ```
 
@@ -457,7 +457,7 @@ Indexing with brackets is the standard way to slice and dice dataframes. However
 
 ### Slicing with `subset()`
 
-```{r, fig.cap= "The subset() function is like a lightsaber. An elegant function from a more civilized age.", fig.margin = TRUE, echo = FALSE, out.width = "400px", fig.align='center'}
+```{r, fig.cap= "The subset() function is like a lightsaber. An elegant function from a more civilized age.", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
 knitr::include_graphics(c("images/saber.jpeg"))
 ```
 
@@ -575,7 +575,7 @@ with(health, weight + height / age + 2 * height)
 ## Test your R might! Pirates and superheroes
 
 
-```{r, fig.cap= "This is a lesser-known superhero named Maggott who could 'transform his body to get superhuman strength and endurance, but to do so he needed to release two huge parasitic worms from his stomach cavity and have them eat things' (http://heavy.com/comedy/2010/04/the-20-worst-superheroes/). Yeah...I'm shocked this guy wasn't a hit.", fig.margin = TRUE, echo = FALSE, out.width = "300px", fig.align='center'}
+```{r, fig.cap= "This is a lesser-known superhero named Maggott who could 'transform his body to get superhuman strength and endurance, but to do so he needed to release two huge parasitic worms from his stomach cavity and have them eat things' (http://heavy.com/comedy/2010/04/the-20-worst-superheroes/). Yeah...I'm shocked this guy wasn't a hit.", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
 knitr::include_graphics(c("images/maggot.jpg"))
 ```
 

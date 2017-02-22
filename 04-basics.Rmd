@@ -2,13 +2,14 @@
 
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(collapse = TRUE)
+library(yarrr)
 ```
 
 
 If you're like most people, you think of R as a statistics program. However, while R is definitely the coolest, most badass, pirate-y way to conduct statistics -- it's not really a program. Rather, it's a programming \textit{language} that was written by and for statisticians. To learn more about the history of R...just...you know...Google it.
 
 
-```{r, fig.cap= "Ross Ihaka and Robert Gentlemen. You have these two pirates to thank for creating R! You might not think much of them now, but by the end of this book there's a good chance you'll be dressing up as one of them on Halloween.", fig.margin = TRUE, echo = FALSE, out.width = "400px", fig.align='center'}
+```{r, fig.cap= "Ross Ihaka and Robert Gentlemen. You have these two pirates to thank for creating R! You might not think much of them now, but by the end of this book there's a good chance you'll be dressing up as one of them on Halloween.", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
 knitr::include_graphics(c("images/rauthors.jpg"))
 ```
 
@@ -19,20 +20,20 @@ In this chapter, we'll go over the basics of the R language and the RStudio prog
 ## The command-line (Console)
 
 
-```{r, fig.cap= "Yep. R is really just a fancy calculator. This R programming device was found on a shipwreck on the Bodensee in Germany. I stole it from a museum and made a pretty sweet plot with it. But I don't want to show it to you.", fig.margin = TRUE, echo = FALSE, out.width = "400px", fig.align='center'}
+```{r, fig.cap= "Yep. R is really just a fancy calculator. This R programming device was found on a shipwreck on the Bodensee in Germany. I stole it from a museum and made a pretty sweet plot with it. But I don't want to show it to you.", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
 knitr::include_graphics(c("images/woodcalc.jpg"))
 ```
 
 
-R code, on its own, is just text. You can write R code in a new script within R or RStudio, or in any text editor. Hell, you can write R code on Twitter if you want. However, just writing the code won't do the whole job -- in order for your code to be executed (aka, interpreted) you need to send it to R's \textit{command-line interpreter}. In RStudio, the command-line interpreter is called the Console.
+R code, on its own, is just text. You can write R code in a new script within R or RStudio, or in any text editor. Hell, you can write R code on Twitter if you want. However, just writing the code won't do the whole job -- in order for your code to be executed (aka, interpreted) you need to send it to R's *command-line interpreter*. In RStudio, the command-line interpreter is called the Console.
 
 
-```{r, fig.cap= "You can always type code directly into the command line to get an immediate response.", fig.margin = TRUE, echo = FALSE, out.width = "600px", fig.align='center'}
+```{r, fig.cap= "You can always type code directly into the command line to get an immediate response.", fig.margin = TRUE, echo = FALSE, out.width = "75%", fig.align='center'}
 knitr::include_graphics(c("images/commandline.png"))
 ```
 
 
-In R, the command-line interpreter starts with the > symbol. This is called the \textit{prompt}. Why is it called the prompt? Well, it's ``prompting'' you to feed it with some R code. The fastest way to have R evaluate code is to type your R code directly into the command-line interpreter. For example, if you type \texttt{1+1} into the interpreter and hit enter you'll see the following
+In R, the command-line interpreter starts with the `>` symbol. This is called the **prompt**. Why is it called the prompt? Well, it's "prompting" you to feed it with some R code. The fastest way to have R evaluate code is to type your R code directly into the command-line interpreter. For example, if you type `1+1` into the interpreter and hit enter you'll see the following
 
 
 ```{r}
@@ -54,13 +55,17 @@ In RStudio, you'll write your R code in the...wait for it...*Source* window. To 
 When you open a new script, you'll see a blank page waiting for you to write as much R code as you'd like. In Figure \@ref(fig:editor), I have a new script called `examplescript` with a few random calculations.
 
 
-```{r editor, fig.cap= "Here's how a new script looks in the editor window on RStudio. The code you type won't be executed until you send it to the console.", fig.margin = TRUE, echo = FALSE, out.width = "600px", fig.align='center'}
+```{r editor, fig.cap= "Here's how a new script looks in the editor window on RStudio. The code you type won't be executed until you send it to the console.", fig.margin = TRUE, echo = FALSE, out.width = "75%", fig.align='center'}
 knitr::include_graphics(c("images/sourcess.png"))
 ```
 
 You can have several R scripts open in the source window in separate tabs (like I have above).
 
-### Send code from an editor to the console
+### Send code from an source to the console
+
+```{r runcode, fig.cap= "To evaluate code from the source, highlight it and run it.", fig.margin = TRUE, echo = FALSE, out.width = "75%", fig.align='center'}
+knitr::include_graphics(c("images/runningcode.png"))
+```
 
 When you type code into an R script, you'll notice that, unlike typing code into the Console, nothing happens. In order for R to interpret the code, you need to send it from the Editor to the Console. There are a few ways to do this, here are the three most common ways:
 
@@ -70,7 +75,7 @@ When you type code into an R script, you'll notice that, unlike typing code into
 
 3. Place the cursor on a single line you want to run, then use the Command--Return shortcut to run just that line.
 
-```{r commandreturn, fig.cap= "Ah...the Command--Return shortcut (Control--Enter on PC) to send highlighted code from the Editor to the Console. Get used to this shortcut people. You're going to be using this a lot", fig.margin = TRUE, echo = FALSE, out.width = "400px", fig.align='center'}
+```{r commandreturn, fig.cap= "Ah...the Command--Return shortcut (Control--Enter on PC) to send highlighted code from the Editor to the Console. Get used to this shortcut people. You're going to be using this a lot", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
 knitr::include_graphics(c("images/commandreturn.jpg"))
 ```
 
@@ -81,10 +86,9 @@ knitr::include_graphics(c("images/commandreturn.jpg"))
 
 Like all programming languages, R isn't just meant to be read by a computer, it's also meant to be read by other humans -- or very well-trained dolphins. For this reason, it's important that your code looks nice and is understandable to other people and your future self. To keep things brief, I won't provide a complete style guide -- instead I'll focus on the two most critical aspects of good style: commenting and spacing.
 
-For a list of recommendations on how to make your code easier to follow, check out Google's own company R Style guide at [https://google-styleguide.googlecode.com/svn/trunk/Rguide.xml](https://google-styleguide.googlecode.com/svn/trunk/Rguide.xml)
 
 
-```{r futureself, fig.cap= "As Stan discovered in season six of South Park, your future self is a lazy, possibly intoxicated moron. So do your future self a favor and make your code look nice. Also maybe go for a run once in a while.", fig.margin = TRUE, echo = FALSE, out.width = "400px", fig.align='center'}
+```{r futureself, fig.cap= "As Stan discovered in season six of South Park, your future self is a lazy, possibly intoxicated moron. So do your future self a favor and make your code look nice. Also maybe go for a run once in a while.", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
 knitr::include_graphics(c("images/futureself.jpg"))
 ```
 
@@ -128,7 +132,7 @@ Soeverytimeyouwritecodewithoutproperspacing,rememberthissentence.
 
 Commenting isn't the only way to make your code legible. It's important to make appropriate use of spaces and line breaks. For example, I include spaces between arithmetic operators (like =, + and -) and after commas (which we'll get to later). For example, look at the following code:
 
-```{r pileofshit, fig.cap= "Don't make your code look like what a sick Triceratops with diarrhea left behind for Jeff Goldblum.", fig.margin = TRUE, echo = FALSE, out.width = "400px", fig.align='center'}
+```{r pileofshit, fig.cap= "Don't make your code look like what a sick Triceratops with diarrhea left behind for Jeff Goldblum.", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
 knitr::include_graphics(c("images/pileofshit.png"))
 ```
 
@@ -164,6 +168,7 @@ plot(x = movies$budget,
 
 See how much better that second chunk of code looks? Not only do the comments tell us the purpose behind the code, but there are spaces and line-breaks separating distinct elements.
 
+There are a lot more aspects of good code formatting. For a list of recommendations on how to make your code easier to follow, check out Google's own company R Style guide at [https://google-styleguide.googlecode.com/svn/trunk/Rguide.xml](https://google-styleguide.googlecode.com/svn/trunk/Rguide.xml)
 
 ## Objects and functions
 
@@ -231,7 +236,7 @@ To create new objects in R, you need to do *object assignment*. Object assignmen
 
 To do an assignment, we use the almighty `<-` operator called *assign* To assign something to a new object (or to change an existing object), use the notation `object <- ...`}, where `object` is the new (or updated) object, and `...` is whatever you want to store in `object`. Let's start by creating a very simple object called `a` and assigning the value of 100 to it:
 
-\marginnote{Good object names strike a balance between being easy to type (i.e.; short names) and interpret. If you have several datasets, it's probably not a good idea to name them \texttt{a}, \texttt{b}, \texttt{c} because you'll forget which is which. However, using long names like \texttt{March2015Group1OnlyFemales} will give you carpel tunnel syndrome.}
+Good object names strike a balance between being easy to type (i.e.; short names) and interpret. If you have several datasets, it's probably not a good idea to name them `a`, `b`, `c` because you'll forget which is which. However, using long names like `March2015Group1OnlyFemales` will give you carpel tunnel syndrome.
 
 
 ```{r}
@@ -338,7 +343,7 @@ If you try running the code above in R, you will receive a warning message start
 
 #### R is case-sensitive!
 
-```{r datetext, fig.cap= "Like a text message, you should probably watch your use of capitalization in R.", fig.margin = TRUE, echo = FALSE, out.width = "300px", fig.align='center'}
+```{r datetext, fig.cap= "Like a text message, you should probably watch your use of capitalization in R.", fig.margin = TRUE, echo = FALSE, out.width = "25%", fig.align='center'}
 knitr::include_graphics(c("images/datetext.png"))
 ```
 
@@ -396,7 +401,7 @@ It looks like "Dead Man's Chest" made `r round(100 * round(deadman.usd / blackpe
 ## Test your R might!
 
 
-1. Create a new R script. Using comments, write your name, the date, and ''Testing my Chapter 2 R Might'' at the top of the script. Write your answers to the rest of these exercises on this script, and be sure to copy and paste the original questions using comments! Your script should \textit{only} contain valid R code and comments. 
+1. Create a new R script. Using comments, write your name, the date, and "Testing my Chapter 2 R Might" at the top of the script. Write your answers to the rest of these exercises on this script, and be sure to copy and paste the original questions using comments! Your script should **only** contain valid R code and comments. 
 
 2. Which (if any) of the following objects names is/are invalid?
 
@@ -413,7 +418,7 @@ lkjasdfkjsdf <- 8
 
 
 
-3. 2015 was a good year for pirate booty - your ship collected 100,800 gold coins. Create an object called \texttt{gold.in.2015} and assign the correct value to it.
+3. 2015 was a good year for pirate booty - your ship collected 100,800 gold coins. Create an object called `gold.in.2015` and assign the correct value to it.
 
 4. Oops, during the last inspection we discovered that one of your pirates Skippy McGee hid 800 gold coins in his underwear. Go ahead and add those gold coins to the object `gold.in.2015`. Next, create an object called `plank.list` with the name of the pirate thief.
 

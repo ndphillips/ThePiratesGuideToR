@@ -2,6 +2,7 @@
 
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(collapse = TRUE)
+library(yarrr)
 ```
 
 
@@ -116,7 +117,7 @@ x
 
 You can also create character vectors by using the `c()` function to combine character scalars into character vectors:
 
-```{r, fig.cap= "This is not a pipe. It is a character vector.", fig.margin = TRUE, echo = FALSE, out.width = "400px", fig.align='center'}
+```{r, fig.cap= "This is not a pipe. It is a character vector.", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
 knitr::include_graphics(c("images/magrittepipe.jpg"))
 ```
 
@@ -193,7 +194,7 @@ seq(from = 0, to = 100, length.out = 3)
 |     `length.out`|   The desired length of the final sequence|
 
 
-```{r rep, fig.cap= "Not a good depiction of a rep in R.", fig.margin = TRUE, echo = FALSE, out.width = "400px", fig.align='center'}
+```{r rep, fig.cap= "Not a good depiction of a rep in R.", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
 knitr::include_graphics(c("images/rep.jpg"))
 ```
 
@@ -348,12 +349,12 @@ sample(x = chest,
        size = 10)
 ```
 
-The output of the \texttt{sample()} function above is a vector of 10 strings indicating the type of coin we drew on each sample. And like any random sampling function, this code will likely give you different results every time you run it! See how long it takes you to get 10 gold coins...
+The output of the `sample()` function above is a vector of 10 strings indicating the type of coin we drew on each sample. And like any random sampling function, this code will likely give you different results every time you run it! See how long it takes you to get 10 gold coins...
 
 
 In the next section, we'll cover how to generate random data from specified *probability distributions*. What is a probability distribution? Well, it's simply an equation -- also called a likelihood function -- that indicates how likely certain numerical values are to be drawn.
 
-We can use probability distributions to represent different types of data. For example, imagine you need to hire a new group of pirates for your crew. You have the option of hiring people form one of two different pirate training colleges that produce pirates of varying quality. One college "Pirate Training Unlimited" might tend to pirates that are generally ok - never great but never terrible. While another college "Unlimited Pirate Training" might produce pirates with a wide variety of quality, from very low to very high. In Figure~\ref{fig:piratecollege} I plotted 5 example pirates from each college, where each pirate is shown as a ball with a number written on it. As you can see, pirates from PTU all tend to be clustered between 40 and 60 (not terrible but not great), while pirates from UPT are all over the map, from 0 to 100. We can use probability distributions (in this case, the uniform distribution) to mathematically define how likely any possible value is to be drawn at random from a distribution. We could describe Pirate Training Unlimited with a uniform distribution with a small range, and Unlimited Pirate Training with a second uniform distribution with a wide range.
+We can use probability distributions to represent different types of data. For example, imagine you need to hire a new group of pirates for your crew. You have the option of hiring people form one of two different pirate training colleges that produce pirates of varying quality. One college "Pirate Training Unlimited" might tend to pirates that are generally ok - never great but never terrible. While another college "Unlimited Pirate Training" might produce pirates with a wide variety of quality, from very low to very high. In Figure \@ref(fig:piratecollege) I plotted 5 example pirates from each college, where each pirate is shown as a ball with a number written on it. As you can see, pirates from PTU all tend to be clustered between 40 and 60 (not terrible but not great), while pirates from UPT are all over the map, from 0 to 100. We can use probability distributions (in this case, the uniform distribution) to mathematically define how likely any possible value is to be drawn at random from a distribution. We could describe Pirate Training Unlimited with a uniform distribution with a small range, and Unlimited Pirate Training with a second uniform distribution with a wide range.
 
 
 ```{r piratecollege, fig.cap = "Sampling 5 potential pirates from two different pirate colleges. Pirate Training Unlimited (PTU) consistently produces average pirates (with scores between 40 and 60), while Unlimited Pirate Training (UPT), produces a wide range of pirates from 0 to 100.", echo = FALSE}
@@ -494,7 +495,7 @@ runif(n = 10, min = -100, max = 100)
 
 #### Random samples will always change
 
-Every time you draw a sample from a probability distribution, you'll (likely) get a different result. For example, see what happens when I run the following two commands (you'll learn the \texttt{rnorm()} function on the next page...)
+Every time you draw a sample from a probability distribution, you'll (likely) get a different result. For example, see what happens when I run the following two commands (you'll learn the `rnorm()` function on the next page...)
 
 ```{r}
 # Draw a sample of size 5 from a normal distribution with mean 100 and sd 10

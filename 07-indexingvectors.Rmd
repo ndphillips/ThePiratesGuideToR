@@ -5,7 +5,7 @@ knitr::opts_chunk$set(collapse = TRUE)
 ```
 
 
-```{r, fig.cap= "Traditionally, a pirate will steal a Beard Bauble from every pirate he beats in a game of Mario Kart. This pirate is is the Mario Kart champion of Missionsstrasse.", fig.margin = TRUE, echo = FALSE, out.width = "300px", fig.align='center'}
+```{r, fig.cap= "Traditionally, a pirate will steal a Beard Bauble from every pirate he beats in a game of Mario Kart. This pirate is is the Mario Kart champion of Missionsstrasse.", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
 knitr::include_graphics(c("images/beard.jpeg"))
 ```
 
@@ -97,14 +97,14 @@ boat.names[my.index]
 
 ## Logical Indexing
 
-```{r, fig.cap= "Logical indexing. Good for R aliens and R pirates.", fig.margin = TRUE, echo = FALSE, out.width = "300px", fig.align='center'}
+```{r, fig.cap= "Logical indexing. Good for R aliens and R pirates.", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
 knitr::include_graphics(c("images/logic.jpg"))
 ```
 
 
 The second way to index vectors is with *logical vectors*. A logical vector is a vector that *only* contains TRUE and FALSE values. In R, true values are designated with TRUE, and false values with FALSE. When you index a vector with a logical vector, R will return values of the vector for which the indexing vector is TRUE. If that was confusing, think about it this way: a logical vector, combined with the brackets `[ ]`, acts as a *filter* for the vector it is indexing. It only lets values of the vector pass through for which the logical vector is TRUE.
 
-```{r, fig.cap= "FALSE values in a logical vector are like lots of mini-Gandolfs. In this example, I am indexing a vector \texttt{x} with a logical vector y (y for example could be x > 0, so all positive values of x are TRUE and all negative values are FALSE). The result is a vector of length 2, which are the values of x for which the logical vector y was true. Gandolf stopped all the values of x for which y was FALSE.", fig.margin = TRUE, echo = FALSE, out.width = "500px", fig.align='center'}
+```{r, fig.cap= "FALSE values in a logical vector are like lots of mini-Gandolfs. In this example, I am indexing a vector x with a logical vector y (y for example could be x > 0, so all positive values of x are TRUE and all negative values are FALSE). The result is a vector of length 2, which are the values of x for which the logical vector y was true. Gandolf stopped all the values of x for which y was FALSE.", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
 knitr::include_graphics(c("images/indexgandolf.png"))
 ```
 
@@ -380,7 +380,7 @@ In other languages this code wouldn't work because we're trying to replace 5 val
 ### Ex: Fixing invalid responses to a Happiness survey
 
 
-```{r, fig.cap= "", fig.margin = TRUE, echo = FALSE, out.width = "300px", fig.align='center'}
+```{r, fig.cap= "", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
 knitr::include_graphics(c("images/happiness.png"))
 ```
 
@@ -407,7 +407,7 @@ happy[invalid] <- NA
 happy
 ```
 
-We can also recode all the invalid values of \textt{happy} in one line as follows:
+We can also recode all the invalid values of `happy` in one line as follows:
 
 ```{r}
 # Convert all values of happy that are NOT integers from 1 to 5 to NA
@@ -428,7 +428,7 @@ mean(happy, na.rm = TRUE)
 ## Test your R Might!: Movie data
 
 
-```{r, fig.cap= "", fig.margin = TRUE, echo = FALSE, out.width = "600px", fig.align='center'}
+```{r, fig.cap= "", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
 knitr::include_graphics(c("images/moviecollage.png"))
 ```
 
