@@ -146,7 +146,7 @@ renata.score <- data.frame(
 knitr::kable(renata.score, caption = "Renata's treasure haul when she was sober and when she was drunk")
 ```
 
-How much treasure did Renata find on average whe she was sober? What about when she was drunk?
+How much treasure did Renata find on average when she was sober? What about when she was drunk?
 
 ```{r}
 sober <- c(2, 0, 3, 1, 0, 3, 5)

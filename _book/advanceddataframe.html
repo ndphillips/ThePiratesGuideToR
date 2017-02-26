@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>YaRrr! The Pirate’s Guide to R</title>
+  <meta name="description" content="An introductory book to R written by, and for, R pirates">
+  <meta name="generator" content="bookdown 0.3.9 and GitBook 2.6.7">
+
+  <meta property="og:title" content="YaRrr! The Pirate’s Guide to R" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://bookdown.org/ndphillips/YaRrr/" />
+  <meta property="og:image" content="https://bookdown.org/ndphillips/YaRrr/images/YaRrr_Cover.jpg" />
+  <meta property="og:description" content="An introductory book to R written by, and for, R pirates" />
+  <meta name="github-repo" content="ndphillips/ThePiratesGuideToR" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="YaRrr! The Pirate’s Guide to R" />
+  
+  <meta name="twitter:description" content="An introductory book to R written by, and for, R pirates" />
+  <meta name="twitter:image" content="https://bookdown.org/ndphillips/YaRrr/images/YaRrr_Cover.jpg" />
+
+<meta name="author" content="Nathaniel D. Phillips">
+
+
+<meta name="date" content="2017-02-26">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="solutions.html">
+<link rel="next" href="references.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">YaRrr! The Pirate's Guide to R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#where-did-this-book-come-from"><i class="fa fa-check"></i><b>1.1</b> Where did this book come from?</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#who-is-this-book-for"><i class="fa fa-check"></i><b>1.2</b> Who is this book for?</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#why-is-r-so-great"><i class="fa fa-check"></i><b>1.3</b> Why is R so great?</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#rrelationship"><i class="fa fa-check"></i><b>1.4</b> Why R is like a relationship…</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#r-resources"><i class="fa fa-check"></i><b>1.5</b> R resources</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="index.html"><a href="index.html#r-cheatsheets"><i class="fa fa-check"></i><b>1.5.1</b> R Cheatsheets</a></li>
+<li class="chapter" data-level="1.5.2" data-path="index.html"><a href="index.html#getting-r-help-and-inspiration-online"><i class="fa fa-check"></i><b>1.5.2</b> Getting R help and inspiration online</a></li>
+<li class="chapter" data-level="1.5.3" data-path="index.html"><a href="index.html#other-r-books"><i class="fa fa-check"></i><b>1.5.3</b> Other R books</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#who-am-i"><i class="fa fa-check"></i><b>1.6</b> Who am I?</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.6.1</b> Acknowledgements</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="started.html"><a href="started.html"><i class="fa fa-check"></i><b>2</b> Getting Started</a><ul>
+<li class="chapter" data-level="2.1" data-path="started.html"><a href="started.html#installing-base-r-and-rstudio"><i class="fa fa-check"></i><b>2.1</b> Installing Base-R and RStudio</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="started.html"><a href="started.html#check-for-version-updates"><i class="fa fa-check"></i><b>2.1.1</b> Check for version updates</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="started.html"><a href="started.html#the-four-rstudio-windows"><i class="fa fa-check"></i><b>2.2</b> The four RStudio Windows</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="started.html"><a href="started.html#source---your-notepad-for-code"><i class="fa fa-check"></i><b>2.2.1</b> Source - Your notepad for code</a></li>
+<li class="chapter" data-level="2.2.2" data-path="started.html"><a href="started.html#console-rs-heart"><i class="fa fa-check"></i><b>2.2.2</b> Console: R’s Heart</a></li>
+<li class="chapter" data-level="2.2.3" data-path="started.html"><a href="started.html#environment-history"><i class="fa fa-check"></i><b>2.2.3</b> Environment / History</a></li>
+<li class="chapter" data-level="2.2.4" data-path="started.html"><a href="started.html#files-plots-packages-help"><i class="fa fa-check"></i><b>2.2.4</b> Files / Plots / Packages / Help</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="started.html"><a href="started.html#packages"><i class="fa fa-check"></i><b>2.3</b> Packages</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="started.html"><a href="started.html#installing-a-new-package"><i class="fa fa-check"></i><b>2.3.1</b> Installing a new package</a></li>
+<li class="chapter" data-level="2.3.2" data-path="started.html"><a href="started.html#loading-a-package"><i class="fa fa-check"></i><b>2.3.2</b> Loading a package</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="started.html"><a href="started.html#reading-and-writing-code"><i class="fa fa-check"></i><b>2.4</b> Reading and writing Code</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="started.html"><a href="started.html#code-chunks"><i class="fa fa-check"></i><b>2.4.1</b> Code Chunks</a></li>
+<li class="chapter" data-level="2.4.2" data-path="started.html"><a href="started.html#comments-with"><i class="fa fa-check"></i><b>2.4.2</b> Comments with #</a></li>
+<li class="chapter" data-level="2.4.3" data-path="started.html"><a href="started.html#element-numbers-in-output-1"><i class="fa fa-check"></i><b>2.4.3</b> Element numbers in output [1]</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="started.html"><a href="started.html#debugging"><i class="fa fa-check"></i><b>2.5</b> Debugging</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="started.html"><a href="started.html#r-is-not-ready"><i class="fa fa-check"></i><b>2.5.1</b> R is not ready (&gt;)</a></li>
+<li class="chapter" data-level="2.5.2" data-path="started.html"><a href="started.html#misspelled-object-or-function"><i class="fa fa-check"></i><b>2.5.2</b> Misspelled object or function</a></li>
+<li class="chapter" data-level="2.5.3" data-path="started.html"><a href="started.html#punctuation-problems"><i class="fa fa-check"></i><b>2.5.3</b> Punctuation problems</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="jumpin.html"><a href="jumpin.html"><i class="fa fa-check"></i><b>3</b> Jump In!</a><ul>
+<li class="chapter" data-level="3.1" data-path="jumpin.html"><a href="jumpin.html#exploring-data"><i class="fa fa-check"></i><b>3.1</b> Exploring data</a></li>
+<li class="chapter" data-level="3.2" data-path="jumpin.html"><a href="jumpin.html#descriptive-statistics"><i class="fa fa-check"></i><b>3.2</b> Descriptive statistics</a></li>
+<li class="chapter" data-level="3.3" data-path="jumpin.html"><a href="jumpin.html#plotting"><i class="fa fa-check"></i><b>3.3</b> Plotting</a></li>
+<li class="chapter" data-level="3.4" data-path="jumpin.html"><a href="jumpin.html#hypothesis-tests"><i class="fa fa-check"></i><b>3.4</b> Hypothesis tests</a></li>
+<li class="chapter" data-level="3.5" data-path="jumpin.html"><a href="jumpin.html#regression"><i class="fa fa-check"></i><b>3.5</b> Regression</a></li>
+<li class="chapter" data-level="3.6" data-path="jumpin.html"><a href="jumpin.html#bayesian-statistics"><i class="fa fa-check"></i><b>3.6</b> Bayesian Statistics</a></li>
+<li class="chapter" data-level="3.7" data-path="jumpin.html"><a href="jumpin.html#wasnt-that-easy"><i class="fa fa-check"></i><b>3.7</b> Wasn’t that easy?!</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>4</b> The Basics</a><ul>
+<li class="chapter" data-level="4.1" data-path="basics.html"><a href="basics.html#the-command-line-console"><i class="fa fa-check"></i><b>4.1</b> The command-line (Console)</a></li>
+<li class="chapter" data-level="4.2" data-path="basics.html"><a href="basics.html#writing-r-scripts-in-an-editor"><i class="fa fa-check"></i><b>4.2</b> Writing R scripts in an editor</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="basics.html"><a href="basics.html#send-code-from-an-source-to-the-console"><i class="fa fa-check"></i><b>4.2.1</b> Send code from an source to the console</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="basics.html"><a href="basics.html#a-brief-style-guide-commenting-and-spacing"><i class="fa fa-check"></i><b>4.3</b> A brief style guide: Commenting and spacing</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="basics.html"><a href="basics.html#commenting-code-with-the-pound-sign"><i class="fa fa-check"></i><b>4.3.1</b> Commenting code with the # (pound) sign</a></li>
+<li class="chapter" data-level="4.3.2" data-path="basics.html"><a href="basics.html#spacing"><i class="fa fa-check"></i><b>4.3.2</b> Spacing</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="basics.html"><a href="basics.html#objects-and-functions"><i class="fa fa-check"></i><b>4.4</b> Objects and functions</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="basics.html"><a href="basics.html#numbers-versus-characters"><i class="fa fa-check"></i><b>4.4.1</b> Numbers versus characters</a></li>
+<li class="chapter" data-level="4.4.2" data-path="basics.html"><a href="basics.html#creating-new-objects-with--"><i class="fa fa-check"></i><b>4.4.2</b> Creating new objects with &lt;-</a></li>
+<li class="chapter" data-level="4.4.3" data-path="basics.html"><a href="basics.html#how-to-name-objects"><i class="fa fa-check"></i><b>4.4.3</b> How to name objects</a></li>
+<li class="chapter" data-level="4.4.4" data-path="basics.html"><a href="basics.html#example-pirates-of-the-caribbean"><i class="fa fa-check"></i><b>4.4.4</b> Example: Pirates of The Caribbean</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="basics.html"><a href="basics.html#test-your-r-might"><i class="fa fa-check"></i><b>4.5</b> Test your R might!</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="scalersvectors.html"><a href="scalersvectors.html"><i class="fa fa-check"></i><b>5</b> Scalers and vectors</a><ul>
+<li class="chapter" data-level="5.1" data-path="scalersvectors.html"><a href="scalersvectors.html#scalars"><i class="fa fa-check"></i><b>5.1</b> Scalars</a></li>
+<li class="chapter" data-level="5.2" data-path="scalersvectors.html"><a href="scalersvectors.html#vectors"><i class="fa fa-check"></i><b>5.2</b> Vectors</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="scalersvectors.html"><a href="scalersvectors.html#ab"><i class="fa fa-check"></i><b>5.2.1</b> a:b</a></li>
+<li class="chapter" data-level="5.2.2" data-path="scalersvectors.html"><a href="scalersvectors.html#seq"><i class="fa fa-check"></i><b>5.2.2</b> seq()</a></li>
+<li class="chapter" data-level="5.2.3" data-path="scalersvectors.html"><a href="scalersvectors.html#rep"><i class="fa fa-check"></i><b>5.2.3</b> rep()</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="scalersvectors.html"><a href="scalersvectors.html#generating-random-data"><i class="fa fa-check"></i><b>5.3</b> Generating random data</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="scalersvectors.html"><a href="scalersvectors.html#sample"><i class="fa fa-check"></i><b>5.3.1</b> sample()</a></li>
+<li class="chapter" data-level="5.3.2" data-path="scalersvectors.html"><a href="scalersvectors.html#normal-gaussian"><i class="fa fa-check"></i><b>5.3.2</b> Normal (Gaussian)</a></li>
+<li class="chapter" data-level="5.3.3" data-path="scalersvectors.html"><a href="scalersvectors.html#uniform"><i class="fa fa-check"></i><b>5.3.3</b> Uniform</a></li>
+<li class="chapter" data-level="5.3.4" data-path="scalersvectors.html"><a href="scalersvectors.html#notes-on-random-samples"><i class="fa fa-check"></i><b>5.3.4</b> Notes on random samples</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="scalersvectors.html"><a href="scalersvectors.html#test-your-r-might-1"><i class="fa fa-check"></i><b>5.4</b> Test your R might!</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="vectorfunctions.html"><a href="vectorfunctions.html"><i class="fa fa-check"></i><b>6</b> Vector functions</a><ul>
+<li class="chapter" data-level="6.1" data-path="vectorfunctions.html"><a href="vectorfunctions.html#arithmetic-operations-on-vectors"><i class="fa fa-check"></i><b>6.1</b> Arithmetic operations on vectors</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="vectorfunctions.html"><a href="vectorfunctions.html#basic-math-with-multiple-vectors"><i class="fa fa-check"></i><b>6.1.1</b> Basic math with multiple vectors</a></li>
+<li class="chapter" data-level="6.1.2" data-path="vectorfunctions.html"><a href="vectorfunctions.html#ex-pirate-bake-sale"><i class="fa fa-check"></i><b>6.1.2</b> Ex: Pirate Bake Sale</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="vectorfunctions.html"><a href="vectorfunctions.html#summary-statistics"><i class="fa fa-check"></i><b>6.2</b> Summary statistics</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="vectorfunctions.html"><a href="vectorfunctions.html#length"><i class="fa fa-check"></i><b>6.2.1</b> length()</a></li>
+<li class="chapter" data-level="6.2.2" data-path="vectorfunctions.html"><a href="vectorfunctions.html#additional-numeric-vector-functions"><i class="fa fa-check"></i><b>6.2.2</b> Additional numeric vector functions</a></li>
+<li class="chapter" data-level="6.2.3" data-path="vectorfunctions.html"><a href="vectorfunctions.html#sample-statistics-from-random-samples"><i class="fa fa-check"></i><b>6.2.3</b> Sample statistics from random samples</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="vectorfunctions.html"><a href="vectorfunctions.html#counting-statistics"><i class="fa fa-check"></i><b>6.3</b> Counting statistics</a></li>
+<li class="chapter" data-level="6.4" data-path="vectorfunctions.html"><a href="vectorfunctions.html#missing-na-values"><i class="fa fa-check"></i><b>6.4</b> Missing (NA) values</a></li>
+<li class="chapter" data-level="6.5" data-path="vectorfunctions.html"><a href="vectorfunctions.html#standardization-z-score"><i class="fa fa-check"></i><b>6.5</b> Standardization (z-score)</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="vectorfunctions.html"><a href="vectorfunctions.html#ex-evaluating-a-competition"><i class="fa fa-check"></i><b>6.5.1</b> Ex: Evaluating a competition</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="vectorfunctions.html"><a href="vectorfunctions.html#test-your-r-might-2"><i class="fa fa-check"></i><b>6.6</b> Test your R Might!</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="vectorindexing.html"><a href="vectorindexing.html"><i class="fa fa-check"></i><b>7</b> Indexing Vectors with [ ]</a><ul>
+<li class="chapter" data-level="7.1" data-path="vectorindexing.html"><a href="vectorindexing.html#numerical-indexing"><i class="fa fa-check"></i><b>7.1</b> Numerical Indexing</a></li>
+<li class="chapter" data-level="7.2" data-path="vectorindexing.html"><a href="vectorindexing.html#logical-indexing"><i class="fa fa-check"></i><b>7.2</b> Logical Indexing</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="vectorindexing.html"><a href="vectorindexing.html#and-or-in"><i class="fa fa-check"></i><b>7.2.1</b> <code>&amp;</code> (and), <code>|</code> (or), <code>%in%</code></a></li>
+<li class="chapter" data-level="7.2.2" data-path="vectorindexing.html"><a href="vectorindexing.html#counts-and-percentages-from-logical-vectors"><i class="fa fa-check"></i><b>7.2.2</b> Counts and percentages from logical vectors</a></li>
+<li class="chapter" data-level="7.2.3" data-path="vectorindexing.html"><a href="vectorindexing.html#additional-logical-functions"><i class="fa fa-check"></i><b>7.2.3</b> Additional Logical functions</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="vectorindexing.html"><a href="vectorindexing.html#changing-values-of-a-vector"><i class="fa fa-check"></i><b>7.3</b> Changing values of a vector</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="vectorindexing.html"><a href="vectorindexing.html#ex-fixing-invalid-responses-to-a-happiness-survey"><i class="fa fa-check"></i><b>7.3.1</b> Ex: Fixing invalid responses to a Happiness survey</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="vectorindexing.html"><a href="vectorindexing.html#test-your-r-might-movie-data"><i class="fa fa-check"></i><b>7.4</b> Test your R Might!: Movie data</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="matricesdataframes.html"><a href="matricesdataframes.html"><i class="fa fa-check"></i><b>8</b> Matrices and Dataframes</a><ul>
+<li class="chapter" data-level="8.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#what-are-matrices-and-dataframes"><i class="fa fa-check"></i><b>8.1</b> What are matrices and dataframes?</a></li>
+<li class="chapter" data-level="8.2" data-path="matricesdataframes.html"><a href="matricesdataframes.html#creating-matrices-and-dataframes"><i class="fa fa-check"></i><b>8.2</b> Creating matrices and dataframes</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#cbind-rbind"><i class="fa fa-check"></i><b>8.2.1</b> <code>cbind()</code>, <code>rbind()</code></a></li>
+<li class="chapter" data-level="8.2.2" data-path="matricesdataframes.html"><a href="matricesdataframes.html#matrix"><i class="fa fa-check"></i><b>8.2.2</b> <code>matrix()</code></a></li>
+<li class="chapter" data-level="8.2.3" data-path="matricesdataframes.html"><a href="matricesdataframes.html#data.frame"><i class="fa fa-check"></i><b>8.2.3</b> <code>data.frame()</code></a></li>
+<li class="chapter" data-level="8.2.4" data-path="matricesdataframes.html"><a href="matricesdataframes.html#dataframes-pre-loaded-in-r"><i class="fa fa-check"></i><b>8.2.4</b> Dataframes pre-loaded in R</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="matricesdataframes.html"><a href="matricesdataframes.html#matrix-and-dataframe-functions"><i class="fa fa-check"></i><b>8.3</b> Matrix and dataframe functions</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#head-tail-view"><i class="fa fa-check"></i><b>8.3.1</b> <code>head(), tail(), View()</code></a></li>
+<li class="chapter" data-level="8.3.2" data-path="matricesdataframes.html"><a href="matricesdataframes.html#summary-str"><i class="fa fa-check"></i><b>8.3.2</b> <code>summary()</code>, <code>str()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="matricesdataframes.html"><a href="matricesdataframes.html#dataframe-column-names"><i class="fa fa-check"></i><b>8.4</b> Dataframe column names</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#adding-new-columns"><i class="fa fa-check"></i><b>8.4.1</b> Adding new columns</a></li>
+<li class="chapter" data-level="8.4.2" data-path="matricesdataframes.html"><a href="matricesdataframes.html#changing-column-names"><i class="fa fa-check"></i><b>8.4.2</b> Changing column names</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="matricesdataframes.html"><a href="matricesdataframes.html#slicing-dataframes"><i class="fa fa-check"></i><b>8.5</b> Slicing dataframes</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#slicing-with"><i class="fa fa-check"></i><b>8.5.1</b> Slicing with <code>[, ]</code></a></li>
+<li class="chapter" data-level="8.5.2" data-path="matricesdataframes.html"><a href="matricesdataframes.html#slicing-with-logical-vectors"><i class="fa fa-check"></i><b>8.5.2</b> Slicing with logical vectors</a></li>
+<li class="chapter" data-level="8.5.3" data-path="matricesdataframes.html"><a href="matricesdataframes.html#slicing-with-subset"><i class="fa fa-check"></i><b>8.5.3</b> Slicing with <code>subset()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="matricesdataframes.html"><a href="matricesdataframes.html#combining-slicing-with-functions"><i class="fa fa-check"></i><b>8.6</b> Combining slicing with functions</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#with"><i class="fa fa-check"></i><b>8.6.1</b> <code>with()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="matricesdataframes.html"><a href="matricesdataframes.html#test-your-r-might-pirates-and-superheroes"><i class="fa fa-check"></i><b>8.7</b> Test your R might! Pirates and superheroes</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="importingdata.html"><a href="importingdata.html"><i class="fa fa-check"></i><b>9</b> Importing, saving and managing data</a><ul>
+<li class="chapter" data-level="9.1" data-path="importingdata.html"><a href="importingdata.html#workspace-management-functions"><i class="fa fa-check"></i><b>9.1</b> Workspace management functions</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="importingdata.html"><a href="importingdata.html#why-object-and-file-management-is-so-important"><i class="fa fa-check"></i><b>9.1.1</b> Why object and file management is so important</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="importingdata.html"><a href="importingdata.html#the-working-directory"><i class="fa fa-check"></i><b>9.2</b> The working directory</a></li>
+<li class="chapter" data-level="9.3" data-path="importingdata.html"><a href="importingdata.html#projects-in-rstudio"><i class="fa fa-check"></i><b>9.3</b> Projects in RStudio</a></li>
+<li class="chapter" data-level="9.4" data-path="importingdata.html"><a href="importingdata.html#the-workspace"><i class="fa fa-check"></i><b>9.4</b> The workspace</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="importingdata.html"><a href="importingdata.html#ls"><i class="fa fa-check"></i><b>9.4.1</b> ls()</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="importingdata.html"><a href="importingdata.html#rdata-files"><i class="fa fa-check"></i><b>9.5</b> .RData files</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="importingdata.html"><a href="importingdata.html#save"><i class="fa fa-check"></i><b>9.5.1</b> save()</a></li>
+<li class="chapter" data-level="9.5.2" data-path="importingdata.html"><a href="importingdata.html#save.image"><i class="fa fa-check"></i><b>9.5.2</b> save.image()</a></li>
+<li class="chapter" data-level="9.5.3" data-path="importingdata.html"><a href="importingdata.html#load"><i class="fa fa-check"></i><b>9.5.3</b> load()</a></li>
+<li class="chapter" data-level="9.5.4" data-path="importingdata.html"><a href="importingdata.html#rm"><i class="fa fa-check"></i><b>9.5.4</b> rm()</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="importingdata.html"><a href="importingdata.html#txt-files"><i class="fa fa-check"></i><b>9.6</b> .txt files</a><ul>
+<li class="chapter" data-level="9.6.1" data-path="importingdata.html"><a href="importingdata.html#write.table"><i class="fa fa-check"></i><b>9.6.1</b> write.table()</a></li>
+<li class="chapter" data-level="9.6.2" data-path="importingdata.html"><a href="importingdata.html#read.table"><i class="fa fa-check"></i><b>9.6.2</b> read.table()</a></li>
+<li class="chapter" data-level="9.6.3" data-path="importingdata.html"><a href="importingdata.html#reading-files-directly-from-a-web-url"><i class="fa fa-check"></i><b>9.6.3</b> Reading files directly from a web URL</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="importingdata.html"><a href="importingdata.html#excel-spss-and-other-data-files"><i class="fa fa-check"></i><b>9.7</b> Excel, SPSS, and other data files</a></li>
+<li class="chapter" data-level="9.8" data-path="importingdata.html"><a href="importingdata.html#additional-tips"><i class="fa fa-check"></i><b>9.8</b> Additional tips</a></li>
+<li class="chapter" data-level="9.9" data-path="importingdata.html"><a href="importingdata.html#test-your-r-might-3"><i class="fa fa-check"></i><b>9.9</b> Test your R Might!</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="solutions.html"><a href="solutions.html"><i class="fa fa-check"></i><b>10</b> Solutions</a><ul>
+<li class="chapter" data-level="10.1" data-path="solutions.html"><a href="solutions.html#chapter-4-the-basics"><i class="fa fa-check"></i><b>10.1</b> Chapter 4: The Basics</a></li>
+<li class="chapter" data-level="10.2" data-path="solutions.html"><a href="solutions.html#chapter-5-scalers-and-vectors"><i class="fa fa-check"></i><b>10.2</b> Chapter 5: Scalers and vectors</a></li>
+<li class="chapter" data-level="10.3" data-path="solutions.html"><a href="solutions.html#chapter-6-vector-functions"><i class="fa fa-check"></i><b>10.3</b> Chapter 6: Vector Functions</a></li>
+<li class="chapter" data-level="10.4" data-path="solutions.html"><a href="solutions.html#chapter-7-indexing-vectors-with"><i class="fa fa-check"></i><b>10.4</b> Chapter 7: Indexing vectors with []</a></li>
+<li class="chapter" data-level="10.5" data-path="solutions.html"><a href="solutions.html#chapter-8-matrices-and-dataframes"><i class="fa fa-check"></i><b>10.5</b> Chapter 8: Matrices and Dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="advanceddataframe.html"><a href="advanceddataframe.html"><i class="fa fa-check"></i><b>11</b> Advanced dataframe manipulation</a><ul>
+<li class="chapter" data-level="11.1" data-path="advanceddataframe.html"><a href="advanceddataframe.html#order-sorting-data"><i class="fa fa-check"></i><b>11.1</b> <code>order()</code>: Sorting data</a></li>
+<li class="chapter" data-level="11.2" data-path="advanceddataframe.html"><a href="advanceddataframe.html#merge-combining-data"><i class="fa fa-check"></i><b>11.2</b> <code>merge()</code>: Combining data</a></li>
+<li class="chapter" data-level="11.3" data-path="advanceddataframe.html"><a href="advanceddataframe.html#aggregate-grouped-aggregation"><i class="fa fa-check"></i><b>11.3</b> <code>aggregate()</code>: Grouped aggregation</a></li>
+<li class="chapter" data-level="11.4" data-path="advanceddataframe.html"><a href="advanceddataframe.html#dplyr"><i class="fa fa-check"></i><b>11.4</b> <code>dplyr</code></a></li>
+<li class="chapter" data-level="11.5" data-path="advanceddataframe.html"><a href="advanceddataframe.html#additional-aggregation-functions"><i class="fa fa-check"></i><b>11.5</b> Additional aggregation functions</a><ul>
+<li class="chapter" data-level="11.5.1" data-path="advanceddataframe.html"><a href="advanceddataframe.html#rowmeans-colmeans"><i class="fa fa-check"></i><b>11.5.1</b> <code>rowMeans()</code>, <code>colMeans()</code></a></li>
+<li class="chapter" data-level="11.5.2" data-path="advanceddataframe.html"><a href="advanceddataframe.html#apply-family"><i class="fa fa-check"></i><b>11.5.2</b> <code>apply</code> family</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="advanceddataframe.html"><a href="advanceddataframe.html#test-your-r-might-mmmmmcaffeine"><i class="fa fa-check"></i><b>11.6</b> Test your R might!: Mmmmm…caffeine</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">YaRrr! The Pirate’s Guide to R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="advanceddataframe" class="section level1">
+<h1><span class="header-section-number">Chapter 11</span> Advanced dataframe manipulation</h1>
+<p>In this chapter we’ll cover some more advanced functions and procedures for manipulating dataframes.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Exam data</span>
+exam &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+  <span class="dt">id =</span> <span class="dv">1</span>:<span class="dv">5</span>,
+  <span class="dt">q1 =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>),
+  <span class="dt">q2 =</span> <span class="kw">c</span>(<span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">9</span>, <span class="dv">8</span>, <span class="dv">7</span>),
+  <span class="dt">q3 =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">4</span>))
+
+<span class="co"># Demographic data</span>
+demographics &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+  <span class="dt">id =</span> <span class="dv">1</span>:<span class="dv">5</span>,
+  <span class="dt">sex =</span> <span class="kw">c</span>(<span class="st">&quot;f&quot;</span>, <span class="st">&quot;m&quot;</span>, <span class="st">&quot;f&quot;</span>, <span class="st">&quot;f&quot;</span>, <span class="st">&quot;m&quot;</span>),
+  <span class="dt">age =</span> <span class="kw">c</span>(<span class="dv">25</span>, <span class="dv">22</span>, <span class="dv">24</span>, <span class="dv">19</span>, <span class="dv">23</span>))
+
+<span class="co"># Combine exam and demographics</span>
+combined &lt;-<span class="st"> </span><span class="kw">merge</span>(<span class="dt">x =</span> exam, 
+              <span class="dt">y =</span> demographics, 
+              <span class="dt">by =</span> <span class="st">&quot;id&quot;</span>)
+
+<span class="co"># Mean q1 score for each sex</span>
+<span class="kw">aggregate</span>(<span class="dt">formula =</span> q1 ~<span class="st"> </span>sex, 
+          <span class="dt">data =</span> combined, 
+          <span class="dt">FUN =</span> mean)
+##   sex  q1
+## 1   f 2.0
+## 2   m 3.5
+
+<span class="co"># Median q3 score for each sex, but only for those</span>
+<span class="co">#   older than 20</span>
+<span class="kw">aggregate</span>(<span class="dt">formula =</span> q3 ~<span class="st"> </span>sex, 
+          <span class="dt">data =</span> combined,
+          <span class="dt">subset =</span> age &gt;<span class="st"> </span><span class="dv">20</span>,
+          <span class="dt">FUN =</span> mean)
+##   sex  q3
+## 1   f 3.5
+## 2   m 5.5
+
+<span class="co"># Many summary statistics by sex using dplyr!</span>
+<span class="kw">library</span>(dplyr)
+combined %&gt;%<span class="st"> </span><span class="kw">group_by</span>(sex) %&gt;%
+<span class="st">  </span><span class="kw">summarise</span>(
+    <span class="dt">q1.mean =</span> <span class="kw">mean</span>(q1),
+    <span class="dt">q2.mean =</span> <span class="kw">mean</span>(q2),
+    <span class="dt">q3.mean =</span> <span class="kw">mean</span>(q3),
+    <span class="dt">age.mean =</span> <span class="kw">mean</span>(age),
+    <span class="dt">N =</span> <span class="kw">n</span>())
+## # A tibble: 2 × 6
+##      sex q1.mean q2.mean q3.mean age.mean     N
+##   &lt;fctr&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt; &lt;int&gt;
+## 1      f     2.0     8.3     4.3       23     3
+## 2      m     3.5     8.5     5.5       22     2</code></pre></div>
+<p>In Chapter <a href="matricesdataframes">6</a>, you learned how to calculate statistics on subsets of data using indexing. However, you may have noticed that indexing is not very intuitive and not terribly efficient. If you want to calculate statistics for many different subsets of data (e.g.; mean birth rate for every country), you’d have to write a new indexing command for each subset, which could take forever. Thankfully, R has some great built-in functions like <code>aggregate()</code> that allow you to easily apply functions (like <code>mean()</code>) to a dependent variable (like birth rate) for each level of one or more independent variables (like a country) with just a few lines of code.</p>
+<div id="order-sorting-data" class="section level2">
+<h2><span class="header-section-number">11.1</span> <code>order()</code>: Sorting data</h2>
+<p>To sort the rows of a dataframe according to column values, use the <code>order()</code> function. The <code>order()</code> function takes one or more vectors as arguments, and returns an integer vector indicating the order of the vectors. You can use the output of <code>order()</code> to index a dataframe, and thus change its order.</p>
+<p>Let’s re-order the <code>pirates</code> data by height from the shortest to the tallest:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Sort the pirates dataframe by height</span>
+pirates &lt;-<span class="st"> </span>pirates[<span class="kw">order</span>(pirates$height),]
+
+<span class="co"># Look at the first few rows and columns of the result</span>
+pirates[<span class="dv">1</span>:<span class="dv">5</span>, <span class="dv">1</span>:<span class="dv">4</span>]
+##      id    sex age height
+## 39   39 female  25    130
+## 854 854 female  25    130
+## 30   30 female  26    135
+## 223 223 female  28    135
+## 351 351 female  36    137</code></pre></div>
+<p>By default, the <code>order()</code> function will sort values in ascending (increasing) order. If you want to order the values in descending (decreasing) order, just add the argument <code>decreasing = TRUE</code> to the <code>order()</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Sort the pirates dataframe by height in decreasing order</span>
+pirates &lt;-<span class="st"> </span>pirates[<span class="kw">order</span>(pirates$height, <span class="dt">decreasing =</span> <span class="ot">TRUE</span>),]
+
+<span class="co"># Look at the first few rows and columns of the result</span>
+pirates[<span class="dv">1</span>:<span class="dv">5</span>, <span class="dv">1</span>:<span class="dv">4</span>]
+##      id  sex age height
+## 2     2 male  31    209
+## 793 793 male  25    209
+## 430 430 male  26    201
+## 292 292 male  29    201
+## 895 895 male  27    201</code></pre></div>
+<p>To order a dataframe by several columns, just add additional arguments to <code>order()</code>. For example, to order the <code>pirates</code> by sex and then by height, we’d do the following:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Sort the pirates dataframe by sex and then height</span>
+pirates &lt;-<span class="st"> </span>pirates[<span class="kw">order</span>(pirates$sex, pirates$height),]</code></pre></div>
+<p>By default, the <code>order()</code> function will sort values in ascending (increasing) order. If you want to order the values in descending (decreasing) order, just add the argument <code>decreasing = TRUE</code> to the <code>order()</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Sort the pirates dataframe by height in decreasing order</span>
+pirates &lt;-<span class="st"> </span>pirates[<span class="kw">order</span>(pirates$height, <span class="dt">decreasing =</span> <span class="ot">TRUE</span>),]</code></pre></div>
+</div>
+<div id="merge-combining-data" class="section level2">
+<h2><span class="header-section-number">11.2</span> <code>merge()</code>: Combining data</h2>
+<table style="width:90%;">
+<colgroup>
+<col width="19%" />
+<col width="70%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Argument</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>x, y</code></td>
+<td align="left">Two dataframes to be merged</td>
+</tr>
+<tr class="even">
+<td align="left"><code>by</code></td>
+<td align="left">A string vector of 1 or more columns to match the data by. For example, <code>by = &quot;id&quot;</code> will combine columns that have matching values in a column called <code>&quot;id&quot;</code>. <code>by = c(&quot;last.name&quot;, &quot;first.name&quot;)</code> will combine columns that have matching values in both <code>&quot;last.name&quot;</code> and <code>&quot;first.name&quot;</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>all</code></td>
+<td align="left">A logical value indicating whether or not to include rows with non-matching values of <code>by</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>One of the most common data management tasks is <strong>merging</strong> (aka combining) two data sets together. For example, imagine you conduct a study where 5 participants are given a score from 1 to 5 on a risk assessment task. We can represent these data in a dataframe called <code>risk.survey</code>:</p>
+<table>
+<caption><span id="tab:unnamed-chunk-295">Table 11.1: </span>Results from a survey on risk.</caption>
+<thead>
+<tr class="header">
+<th align="right">participant</th>
+<th align="right">risk.score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">5</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Results from a risk survey</span>
+risk.survey &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+  <span class="st">&quot;participant&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>),
+  <span class="st">&quot;risk.score&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">1</span>))</code></pre></div>
+<p>Now, imagine that in a second study, you have participants complete a survey about their level of happiness (on a scale of 0 to 100). We can represent these data in a new dataframe called <code>happiness.survey</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">happiness.survey &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+  <span class="st">&quot;participant&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">3</span>),
+  <span class="st">&quot;happiness.score&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">20</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">90</span>, <span class="dv">53</span>))</code></pre></div>
+<p>Now, we’d like to combine these data into one data frame so that the two survey scores for each participant are contained in one object. To do this, use <code>merge()</code>.</p>
+<p>When you merge two dataframes, the result is a new dataframe that contains data from both dataframes. The key argument in <code>merge()</code> is <code>by</code>. The <code>by</code> argument specifies how rows should be matched during the merge. Usually, this will be something like an name, id number, or some other unique identifier.</p>
+<p>Let’s combine our risk and happiness survey using <code>merge()</code>. Because we want to match rows by the <code>participant.id</code> column, we’ll specify <code>by = &quot;participant.id&quot;</code>. Additionally, because we want to include rows with potentially non-matching values, we’ll include <code>all = TRUE</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Combine the risk and happiness surveys by matching participant.id</span>
+combined.survey &lt;-<span class="st"> </span><span class="kw">merge</span>(<span class="dt">x =</span> risk.survey,
+                         <span class="dt">y =</span> happiness.survey,
+                         <span class="dt">by =</span> <span class="st">&quot;participant&quot;</span>,
+                         <span class="dt">all =</span> <span class="ot">TRUE</span>)
+
+<span class="co"># Print the result</span>
+combined.survey
+##   participant risk.score happiness.score
+## 1           1          3              90
+## 2           2          4              40
+## 3           3          5              53
+## 4           4          3              20
+## 5           5          1              50</code></pre></div>
+<p>For the rest of the chapter, we’ll cover data aggregation functions. These functions allow you to quickly and easily calculate aggregated summary statistics over groups of data in a data frame. For example, you can use them to answer questions such as “What was the mean crew age for each ship?”, or “What percentage of participants completed an attention check for each study condition?” We’ll start by going over the <code>aggregate()</code> function.</p>
+</div>
+<div id="aggregate-grouped-aggregation" class="section level2">
+<h2><span class="header-section-number">11.3</span> <code>aggregate()</code>: Grouped aggregation</h2>
+<table style="width:90%;">
+<colgroup>
+<col width="19%" />
+<col width="70%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Argument</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>formula</code></td>
+<td align="left">A formula in the form <code>y ~ x1 + x2 + ...</code> where y is the dependent variable, and x1, x2… are the independent variables. For example, <code>salary ~ sex + age</code> will aggregate a <code>salary</code> column at every unique combination of <code>sex</code> and <code>age</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>FUN</code></td>
+<td align="left">A function that you want to apply to y at every level of the independent variables. E.g.; <code>mean</code>, or <code>max</code>.</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>data</code></td>
+<td align="left">The dataframe containing the variables in <code>formula</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>subset</code></td>
+<td align="left">A subset of data to analyze. For example, <code>subset(sex == &quot;f&quot; &amp; age &gt; 20)</code> would restrict the analysis to females older than 20. You can ignore this argument to use all data.</td>
+</tr>
+</tbody>
+</table>
+<p>The first aggregation function we’ll cover is <code>aggregate()</code>. Aggregate allows you to easily answer questions in the form: “What is the value of the function <code>FUN</code> applied to a dependent variable <code>dv</code> at each level of one (or more) independent variable(s) <code>iv</code>?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># General structure of aggregate()</span>
+<span class="kw">aggregate</span>(<span class="dt">formula =</span> dv ~<span class="st"> </span>iv, <span class="co"># dv is the data, iv is the group </span>
+          <span class="dt">FUN =</span> fun, <span class="co"># The function you want to apply</span>
+          <span class="dt">data =</span> df) <span class="co"># The dataframe object containing dv and iv</span></code></pre></div>
+<p>Let’s give <code>aggregate()</code> a whirl. No…not a whirl…we’ll give it a spin. Definitely a spin. We’ll use <code>aggregate()</code> on the <code>ChickWeight</code> dataset to answer the question “What is the mean weight for each diet?”</p>
+<p>If we wanted to answer this question using basic R functions, we’d have to write a separate command for each supplement like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># The WRONG way to do grouped aggregation. </span>
+<span class="co">#  We should be using aggregate() instead!</span>
+<span class="kw">mean</span>(ChickWeight$weight[ChickWeight$Diet ==<span class="st"> </span><span class="dv">1</span>])
+## [1] 103
+<span class="kw">mean</span>(ChickWeight$weight[ChickWeight$Diet ==<span class="st"> </span><span class="dv">2</span>])
+## [1] 123
+<span class="kw">mean</span>(ChickWeight$weight[ChickWeight$Diet ==<span class="st"> </span><span class="dv">3</span>])
+## [1] 143
+<span class="kw">mean</span>(ChickWeight$weight[ChickWeight$Diet ==<span class="st"> </span><span class="dv">4</span>])
+## [1] 135</code></pre></div>
+<p>If you are ever writing code like this, there is almost always a simpler way to do it. Let’s replace this code with a much more elegant solution using <code>aggregate()</code>.For this question, we’ll set the value of the dependent variable Y to <code>weight</code>, x1 to <code>Diet</code>, and FUN to <code>mean</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Calculate the mean weight for each value of Diet</span>
+<span class="kw">aggregate</span>(<span class="dt">formula =</span> weight ~<span class="st"> </span>Diet,  <span class="co"># DV is weight, IV is Diet</span>
+          <span class="dt">FUN =</span> mean,               <span class="co"># Calculate the mean of each group</span>
+          <span class="dt">data =</span> ChickWeight)       <span class="co"># dataframe is ChickWeight</span>
+##   Diet weight
+## 1    1    103
+## 2    2    123
+## 3    3    143
+## 4    4    135</code></pre></div>
+<p>As you can see, the <code>aggregate()</code> function has returned a dataframe with a column for the independent variable <code>Diet</code>, and a column for the results of the function <code>mean</code> applied to each level of the independent variable. The result of this function is the same thing we’d got from manually indexing each level of <code>Diet</code> individually – but of course, this code is much simpler and more elegant!</p>
+<p>You can also include a <code>subset</code> argument within an <code>aggregate()</code> function to apply the function to subsets of the original data. For example, if I wanted to calculate the mean chicken weights for each diet, but only when the chicks are less than 10 weeks old, I would do the following:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Calculate the mean weight for each value of Diet,</span>
+<span class="co">#  But only when chicks are less than 10 weeks old</span>
+
+<span class="kw">aggregate</span>(<span class="dt">formula =</span> weight ~<span class="st"> </span>Diet,  <span class="co"># DV is weight, IV is Diet</span>
+          <span class="dt">FUN =</span> mean,               <span class="co"># Calculate the mean of each group</span>
+          <span class="dt">subset =</span> Time &lt;<span class="st"> </span><span class="dv">10</span>,       <span class="co"># Only when Chicks are less than 10 weeks old</span>
+          <span class="dt">data =</span> ChickWeight)       <span class="co"># dataframe is ChickWeight</span>
+##   Diet weight
+## 1    1     58
+## 2    2     63
+## 3    3     66
+## 4    4     69</code></pre></div>
+<p>You can also include multiple independent variables in the formula argument to <code>aggregate()</code>. For example, let’s use <code>aggregate()</code> to now get the mean weight of the chicks for all combinations of both <code>Diet</code> and <code>Time</code>, but now only for weeks 0, 2, and 4:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Calculate the mean weight for each value of Diet and Time,</span>
+<span class="co">#  But only when chicks are 0, 2 or 4 weeks okd</span>
+
+<span class="kw">aggregate</span>(<span class="dt">formula =</span> weight ~<span class="st"> </span>Diet +<span class="st"> </span>Time,  <span class="co"># DV is weight, IVs are Diet and Time</span>
+          <span class="dt">FUN =</span> mean,                      <span class="co"># Calculate the mean of each group</span>
+          <span class="dt">subset =</span> Time %in%<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>),   <span class="co"># Only when Chicks are 0, 2, and 4 weeks old</span>
+          <span class="dt">data =</span> ChickWeight)              <span class="co"># dataframe is ChickWeight</span>
+##    Diet Time weight
+## 1     1    0     41
+## 2     2    0     41
+## 3     3    0     41
+## 4     4    0     41
+## 5     1    2     47
+## 6     2    2     49
+## 7     3    2     50
+## 8     4    2     52
+## 9     1    4     56
+## 10    2    4     60
+## 11    3    4     62
+## 12    4    4     64</code></pre></div>
+</div>
+<div id="dplyr" class="section level2">
+<h2><span class="header-section-number">11.4</span> <code>dplyr</code></h2>
+<p>The <code>dplyr</code> package is a relatively new R package that allows you to do all kinds of analyses quickly and easily. It is especially useful for creating tables of summary statistics across specific groups of data. In this section, we’ll go over a very brief overview of how you can use dplyr to easily do grouped aggregation. Just to be clear - you can use dplyr to do everything the <code>aggregate()</code> function does and much more! However, this will be a very brief overview and I strongly recommend you look at the help menu for dplyr for additional descriptions and examples.</p>
+<p>To use the dplyr package, you first need to install it with <code>install.packages()</code> and load it:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)     <span class="co"># Install dplyr (only necessary once)</span>
+<span class="kw">library</span>(<span class="st">&quot;dplyr&quot;</span>)              <span class="co"># Load dplyr</span></code></pre></div>
+<p>Programming with dplyr looks a lot different than programming in standard R. dplyr works by combining objects (dataframes and columns in dataframes), functions (mean, median, etc.), and <strong>verbs</strong> (special commands in <code>dplyr</code>). In between these commands is a new operator called the <strong>pipe</strong> which looks like this: <code>%&gt;%</code>}. The pipe simply tells R that you want to continue executing some functions or verbs on the object you are working on. You can think about this pipe as meaning ‘and then…’</p>
+<p>To aggregate data with <code>dplyr</code>, your code will look something like the following code. In this example, assume that the dataframe you want to summarize is called <code>my.df</code>, the variable you want to group the data by independent variables <code>iv1, iv2</code>, and the columns you want to aggregate are called <code>col.a</code>, <code>col.b</code> and <code>col.c</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Template for using dplyr</span>
+my.df %&gt;%<span class="st">                  </span><span class="co"># Specify original dataframe</span>
+<span class="st">  </span><span class="kw">filter</span>(iv3 &gt;<span class="st"> </span><span class="dv">30</span>) %&gt;%<span class="st">     </span><span class="co"># Filter condition</span>
+<span class="st">  </span><span class="kw">group_by</span>(iv1, iv2) %&gt;%<span class="st">   </span><span class="co"># Grouping variable(s)</span>
+<span class="st">  </span><span class="kw">summarise</span>(
+    <span class="dt">a =</span> <span class="kw">mean</span>(col.a),       <span class="co"># calculate mean of column col.a in my.df</span>
+    <span class="dt">b =</span> <span class="kw">sd</span>(col.b),         <span class="co"># calculate sd of column col.b in my.df</span>
+    <span class="dt">c =</span> <span class="kw">max</span>(col.c))        <span class="co"># calculate max on column col.c in my.df, ...</span></code></pre></div>
+<p>When you use dplyr, you write code that sounds like: “The original dataframe is XXX, now filter the dataframe to only include rows that satisfy the conditions YYY, now group the data at each level of the variable(s) ZZZ, now summarize the data and calculate summary functions XXX…”</p>
+<p>Let’s start with an example: Let’s create a dataframe of aggregated data from the <code>pirates</code> dataset. I’ll filter the data to only include pirates who wear a headband. I’ll group the data according to the columns <code>sex</code> and <code>college</code>. I’ll then create several columns of different summary statistic of some data across each grouping. To create this aggregated data frame, I will use the new function <code>group_by</code> and the verb <code>summarise</code>. I will assign the result to a new dataframe called <code>pirates.agg</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pirates.agg &lt;-<span class="st"> </span>pirates %&gt;%<span class="st">                   </span><span class="co"># Start with the pirates dataframe</span>
+<span class="st">               </span><span class="kw">filter</span>(headband ==<span class="st"> &quot;yes&quot;</span>) %&gt;%<span class="st"> </span><span class="co"># Only pirates that wear hb</span>
+<span class="st">               </span><span class="kw">group_by</span>(sex, college) %&gt;%<span class="st">    </span><span class="co"># Group by these variables</span>
+<span class="st">               </span><span class="kw">summarise</span>( 
+                        <span class="dt">age.mean =</span> <span class="kw">mean</span>(age),      <span class="co"># Define first summary...</span>
+                        <span class="dt">tat.med =</span> <span class="kw">median</span>(tattoos), <span class="co"># you get the idea...</span>
+                        <span class="dt">n =</span> <span class="kw">n</span>()                    <span class="co"># How many are in each group?</span>
+               ) <span class="co"># End</span>
+
+<span class="co"># Print the result</span>
+pirates.agg
+## Source: local data frame [6 x 5]
+## Groups: sex [?]
+## 
+##      sex college age.mean tat.med     n
+##    &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;
+## 1 female    CCCC       26      10   206
+## 2 female   JSSFP       34      10   203
+## 3   male    CCCC       23      10   358
+## 4   male   JSSFP       32      10    85
+## 5  other    CCCC       25      10    24
+## 6  other   JSSFP       32      12    11</code></pre></div>
+<p>As you can see from the output on the right, our final object <code>pirates.agg</code> is the aggregated dataframe we want which aggregates all the columns we wanted for each combination of <code>sex</code> and <code>college</code> One key new function here is <code>n()</code>. This function is specific to dplyr and returns a frequency of values in a summary command.</p>
+<p>Let’s do a more complex example where we combine multiple verbs into one chunk of code. We’ll aggregate data from the movies dataframe.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">movies %&gt;%<span class="st"> </span><span class="co"># From the movies dataframe...</span>
+<span class="st">    </span><span class="kw">filter</span>(genre !=<span class="st"> &quot;Horror&quot;</span> &amp;<span class="st"> </span>time &gt;<span class="st"> </span><span class="dv">50</span>) %&gt;%<span class="st"> </span><span class="co"># Select only these rows</span>
+<span class="st">    </span><span class="kw">group_by</span>(rating, sequel) %&gt;%<span class="st"> </span><span class="co"># Group by rating and sequel</span>
+<span class="st">    </span><span class="kw">summarise</span>( <span class="co">#</span>
+      <span class="dt">frequency =</span> <span class="kw">n</span>(), <span class="co"># How many movies in each group?</span>
+      <span class="dt">budget.mean =</span> <span class="kw">mean</span>(budget, <span class="dt">na.rm =</span> T),  <span class="co"># Mean budget?</span>
+      <span class="dt">revenue.mean =</span> <span class="kw">mean</span>(revenue.all), <span class="co"># Mean revenue?</span>
+      <span class="dt">billion.p =</span> <span class="kw">mean</span>(revenue.all &gt;<span class="st"> </span><span class="dv">1000</span>)) <span class="co"># Percent of movies with revenue &gt; 1000?</span>
+## Source: local data frame [14 x 6]
+## Groups: rating [?]
+## 
+##       rating sequel frequency budget.mean revenue.mean billion.p
+##        &lt;chr&gt;  &lt;int&gt;     &lt;int&gt;       &lt;dbl&gt;        &lt;dbl&gt;     &lt;dbl&gt;
+## 1          G      0        59       41.23          234    0.0000
+## 2          G      1        12       92.92          357    0.0833
+## 3      NC-17      0         2        3.75           18    0.0000
+## 4  Not Rated      0        84        1.74           56    0.0000
+## 5  Not Rated      1        12        0.67           66    0.0000
+## 6         PG      0       312       51.78          191    0.0096
+## 7         PG      1        62       77.21          372    0.0161
+## 8      PG-13      0       645       52.09          168    0.0062
+## 9      PG-13      1       120      124.16          524    0.1167
+## 10         R      0       623       31.38          109    0.0000
+## 11         R      1        42       58.25          226    0.0000
+## 12      &lt;NA&gt;      0        86        1.65           34    0.0000
+## 13      &lt;NA&gt;      1        15        5.51           48    0.0000
+## 14      &lt;NA&gt;     NA        11        0.00           34    0.0000</code></pre></div>
+<p>As you can see, our result is a dataframe with 14 rows and 6 columns. The data are summarized from the movie dataframe, only include values where the genre is <em>not</em> Horror and the movie length is longer than 50 minutes, is grouped by rating and sequel, and shows several summary statistics.</p>
+<p>We’ve only scratched the surface of what you can do with <code>dplyr</code>. For more tips, check out the dplyr vignette at <a href="https://cran.r-project.org/web/packages/dplyr/vignettes/introduction.html" class="uri">https://cran.r-project.org/web/packages/dplyr/vignettes/introduction.html</a>. Or open it in RStudio by running the following command</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Open the dplyr introduction in R</span>
+<span class="kw">vignette</span>(<span class="st">&quot;introduction&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;dplyr&quot;</span>)</code></pre></div>
+</div>
+<div id="additional-aggregation-functions" class="section level2">
+<h2><span class="header-section-number">11.5</span> Additional aggregation functions</h2>
+<p>There are many, many other aggregation functions that I haven’t covered in this chapter – mainly because I rarely use them. In fact, that’s a good reminder of a peculiarity about R, there are many methods to achieve the same result, and your choice of which method to use will often come down to which method you just like the most.</p>
+<div id="rowmeans-colmeans" class="section level3">
+<h3><span class="header-section-number">11.5.1</span> <code>rowMeans()</code>, <code>colMeans()</code></h3>
+<p>To easily calculate means (or sums) across all rows or columns in a matrix or dataframe, use <code>rowMeans()</code>, <code>colMeans()</code>, <code>rowSums()</code> or <code>colSums()</code>.</p>
+<p>For example, imagine we have the following data frame representing scores from a quiz with 5 questions, where each row represents a student, and each column represents a question. Each value can be either 1 (correct) or 0 (incorrect)</p>
+<table>
+<caption><span id="tab:unnamed-chunk-309">Table 11.2: </span>Scores from an exam.</caption>
+<thead>
+<tr class="header">
+<th align="right">q1</th>
+<th align="right">q2</th>
+<th align="right">q3</th>
+<th align="right">q4</th>
+<th align="right">q5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Some exam scores</span>
+exam &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="st">&quot;q1&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>),
+                   <span class="st">&quot;q2&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>),
+                   <span class="st">&quot;q3&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>),
+                   <span class="st">&quot;q4&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>),
+                   <span class="st">&quot;q5&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>))</code></pre></div>
+<p>Let’s use <code>rowMeans()</code> to get the average scores for each student:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># What percent did each student get correct?</span>
+<span class="kw">rowMeans</span>(exam)
+## [1] 1.0 0.2 0.6 0.6 0.4</code></pre></div>
+<p>Now let’s use <code>colMeans()</code> to get the average scores for each <em>question</em>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># What percent of students got each question correct?</span>
+<span class="kw">colMeans</span>(exam)
+##  q1  q2  q3  q4  q5 
+## 0.2 0.6 0.4 1.0 0.6</code></pre></div>
+<p><strong>Warning</strong> <code>rowMeans()</code> and <code>colMeans()</code> only work on numeric columns. If you try to apply them to non-numeric data, you’ll receive an error.</p>
+</div>
+<div id="apply-family" class="section level3">
+<h3><span class="header-section-number">11.5.2</span> <code>apply</code> family</h3>
+<p>There is an entire class of <code>apply</code> functions in R that apply functions to groups of data. For example, <code>tapply()</code>, <code>sapply()</code> and <code>lapply()</code> each work very similarly to <code>aggregate()</code>. For example, you can calculate the average length of movies by genre with <code>tapply()</code> as follows.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">with</span>(movies, <span class="kw">tapply</span>(<span class="dt">X =</span> time,        <span class="co"># DV is time</span>
+                    <span class="dt">INDEX =</span> genre,   <span class="co"># IV is genre</span>
+                    <span class="dt">FUN =</span> mean,      <span class="co"># function is mean</span>
+                    <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))   <span class="co"># Ignore missing</span>
+##              Action           Adventure        Black Comedy 
+##                 113                 106                 113 
+##              Comedy Concert/Performance         Documentary 
+##                  99                  78                  69 
+##               Drama              Horror     Multiple Genres 
+##                 116                  99                 114 
+##             Musical             Reality     Romantic Comedy 
+##                 113                  44                 107 
+##   Thriller/Suspense             Western 
+##                 112                 121</code></pre></div>
+<p><code>tapply()</code>, <code>sapply()</code>, and <code>lapply()</code> all work very similarly, their main difference is in the structure of their output. For example, <code>lapply()</code> returns a <strong>list</strong> (we’ll cover lists in a future chapter).</p>
+</div>
+</div>
+<div id="test-your-r-might-mmmmmcaffeine" class="section level2">
+<h2><span class="header-section-number">11.6</span> Test your R might!: Mmmmm…caffeine</h2>
+<p>You’re in charge of analyzing the results of an experiment testing the effects of different forms of caffeine on a measure of performance. In the experiment, 100 participants were given either Green tea or coffee, in doses of either 1 or 5 servings. They then performed a cognitive test where higher scores indicate better performance.</p>
+<p>The data are stored in a tab–delimited dataframe at the following link: <a href="https://dl.dropboxusercontent.com/u/7618380/datasets/caffeinestudy.txt" class="uri">https://dl.dropboxusercontent.com/u/7618380/datasets/caffeinestudy.txt</a></p>
+<p><img src="images/skullcaffeine.jpg" width="75%" style="display: block; margin: auto;" /></p>
+<ol style="list-style-type: decimal">
+<li><p>Load the dataset from <a href="https://dl.dropboxusercontent.com/u/7618380/datasets/caffeinestudy.txt" class="uri">https://dl.dropboxusercontent.com/u/7618380/datasets/caffeinestudy.txt</a> as a new dataframe called <code>caffeine</code>.</p></li>
+<li><p>Calculate the mean age for each gender</p></li>
+<li><p>Calculate the mean age for each drink</p></li>
+<li><p>Calculate the mean age for each combined level of both gender and drink</p></li>
+<li><p>Calculate the median score for each age</p></li>
+<li><p>For men only, calculate the maximum score for each age</p></li>
+<li><p>Create a dataframe showing, for each level of drink, the mean, median, maximum, and standard deviation of scores.</p></li>
+<li><p>Only for females above the age of 20, create a table showing, for each combined level of drink and cups, the mean, median, maximum, and standard deviation of scores. Also include a column showing how many people were in each group.</p></li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="solutions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ndphillips/ThePiratesGuideToR/edit/master/10-advanceddataframe.Rmd",
+"text": "Edit"
+},
+"download": ["YaRrr.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

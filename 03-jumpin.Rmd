@@ -133,7 +133,7 @@ pirateplot(formula = age ~ sword.type,
            main = "Pirateplot of ages by favorite sword")
 ```
 
-Now let's make another pirateplot showing the relatinoship between sex and height using a different plotting theme and the `"pony"` color palette:
+Now let's make another pirateplot showing the relationship between sex and height using a different plotting theme and the `"pony"` color palette:
 
 ```{r}
 pirateplot(formula = height ~ sex,               # Plot weight as a function of sex

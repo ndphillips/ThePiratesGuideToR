@@ -1,0 +1,422 @@
+# Advanced dataframe manipulation {#advanceddataframe}
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+library(dplyr)
+library(yarrr)
+```
+
+
+In this chapter we'll cover some more advanced functions and procedures for manipulating dataframes.
+
+```{r}
+# Exam data
+exam <- data.frame(
+  id = 1:5,
+  q1 = c(1, 5, 2, 3, 2),
+  q2 = c(8, 10, 9, 8, 7),
+  q3 = c(3, 7, 4, 6, 4))
+
+# Demographic data
+demographics <- data.frame(
+  id = 1:5,
+  sex = c("f", "m", "f", "f", "m"),
+  age = c(25, 22, 24, 19, 23))
+
+# Combine exam and demographics
+combined <- merge(x = exam, 
+              y = demographics, 
+              by = "id")
+
+# Mean q1 score for each sex
+aggregate(formula = q1 ~ sex, 
+          data = combined, 
+          FUN = mean)
+
+# Median q3 score for each sex, but only for those
+#   older than 20
+aggregate(formula = q3 ~ sex, 
+          data = combined,
+          subset = age > 20,
+          FUN = mean)
+
+# Many summary statistics by sex using dplyr!
+library(dplyr)
+combined %>% group_by(sex) %>%
+  summarise(
+    q1.mean = mean(q1),
+    q2.mean = mean(q2),
+    q3.mean = mean(q3),
+    age.mean = mean(age),
+    N = n())
+```
+
+
+
+In Chapter [6](matricesdataframes), you learned how to calculate statistics on subsets of data using indexing. However, you may have noticed that indexing is not very intuitive and not terribly efficient. If you want to calculate statistics for many different subsets of data (e.g.; mean birth rate for every country), you'd have to write a new indexing command for each subset, which could take forever. Thankfully, R has some great built-in functions like `aggregate()` that allow you to easily apply functions (like `mean()`) to a dependent variable (like birth rate) for each level of one or more independent variables (like a country) with just a few lines of code.
+
+
+
+## `order()`: Sorting data
+
+To sort the rows of a dataframe according to column values, use the `order()` function. The `order()` function takes one or more vectors as arguments, and returns an integer vector indicating the order of the vectors. You can use the output of `order()` to index a dataframe, and thus change its order.
+
+Let's re-order the `pirates` data by height from the shortest to the tallest:
+
+```{r}
+# Sort the pirates dataframe by height
+pirates <- pirates[order(pirates$height),]
+
+# Look at the first few rows and columns of the result
+pirates[1:5, 1:4]
+```
+
+
+By default, the `order()` function will sort values in ascending (increasing) order. If you want to order the values in descending (decreasing) order, just add the argument `decreasing = TRUE` to the `order()` function:
+
+```{r}
+# Sort the pirates dataframe by height in decreasing order
+pirates <- pirates[order(pirates$height, decreasing = TRUE),]
+
+# Look at the first few rows and columns of the result
+pirates[1:5, 1:4]
+```
+
+To order a dataframe by several columns, just add additional arguments to `order()`. For example, to order the `pirates` by sex and then by height, we'd do the following:
+
+```{r}
+# Sort the pirates dataframe by sex and then height
+pirates <- pirates[order(pirates$sex, pirates$height),]
+```
+
+
+By default, the `order()` function will sort values in ascending (increasing) order. If you want to order the values in descending (decreasing) order, just add the argument `decreasing = TRUE` to the `order()` function:
+
+```{r}
+# Sort the pirates dataframe by height in decreasing order
+pirates <- pirates[order(pirates$height, decreasing = TRUE),]
+```
+
+
+## `merge()`: Combining data
+
+
+| Argument| Description| 
+|:------------|:-------------------------------------------------|
+|`x, y`| Two dataframes to be merged|
+|`by`| A string vector of 1 or more columns to match the data by. For example, `by = "id"` will combine columns that have matching values in a column called `"id"`. `by = c("last.name", "first.name")` will combine columns that have matching values in both `"last.name"` and `"first.name"`|
+|`all`| A logical value indicating whether or not to include rows with non-matching values of `by`. |
+
+One of the most common data management tasks is **merging** (aka combining) two data sets together. For example, imagine you conduct a study where 5 participants are given a score from 1 to 5 on a risk assessment task. We can represent these data in a dataframe called `risk.survey`:
+
+```{r, echo = FALSE}
+# Results from a risk survey
+risk.survey <- data.frame(
+  "participant" = c(1, 2, 3, 4, 5),
+  "risk.score" = c(3, 4, 5, 3, 1))
+```
+
+```{r echo = FALSE}
+knitr::kable(risk.survey, caption = "Results from a survey on risk.")
+```
+
+
+```{r}
+# Results from a risk survey
+risk.survey <- data.frame(
+  "participant" = c(1, 2, 3, 4, 5),
+  "risk.score" = c(3, 4, 5, 3, 1))
+```
+
+
+Now, imagine that in a second study, you have participants complete a survey about their level of happiness (on a scale of 0 to 100). We can represent these data in a new dataframe called `happiness.survey`:
+
+```{r}
+happiness.survey <- data.frame(
+  "participant" = c(4, 2, 5, 1, 3),
+  "happiness.score" = c(20, 40, 50, 90, 53))
+```
+
+Now, we'd like to combine these data into one data frame so that the two survey scores for each participant are contained in one object. To do this, use `merge()`.
+
+
+When you merge two dataframes, the result is a new dataframe that contains data from both dataframes. The key argument in `merge()` is `by`. The `by` argument specifies how rows should be matched during the merge. Usually, this will be something like an name, id number, or some other unique identifier.
+
+Let's combine our risk and happiness survey using `merge()`. Because we want to match rows by the `participant.id` column, we'll specify `by = "participant.id"`. Additionally, because we want to include rows with potentially non-matching values, we'll include `all = TRUE`
+
+```{r}
+# Combine the risk and happiness surveys by matching participant.id
+combined.survey <- merge(x = risk.survey,
+                         y = happiness.survey,
+                         by = "participant",
+                         all = TRUE)
+
+# Print the result
+combined.survey
+```
+
+
+For the rest of the chapter, we'll cover data aggregation functions. These functions allow you to quickly and easily calculate aggregated summary statistics over groups of data in a data frame. For example, you can use them to answer questions such as "What was the mean crew age for each ship?", or "What percentage of participants completed an attention check for each study condition?" We'll start by going over the `aggregate()` function.
+
+## `aggregate()`: Grouped aggregation
+
+| Argument| Description| 
+|:------------|:-------------------------------------------------|
+|`formula`| A formula in the form `y ~ x1 + x2 + ...` where y is the dependent variable, and x1, x2... are the independent variables. For example, `salary ~ sex + age` will aggregate a `salary` column at every unique combination of `sex` and `age`|
+|`FUN`| A function that you want to apply to y at every level of the independent variables. E.g.; `mean`, or `max`.|
+|`data`| The dataframe containing the variables in `formula`|
+|`subset`| A subset of data to analyze. For example, `subset(sex == "f" & age > 20)` would restrict the analysis to females older than 20. You can ignore this argument to use all data.|
+
+
+The first aggregation function we'll cover is `aggregate()`. Aggregate allows you to easily answer questions in the form: "What is the value of the function `FUN` applied to a dependent variable `dv` at each level of one (or more) independent variable(s) `iv`?
+
+```{r eval = FALSE}
+# General structure of aggregate()
+aggregate(formula = dv ~ iv, # dv is the data, iv is the group 
+          FUN = fun, # The function you want to apply
+          data = df) # The dataframe object containing dv and iv
+```
+
+Let's give `aggregate()` a whirl. No...not a whirl...we'll give it a spin. Definitely a spin. We'll use `aggregate()` on the `ChickWeight` dataset to answer the question "What is the mean weight for each diet?" 
+
+If we wanted to answer this question using basic R functions, we'd have to write a separate command for each supplement like this:
+
+```{r}
+# The WRONG way to do grouped aggregation. 
+#  We should be using aggregate() instead!
+mean(ChickWeight$weight[ChickWeight$Diet == 1])
+mean(ChickWeight$weight[ChickWeight$Diet == 2])
+mean(ChickWeight$weight[ChickWeight$Diet == 3])
+mean(ChickWeight$weight[ChickWeight$Diet == 4])
+```
+
+If you are ever writing code like this, there is almost always a simpler way to do it. Let's replace this code with a much more elegant solution using `aggregate()`.For this question, we'll set the value of the dependent variable Y to `weight`, x1 to `Diet`, and FUN to `mean`
+
+```{r}
+# Calculate the mean weight for each value of Diet
+aggregate(formula = weight ~ Diet,  # DV is weight, IV is Diet
+          FUN = mean,               # Calculate the mean of each group
+          data = ChickWeight)       # dataframe is ChickWeight
+```
+
+
+As you can see, the `aggregate()` function has returned a dataframe with a column for the independent variable `Diet`, and a column for the results of the function `mean` applied to each level of the independent variable. The result of this function is the same thing we'd got from manually indexing each level of `Diet` individually -- but of course, this code is much simpler and more elegant!
+
+You can also include a `subset` argument within an `aggregate()` function to apply the function to subsets of the original data. For example, if I wanted to calculate the mean chicken weights for each diet, but only when the chicks are less than 10 weeks old, I would do the following:
+
+
+```{r}
+# Calculate the mean weight for each value of Diet,
+#  But only when chicks are less than 10 weeks old
+
+aggregate(formula = weight ~ Diet,  # DV is weight, IV is Diet
+          FUN = mean,               # Calculate the mean of each group
+          subset = Time < 10,       # Only when Chicks are less than 10 weeks old
+          data = ChickWeight)       # dataframe is ChickWeight
+```
+
+
+You can also include multiple independent variables in the formula argument to `aggregate()`. For example, let's use `aggregate()` to now get the mean weight of the chicks for all combinations of both `Diet` and `Time`, but now only for weeks 0, 2, and 4:
+
+
+```{r}
+# Calculate the mean weight for each value of Diet and Time,
+#  But only when chicks are 0, 2 or 4 weeks okd
+
+aggregate(formula = weight ~ Diet + Time,  # DV is weight, IVs are Diet and Time
+          FUN = mean,                      # Calculate the mean of each group
+          subset = Time %in% c(0, 2, 4),   # Only when Chicks are 0, 2, and 4 weeks old
+          data = ChickWeight)              # dataframe is ChickWeight
+```
+
+## `dplyr`
+
+
+
+The `dplyr` package is a relatively new R package that allows you to do all kinds of analyses quickly and easily. It is especially useful for creating tables of summary statistics across specific groups of data. In this section, we'll go over a very brief overview of how you can use dplyr to easily do grouped aggregation. Just to be clear - you can use dplyr to do everything the `aggregate()` function does and much more! However, this will be a very brief overview and I strongly recommend you look at the help menu for dplyr for additional descriptions and examples.
+
+To use the dplyr package, you first need to install it with `install.packages()` and load it:
+
+```{r eval = FALSE}
+install.packages("dplyr")     # Install dplyr (only necessary once)
+library("dplyr")              # Load dplyr
+```
+
+
+Programming with dplyr looks a lot different than programming in standard R. dplyr works by combining objects (dataframes and columns in dataframes), functions (mean, median, etc.), and **verbs** (special commands in `dplyr`). In between these commands is a new operator called the **pipe** which looks like this: `%>%`}. The pipe simply tells R that you want to continue executing some functions or verbs on the object you are working on. You can think about this pipe as meaning 'and then...'
+
+To aggregate data with `dplyr`, your code will look something like the following code. In this example, assume that the dataframe you want to summarize is called `my.df`, the variable you want to group the data by independent variables `iv1, iv2`, and the columns you want to aggregate are called `col.a`, `col.b` and `col.c`
+
+```{r eval = FALSE}
+# Template for using dplyr
+my.df %>%                  # Specify original dataframe
+  filter(iv3 > 30) %>%     # Filter condition
+  group_by(iv1, iv2) %>%   # Grouping variable(s)
+  summarise(
+    a = mean(col.a),       # calculate mean of column col.a in my.df
+    b = sd(col.b),         # calculate sd of column col.b in my.df
+    c = max(col.c))        # calculate max on column col.c in my.df, ...
+```
+
+
+When you use dplyr, you write code that sounds like: "The original dataframe is XXX, now filter the dataframe to only include rows that satisfy the conditions YYY, now group the data at each level of the variable(s) ZZZ, now summarize the data and calculate summary functions XXX..."
+
+Let's start with an example: Let's create a dataframe of aggregated data from the `pirates` dataset. I'll filter the data to only include pirates who wear a headband. I'll  group the data according to the columns `sex` and `college`. I'll then create several columns of different summary statistic of some data across each grouping. To create this aggregated data frame, I will use the new function `group_by` and the verb `summarise`. I will assign the result to a new dataframe called `pirates.agg`:
+
+```{r}
+pirates.agg <- pirates %>%                   # Start with the pirates dataframe
+               filter(headband == "yes") %>% # Only pirates that wear hb
+               group_by(sex, college) %>%    # Group by these variables
+               summarise( 
+                        age.mean = mean(age),      # Define first summary...
+                        tat.med = median(tattoos), # you get the idea...
+                        n = n()                    # How many are in each group?
+               ) # End
+
+# Print the result
+pirates.agg
+```
+
+
+
+As you can see from the output on the right, our final object `pirates.agg` is the aggregated dataframe we want which aggregates all the columns we wanted for each combination of `sex` and `college` One key new function here is `n()`. This function is specific to dplyr and returns a frequency of values in a summary command.
+
+Let's do a more complex example where we combine multiple verbs into one chunk of code. We'll aggregate data from the movies dataframe.
+
+
+```{r}
+movies %>% # From the movies dataframe...
+    filter(genre != "Horror" & time > 50) %>% # Select only these rows
+    group_by(rating, sequel) %>% # Group by rating and sequel
+    summarise( #
+      frequency = n(), # How many movies in each group?
+      budget.mean = mean(budget, na.rm = T),  # Mean budget?
+      revenue.mean = mean(revenue.all), # Mean revenue?
+      billion.p = mean(revenue.all > 1000)) # Percent of movies with revenue > 1000?
+```
+
+
+As you can see, our result is a dataframe with 14 rows and 6 columns. The data are summarized from the movie dataframe, only include values where the genre is *not* Horror and the movie length is longer than 50 minutes, is grouped by rating and sequel, and shows several summary statistics.
+
+
+We've only scratched the surface of what you can do with `dplyr`. For more tips, check out the dplyr vignette at [https://cran.r-project.org/web/packages/dplyr/vignettes/introduction.html](https://cran.r-project.org/web/packages/dplyr/vignettes/introduction.html). Or open it in RStudio by running the following command
+
+
+```{r eval = FALSE}
+# Open the dplyr introduction in R
+vignette("introduction", package = "dplyr")
+```
+
+
+## Additional aggregation functions
+
+There are many, many other aggregation functions that I haven't covered in this chapter -- mainly because I rarely use them. In fact, that's a good reminder of a peculiarity about R, there are many methods to achieve the same result, and your choice of which method to use will often come down to which method you just like the most.
+
+### `rowMeans()`, `colMeans()`
+
+
+To easily calculate means (or sums) across all rows or columns in a matrix or dataframe, use `rowMeans()`, `colMeans()`, `rowSums()` or `colSums()`. 
+
+For example, imagine we have the following data frame representing scores from a quiz with 5 questions, where each row represents a student, and each column represents a question. Each value can be either 1 (correct) or 0 (incorrect)
+
+```{r echo = FALSE}
+exam <- data.frame("q1" = c(1, 0, 0, 0, 0),
+                   "q2" = c(1, 0, 1, 1, 0),
+                   "q3" = c(1, 0, 1, 0, 0),
+                   "q4" = c(1, 1, 1, 1, 1),
+                   "q5" = c(1, 0, 0, 1, 1))
+
+knitr::kable(exam, caption = "Scores from an exam.")
+```
+
+```{r}
+# Some exam scores
+exam <- data.frame("q1" = c(1, 0, 0, 0, 0),
+                   "q2" = c(1, 0, 1, 1, 0),
+                   "q3" = c(1, 0, 1, 0, 0),
+                   "q4" = c(1, 1, 1, 1, 1),
+                   "q5" = c(1, 0, 0, 1, 1))
+
+```
+
+Let's use `rowMeans()` to get the average scores for each student:
+
+```{r}
+# What percent did each student get correct?
+rowMeans(exam)
+```
+
+Now let's use `colMeans()` to get the average scores for each *question*:
+
+```{r}
+# What percent of students got each question correct?
+colMeans(exam)
+```
+
+**Warning** `rowMeans()` and `colMeans()` only work on numeric columns. If you try to apply them to non-numeric data, you'll receive an error.
+
+### `apply` family
+
+There is an entire class of `apply` functions in R that apply functions to groups of data. For example, `tapply()`, `sapply()` and `lapply()` each work very similarly to `aggregate()`. For example, you can calculate the average length of movies by genre with `tapply()` as follows. 
+
+```{r}
+with(movies, tapply(X = time,        # DV is time
+                    INDEX = genre,   # IV is genre
+                    FUN = mean,      # function is mean
+                    na.rm = TRUE))   # Ignore missing
+```
+
+`tapply()`, `sapply()`, and `lapply()` all work very similarly, their main difference is in the structure of their output. For example, `lapply()` returns a **list** (we'll cover lists in a future chapter).
+
+## Test your R might!: Mmmmm...caffeine
+
+```{r echo = FALSE, eval = FALSE}
+set.seed(100)
+drink <- rep(c("greentea", "coffee"), times = 50)
+cups <- rep(c(1, 5), each = 50)
+gender <- sample(rep(c("male", "female"), times = 50), size = 100)
+
+df <- data.frame(drink, cups, gender)
+
+df$response.m[df$drink == "greentea" & df$cups == 1] <- 20
+df$response.m[df$drink == "greentea" & df$cups == 5] <- 40
+df$response.m[df$drink == "coffee" & df$cups == 1] <- 10
+df$response.m[df$drink == "coffee" & df$cups == 5] <- 60
+
+df$age <- round(rnorm(nrow(df), mean = 25, sd = 3), 0)
+for(i in 1:nrow(df)) {df$score[i] <- round(rnorm(1, mean = df$response.m[i], sd = 5), 2)}
+
+df <- df[c("drink", "cups", "gender", "age", "score")]
+
+write.table(df, file = "data/caffeinestudy.txt", sep = "\t")
+```
+
+
+You're in charge of analyzing the results of an experiment testing the effects of different forms of caffeine on a measure of performance. In the experiment, 100 participants were given either Green tea or coffee, in doses of either 1 or 5 servings. They then performed a cognitive test where higher scores indicate better performance.
+
+The data are stored in a tab--delimited dataframe at the following link: [https://dl.dropboxusercontent.com/u/7618380/datasets/caffeinestudy.txt](https://dl.dropboxusercontent.com/u/7618380/datasets/caffeinestudy.txt)
+
+
+
+
+```{r skullcaffeiene, fig.cap= "", fig.margin = TRUE, echo = FALSE, out.width = "75%", fig.align='center'}
+knitr::include_graphics(c("images/skullcaffeine.jpg"))
+```
+
+1. Load the dataset from https://dl.dropboxusercontent.com/u/7618380/datasets/caffeinestudy.txt as a new dataframe called `caffeine`.
+
+
+2. Calculate the mean age for each gender
+
+3. Calculate the mean age for each drink
+
+4. Calculate the mean age for each combined level of both gender and drink
+
+5. Calculate the median score for each age
+
+6. For men only, calculate the maximum score for each age
+
+7. Create a dataframe showing, for each level of drink, the mean, median, maximum, and standard deviation of scores.
+
+8. Only for females above the age of 20, create a table showing, for each combined level of drink and cups, the mean, median, maximum, and standard deviation of scores. Also include a column showing how many people were in each group.
+

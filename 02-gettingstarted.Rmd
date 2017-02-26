@@ -6,14 +6,19 @@ library(yarrr)
 ```
 
 
-## Installing (Base) R and RStudio
+## Installing Base-R and RStudio
 
-First things first, let's download both Base R and Rstudio. Again, R is the basic software which contains the R programming language. RStudio is software that makes R programming easier. Of course, they are totally free and open source.
+To use R, we'll need to download two software packages: **Base-R**, and **RStudio**. Base-R is the basic software which contains the R programming language. RStudio is software that makes R programming easier. Of course, they are totally free and open source.
 
+### Check for version updates
 
-```{r, fig.cap= "", fig.margin = TRUE, echo = FALSE, out.width = "20%"}
+R and RStudio have been around for several years -- however, they are *constantly* being updated with new features and bug-fixes. At the time that I am writing this sentence (09:48, Thursday, 23 February, 2017), the latest version of Base-R is 3.3.2 "Sincere Pumpkin Patch" (the versions all have funny names) which was released on 31 October, 2016, and the latest version of RStudio is 1.0.136 released on 21 December, 2016. If you have a (much) older version of R or RStudio currently installed on your computer, then you should update both R and RStudio to the newest version(s) by installing them again from scratch. If you don't, then some of the code and packages in this book might not work.
+
+```{r, fig.cap= "", fig.margin = TRUE, echo = FALSE, out.width = "40%", fig.align="center"}
 knitr::include_graphics(c("images/rlogo.png"))
 ```
+
+To install Base-R, click on one of the following links and follow the instructions.
 
 | Operating System| Link|
 |:------|:----|
@@ -21,18 +26,18 @@ knitr::include_graphics(c("images/rlogo.png"))
 |     Mac|    [http://cran.r-project.org/bin/macosx/](http://cran.r-project.org/bin/macosx/)|
 
 
-Once you've installed base R on your computer, try opening it. When you do you should see a screen like the one in Figure \@ref(fig:rscreenshot) (this is the Mac version). As you can see, base R is very much bare-bones software. It's kind of the equivalent of a simple text editor that comes with your computer.
+Once you've installed base-R on your computer, try opening it. When you do you should see a screen like the one in Figure \@ref(fig:rscreenshot) (this is the Mac version). As you can see, base R is very much bare-bones software. It's kind of the equivalent of a simple text editor that comes with your computer.
 
-
-```{r rscreenshot, fig.cap= "{Here is how the base R application looks. While you can use the base R application alone, most people I know use RStudio -- software that helps you to write and use R code more efficiently!", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align ="center"}
+```{r rscreenshot, fig.cap= "{Here is how the base R application looks. While you can use the base R application alone, most people I know use RStudio -- software that helps you to write and use R code more efficiently!", fig.margin = TRUE, echo = FALSE, out.width = "75%", fig.align ="center"}
 knitr::include_graphics(c("images/RScreenshot.png"))
 ```
 
-While you can do pretty much everything you want within base R, you'll find that most people these days do their R programming in an application called RStudio. RStudio is a graphical user interface (GUI)-like interface for R that makes programming in R a bit easier. In fact, once you've installed RStudio, you'll likely never need to open the base R application again. To download and install RStudio (around 40mb), go to one of the links above and follow the instructions.
 
-```{r, fig.cap= "", fig.margin = TRUE, echo = FALSE, out.width = "20%"}
+```{r, fig.cap= "", fig.margin = TRUE, echo = FALSE, out.width = "40%", fig.align="center"}
 knitr::include_graphics(c("images/RStudio.png"))
 ```
+
+While you can do pretty much everything you want within base-R, you'll find that most people these days do their R programming in an application called RStudio. RStudio is a graphical user interface (GUI)-like interface for R that makes programming in R a bit easier. In fact, once you've installed RStudio, you'll likely never need to open the base R application again. To download and install RStudio (around 40mb), go to one of the links above and follow the instructions.
 
 
 | Operating System| Link|
@@ -46,7 +51,7 @@ Let's go ahead and boot up RStudio and see how she looks!
 When you open RStudio, you'll see the following four windows (also called panes) shown in in Figure \@ref(fig:rstudiowindows). However, your windows might be in a different order that those in Figure \@ref(fig:rstudiowindows). If you'd like, you can change the order of the windows under RStudio preferences. You can also change their shape by either clicking the minimize or maximize buttons on the top right of each panel, or by clicking and dragging the middle of the borders of the windows.
 
 
-```{r rstudiowindows, fig.cap= "The four panes of RStudio.", fig.margin = TRUE, echo = FALSE, out.width = "80%"}
+```{r rstudiowindows, fig.cap= "The four panes of RStudio.", fig.margin = TRUE, echo = FALSE, out.width = "100%", fig.align="center"}
 knitr::include_graphics(c("images/RStudio_Screenshot_Labels.png"))
 ```
 
@@ -54,7 +59,7 @@ Now, let's see what each window does in detail.
 
 ### Source - Your notepad for code
 
-```{r sourcewindow, fig.cap= "The Source contains all of your individual R scripts. The code won't be evaluated until you send it to the Console.", fig.margin = TRUE, echo = FALSE, out.width = "75%"}
+```{r sourcewindow, fig.cap= "The Source contains all of your individual R scripts. The code won't be evaluated until you send it to the Console.", fig.margin = TRUE, echo = FALSE, out.width = "100%", fig.align='center'}
 knitr::include_graphics(c("images/piratesanalysisss.png"))
 ```
 
@@ -81,7 +86,7 @@ The console is the heart of R. Here is where R actually evaluates code. At the b
 
 Try calculating 1+1 by typing the code directly into the console - then press Enter. You should see the result [1] 2. Don't worry about the [1] for now, we'll get to that later. For now, we're happy if we just see the 2. Then, type the same code into the Source, and then send the code to the Console by highlighting the code and clicking the ``Run" button on the top right hand corner of the Source window. Alternatively, you can use the hot-key "Command + Return" on Mac or "Control + Enter" on Windows.
 
-**Tip**: Try to write most of your code in a document in the Source. Only type directly into the Console to de-bug or do quick analyses.}
+**Tip**: Try to write most of your code in a document in the Source. Only type directly into the Console to de-bug or do quick analyses.
 
 So as you can see, you can execute code either by running it from the Source or by typing it directly into the Console. However, 99\% most of the time, you should be using the Source rather than the Console. The reason for this is straightforward: If you type code into the console, it won't be saved (though you can look back on your command History). And if you make a mistake in typing code into the console, you'd have to re-type everything all over again. Instead, it's better to write all your code in the Source. When you are ready to execute some code, you can then send "Run" it to the console.
 
@@ -104,7 +109,7 @@ As you get more comfortable with R, you might find the Environment / History pan
 
 The Files / Plots / Packages / Help panel shows you lots of helpful information. Let's go through each tab in detail:
 
-1. Files - The files panel gives you access to the file directory on your harddrive. One nice feature of the "Files" panel is that you can use it to set your working directory - once you navigate to a folder you want to read and save files to, click "More" and then "Set As Working Directory." We'll talk about working directories in more detail soon.
+1. Files - The files panel gives you access to the file directory on your hard drive. One nice feature of the "Files" panel is that you can use it to set your working directory - once you navigate to a folder you want to read and save files to, click "More" and then "Set As Working Directory." We'll talk about working directories in more detail soon.
 
 2. Plots - The Plots panel (no big surprise), shows all your plots. There are buttons for opening the plot in a separate window and exporting the plot as a pdf or jpeg (though you can also do this with code using the `pdf()` or `jpeg()` functions.)
 
@@ -146,7 +151,7 @@ knitr::include_graphics(c("images/packagebulb.png"))
 ```
 
 
-A package is like a lightbulb. In order to use it, you first need to order it to your house (i.e.; your computer) by *installing* it. Once you've installed a package, you never need to install it again. However, every time you want to actually use the package, you need to turn it on  by *loading* it. Here's how to do it.
+A package is like a light bulb. In order to use it, you first need to order it to your house (i.e.; your computer) by *installing* it. Once you've installed a package, you never need to install it again. However, every time you want to actually use the package, you need to turn it on  by *loading* it. Here's how to do it.
 
 
 ### Installing a new package
@@ -175,12 +180,12 @@ knitr::include_graphics(c("images/installingpackages.png"))
 ```
 
 
-Like ordering a lightbulb, once you've installed a package on your computer you never need to install it again (unless you want to try to install a new version of the package). However, every time you want to use it, you need to turn it on by loading it.
+Like ordering a light bulb, once you've installed a package on your computer you never need to install it again (unless you want to try to install a new version of the package). However, every time you want to use it, you need to turn it on by loading it.
 
 
 ### Loading a package
 
-Once you've installed a package, it's on your computer. However, just because it's on your computer doesn't mean R is ready to use it. If you want to use something, like a function or dataset, from a package you *always* need to *load* the package in your R session first. Just like a lightbulb, you need to turn it on to use it!
+Once you've installed a package, it's on your computer. However, just because it's on your computer doesn't mean R is ready to use it. If you want to use something, like a function or dataset, from a package you *always* need to *load* the package in your R session first. Just like a light bulb, you need to turn it on to use it!
 
 To load a package, you use the `library()` function. For example, now that we've installed the `yarrr` package, we can load it with `library("yarrr")`:
 
@@ -293,7 +298,7 @@ data <- c(1, 4, 3, 2, 1)
 # Misspelled function: should be mean(x), not meeen(x)
 meeen(data)
 ```
-<div class="error">Error: cound not find function "meeen"</div>
+<div class="error">Error: could not find function "meeen"</div>
 
 Now, I'll misspell the object `data` as `dta`:
 
@@ -342,7 +347,7 @@ Because I used periods instead of commas, I get the above error. Here is the cor
 mean(c(1, 4, 2))
 ```
 
-If you include an extra space in the middle of the name of an object or function, you'll receive an error. In the code below, I'll accidently write `Chick Weight` instead of `ChickWeight`:
+If you include an extra space in the middle of the name of an object or function, you'll receive an error. In the code below, I'll accidentally write `Chick Weight` instead of `ChickWeight`:
 
 ```{r, eval = FALSE}
 # Wrong: Extra space in the ChickWeight object name
@@ -357,52 +362,6 @@ Because I had an extra space in the object name, I get the above error. Here is 
 # Correct:
 head(ChickWeight)
 ```
-
-
-
-## R resources
-
-
-### R Cheatsheets
-
-```{r rreferencecard, fig.cap= "The R reference card written by Tom Short is absolutely indispensable!", fig.margin = TRUE, fig.align = 'center', echo = FALSE, out.width = "75%"}
-knitr::include_graphics(c("images/rreferencess.png"))
-```
-
-Over the course of this book, you will be learning *lots* of new functions. Wouldn't it be nice if someone created a Cheatsheet / Dictionary of many common R functions? Yes it would, and thankfully several friendly R programmers have done just that. Below is a table of some of them that I recommend. I highly encourage you to print these out and start highlighting functions as you learn them!
-
-| CheatSheet| Link|
-|:----------------------------|:--------|
-|     R Basics by Tom Short|    [https://cran.r-project.org/doc/contrib/Short-refcard.pdf](https://cran.r-project.org/doc/contrib/Short-refcard.pdf)|
-|     R Basics by Mhairi McNeill|    [http://github.com/rstudio/cheatsheets/raw/master/source/pdfs/base-r.pdf](http://github.com/rstudio/cheatsheets/raw/master/source/pdfs/base-r.pdf)|
-|    Advanced R by Arianne Colton and Sean Chen|    [hhttps://www.rstudio.com/wp-content/uploads/2016/02/advancedR.pdf](https://www.rstudio.com/wp-content/uploads/2016/02/advancedR.pdf)|
-|     Plotting|    [https://www.rstudio.com/wp-content/uploads/2016/10/how-big-is-your-graph.pdf](https://www.rstudio.com/wp-content/uploads/2016/10/how-big-is-your-graph.pdf)|
-
-
-### Getting R help and inspiration online
-
-Here are some great resources for R help and inspiration:
-
-| Site| Description|
-|:----------------------------|:-----------------------------------|
-|     [www.google.com](http://www.google.com)| If you haven't heard of it, Google is this amazing site that gives you access to all R knowledge that has ever existed. Just ask it an R question and 99.9\% of the time it will give you the answer!|
-|     [www.r-bloggers.com](http://www.r-bloggers.com)| R bloggers is my go-to place to discover the latest and greatest with R.|
-|     [blog.revolutionanalytics.com](http://blog.revolutionanalytics.com)| Revolution analytics always has great R related material.|
-|     [www.kaggle.com](http://www.kaggle.com)|Kaggle is a really cool website that posts data analysis challenges that anyone can try to solve. It also contains a wide range of real-world datasets and tutorials.|
-
-
-
-### Other R books
-
-There are many, many excellent (non-pirate) books on R, some of which are available online for free. Here are some that I highly recommend:
-
-| Book| Description|
-|:----------------------------|:-----------------------------------|
-|     [R for Data Science by Garrett Grolemund and Hadley Wickham](http://r4ds.had.co.nz/)| The best book to learn the latest tools for elegantly doing data science.|
-|     [The R Book by Michael Crawley](https://www.amazon.com/R-Book-Michael-J-Crawley/dp/0470973927/ref=sr_1_1?ie=UTF8&qid=1487759048&sr=8-1&keywords=the+r+book)| As close to an R bible as you can get.|
-|     [Advanced R by Hadley Wickham](http://adv-r.had.co.nz/)|A truly advanced book for expert R users, especially those with a programming background. Hadley Wickham is *the* R guru.|
-|     [Discovering Statistics with R by Field, Miles and Field](https://www.amazon.com/Discovering-Statistics-Using-Andy-Field/dp/1446200469/ref=sr_1_2?ie=UTF8&qid=1487759316&sr=8-2&keywords=statistics+with+r)| A classic text focusing on the theory and practice of statistical analysis with R|
-|     [Applied Predictive Modeling by Kuhn and Johnson](https://www.amazon.com/Applied-Predictive-Modeling-Max-Kuhn/dp/1461468485/ref=sr_1_1?ie=UTF8&qid=1487759459&sr=8-1&keywords=applied+predictive+modeling)| A great text specializing in statistical learning aka predictive modeling aka machine learning with R.|
 
 
 

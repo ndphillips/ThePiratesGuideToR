@@ -8,7 +8,7 @@ documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-github-repo: rstudio/bookdown-demo
+github-repo: ndphillips/ThePiratesGuideToR
 description: "An introductory book to R written by, and for, R pirates"
 cover-image: images/YaRrr_Cover.jpg
 url: 'https\://bookdown.org/ndphillips/YaRrr/'
@@ -101,6 +101,54 @@ This is perfectly normal! Don't get discouraged and DON'T GO BACK TO SPSS! That 
 Trust me, as you gain more programming experience, you'll experience fewer and fewer bugs (though they'll never go away completely). Once you get over the initial barriers, you'll find yourself conducting analyses much, much faster than you ever did before.
 
 
+
+
+## R resources
+
+
+### R Cheatsheets
+
+```{r rreferencecard, fig.cap= "The R reference card written by Tom Short is absolutely indispensable!", fig.margin = TRUE, fig.align = 'center', echo = FALSE, out.width = "75%"}
+knitr::include_graphics(c("images/rreferencess.png"))
+```
+
+Over the course of this book, you will be learning *lots* of new functions. Wouldn't it be nice if someone created a Cheatsheet / Dictionary of many common R functions? Yes it would, and thankfully several friendly R programmers have done just that. Below is a table of some of them that I recommend. I highly encourage you to print these out and start highlighting functions as you learn them!
+
+| CheatSheet| Link|
+|:----------------------------|:--------|
+|     R Basics by Tom Short|    [https://cran.r-project.org/doc/contrib/Short-refcard.pdf](https://cran.r-project.org/doc/contrib/Short-refcard.pdf)|
+|     R Basics by Mhairi McNeill|    [http://github.com/rstudio/cheatsheets/raw/master/source/pdfs/base-r.pdf](http://github.com/rstudio/cheatsheets/raw/master/source/pdfs/base-r.pdf)|
+|    Advanced R by Arianne Colton and Sean Chen|    [hhttps://www.rstudio.com/wp-content/uploads/2016/02/advancedR.pdf](https://www.rstudio.com/wp-content/uploads/2016/02/advancedR.pdf)|
+|     Plotting|    [https://www.rstudio.com/wp-content/uploads/2016/10/how-big-is-your-graph.pdf](https://www.rstudio.com/wp-content/uploads/2016/10/how-big-is-your-graph.pdf)|
+
+
+### Getting R help and inspiration online
+
+Here are some great resources for R help and inspiration:
+
+| Site| Description|
+|:----------------------------|:-----------------------------------|
+|     [www.google.com](http://www.google.com)| If you haven't heard of it, Google is this amazing site that gives you access to all R knowledge that has ever existed. Just ask it an R question and 99.9\% of the time it will give you the answer!|
+|     [www.r-bloggers.com](http://www.r-bloggers.com)| R bloggers is my go-to place to discover the latest and greatest with R.|
+|     [blog.revolutionanalytics.com](http://blog.revolutionanalytics.com)| Revolution analytics always has great R related material.|
+|     [www.kaggle.com](http://www.kaggle.com)|Kaggle is a really cool website that posts data analysis challenges that anyone can try to solve. It also contains a wide range of real-world datasets and tutorials.|
+
+
+
+### Other R books
+
+There are many, many excellent (non-pirate) books on R, some of which are available online for free. Here are some that I highly recommend:
+
+| Book| Description|
+|:----------------------------|:-----------------------------------|
+|     [R for Data Science by Garrett Grolemund and Hadley Wickham](http://r4ds.had.co.nz/)| The best book to learn the latest tools for elegantly doing data science.|
+|     [The R Book by Michael Crawley](https://www.amazon.com/R-Book-Michael-J-Crawley/dp/0470973927/ref=sr_1_1?ie=UTF8&qid=1487759048&sr=8-1&keywords=the+r+book)| As close to an R bible as you can get.|
+|     [Advanced R by Hadley Wickham](http://adv-r.had.co.nz/)|A truly advanced book for expert R users, especially those with a programming background. Hadley Wickham is *the* R guru.|
+|     [Discovering Statistics with R by Field, Miles and Field](https://www.amazon.com/Discovering-Statistics-Using-Andy-Field/dp/1446200469/ref=sr_1_2?ie=UTF8&qid=1487759316&sr=8-2&keywords=statistics+with+r)| A classic text focusing on the theory and practice of statistical analysis with R|
+|     [Applied Predictive Modeling by Kuhn and Johnson](https://www.amazon.com/Applied-Predictive-Modeling-Max-Kuhn/dp/1461468485/ref=sr_1_1?ie=UTF8&qid=1487759459&sr=8-1&keywords=applied+predictive+modeling)| A great text specializing in statistical learning aka predictive modeling aka machine learning with R.|
+
+
+
 ## Who am I?
 
 ```{r, fig.cap= "Like a pirate, I work best with a mug of beer within arms' reach.", fig.margin = TRUE, echo = FALSE, fig.align='center'}
@@ -109,4 +157,6 @@ knitr::include_graphics("images/beer.jpg")
 
 My name is Nathaniel -- not Nathan...not Nate...and *definitely* not Nat. I am a psychologist with a background in statistics and judgment and decision making. You can find my R (and non-R) related musings at [http://ndphillips.github.io](http://ndphillips.github.io)
 
+### Acknowledgements
 
+I am deeply indebted to many people for either directly or indirectly helping me make this book happen. I would especially like to thank [Captain Thomas Moore](https://www.grinnell.edu/users/mooret) and [Captain Wei Linn](http://www.math.ohiou.edu/people/directory/linwei) for my early training in both statistics and R, [Captain Hansjoerg Neth](https://www.spds.uni-konstanz.de/hans-neth) for teaching me LaTeX and ultimately inspiring me to write (I mean translate) this book, and [Captain Dirk Wulff](https://psycho.unibas.ch/fakultaet/personen/profil/person/wulff/) for teaching me almost everything I know about R. If I hadn't been lucky enough to meet just one of these people, this book would not exist.

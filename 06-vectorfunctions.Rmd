@@ -426,7 +426,7 @@ renata.score <- data.frame(
 knitr::kable(renata.score, caption = "Renata's treasure haul when she was sober and when she was drunk")
 ```
 
-How much treasure did Renata find on average whe she was sober? What about when she was drunk?
+How much treasure did Renata find on average when she was sober? What about when she was drunk?
 
 3. Using Renata's data again, create a new vector called `difference` that shows how much more treasure Renata found when she was drunk and when she was not. What was the mean, median, and standard deviation of the difference?
 

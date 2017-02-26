@@ -1,0 +1,380 @@
+# Importing, saving and managing data {#importingdata}
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+```{r workspace, fig.cap= "Your workspace -- all the objects, functions, and delicious glue you've defined in your current session.", fig.margin = TRUE, echo = FALSE, out.width = "75%", fig.align='center'}
+knitr::include_graphics(c("images/workspace.jpg"))
+```
+Remember way back in Chapter 2 (you know...back when we first met...we were so young and full of excitement then...sorry, now I'm getting emotional...let's move on... ) when I said everything in R is an object? Well, that's still true. In this chapter, we'll cover the basics of R object management. We'll cover how to load new objects like external datasets into R, how to manage the objects that you already have, and how to export objects from R into external files that you can share with other people or store for your own future use.
+
+
+## Workspace management functions
+
+Here are some functions helpful for managing your workspace that we'll go over in this chapter:
+
+| Code| Description| 
+|:------------------------|:----------------------------------|
+|`ls()`|Display all objects in the current workspace|
+|`rm(a, b, ..)`|Removes the objects `a`, `b`... from your workspace|
+|`rm(list = ls())`|Removes *all* objects in your workspace|
+|`getwd()`|Returns the current working directory |
+|`setwd(file = "dir)`|Changes the working directory to a specified file location |
+|`list.files()`|Returns the names of all files in the working directory |
+|`write.table(x, file = "mydata.txt", sep)`|writes the object `x` to a text file called `mydata.txt`. Define how the columns will be separated with `sep` (e.g.; `sep = ","` for a comma--separated file, and `sep = \t"` for a tab--separated file).|
+|`save(a, b, .., file = "myimage.RData)`|Saves objects `a`, `b`, ... to  `myimage.RData` |
+|`save.image(file = "myimage.RData")`|Saves *all* objects in your workspace to `myimage.RData`|
+|`load(file = "myimage.RData")`|Loads objects in the file `myimage.RData`|
+|`read.table(file = "mydata.txt", sep, header)`|Reads a text file called `mydata.txt`, define how columns are separated with `sep` (e.g. `sep = ","` for comma-delimited files, and `sep = "\t"` for tab-delimited files), and whether there is a header column with `header = TRUE`|
+
+Table: (\#tab:workspacefunctions) Functions for managing your workspace, working directory, and writing data from R as `.txt` or `.RData` files, and reading files into R
+
+
+### Why object and file management is so important
+
+```{r selfie, fig.cap= "Your computer is probably so full of selfies like this that if you don't get organized, you may try to load this into your R session instead of your data file.", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
+knitr::include_graphics(c("images/pirateselfie.jpg"))
+```
+
+
+Your computer is a maze of folders, files, and selfies (see Figure \@ref(fig:selfie)). Outside of R, when you want to open a specific file, you probably open up an explorer window that allows you to visually search through the folders on your computer. Or, maybe you select recent files, or type the name of the file in a search box to let your computer do the searching for you. While this system usually works for non-programming tasks, it is a no-go for R. Why? Well, the main problem is that all of these methods require you to *visually* scan your folders and move your mouse to select folders and files that match what you are looking for. When you are programming in R, you need to specify *all* steps in your analyses in a way that can be easily replicated by others and your future self. This means you can't just say: "Find this one file I emailed to myself a week ago" or "Look for a file that looks something like `experimentAversion3.txt`." Instead, need to be able to write R code that tells R *exactly* where to find critical files -- either on your computer or on the web.
+
+To make this job easier, R uses *working directories*. 
+
+
+##The working directory
+
+
+```{r mazeflag, fig.cap= "A working directory is like a flag on your computer that tells R where to start looking for your files related to a specific project. Each project should have its own folder with organized sub-folders.", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
+knitr::include_graphics(c("images/mazeflag.png"))
+```
+
+
+The **working directory** is just a file path on your computer that sets the default location of any files you read into R, or save out of R. In other words, a working directory is like a little flag somewhere on your computer which is tied to a specific analysis project. If you ask R to import a dataset from a text file, or save a dataframe as a text file, it will assume that the file is inside of your working directory.
+
+You can only have one working directory active at any given time. The active working directory is called your *current* working directory.
+
+To see your current working directory, use `getwd()`:
+
+```{r, eval = TRUE}
+# Print my current working directory
+getwd()
+```
+
+
+As you can see, when I run this code, it tells me that my working directory is in a folder on my Desktop called `yarrr`. This means that when I try to read new files into R, or write files out of R, it will assume that I want to put them in this folder.
+
+If you want to change your working directory, use the `setwd()` function. For example, if I wanted to change my working directory to an existing Dropbox folder called `yarrr`, I'd run the following code:
+
+```{r, eval = FALSE}
+# Change my working directory to the following path
+setwd(dir = "/Users/nphillips/Dropbox/yarrr")
+```
+
+
+
+##Projects in RStudio
+
+If you're using RStudio, you have the option of creating a new R **project**. A project is simply a working directory designated with a `.RProj` file. When you open a project (using File/Open Project in RStudio or by double--clicking on the .Rproj file outside of R), the working directory will automatically be set to the directory that the `.RProj` file is located in. 
+
+I recommend creating a new R Project whenever you are starting a new research project. Once you've created a new R project, you should immediately create folders in the directory which will contain your R code, data files, notes, and other material relevant to your project (you can do this outside of R on your computer, or in the Files window of RStudio). For example, you could create a folder called `R` that contains all of your R code, a folder called `data` that contains all your data (etc.). In Figure~\@ref(fig:forensic) you can see how my working directory looks for a project I am working on called ForensicFFT.
+
+
+```{r forensic, fig.cap = "Here is the folder structure I use for the working directory in my R project called ForensicFFT. As you can see, it contains an .Rproj file generated by RStudio which sets this folder as the working directory. I also created a folder called r for R code, a folder called data for.txt and .RData files) among others.", fig.margin = TRUE, echo = FALSE, out.width = "75%", fig.align='center'}
+knitr::include_graphics(c("images/wd_ss.png"))
+```
+
+## The workspace
+
+The **workspace** (aka your **working environment**) represents all of the objects and functions you have either defined in the current session, or have loaded from a previous session. When you started RStudio for the first time, the working environment was empty because you hadn't created any new objects or functions. However, as you defined new objects and functions using the assignment operator `<-`, these new objects were stored in your working environment. When you closed RStudio after defining new objects, you likely got a message asking you "Save workspace image...?"" This is RStudio's way of asking you if you want to save all the objects currently defined in your workspace as an **image file** on your computer. 
+
+
+###ls()
+
+If you want to see all the objects defined in your current workspace, use the `ls()` function.
+
+```{r, eval = FALSE}
+# Print all the objects in my workspace
+ls()
+```
+
+
+When I run `ls()` I received the following result:
+
+```{r, echo = FALSE}
+print(c("study1.df", "study2.df", "lm.study1", "lm.study2", "bf.study1"))
+```
+
+The result above says that I have these 5 objects in my workspace. If I try to refer to an object not listed here, R will return an error. For example, if I try to print `study3.df` (which isn't in my workspace), I will receive the following error:
+
+```{r, eval = FALSE}
+# Try to print study3.df
+#  Error because study3.df is NOT in my current workspace
+study3.df
+```
+
+<div class="error">Error: object 'study3.df' not found</div>
+
+If you receive this error, it's because the object you are referring to is not in your current workspace. 99\% of the time, this happens because you mistyped the name of an object.
+
+
+## .RData files
+
+The best way to store objects from R is with `.RData files`. `.RData` files are specific to R and can store as many objects as you'd like within a single file. Think about that. If you are conducting an analysis with 10 different dataframes and 5 hypothesis tests, you can save **all** of those objects in a single file called `ExperimentResults.RData`. 
+
+### save()
+
+
+To save selected objects into one `.RData` file, use the `save()` function. When you run the `save()` function with specific objects as arguments, (like `save(a, b, c, file = "myobjects.RData"`) all of those objects will be saved in a single file called `myobjects.RData`
+
+
+```{r rdata, fig.cap = "Saving multiple objects into a single .RData file.", fig.margin = TRUE, echo = FALSE, out.width = "75%", fig.align='center'}
+knitr::include_graphics(c("images/rdata_example.png"))
+```
+
+For example, let's create a few objects corresponding to a study.
+
+```{r}
+# Create some objects that we'll save later
+study1.df <- data.frame(id = 1:5, 
+                        sex = c("m", "m", "f", "f", "m"), 
+                        score = c(51, 20, 67, 52, 42))
+
+score.by.sex <- aggregate(score ~ sex, 
+                          FUN = mean, 
+                          data = study1.df)
+
+study1.htest <- t.test(score ~ sex, 
+                       data = study1.df)
+```
+
+
+Now that we've done all of this work, we want to save all three objects in an a file called `study1.RData` in the data folder of my current working directory. To do this, you can run the following
+
+```{r eval = FALSE}
+# Save two objects as a new .RData file
+#   in the data folder of my current working directory
+save(study1.df, score.by.sex, study1.htest,
+     file = "data/study1.RData")
+```
+
+
+```{r rdatavan, fig.cap = "Our new study1.RData file is like a van filled with our objects.", fig.margin = TRUE, echo = FALSE, out.width = "75%", fig.align='center'}
+knitr::include_graphics(c("images/rdatavan.png"))
+```
+
+
+Once you do this, you should see the `study1.RData` file in the data folder of your working directory. This file now contains all of your objects that you can easily access later using the `load()` function (we'll go over this in a second...).
+
+
+### save.image()
+
+
+If you have many objects that you want to save, then using `save` can be tedious as you'd have to type the name of every object. To save *all* the objects in your workspace as a .RData file, use the `save.image()` function. For example, to save my workspace in the `data` folder located in my working directory, I'd run the following:
+
+```{r, eval = FALSE}
+# Save my workspace to complete_image.RData in th,e
+#  data folder of my working directory
+save.image(file = "data/projectimage.RData")
+```
+
+Now, the `projectimage.RData` file contains *all* objects in your current workspace.
+
+### load()
+
+
+To load an `.RData` file, that is, to import all of the objects contained in the `.RData` file into your current workspace, use the `load()` function.  For example, to load the three specific objects that I saved earlier (`study1.df`, `score.by.sex`, and `study1.htest`) in `study1.RData`, I'd run the following:
+
+```{r eval = FALSE}
+# Load objects in study1.RData into my workspace
+load(file = "data/study1.RData")
+```
+
+
+To load all of the objects in the workspace that I just saved to the data folder in my working directory in `projectimage.RData`, I'd run the following:
+
+```{r eval = FALSE}
+# Load objects in projectimage.RData into my workspace
+load(file = "data/projectimage.RData")
+```
+
+I hope you realize how awesome loading .RData files is. With R, you can store all of your objects, from dataframes to hypothesis tests, in a single `.RData` file. And then load them into any R session at any time using `load()`.
+
+### rm()
+
+
+To remove objects from your workspace, use the `rm()` function. Why would you want to remove objects? At some points in your analyses, you may find that your workspace is filled up with one or more objects that you don't need -- either because they're slowing down your computer, or because they're just distracting. 
+
+To remove specific objects, enter the objects as arguments to `rm()`. For example, to remove a huge dataframe called `huge.df`, I'd run the following;
+
+```{r eval = FALSE}
+# Remove huge.df from workspace
+rm(huge.df)
+```
+
+
+If you want to remove *all* of the objects in your working directory, enter the argument `list = ls()`
+
+```{r eval = FALSE}
+# Remove ALL objects from workspace
+rm(list = ls())
+```
+
+**Important!!!** Once you remove an object, you **cannot** get it back without running the code that originally generated the object! That is, you can't simply click 'Undo' to get an object back. Thankfully, if your R code is complete and well-documented, you should easily be able to either re-create a lost object (e.g.; the results of a regression analysis), or re-load it from an external file.
+
+## .txt files
+
+
+While `.RData` files are great for saving R objects, sometimes you'll want to export data (usually dataframes) as a simple `.txt` text file that other programs, like Excel and **S**hitty **P**iece of **S**hitty **S**hit, can also read. To do this, use the `write.table()` function.
+
+### write.table()
+
+| Argument| Description| 
+|:------------|:-------------------------------------------------|
+|`x`|The object you want to write to a text file, usually a dataframe|
+|`file`| The document's file path relative to the working directory unless specified otherwise. For example `file = "mydata.txt"` saves the text file directly in the working directory, while `file = "data/mydata.txt"` will save the data in an existing folder called `data` inside the working directory.<br>You can also specify a full file path outside of your working directory (`file = "/Users/CaptainJack/Desktop/OctoberStudy/mydata.txt"`) |
+|`sep`| A string indicating how the columns are separated. For comma separated files, use `sep = ","`, for tab--delimited files, use `sep = "\t"`|
+|`row.names`| A logical value (TRUE or FALSE) indicating whether or not save the rownames in the text file. (`row.names = FALSE` will not include row names) |
+
+Table: (\#tab:writetable) Arguments for the `write.table()` function that will save an object x (usually a data frame) as a .txt file.
+
+For example, the following code will save the `pirates` dataframe as a tab--delimited text file called `pirates.txt` in my working directory:
+
+```{r, eval = FALSE}
+# Write the pirates dataframe object to a tab-delimited
+#  text file called pirates.txt in my working directory
+
+write.table(x = pirates,
+            file = "pirates.txt",  # Save the file as pirates.txt
+            sep = "\t")            # Make the columns tab-delimited
+```
+
+If you want to save a file to a location outside of your working directory, just use the entire directory name. When you enter a long path name into the `file` argument of `write.table()`, R will look for that directory outside of your working directory. For example, to save a text file to my Desktop (which is outside of my working directory), I would set `file = "Users/nphillips/Desktop/pirates.txt"`. 
+
+```{r, eval = FALSE}
+# Write the pirates dataframe object to a tab-delimited
+#  text file called pirates.txt to my desktop
+
+write.table(x = pirates,
+            file = "Users/nphillips/Desktop/pirates.txt",  # Save the file as pirates.txt to my desktop
+            sep = "\t")                                    # Make the columns tab-delimited
+```
+
+
+
+### read.table()
+
+
+If you have a .txt file that you want to read into R, use the `read.table()` function.
+
+| Argument| Description| 
+|:------------|:-------------------------------------------------|
+|`file`| The document's file path relative to the working directory unless specified otherwise. For example `file = "mydata.txt"` looks for the text file directly in the working directory, while `file = "data/mydata.txt"` will look for the file in an existing folder called `data` inside the working directory.<br>If the file is outside of your working directory, you can also specify a full file path (`file = "/Users/CaptainJack/Desktop/OctoberStudy/mydata.txt"`) |
+|`header`|  A logical value indicating whether the data has a header row -- that is, whether the first row of the data represents the column names.|
+|`sep`|  A string indicating how the columns are separated. For comma separated files, use `sep = ","`, for tab--delimited files, use `sep = "\t"` |
+|`stringsAsFactors`|  A logical value indicating whether or not to convert strings to factors. I **always** set this to FALSE because I *hate*, *hate*, *hate* how R uses factors|
+
+
+The three critical arguments to `read.table()` are `file`, `sep`, `header` and `stringsAsFactors`. The `file` argument is a character value telling R where to find the file. If the file is in in a folder in your working directory, just specify the path within your working directory (e.g.; `file = data/newdata.txt`. The `sep` argument tells R how the columns are separated in the file (again, for a comma--separated file, use `sep = ","`}, for a tab--delimited file, use `sep = "\t"`. The `header` argument is a logical value (TRUE or FALSE) telling R whether or not the first row in the data is the name of the data columns. Finally, the `stringsAsFactors` argument is a logical value indicating whether or not to convert strings to factors (I *always* set this to FALSE!)
+
+Let's test this function out by reading in a text file titled `mydata.txt`. Since the text file is located a folder called `data` in my working directory, I'll use the file path `file = "data/mydata.txt"` and since the file is tab--delimited, I'll use the argument `sep = "\t"`:
+
+```{r eval = FALSE}
+# Read a tab-delimited text file called mydata.txt 
+#  from the data folder in my working directory into
+#  R and store as a new object called mydata
+
+mydata <- read.table(file = 'data/mydata.txt',    # file is in a data folder in my working directory
+                     sep = '\t',                  # file is tab--delimited
+                     header = TRUE,               # the first row of the data is a header row
+                     stringsAsFactors = FALSE)    # do NOT convert strings to factors!!
+```
+
+
+### Reading files directly from a web URL
+
+A really neat feature of the `read.table()` function is that you can use it to load text files directly from the web (assuming you are online). To do this, just set the file path to the document's web URL (beginning with `http://`). For example, I have a text file stored at `http://goo.gl/jTNf6P`. You can import and save this tab--delimited text file as a new object called `fromweb` as follows:
+
+```{r}
+# Read a text file from the web
+fromweb <- read.table(file = 'http://goo.gl/jTNf6P',
+                      sep = '\t',
+                      header = TRUE)
+
+# Print the result
+fromweb
+```
+
+
+I think this is pretty darn cool. This means you can save your main data files on Dropbox or a web-server, and always have access to it from any computer by accessing it from its web URL.
+
+
+#### Debugging {-}
+
+When you run `read.table()`, you might receive an error like this:
+
+<div class="error">Error in file(file, "rt") : cannot open the connection</div>
+<div class="error">In addition: Warning message:</div>
+<div class="error">In file(file, "rt") : cannot open file 'asdf': No such file or directory</div>
+
+If you receive this error, it's likely because you either spelled the file name incorrectly, or did not specify the correct directory location in the `file` argument.
+
+## Excel, SPSS, and other data files
+
+A common question I hear is "How can I import an SPSS/Excel/... file into R?". The first answer to this question I always give is "You shouldn't". **S**hitty **P**iece of **S**hitty **S**hit files can contain information like variable descriptions that R doesn't know what to do with, and Excel files often contain something, like missing rows or cells with text instead of numbers, that can completely confuse R.
+
+Rather than trying to import SPSS or Excel files directly in R, I always recommend first exporting/saving the original SPSS or Excel files as text `.txt.` files -- both SPSS and Excel have options to do this. Then, once you have exported the data to a `.txt` file, you can read it into R using `read.table()`.
+
+**Warning**: If you try to export an Excel file to a text file, it is a good idea to clean the file as much as you can first by, for example, deleting unnecessary columns, making sure that all numeric columns have numeric data, making sure the column names are simple (ie., single words without spaces or special characters). If there is anything 'unclean' in the file, then R may still have problems reading it, even after you export it to a text file.
+
+If you absolutely *have* to read a non-text file into R, check out the package called `foreign` (`install.packages("foreign")`). This package has functions for importing Stata, SAS and SPSS files directly into R. To read Excel files, try the package `xlsx` (`install.packages("xlsx")`). But again, in my experience it's *always* better to convert such files to simple text files first, and then read them into R with `read.table()`.
+
+
+
+## Additional tips
+
+1. There are many functions other than `read.table()` for importing data. For example, the functions `read.csv` and `read.delim` are specific for importing comma-separated and tab-separated text files. In practice, these functions do the same thing as `read.table`, but they don't require you to specify a `sep` argument. Personally, I always use `read.table()` because it always works and I don't like trying to remember unnecessary functions.
+
+
+
+##Test your R Might!
+
+
+1. In RStudio, open a new R Project in a new directory by clicking File -- New Project. Call the directory `MyRProject`, and then select a directory on your computer for the project. This will be the project's working directory.
+ 
+2. Outside of RStudio, navigate to the directory you selected in Question 1 and create three new folders -- Call them `data, `R`, and `notes`.
+ 
+3. Go back to RStudio and open a new R script. Save the script as `CreatingObjects.R` in the `R` folder you created in Question 2.
+ 
+4. In the script, create new objects called `a`, `b`, and `c`. You can assign anything to these objects -- from vectors to dataframes. If you can't think of any, use these:
+ 
+ 
+```{r}
+a <- data.frame("sex" = c("m", "f", "m"),
+                "age" = c(19, 43, 25),
+                "favorite.movie" = c("Moon", "The Goonies", "Spice World"))
+b <- mean(a$age)
+
+c <- table(a$sex)
+```
+
+
+5. Send the code to the Console so the objects are stored in your current workspace. Use the `ls()` function to see that the objects are indeed stored in your workspace.
+ 
+6. I have a tab--delimited text file called `club` at the following web address: http://nathanieldphillips.com/wp-content/uploads/2015/12/club.txt. Using `read.table()`, load the data as a new object called `club.df` in your workspace.
+ 
+7. Using `write.table()`, save the dataframe as a tab--delimited text file called `club.txt` to the data folder you created in Question 2. Note: You won't use the text file again for this exercise, but now you have it handy in case you need to share it with someone who doesn't use R.
+ 
+8. Save the three objects `a`, `b`, `c`, and `club.df` to an .RData file called "myobjects.RData" in your data folder using `save()`.
+ 
+9. Clear your workspace using the `rm(list = ls())` function. Then, run the `ls()` function to make sure the objects are gone.
+ 
+10. Open a new R script called `AnalyzingObjects.R` and save the script to the `R` folder you created in Question 2.
+ 
+11. Now, in your `AnalyzingObjects.R` script, load the objects back into your workspace from the `myobjects.RData` file using the `load()` function. Again, run the `ls()` function to make sure all the objects are back in your workspace.
+ 
+12. Add some R code to your `AnalyzingObjects.R` script. Calculate some means and percentages. Now save your `AnalyzingObjects.R` script, and then save all the objects in your workspace to `myobjects.RData`.
+ 
+13. Congratulations! You are now a well-organized R Pirate! Quit RStudio and go outside for some relaxing pillaging.
+
