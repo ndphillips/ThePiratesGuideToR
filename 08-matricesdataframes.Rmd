@@ -11,12 +11,11 @@ knitr::include_graphics(c("images/matrix.jpg"))
 
 ## What are matrices and dataframes?
 
-By now, you should be comfortable with scalar and vector objects. However, you may have noticed that neither object types are appropriate for storing lots of data -- such as the results of a survey or experiment. Thankfully, R has two object types that represent large data structures much better: **matrices** and **dataframes*}**.
+By now, you should be comfortable with scalar and vector objects. However, you may have noticed that neither object types are appropriate for storing lots of data -- such as the results of a survey or experiment. Thankfully, R has two object types that represent large data structures much better: **matrices** and **dataframes**.
 
-Matrices and dataframes are very similar to spreadsheets in Excel or data files in SPSS. Every matrix or dataframe contains rows (call that number m) and columns (n). Thus, wile a vector has 1 dimension (its length), matrices and dataframes both have 2-dimensions -- representing their width and height. You can think of a matrix or dataframe as a combination of `n` vectors, where each vector has a length of `m`. See Figure \@ref(fig:scalervectormatrix) to see the shocking difference between these data objects.
+Matrices and dataframes are very similar to spreadsheets in Excel or data files in SPSS. Every matrix or dataframe contains rows (call that number m) and columns (n). Thus, wile a vector has 1 dimension (its length), matrices and dataframes both have 2-dimensions -- representing their width and height. You can think of a matrix or dataframe as a combination of `n` vectors, where each vector has a length of `m`. 
 
-
-```{r scalervectormatrix, fig.cap = "scalar, Vector, Matrix... ::drops mike::", echo = FALSE}
+```{r, fig.cap = "scalar, Vector, MATRIX", echo = FALSE}
 # scalar v vector v matrix
 
 par(mar = rep(1, 4))
@@ -41,6 +40,7 @@ rect(rep(4:8, each = 5),
 text(6.5, -.5, "Matrix / Data Frame"
      )
 ```
+
 
 While matrices and dataframes look very similar, they aren't exactly the same. While a matrix can contain *either* character *or* numeric columns, a dataframe can contain *both* numeric and character columns. Because dataframes are more flexible, most real-world datasets, such as surveys containing both numeric (e.g.; age, response times) and character (e.g.; sex, favorite movie) data, will be stored as dataframes in R.
 
@@ -96,7 +96,7 @@ cbind(c(1, 2, 3, 4, 5),
 ```
 
 
-The `matrix()` function creates a matrix form a single vector of data. The function has 3 main inputs: `data` -- a vector of data, `nrow` -- the number of rows you want in the matrix, and `ncol` -- the number of columns you want in the matrix, and `byrow` -- a logical value indicating whether you want to fill the matrix by rows. Check out the help menu for the matrix function (`?matrix) to see some additional inputs.
+The `matrix()` function creates a matrix form a single vector of data. The function has 4 main inputs: `data` -- a vector of data, `nrow` -- the number of rows you want in the matrix, and `ncol` -- the number of columns you want in the matrix, and `byrow` -- a logical value indicating whether you want to fill the matrix by rows. Check out the help menu for the matrix function (`?matrix) to see some additional inputs.
 
 Let's use the `matrix()` function to re-create a matrix containing the values from 1 to 10.
 

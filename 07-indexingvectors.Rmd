@@ -187,12 +187,12 @@ boat.prices[boat.ages > 100]
 
 ### `&` (and), `|` (or), `%in%`
 
-In addition to using single comparison operators, you can combine multiple logical vectors using the OR (which looks like `|` and AND `\&` commands. The OR `|` operation will return TRUE if any of the logical vectors is TRUE, while the AND `&` operation will only return TRUE if all of the values in the logical vectors is TRUE. This is especially powerful when you want to create a logical vector based on criteria from multiple vectors.
+In addition to using single comparison operators, you can combine multiple logical vectors using the OR (which looks like `|` and AND `&` commands. The OR `|` operation will return TRUE if any of the logical vectors is TRUE, while the AND `&` operation will only return TRUE if all of the values in the logical vectors is TRUE. This is especially powerful when you want to create a logical vector based on criteria from multiple vectors.
 
 For example, let's create a logical vector indicating which boats had a price greater than 200 OR less than 100, and then use that vector to see what the names of these boats were:
 
 ```{r}
-# Which boats had prices greater than 400 OR less than 100?
+# Which boats had prices greater than 200 OR less than 100?
 boat.prices > 200 | boat.prices < 100
 
 # What were the NAMES of these boats
@@ -210,7 +210,7 @@ boat.names[boat.colors == "blue" & boat.prices > 200]
 ```
 
 
-You can combine as many logical vectors as you want to create increasingly complex selection criteria. For example, the following logical vector returns TRUE for cases where the boat colors are black OR brown, AND where the price was not equal to 100:
+You can combine as many logical vectors as you want to create increasingly complex selection criteria. For example, the following logical vector returns TRUE for cases where the boat colors are black OR brown, AND where the price was less than 100:
 
 ```{r}
 # Which boats were eithe black or brown, AND had a price less than 100?

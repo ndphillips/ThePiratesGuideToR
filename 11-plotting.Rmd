@@ -1,0 +1,387 @@
+# Plotting (I) {#plotting1}
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+library(dplyr)
+library(yarrr)
+```
+
+
+```{r, echo = FALSE}
+text.outline <- function(x, y,
+                         labels = 'test',
+                         col = 'black',
+                         font = 1,
+                         bg = 'white',
+                         r = 0.02,
+                         h = 1,
+                         w = 1,
+                         cex = 1,
+                         adj = .5,
+                         pos = NULL){
+
+  # Draw background
+  is <- seq(0, 2 * pi, length = 72)
+  for(i in is){
+    xn = x + cos(i) * r * w
+    yn = y + sin(i) * r * h
+    text(xn, yn, labels = labels, col = bg, cex = cex, adj = adj, pos = pos, font = font)
+  }
+
+  # Foreground
+  text(x, y, labels = labels, col = col, cex = cex, adj = adj, pos = pos, font = font)
+}
+```
+
+
+```{r sammy, fig.cap= "The great Sammy Davis Jr. Do yourself a favor and spend an evening watching videos of him performing on YouTube. Image used entirely without permission.", fig.margin = TRUE, echo = FALSE, out.width = "75%", fig.align='center'}
+knitr::include_graphics(c("images/sammy.jpg"))
+```
+
+
+Sammy Davis Jr. was one of the greatest American performers of all time. If you don't know him already, Sammy was an American entertainer who lived from 1925 to 1990. The range of his talents was just incredible. He could sing, dance, act, and play multiple instruments with ease. So how is R like Sammy Davis Jr? Like Sammy Davis Jr., R is incredibly good at doing many different things. R does data analysis like Sammy dances, and creates plot like Sammy sings. If Sammy and R did just one of these things, they'd be great. The fact that they can do both is pretty amazing.
+
+
+When you evaluate plotting functions in R, R can build the plot in different locations. The default location for plots is in a temporary plotting window within your R programming environment. In RStudio, plots will show up in the Plot window (typically on the bottom right hand window pane). In Base R, plots will show up in a Quartz window. 
+
+
+You can think of these plotting locations as canvases. You only have one canvas active at any given time, and any plotting command you run will put more plotting elements on your active canvas. Certain high--level plotting functions like `plot()` and `hist()` create brand new canvases, while other low--level plotting functions like `points()` and `segments()` place elements on top of existing canvases.
+
+Don't worry if that's confusing for now -- we'll go over all the details soon.
+
+Let's start by looking at a basic scatterplot in R using the `plot()` function. When you execute the following code, you should see a plot open in a new window:
+
+
+```{r basicplot}
+# A basic scatterplot
+plot(x = 1:10,
+     y = 1:10,
+     xlab = "X Axis label",
+     ylab = "Y Axis label",
+     main = "Main Title")
+```
+
+
+
+Let's take a look at the result. We see an x--axis, a y--axis, 10 data points, an x--axis label, a y--axis label, and a main plot title. Some of these items, like the labels and data points, were entered as arguments to the function. For example, the main arguments x and y are vectors indicating the x and y coordinates of the (in this case, 10) data points. The arguments `xlab`, `ylab`, and `main` set the labels to the plot. However, there were many elements that I did not specify -- from the x and y axis limits, to the color of the plotting points. As you'll discover later, you can change all of these elements (and many, many more) by specifying additional arguments to the `plot()` function. However, because I did not specify them, R used **default** values -- values that R uses unless you tell it to use something else.
+
+For the rest of this chapter, we'll go over the main plotting functions, along with the most common arguments you can use to customize the look of your plot.
+
+## Colors
+
+
+Most plotting functions have a color argument (usually `col`) that allows you to specify the color of whatever your plotting. There are many ways to specify colors in R, let's start with the easiest ways.
+
+### Colors by name
+
+The easiest way to specify a color is to enter its name as a string. For example `col = "red"` is R's default version of the color red. Of course, all the basic colors are there, but R also has tons of quirky colors like `"snow"`, `"papayawhip"` and `"lawngreen"`. Figure \@ref(fig:randomcolors) shows 100 randomly selected named colors.
+
+```{r randomcolors, fig.width = 8, fig.height = 7, echo = FALSE, fig.cap="100 random named colors in R."}
+
+par(mar = c(0, 0, 0, 0))
+plot(1, xlim = c(0, 11), ylim = c(0, 11), type = "n", bty = "n", xaxt = "n", yaxt = "n", xlab = "", ylab = "")
+
+loc <- expand.grid(x = 1:10, y = 1:10)
+
+col.vec <- colors()[sample(1:length(colors()), size = 100)]
+
+for(i in 1:nrow(loc)) {
+  
+  x.i <- loc$x[i]
+  y.i <- loc$y[i]
+  
+  rect(x.i - .5, y.i - .5, x.i + .5, y.i + .5,
+       col = col.vec[i], border = "white")
+  
+  # rect(x.i - .45, y.i - .2, x.i + .45, y.i + .2,
+  #      col = gray(1, .6), border = NA)
+  
+  text(x.i, y.i, labels = col.vec[i], cex = .6)
+  
+}
+```
+
+
+To see all 657 color names in R, run the code `colors()`.
+
+### gray()
+
+```{r echo = FALSE, fig.width = 2.5, fig.height = 1, fig.align='center'}
+par(mar = c(0, 0, 0, 0))
+
+plot(x = 1:11,
+     y = rep(.5, 11),
+     xlim = c(1, 11),
+     ylim = c(0, 1),
+     pch = 21,
+     bg = gray(seq(0, 1, .1)),
+     bty = "n",
+     cex = 1.6,
+     ylab = "",
+     xlab = "",
+     xaxt = "n",
+     yaxt = "n"
+     )
+
+text(x = 5.5,
+     y = .8,
+     labels = "gray(x)",
+     cex = 1.4
+     )
+
+text(x = 1:11,
+     y = rep(.5, 11),
+     labels = seq(0, 1, .1),
+     pos = 1,
+     cex = .8
+     )
+
+```
+
+
+The `gray()` function takes two arguments, `level` and `alpha`, and returns a shade of gray. For example, `gray(level = 1)` will return white. The second `alpha` argument specifies how transparent to make the color on a scale from 0 (completely transparent), to 1 (not transparent at all). The default value for alpha is 1 (not transparent at all). See Figure \@ref(fig:graylevels) for examples.
+
+
+```{r graylevels, echo = FALSE, fig.cap = "Examples of gray(level, alpha)", fig.align = "center"}
+plot(1, xlim = c(0, 2), ylim = c(0, 2.2), type = "n", xaxt = "n", yaxt = "n", xlab = "", ylab = "")
+
+text(.5, 2, "gray(level = .2, alpha = .2)")
+points(x = runif(100, .2, .8), y = runif(100, .2, .8), col = gray(.2, .2), pch = 16, cex = 2)
+
+
+text(.5, 1, "gray(level = .8, alpha = .2)")
+
+points(x = runif(100, .2, .8), y = runif(100, 1.2, 1.8), col = gray(.8, .2), pch = 16, cex = 2)
+
+text(1.5, 2, "gray(level = .2, alpha = .8)")
+
+
+points(x = runif(100, 1.2, 1.8), y = runif(100, .2, .8), col = gray(.2, .8), pch = 16, cex = 2)
+
+
+text(1.5, 1, "gray(level = .8, alpha = .8)")
+
+points(x = runif(100, 1.2, 1.8), y = runif(100, 1.2, 1.8), col = gray(.8, .8), pch = 16, cex = 2)
+```
+
+##`yarrr::transparent()`
+
+I don't know about you, but I almost always find transparent colors to be more appealing than solid colors. Not only do they help you see when multiple points are overlapping, but they're just much nicer to look at. Just look at the overlapping circles in the plot below.
+
+
+```{r fig.width = 5, fig.height = 3.5, echo = FALSE}
+par(mar = c(0, 0, 0, 0))
+plot(1, xlim = c(0, 6), ylim = c(0, 1), 
+     type = "n", xaxt = "n", yaxt = "n", 
+     xlab = "", ylab = "", bty = "n")
+
+text(1.5, .9, "Standard", cex = 1.5)
+
+points(x = c(1, 2, 1.5), 
+       y = c(.5, .5, .3), 
+       col = c("red", "blue", "yellow"), 
+       pch = 16, cex = 20)
+
+text(4.5, .9, "Transparent", cex = 1.5)
+
+library(yarrr)
+
+points(x = c(4, 5, 4.5), 
+       y = c(.5, .5, .3), 
+       col = c(transparent("red", .5), 
+               transparent("blue", .5), 
+               transparent("yellow", .5)), 
+       pch = 16, cex = 20)
+```
+
+
+
+Unfortunately, as far as I know, base-R does not make it easy to make transparent colors. Thankfully, there is a function in the `yarrr` package called `transparent` that makes it very easy to make any color transparent. To use it, just enter the original color as the main argument `orig.col`, then enter how transparent you want to make it (from 0 to 1) as the second argument `trans.val`. You can either save the transparent color as a new color object, or use the function directly in a plotting function like I do in the scatterplot in the margin.
+
+```{r, echo = FALSE}
+
+par(mfcol = c(1, 2))
+# Plot with Standard Colors
+plot(x = pirates$height, 
+     y = pirates$weight, 
+     col = "blue", 
+     pch = 16, 
+     main = "col ='blue'")
+
+# Plot with Transparent  olors
+
+library(yarrr) # Load the yarrr package 
+# to get the transparent() function
+
+plot(x = pirates$height, 
+     y = pirates$weight, 
+     col = transparent("blue", trans.val = .9), 
+     pch = 16, 
+     main = "col = yarrr::transparent('blue', .9)")
+```
+
+
+
+Later on in the book, we'll cover more advanced ways to come up with colors using color palettes (using the RColorBrewer package or the `piratepal()` function in the yarrr package) and functions that generate shades of colors based on numeric data (like the `colorRamp2()` function in the `circlize` package).
+
+## High vs. low-level plotting commands
+
+
+There are two general types of plotting commands in R: high and low-level. High level plotting commands, like `plot()`, `hist()` and `pirateplot()` create entirely new plots. Within these high level plotting commands, you can define the general layout of the plot - like the axis limits and plot margins.
+
+Low level plotting commands, like `points()`, `segments()`, and `text()` add elements to existing plots. These low level commands don't change the overall layout of a plot - they just add to what you've already created. Once you are done creating a plot, you can export the plot to a pdf or jpeg using the `pdf()` or `jpeg()` functions. Or, if you're creating documents in Markdown or Latex, you can add your plot directly to your document.
+
+### Plotting arguments
+
+
+Most plotting functions have *tons* of optional arguments (also called parameters) that you can use to customize virtually everything in a plot. To see all of them, look at the help menu for `par` by executing `?par`. However, the good news is that you don't need to specify all possible parameters you create a plot. Instead, there are only a few critical arguments that you must specify - usually one or two vectors of data. For any optional arguments that you do not specify, R will use either a default value, or choose a value that makes sense based on the data you specify.
+
+In the following examples, I will to cover the main plotting parameters for each plotting type. However, the best way to learn what you can, and can't, do with plots, is to try to create them yourself!
+
+I think the best way to learn how to create plots is to see some examples. Let's start with the main high-level plotting functions.
+
+
+## Scatterplot: `plot()`
+
+
+
+The most common high-level plotting function is `plot(x, y)`. The `plot()` function makes a scatterplot from two vectors x and y, where the x vector indicates the x (horizontal) values of the points, and the y vector indicates the y (vertical) values.
+
+
+
+| Argument| Description| 
+|:------------|:-------------------------------------------------|
+|`x, y`|Vectors of equal length specifying the x and y values of the points|
+|`type`| Type of plot. `"l"` means lines, `"p"` means points, `"b"` means lines and points, `"n"` means no plotting|
+|`main`, `xlab`, `ylab`| Strings giving labels for the plot title, and x and y axes|
+|`xlim`, `ylim`| Limits to the axes. For example, `xlim = c(0, 100)` will set the minimum and maximum of the x-axis to 0 and 100.|
+|`pch` | An integer indicating the type of plotting symbols (see `?points` and section below), or a string specifying symbols as text. For example, `pch = 21` will create a two-color circle, while `pch = "P"` will plot the character `"P"`. To see all the different symbol types, run `?points`.
+|`col`| Main color of the plotting symbols. For example `col = "red"` will create red symbols.|
+|`cex`| A numeric vector specifying the size of the symbols (from 0 to Inf). The default size is 1. `cex = 4` will make the points very large, while `cex = .5` will make them very small. |
+
+
+```{r}
+plot(x = 1:10,                         # x-coordinates
+     y = 1:10,                         # y-coordinates
+     type = "b",                       # Draw lines with points
+     main = "My First Plot",
+     xlab = "This is the x-axis label",
+     ylab = "This is the y-axis label",
+     xlim = c(0, 11),                  # Min and max values for x-axis
+     ylim = c(0, 11),                  # Min and max values for y-axis
+     col = "blue",                     # Color of the points
+     pch = 16,                         # Type of symbol (16 means Filled circle)
+     cex = 1                           # Size of the symbols
+     )
+```
+
+
+
+Aside from the x and y arguments, all of the arguments are optional. If you don't specify a specific argument, then R will use a default value, or try to come up with a value that makes sense. For example, if you don't specify the `xlim` and `ylim` arguments, R will set the limits so that all the points fit inside the plot.
+
+### Symbol types: `pch`
+
+
+When you create a plot with `plot()` (or points with `points()`), you can specify the type of symbol with the `pch` argument. You can specify the symbol type in one of two ways: with an integer, or with a string. If you use a string (like `"p"`), R will use that text as the plotting symbol. If you use an integer value, you'll get the symbol that correspond to that number. See Figure  for all the symbol types you can specify with an integer.
+
+Symbols differ in their shape and how they are colored. Symbols 1 through 14 only have borders and are always empty, while symbols 15 through 20 don't have a border and are always filled. Symbols 21 through 25 have both a border and a filling. To specify the border color or background for symbols 1 through 20, use the `col` argument. For symbols 21 through 25, you set the color of the border with `col`, and the color of the background using `bg`
+
+```{r echo = FALSE, fig.cap = "The symbol types associated with the pch plotting parameter.", fig.width = 3, fig.height = 3, fig.align= 'center'}
+par(mar  = c(1, 1, 3, 1))
+
+plot(x = rep(1:5 + .1, each = 5),
+     y = rep(5:1, times = 5),
+     pch = 1:25,
+     xlab = "", ylab = "", xaxt = "n", yaxt = "n",
+     xlim = c(.5, 5.5),
+     ylim = c(0, 6),
+     bty = "n", bg = "gray", cex = 1.4,
+     main = "pch = _"
+     )
+
+text(x = rep(1:5, each = 5) - .35,
+     y = rep(5:1, times = 5),
+     labels = 1:25, cex = 1.2
+     )
+```
+
+
+Let's look at some different symbol types in action:
+
+```{r echo = FALSE}
+par(mfrow = c(2, 2))
+par(mar = c(0, 1, 6, 1))
+
+x.data <- rnorm(25)
+y.data <- x.data + rnorm(25)
+
+# Plot 1
+plot(x = x.data, y = y.data, xaxt = "n", yaxt = "n", xlab = "", ylab = "", main = "pch = 2,\ncol = 'blue'", 
+     pch = 2, col = "blue", cex = 1.5, cex.main = 1.2)
+
+# Plot 2
+plot(x = x.data, y = y.data, xaxt = "n", yaxt = "n", xlab = "", ylab = "", main = "pch = 16,\ncol = 'orchid2'", 
+     pch = 16, col = "orchid2", cex= 1.5, cex.main = 1.2)
+
+
+# Plot 3
+plot(x = x.data, y = y.data, xaxt = "n", yaxt = "n", xlab = "", ylab = "", main = "pch = 21,\ncol = 'black',\nbg = 'orangered2", 
+     cex= 1.5, cex.main = 1.2, 
+     pch = 21, col = "black", bg = "orangered2")
+
+# Plot 4
+plot(x = x.data, y = y.data, xaxt = "n", yaxt = "n", xlab = "", ylab = "", main = "pch = 25,\ncol = 'pink3',\nbg = 'plum3", 
+     cex= 1.5, cex.main = 1.2, 
+     pch = 25, col = "pink3", bg = "plum3")
+```
+
+
+## Histogram: `hist()`
+
+
+Histograms are the most common way to plot unidimensional numeric data. To create a histogram we'll use the `hist()` function. The main argument to `hist()` is a `x`, a vector of numeric data. If you want to specify how the histogram bins are created, you can use the `breaks` argument. To change the color of the border or background of the bins, use `col` and `border`:
+
+Let's create a histogram of the weights in the ChickWeight dataset:
+
+```{r}
+hist(x = ChickWeight$weight,
+     main = "Chicken Weights",
+     xlab = "Weight",
+     xlim = c(0, 500))
+```
+
+
+We can get more fancy by adding additional arguments like `breaks = 20` to force there to be 20 bins, and `col = "papayawhip"` and `bg = "hotpink"` to make it a bit more colorful:
+
+
+
+```{r}
+hist(x = ChickWeight$weight,
+     main = "Fancy Chicken Weight Histogram",
+     xlab = "Weight",
+     ylab = "Frequency",
+     breaks = 20, # 20 Bins
+     xlim = c(0, 500),
+     col = "papayawhip", # Filling Color
+     border = "hotpink") # Border Color
+```
+
+
+If you want to plot two histograms on the same plot, for example, to show the distributions of two different groups, you can use the \texttt{add = TRUE} argument to the second plot. 
+
+```{r}
+hist(x = ChickWeight$weight[ChickWeight$Diet == 1],
+     main = "Two Histograms in one",
+     xlab = "Weight",
+     ylab = "Frequency",
+     breaks = 20,
+     xlim = c(0, 500),
+     col = gray(0, .5))
+
+hist(x = ChickWeight$weight[ChickWeight$Diet == 2],
+     breaks = 30,
+     add = TRUE, # Add plot to previous one!
+     col = gray(1, .8))
+```
+
+
