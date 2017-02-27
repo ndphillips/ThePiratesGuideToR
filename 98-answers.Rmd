@@ -414,7 +414,6 @@ with(piratesurvey,
      mean(sex[age < 32] == "F"))
 ```
 
-  
 7. Add a new column to the dataframe called `tattoos.per.year` which shows how many tattoos each pirate has for each year in their life.
 
 ```{r}

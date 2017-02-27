@@ -7,7 +7,7 @@ library(yarrr)
 
 
 
-```{r, fig.cap= "Despite what you might find at family friendly waterparks -- this is NOT how real pirate swimming lessons look.", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
+```{r, fig.cap= "Despite what you might find at family friendly waterparks -- this is NOT how real pirate swimming lessons look.", fig.margin = TRUE, echo = FALSE, out.width = "75%", fig.align='center'}
 knitr::include_graphics(c("images/pirateswimming.jpg"))
 ```
 

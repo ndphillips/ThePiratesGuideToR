@@ -7,6 +7,10 @@ library(yarrr)
 ```
 
 
+```{r dance, fig.cap= "Make your dataframes dance for you", fig.margin = TRUE, echo = FALSE, out.width = "75%", fig.align='center'}
+knitr::include_graphics(c("images/manipulation.jpg"))
+```
+
 In this chapter we'll cover some more advanced functions and procedures for manipulating dataframes.
 
 ```{r}
@@ -231,8 +235,6 @@ aggregate(formula = weight ~ Diet + Time,  # DV is weight, IVs are Diet and Time
 
 ## `dplyr`
 
-
-
 The `dplyr` package is a relatively new R package that allows you to do all kinds of analyses quickly and easily. It is especially useful for creating tables of summary statistics across specific groups of data. In this section, we'll go over a very brief overview of how you can use dplyr to easily do grouped aggregation. Just to be clear - you can use dplyr to do everything the `aggregate()` function does and much more! However, this will be a very brief overview and I strongly recommend you look at the help menu for dplyr for additional descriptions and examples.
 
 To use the dplyr package, you first need to install it with `install.packages()` and load it:
@@ -298,14 +300,16 @@ movies %>% # From the movies dataframe...
 
 As you can see, our result is a dataframe with 14 rows and 6 columns. The data are summarized from the movie dataframe, only include values where the genre is *not* Horror and the movie length is longer than 50 minutes, is grouped by rating and sequel, and shows several summary statistics.
 
+### Additional dplyr help
 
-We've only scratched the surface of what you can do with `dplyr`. For more tips, check out the dplyr vignette at [https://cran.r-project.org/web/packages/dplyr/vignettes/introduction.html](https://cran.r-project.org/web/packages/dplyr/vignettes/introduction.html). Or open it in RStudio by running the following command
-
+We've only scratched the surface of what you can do with `dplyr`. In fact, you can perform almost all of your R tasks, from loading, to managing, to saving data, in the `dplyr` framework. For more tips on using dplyr, check out the dplyr vignette at [https://cran.r-project.org/web/packages/dplyr/vignettes/introduction.html](https://cran.r-project.org/web/packages/dplyr/vignettes/introduction.html). Or open it in RStudio by running the following command:
 
 ```{r eval = FALSE}
 # Open the dplyr introduction in R
 vignette("introduction", package = "dplyr")
 ```
+
+There is also a very nice YouTube video covering `dplyr` at [https://goo.gl/UY2AE1](https://goo.gl/UY2AE1). Finally, consider also reading [R for Data Science](http://r4ds.had.co.nz/) written by Garrett Grolemund and Hadley Wickham, which teaches R from the ground-up using the dplyr framework.
 
 
 ## Additional aggregation functions
@@ -394,7 +398,7 @@ write.table(df, file = "data/caffeinestudy.txt", sep = "\t")
 
 You're in charge of analyzing the results of an experiment testing the effects of different forms of caffeine on a measure of performance. In the experiment, 100 participants were given either Green tea or coffee, in doses of either 1 or 5 servings. They then performed a cognitive test where higher scores indicate better performance.
 
-The data are stored in a tab--delimited dataframe at the following link: [https://dl.dropboxusercontent.com/u/7618380/datasets/caffeinestudy.txt](https://dl.dropboxusercontent.com/u/7618380/datasets/caffeinestudy.txt)
+The data are stored in a tab--delimited dataframe at the following link: [https://raw.githubusercontent.com/ndphillips/ThePiratesGuideToR/master/data/caffeinestudy.txt](https://raw.githubusercontent.com/ndphillips/ThePiratesGuideToR/master/data/caffeinestudy.txt)
 
 
 
@@ -403,7 +407,7 @@ The data are stored in a tab--delimited dataframe at the following link: [https:
 knitr::include_graphics(c("images/skullcaffeine.jpg"))
 ```
 
-1. Load the dataset from https://dl.dropboxusercontent.com/u/7618380/datasets/caffeinestudy.txt as a new dataframe called `caffeine`.
+1. Load the dataset from https://raw.githubusercontent.com/ndphillips/ThePiratesGuideToR/master/data/caffeinestudy.txt as a new dataframe called `caffeine`.
 
 
 2. Calculate the mean age for each gender

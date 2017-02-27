@@ -5,8 +5,8 @@ knitr::opts_chunk$set(collapse = TRUE)
 ```
 
 
-```{r, fig.cap= "Traditionally, a pirate will steal a Beard Bauble from every pirate he beats in a game of Mario Kart. This pirate is is the Mario Kart champion of Missionsstrasse.", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
-knitr::include_graphics(c("images/beard.jpeg"))
+```{r, fig.cap= "", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
+knitr::include_graphics(c("images/antiqueboat.jpg"))
 ```
 
 
@@ -428,7 +428,7 @@ mean(happy, na.rm = TRUE)
 ## Test your R Might!: Movie data
 
 
-```{r, fig.cap= "", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
+```{r, fig.cap= "", fig.margin = TRUE, echo = FALSE, out.width = "100%", fig.align='center'}
 knitr::include_graphics(c("images/moviecollage.png"))
 ```
 

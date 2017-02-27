@@ -343,7 +343,7 @@ If you try running the code above in R, you will receive a warning message start
 
 #### R is case-sensitive!
 
-```{r datetext, fig.cap= "Like a text message, you should probably watch your use of capitalization in R.", fig.margin = TRUE, echo = FALSE, out.width = "25%", fig.align='center'}
+```{r datetext, fig.cap= "Like a text message, you should probably watch your use of capitalization in R.", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
 knitr::include_graphics(c("images/datetext.png"))
 ```
 
