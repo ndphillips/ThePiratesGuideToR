@@ -162,7 +162,7 @@ plot(1,
 points(x = 1:6, 
        y = rep(.4, 6),
        pch = 16,
-       col = google.colors[c(1, 2, 3, 1, 4, 2)],
+       col = google.col[c(1, 2, 3, 1, 4, 2)],
        cex = 4)
 
 text(x = 1:6, 
