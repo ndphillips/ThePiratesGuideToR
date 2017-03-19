@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>YaRrr! The Pirate’s Guide to R</title>
+  <meta name="description" content="An introductory book to R written by, and for, R pirates">
+  <meta name="generator" content="bookdown 0.3.9 and GitBook 2.6.7">
+
+  <meta property="og:title" content="YaRrr! The Pirate’s Guide to R" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://bookdown.org/ndphillips/YaRrr/" />
+  <meta property="og:image" content="https://bookdown.org/ndphillips/YaRrr/images/YaRrr_Cover.jpg" />
+  <meta property="og:description" content="An introductory book to R written by, and for, R pirates" />
+  <meta name="github-repo" content="ndphillips/ThePiratesGuideToR" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="YaRrr! The Pirate’s Guide to R" />
+  
+  <meta name="twitter:description" content="An introductory book to R written by, and for, R pirates" />
+  <meta name="twitter:image" content="https://bookdown.org/ndphillips/YaRrr/images/YaRrr_Cover.jpg" />
+
+<meta name="author" content="Nathaniel D. Phillips">
+
+
+<meta name="date" content="2017-03-17">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="anova.html">
+<link rel="next" href="solutions.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">YaRrr! The Pirate's Guide to R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#where-did-this-book-come-from"><i class="fa fa-check"></i><b>1.1</b> Where did this book come from?</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#who-is-this-book-for"><i class="fa fa-check"></i><b>1.2</b> Who is this book for?</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#why-is-r-so-great"><i class="fa fa-check"></i><b>1.3</b> Why is R so great?</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#rrelationship"><i class="fa fa-check"></i><b>1.4</b> Why R is like a relationship…</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#r-resources"><i class="fa fa-check"></i><b>1.5</b> R resources</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="index.html"><a href="index.html#r-cheatsheets"><i class="fa fa-check"></i><b>1.5.1</b> R Cheatsheets</a></li>
+<li class="chapter" data-level="1.5.2" data-path="index.html"><a href="index.html#getting-r-help-and-inspiration-online"><i class="fa fa-check"></i><b>1.5.2</b> Getting R help and inspiration online</a></li>
+<li class="chapter" data-level="1.5.3" data-path="index.html"><a href="index.html#other-r-books"><i class="fa fa-check"></i><b>1.5.3</b> Other R books</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#who-am-i"><i class="fa fa-check"></i><b>1.6</b> Who am I?</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.6.1</b> Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#please-contribute"><i class="fa fa-check"></i><b>1.7</b> Please Contribute!</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="started.html"><a href="started.html"><i class="fa fa-check"></i><b>2</b> Getting Started</a><ul>
+<li class="chapter" data-level="2.1" data-path="started.html"><a href="started.html#installing-base-r-and-rstudio"><i class="fa fa-check"></i><b>2.1</b> Installing Base-R and RStudio</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="started.html"><a href="started.html#check-for-version-updates"><i class="fa fa-check"></i><b>2.1.1</b> Check for version updates</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="started.html"><a href="started.html#the-four-rstudio-windows"><i class="fa fa-check"></i><b>2.2</b> The four RStudio Windows</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="started.html"><a href="started.html#source---your-notepad-for-code"><i class="fa fa-check"></i><b>2.2.1</b> Source - Your notepad for code</a></li>
+<li class="chapter" data-level="2.2.2" data-path="started.html"><a href="started.html#console-rs-heart"><i class="fa fa-check"></i><b>2.2.2</b> Console: R’s Heart</a></li>
+<li class="chapter" data-level="2.2.3" data-path="started.html"><a href="started.html#environment-history"><i class="fa fa-check"></i><b>2.2.3</b> Environment / History</a></li>
+<li class="chapter" data-level="2.2.4" data-path="started.html"><a href="started.html#files-plots-packages-help"><i class="fa fa-check"></i><b>2.2.4</b> Files / Plots / Packages / Help</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="started.html"><a href="started.html#packages"><i class="fa fa-check"></i><b>2.3</b> Packages</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="started.html"><a href="started.html#installing-a-new-package"><i class="fa fa-check"></i><b>2.3.1</b> Installing a new package</a></li>
+<li class="chapter" data-level="2.3.2" data-path="started.html"><a href="started.html#loading-a-package"><i class="fa fa-check"></i><b>2.3.2</b> Loading a package</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="started.html"><a href="started.html#reading-and-writing-code"><i class="fa fa-check"></i><b>2.4</b> Reading and writing Code</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="started.html"><a href="started.html#code-chunks"><i class="fa fa-check"></i><b>2.4.1</b> Code Chunks</a></li>
+<li class="chapter" data-level="2.4.2" data-path="started.html"><a href="started.html#comments-with"><i class="fa fa-check"></i><b>2.4.2</b> Comments with #</a></li>
+<li class="chapter" data-level="2.4.3" data-path="started.html"><a href="started.html#element-numbers-in-output-1"><i class="fa fa-check"></i><b>2.4.3</b> Element numbers in output [1]</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="started.html"><a href="started.html#debugging"><i class="fa fa-check"></i><b>2.5</b> Debugging</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="started.html"><a href="started.html#r-is-not-ready"><i class="fa fa-check"></i><b>2.5.1</b> R is not ready (&gt;)</a></li>
+<li class="chapter" data-level="2.5.2" data-path="started.html"><a href="started.html#misspelled-object-or-function"><i class="fa fa-check"></i><b>2.5.2</b> Misspelled object or function</a></li>
+<li class="chapter" data-level="2.5.3" data-path="started.html"><a href="started.html#punctuation-problems"><i class="fa fa-check"></i><b>2.5.3</b> Punctuation problems</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="jumpin.html"><a href="jumpin.html"><i class="fa fa-check"></i><b>3</b> Jump In!</a><ul>
+<li class="chapter" data-level="3.1" data-path="jumpin.html"><a href="jumpin.html#exploring-data"><i class="fa fa-check"></i><b>3.1</b> Exploring data</a></li>
+<li class="chapter" data-level="3.2" data-path="jumpin.html"><a href="jumpin.html#descriptive-statistics"><i class="fa fa-check"></i><b>3.2</b> Descriptive statistics</a></li>
+<li class="chapter" data-level="3.3" data-path="jumpin.html"><a href="jumpin.html#plotting"><i class="fa fa-check"></i><b>3.3</b> Plotting</a></li>
+<li class="chapter" data-level="3.4" data-path="jumpin.html"><a href="jumpin.html#hypothesis-tests"><i class="fa fa-check"></i><b>3.4</b> Hypothesis tests</a></li>
+<li class="chapter" data-level="3.5" data-path="jumpin.html"><a href="jumpin.html#regression"><i class="fa fa-check"></i><b>3.5</b> Regression</a></li>
+<li class="chapter" data-level="3.6" data-path="jumpin.html"><a href="jumpin.html#bayesian-statistics"><i class="fa fa-check"></i><b>3.6</b> Bayesian Statistics</a></li>
+<li class="chapter" data-level="3.7" data-path="jumpin.html"><a href="jumpin.html#wasnt-that-easy"><i class="fa fa-check"></i><b>3.7</b> Wasn’t that easy?!</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>4</b> The Basics</a><ul>
+<li class="chapter" data-level="4.1" data-path="basics.html"><a href="basics.html#the-command-line-console"><i class="fa fa-check"></i><b>4.1</b> The command-line (Console)</a></li>
+<li class="chapter" data-level="4.2" data-path="basics.html"><a href="basics.html#writing-r-scripts-in-an-editor"><i class="fa fa-check"></i><b>4.2</b> Writing R scripts in an editor</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="basics.html"><a href="basics.html#send-code-from-an-source-to-the-console"><i class="fa fa-check"></i><b>4.2.1</b> Send code from an source to the console</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="basics.html"><a href="basics.html#a-brief-style-guide-commenting-and-spacing"><i class="fa fa-check"></i><b>4.3</b> A brief style guide: Commenting and spacing</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="basics.html"><a href="basics.html#commenting-code-with-the-pound-sign"><i class="fa fa-check"></i><b>4.3.1</b> Commenting code with the # (pound) sign</a></li>
+<li class="chapter" data-level="4.3.2" data-path="basics.html"><a href="basics.html#spacing"><i class="fa fa-check"></i><b>4.3.2</b> Spacing</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="basics.html"><a href="basics.html#objects-and-functions"><i class="fa fa-check"></i><b>4.4</b> Objects and functions</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="basics.html"><a href="basics.html#numbers-versus-characters"><i class="fa fa-check"></i><b>4.4.1</b> Numbers versus characters</a></li>
+<li class="chapter" data-level="4.4.2" data-path="basics.html"><a href="basics.html#creating-new-objects-with--"><i class="fa fa-check"></i><b>4.4.2</b> Creating new objects with &lt;-</a></li>
+<li class="chapter" data-level="4.4.3" data-path="basics.html"><a href="basics.html#how-to-name-objects"><i class="fa fa-check"></i><b>4.4.3</b> How to name objects</a></li>
+<li class="chapter" data-level="4.4.4" data-path="basics.html"><a href="basics.html#example-pirates-of-the-caribbean"><i class="fa fa-check"></i><b>4.4.4</b> Example: Pirates of The Caribbean</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="basics.html"><a href="basics.html#test-your-r-might"><i class="fa fa-check"></i><b>4.5</b> Test your R might!</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="scalersvectors.html"><a href="scalersvectors.html"><i class="fa fa-check"></i><b>5</b> Scalers and vectors</a><ul>
+<li class="chapter" data-level="5.1" data-path="scalersvectors.html"><a href="scalersvectors.html#scalars"><i class="fa fa-check"></i><b>5.1</b> Scalars</a></li>
+<li class="chapter" data-level="5.2" data-path="scalersvectors.html"><a href="scalersvectors.html#vectors"><i class="fa fa-check"></i><b>5.2</b> Vectors</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="scalersvectors.html"><a href="scalersvectors.html#ab"><i class="fa fa-check"></i><b>5.2.1</b> a:b</a></li>
+<li class="chapter" data-level="5.2.2" data-path="scalersvectors.html"><a href="scalersvectors.html#seq"><i class="fa fa-check"></i><b>5.2.2</b> seq()</a></li>
+<li class="chapter" data-level="5.2.3" data-path="scalersvectors.html"><a href="scalersvectors.html#rep"><i class="fa fa-check"></i><b>5.2.3</b> rep()</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="scalersvectors.html"><a href="scalersvectors.html#generating-random-data"><i class="fa fa-check"></i><b>5.3</b> Generating random data</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="scalersvectors.html"><a href="scalersvectors.html#sample"><i class="fa fa-check"></i><b>5.3.1</b> sample()</a></li>
+<li class="chapter" data-level="5.3.2" data-path="scalersvectors.html"><a href="scalersvectors.html#normal-gaussian"><i class="fa fa-check"></i><b>5.3.2</b> Normal (Gaussian)</a></li>
+<li class="chapter" data-level="5.3.3" data-path="scalersvectors.html"><a href="scalersvectors.html#uniform"><i class="fa fa-check"></i><b>5.3.3</b> Uniform</a></li>
+<li class="chapter" data-level="5.3.4" data-path="scalersvectors.html"><a href="scalersvectors.html#notes-on-random-samples"><i class="fa fa-check"></i><b>5.3.4</b> Notes on random samples</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="scalersvectors.html"><a href="scalersvectors.html#test-your-r-might-1"><i class="fa fa-check"></i><b>5.4</b> Test your R might!</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="vectorfunctions.html"><a href="vectorfunctions.html"><i class="fa fa-check"></i><b>6</b> Vector functions</a><ul>
+<li class="chapter" data-level="6.1" data-path="vectorfunctions.html"><a href="vectorfunctions.html#arithmetic-operations-on-vectors"><i class="fa fa-check"></i><b>6.1</b> Arithmetic operations on vectors</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="vectorfunctions.html"><a href="vectorfunctions.html#basic-math-with-multiple-vectors"><i class="fa fa-check"></i><b>6.1.1</b> Basic math with multiple vectors</a></li>
+<li class="chapter" data-level="6.1.2" data-path="vectorfunctions.html"><a href="vectorfunctions.html#ex-pirate-bake-sale"><i class="fa fa-check"></i><b>6.1.2</b> Ex: Pirate Bake Sale</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="vectorfunctions.html"><a href="vectorfunctions.html#summary-statistics"><i class="fa fa-check"></i><b>6.2</b> Summary statistics</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="vectorfunctions.html"><a href="vectorfunctions.html#length"><i class="fa fa-check"></i><b>6.2.1</b> length()</a></li>
+<li class="chapter" data-level="6.2.2" data-path="vectorfunctions.html"><a href="vectorfunctions.html#additional-numeric-vector-functions"><i class="fa fa-check"></i><b>6.2.2</b> Additional numeric vector functions</a></li>
+<li class="chapter" data-level="6.2.3" data-path="vectorfunctions.html"><a href="vectorfunctions.html#sample-statistics-from-random-samples"><i class="fa fa-check"></i><b>6.2.3</b> Sample statistics from random samples</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="vectorfunctions.html"><a href="vectorfunctions.html#counting-statistics"><i class="fa fa-check"></i><b>6.3</b> Counting statistics</a></li>
+<li class="chapter" data-level="6.4" data-path="vectorfunctions.html"><a href="vectorfunctions.html#missing-na-values"><i class="fa fa-check"></i><b>6.4</b> Missing (NA) values</a></li>
+<li class="chapter" data-level="6.5" data-path="vectorfunctions.html"><a href="vectorfunctions.html#standardization-z-score"><i class="fa fa-check"></i><b>6.5</b> Standardization (z-score)</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="vectorfunctions.html"><a href="vectorfunctions.html#ex-evaluating-a-competition"><i class="fa fa-check"></i><b>6.5.1</b> Ex: Evaluating a competition</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="vectorfunctions.html"><a href="vectorfunctions.html#test-your-r-might-2"><i class="fa fa-check"></i><b>6.6</b> Test your R Might!</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="vectorindexing.html"><a href="vectorindexing.html"><i class="fa fa-check"></i><b>7</b> Indexing Vectors with [ ]</a><ul>
+<li class="chapter" data-level="7.1" data-path="vectorindexing.html"><a href="vectorindexing.html#numerical-indexing"><i class="fa fa-check"></i><b>7.1</b> Numerical Indexing</a></li>
+<li class="chapter" data-level="7.2" data-path="vectorindexing.html"><a href="vectorindexing.html#logical-indexing"><i class="fa fa-check"></i><b>7.2</b> Logical Indexing</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="vectorindexing.html"><a href="vectorindexing.html#and-or-in"><i class="fa fa-check"></i><b>7.2.1</b> <code>&amp;</code> (and), <code>|</code> (or), <code>%in%</code></a></li>
+<li class="chapter" data-level="7.2.2" data-path="vectorindexing.html"><a href="vectorindexing.html#counts-and-percentages-from-logical-vectors"><i class="fa fa-check"></i><b>7.2.2</b> Counts and percentages from logical vectors</a></li>
+<li class="chapter" data-level="7.2.3" data-path="vectorindexing.html"><a href="vectorindexing.html#additional-logical-functions"><i class="fa fa-check"></i><b>7.2.3</b> Additional Logical functions</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="vectorindexing.html"><a href="vectorindexing.html#changing-values-of-a-vector"><i class="fa fa-check"></i><b>7.3</b> Changing values of a vector</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="vectorindexing.html"><a href="vectorindexing.html#ex-fixing-invalid-responses-to-a-happiness-survey"><i class="fa fa-check"></i><b>7.3.1</b> Ex: Fixing invalid responses to a Happiness survey</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="vectorindexing.html"><a href="vectorindexing.html#test-your-r-might-movie-data"><i class="fa fa-check"></i><b>7.4</b> Test your R Might!: Movie data</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="matricesdataframes.html"><a href="matricesdataframes.html"><i class="fa fa-check"></i><b>8</b> Matrices and Dataframes</a><ul>
+<li class="chapter" data-level="8.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#what-are-matrices-and-dataframes"><i class="fa fa-check"></i><b>8.1</b> What are matrices and dataframes?</a></li>
+<li class="chapter" data-level="8.2" data-path="matricesdataframes.html"><a href="matricesdataframes.html#creating-matrices-and-dataframes"><i class="fa fa-check"></i><b>8.2</b> Creating matrices and dataframes</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#cbind-rbind"><i class="fa fa-check"></i><b>8.2.1</b> <code>cbind()</code>, <code>rbind()</code></a></li>
+<li class="chapter" data-level="8.2.2" data-path="matricesdataframes.html"><a href="matricesdataframes.html#matrix"><i class="fa fa-check"></i><b>8.2.2</b> <code>matrix()</code></a></li>
+<li class="chapter" data-level="8.2.3" data-path="matricesdataframes.html"><a href="matricesdataframes.html#data.frame"><i class="fa fa-check"></i><b>8.2.3</b> <code>data.frame()</code></a></li>
+<li class="chapter" data-level="8.2.4" data-path="matricesdataframes.html"><a href="matricesdataframes.html#dataframes-pre-loaded-in-r"><i class="fa fa-check"></i><b>8.2.4</b> Dataframes pre-loaded in R</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="matricesdataframes.html"><a href="matricesdataframes.html#matrix-and-dataframe-functions"><i class="fa fa-check"></i><b>8.3</b> Matrix and dataframe functions</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#head-tail-view"><i class="fa fa-check"></i><b>8.3.1</b> <code>head(), tail(), View()</code></a></li>
+<li class="chapter" data-level="8.3.2" data-path="matricesdataframes.html"><a href="matricesdataframes.html#summary-str"><i class="fa fa-check"></i><b>8.3.2</b> <code>summary()</code>, <code>str()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="matricesdataframes.html"><a href="matricesdataframes.html#dataframe-column-names"><i class="fa fa-check"></i><b>8.4</b> Dataframe column names</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#adding-new-columns"><i class="fa fa-check"></i><b>8.4.1</b> Adding new columns</a></li>
+<li class="chapter" data-level="8.4.2" data-path="matricesdataframes.html"><a href="matricesdataframes.html#changing-column-names"><i class="fa fa-check"></i><b>8.4.2</b> Changing column names</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="matricesdataframes.html"><a href="matricesdataframes.html#slicing-dataframes"><i class="fa fa-check"></i><b>8.5</b> Slicing dataframes</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#slicing-with"><i class="fa fa-check"></i><b>8.5.1</b> Slicing with <code>[, ]</code></a></li>
+<li class="chapter" data-level="8.5.2" data-path="matricesdataframes.html"><a href="matricesdataframes.html#slicing-with-logical-vectors"><i class="fa fa-check"></i><b>8.5.2</b> Slicing with logical vectors</a></li>
+<li class="chapter" data-level="8.5.3" data-path="matricesdataframes.html"><a href="matricesdataframes.html#slicing-with-subset"><i class="fa fa-check"></i><b>8.5.3</b> Slicing with <code>subset()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="matricesdataframes.html"><a href="matricesdataframes.html#combining-slicing-with-functions"><i class="fa fa-check"></i><b>8.6</b> Combining slicing with functions</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="matricesdataframes.html"><a href="matricesdataframes.html#with"><i class="fa fa-check"></i><b>8.6.1</b> <code>with()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="matricesdataframes.html"><a href="matricesdataframes.html#test-your-r-might-pirates-and-superheroes"><i class="fa fa-check"></i><b>8.7</b> Test your R might! Pirates and superheroes</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="importingdata.html"><a href="importingdata.html"><i class="fa fa-check"></i><b>9</b> Importing, saving and managing data</a><ul>
+<li class="chapter" data-level="9.1" data-path="importingdata.html"><a href="importingdata.html#workspace-management-functions"><i class="fa fa-check"></i><b>9.1</b> Workspace management functions</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="importingdata.html"><a href="importingdata.html#why-object-and-file-management-is-so-important"><i class="fa fa-check"></i><b>9.1.1</b> Why object and file management is so important</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="importingdata.html"><a href="importingdata.html#the-working-directory"><i class="fa fa-check"></i><b>9.2</b> The working directory</a></li>
+<li class="chapter" data-level="9.3" data-path="importingdata.html"><a href="importingdata.html#projects-in-rstudio"><i class="fa fa-check"></i><b>9.3</b> Projects in RStudio</a></li>
+<li class="chapter" data-level="9.4" data-path="importingdata.html"><a href="importingdata.html#the-workspace"><i class="fa fa-check"></i><b>9.4</b> The workspace</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="importingdata.html"><a href="importingdata.html#ls"><i class="fa fa-check"></i><b>9.4.1</b> ls()</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="importingdata.html"><a href="importingdata.html#rdata-files"><i class="fa fa-check"></i><b>9.5</b> .RData files</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="importingdata.html"><a href="importingdata.html#save"><i class="fa fa-check"></i><b>9.5.1</b> save()</a></li>
+<li class="chapter" data-level="9.5.2" data-path="importingdata.html"><a href="importingdata.html#save.image"><i class="fa fa-check"></i><b>9.5.2</b> save.image()</a></li>
+<li class="chapter" data-level="9.5.3" data-path="importingdata.html"><a href="importingdata.html#load"><i class="fa fa-check"></i><b>9.5.3</b> load()</a></li>
+<li class="chapter" data-level="9.5.4" data-path="importingdata.html"><a href="importingdata.html#rm"><i class="fa fa-check"></i><b>9.5.4</b> rm()</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="importingdata.html"><a href="importingdata.html#txt-files"><i class="fa fa-check"></i><b>9.6</b> .txt files</a><ul>
+<li class="chapter" data-level="9.6.1" data-path="importingdata.html"><a href="importingdata.html#write.table"><i class="fa fa-check"></i><b>9.6.1</b> write.table()</a></li>
+<li class="chapter" data-level="9.6.2" data-path="importingdata.html"><a href="importingdata.html#read.table"><i class="fa fa-check"></i><b>9.6.2</b> read.table()</a></li>
+<li class="chapter" data-level="9.6.3" data-path="importingdata.html"><a href="importingdata.html#reading-files-directly-from-a-web-url"><i class="fa fa-check"></i><b>9.6.3</b> Reading files directly from a web URL</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="importingdata.html"><a href="importingdata.html#excel-spss-and-other-data-files"><i class="fa fa-check"></i><b>9.7</b> Excel, SPSS, and other data files</a></li>
+<li class="chapter" data-level="9.8" data-path="importingdata.html"><a href="importingdata.html#additional-tips"><i class="fa fa-check"></i><b>9.8</b> Additional tips</a></li>
+<li class="chapter" data-level="9.9" data-path="importingdata.html"><a href="importingdata.html#test-your-r-might-3"><i class="fa fa-check"></i><b>9.9</b> Test your R Might!</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="advanceddataframe.html"><a href="advanceddataframe.html"><i class="fa fa-check"></i><b>10</b> Advanced dataframe manipulation</a><ul>
+<li class="chapter" data-level="10.1" data-path="advanceddataframe.html"><a href="advanceddataframe.html#order-sorting-data"><i class="fa fa-check"></i><b>10.1</b> <code>order()</code>: Sorting data</a></li>
+<li class="chapter" data-level="10.2" data-path="advanceddataframe.html"><a href="advanceddataframe.html#merge-combining-data"><i class="fa fa-check"></i><b>10.2</b> <code>merge()</code>: Combining data</a></li>
+<li class="chapter" data-level="10.3" data-path="advanceddataframe.html"><a href="advanceddataframe.html#aggregate-grouped-aggregation"><i class="fa fa-check"></i><b>10.3</b> <code>aggregate()</code>: Grouped aggregation</a></li>
+<li class="chapter" data-level="10.4" data-path="advanceddataframe.html"><a href="advanceddataframe.html#dplyr"><i class="fa fa-check"></i><b>10.4</b> <code>dplyr</code></a><ul>
+<li class="chapter" data-level="10.4.1" data-path="advanceddataframe.html"><a href="advanceddataframe.html#additional-dplyr-help"><i class="fa fa-check"></i><b>10.4.1</b> Additional dplyr help</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="advanceddataframe.html"><a href="advanceddataframe.html#additional-aggregation-functions"><i class="fa fa-check"></i><b>10.5</b> Additional aggregation functions</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="advanceddataframe.html"><a href="advanceddataframe.html#rowmeans-colmeans"><i class="fa fa-check"></i><b>10.5.1</b> <code>rowMeans()</code>, <code>colMeans()</code></a></li>
+<li class="chapter" data-level="10.5.2" data-path="advanceddataframe.html"><a href="advanceddataframe.html#apply-family"><i class="fa fa-check"></i><b>10.5.2</b> <code>apply</code> family</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="advanceddataframe.html"><a href="advanceddataframe.html#test-your-r-might-mmmmmcaffeine"><i class="fa fa-check"></i><b>10.6</b> Test your R might!: Mmmmm…caffeine</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="plotting1.html"><a href="plotting1.html"><i class="fa fa-check"></i><b>11</b> Plotting (I)</a><ul>
+<li class="chapter" data-level="11.1" data-path="plotting1.html"><a href="plotting1.html#colors"><i class="fa fa-check"></i><b>11.1</b> Colors</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="plotting1.html"><a href="plotting1.html#colors-by-name"><i class="fa fa-check"></i><b>11.1.1</b> Colors by name</a></li>
+<li class="chapter" data-level="11.1.2" data-path="plotting1.html"><a href="plotting1.html#gray"><i class="fa fa-check"></i><b>11.1.2</b> gray()</a></li>
+<li class="chapter" data-level="11.1.3" data-path="plotting1.html"><a href="plotting1.html#yarrrtransparent"><i class="fa fa-check"></i><b>11.1.3</b> <code>yarrr::transparent()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="plotting1.html"><a href="plotting1.html#plotting-arguments"><i class="fa fa-check"></i><b>11.2</b> Plotting arguments</a></li>
+<li class="chapter" data-level="11.3" data-path="plotting1.html"><a href="plotting1.html#scatterplot-plot"><i class="fa fa-check"></i><b>11.3</b> Scatterplot: <code>plot()</code></a><ul>
+<li class="chapter" data-level="11.3.1" data-path="plotting1.html"><a href="plotting1.html#symbol-types-pch"><i class="fa fa-check"></i><b>11.3.1</b> Symbol types: <code>pch</code></a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="plotting1.html"><a href="plotting1.html#histogram-hist"><i class="fa fa-check"></i><b>11.4</b> Histogram: <code>hist()</code></a></li>
+<li class="chapter" data-level="11.5" data-path="plotting1.html"><a href="plotting1.html#barplot-barplot"><i class="fa fa-check"></i><b>11.5</b> Barplot: <code>barplot()</code></a><ul>
+<li class="chapter" data-level="11.5.1" data-path="plotting1.html"><a href="plotting1.html#clustered-barplot"><i class="fa fa-check"></i><b>11.5.1</b> Clustered barplot</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="plotting1.html"><a href="plotting1.html#pirateplot"><i class="fa fa-check"></i><b>11.6</b> <code>pirateplot()</code></a><ul>
+<li class="chapter" data-level="11.6.1" data-path="plotting1.html"><a href="plotting1.html#pirateplot-themes"><i class="fa fa-check"></i><b>11.6.1</b> Pirateplot themes</a></li>
+<li class="chapter" data-level="11.6.2" data-path="plotting1.html"><a href="plotting1.html#customizing-pirateplots"><i class="fa fa-check"></i><b>11.6.2</b> Customizing pirateplots</a></li>
+<li class="chapter" data-level="11.6.3" data-path="plotting1.html"><a href="plotting1.html#saving-output"><i class="fa fa-check"></i><b>11.6.3</b> Saving output</a></li>
+</ul></li>
+<li class="chapter" data-level="11.7" data-path="plotting1.html"><a href="plotting1.html#low-level-plotting-functions"><i class="fa fa-check"></i><b>11.7</b> Low-level plotting functions</a><ul>
+<li class="chapter" data-level="11.7.1" data-path="plotting1.html"><a href="plotting1.html#starting-with-a-blank-plot"><i class="fa fa-check"></i><b>11.7.1</b> Starting with a blank plot</a></li>
+<li class="chapter" data-level="11.7.2" data-path="plotting1.html"><a href="plotting1.html#points"><i class="fa fa-check"></i><b>11.7.2</b> <code>points()</code></a></li>
+<li class="chapter" data-level="11.7.3" data-path="plotting1.html"><a href="plotting1.html#abline-segments-grid"><i class="fa fa-check"></i><b>11.7.3</b> <code>abline()</code>, <code>segments()</code>, <code>grid()</code></a></li>
+<li class="chapter" data-level="11.7.4" data-path="plotting1.html"><a href="plotting1.html#text"><i class="fa fa-check"></i><b>11.7.4</b> <code>text()</code></a></li>
+<li class="chapter" data-level="11.7.5" data-path="plotting1.html"><a href="plotting1.html#combining-text-and-numbers-with-paste"><i class="fa fa-check"></i><b>11.7.5</b> Combining text and numbers with <code>paste()</code></a></li>
+<li class="chapter" data-level="11.7.6" data-path="plotting1.html"><a href="plotting1.html#curve"><i class="fa fa-check"></i><b>11.7.6</b> <code>curve()</code></a></li>
+<li class="chapter" data-level="11.7.7" data-path="plotting1.html"><a href="plotting1.html#legend"><i class="fa fa-check"></i><b>11.7.7</b> <code>legend()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="11.8" data-path="plotting1.html"><a href="plotting1.html#saving-plots-to-a-file-with-pdf-jpeg-and-png"><i class="fa fa-check"></i><b>11.8</b> Saving plots to a file with <code>pdf()</code>, <code>jpeg()</code> and <code>png()</code></a></li>
+<li class="chapter" data-level="11.9" data-path="plotting1.html"><a href="plotting1.html#examples"><i class="fa fa-check"></i><b>11.9</b> Examples</a></li>
+<li class="chapter" data-level="11.10" data-path="plotting1.html"><a href="plotting1.html#test-your-r-might-purdy-pictures"><i class="fa fa-check"></i><b>11.10</b> Test your R might! Purdy pictures</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="plotting2.html"><a href="plotting2.html"><i class="fa fa-check"></i><b>12</b> Plotting (II)</a><ul>
+<li class="chapter" data-level="12.1" data-path="plotting2.html"><a href="plotting2.html#more-colors"><i class="fa fa-check"></i><b>12.1</b> More colors</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="plotting2.html"><a href="plotting2.html#piratepal"><i class="fa fa-check"></i><b>12.1.1</b> <code>piratepal()</code></a></li>
+<li class="chapter" data-level="12.1.2" data-path="plotting2.html"><a href="plotting2.html#rcolorbrewer"><i class="fa fa-check"></i><b>12.1.2</b> RColorBrewer</a></li>
+<li class="chapter" data-level="12.1.3" data-path="plotting2.html"><a href="plotting2.html#colorramp2"><i class="fa fa-check"></i><b>12.1.3</b> colorRamp2</a></li>
+<li class="chapter" data-level="12.1.4" data-path="plotting2.html"><a href="plotting2.html#getting-colors-with-a-kuler"><i class="fa fa-check"></i><b>12.1.4</b> Getting colors with a kuler</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="plotting2.html"><a href="plotting2.html#plot-margins"><i class="fa fa-check"></i><b>12.2</b> Plot Margins</a></li>
+<li class="chapter" data-level="12.3" data-path="plotting2.html"><a href="plotting2.html#arranging-plots-with-parmfrow-and-layout"><i class="fa fa-check"></i><b>12.3</b> Arranging plots with <code>par(mfrow)</code> and <code>layout()</code></a><ul>
+<li class="chapter" data-level="12.3.1" data-path="plotting2.html"><a href="plotting2.html#complex-plot-layouts-with-layout"><i class="fa fa-check"></i><b>12.3.1</b> Complex plot layouts with <code>layout()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="plotting2.html"><a href="plotting2.html#additional-plotting-parameters"><i class="fa fa-check"></i><b>12.4</b> Additional plotting parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="htests.html"><a href="htests.html"><i class="fa fa-check"></i><b>13</b> Hypothesis Tests</a><ul>
+<li class="chapter" data-level="13.1" data-path="htests.html"><a href="htests.html#a-short-introduction-to-hypothesis-tests"><i class="fa fa-check"></i><b>13.1</b> A short introduction to hypothesis tests</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="htests.html"><a href="htests.html#null-v-alternative-hypothesis"><i class="fa fa-check"></i><b>13.1.1</b> Null v Alternative Hypothesis</a></li>
+<li class="chapter" data-level="13.1.2" data-path="htests.html"><a href="htests.html#descriptive-statistics-1"><i class="fa fa-check"></i><b>13.1.2</b> Descriptive statistics</a></li>
+<li class="chapter" data-level="13.1.3" data-path="htests.html"><a href="htests.html#test-statistics"><i class="fa fa-check"></i><b>13.1.3</b> Test Statistics</a></li>
+<li class="chapter" data-level="13.1.4" data-path="htests.html"><a href="htests.html#p-value"><i class="fa fa-check"></i><b>13.1.4</b> p-value</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="htests.html"><a href="htests.html#hypothesis-test-objects-htest"><i class="fa fa-check"></i><b>13.2</b> Hypothesis test objects: <code>htest</code></a></li>
+<li class="chapter" data-level="13.3" data-path="htests.html"><a href="htests.html#t-test-t.test"><i class="fa fa-check"></i><b>13.3</b> T-test: <code>t.test()</code></a><ul>
+<li class="chapter" data-level="13.3.1" data-path="htests.html"><a href="htests.html#sample-t-test"><i class="fa fa-check"></i><b>13.3.1</b> 1-sample t-test</a></li>
+<li class="chapter" data-level="13.3.2" data-path="htests.html"><a href="htests.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.3.2</b> 2-sample t-test</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="htests.html"><a href="htests.html#correlation-cor.test"><i class="fa fa-check"></i><b>13.4</b> Correlation: <code>cor.test()</code></a></li>
+<li class="chapter" data-level="13.5" data-path="htests.html"><a href="htests.html#chi-square-chsq.test"><i class="fa fa-check"></i><b>13.5</b> Chi-square: <code>chsq.test()</code></a><ul>
+<li class="chapter" data-level="13.5.1" data-path="htests.html"><a href="htests.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.5.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+</ul></li>
+<li class="chapter" data-level="13.6" data-path="htests.html"><a href="htests.html#test-your-r-might-4"><i class="fa fa-check"></i><b>13.6</b> Test your R might!</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>14</b> ANOVA</a><ul>
+<li class="chapter" data-level="14.1" data-path="anova.html"><a href="anova.html#full-factorial-between-subjects-anova"><i class="fa fa-check"></i><b>14.1</b> Full-factorial between-subjects ANOVA</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="anova.html"><a href="anova.html#what-does-anova-stand-for"><i class="fa fa-check"></i><b>14.1.1</b> What does ANOVA stand for?</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="anova.html"><a href="anova.html#steps-to-conduct-an-anova"><i class="fa fa-check"></i><b>14.2</b> 4 Steps to conduct an ANOVA</a></li>
+<li class="chapter" data-level="14.3" data-path="anova.html"><a href="anova.html#ex-one-way-anova"><i class="fa fa-check"></i><b>14.3</b> Ex: One-way ANOVA</a></li>
+<li class="chapter" data-level="14.4" data-path="anova.html"><a href="anova.html#ex-two-way-anova"><i class="fa fa-check"></i><b>14.4</b> Ex: Two-way ANOVA</a><ul>
+<li class="chapter" data-level="14.4.1" data-path="anova.html"><a href="anova.html#anova-with-interactions"><i class="fa fa-check"></i><b>14.4.1</b> ANOVA with interactions</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="anova.html"><a href="anova.html#type-i-type-ii-and-type-iii-anovas"><i class="fa fa-check"></i><b>14.5</b> Type I, Type II, and Type III ANOVAs</a></li>
+<li class="chapter" data-level="14.6" data-path="anova.html"><a href="anova.html#getting-additional-information-from-anova-objects"><i class="fa fa-check"></i><b>14.6</b> Getting additional information from ANOVA objects</a></li>
+<li class="chapter" data-level="14.7" data-path="anova.html"><a href="anova.html#repeated-measures-anova-using-the-lme4-package"><i class="fa fa-check"></i><b>14.7</b> Repeated measures ANOVA using the lme4 package</a></li>
+<li class="chapter" data-level="14.8" data-path="anova.html"><a href="anova.html#test-your-r-might-5"><i class="fa fa-check"></i><b>14.8</b> Test your R might!</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="jumpin.html"><a href="jumpin.html#regression"><i class="fa fa-check"></i><b>15</b> Regression</a><ul>
+<li class="chapter" data-level="15.1" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>15.1</b> The Linear Model</a></li>
+<li class="chapter" data-level="15.2" data-path="regression.html"><a href="regression.html#linear-regression-with-lm"><i class="fa fa-check"></i><b>15.2</b> Linear regression with <code>lm()</code></a><ul>
+<li class="chapter" data-level="15.2.1" data-path="regression.html"><a href="regression.html#estimating-the-value-of-diamonds-with-lm"><i class="fa fa-check"></i><b>15.2.1</b> Estimating the value of diamonds with <code>lm()</code></a></li>
+<li class="chapter" data-level="15.2.2" data-path="regression.html"><a href="regression.html#getting-model-fits-with-fitted.values"><i class="fa fa-check"></i><b>15.2.2</b> Getting model fits with <code>fitted.values</code></a></li>
+<li class="chapter" data-level="15.2.3" data-path="regression.html"><a href="regression.html#using-predict-to-predict-new-data-from-a-model"><i class="fa fa-check"></i><b>15.2.3</b> Using <code>predict()</code> to predict new data from a model</a></li>
+<li class="chapter" data-level="15.2.4" data-path="regression.html"><a href="regression.html#including-interactions-in-models-y-x1-x2"><i class="fa fa-check"></i><b>15.2.4</b> Including interactions in models: <code>y ~ x1 * x2</code></a></li>
+<li class="chapter" data-level="15.2.5" data-path="regression.html"><a href="regression.html#center-variables-before-computing-interactions"><i class="fa fa-check"></i><b>15.2.5</b> Center variables before computing interactions!</a></li>
+<li class="chapter" data-level="15.2.6" data-path="regression.html"><a href="regression.html#getting-an-anova-from-a-regression-model-with-aov"><i class="fa fa-check"></i><b>15.2.6</b> Getting an ANOVA from a regression model with <code>aov()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="regression.html"><a href="regression.html#comparing-regression-models-with-anova"><i class="fa fa-check"></i><b>15.3</b> Comparing regression models with <code>anova()</code></a></li>
+<li class="chapter" data-level="15.4" data-path="regression.html"><a href="regression.html#regression-on-non-normal-data-with-glm"><i class="fa fa-check"></i><b>15.4</b> Regression on non-Normal data with <code>glm()</code></a></li>
+<li class="chapter" data-level="15.5" data-path="regression.html"><a href="regression.html#logistic-regression-with-glmfamily-binomial"><i class="fa fa-check"></i><b>15.5</b> Logistic regression with <code>glm(family = &quot;binomial&quot;</code></a><ul>
+<li class="chapter" data-level="15.5.1" data-path="regression.html"><a href="regression.html#adding-a-regression-line-to-a-plot"><i class="fa fa-check"></i><b>15.5.1</b> Adding a regression line to a plot</a></li>
+<li class="chapter" data-level="15.5.2" data-path="regression.html"><a href="regression.html#transforming-skewed-variables-prior-to-standard-regression"><i class="fa fa-check"></i><b>15.5.2</b> Transforming skewed variables prior to standard regression</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="regression.html"><a href="regression.html#test-your-might-a-ship-auction"><i class="fa fa-check"></i><b>15.6</b> Test your might! A ship auction</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="solutions.html"><a href="solutions.html"><i class="fa fa-check"></i><b>16</b> Solutions</a><ul>
+<li class="chapter" data-level="16.1" data-path="solutions.html"><a href="solutions.html#chapter-4-the-basics"><i class="fa fa-check"></i><b>16.1</b> Chapter 4: The Basics</a></li>
+<li class="chapter" data-level="16.2" data-path="solutions.html"><a href="solutions.html#chapter-5-scalers-and-vectors"><i class="fa fa-check"></i><b>16.2</b> Chapter 5: Scalers and vectors</a></li>
+<li class="chapter" data-level="16.3" data-path="solutions.html"><a href="solutions.html#chapter-6-vector-functions"><i class="fa fa-check"></i><b>16.3</b> Chapter 6: Vector Functions</a></li>
+<li class="chapter" data-level="16.4" data-path="solutions.html"><a href="solutions.html#chapter-7-indexing-vectors-with"><i class="fa fa-check"></i><b>16.4</b> Chapter 7: Indexing vectors with []</a></li>
+<li class="chapter" data-level="16.5" data-path="solutions.html"><a href="solutions.html#chapter-8-matrices-and-dataframes"><i class="fa fa-check"></i><b>16.5</b> Chapter 8: Matrices and Dataframes</a></li>
+<li class="chapter" data-level="16.6" data-path="solutions.html"><a href="solutions.html#chapter-13-hypothesis-tests"><i class="fa fa-check"></i><b>16.6</b> Chapter 13: Hypothesis tests</a></li>
+<li class="chapter" data-level="16.7" data-path="solutions.html"><a href="solutions.html#chapter-14-anova"><i class="fa fa-check"></i><b>16.7</b> Chapter 14: ANOVA</a></li>
+<li class="chapter" data-level="16.8" data-path="solutions.html"><a href="solutions.html#chapter-15-regression"><i class="fa fa-check"></i><b>16.8</b> Chapter 15: Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">YaRrr! The Pirate’s Guide to R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="regression" class="section level1">
+<h1><span class="header-section-number">Chapter 15</span> Regression</h1>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-399"></span>
+<img src="images/diamondskull.jpg" alt="Insert funny caption here." width="60%" />
+<p class="caption">
+Figure 15.1: Insert funny caption here.
+</p>
+</div>
+<p>Pirates like diamonds. Who doesn’t?! But as much as pirates love diamonds, they hate getting ripped off. For this reason, a pirate needs to know how to accurately assess the value of a diamond. For example, how much should a pirate pay for a diamond with a weight of 2.0 grams, a clarity value of 1.0, and a color gradient of 4 out of 10? To answer this, we’d like to know how the attributes of diamonds (e.g.; weight, clarity, color) relate to its value. We can get these values using linear regression.</p>
+<div id="the-linear-model" class="section level2">
+<h2><span class="header-section-number">15.1</span> The Linear Model</h2>
+<p>The linear model is easily the most famous and widely used model in all of statistics. Why? Because it can apply to so many interesting research questions where you are trying to predict a continuous variable of interest (the <em>response</em> or <em>dependent variable</em>) on the basis of one or more other variables (the <em>predictor</em> or <em>independent variables</em>).</p>
+<p>The linear model takes the following form, where the x values represent the predictors, while the beta values represent weights.</p>
+<p><span class="math inline">\(y=\beta_{0}+\beta_{1}x_{1}+\beta_{2}x_{2}+...\beta_{n}x_{n}\)</span></p>
+<p>For example, we could use a regression model to understand how the value of a diamond relates to two independent variables: its weight and clarity. In the model, we could define the value of a diamond as <span class="math inline">\(\beta_{weight} \times weight + \beta_{clarity} \times clarity\)</span>. Where <span class="math inline">\(\beta_{weight}\)</span> indicates how much a diamond’s value changes as a function of its weight, and <span class="math inline">\(\beta_{clarity}\)</span> defines how much a diamond’s value change as a function of its clarity.</p>
+</div>
+<div id="linear-regression-with-lm" class="section level2">
+<h2><span class="header-section-number">15.2</span> Linear regression with <code>lm()</code></h2>
+<table style="width:90%;">
+<colgroup>
+<col width="19%" />
+<col width="70%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Argument</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>formula</code></td>
+<td align="left">A formula in the form <code>y ~ x1 + x2 + ...</code> where y is the dependent variable, and x1, x2, … are the independent variables. If you want to include all columns (excluding y) as independent variables, just enter <code>y ~ .</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>data</code></td>
+<td align="left">The dataframe containing the columns specified in the formula.</td>
+</tr>
+</tbody>
+</table>
+<p>To estimate the beta weights of a linear model in R, we use the <code>lm()</code> function. The function has three key arguments: <code>formula</code>, and <code>data</code></p>
+<div id="estimating-the-value-of-diamonds-with-lm" class="section level3">
+<h3><span class="header-section-number">15.2.1</span> Estimating the value of diamonds with <code>lm()</code></h3>
+<p>We’ll start with a simple example using a dataset in the yarrr package called . The dataset includes data on 150 diamonds sold at an auction. Here are the first few rows of the dataset:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(yarrr)
+<span class="kw">head</span>(diamonds)
+##   weight clarity color value value.lm weight.c clarity.c value.g190
+## 1    9.3    0.88     4   182      186    -0.55     -0.12      FALSE
+## 2   11.1    1.05     5   191      193     1.20      0.05       TRUE
+## 3    8.7    0.85     6   176      183    -1.25     -0.15      FALSE
+## 4   10.4    1.15     5   195      194     0.53      0.15       TRUE
+## 5   10.6    0.92     5   182      189     0.72     -0.08      FALSE
+## 6   12.3    0.44     4   183      183     2.45     -0.56      FALSE
+##   pred.g190
+## 1     0.163
+## 2     0.821
+## 3     0.030
+## 4     0.846
+## 5     0.445
+## 6     0.087</code></pre></div>
+<p>Our goal is to come up with a linear model we can use to estimate the value of each diamond (DV = <code>value</code>) as a linear combination of three independent variables: its weight, clarity, and color. The linear model will estimate each diamond’s value using the following equation:</p>
+<p><span class="math inline">\(\beta_{Int} + \beta_{weight} \times weight + \beta_{clarity} \times clarity + \beta_{color} \times color\)</span></p>
+<p>where <span class="math inline">\(\beta_{weight}\)</span> is the increase in value for each increase of 1 in weight, <span class="math inline">\(\beta_{clarity}\)</span> is the increase in value for each increase of 1 in clarity (etc.). Finally, <span class="math inline">\(\beta_{Int}\)</span> is the baseline value of a diamond with a value of 0 in all independent variables.</p>
+<p>To estimate each of the 4 weights, we’ll use <code>lm()</code>. Because <code>value</code> is the dependent variable, we’ll specify the formula as <code>formula = value ~ weight + clarity + color</code>. We’ll assign the result of the function to a new object called <code>diamonds.lm</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create a linear model of diamond values</span>
+<span class="co">#   DV = value, IVs = weight, clarity, color</span>
+
+diamonds.lm &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> value ~<span class="st"> </span>weight +<span class="st"> </span>clarity +<span class="st"> </span>color,
+                  <span class="dt">data =</span> diamonds)</code></pre></div>
+<p>To see the results of the regression analysis, including estimates for each of the beta values, we’ll use the <code>summary()</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Print summary statistics from diamond model</span>
+<span class="kw">summary</span>(diamonds.lm)
+## 
+## Call:
+## lm(formula = value ~ weight + clarity + color, data = diamonds)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -10.405  -3.547  -0.113   3.255  11.046 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  148.335      3.625   40.92   &lt;2e-16 ***
+## weight         2.189      0.200   10.95   &lt;2e-16 ***
+## clarity       21.692      2.143   10.12   &lt;2e-16 ***
+## color         -0.455      0.365   -1.25     0.21    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 4.7 on 146 degrees of freedom
+## Multiple R-squared:  0.637,  Adjusted R-squared:  0.63 
+## F-statistic: 85.5 on 3 and 146 DF,  p-value: &lt;2e-16</code></pre></div>
+<p>Here, we can see from the summary table that the model estimated <span class="math inline">\(\beta_{Int}\)</span> (the intercept), to be 148.34, <span class="math inline">\(\beta_{weight}\)</span> to be 2.19, <span class="math inline">\(\beta_{clarity}\)</span> to be 21.69, and , <span class="math inline">\(\beta_{color}\)</span> to be -0.45. You can see the full linear model in Figure <a href="regression.html#fig:diamondlm">15.2</a>:</p>
+<div class="figure" style="text-align: center"><span id="fig:diamondlm"></span>
+<img src="YaRrr_files/figure-html/diamondlm-1.png" alt="A linear model estimating the values of diamonds based on their weight, clarity, and color." width="576" />
+<p class="caption">
+Figure 15.2: A linear model estimating the values of diamonds based on their weight, clarity, and color.
+</p>
+</div>
+<p>You can access lots of different aspects of the regression object. To see what’s inside, use <code>names()</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Which components are in the regression object?</span>
+<span class="kw">names</span>(diamonds.lm)
+##  [1] &quot;coefficients&quot;  &quot;residuals&quot;     &quot;effects&quot;       &quot;rank&quot;         
+##  [5] &quot;fitted.values&quot; &quot;assign&quot;        &quot;qr&quot;            &quot;df.residual&quot;  
+##  [9] &quot;xlevels&quot;       &quot;call&quot;          &quot;terms&quot;         &quot;model&quot;</code></pre></div>
+<p>For example, to get the estimated coefficients from the model, just access the <code>coefficients</code> attribute:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># The coefficients in the diamond model</span>
+diamonds.lm$coefficients
+## (Intercept)      weight     clarity       color 
+##    148.3354      2.1894     21.6922     -0.4549</code></pre></div>
+<p>If you want to access the entire statistical summary table of the coefficients, you just need to access them from the <code>summary</code> object:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Coefficient statistics in the diamond model</span>
+<span class="kw">summary</span>(diamonds.lm)$coefficients
+##             Estimate Std. Error t value  Pr(&gt;|t|)
+## (Intercept) 148.3354     3.6253  40.917 7.009e-82
+## weight        2.1894     0.2000  10.948 9.706e-21
+## clarity      21.6922     2.1429  10.123 1.411e-18
+## color        -0.4549     0.3646  -1.248 2.141e-01</code></pre></div>
+</div>
+<div id="getting-model-fits-with-fitted.values" class="section level3">
+<h3><span class="header-section-number">15.2.2</span> Getting model fits with <code>fitted.values</code></h3>
+<p>To see the fitted values from a regression object (the values of the dependent variable predicted by the model), access the <code>fitted.values</code> attribute from a regression object with <code>$fitted.values</code>.</p>
+<p>Here, I’ll add the fitted values from the diamond regression model as a new column in the diamonds dataframe:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Add the fitted values as a new column in the dataframe</span>
+diamonds$value.lm &lt;-<span class="st"> </span>diamonds.lm$fitted.values
+
+<span class="co"># Show the result</span>
+<span class="kw">head</span>(diamonds)
+##   weight clarity color value value.lm weight.c clarity.c value.g190
+## 1   9.35    0.88     4 182.5    186.1  -0.5511   -0.1196      FALSE
+## 2  11.10    1.05     5 191.2    193.1   1.1989    0.0504       TRUE
+## 3   8.65    0.85     6 175.7    183.0  -1.2511   -0.1496      FALSE
+## 4  10.43    1.15     5 195.2    193.8   0.5289    0.1504       TRUE
+## 5  10.62    0.92     5 181.6    189.3   0.7189   -0.0796      FALSE
+## 6  12.35    0.44     4 182.9    183.1   2.4489   -0.5596      FALSE
+##   pred.g190
+## 1   0.16252
+## 2   0.82130
+## 3   0.03008
+## 4   0.84559
+## 5   0.44455
+## 6   0.08688</code></pre></div>
+<p>According to the model, the first diamond, with a weight of 9.35, a clarity of 0.88, and a color of 4 should have a value of 186.08. As we can see, this is not far off from the true value of 182.5.</p>
+<p>You can use the fitted values from a regression object to plot the relationship between the true values and the model fits. If the model does a good job in fitting the data, the data should fall on a diagonal line:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Plot the relationship between true diamond values</span>
+<span class="co">#   and linear model fitted values</span>
+
+<span class="kw">plot</span>(<span class="dt">x =</span> diamonds$value,                          <span class="co"># True values on x-axis</span>
+     <span class="dt">y =</span> diamonds.lm$fitted.values,               <span class="co"># fitted values on y-axis</span>
+     <span class="dt">xlab =</span> <span class="st">&quot;True Values&quot;</span>,
+     <span class="dt">ylab =</span> <span class="st">&quot;Model Fitted Values&quot;</span>,
+     <span class="dt">main =</span> <span class="st">&quot;Regression fits of diamond values&quot;</span>)
+
+<span class="kw">abline</span>(<span class="dt">b =</span> <span class="dv">1</span>, <span class="dt">a =</span> <span class="dv">0</span>)                             <span class="co"># Values should fall around this line!</span></code></pre></div>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-407-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="using-predict-to-predict-new-data-from-a-model" class="section level3">
+<h3><span class="header-section-number">15.2.3</span> Using <code>predict()</code> to predict new data from a model</h3>
+<p>Once you have created a regression model with <code>lm()</code>, you can use it to easily predict results from new datasets using the <code>predict()</code> function.</p>
+<p>For example, let’s say I discovered 3 new diamonds with the following characteristics:</p>
+<table>
+<caption><span id="tab:unnamed-chunk-408">Table 15.1: </span>3 new diamonds</caption>
+<thead>
+<tr class="header">
+<th align="right">weight</th>
+<th align="right">clarity</th>
+<th align="right">color</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">20</td>
+<td align="right">1.5</td>
+<td align="right">5</td>
+</tr>
+<tr class="even">
+<td align="right">10</td>
+<td align="right">0.2</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="right">15</td>
+<td align="right">5.0</td>
+<td align="right">3</td>
+</tr>
+</tbody>
+</table>
+<p>I’ll use the <code>predict()</code> function to predict the value of each of these diamonds using the regression model <code>diamond.lm</code> that I created before. The two main arguments to <code>predict()</code> are <code>object</code> – the regression object we’ve already defined), and <code>newdata</code> – the dataframe of new data. Warning! The dataframe that you use in the <code>newdata</code> argument to <code>predict()</code> must have column names equal to the names of the coefficients in the model. If the names are different, the <code>predict()</code> function won’t know which column of data applies to which coefficient and will return an error.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create a dataframe of new diamond data</span>
+diamonds.new &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">weight =</span> <span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">6</span>, <span class="dv">5</span>),
+                           <span class="dt">clarity =</span> <span class="kw">c</span>(<span class="fl">1.3</span>, <span class="dv">1</span>, <span class="fl">1.5</span>),
+                           <span class="dt">color =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">3</span>))
+
+<span class="co"># Predict the value of the new diamonds using</span>
+<span class="co">#  the diamonds.lm regression model</span>
+<span class="kw">predict</span>(<span class="dt">object =</span> diamonds.lm,     <span class="co"># The regression model</span>
+        <span class="dt">newdata =</span> diamonds.new)   <span class="co"># dataframe of new data</span>
+##     1     2     3 
+## 200.5 182.3 190.5</code></pre></div>
+<p>This result tells us the the new diamonds are expected to have values of 200.5, 182.3, and 190.5 respectively according to our regression model.</p>
+</div>
+<div id="including-interactions-in-models-y-x1-x2" class="section level3">
+<h3><span class="header-section-number">15.2.4</span> Including interactions in models: <code>y ~ x1 * x2</code></h3>
+<p>To include interaction terms in a regression model, just put an asterix (*) between the independent variables. For example, to create a regression model on the diamonds data with an interaction term between <code>weight</code> and <code>clarity</code>, we’d use the formula <code>formula = value ~ weight * clarity</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create a regression model with interactions between </span>
+<span class="co">#   IVS weight and clarity</span>
+diamonds.int.lm &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> value ~<span class="st"> </span>weight *<span class="st"> </span>clarity,
+                      <span class="dt">data =</span> diamonds)
+
+<span class="co"># Show summary statistics of model coefficients</span>
+<span class="kw">summary</span>(diamonds.int.lm)$coefficients
+##                Estimate Std. Error t value  Pr(&gt;|t|)
+## (Intercept)    157.4721     10.569 14.8987 4.170e-31
+## weight           0.9787      1.070  0.9149 3.617e-01
+## clarity          9.9245     10.485  0.9465 3.454e-01
+## weight:clarity   1.2447      1.055  1.1797 2.401e-01</code></pre></div>
+</div>
+<div id="center-variables-before-computing-interactions" class="section level3">
+<h3><span class="header-section-number">15.2.5</span> Center variables before computing interactions!</h3>
+<p>Hey what happened? Why are all the variables now non-significant? Does this mean that there is really no relationship between weight and clarity on value after all? No. Recall from your second-year pirate statistics class that when you include interaction terms in a model, you should always <em>center</em> the independent variables first. Centering a variable means simply subtracting the mean of the variable from all observations.</p>
+<p>In the following code, I’ll repeat the previous regression, but first I’ll create new centered variables <code>weight.c</code> and <code>clarity.c</code>, and then run the regression on the interaction between these centered variables:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create centered versions of weight and clarity</span>
+diamonds$weight.c &lt;-<span class="st"> </span>diamonds$weight -<span class="st"> </span><span class="kw">mean</span>(diamonds$weight)
+diamonds$clarity.c &lt;-<span class="st"> </span>diamonds$clarity -<span class="st"> </span><span class="kw">mean</span>(diamonds$clarity)
+
+<span class="co"># Create a regression model with interactions of centered variables</span>
+diamonds.int.lm &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> value ~<span class="st"> </span>weight.c *<span class="st"> </span>clarity.c,
+                      <span class="dt">data =</span> diamonds)
+
+<span class="co"># Print summary</span>
+<span class="kw">summary</span>(diamonds.int.lm)$coefficients
+##                    Estimate Std. Error t value   Pr(&gt;|t|)
+## (Intercept)         189.402     0.3831  494.39 2.908e-237
+## weight.c              2.223     0.1988   11.18  2.322e-21
+## clarity.c            22.248     2.1338   10.43  2.272e-19
+## weight.c:clarity.c    1.245     1.0551    1.18  2.401e-01</code></pre></div>
+<p>Hey that looks much better! Now we see that the main effects are significant and the interaction is non-significant.</p>
+</div>
+<div id="getting-an-anova-from-a-regression-model-with-aov" class="section level3">
+<h3><span class="header-section-number">15.2.6</span> Getting an ANOVA from a regression model with <code>aov()</code></h3>
+<p>Once you’ve created a regression object with <code>lm()</code> or <code>glm()</code>, you can summarize the results in an ANOVA table with <code>aov()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create ANOVA object from regression</span>
+diamonds.aov &lt;-<span class="st"> </span><span class="kw">aov</span>(diamonds.lm)
+
+<span class="co"># Print summary results</span>
+<span class="kw">summary</span>(diamonds.aov)
+##              Df Sum Sq Mean Sq F value Pr(&gt;F)    
+## weight        1   3218    3218  147.40 &lt;2e-16 ***
+## clarity       1   2347    2347  107.53 &lt;2e-16 ***
+## color         1     34      34    1.56   0.21    
+## Residuals   146   3187      22                   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre></div>
+</div>
+</div>
+<div id="comparing-regression-models-with-anova" class="section level2">
+<h2><span class="header-section-number">15.3</span> Comparing regression models with <code>anova()</code></h2>
+<p>A good model not only needs to fit data well, it also needs to be parsimonious. That is, a good model should be only be as complex as necessary to describe a dataset. If you are choosing between a very simple model with 1 IV, and a very complex model with, say, 10 IVs, the very complex model needs to provide a much better fit to the data in order to justify its increased complexity. If it can’t, then the more simpler model should be preferred.</p>
+<p>To compare the fits of two models, you can use the <code>anova()</code> function with the regression objects as two separate arguments. The <code>anova()</code> function will take the model objects as arguments, and return an ANOVA testing whether the more complex model is significantly better at capturing the data than the simpler model. If the resulting p-value is sufficiently low (usually less than 0.05), we conclude that the more complex model is significantly better than the simpler model, and thus favor the more complex model. If the p-value is not sufficiently low (usually greater than 0.05), we should favor the simpler model.</p>
+<p>Let’s do an example with the diamonds dataset. I’ll create three regression models that each predict a diamond’s value. The models will differ in their complexity – that is, the number of independent variables they use. <code>diamonds.mod1</code> will be the simplest model with just one IV (weight), <code>diamonds.mod2</code> will include 2 IVs (weight and clarity) while <code>diamonds.mod3</code> will include three IVs (weight, clarity, and color).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># model 1: 1 IV (only weight)</span>
+ diamonds.mod1 &lt;-<span class="st"> </span><span class="kw">lm</span>(value ~<span class="st"> </span>weight, <span class="dt">data =</span> diamonds)
+
+ <span class="co"># Model 2: 2 IVs (weight AND clarity)</span>
+ diamonds.mod2 &lt;-<span class="st"> </span><span class="kw">lm</span>(value ~<span class="st"> </span>weight +<span class="st"> </span>clarity, <span class="dt">data =</span> diamonds)
+
+ <span class="co"># Model 3: 3 IVs (weight AND clarity AND color)</span>
+ diamonds.mod3 &lt;-<span class="st"> </span><span class="kw">lm</span>(value ~<span class="st"> </span>weight +<span class="st"> </span>clarity +<span class="st"> </span>color, <span class="dt">data =</span> diamonds)</code></pre></div>
+<p>Now let’s use the <code>anova()</code> function to compare these models and see which one provides the best parsimonious fit of the data. First, we’ll compare the two simplest models: model 1 with model 2. Because these models differ in the use of the <code>clarity</code> IV (both models use <code>weight</code>), this ANVOA will test whether or not including the <code>clarity</code> IV leads to a significant improvement over using just the <code>weight</code> IV:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> <span class="co"># Compare model 1 to model 2</span>
+ <span class="kw">anova</span>(diamonds.mod1, diamonds.mod2)
+## Analysis of Variance Table
+## 
+## Model 1: value ~ weight
+## Model 2: value ~ weight + clarity
+##   Res.Df  RSS Df Sum of Sq   F Pr(&gt;F)    
+## 1    148 5569                            
+## 2    147 3221  1      2347 107 &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre></div>
+<p>As you can see, the result shows a Df of 1 (indicating that the more complex model has one additional parameter), and a very small p-value (&lt; .001). This means that adding the <code>clarity</code> IV to the model <em>did</em> lead to a significantly improved fit over the model 1.</p>
+<p>Next, let’s use <code>anova()</code> to compare model 2 and model 3. This will tell us whether adding <code>color</code> (on top of weight and clarity) further improves the model:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Compare model 2 to model 3</span>
+<span class="kw">anova</span>(diamonds.mod2, diamonds.mod3)
+## Analysis of Variance Table
+## 
+## Model 1: value ~ weight + clarity
+## Model 2: value ~ weight + clarity + color
+##   Res.Df  RSS Df Sum of Sq    F Pr(&gt;F)
+## 1    147 3221                         
+## 2    146 3187  1        34 1.56   0.21</code></pre></div>
+<p>The result shows a non-significant result (p = 0.21). Thus, we should reject model 3 and stick with model 2 with only 2 IVs.</p>
+<p>You don’t need to compare models that only differ in one IV – you can also compare models that differ in multiple DVs. For example, here is a comparison of model 1 (with 1 IV) to model 3 (with 3 IVs):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Compare model 1 to model 3</span>
+<span class="kw">anova</span>(diamonds.mod1, diamonds.mod3)
+## Analysis of Variance Table
+## 
+## Model 1: value ~ weight
+## Model 2: value ~ weight + clarity + color
+##   Res.Df  RSS Df Sum of Sq    F Pr(&gt;F)    
+## 1    148 5569                             
+## 2    146 3187  2      2381 54.5 &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre></div>
+<p>The result shows that model 3 did indeed provide a significantly better fit to the data compared to model 1. However, as we know from our previous analysis, model 3 is not significantly better than model 2.</p>
+</div>
+<div id="regression-on-non-normal-data-with-glm" class="section level2">
+<h2><span class="header-section-number">15.4</span> Regression on non-Normal data with <code>glm()</code></h2>
+<table style="width:90%;">
+<colgroup>
+<col width="19%" />
+<col width="70%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Argument</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>formula, data, subset</code></td>
+<td align="left">The same arguments as in <code>lm()</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>family</code></td>
+<td align="left">One of the following strings, indicating the link function for the general linear model</td>
+</tr>
+</tbody>
+</table>
+<table style="width:90%;">
+<colgroup>
+<col width="19%" />
+<col width="70%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Family name</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>&quot;binomial&quot;</code></td>
+<td align="left">Binary logistic regression, useful when the response is either 0 or 1.</td>
+</tr>
+<tr class="even">
+<td align="left"><code>&quot;gaussian&quot;</code></td>
+<td align="left">Standard linear regression. Using this family will give you the same result as <code>lm()</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>&quot;Gamma&quot;</code></td>
+<td align="left">Gamma regression, useful for highly positively skewed data</td>
+</tr>
+<tr class="even">
+<td align="left"><code>&quot;inverse.gaussian&quot;</code></td>
+<td align="left">Inverse-Gaussian regression, useful when the dv is strictly positive and skewed to the right.</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>&quot;poisson&quot;</code></td>
+<td align="left">Poisson regression, useful for count data. For example, ``How many parrots has a pirate owned over his/her lifetime?“</td>
+</tr>
+</tbody>
+</table>
+<p>We can use standard regression with <code>lm()</code>when your dependent variable is Normally distributed (more or less). When your dependent variable does not follow a nice bell-shaped Normal distribution, you need to use the <em>Generalized Linear Model</em> (GLM). the GLM is a more general class of linear models that change the distribution of your dependent variable. In other words, it allows you to use the linear model even when your dependent variable isn’t a normal bell-shape. Here are 4 of the most common distributions you can can model with <code>glm()</code>:</p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-418-1.png" width="585.6" style="display: block; margin: auto;" /></p>
+</div>
+<div id="logistic-regression-with-glmfamily-binomial" class="section level2">
+<h2><span class="header-section-number">15.5</span> Logistic regression with <code>glm(family = &quot;binomial&quot;</code></h2>
+<div class="figure" style="text-align: center"><span id="fig:logit"></span>
+<img src="YaRrr_files/figure-html/logit-1.png" alt="The inverse logit function used in binary logistic regression to convert logits to probabilities." width="384" />
+<p class="caption">
+Figure 15.3: The inverse logit function used in binary logistic regression to convert logits to probabilities.
+</p>
+</div>
+<p>The most common non-normal regression analysis is logistic regression, where your dependent variable is just 0s and 1. To do a logistic regression analysis with <code>glm()</code>, use the <code>family = binomial</code> argument.</p>
+<p>Let’s run a logistic regression on the diamonds dataset. First, I’ll create a binary variable called <code>value.g190</code> indicating whether the value of a diamond is greater than 190 or not. Then, I’ll conduct a logistic regression with our new binary variable as the dependent variable. We’ll set <code>family = &quot;binomial&quot;</code> to tell <code>glm()</code> that the dependent variable is binary.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create a binary variable indicating whether or not</span>
+<span class="co">#   a diamond&#39;s value is greater than 190</span>
+diamonds$value.g190 &lt;-<span class="st"> </span>diamonds$value &gt;<span class="st"> </span><span class="dv">190</span>
+
+<span class="co"># Conduct a logistic regression on the new binary variable</span>
+diamond.glm &lt;-<span class="st"> </span><span class="kw">glm</span>(<span class="dt">formula =</span> value.g190 ~<span class="st"> </span>weight +<span class="st"> </span>clarity +<span class="st"> </span>color,
+                   <span class="dt">data =</span> diamonds,
+                   <span class="dt">family =</span> binomial)</code></pre></div>
+<p>Here are the resulting coefficients:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Print coefficients from logistic regression</span>
+<span class="kw">summary</span>(diamond.glm)$coefficients
+##             Estimate Std. Error z value  Pr(&gt;|z|)
+## (Intercept) -18.8009     3.4634  -5.428 5.686e-08
+## weight        1.1251     0.1968   5.716 1.088e-08
+## clarity       9.2910     1.9629   4.733 2.209e-06
+## color        -0.3836     0.2481  -1.547 1.220e-01</code></pre></div>
+<p>Just like with regular regression with <code>lm()</code>, we can get the fitted values from the model and put them back into our dataset to see how well the model fit the data:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Add logistic fitted values back to dataframe as</span>
+<span class="co">#  new column pred.g190</span>
+diamonds$pred.g190 &lt;-<span class="st"> </span>diamond.glm$fitted.values
+
+<span class="co"># Look at the first few rows (of the named columns)</span>
+<span class="kw">head</span>(diamonds[<span class="kw">c</span>(<span class="st">&quot;weight&quot;</span>, <span class="st">&quot;clarity&quot;</span>, <span class="st">&quot;color&quot;</span>, <span class="st">&quot;value&quot;</span>, <span class="st">&quot;pred.g190&quot;</span>)])
+##   weight clarity color value pred.g190
+## 1   9.35    0.88     4 182.5   0.16252
+## 2  11.10    1.05     5 191.2   0.82130
+## 3   8.65    0.85     6 175.7   0.03008
+## 4  10.43    1.15     5 195.2   0.84559
+## 5  10.62    0.92     5 181.6   0.44455
+## 6  12.35    0.44     4 182.9   0.08688</code></pre></div>
+<p>Looking at the first few observations, it looks like the probabilities match the data pretty well. For example, the first diamond with a value of 182.5 had a fitted probability of just 0.16 of being valued greater than 190. In contrast, the second diamond, which had a value of 191.2 had a much higher fitted probability of 0.82.</p>
+<p>Just like we did with regular regression, you can use the <code>predict()</code> function along with the results of a <code>glm()</code> object to predict new data. Let’s use the <code>diamond.glm</code> object to predict the probability that the new diamonds will have a value greater than 190:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Predict the &#39;probability&#39; that the 3 new diamonds </span>
+<span class="co">#  will have a value greater than 190</span>
+
+<span class="kw">predict</span>(<span class="dt">object =</span> diamond.glm,
+        <span class="dt">newdata =</span> diamonds.new)
+##       1       2       3 
+##  4.8605 -3.5265 -0.3898</code></pre></div>
+<p>What the heck, these don’t look like probabilities! True, they’re not. They are <em>logit-transformed</em> probabilities. To turn them back into probabilities, we need to invert them by applying the inverse logit function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Get logit predictions of new diamonds</span>
+logit.predictions &lt;-<span class="st"> </span><span class="kw">predict</span>(<span class="dt">object =</span> diamond.glm,
+                             <span class="dt">newdata =</span> diamonds.new
+                             )
+
+<span class="co"># Apply inverse logit to transform to probabilities</span>
+<span class="co">#  (See Equation in the margin)</span>
+prob.predictions &lt;-<span class="st"> </span><span class="dv">1</span> /<span class="st"> </span>(<span class="dv">1</span> +<span class="st"> </span><span class="kw">exp</span>(-logit.predictions))
+
+<span class="co"># Print final predictions!</span>
+prob.predictions
+##       1       2       3 
+## 0.99231 0.02857 0.40376</code></pre></div>
+<p>So, the model predicts that the probability that the three new diamonds will be valued over 190 is 99.23%, 2.86%, and 40.38% respectively.</p>
+<div id="adding-a-regression-line-to-a-plot" class="section level3">
+<h3><span class="header-section-number">15.5.1</span> Adding a regression line to a plot</h3>
+<p>You can easily add a regression line to a scatterplot. To do this, just put the regression object you created with  as the main argument to . For example, the following code will create the scatterplot on the right (Figure~) showing the relationship between a diamond’s weight and its value including a red regression line:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Scatterplot of diamond weight and value</span>
+<span class="kw">plot</span>(<span class="dt">x =</span> diamonds$weight,
+     <span class="dt">y =</span> diamonds$value,
+     <span class="dt">xlab =</span> <span class="st">&quot;Weight&quot;</span>,
+     <span class="dt">ylab =</span> <span class="st">&quot;Value&quot;</span>,
+     <span class="dt">main =</span> <span class="st">&quot;Adding a regression line with abline()&quot;</span>
+     )
+
+<span class="co"># Calculate regression model</span>
+diamonds.lm &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> value ~<span class="st"> </span>weight,
+                  <span class="dt">data =</span> diamonds)
+
+<span class="co"># Add regression line</span>
+<span class="kw">abline</span>(diamonds.lm,
+       <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:addrline"></span>
+<img src="YaRrr_files/figure-html/addrline-1.png" alt="Adding a regression line to a scatterplot using abline()" width="672" />
+<p class="caption">
+Figure 15.4: Adding a regression line to a scatterplot using abline()
+</p>
+</div>
+</div>
+<div id="transforming-skewed-variables-prior-to-standard-regression" class="section level3">
+<h3><span class="header-section-number">15.5.2</span> Transforming skewed variables prior to standard regression</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># The distribution of movie revenus is highly</span>
+<span class="co">#  skewed.</span>
+<span class="kw">hist</span>(movies$revenue.all, 
+     <span class="dt">main =</span> <span class="st">&quot;Movie revenue</span><span class="ch">\n</span><span class="st">Before log-transformation&quot;</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:moviedist"></span>
+<img src="YaRrr_files/figure-html/moviedist-1.png" alt="Distribution of movie revenues without a log-transformation" width="672" />
+<p class="caption">
+Figure 15.5: Distribution of movie revenues without a log-transformation
+</p>
+</div>
+<p>If you have a highly skewed variable that you want to include in a regression analysis, you can do one of two things. Option 1 is to use the general linear model <code>glm()</code> with an appropriate family (like <code>family = &quot;gamma&quot;</code>). Option 2 is to do a standard regression analysis with <code>lm()</code>, but before doing so, transforming the variable into something less skewed. For highly skewed data, the most common transformation is a log-transformation.</p>
+<p>For example, look at the distribution of movie revenues in the movies dataset in the margin Figure <a href="regression.html#fig:moviedist">15.5</a>:</p>
+<p>As you can see, these data don’t look Normally distributed at all. There are a few movies (like Avatar) that just an obscene amount of money, and many movies that made much less. If we want to conduct a standard regression analysis on these data, we need to create a new log-transformed version of the variable. In the following code, I’ll create a new variable called <code>revenue.all.log</code> defined as the logarithm of <code>revenue.all</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create a new log-transformed version of movie revenue</span>
+movies$revenue.all.log &lt;-<span class="st"> </span><span class="kw">log</span>(movies$revenue.all)</code></pre></div>
+<p>In Figure <a href="regression.html#fig:loghist">15.6</a> you can see a histogram of the new log-transformed variable. It’s still skewed, but not nearly as badly as before, so I would be feel much better using this variable in a standard regression analysis with <code>lm()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Distribution of log-transformed</span>
+<span class="co">#  revenue is much less skewed</span>
+
+<span class="kw">hist</span>(movies$revenue.all.log, 
+     <span class="dt">main =</span> <span class="st">&quot;Log-transformed Movie revenue&quot;</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:loghist"></span>
+<img src="YaRrr_files/figure-html/loghist-1.png" alt="Distribution of log-transformed movie revenues. It's still skewed, but not nearly as badly as before." width="672" />
+<p class="caption">
+Figure 15.6: Distribution of log-transformed movie revenues. It’s still skewed, but not nearly as badly as before.
+</p>
+</div>
+</div>
+</div>
+<div id="test-your-might-a-ship-auction" class="section level2">
+<h2><span class="header-section-number">15.6</span> Test your might! A ship auction</h2>
+<p>The following questions apply to the auction dataset in the yarrr package. This dataset contains information about 1,000 ships sold at a pirate auction. Here’s how the first few rows of the dataframe should look:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(auction)
+##   cannons rooms age condition  color   style  jbb price price.gt.3500
+## 1      18    20 140         5    red classic 3976  3502          TRUE
+## 2      21    21  93         5    red  modern 3463  2955         FALSE
+## 3      20    18  48         2   plum classic 3175  3281         FALSE
+## 4      24    20  81         5 salmon classic 4463  4400          TRUE
+## 5      20    21  93         2    red  modern 2858  2177         FALSE
+## 6      21    19  60         6    red classic 4420  3792          TRUE</code></pre></div>
+<ol style="list-style-type: decimal">
+<li><p>The column jbb is the “Jack’s Blue Book” value of a ship. Create a regression object called <code>jbb.cannon.lm</code> predicting the JBB value of ships based on the number of cannons it has. Based on your result, how much value does each additional cannon bring to a ship?</p></li>
+<li><p>Repeat your previous regression, but do two separate regressions: one on modern ships and one on classic ships. Is there relationship between cannons and JBB the same for both types of ships?</p></li>
+<li><p>Is there a significant interaction between a ship’s style and its age on its JBB value? If so, how do you interpret the interaction?</p></li>
+<li><p>Create a regression object called <code>jbb.all.lm</code> predicting the JBB value of ships based on cannons, rooms, age, condition, color, and style. Which aspects of a ship significantly affect its JBB value?</p></li>
+<li><p>Create a regression object called <code>price.all.lm</code> predicting the actual selling value of ships based on cannons, rooms, age, condition, color, and style. Based on the results, does the JBB do a good job of capturing the effect of each variable on a ship’s selling price?</p></li>
+<li><p>Repeat your previous regression analysis, but instead of using the price as the dependent variable, use the binary variable <em>price.gt.3500</em> indicating whether or not the ship had a selling price greater than 3500. Call the new regression object <code>price.all.blr</code>. Make sure to use the appropriate regression function!!</p></li>
+<li><p>Using <code>price.all.lm</code>, predict the selling price of the 3 new ships below</p></li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th align="right">cannons</th>
+<th align="right">rooms</th>
+<th align="right">age</th>
+<th align="right">condition</th>
+<th align="left">color</th>
+<th align="left">style</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">12</td>
+<td align="right">34</td>
+<td align="right">43</td>
+<td align="right">7</td>
+<td align="left">black</td>
+<td align="left">classic</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">26</td>
+<td align="right">54</td>
+<td align="right">3</td>
+<td align="left">black</td>
+<td align="left">modern</td>
+</tr>
+<tr class="odd">
+<td align="right">32</td>
+<td align="right">65</td>
+<td align="right">100</td>
+<td align="right">5</td>
+<td align="left">red</td>
+<td align="left">modern</td>
+</tr>
+</tbody>
+</table>
+<ol start="8" style="list-style-type: decimal">
+<li>Using <code>price.all.blr</code>, predict the probability that the three new ships will have a selling price greater than 3500.</li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="anova.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="solutions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ndphillips/ThePiratesGuideToR/edit/master/15-regression.Rmd",
+"text": "Edit"
+},
+"download": ["YaRrr.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -173,13 +173,14 @@ boat.prices[boat.ages > 100]
 Here's how logical indexing works step-by-step:
 
 ```{r}
-# Which boat prices are greater than 100?
+# Which boats are older than 100 years?
 boat.ages > 100
 
 # Writing the logical index by hand (you'd never do this!)
+#  Show me all of the boat prices where the logical vector is TRUE:
 boat.prices[c(TRUE, FALSE, TRUE, FALSE, TRUE, FALSE, TRUE, FALSE, FALSE, FALSE)]
 
-# Doing it all in one step! You get the same answer
+# Doing it all in one step! You get the same answer:
 boat.prices[boat.ages > 100]
 ```
 

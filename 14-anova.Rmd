@@ -1,0 +1,535 @@
+# ANOVA {#anova}
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, fig.align='center')
+library(dplyr)
+library(yarrr)
+library(bookdown)
+```
+
+
+```{r, fig.cap= "Menage a trois wine -- the perfect pairing for a 3-way ANOVA", fig.margin = TRUE, echo = FALSE, out.width = "20%", fig.align="center"}
+knitr::include_graphics(c("images/menageatroiswine.png"))
+```
+
+In the last chapter we covered 1 and two sample hypothesis tests. In these tests, you are either comparing 1 group to a hypothesized value, or comparing the relationship between two groups (either their means or their correlation). In this chapter, we'll cover how to analyse more complex experimental designs with ANOVAs.
+
+
+When do you conduct an ANOVA? You conduct an ANOVA when you are testing the effect of one or more nominal (aka factor) independent variable(s) on a numerical dependent variable. A nominal (factor) variable is one that contains a finite number of categories with no inherent order. Gender, profession, experimental conditions, and Justin Bieber albums are good examples of factors (not necessarily of good music). If you only include one independent variable, this is called a *One-way ANOVA*. If you include two independent variables, this is called a *Two-way ANOVA*. If you include three independent variables it is called a *Menage a trois `NOVA*.
+
+Ok maybe it's not yet, but we repeat it enough it will be and we can change the world.
+
+For example, let's say you want to test how well each of three different cleaning fluids are at getting poop off of your poop deck.To test this, you could do the following: over the course of 300 cleaning days, you clean different areas of the deck with the three different cleaners. You then record how long it takes for each cleaner to clean its portion of the deck. At the same time, you could also measure how well the cleaner is cleaning two different types of poop that typically show up on your deck: shark and parrot. Here, your independent variables *cleaner* and *type* are factors, and your dependent variable *time* is numeric.
+
+Thankfully, this experiment has already been conducted. The data are recorded in a dataframe called `poopdeck` in the yarrr package. Here's how the first few rows of the data look:
+
+```{r}
+head(poopdeck)
+```
+
+We can visualize the poopdeck data using (of course) a pirate plot:
+
+```{r}
+pirateplot(formula = time ~ cleaner + type,
+           data = poopdeck,
+           ylim = c(0, 150),
+           xlab = "Cleaner",
+           ylab = "Cleaning Time (minutes)",
+           main = "poopdeck data",
+           back.col = gray(.97), 
+           cap.beans = TRUE, 
+           theme = 2)
+```
+
+Given this data, we can use ANOVAs to answer four separate questions:
+
+| Question| Analysis|Formula |
+|:--------------------------------------|:--------------|:-------------------|
+|     Is there a difference between the different cleaners on cleaning time (ignoring poop type)?|    One way ANOVA|`time ~ cleaner`     |
+|     Is there a difference between the different poop types on cleaning time (ignoring which cleaner is used)|    One-way ANOVA|`time ~ type`     |
+|     Is there a *unique* effect of the cleaner or poop types on cleaning time?|Two-way ANOVA|`time ~ cleaner + type`     |
+|     Does the effect of cleaner depend on the poop type?| Two-way ANOVA <br>with interaction term|`time ~ cleaner * type`     |
+
+##Full-factorial between-subjects ANOVA
+
+There are many types of ANOVAs that depend on the type of data you are analyzing. In fact, there are so many types of ANOVAs that there are entire books explaining differences between one type and another. For this book, we'll cover just one type of ANOVAs called *full-factorial, between-subjects ANOVAs*. These are the simplest types of ANOVAs which are used to analyze a standard experimental design. In a full-factorial, between-subjects ANOVA, participants (aka, source of data) are randomly assigned to a unique combination of factors -- where a combination of factors means a specific experimental condition. For example, consider a psychology study comparing the effects of caffeine on cognitive performance. The study could have two independent variables: drink type (soda vs. coffee vs. energy drink), and drink dose (.25l, .5l, 1l). In a full-factorial design, each participant in the study would be randomly assigned to one drink type and one drink dose condition. In this design, there would be 3 x 3 = 9 conditions.
+
+For the rest of this chapter, I will refer to full-factorial between-subjects ANOVAs as `standard' ANOVAs
+
+###What does ANOVA stand for?
+
+ANOVA stands for "Analysis of variance." At first glance, this sounds like a strange name to give to a test that you use to find differences in **means**, not differences in **variances**. However, ANOVA actually uses variances to determine whether or not there are 'real' differences in the means of groups. Specifically, it looks at how variable data are *within* groups and compares that to the variability of data *between* groups. If the between-group variance is large compared to the within group variance, the ANOVA will conclude that the groups *do* differ in their means. If the between-group variance is small compared to the within group variance, the ANOVA will conclude that the groups are all the same. See Figure~\ref{fig:anovadiagram} for a visual depiction of an ANOVA.
+
+```{r echo = FALSE, fig.height = 12, fig.width = 6, fig.cap = "How ANOVAs work. ANOVA compares the variability between groups (i.e.; the differences in the group means) to the variability within groups (i.e.; how much individuals generally differ from each other). If the variability between groups is small compared to the variability between groups, ANOVA will return a non-significant result -- suggesting that the groups are not really different. If the variability between groups is large compared to the variability within groups, ANOVA will return a significant result -- indicating that the groups are really different."}
+
+cols <- piratepal(palette = "basel", trans = 0, length.out = 3)
+
+  set.seed(100)
+
+par(mfrow = c(2, 1))
+
+# Nonsig ANOVA
+{
+
+g1 <- rnorm(100, mean = 50, sd = 20)
+g2 <- rnorm(100, mean = 60, sd = 20)
+g3 <- rnorm(100, mean = 40, sd = 20)
+
+g1.c <- (g1 - mean(g1)) + 50
+g2.c <- (g2 - mean(g2)) + 50
+g3.c <- (g3 - mean(g3)) + 50
+
+
+df <- data.frame(data = c(g1, g2, g3),
+                 data.c = c(g1.c, g2.c, g3.c),
+                 group = rep(1:3, each = 100)
+)
+
+
+pirateplot(data ~ group, data = df,
+           theme = 0,
+           point.o = .5,
+           xlim = c(.5, 9),
+           bean.b.o = .5,
+           avg.line.o = 1,
+           jitter.val = .08,
+           xlab = "",
+           at = 1:3,
+           ylim = c(0, 120),
+           yaxt = "n", xaxt = "n", cut.min = 0, cut.max = 100)
+
+mtext(c("A", "B", "C"), side = 1, at = 1:3, line = 1, cex = 1.5)
+
+axis(side = 2, at = seq(0, 100, 10), las = 1, lwd = 0, lwd.ticks = 1)
+
+mtext("Non-Significant ANOVA", side = 3, line = 2, cex = 1.3)
+mtext("Between variance is SMALL compared to Within var", side = 3, line = .5, cex = 1)
+
+text(5, 110, labels = "Between", cex = 1.2)
+
+text(5.3, 50, labels = "Between\nVariability", adj = 0, cex = .7)
+
+# Between group var
+
+pirateplot(data ~ group, data = df,
+           theme = 0,
+           point.o = .1,
+           xlim = c(.5, 6),
+           bean.b.o = 1,
+           jitter.val = .08,
+           avg.line.o = 1,
+           xlab = "",
+           at = 4.5,
+           add = T, xaxt = "n", cut.min = 0, cut.max = 100
+           )
+
+segments(5.25, min(tapply(df$data, INDEX = df$group, FUN = mean)),
+         5.25, max(tapply(df$data, INDEX = df$group, FUN = mean)), lwd = 4)
+
+
+text(7.5, 110, labels = "Within", cex = 1.2)
+
+text(7.2, 50, labels = "Within\nVariability", adj = 1, cex = .7)
+
+
+# Within group var
+
+pirateplot(data.c ~ group, data = df,
+           theme = 0,
+           xlim = c(.5, 6),
+           bean.b.o = .0,
+           jitter.val = .08,
+           xlab = "",
+         #  avg.line.o = 1,
+           at = 8, point.o = .1,
+           add = T, xaxt = "n", cut.min = 0, cut.max = 100
+           )
+
+segments(7.25, quantile(df$data.c, .05),
+         7.25, quantile(df$data.c, .95), lwd = 4)
+
+
+# Connecting lines
+
+segments(5.25,  max(tapply(df$data, INDEX = df$group, FUN = mean)), 7.25, quantile(df$data.c, .95), lty = 2, col = gray(.5))
+segments(5.25,  min(tapply(df$data, INDEX = df$group, FUN = mean)), 7.25, quantile(df$data.c, .05), lty = 2, col = gray(.5))
+
+}
+
+
+
+# Nonsig ANOVA
+{
+
+g1 <- rnorm(100, mean = 50, sd = 3)
+g2 <- rnorm(100, mean = 60, sd = 3)
+g3 <- rnorm(100, mean = 40, sd = 3)
+
+g1.c <- (g1 - mean(g1)) + 50
+g2.c <- (g2 - mean(g2)) + 50
+g3.c <- (g3 - mean(g3)) + 50
+
+
+df <- data.frame(data = c(g1, g2, g3),
+                 data.c = c(g1.c, g2.c, g3.c),
+                 group = rep(1:3, each = 100)
+)
+
+
+pirateplot(data ~ group, data = df,
+           theme = 0,
+           point.o = .5,
+           xlim = c(.5, 9),
+           bean.b.o = .5,
+           jitter.val = .08,
+           xlab = "",
+           avg.line.o = 1,
+           point.cex = .7,
+           at = 1:3,
+           ylim = c(0, 120),
+           yaxt = "n", xaxt = "n", cut.min = 0, cut.max = 100)
+
+mtext(c("A", "B", "C"), side = 1, at = 1:3, line = 1, cex = 1.5)
+
+axis(side = 2, at = seq(0, 100, 10), las = 1, lwd = 0, lwd.ticks = 1)
+
+mtext("Significant ANOVA", side = 3, line = 2, cex = 1.3)
+mtext("Between variance LARGE compared to Within var", side = 3, line = .5, cex = 1)
+
+text(5, 110, labels = "Between", cex = 1.2)
+
+text(5.3, 50, labels = "Between\nVariability", adj = 0, cex = .7)
+
+# Between group var
+
+pirateplot(data ~ group, data = df,
+           theme = 0,
+           point.o = .1,
+           xlim = c(.5, 6),
+          bean.b.o = .5,
+          avg.line.o = 1,
+           jitter.val = .08,
+           xlab = "",
+           at = 4.5,
+           add = T, xaxt = "n")
+
+segments(5.25, min(tapply(df$data, INDEX = df$group, FUN = mean)),
+         5.25, max(tapply(df$data, INDEX = df$group, FUN = mean)), lwd = 4)
+
+
+text(7.5, 110, labels = "Within", cex = 1.2)
+
+text(7.2, 50, labels = "Within\nVariability", adj = 1, cex = .7)
+
+
+# Within group var
+
+pirateplot(data.c ~ group, data = df,
+           theme = 0,
+           xlim = c(.5, 6),
+           bean.b.o = 0,
+        #   avg.line.o = 1,
+           jitter.val = .08,
+       # quant = c(.1, .9),
+           xlab = "",
+           at = 8,
+           add = TRUE,
+           point.o = .1, 
+  #     point.col = "black",
+       xaxt = "n"
+           )
+
+segments(7.25, quantile(df$data.c, .05),
+         7.25, quantile(df$data.c, .95), lwd = 4)
+
+
+# Connecting lines
+
+segments(5.25,  max(tapply(df$data, INDEX = df$group, FUN = mean)), 7.25, quantile(df$data.c, .95), lty = 2, col = gray(.5))
+segments(5.25,  min(tapply(df$data, INDEX = df$group, FUN = mean)), 7.25, quantile(df$data.c, .05), lty = 2, col = gray(.5))
+
+}
+
+```
+
+
+## 4 Steps to conduct an ANOVA
+
+Here are the 4 steps you should follow to conduct a standard ANOVA in R:
+
+1. Create an ANOVA object using the `aov()` function. In the `aov()` function, specify the independent and dependent variable(s) with a formula with the format `y ~ x1 + x2` where y is the dependent variable, and x1, x2 ... are one (more more) factor independent variables.
+
+
+```{r eval = FALSE}
+# Step 1: Create an aov object
+mod.aov <- aov(formula = y ~ x1 + x2 + ...,
+               data = data)
+```
+
+2. Create a summary ANOVA table by applying the `summary()` function to the ANOVA object you created in Step 1.
+
+```{r, eval = FALSE}
+# Step 2: Look at a summary of the aov object
+summary(mod.aov)
+```
+
+3. If necessary, calculate post-hoc tests by applying a post-hoc testing function like `TukeyHSD()` to the ANOVA object you created in Step 1.
+
+```{r, eval = FALSE}
+# Step 3: Calculate post-hoc tests
+TukeyHSD(mod.aov)
+```
+
+4. If necessary, interpret the nature of the group differences by creating a linear regression object using `lm()` using the same arguments you used in the `aov()` function in Step 1.
+
+```{r eval = FALSE}
+# Step 4: Look at coefficients
+mod.lm <- lm(formula = y ~ x1 + x2 + ...,
+             data = data)
+
+summary(mod.lm)
+```
+
+## Ex: One-way ANOVA
+
+Let's do an example by running both a one-way ANOVA on the `poopdeck` data. We'll set cleaning time `time` as the dependent variable and the cleaner type `cleaner` as the independent variable. We can represent the data as a pirateplot:
+
+```{r}
+yarrr::pirateplot(time ~ cleaner, 
+                  data = poopdeck, 
+                  theme = 2, 
+                  cap.beans = TRUE,
+                  main = "formula = time ~ cleaner")
+```
+
+
+From the plot, it looks like cleaners a and b are the same, and cleaner c is a bit faster. To test this, we'll create an ANOVA object with `aov`. Because `time` is the dependent variable and `cleaner` is the independent variable, we'll set the formula to `formula = time ~ cleaner`
+
+```{r}
+# Step 1: aov object with time as DV and cleaner as IV
+cleaner.aov <- aov(formula = time ~ cleaner,
+                   data = poopdeck)
+```
+
+Now, to see a full ANOVA summary table of the ANOVA object, apply the `summary()` to the ANOVA object from Step 1.
+
+```{r}
+# Step 2: Look at the summary of the anova object
+summary(cleaner.aov)
+```
+
+The main result from our table is that we have a significant effect of cleaner on cleaning time (F(2, 597) = 5.29, p = 0.005. However, the ANOVA table does not tell us which levels of the independent variable differ. In other words, we don't know which cleaner is better than which. To answer this, we need to conduct a post-hoc test.
+
+
+If you've found a significant effect of a factor, you can then do post-hoc tests to test the difference between each all pairs of levels of the independent variable. There are many types of pairwise comparisons that make different assumptions. To learn more about the logic behind different post-hoc tests, check out the Wikipedia page here: [https://en.wikipedia.org/wiki/Post_hoc_analysis](https://en.wikipedia.org/wiki/Post\_hoc\_analysis). One of the most common post-hoc tests for standard ANOVAs is the Tukey Honestly Significant Difference (HSD) test. To see additional information about the Tukey HSD test, check out the Wikipedia page here: [https://en.wikipedia.org/wiki/Tukey's_range_test](https://en.wikipedia.org/wiki/Tukey's_range_test) To do an HSD test, apply the `TukeyHSD()` function to your ANOVA object as follows:
+
+
+```{r}
+# Step 3: Conduct post-hoc tests
+TukeyHSD(cleaner.aov)
+```
+
+This table shows us pair-wise differences between each group pair. The `diff` column shows us the mean differences between groups (which thankfully are identical to what we found in the summary of the regression object before), a confidence interval for the difference, and a p-value testing the null hypothesis that the group differences are not different.
+
+I almost always find it helpful to combine an ANOVA summary table with a regression summary table. Because ANOVA is just a special case of regression (where all the independent variables are factors), you'll get the same results with a regression object as you will with an ANOVA object. However, the format of the results are different and frequently easier to interpret.
+
+To create a regression object, use the `lm()` function. Your inputs to this function will be *identical* to your inputs to the `aov()` function
+
+```{r}
+# Step 4: Create a regression object
+cleaner.lm <- lm(formula = time ~ cleaner,
+                 data = poopdeck)
+
+# Show summary
+summary(cleaner.lm)
+```
+
+
+As you can see, the regression table does not give us tests for each variable like the ANOVA table does. Instead, it tells us how different each level of an independent variable is from a *default* value. You can tell which value of an independent variable is the default variable just by seeing which value is missing from the table. In this case, I don't see a coefficient for cleaner a, so that must be the default value.
+
+The intercept in the table tells us the mean of the default value. In this case, the mean time of cleaner a was 66.02. The coefficients for the other levels tell us that cleaner b is, on average 0.42 minutes faster than cleaner a, and cleaner c is on average 6.94 minutes faster than cleaner a. Not surprisingly, these are the same differences we saw in the Tukey HSD test!
+
+##Ex: Two-way ANOVA
+
+To conduct a two-way ANOVA or a Menage a trois NOVA, just include additional independent variables in the regression model formula with the + sign. That's it. All the steps are the same. Let's conduct a two-way ANOVA with both cleaner and type as independent variables. To do this, we'll set `formula = time ~ cleaner + type`.
+
+```{r}
+# Step 1: Create ANOVA object with aov()
+cleaner.type.aov <- aov(formula = time ~ cleaner + type,
+                        data = poopdeck)
+```
+
+```{r}
+# Step 2: Get ANOVA table with summary()
+summary(cleaner.type.aov)
+```
+
+It looks like we found significant effects of both independent variables. 
+
+```{r}
+# Step 3: Conduct post-hoc tests
+TukeyHSD(cleaner.type.aov)
+```
+
+The only non-significant group difference we found is between cleaner b and cleaner a. All other comparisons were significant.
+
+```{r}
+# Step 4: Look at regression coefficients
+cleaner.type.lm <- lm(formula = time ~ cleaner + type,
+                      data = poopdeck)
+
+summary(cleaner.type.lm)
+```
+
+Now we need to interpret the results in respect to two default values (here, cleaner = a and type = parrot). The intercept means that the average time for cleaner a on parrot poop was 54.36 minutes. Additionally, the average time to clean shark poop was 23.33 minutes slower than when cleaning parrot poop.
+
+
+### ANOVA with interactions
+
+
+Interactions between variables test whether or not the effect of one variable depends on another variable. For example, we could use an interaction to answer the question: *Does the effect of cleaners depend on the type of poop they are used to clean?* To include interaction terms in an ANOVA, just use an asterix (*) instead of the plus (+) between the terms in your formula. Note that when you include an interaction term in a regression object, R will automatically include the main effects as well/
+
+Let's repeat our previous ANOVA with two independent variables, but now we'll include the interaction between cleaner and type. To do this, we'll set the formula to `time ~ cleaner * type`.
+
+```{r}
+# Step 1: Create ANOVA object with interactions
+cleaner.type.int.aov <- aov(formula = time ~ cleaner * type,
+                          data = poopdeck)
+
+# Step 2: Look at summary table
+summary(cleaner.type.int.aov)
+```
+
+Looks like we did indeed find a significant interaction between cleaner and type. In other words, the effectiveness of a cleaner depends on the type of poop it's being applied to. This makes sense given our plot of the data at the beginning of the chapter.
+
+To understand the nature of the difference, we'll look at the regression coefficients from a regression object:
+
+```{r}
+# Step 4: Calculate regression coefficients
+cleaner.type.int.lm <- lm(formula = time ~ cleaner * type,
+                          data = poopdeck)
+
+summary(cleaner.type.int.lm)
+```
+
+
+Again, to interpret this table, we first need to know what the default values are. We can tell this from the coefficients that are 'missing' from the table. Because I don't see terms for `cleanera` or `typeparrot`, this means that `cleaner = "a"` and `type = "parrot"` are the defaults. Again, we can interpret the coefficients as `differences` between a level and the default. It looks like for parrot poop, cleaners b and c both take more time than cleaner a (the default). Additionally, shark poop tends to take much longer than parrot poop to clean (the estimate for typeshark is positive).
+
+The interaction terms tell us how the effect of cleaners `changes` when one is cleaning shark poop. The negative estimate (-16.96) for `cleanerb:typeshark` means that cleaner b is, on average 16.96 minutes `faster` when cleaning shark poop compared to parrot poop. Because the previous estimate for cleaner b (for parrot poop) was just 8.06, this suggests that cleaner b is `slower` than cleaner a for parrot poop, but `faster` than cleaner a for shark poop. Same thing for cleaner c which simply has stronger effects in both directions.
+
+
+
+## Type I, Type II, and Type III ANOVAs
+
+It turns out that there is not just one way to calculate ANOVAs. In fact, there are three different types - called, Type 1, 2, and 3 (or Type I, II and III). These types differ in how they calculate variability (specifically the `sums of of squares`). If your data is relatively `balanced`, meaning that there are relatively equal numbers of observations in each group, then all three types will give you the same answer. However, if your data are `unbalanced`, meaning that some groups of data have many more observations than others, then you need to use Type II (2) or Type III (3).
+
+The standard `aov()` function in base-R uses Type I sums of squares. Therefore, it is only appropriate when your data are balanced. If your data are unbalanced, you should conduct an ANOVA with Type II or Type III sums of squares. To do this, you can use the `Anova()` function in the `car` package. The `Anova()` function has an argument called `type` that allows you to specify the type of ANOVA you want to calculate.
+
+
+In the next code chunk, I'll calculate 3 separate ANOVAs from the poopdeck data using the three different types. First, I'll create a regression object with `lm()`. As you'll see, the `Anova()` function requires you to enter a regression object as the main argument, and `not` a formula and dataset. That is, you need to first create a regression object from the data with `lm()` (or `glm()`), and then enter that object into the `Anova()` function. You can also do the same thing with the standard `aov()` function`.
+
+```{r}
+# Step 1: Calculate regression object with lm()
+time.lm <- lm(formula = time ~ type + cleaner,
+              data = poopdeck)
+```
+
+Now that I've created the regression object `time.lm`, I can calculate the three different types of ANOVAs by entering the object as the main argument to either `aov()` for a Type I ANOVA, or `Anova()` in the car package for a Type II or Type III ANOVA:
+
+```{r}
+# Type I ANOVA - aov()
+time.I.aov <- aov(time.lm)
+
+# Type II ANOVA - Anova(type = 2)
+time.II.aov <- car::Anova(time.lm, type = 2)
+
+# Type III ANOVA - Anova(type = 3)
+time.III.aov <- car::Anova(time.lm, type = 3)
+```
+
+As it happens, the data in the poopdeck dataframe are perfectly balanced (so we'll get exactly the same result for each ANOVA type. However, if they were not balanced, then we should *not* use the Type I ANOVA calculated with the *aov()* function.
+
+To see if your data are balanced, you can use the \texttt{table()} function:
+```{r}
+# Are observations in the poopdeck data balanced?
+with(poopdeck,
+     table(cleaner, type))
+```
+
+As you can see, in the poopdeck data, the observations are perfectly balanced, so it doesn't matter which type of ANOVA we use to analyse the data.
+
+For more detail on the different types, check out [https://mcfromnz.wordpress.com/2011/03/02/anova-type-iiiiii-ss-explained/](https://mcfromnz.wordpress.com/2011/03/02/anova-type-iiiiii-ss-explained/).
+
+## Getting additional information from ANOVA objects
+
+You can get a lot of interesting information from ANOVA objects. To see everything that's stored in one, run the \texttt{names()} command on an ANOVA object. For example, here's what's in our last ANOVA object:
+
+```{r}
+# Show me what's in my aov object
+names(cleaner.type.int.aov)
+```
+
+
+For example, the `"fitted.values"` contains the model fits for the dependent variable (time) for every observation in our dataset. We can add these fits back to the dataset with the $ operator and assignment. For example, let's get the model fitted values from both the interaction model (cleaner.type.aov) and the non-interaction model (cleaner.type.int.aov) and assign them to new columns in the dataframe:
+
+
+```{r}
+# Add the fits for the interaction model to the dataframe as int.fit
+
+poopdeck$int.fit <- cleaner.type.int.aov$fitted.values
+
+# Add the fits for the main effects model to the dataframe as me.fit
+
+poopdeck$me.fit <- cleaner.type.aov$fitted.values
+```
+
+
+Now let's look at the first few rows in the table to see the fits for the first few observations.
+
+```{r}
+head(poopdeck)
+```
+
+You can use these fits to see how well (or poorly) the model(s) were able to fit the data. For example, we can calculate how far each model's fits were from the true data as follows:
+
+```{r}
+# How far were the interaction model fits from the data on average?
+
+mean(abs(poopdeck$int.fit - poopdeck$time))
+
+# How far were the main effect model fits from the data on average?
+
+mean(abs(poopdeck$me.fit - poopdeck$time))
+```
+
+
+As you can see, the interaction model was off from the data by `r with(poopdeck, round(mean(abs(int.fit - time)), 2))` minutes on average, while the main effects model was off from the data by `r with(poopdeck, round(mean(abs(me.fit - time)), 2))` on average. This is not surprising as the interaction model is more complex than the main effects only model. However, just because the interaction model is better at fitting the data doesn't necessarily mean that the interaction is either meaningful or reliable.
+
+
+## Repeated measures ANOVA using the lme4 package
+
+If you are conducting an analyses where you're repeating measurements over one or more third variables, like giving the same participant different tests, you should do a mixed-effects regression analysis. To do this, you should use the `lmer` function in the `lme4` package. For example, in our `poopdeck` data, we have repeated measurements for days. That is, on each day, we had 6 measurements. Now, it's possible that the overall cleaning times differed depending on the day. We can account for this by including random intercepts for day by adding the `(1|day)` term to the formula specification. For more tips on mixed-effects analyses, check out this great tutorial by Bodo Winter at [http://www.bodowinter.com/tutorial/bw_LME_tutorial2.pdf](http://www.bodowinter.com/tutorial/bw_LME_tutorial2.pdf).
+
+```{r}
+# install.packages(lme4)  # If you don't have the package already
+library(lme4)
+
+# Calculate a mixed-effects regression on time with
+#  Two fixed factors (cleaner and type)
+#  And one repeated measure (day)
+
+my.mod <- lmer(formula = time ~ cleaner + type + (1|day),
+                data = poopdeck)
+```
+
+## Test your R might!
+
+For the following questions, use the `pirates` dataframe in the `yarrr` package
+
+1. Is there a significant relationship between a pirate's favorite pixar movie and the number of tattoos (s)he has? Conduct an appropriate ANOVA with `fav.pixar` as the independent variable, and `tattoos` as the dependent variable. If there is a significant relationship, conduct a post-hoc test to determine which levels of the independent variable(s) differ.
+
+2. Is there a significant relationship between a pirate's favorite pirate and how many tattoos (s)he has? Conduct an appropriate ANOVA with `favorite.pirate` as the independent variable, and `tattoos` as the dependent variable. If there is a significant relationship, conduct a post-hoc test to determine which levels of the independent variable(s) differ.
+
+3. Now, repeat your analysis from the previous two questions, but include both independent variables `fav.pixar` and `favorite.pirate` in the ANOVA. Do your conclusions differ when you include both variables?
+
+4. Finally, test if there is an interaction between `fav.pixar` and `favorite.pirate` on number of tattoos.

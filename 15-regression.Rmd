@@ -1,0 +1,564 @@
+# Regression {#regression}
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, fig.align='center')
+library(dplyr)
+library(yarrr)
+library(bookdown)
+options(digits = 2)
+```
+
+
+```{r, fig.cap= "Insert funny caption here.", fig.margin = TRUE, echo = FALSE, out.width = "60%", fig.align="center"}
+knitr::include_graphics(c("images/diamondskull.jpg"))
+```
+
+
+Pirates like diamonds. Who doesn't?! But as much as pirates love diamonds, they hate getting ripped off. For this reason, a pirate needs to know how to accurately assess the value of a diamond. For example, how much should a pirate pay for a diamond with a weight of 2.0 grams, a clarity value of 1.0, and a color gradient of 4 out of 10? To answer this, we'd like to know how the attributes of diamonds (e.g.; weight, clarity, color) relate to its value. We can get these values using linear regression.
+
+
+
+## The Linear Model
+
+The linear model is easily the most famous and widely used model in all of statistics. Why? Because it can apply to so many interesting research questions where you are trying to predict a continuous variable of interest (the *response* or *dependent variable*) on the basis of one or more other variables (the *predictor* or *independent variables*).
+
+The linear model takes the following form, where the x values represent the predictors, while the beta values represent weights.
+
+$y=\beta_{0}+\beta_{1}x_{1}+\beta_{2}x_{2}+...\beta_{n}x_{n}$
+
+For example, we could use a regression model to understand how the value of a diamond relates to two independent variables: its weight and clarity. In the model, we could define the value of a diamond as $\beta_{weight} \times weight + \beta_{clarity} \times clarity$. Where $\beta_{weight}$ indicates how much a diamond's value changes as a function of its weight, and $\beta_{clarity}$ defines how much a diamond's value change as a function of its clarity.
+
+## Linear regression with `lm()`
+
+| Argument| Description| 
+|:------------|:-------------------------------------------------|
+|`formula`|A formula in the form `y ~ x1 + x2 + ...` where y is the dependent variable, and x1, x2, ... are the independent variables. If you want to include all columns (excluding y) as independent variables, just enter `y ~ .`|
+|`data`|The dataframe containing the columns specified in the formula.|
+
+
+To estimate the beta weights of a linear model in R, we use the `lm()` function. The function has three key arguments: `formula`, and `data`
+
+### Estimating the value of diamonds with `lm()`
+
+We'll start with a simple example using a dataset in the yarrr package called \texttt{diamonds}. The dataset includes data on 150 diamonds sold at an auction. Here are the first few rows of the dataset:
+
+```{r}
+library(yarrr)
+head(diamonds)
+```
+
+Our goal is to come up with a linear model we can use to estimate the value of each diamond (DV = `value`) as a linear combination of three independent variables: its weight, clarity, and color. The linear model will estimate each diamond's value using the following equation:
+
+$\beta_{Int} + \beta_{weight} \times weight + \beta_{clarity} \times clarity + \beta_{color} \times color$
+
+
+where $\beta_{weight}$ is the increase in value for each increase of 1 in weight, $\beta_{clarity}$ is the increase in value for each increase of 1 in clarity (etc.). Finally, $\beta_{Int}$ is the baseline value of a diamond with a value of 0 in all independent variables.
+
+To estimate each of the 4 weights, we'll use `lm()`. Because `value` is the dependent variable, we'll specify the formula as `formula = value ~ weight + clarity + color`. We'll assign the result of the function to a new object called `diamonds.lm`:
+
+```{r}
+# Create a linear model of diamond values
+#   DV = value, IVs = weight, clarity, color
+
+diamonds.lm <- lm(formula = value ~ weight + clarity + color,
+                  data = diamonds)
+```
+
+To see the results of the regression analysis, including estimates for each of the beta values, we'll use the `summary()` function:
+
+```{r}
+# Print summary statistics from diamond model
+summary(diamonds.lm)
+```
+
+Here, we can see from the summary table that the model estimated $\beta_{Int}$ (the intercept), to be `r round(diamonds.lm$coefficients[1], 2)`, $\beta_{weight}$ to be `r round(diamonds.lm$coefficients[2], 2)`, $\beta_{clarity}$ to be `r round(diamonds.lm$coefficients[3], 2)`, and , $\beta_{color}$ to be `r round(diamonds.lm$coefficients[4], 2)`. You can see the full linear model in Figure \@ref(fig:diamondlm):
+
+
+```{r diamondlm, echo = FALSE, fig.width = 6, fig.height = 2, fig.cap = "A linear model estimating the values of diamonds based on their weight, clarity, and color."}
+options(digits = 4)
+par(mar = c(1, 1, 1, 1))
+plot(1, xlim = c(0, 100), ylim = c(0, 1), bty = "n", type = "n", yaxt = "n", ylab = "", xaxt = "n", xlab = "")
+
+text(50, .95, "Linear Model of Diamond Values", cex = 1.3)
+
+text(50, .55, expression(148.34 + 2.19 %*% x[weight] + 21.69 %*% x[clarity] + (-0.46) %*% x[color] == Value), cex = 1.2)
+
+x.loc <- c(5, 17, 42, 68)
+x2.loc <- c(33, 54, 78)
+
+text(x.loc[1], .1, expression(Beta[intercept]), cex = 1.1)
+text(x.loc[2], .1, expression(Beta[weight]), cex = 1.1)
+text(x.loc[3], .1, expression(Beta[clarity]), cex = 1.1)
+text(x.loc[4], .1, expression(Beta[color]), cex = 1.1)
+
+#text(x2.loc, .8, c("weight", "clarity", "color"))
+
+arrows(x.loc, rep(.1, 4) + .1, x.loc, rep(.43, 4), length = .1)
+
+```
+
+You can access lots of different aspects of the regression object. To see what's inside, use `names()`
+
+```{r}
+# Which components are in the regression object?
+names(diamonds.lm)
+```
+
+For example, to get the estimated coefficients from the model, just access the `coefficients` attribute:
+
+```{r}
+# The coefficients in the diamond model
+diamonds.lm$coefficients
+```
+
+If you want to access the entire statistical summary table of the coefficients, you just need to access them from the `summary` object:
+
+```{r}
+# Coefficient statistics in the diamond model
+summary(diamonds.lm)$coefficients
+```
+
+
+###Getting model fits with `fitted.values`
+
+
+To see the fitted values from a regression object (the values of the dependent variable predicted by the model), access the `fitted.values` attribute from a regression object with `$fitted.values`.
+
+Here, I'll add the fitted values from the diamond regression model as a new column in the diamonds dataframe:
+
+```{r}
+# Add the fitted values as a new column in the dataframe
+diamonds$value.lm <- diamonds.lm$fitted.values
+
+# Show the result
+head(diamonds)
+```
+
+According to the model, the first diamond, with a weight of `r diamonds$weight[1]`, a clarity of `r diamonds$clarity[1]`, and a color of `r diamonds$color[1]` should have a value of `r round(diamonds$value.lm[1], 2)`. As we can see, this is not far off from the true value of `r diamonds$value[1]`.
+
+
+You can use the fitted values from a regression object to plot the relationship between the true values and the model fits. If the model does a good job in fitting the data, the data should fall on a diagonal line:
+
+```{r}
+# Plot the relationship between true diamond values
+#   and linear model fitted values
+
+plot(x = diamonds$value,                          # True values on x-axis
+     y = diamonds.lm$fitted.values,               # fitted values on y-axis
+     xlab = "True Values",
+     ylab = "Model Fitted Values",
+     main = "Regression fits of diamond values")
+
+abline(b = 1, a = 0)                             # Values should fall around this line!
+```
+
+### Using `predict()` to predict new data from a model
+
+
+Once you have created a regression model with `lm()`, you can use it to easily predict results from new datasets using the `predict()` function.
+
+For example, let's say I discovered 3 new diamonds with the following characteristics:
+
+```{r, echo = FALSE}
+new.diamonds <- data.frame(weight = c(20, 10, 15),
+                           clarity = c(1.5, .2, 5),
+                           color = c(5, 2, 3)
+                           )
+
+knitr::kable(new.diamonds, caption = "3 new diamonds")
+```
+
+
+I'll use the `predict()` function to predict the value of each of these diamonds using the regression model `diamond.lm` that I created before. The two main arguments to `predict()` are `object` -- the regression object we've already defined), and `newdata` -- the dataframe of new data. Warning! The dataframe that you use in the `newdata` argument to `predict()` must have column names equal to the names of the coefficients in the model. If the names are different, the `predict()` function won't know which column of data applies to which coefficient and will return an error.
+
+```{r}
+# Create a dataframe of new diamond data
+diamonds.new <- data.frame(weight = c(12, 6, 5),
+                           clarity = c(1.3, 1, 1.5),
+                           color = c(5, 2, 3))
+
+# Predict the value of the new diamonds using
+#  the diamonds.lm regression model
+predict(object = diamonds.lm,     # The regression model
+        newdata = diamonds.new)   # dataframe of new data
+```
+
+```{r, echo = FALSE}
+t <- predict(object = diamonds.lm,
+        newdata = diamonds.new)
+```
+
+This result tells us the the new diamonds are expected to have values of `r round(t[1], 1)`, `r round(t[2], 1)`, and `r round(t[3], 1)` respectively according to our regression model.
+
+### Including interactions in models: `y ~ x1 * x2`
+
+To include interaction terms in a regression model, just put an asterix (\*) between the independent variables. For example, to create a regression model on the diamonds data with an interaction term between `weight` and `clarity`, we'd use the formula `formula = value ~ weight * clarity`:
+
+```{r}
+# Create a regression model with interactions between 
+#   IVS weight and clarity
+diamonds.int.lm <- lm(formula = value ~ weight * clarity,
+                      data = diamonds)
+
+# Show summary statistics of model coefficients
+summary(diamonds.int.lm)$coefficients
+
+```
+
+### Center variables before computing interactions!
+
+
+Hey what happened? Why are all the variables now non-significant? Does this mean that there is really no relationship between weight and clarity on value after all? No. Recall from your second-year pirate statistics class that when you include interaction terms in a model, you should always *center* the independent variables first. Centering a variable means simply subtracting the mean of the variable from all observations.
+
+In the following code, I'll repeat the previous regression, but first I'll create new centered variables `weight.c` and `clarity.c`, and then run the regression on the interaction between these centered variables:
+
+```{r}
+# Create centered versions of weight and clarity
+diamonds$weight.c <- diamonds$weight - mean(diamonds$weight)
+diamonds$clarity.c <- diamonds$clarity - mean(diamonds$clarity)
+
+# Create a regression model with interactions of centered variables
+diamonds.int.lm <- lm(formula = value ~ weight.c * clarity.c,
+                      data = diamonds)
+
+# Print summary
+summary(diamonds.int.lm)$coefficients
+```
+
+Hey that looks much better! Now we see that the main effects are significant and the interaction is non-significant.
+
+### Getting an ANOVA from a regression model with `aov()`
+
+Once you've created a regression object with `lm()` or `glm()`, you can summarize the results in an ANOVA table with `aov()`:
+
+```{r}
+# Create ANOVA object from regression
+diamonds.aov <- aov(diamonds.lm)
+
+# Print summary results
+summary(diamonds.aov)
+```
+
+
+## Comparing regression models with `anova()`
+
+
+A good model not only needs to fit data well, it also needs to be parsimonious. That is, a good model should be only be as complex as necessary to describe a dataset. If you are choosing between a very simple model with 1 IV, and a very complex model with, say, 10 IVs, the very complex model needs to provide a much better fit to the data in order to justify its increased complexity. If it can't, then the more simpler model should be preferred. 
+
+To compare the fits of two models, you can use the `anova()` function with the regression objects as two separate arguments. The `anova()` function will take the model objects as arguments, and return an ANOVA testing whether the more complex model is significantly better at capturing the data than the simpler model. If the resulting p-value is sufficiently low (usually less than 0.05), we conclude that the more complex model is significantly better than the simpler model, and thus favor the more complex model. If the p-value is not sufficiently low (usually greater than 0.05), we should favor the simpler model.
+
+Let's do an example with the diamonds dataset. I'll create three regression models that each predict a diamond's value. The models will differ in their complexity -- that is, the number of independent variables they use. `diamonds.mod1` will be the simplest model with just one IV (weight), `diamonds.mod2` will include 2 IVs (weight and clarity) while `diamonds.mod3` will include three IVs (weight, clarity, and color).
+
+```{r}
+# model 1: 1 IV (only weight)
+ diamonds.mod1 <- lm(value ~ weight, data = diamonds)
+
+ # Model 2: 2 IVs (weight AND clarity)
+ diamonds.mod2 <- lm(value ~ weight + clarity, data = diamonds)
+
+ # Model 3: 3 IVs (weight AND clarity AND color)
+ diamonds.mod3 <- lm(value ~ weight + clarity + color, data = diamonds)
+```
+
+
+Now let's use the `anova()` function to compare these models and see which one provides the best parsimonious fit of the data. First, we'll compare the two simplest models: model 1 with model 2. Because these models differ in the use of the `clarity` IV (both models use `weight`), this ANVOA will test whether or not including the `clarity` IV leads to a significant improvement over using just the `weight` IV:
+
+```{r}
+ # Compare model 1 to model 2
+ anova(diamonds.mod1, diamonds.mod2)
+```
+
+ As you can see, the result shows a Df of 1 (indicating that the more complex model has one additional parameter), and a very small p-value (< .001). This means that adding the `clarity` IV to the model *did* lead to a significantly improved fit over the model 1.
+
+ Next, let's use `anova()` to compare model 2 and model 3. This will tell us whether adding `color` (on top of weight and clarity) further improves the model:
+ 
+ 
+```{r}
+# Compare model 2 to model 3
+anova(diamonds.mod2, diamonds.mod3)
+```
+
+The result shows a non-significant result (p = `r round(anova(diamonds.mod2, diamonds.mod3)[2,6], 2)`). Thus, we should reject model 3 and stick with model 2 with only 2 IVs.
+
+You don't need to compare models that only differ in one IV -- you can also compare models that differ in multiple DVs. For example, here is a comparison of model 1 (with 1 IV) to model 3 (with 3 IVs):
+
+```{r}
+# Compare model 1 to model 3
+anova(diamonds.mod1, diamonds.mod3)
+```
+
+The result shows that model 3 did indeed provide a significantly better fit to the data compared to model 1. However, as we know from our previous analysis, model 3 is not significantly better than model 2.
+
+## Regression on non-Normal data with `glm()`
+
+| Argument| Description| 
+|:------------|:-------------------------------------------------|
+|`formula, data, subset`|The same arguments as in `lm()`|
+|`family`|One of the following strings, indicating the link function for the general linear model|
+
+
+| Family name| Description| 
+|:------------|:-------------------------------------------------|
+|`"binomial"`|Binary logistic regression, useful when the response is either 0 or 1.|
+|`"gaussian"`|Standard linear regression. Using this family will give you the same result as `lm()`|
+|`"Gamma"`|Gamma regression, useful for highly positively skewed data|
+|`"inverse.gaussian"`|Inverse-Gaussian regression, useful when the dv is strictly positive and skewed to the right.|
+|`"poisson"`|Poisson regression, useful for count data. For example, ``How many parrots has a pirate owned over his/her lifetime?"|
+
+
+
+We can use standard regression with `lm()`when your dependent variable is Normally distributed (more or less). When your dependent variable does not follow a nice bell-shaped Normal distribution, you need to use the *Generalized Linear Model* (GLM). the GLM is a more general class of linear models that change the distribution of your dependent variable. In other words, it allows you to use the linear model even when your dependent variable isn't a normal bell-shape. Here are 4 of the most common distributions you can can model with `glm()`:
+
+```{r, fig.width = 6.1, fig.height = 6.1, echo = FALSE}
+set.seed(100)
+
+par(mfrow = c(2, 2))
+
+par(mar = c(3, 0, 5.5, 0))
+
+# Normal
+
+hist(x = rnorm(1000, mean = 10, sd = 1),
+     main = "Normal",
+     xlim = c(-5, 15), yaxt = "n", ylab = "", xlab = "", xaxt = "n"
+     )
+
+axis(1, at = seq(5, 15, 5))
+
+mtext("Continuous, bell-shaped", side = 3, line = .5, cex = .8)
+
+text(x = runif(10, -3, 4),
+     y = seq(0, 175, length.out = 10),
+     labels = round(rnorm(10, mean = 10, sd = 1), 2), cex = .8
+     )
+
+# Poisson
+
+hist(rpois(1000, lambda = 2), breaks = 0:10,
+     main = "Poisson",
+     yaxt = "n", xlim = c(-10, 10), ylab = "", xlab = "", xaxt = "n"
+     )
+
+mtext("Positive Integers", side = 3, line = .5, cex = .8)
+
+axis(1, at = seq(.5, 9.5, 1), labels = 1:10, cex = .8)
+
+text(x = runif(10, -8, -1),
+     y = seq(100, 375, length.out = 10),
+     labels = round(rpois(5, lambda = 2), 2), cex = .8
+     )
+
+# Binomial
+
+plot(1, xlim = c(-.5, 1), ylim = c(0, 1), xaxt = "n", yaxt = "n", 
+     bty = "n", xlab = "", type = "n", main = "Binomial")
+
+
+mtext("Only 0s and 1s", side = 3, line = .5, cex = .8)
+
+
+rect(.3, 0, .5, .8)
+
+rect(.7, 0, .9, .3)
+
+mtext(text = "0", at = .4, side = 1)
+mtext(text = "1", at = .8, side = 1)
+
+text(x = runif(10, -.35, .2),
+     y = seq(.2, .8, length.out = 10),
+     labels = c(0, 1, 0, 0, 1), cex = .8
+     )
+
+# Gamma
+
+hist(rgamma(1000, 2), 
+     main = "Gamma",
+     yaxt = "n", xlab = "", xlim = c(-10, 10), xaxt = "n")
+
+axis(1, seq(0, 10, 2))
+
+mtext("Continuous, positive", side = 3, line = .5, cex = .8)
+
+
+text(x = runif(10, -9, -1),
+     y = seq(25, 250, length.out = 10),
+     labels = round(rgamma(5, 2), 2), cex = .8)
+     
+```
+
+
+## Logistic regression with `glm(family = "binomial"`
+
+```{r logit, echo = FALSE, fig.width = 4, fig.height = 4, fig.cap = "The inverse logit function used in binary logistic regression to convert logits to probabilities."}
+# Logit
+logit.fun <- function(x) {1 / (1 + exp(-x))}
+
+curve(logit.fun,
+      from = -3,
+      to = 3,
+      lwd = 2,
+      main = "Inverse Logit",
+      ylab = "p(y = 1)",
+      xlab = "Logit(x)"
+      )
+
+abline(h = .5, lty = 2)
+abline(v = 0, lty = 1)
+```
+
+
+The most common non-normal regression analysis is logistic regression, where your dependent variable is just 0s and 1. To do a logistic regression analysis with `glm()`, use the `family = binomial` argument.
+
+Let's run a logistic regression on the diamonds dataset. First, I'll create a binary variable called `value.g190` indicating whether the value of a diamond is greater than 190 or not. Then, I'll conduct a logistic regression with our new binary variable as the dependent variable. We'll set `family = "binomial"` to tell `glm()` that the dependent variable is binary.
+
+```{r}
+# Create a binary variable indicating whether or not
+#   a diamond's value is greater than 190
+diamonds$value.g190 <- diamonds$value > 190
+
+# Conduct a logistic regression on the new binary variable
+diamond.glm <- glm(formula = value.g190 ~ weight + clarity + color,
+                   data = diamonds,
+                   family = binomial)
+```
+
+Here are the resulting coefficients:
+
+```{r}
+# Print coefficients from logistic regression
+summary(diamond.glm)$coefficients
+```
+
+Just like with regular regression with `lm()`, we can get the fitted values from the model and put them back into our dataset to see how well the model fit the data:
+
+```{r}
+# Add logistic fitted values back to dataframe as
+#  new column pred.g190
+diamonds$pred.g190 <- diamond.glm$fitted.values
+
+# Look at the first few rows (of the named columns)
+head(diamonds[c("weight", "clarity", "color", "value", "pred.g190")])
+```
+
+Looking at the first few observations, it looks like the probabilities match the data pretty well. For example, the first diamond with a value of `r round(diamonds$value[1], 2)` had a fitted probability of just `r round(diamonds$pred.g190[1], 2)` of being valued greater than 190. In contrast, the second diamond, which had a value of `r round(diamonds$value[2], 2)` had a much higher fitted probability of `r round(diamonds$pred.g190[2], 2)`.
+
+Just like we did with regular regression, you can use the `predict()` function along with the results of a `glm()` object to predict new data. Let's use the `diamond.glm` object to predict the probability that the new diamonds will have a value greater than 190:
+
+```{r}
+# Predict the 'probability' that the 3 new diamonds 
+#  will have a value greater than 190
+
+predict(object = diamond.glm,
+        newdata = diamonds.new)
+```
+
+What the heck, these don't look like probabilities! True, they're not. They are *logit-transformed* probabilities. To turn them back into probabilities, we need to invert them by applying the inverse logit function:
+
+
+```{r}
+# Get logit predictions of new diamonds
+logit.predictions <- predict(object = diamond.glm,
+                             newdata = diamonds.new
+                             )
+
+# Apply inverse logit to transform to probabilities
+#  (See Equation in the margin)
+prob.predictions <- 1 / (1 + exp(-logit.predictions))
+
+# Print final predictions!
+prob.predictions
+```
+
+So, the model predicts that the probability that the three new diamonds will be valued over 190 is `r round(prob.predictions[1], 4) * 100`\%, `r round(prob.predictions[2], 4) * 100`\%, and `r round(prob.predictions[3], 4) * 100`\% respectively.
+
+### Adding a regression line to a plot
+
+You can easily add a regression line to a scatterplot. To do this, just put the regression object you created with \texttt{lm} as the main argument to \texttt{abline()}. For example, the following code will create the scatterplot on the right (Figure~\ref{fig:scatterreg}) showing the relationship between a diamond's weight and its value including a red regression line:
+
+
+```{r addrline, fig.cap = "Adding a regression line to a scatterplot using abline()"}
+# Scatterplot of diamond weight and value
+plot(x = diamonds$weight,
+     y = diamonds$value,
+     xlab = "Weight",
+     ylab = "Value",
+     main = "Adding a regression line with abline()"
+     )
+
+# Calculate regression model
+diamonds.lm <- lm(formula = value ~ weight,
+                  data = diamonds)
+
+# Add regression line
+abline(diamonds.lm,
+       col = "red", lwd = 2)
+```
+
+### Transforming skewed variables prior to standard regression
+
+```{r moviedist, fig.cap = "Distribution of movie revenues without a log-transformation"}
+# The distribution of movie revenus is highly
+#  skewed.
+hist(movies$revenue.all, 
+     main = "Movie revenue\nBefore log-transformation")
+```
+
+
+If you have a highly skewed variable that you want to include in a regression analysis, you can do one of two things. Option 1 is to use the general linear model `glm()` with an appropriate family (like `family = "gamma"`). Option 2 is to do a standard regression analysis with `lm()`, but before doing so, transforming the variable into something less skewed. For highly skewed data, the most common transformation is a log-transformation.
+
+For example, look at the distribution of movie revenues in the movies dataset in the margin Figure \@ref(fig:moviedist):
+
+As you can see, these data don't look Normally distributed at all. There are a few movies (like Avatar) that just an obscene amount of money, and many movies that made much less. If we want to conduct a standard regression analysis on these data, we need to create a new log-transformed version of the variable. In the following code, I'll create a new variable called `revenue.all.log` defined as the logarithm of `revenue.all`
+
+```{r}
+# Create a new log-transformed version of movie revenue
+movies$revenue.all.log <- log(movies$revenue.all)
+```
+
+In Figure \@ref(fig:loghist) you can see a histogram of the new log-transformed variable. It's still skewed, but not nearly as badly as before, so I would be feel much better using this variable in a standard regression analysis with `lm()`.
+
+```{r loghist, fig.cap = "Distribution of log-transformed movie revenues. It's still skewed, but not nearly as badly as before."}
+# Distribution of log-transformed
+#  revenue is much less skewed
+
+hist(movies$revenue.all.log, 
+     main = "Log-transformed Movie revenue")
+```
+
+## Test your might! A ship auction
+
+
+The following questions apply to the auction dataset in the yarrr package. This dataset contains information about 1,000 ships sold at a pirate auction. Here's how the first few rows of the dataframe should look:
+
+```{r}
+head(auction)
+```
+
+1. The column jbb is the "Jack's Blue Book" value of a ship. Create a regression object  called `jbb.cannon.lm` predicting the JBB value of ships based on the number of cannons it has. Based on your result, how much value does each additional cannon bring to a ship?
+
+2. Repeat your previous regression, but do two separate regressions: one on modern ships and one on classic ships. Is there relationship between cannons and JBB the same for both types of ships?
+
+3. Is there a significant interaction between a ship's style and its age on its JBB value? If so, how do you interpret the interaction?
+
+4. Create a regression object called `jbb.all.lm` predicting the JBB value of ships based on cannons, rooms, age, condition, color, and style. Which aspects of a ship significantly affect its JBB value?
+
+5. Create a regression object called `price.all.lm` predicting the actual selling value of ships based on cannons, rooms, age, condition, color, and style. Based on the results, does the JBB do a good job of capturing the effect of each variable on a ship's selling price?
+
+6. Repeat your previous regression analysis, but instead of using the price as the dependent variable, use the binary variable *price.gt.3500* indicating whether or not the ship had a selling price greater than 3500. Call the new regression object `price.all.blr`. Make sure to use the appropriate regression function!!
+
+7. Using `price.all.lm`, predict the selling price of the 3 new ships below
+
+```{r, echo = FALSE}
+new <- data.frame(cannons = c(12, 8, 32),
+                  rooms = c(34, 26, 65),
+                  age = c(43, 54, 100),
+                  condition = c(7, 3, 5),
+                  color = c("black", "black", "red"),
+                  style = c("classic", "modern", "modern"),
+                  stringsAsFactors = F
+                  )
+knitr::kable(new)
+```
+
+8. Using `price.all.blr`, predict the probability that the three new ships will have a selling price greater than 3500.
+

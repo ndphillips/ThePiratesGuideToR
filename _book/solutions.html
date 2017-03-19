@@ -25,14 +25,14 @@
 <meta name="author" content="Nathaniel D. Phillips">
 
 
-<meta name="date" content="2017-03-02">
+<meta name="date" content="2017-03-17">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="plotting1.html">
+<link rel="prev" href="regression.html">
 <link rel="next" href="references.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -298,19 +298,88 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="11.7" data-path="plotting1.html"><a href="plotting1.html#low-level-plotting-functions"><i class="fa fa-check"></i><b>11.7</b> Low-level plotting functions</a><ul>
 <li class="chapter" data-level="11.7.1" data-path="plotting1.html"><a href="plotting1.html#starting-with-a-blank-plot"><i class="fa fa-check"></i><b>11.7.1</b> Starting with a blank plot</a></li>
 <li class="chapter" data-level="11.7.2" data-path="plotting1.html"><a href="plotting1.html#points"><i class="fa fa-check"></i><b>11.7.2</b> <code>points()</code></a></li>
-<li class="chapter" data-level="11.7.3" data-path="plotting1.html"><a href="plotting1.html#abline-segments"><i class="fa fa-check"></i><b>11.7.3</b> <code>abline()</code>, <code>segments()</code></a></li>
+<li class="chapter" data-level="11.7.3" data-path="plotting1.html"><a href="plotting1.html#abline-segments-grid"><i class="fa fa-check"></i><b>11.7.3</b> <code>abline()</code>, <code>segments()</code>, <code>grid()</code></a></li>
 <li class="chapter" data-level="11.7.4" data-path="plotting1.html"><a href="plotting1.html#text"><i class="fa fa-check"></i><b>11.7.4</b> <code>text()</code></a></li>
 <li class="chapter" data-level="11.7.5" data-path="plotting1.html"><a href="plotting1.html#combining-text-and-numbers-with-paste"><i class="fa fa-check"></i><b>11.7.5</b> Combining text and numbers with <code>paste()</code></a></li>
 <li class="chapter" data-level="11.7.6" data-path="plotting1.html"><a href="plotting1.html#curve"><i class="fa fa-check"></i><b>11.7.6</b> <code>curve()</code></a></li>
 <li class="chapter" data-level="11.7.7" data-path="plotting1.html"><a href="plotting1.html#legend"><i class="fa fa-check"></i><b>11.7.7</b> <code>legend()</code></a></li>
 </ul></li>
+<li class="chapter" data-level="11.8" data-path="plotting1.html"><a href="plotting1.html#saving-plots-to-a-file-with-pdf-jpeg-and-png"><i class="fa fa-check"></i><b>11.8</b> Saving plots to a file with <code>pdf()</code>, <code>jpeg()</code> and <code>png()</code></a></li>
+<li class="chapter" data-level="11.9" data-path="plotting1.html"><a href="plotting1.html#examples"><i class="fa fa-check"></i><b>11.9</b> Examples</a></li>
+<li class="chapter" data-level="11.10" data-path="plotting1.html"><a href="plotting1.html#test-your-r-might-purdy-pictures"><i class="fa fa-check"></i><b>11.10</b> Test your R might! Purdy pictures</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="solutions.html"><a href="solutions.html"><i class="fa fa-check"></i><b>12</b> Solutions</a><ul>
-<li class="chapter" data-level="12.1" data-path="solutions.html"><a href="solutions.html#chapter-4-the-basics"><i class="fa fa-check"></i><b>12.1</b> Chapter 4: The Basics</a></li>
-<li class="chapter" data-level="12.2" data-path="solutions.html"><a href="solutions.html#chapter-5-scalers-and-vectors"><i class="fa fa-check"></i><b>12.2</b> Chapter 5: Scalers and vectors</a></li>
-<li class="chapter" data-level="12.3" data-path="solutions.html"><a href="solutions.html#chapter-6-vector-functions"><i class="fa fa-check"></i><b>12.3</b> Chapter 6: Vector Functions</a></li>
-<li class="chapter" data-level="12.4" data-path="solutions.html"><a href="solutions.html#chapter-7-indexing-vectors-with"><i class="fa fa-check"></i><b>12.4</b> Chapter 7: Indexing vectors with []</a></li>
-<li class="chapter" data-level="12.5" data-path="solutions.html"><a href="solutions.html#chapter-8-matrices-and-dataframes"><i class="fa fa-check"></i><b>12.5</b> Chapter 8: Matrices and Dataframes</a></li>
+<li class="chapter" data-level="12" data-path="plotting2.html"><a href="plotting2.html"><i class="fa fa-check"></i><b>12</b> Plotting (II)</a><ul>
+<li class="chapter" data-level="12.1" data-path="plotting2.html"><a href="plotting2.html#more-colors"><i class="fa fa-check"></i><b>12.1</b> More colors</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="plotting2.html"><a href="plotting2.html#piratepal"><i class="fa fa-check"></i><b>12.1.1</b> <code>piratepal()</code></a></li>
+<li class="chapter" data-level="12.1.2" data-path="plotting2.html"><a href="plotting2.html#rcolorbrewer"><i class="fa fa-check"></i><b>12.1.2</b> RColorBrewer</a></li>
+<li class="chapter" data-level="12.1.3" data-path="plotting2.html"><a href="plotting2.html#colorramp2"><i class="fa fa-check"></i><b>12.1.3</b> colorRamp2</a></li>
+<li class="chapter" data-level="12.1.4" data-path="plotting2.html"><a href="plotting2.html#getting-colors-with-a-kuler"><i class="fa fa-check"></i><b>12.1.4</b> Getting colors with a kuler</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="plotting2.html"><a href="plotting2.html#plot-margins"><i class="fa fa-check"></i><b>12.2</b> Plot Margins</a></li>
+<li class="chapter" data-level="12.3" data-path="plotting2.html"><a href="plotting2.html#arranging-plots-with-parmfrow-and-layout"><i class="fa fa-check"></i><b>12.3</b> Arranging plots with <code>par(mfrow)</code> and <code>layout()</code></a><ul>
+<li class="chapter" data-level="12.3.1" data-path="plotting2.html"><a href="plotting2.html#complex-plot-layouts-with-layout"><i class="fa fa-check"></i><b>12.3.1</b> Complex plot layouts with <code>layout()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="plotting2.html"><a href="plotting2.html#additional-plotting-parameters"><i class="fa fa-check"></i><b>12.4</b> Additional plotting parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="htests.html"><a href="htests.html"><i class="fa fa-check"></i><b>13</b> Hypothesis Tests</a><ul>
+<li class="chapter" data-level="13.1" data-path="htests.html"><a href="htests.html#a-short-introduction-to-hypothesis-tests"><i class="fa fa-check"></i><b>13.1</b> A short introduction to hypothesis tests</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="htests.html"><a href="htests.html#null-v-alternative-hypothesis"><i class="fa fa-check"></i><b>13.1.1</b> Null v Alternative Hypothesis</a></li>
+<li class="chapter" data-level="13.1.2" data-path="htests.html"><a href="htests.html#descriptive-statistics-1"><i class="fa fa-check"></i><b>13.1.2</b> Descriptive statistics</a></li>
+<li class="chapter" data-level="13.1.3" data-path="htests.html"><a href="htests.html#test-statistics"><i class="fa fa-check"></i><b>13.1.3</b> Test Statistics</a></li>
+<li class="chapter" data-level="13.1.4" data-path="htests.html"><a href="htests.html#p-value"><i class="fa fa-check"></i><b>13.1.4</b> p-value</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="htests.html"><a href="htests.html#hypothesis-test-objects-htest"><i class="fa fa-check"></i><b>13.2</b> Hypothesis test objects: <code>htest</code></a></li>
+<li class="chapter" data-level="13.3" data-path="htests.html"><a href="htests.html#t-test-t.test"><i class="fa fa-check"></i><b>13.3</b> T-test: <code>t.test()</code></a><ul>
+<li class="chapter" data-level="13.3.1" data-path="htests.html"><a href="htests.html#sample-t-test"><i class="fa fa-check"></i><b>13.3.1</b> 1-sample t-test</a></li>
+<li class="chapter" data-level="13.3.2" data-path="htests.html"><a href="htests.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.3.2</b> 2-sample t-test</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="htests.html"><a href="htests.html#correlation-cor.test"><i class="fa fa-check"></i><b>13.4</b> Correlation: <code>cor.test()</code></a></li>
+<li class="chapter" data-level="13.5" data-path="htests.html"><a href="htests.html#chi-square-chsq.test"><i class="fa fa-check"></i><b>13.5</b> Chi-square: <code>chsq.test()</code></a><ul>
+<li class="chapter" data-level="13.5.1" data-path="htests.html"><a href="htests.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.5.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+</ul></li>
+<li class="chapter" data-level="13.6" data-path="htests.html"><a href="htests.html#test-your-r-might-4"><i class="fa fa-check"></i><b>13.6</b> Test your R might!</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>14</b> ANOVA</a><ul>
+<li class="chapter" data-level="14.1" data-path="anova.html"><a href="anova.html#full-factorial-between-subjects-anova"><i class="fa fa-check"></i><b>14.1</b> Full-factorial between-subjects ANOVA</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="anova.html"><a href="anova.html#what-does-anova-stand-for"><i class="fa fa-check"></i><b>14.1.1</b> What does ANOVA stand for?</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="anova.html"><a href="anova.html#steps-to-conduct-an-anova"><i class="fa fa-check"></i><b>14.2</b> 4 Steps to conduct an ANOVA</a></li>
+<li class="chapter" data-level="14.3" data-path="anova.html"><a href="anova.html#ex-one-way-anova"><i class="fa fa-check"></i><b>14.3</b> Ex: One-way ANOVA</a></li>
+<li class="chapter" data-level="14.4" data-path="anova.html"><a href="anova.html#ex-two-way-anova"><i class="fa fa-check"></i><b>14.4</b> Ex: Two-way ANOVA</a><ul>
+<li class="chapter" data-level="14.4.1" data-path="anova.html"><a href="anova.html#anova-with-interactions"><i class="fa fa-check"></i><b>14.4.1</b> ANOVA with interactions</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="anova.html"><a href="anova.html#type-i-type-ii-and-type-iii-anovas"><i class="fa fa-check"></i><b>14.5</b> Type I, Type II, and Type III ANOVAs</a></li>
+<li class="chapter" data-level="14.6" data-path="anova.html"><a href="anova.html#getting-additional-information-from-anova-objects"><i class="fa fa-check"></i><b>14.6</b> Getting additional information from ANOVA objects</a></li>
+<li class="chapter" data-level="14.7" data-path="anova.html"><a href="anova.html#repeated-measures-anova-using-the-lme4-package"><i class="fa fa-check"></i><b>14.7</b> Repeated measures ANOVA using the lme4 package</a></li>
+<li class="chapter" data-level="14.8" data-path="anova.html"><a href="anova.html#test-your-r-might-5"><i class="fa fa-check"></i><b>14.8</b> Test your R might!</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="jumpin.html"><a href="jumpin.html#regression"><i class="fa fa-check"></i><b>15</b> Regression</a><ul>
+<li class="chapter" data-level="15.1" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>15.1</b> The Linear Model</a></li>
+<li class="chapter" data-level="15.2" data-path="regression.html"><a href="regression.html#linear-regression-with-lm"><i class="fa fa-check"></i><b>15.2</b> Linear regression with <code>lm()</code></a><ul>
+<li class="chapter" data-level="15.2.1" data-path="regression.html"><a href="regression.html#estimating-the-value-of-diamonds-with-lm"><i class="fa fa-check"></i><b>15.2.1</b> Estimating the value of diamonds with <code>lm()</code></a></li>
+<li class="chapter" data-level="15.2.2" data-path="regression.html"><a href="regression.html#getting-model-fits-with-fitted.values"><i class="fa fa-check"></i><b>15.2.2</b> Getting model fits with <code>fitted.values</code></a></li>
+<li class="chapter" data-level="15.2.3" data-path="regression.html"><a href="regression.html#using-predict-to-predict-new-data-from-a-model"><i class="fa fa-check"></i><b>15.2.3</b> Using <code>predict()</code> to predict new data from a model</a></li>
+<li class="chapter" data-level="15.2.4" data-path="regression.html"><a href="regression.html#including-interactions-in-models-y-x1-x2"><i class="fa fa-check"></i><b>15.2.4</b> Including interactions in models: <code>y ~ x1 * x2</code></a></li>
+<li class="chapter" data-level="15.2.5" data-path="regression.html"><a href="regression.html#center-variables-before-computing-interactions"><i class="fa fa-check"></i><b>15.2.5</b> Center variables before computing interactions!</a></li>
+<li class="chapter" data-level="15.2.6" data-path="regression.html"><a href="regression.html#getting-an-anova-from-a-regression-model-with-aov"><i class="fa fa-check"></i><b>15.2.6</b> Getting an ANOVA from a regression model with <code>aov()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="regression.html"><a href="regression.html#comparing-regression-models-with-anova"><i class="fa fa-check"></i><b>15.3</b> Comparing regression models with <code>anova()</code></a></li>
+<li class="chapter" data-level="15.4" data-path="regression.html"><a href="regression.html#regression-on-non-normal-data-with-glm"><i class="fa fa-check"></i><b>15.4</b> Regression on non-Normal data with <code>glm()</code></a></li>
+<li class="chapter" data-level="15.5" data-path="regression.html"><a href="regression.html#logistic-regression-with-glmfamily-binomial"><i class="fa fa-check"></i><b>15.5</b> Logistic regression with <code>glm(family = &quot;binomial&quot;</code></a><ul>
+<li class="chapter" data-level="15.5.1" data-path="regression.html"><a href="regression.html#adding-a-regression-line-to-a-plot"><i class="fa fa-check"></i><b>15.5.1</b> Adding a regression line to a plot</a></li>
+<li class="chapter" data-level="15.5.2" data-path="regression.html"><a href="regression.html#transforming-skewed-variables-prior-to-standard-regression"><i class="fa fa-check"></i><b>15.5.2</b> Transforming skewed variables prior to standard regression</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="regression.html"><a href="regression.html#test-your-might-a-ship-auction"><i class="fa fa-check"></i><b>15.6</b> Test your might! A ship auction</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="solutions.html"><a href="solutions.html"><i class="fa fa-check"></i><b>16</b> Solutions</a><ul>
+<li class="chapter" data-level="16.1" data-path="solutions.html"><a href="solutions.html#chapter-4-the-basics"><i class="fa fa-check"></i><b>16.1</b> Chapter 4: The Basics</a></li>
+<li class="chapter" data-level="16.2" data-path="solutions.html"><a href="solutions.html#chapter-5-scalers-and-vectors"><i class="fa fa-check"></i><b>16.2</b> Chapter 5: Scalers and vectors</a></li>
+<li class="chapter" data-level="16.3" data-path="solutions.html"><a href="solutions.html#chapter-6-vector-functions"><i class="fa fa-check"></i><b>16.3</b> Chapter 6: Vector Functions</a></li>
+<li class="chapter" data-level="16.4" data-path="solutions.html"><a href="solutions.html#chapter-7-indexing-vectors-with"><i class="fa fa-check"></i><b>16.4</b> Chapter 7: Indexing vectors with []</a></li>
+<li class="chapter" data-level="16.5" data-path="solutions.html"><a href="solutions.html#chapter-8-matrices-and-dataframes"><i class="fa fa-check"></i><b>16.5</b> Chapter 8: Matrices and Dataframes</a></li>
+<li class="chapter" data-level="16.6" data-path="solutions.html"><a href="solutions.html#chapter-13-hypothesis-tests"><i class="fa fa-check"></i><b>16.6</b> Chapter 13: Hypothesis tests</a></li>
+<li class="chapter" data-level="16.7" data-path="solutions.html"><a href="solutions.html#chapter-14-anova"><i class="fa fa-check"></i><b>16.7</b> Chapter 14: ANOVA</a></li>
+<li class="chapter" data-level="16.8" data-path="solutions.html"><a href="solutions.html#chapter-15-regression"><i class="fa fa-check"></i><b>16.8</b> Chapter 15: Regression</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -334,9 +403,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="solutions" class="section level1">
-<h1><span class="header-section-number">Chapter 12</span> Solutions</h1>
+<h1><span class="header-section-number">Chapter 16</span> Solutions</h1>
 <div id="chapter-4-the-basics" class="section level2">
-<h2><span class="header-section-number">12.1</span> Chapter 4: The Basics</h2>
+<h2><span class="header-section-number">16.1</span> Chapter 4: The Basics</h2>
 <ol start="2" style="list-style-type: decimal">
 <li>Which (if any) of the following objects names is/are invalid?</li>
 </ol>
@@ -364,7 +433,7 @@ a +<span class="st"> </span><span class="dv">10</span>
 a       <span class="co"># It will return 10 because we never re-assigned a!</span></code></pre></div>
 </div>
 <div id="chapter-5-scalers-and-vectors" class="section level2">
-<h2><span class="header-section-number">12.2</span> Chapter 5: Scalers and vectors</h2>
+<h2><span class="header-section-number">16.2</span> Chapter 5: Scalers and vectors</h2>
 <ol style="list-style-type: decimal">
 <li>Create the vector [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] in three ways: once using <code>c()</code>, once using <code>a:b</code>, and once using <code>seq()</code>.</li>
 </ol>
@@ -426,33 +495,36 @@ a       <span class="co"># It will return 10 because we never re-assigned a!</sp
 <li>Create a vector containing 50 samples from a Normal distribution with a population mean of 20 and standard deviation of 2.</li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">50</span>, <span class="dt">mean =</span> <span class="dv">20</span>, <span class="dt">sd =</span> <span class="dv">2</span>)
-##  [1] 20 19 21 22 17 18 20 21 21 21 20 18 21 20 21 19 18 18 21 19 16 17 22
-## [24] 21 23 21 19 20 20 25 21 19 18 23 24 18 20 21 17 20 21 16 21 19 19 18
-## [47] 21 21 24 18</code></pre></div>
+##  [1] 20.03 17.90 23.26 22.92 18.30 18.63 20.71 20.90 19.06 17.47 19.04
+## [12] 18.57 18.11 20.19 18.12 21.07 21.55 19.16 18.63 21.45 22.97 19.58
+## [23] 22.81 21.50 19.04 19.83 21.36 16.97 17.58 20.38 21.06 23.31 21.76
+## [34] 19.60 20.92 18.82 19.63 20.83 19.28 22.07 23.18 16.88 20.21 20.31
+## [45] 19.35 21.31 19.61 22.91 17.77 18.49</code></pre></div>
 <ol start="9" style="list-style-type: decimal">
 <li>Create a vector containing 25 samples from a Uniform distribution with a lower bound of -100 and an upper bound of -50.</li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">runif</span>(<span class="dt">n =</span> <span class="dv">25</span>, <span class="dt">min =</span> -<span class="dv">100</span>, <span class="dt">max =</span> -<span class="dv">50</span>)
-##  [1] -88 -57 -52 -67 -74 -81 -95 -58 -73 -64 -77 -70 -94 -80 -72 -70 -80
-## [18] -76 -75 -52 -74 -84 -72 -93 -57</code></pre></div>
+##  [1] -97.94 -77.08 -97.34 -62.75 -85.64 -93.97 -79.86 -94.69 -81.70 -70.82
+## [11] -59.77 -97.33 -86.25 -69.65 -82.99 -57.63 -90.85 -96.31 -74.57 -51.16
+## [21] -92.23 -67.38 -66.79 -99.59 -88.71</code></pre></div>
 </div>
 <div id="chapter-6-vector-functions" class="section level2">
-<h2><span class="header-section-number">12.3</span> Chapter 6: Vector Functions</h2>
+<h2><span class="header-section-number">16.3</span> Chapter 6: Vector Functions</h2>
 <ol style="list-style-type: decimal">
 <li>Create a vector that shows the square root of the integers from 1 to 10.</li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dv">1</span>:<span class="dv">10</span>) ^<span class="st"> </span>.<span class="dv">5</span>
-##  [1] 1.0 1.4 1.7 2.0 2.2 2.4 2.6 2.8 3.0 3.2
+##  [1] 1.000 1.414 1.732 2.000 2.236 2.449 2.646 2.828 3.000 3.162
 
 <span class="co">#or</span>
 
 <span class="kw">sqrt</span>(<span class="dv">1</span>:<span class="dv">10</span>)
-##  [1] 1.0 1.4 1.7 2.0 2.2 2.4 2.6 2.8 3.0 3.2</code></pre></div>
+##  [1] 1.000 1.414 1.732 2.000 2.236 2.449 2.646 2.828 3.000 3.162</code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Renata thinks that she finds more treasure when she’s had a mug of grogg than when she doesn’t. To test this, she recorded how much treasure she found over 7 days without drinking any grogg (ie., sober), and then did the same over 7 days while drinking grogg (ie., drunk). Here are her results:</li>
 </ol>
 <table>
-<caption><span id="tab:unnamed-chunk-319">Table 12.1: </span>Renata’s treasure haul when she was sober and when she was drunk</caption>
+<caption><span id="tab:unnamed-chunk-442">Table 16.1: </span>Renata’s treasure haul when she was sober and when she was drunk</caption>
 <thead>
 <tr class="header">
 <th align="left">day</th>
@@ -505,67 +577,68 @@ drunk &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0
 <span class="kw">mean</span>(sober)
 ## [1] 2
 <span class="kw">mean</span>(drunk)
-## [1] 0.86</code></pre></div>
+## [1] 0.8571</code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>Using Renata’s data again, create a new vector called <code>difference</code> that shows how much more treasure Renata found when she was drunk and when she was not. What was the mean, median, and standard deviation of the difference?</li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">difference &lt;-<span class="st"> </span>sober -<span class="st"> </span>drunk
 
 <span class="kw">mean</span>(difference)
-## [1] 1.1
+## [1] 1.143
 <span class="kw">median</span>(difference)
 ## [1] 1
 <span class="kw">sd</span>(difference)
-## [1] 1.3</code></pre></div>
+## [1] 1.345</code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li>There’s an old parable that goes something like this. A man does some work for a king and needs to be paid. Because the man loves rice (who doesn’t?!), the man offers the king two different ways that he can be paid. <em>You can either pay me 100 kilograms of rice, or, you can pay me as follows: get a chessboard and put one grain of rice in the top left square. Then put 2 grains of rice on the next square, followed by 4 grains on the next, 8 grains on the next…and so on, where the amount of rice doubles on each square, until you get to the last square. When you are finished, give me all the grains of rice that would (in theory), fit on the chessboard.</em> The king, sensing that the man was an idiot for making such a stupid offer, immediately accepts the second option. He summons a chessboard, and begins counting out grains of rice one by one… Assuming that there are 64 squares on a chessboard, calculate how many grains of rice the main will receive. If one grain of rice weights 1/64000 kilograms, how many kilograms of rice did he get? <em>Hint: If you have trouble coming up with the answer, imagine how many grains are on the first, second, third and fourth squares, then try to create the vector that shows the number of grains on each square. Once you come up with that vector, you can easily calculate the final answer with the <code>sum()</code> function.</em></li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># First, let&#39;s create a vector of the amount of rice on each square:</span>
-rice &lt;-<span class="st"> </span><span class="dv">2</span> ^<span class="st"> </span>(<span class="dv">1</span>:<span class="dv">64</span>)
+<span class="co"># It should be 1, 2, 4, 8, ...</span>
+rice &lt;-<span class="st"> </span><span class="dv">2</span> ^<span class="st"> </span>(<span class="dv">0</span>:<span class="dv">63</span>)
 
 <span class="co"># Here are the first few spaces</span>
 <span class="kw">head</span>(rice)
-## [1]  2  4  8 16 32 64
+## [1]  1  2  4  8 16 32
 
 <span class="co"># The result is just the sum!</span>
 rice.total &lt;-<span class="st"> </span><span class="kw">sum</span>(rice)
 rice.total
-## [1] 3.7e+19
+## [1] 1.845e+19
 
 <span class="co"># How much does that weigh? Each grain weights 1/6400 kilograms:</span>
 rice.kg &lt;-<span class="st"> </span><span class="kw">sum</span>(rice) *<span class="st"> </span><span class="dv">1</span>/<span class="dv">6400</span>
 rice.kg
-## [1] 5.8e+15
+## [1] 2.882e+15
 
-<span class="co"># That&#39;s 5,800,000,000,000,000 kilograms of rice. Let&#39;s keep going....</span>
+<span class="co"># That&#39;s 2,900,000,000,000,000 kilograms of rice. Let&#39;s keep going....</span>
 <span class="co"># A kg of rice is 1,300 calories</span>
 
 rice.cal &lt;-<span class="st"> </span>rice.kg *<span class="st"> </span><span class="dv">1300</span>
 rice.cal
-## [1] 7.5e+18
+## [1] 3.747e+18
 
 <span class="co"># How many people can that feed for a year?</span>
 <span class="co"># A person needs about 2,250 calories a day, or 2,250 * 365 per year</span>
 
 rice.people.year &lt;-<span class="st"> </span>rice.cal /<span class="st"> </span>(<span class="dv">2250</span> *<span class="st"> </span><span class="dv">365</span>)
 rice.people.year
-## [1] 9.1e+12
+## [1] 4.563e+12
 
-<span class="co"># So, that amount of rice could feed 9,100,000,000,000 for a year</span>
+<span class="co"># So, that amount of rice could feed 4,600,000,000,000 for a year</span>
 <span class="co"># Assuming that the averge lifespan is 70 years, how many lifespans could this feed?</span>
 
 rice.people.life &lt;-<span class="st"> </span>rice.people.year /<span class="st"> </span><span class="dv">70</span>
 rice.people.life
-## [1] 1.3e+11
+## [1] 6.518e+10
 
-<span class="co"># Ok...so it could feed 130,000,000,000 (130 billion) people over their lives</span>
+<span class="co"># Ok...so it could feed 65,000,000,000 (65 billion) people over their lives</span>
 
 <span class="co"># Conclusion: King done screwed up.</span></code></pre></div>
 </div>
 <div id="chapter-7-indexing-vectors-with" class="section level2">
-<h2><span class="header-section-number">12.4</span> Chapter 7: Indexing vectors with []</h2>
+<h2><span class="header-section-number">16.4</span> Chapter 7: Indexing vectors with []</h2>
 <table>
-<caption><span id="tab:unnamed-chunk-323">Table 12.2: </span>Some of my favorite movies</caption>
+<caption><span id="tab:unnamed-chunk-446">Table 16.2: </span>Some of my favorite movies</caption>
 <thead>
 <tr class="header">
 <th align="left">movie</th>
@@ -712,7 +785,7 @@ rating &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">time[time &lt;<span class="st"> </span><span class="dv">0</span>] &lt;-<span class="st"> </span><span class="ot">NA</span>
 
 <span class="kw">mean</span>(time, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
-## [1] 104</code></pre></div>
+## [1] 104.2</code></pre></div>
 <ol start="7" style="list-style-type: decimal">
 <li>What were the names of the Comedy movies? What were their boxoffice totals? (Two separate questions)</li>
 </ol>
@@ -730,12 +803,12 @@ boxoffice[genre ==<span class="st"> &quot;Comedy&quot;</span>]
 <li>What was the median boxoffice revenue of movies rated either G or PG?</li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median</span>(boxoffice[rating %in%<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;G&quot;</span>, <span class="st">&quot;PG&quot;</span>)])
-## [1] 32
+## [1] 32.5
 
 <span class="co"># OR</span>
 
 <span class="kw">median</span>(boxoffice[rating ==<span class="st"> &quot;G&quot;</span> |<span class="st"> </span>rating ==<span class="st"> &quot;PG&quot;</span>])
-## [1] 32</code></pre></div>
+## [1] 32.5</code></pre></div>
 <ol start="10" style="list-style-type: decimal">
 <li>What percent of the movies were either rated R OR were comedies?</li>
 </ol>
@@ -743,7 +816,7 @@ boxoffice[genre ==<span class="st"> &quot;Comedy&quot;</span>]
 ## [1] 0.6</code></pre></div>
 </div>
 <div id="chapter-8-matrices-and-dataframes" class="section level2">
-<h2><span class="header-section-number">12.5</span> Chapter 8: Matrices and Dataframes</h2>
+<h2><span class="header-section-number">16.5</span> Chapter 8: Matrices and Dataframes</h2>
 <p>The following table shows the results of a survey of 10 pirates. In addition to some basic demographic information, the survey asked each pirate “What is your favorite superhero?”&quot; and “How many tattoos do you have?”&quot;</p>
 <table>
 <thead>
@@ -849,14 +922,14 @@ boxoffice[genre ==<span class="st"> &quot;Comedy&quot;</span>]
 <li>What was the mean age of female and male pirates separately?</li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(piratesurvey$age[piratesurvey$sex ==<span class="st"> &quot;F&quot;</span>])
-## [1] 24
+## [1] 24.5
 <span class="kw">mean</span>(piratesurvey$age[piratesurvey$sex ==<span class="st"> &quot;M&quot;</span>])
 ## [1] 32
 
 ## OR
 <span class="kw">with</span>(piratesurvey, 
      <span class="kw">mean</span>(age[sex ==<span class="st"> &quot;F&quot;</span>]))
-## [1] 24
+## [1] 24.5
 
 <span class="kw">with</span>(piratesurvey, 
      <span class="kw">mean</span>(age[sex ==<span class="st"> &quot;M&quot;</span>]))
@@ -866,7 +939,7 @@ boxoffice[genre ==<span class="st"> &quot;Comedy&quot;</span>]
 
 <span class="kw">mean</span>(<span class="kw">subset</span>(piratesurvey,
        <span class="dt">subset =</span> sex ==<span class="st"> &quot;F&quot;</span>)$age)
-## [1] 24
+## [1] 24.5
 
 <span class="kw">mean</span>(<span class="kw">subset</span>(piratesurvey,
        <span class="dt">subset =</span> sex ==<span class="st"> &quot;M&quot;</span>)$age)
@@ -888,13 +961,13 @@ boxoffice[genre ==<span class="st"> &quot;Comedy&quot;</span>]
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">with</span>(piratesurvey, 
      <span class="kw">mean</span>(sex[age &lt;<span class="st"> </span><span class="dv">32</span>] ==<span class="st"> &quot;F&quot;</span>))
-## [1] 0.88</code></pre></div>
+## [1] 0.875</code></pre></div>
 <ol start="6" style="list-style-type: decimal">
 <li>What percent of female pirates are under the age of 32?</li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">with</span>(piratesurvey, 
      <span class="kw">mean</span>(sex[age &lt;<span class="st"> </span><span class="dv">32</span>] ==<span class="st"> &quot;F&quot;</span>))
-## [1] 0.88</code></pre></div>
+## [1] 0.875</code></pre></div>
 <ol start="7" style="list-style-type: decimal">
 <li>Add a new column to the dataframe called <code>tattoos.per.year</code> which shows how many tattoos each pirate has for each year in their life.</li>
 </ol>
@@ -914,6 +987,404 @@ boxoffice[genre ==<span class="st"> &quot;Comedy&quot;</span>]
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">with</span>(piratesurvey, (tattoos[age &gt;<span class="st"> </span><span class="dv">20</span> &amp;<span class="st"> </span>superhero ==<span class="st"> &quot;Spiderman&quot;</span>]))
 ## [1] 5</code></pre></div>
+</div>
+<div id="chapter-13-hypothesis-tests" class="section level2">
+<h2><span class="header-section-number">16.6</span> Chapter 13: Hypothesis tests</h2>
+<ol style="list-style-type: decimal">
+<li>Do male pirates have significantly longer beards than female pirates? Test this by conducting the appropriate test on the relevant data in the pirates dataset.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">beard.sex.htest &lt;-<span class="st"> </span><span class="kw">t.test</span>(<span class="dt">formula =</span> beard.length ~<span class="st"> </span>sex,
+                           <span class="dt">subset =</span> sex %in%<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>),
+                           <span class="dt">data =</span> pirates)
+
+beard.sex.htest
+## 
+##  Welch Two Sample t-test
+## 
+## data:  beard.length by sex
+## t = -71, df = 500, p-value &lt;2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -19.54 -18.49
+## sample estimates:
+## mean in group female   mean in group male 
+##               0.3987              19.4163
+
+<span class="kw">apa</span>(beard.sex.htest)
+## [1] &quot;mean difference = 19.02, t(499.82) = -70.89, p &lt; 0.01 (2-tailed)&quot;</code></pre></div>
+<p><em>Answer</em>: Yes, men have significantly longer beards than women, mean difference = 19.02, t(499.82) = -70.89, p &lt; 0.01 (2-tailed)</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Are pirates whose favorite pixar movie is Up more or less likely to wear an eye patch than those whose favorite pixar movie is Inside Out? Test this by conducting the appropriate test on the relevant data in the pirates dataset.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">subset</span>(pirates, fav.pixar %in%<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Up&quot;</span>, <span class="st">&quot;Inside Out&quot;</span>))
+pixar.ep.table &lt;-<span class="st"> </span><span class="kw">table</span>(df$fav.pixar, df$eyepatch)
+
+pixar.ep.htest &lt;-<span class="st"> </span><span class="kw">chisq.test</span>(pixar.ep.table)
+pixar.ep.htest
+## 
+##  Pearson&#39;s Chi-squared test with Yates&#39; continuity correction
+## 
+## data:  pixar.ep.table
+## X-squared = 89, df = 1, p-value &lt;2e-16
+
+<span class="kw">apa</span>(pixar.ep.htest)
+## [1] &quot;X(1, N = 422) = 88.96, p &lt; 0.01 (2-tailed)&quot;</code></pre></div>
+<p><em>Answer</em>: Yes, pirates whose favorite movie is Inside Out are much more likely to wear an eye patch than those whose favorite Pixar movie is Up, X(1, N = 422) = 88.96, p &lt; 0.01 (2-tailed)</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Do longer movies have significantly higher budgets than shorter movies? Answer this question by conducting the appropriate test in the movies dataset.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">budget.time.htest &lt;-<span class="st"> </span><span class="kw">cor.test</span>(<span class="dt">formula =</span> ~<span class="st"> </span>budget +<span class="st"> </span>time,
+                              <span class="dt">data =</span> movies)
+
+budget.time.htest
+## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  budget and time
+## t = 14, df = 2300, p-value &lt;2e-16
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.2431 0.3182
+## sample estimates:
+##    cor 
+## 0.2811
+
+<span class="kw">apa</span>(budget.time.htest)
+## [1] &quot;r = 0.28, t(2313) = 14.09, p &lt; 0.01 (2-tailed)&quot;</code></pre></div>
+<p><em>Answer</em>: Yes, longer movies tend to have higher budgets than shorter movies, r = 0.28, t(2313) = 14.09, p &lt; 0.01 (2-tailed)</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Do R rated movies earn significantly more money than PG-13 movies? Test this by conducting a the appropriate test on the relevant data in the movies dataset.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">revenue.rating.htest &lt;-<span class="st"> </span><span class="kw">t.test</span>(<span class="dt">formula =</span> revenue.all ~<span class="st"> </span>rating,
+                               <span class="dt">subset =</span> rating %in%<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;R&quot;</span>, <span class="st">&quot;PG-13&quot;</span>),
+                               <span class="dt">data =</span> movies)
+
+revenue.rating.htest
+## 
+##  Welch Two Sample t-test
+## 
+## data:  revenue.all by rating
+## t = 11, df = 1800, p-value &lt;2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  56.21 81.52
+## sample estimates:
+## mean in group PG-13     mean in group R 
+##              148.49               79.63
+
+<span class="kw">apa</span>(revenue.rating.htest)
+## [1] &quot;mean difference = -68.86, t(1779.2) = 10.67, p &lt; 0.01 (2-tailed)&quot;</code></pre></div>
+<p><em>Answer</em>: No, R Rated movies do not earn significantly more than PG-13 movies. In fact, PG-13 movies earn significantly more than R rated movies.</p>
+<ol start="5" style="list-style-type: decimal">
+<li>Are certain movie genres significantly more common than others in the movies dataset?</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">genre.table &lt;-<span class="st"> </span><span class="kw">table</span>(movies$genre)
+genre.htest &lt;-<span class="st"> </span><span class="kw">chisq.test</span>(genre.table)
+
+genre.htest
+## 
+##  Chi-squared test for given probabilities
+## 
+## data:  genre.table
+## X-squared = 6400, df = 13, p-value &lt;2e-16
+
+<span class="kw">apa</span>(genre.htest)
+## [1] &quot;X(13, N = 4682) = 6408.91, p &lt; 0.01 (2-tailed)&quot;</code></pre></div>
+<p><em>Answer</em>: Yes, some movie genres are more common than others, X(13, N = 4682) = 6408.91, p &lt; 0.01 (2-tailed)</p>
+<ol start="6" style="list-style-type: decimal">
+<li>Do sequels and non-sequels differ in their ratings?</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">genre.sequel.table &lt;-<span class="st"> </span><span class="kw">table</span>(movies$genre, movies$sequel)
+
+genre.sequel.htest &lt;-<span class="st"> </span><span class="kw">chisq.test</span>(genre.sequel.table)
+## Warning in chisq.test(genre.sequel.table): Chi-squared approximation may be
+## incorrect
+
+<span class="kw">apa</span>(genre.sequel.htest)
+## [1] &quot;X(13, N = 4669) = 387.17, p &lt; 0.01 (2-tailed)&quot;</code></pre></div>
+<p><em>Answer</em>: Yes, sequels are more likely in some genres than others.</p>
+<p>Note: The error “Warning in chisq.test” we get in this code is due to the fact that some cells have no entries. This can make the test statistic unreliable. You can correct it by adding a value of 20 to every element in the table as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">genre.sequel.table &lt;-<span class="st"> </span><span class="kw">table</span>(movies$genre, movies$sequel)
+
+<span class="co"># Add 20 to each cell to correct for empty cells</span>
+genre.sequel.table &lt;-<span class="st"> </span>genre.sequel.table +<span class="st"> </span><span class="dv">20</span>
+
+<span class="co"># Here is the result</span>
+genre.sequel.table
+##                      
+##                          0    1
+##   Action               550  178
+##   Adventure            384  141
+##   Black Comedy          54   20
+##   Comedy              1078  172
+##   Concert/Performance   34   20
+##   Documentary           83   20
+##   Drama               1077   46
+##   Horror               235  105
+##   Multiple Genres       21   20
+##   Musical               92   25
+##   Reality               22   20
+##   Romantic Comedy      265   23
+##   Thriller/Suspense    425   41
+##   Western               57   21
+
+<span class="co"># Run a chi-square test on the table</span>
+genre.sequel.htest &lt;-<span class="st"> </span><span class="kw">chisq.test</span>(genre.sequel.table)
+
+<span class="co"># Print the result</span>
+genre.sequel.htest
+## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  genre.sequel.table
+## X-squared = 390, df = 13, p-value &lt;2e-16</code></pre></div>
+</div>
+<div id="chapter-14-anova" class="section level2">
+<h2><span class="header-section-number">16.7</span> Chapter 14: ANOVA</h2>
+<ol style="list-style-type: decimal">
+<li>Is there a significant relationship between a pirate’s favorite pixar movie and the number of tattoos (s)he has? Conduct an appropriate ANOVA with <code>fav.pixar</code> as the independent variable, and <code>tattoos</code> as the dependent variable. If there is a significant relationship, conduct a post-hoc test to determine which levels of the independent variable(s) differ.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pixar.aov &lt;-<span class="st"> </span><span class="kw">aov</span>(<span class="dt">formula =</span> tattoos ~<span class="st"> </span>fav.pixar,
+             <span class="dt">data =</span> pirates)
+
+<span class="kw">summary</span>(pixar.aov)
+##              Df Sum Sq Mean Sq F value Pr(&gt;F)
+## fav.pixar    14    226    16.1    1.43   0.13
+## Residuals   985  11105    11.3</code></pre></div>
+<p><em>Answer: No, there is no significant effect</em></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Is there a significant relationship between a pirate’s favorite pirate and how many tattoos (s)he has? Conduct an appropriate ANOVA with <code>favorite.pirate</code> as the independent variable, and <code>tattoos</code> as the dependent variable. If there is a significant relationship, conduct a post-hoc test to determine which levels of the independent variable(s) differ.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">favpirate.aov &lt;-<span class="st"> </span><span class="kw">aov</span>(<span class="dt">formula =</span> tattoos ~<span class="st"> </span>favorite.pirate,
+                     <span class="dt">data =</span> pirates)
+
+<span class="kw">summary</span>(favpirate.aov)
+##                  Df Sum Sq Mean Sq F value Pr(&gt;F)
+## favorite.pirate   5     83    16.6    1.47    0.2
+## Residuals       994  11248    11.3</code></pre></div>
+<p><em>Answer: No, there is no significant effect</em></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Now, repeat your analysis from the previous two questions, but include both independent variables <code>fav.pixar</code> and <code>favorite.pirate</code> in the ANOVA. Do your conclusions differ when you include both variables?</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pirpix.aov &lt;-<span class="st"> </span><span class="kw">aov</span>(<span class="dt">formula =</span> tattoos ~<span class="st"> </span>favorite.pirate +<span class="st"> </span>fav.pixar,
+                  <span class="dt">data =</span> pirates)
+
+<span class="kw">summary</span>(pirpix.aov)
+##                  Df Sum Sq Mean Sq F value Pr(&gt;F)
+## favorite.pirate   5     83    16.6    1.48   0.19
+## fav.pixar        14    218    15.6    1.39   0.15
+## Residuals       980  11029    11.2</code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li>Finally, test if there is an interaction between <code>fav.pixar</code> and <code>favorite.pirate</code> on number of tattoos.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pirpix.int.aov &lt;-<span class="st"> </span><span class="kw">aov</span>(<span class="dt">formula =</span> tattoos ~<span class="st"> </span>favorite.pirate *<span class="st"> </span>fav.pixar,
+                      <span class="dt">data =</span> pirates)
+
+<span class="kw">summary</span>(pirpix.int.aov)
+##                            Df Sum Sq Mean Sq F value Pr(&gt;F)
+## favorite.pirate             5     83    16.6    1.47   0.20
+## fav.pixar                  14    218    15.6    1.38   0.16
+## favorite.pirate:fav.pixar  65    685    10.5    0.93   0.63
+## Residuals                 915  10344    11.3</code></pre></div>
+<p><em>Answer: Nope still nothing</em></p>
+</div>
+<div id="chapter-15-regression" class="section level2">
+<h2><span class="header-section-number">16.8</span> Chapter 15: Regression</h2>
+<p>The following questions apply to the auction dataset in the yarrr package. This dataset contains information about 1,000 ships sold at a pirate auction.</p>
+<ol style="list-style-type: decimal">
+<li>The column jbb is the “Jack’s Blue Book” value of a ship. Create a regression object called <code>jbb.cannon.lm</code> predicting the JBB value of ships based on the number of cannons it has. Based on your result, how much value does each additional cannon bring to a ship?</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(yarrr)
+
+<span class="co"># jbb.cannon.lm model</span>
+<span class="co"># DV = jbb, IV = cannons</span>
+jbb.cannon.lm &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> jbb ~<span class="st"> </span>cannons, 
+                    <span class="dt">data =</span> auction)
+
+<span class="co"># Print jbb.cannon.lm coefficients</span>
+<span class="kw">summary</span>(jbb.cannon.lm)$coefficients
+##             Estimate Std. Error t value   Pr(&gt;|t|)
+## (Intercept)   1396.3     60.570   23.05  1.300e-94
+## cannons        100.7      2.956   34.08 1.932e-169</code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Repeat your previous regression, but do two separate regressions: one on modern ships and one on classic ships. Is there relationship between cannons and JBB the same for both types of ships?</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># jbb.cannon.modern.lm  model</span>
+<span class="co"># DV = jbb, IV = cannons. Only include modern ships</span>
+jbb.cannon.modern.lm &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> jbb ~<span class="st"> </span>cannons, 
+                          <span class="dt">data =</span> <span class="kw">subset</span>(auction, style ==<span class="st"> &quot;modern&quot;</span>))
+
+<span class="co"># jbb.cannon.classic.lm model</span>
+<span class="co"># DV = jbb, IV = cannons. Only include classic ships</span>
+jbb.cannon.classic.lm &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> jbb ~<span class="st"> </span>cannons, 
+                          <span class="dt">data =</span> <span class="kw">subset</span>(auction, style ==<span class="st"> &quot;classic&quot;</span>))
+
+<span class="co"># Print jbb.cannon.modern.lm coefficients</span>
+<span class="kw">summary</span>(jbb.cannon.modern.lm)$coefficients
+##             Estimate Std. Error t value   Pr(&gt;|t|)
+## (Intercept)  1217.28     71.845   16.94  3.535e-51
+## cannons        99.83      3.489   28.62 3.135e-107
+
+<span class="co"># Print jbb.cannon.classic.lm coefficients</span>
+<span class="kw">summary</span>(jbb.cannon.classic.lm)$coefficients
+##             Estimate Std. Error t value   Pr(&gt;|t|)
+## (Intercept)   1537.1     75.909   20.25  5.887e-67
+## cannons        103.6      3.725   27.81 2.019e-103</code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Is there a significant interaction between a ship’s style and its age on its JBB value? If so, how do you interpret the interaction?</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># int.lm model</span>
+<span class="co"># DV = jbb, IV = interaction between style and age</span>
+int.lm &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> jbb ~<span class="st"> </span>style *<span class="st"> </span>age,
+             <span class="dt">data =</span> auction
+             )
+
+<span class="co"># Print int.lm coefficients</span>
+<span class="kw">summary</span>(int.lm)$coefficients
+##                 Estimate Std. Error t value   Pr(&gt;|t|)
+## (Intercept)     3414.160    79.1958 43.1104 5.951e-230
+## stylemodern      -15.724   111.7383 -0.1407  8.881e-01
+## age                1.947     0.7565  2.5744  1.019e-02
+## stylemodern:age   -3.674     1.0702 -3.4329  6.218e-04</code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li>Create a regression object called  predicting the JBB value of ships based on cannons, rooms, age, condition, color, and style. Which aspects of a ship significantly affect its JBB value?</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># jbb.all.lm model</span>
+<span class="co"># DV = jbb, IV = everything (except price)]</span>
+jbb.all.lm &lt;-<span class="st"> </span><span class="kw">lm</span>(jbb ~<span class="st"> </span>cannons +<span class="st"> </span>rooms +<span class="st"> </span>age +<span class="st"> </span>condition +<span class="st"> </span>color +<span class="st"> </span>style,
+                 <span class="dt">data =</span> auction
+                 )
+
+<span class="co"># Print jbb.all.lm coefficients</span>
+<span class="kw">summary</span>(jbb.all.lm)$coefficients
+##             Estimate Std. Error  t value   Pr(&gt;|t|)
+## (Intercept)  134.362    52.8585   2.5419  1.118e-02
+## cannons      100.701     1.5512  64.9171  0.000e+00
+## rooms         50.463     1.6383  30.8025 1.176e-146
+## age            1.142     0.2046   5.5813  3.081e-08
+## condition    107.648     3.9133  27.5083 3.356e-124
+## colorbrown     4.916    16.6077   0.2960  7.673e-01
+## colorplum    -29.753    31.3247  -0.9498  3.424e-01
+## colorred      15.065    18.3227   0.8222  4.112e-01
+## colorsalmon  -19.426    20.7472  -0.9363  3.493e-01
+## stylemodern -397.782    12.8381 -30.9845 6.692e-148</code></pre></div>
+<ol start="5" style="list-style-type: decimal">
+<li>Create a regression object called  predicting the actual selling value of ships based on cannons, rooms, age, condition, color, and style. Based on the results, does the JBB do a good job of capturing the effect of each variable on a ship’s selling price?</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># price.all.lm model</span>
+<span class="co"># DV = price, IV = everything (except jbb)]</span>
+price.all.lm &lt;-<span class="st"> </span><span class="kw">lm</span>(price ~<span class="st"> </span>cannons +<span class="st"> </span>rooms +<span class="st"> </span>age +<span class="st"> </span>condition +<span class="st"> </span>color +<span class="st"> </span>style,
+                 <span class="dt">data =</span> auction
+                 )
+
+<span class="co"># Print price.all.lm coefficients</span>
+<span class="kw">summary</span>(price.all.lm)$coefficients
+##             Estimate Std. Error  t value   Pr(&gt;|t|)
+## (Intercept)  302.537    73.8092   4.0989  4.491e-05
+## cannons      100.010     2.1661  46.1710 3.964e-249
+## rooms         48.817     2.2876  21.3396  2.005e-83
+## age            1.223     0.2857   4.2801  2.049e-05
+## condition    104.114     5.4644  19.0532  3.402e-69
+## colorbrown  -119.202    23.1903  -5.1402  3.307e-07
+## colorplum     15.646    43.7404   0.3577  7.207e-01
+## colorred    -603.588    25.5850 -23.5915  5.351e-98
+## colorsalmon   70.368    28.9705   2.4290  1.532e-02
+## stylemodern -419.157    17.9265 -23.3819  1.269e-96</code></pre></div>
+<ol start="6" style="list-style-type: decimal">
+<li>Repeat your previous regression analysis, but instead of using the price as the dependent variable, use the binary variable <em>price.gt.3500</em> indicating whether or not the ship had a selling price greater than 3500. Call the new regression object <code>price.all.blr</code>. Make sure to use the appropriate regression function!!.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create new binary variable indicating whether</span>
+<span class="co">#   a ship sold for more than 3500</span>
+auction$price.gt<span class="fl">.3500</span> &lt;-<span class="st"> </span>auction$price &gt;<span class="st"> </span><span class="dv">3500</span>
+
+<span class="co"># price.all.blr model</span>
+<span class="co"># DV = price.gt.3500, IV = everything (except jbb)</span>
+price.all.blr &lt;-<span class="st"> </span><span class="kw">glm</span>(price.gt<span class="fl">.3500</span> ~<span class="st"> </span>cannons +<span class="st"> </span>rooms +<span class="st"> </span>age +<span class="st"> </span>condition +<span class="st"> </span>color +<span class="st"> </span>style,
+                 <span class="dt">data =</span> auction,
+                 <span class="dt">family =</span> binomial   <span class="co"># Logistic regression</span>
+                 )
+
+<span class="co"># price.all.blr coefficients</span>
+<span class="kw">summary</span>(price.all.blr)$coefficients
+##               Estimate Std. Error  z value  Pr(&gt;|z|)
+## (Intercept) -19.740094   1.424015 -13.8623 1.072e-43
+## cannons       0.625063   0.044209  14.1387 2.194e-45
+## rooms         0.268830   0.029646   9.0681 1.212e-19
+## age           0.009679   0.003302   2.9311 3.377e-03
+## condition     0.682512   0.074543   9.1559 5.388e-20
+## colorbrown   -0.892408   0.254883  -3.5012 4.631e-04
+## colorplum    -0.129114   0.508961  -0.2537 7.997e-01
+## colorred     -4.076423   0.410714  -9.9252 3.234e-23
+## colorsalmon   0.247897   0.317232   0.7814 4.345e-01
+## stylemodern  -2.403748   0.243188  -9.8843 4.869e-23</code></pre></div>
+<ol start="7" style="list-style-type: decimal">
+<li>Using <code>price.all.lm</code>, predict the selling price of the 3 new ships</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th align="right">cannons</th>
+<th align="right">rooms</th>
+<th align="right">age</th>
+<th align="right">condition</th>
+<th align="left">color</th>
+<th align="left">style</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">12</td>
+<td align="right">34</td>
+<td align="right">43</td>
+<td align="right">7</td>
+<td align="left">black</td>
+<td align="left">classic</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">26</td>
+<td align="right">54</td>
+<td align="right">3</td>
+<td align="left">black</td>
+<td align="left">modern</td>
+</tr>
+<tr class="odd">
+<td align="right">32</td>
+<td align="right">65</td>
+<td align="right">100</td>
+<td align="right">5</td>
+<td align="left">red</td>
+<td align="left">modern</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create a dataframe with new ship data</span>
+new.ships &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">cannons =</span> <span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">8</span>, <span class="dv">32</span>),
+                  <span class="dt">rooms =</span> <span class="kw">c</span>(<span class="dv">34</span>, <span class="dv">26</span>, <span class="dv">65</span>),
+                  <span class="dt">age =</span> <span class="kw">c</span>(<span class="dv">43</span>, <span class="dv">54</span>, <span class="dv">100</span>),
+                  <span class="dt">condition =</span> <span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">5</span>),
+                  <span class="dt">color =</span> <span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>),
+                  <span class="dt">style =</span> <span class="kw">c</span>(<span class="st">&quot;classic&quot;</span>, <span class="st">&quot;modern&quot;</span>, <span class="st">&quot;modern&quot;</span>),
+                  <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)
+
+<span class="co"># Predict new ship data based on price.all.lm model</span>
+<span class="kw">predict</span>(<span class="dt">object =</span> price.all.lm,
+        <span class="dt">newdata =</span> new.ships
+        )
+##    1    2    3 
+## 3944 2331 6296</code></pre></div>
+<ol start="8" style="list-style-type: decimal">
+<li>Using <code>price.all.blr</code>, predict the probability that the three new ships will have a selling price greater than 3500.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Calculate logit of predictions</span>
+log.pred &lt;-<span class="st"> </span><span class="kw">predict</span>(<span class="dt">object =</span> price.all.blr,
+                    <span class="dt">newdata =</span> new.ships
+                    )
+
+<span class="co"># Convert logits to probabilities</span>
+<span class="dv">1</span> /<span class="st"> </span>(<span class="dv">1</span> +<span class="st"> </span><span class="kw">exp</span>(-log.pred))
+##         1         2         3 
+## 0.8903847 0.0005085 0.9999998</code></pre></div>
 
 </div>
 </div>
@@ -922,7 +1393,7 @@ boxoffice[genre ==<span class="st"> &quot;Comedy&quot;</span>]
           </div>
         </div>
       </div>
-<a href="plotting1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="regression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -955,7 +1426,7 @@ gitbook.start({
 "link": "https://github.com/ndphillips/ThePiratesGuideToR/edit/master/98-answers.Rmd",
 "text": "Edit"
 },
-"download": null,
+"download": ["YaRrr.pdf"],
 "toc": {
 "collapse": "subsection"
 }

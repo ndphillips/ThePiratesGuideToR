@@ -2,6 +2,7 @@
 
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(collapse = TRUE)
+library(yarrr)
 ```
 
 
@@ -171,7 +172,8 @@ sd(difference)
 
 ```{r, collapse=TRUE}
 # First, let's create a vector of the amount of rice on each square:
-rice <- 2 ^ (1:64)
+# It should be 1, 2, 4, 8, ...
+rice <- 2 ^ (0:63)
 
 # Here are the first few spaces
 head(rice)
@@ -184,7 +186,7 @@ rice.total
 rice.kg <- sum(rice) * 1/6400
 rice.kg
 
-# That's 5,800,000,000,000,000 kilograms of rice. Let's keep going....
+# That's 2,900,000,000,000,000 kilograms of rice. Let's keep going....
 # A kg of rice is 1,300 calories
 
 rice.cal <- rice.kg * 1300
@@ -196,13 +198,13 @@ rice.cal
 rice.people.year <- rice.cal / (2250 * 365)
 rice.people.year
 
-# So, that amount of rice could feed 9,100,000,000,000 for a year
+# So, that amount of rice could feed 4,600,000,000,000 for a year
 # Assuming that the averge lifespan is 70 years, how many lifespans could this feed?
 
 rice.people.life <- rice.people.year / 70
 rice.people.life
 
-# Ok...so it could feed 130,000,000,000 (130 billion) people over their lives
+# Ok...so it could feed 65,000,000,000 (65 billion) people over their lives
 
 # Conclusion: King done screwed up.
 ```
@@ -438,3 +440,298 @@ piratesurvey$name[with(piratesurvey, sex == "F" & superhero == "Superman")]
 with(piratesurvey, (tattoos[age > 20 & superhero == "Spiderman"]))
 ```
 
+## Chapter 13: Hypothesis tests
+
+1. Do male pirates have significantly longer beards than female pirates? Test this by conducting the appropriate test on the relevant data in the pirates dataset.
+
+```{r}
+beard.sex.htest <- t.test(formula = beard.length ~ sex,
+                           subset = sex %in% c("male", "female"),
+                           data = pirates)
+
+beard.sex.htest
+
+apa(beard.sex.htest)
+```
+
+*Answer*: Yes, men have significantly longer beards than women, `r apa(beard.sex.htest)`
+
+2. Are pirates whose favorite pixar movie is Up more or less likely to wear an eye patch than those whose favorite pixar movie is Inside Out? Test this by conducting the appropriate test on the relevant data in the pirates dataset.
+
+```{r}
+df <- subset(pirates, fav.pixar %in% c("Up", "Inside Out"))
+pixar.ep.table <- table(df$fav.pixar, df$eyepatch)
+
+pixar.ep.htest <- chisq.test(pixar.ep.table)
+pixar.ep.htest
+
+apa(pixar.ep.htest)
+```
+
+*Answer*: Yes, pirates whose favorite movie is Inside Out are much more likely to wear an eye patch than those whose favorite Pixar movie is Up, `r apa(pixar.ep.htest)`
+
+3. Do longer movies have significantly higher budgets than shorter movies? Answer this question by conducting the appropriate test in the movies dataset.
+
+```{r}
+budget.time.htest <- cor.test(formula = ~ budget + time,
+                              data = movies)
+
+budget.time.htest
+
+apa(budget.time.htest)
+```
+
+*Answer*: Yes, longer movies tend to have higher budgets than shorter movies, `r apa(budget.time.htest)`
+
+4. Do R rated movies earn significantly more money than PG-13 movies? Test this by conducting a the appropriate test on the relevant data in the movies dataset.
+
+```{r}
+revenue.rating.htest <- t.test(formula = revenue.all ~ rating,
+                               subset = rating %in% c("R", "PG-13"),
+                               data = movies)
+
+revenue.rating.htest
+
+apa(revenue.rating.htest)
+```
+
+*Answer*: No, R Rated movies do not earn significantly more than PG-13 movies. In fact, PG-13 movies earn significantly more than R rated movies.
+
+5. Are certain movie genres significantly more common than others in the movies dataset?
+
+```{r}
+genre.table <- table(movies$genre)
+genre.htest <- chisq.test(genre.table)
+
+genre.htest
+
+apa(genre.htest)
+```
+
+*Answer*: Yes, some movie genres are more common than others, `r apa(genre.htest)`
+
+6. Do sequels and non-sequels differ in their ratings?
+
+```{r}
+genre.sequel.table <- table(movies$genre, movies$sequel)
+
+genre.sequel.htest <- chisq.test(genre.sequel.table)
+
+apa(genre.sequel.htest)
+```
+
+*Answer*: Yes, sequels are more likely in some genres than others.
+
+Note: The error "Warning in chisq.test" we get in this code is due to the fact that some cells have no entries. This can make the test statistic unreliable. You can correct it by adding a value of 20 to every element in the table as follows:
+
+```{r}
+genre.sequel.table <- table(movies$genre, movies$sequel)
+
+# Add 20 to each cell to correct for empty cells
+genre.sequel.table <- genre.sequel.table + 20
+
+# Here is the result
+genre.sequel.table
+
+# Run a chi-square test on the table
+genre.sequel.htest <- chisq.test(genre.sequel.table)
+
+# Print the result
+genre.sequel.htest
+```
+
+
+## Chapter 14: ANOVA
+
+
+1. Is there a significant relationship between a pirate's favorite pixar movie and the number of tattoos (s)he has? Conduct an appropriate ANOVA with `fav.pixar` as the independent variable, and `tattoos` as the dependent variable. If there is a significant relationship, conduct a post-hoc test to determine which levels of the independent variable(s) differ.
+
+```{r}
+pixar.aov <- aov(formula = tattoos ~ fav.pixar,
+             data = pirates)
+
+summary(pixar.aov)
+```
+
+*Answer: No, there is no significant effect*
+
+2. Is there a significant relationship between a pirate's favorite pirate and how many tattoos (s)he has? Conduct an appropriate ANOVA with `favorite.pirate` as the independent variable, and `tattoos` as the dependent variable. If there is a significant relationship, conduct a post-hoc test to determine which levels of the independent variable(s) differ.
+
+```{r}
+favpirate.aov <- aov(formula = tattoos ~ favorite.pirate,
+                     data = pirates)
+
+summary(favpirate.aov)
+```
+
+*Answer: No, there is no significant effect*
+
+3. Now, repeat your analysis from the previous two questions, but include both independent variables `fav.pixar` and `favorite.pirate` in the ANOVA. Do your conclusions differ when you include both variables?
+
+```{r}
+pirpix.aov <- aov(formula = tattoos ~ favorite.pirate + fav.pixar,
+                  data = pirates)
+
+summary(pirpix.aov)
+```
+
+4. Finally, test if there is an interaction between `fav.pixar` and `favorite.pirate` on number of tattoos.
+
+```{r}
+pirpix.int.aov <- aov(formula = tattoos ~ favorite.pirate * fav.pixar,
+                      data = pirates)
+
+summary(pirpix.int.aov)
+```
+
+*Answer: Nope still nothing*
+
+## Chapter 15: Regression
+
+
+The following questions apply to the auction dataset in the yarrr package. This dataset contains information about 1,000 ships sold at a pirate auction.
+
+
+1. The column jbb is the "Jack's Blue Book" value of a ship. Create a regression object  called `jbb.cannon.lm` predicting the JBB value of ships based on the number of cannons it has. Based on your result, how much value does each additional cannon bring to a ship?
+
+```{r}
+library(yarrr)
+
+# jbb.cannon.lm model
+# DV = jbb, IV = cannons
+jbb.cannon.lm <- lm(formula = jbb ~ cannons, 
+                    data = auction)
+
+# Print jbb.cannon.lm coefficients
+summary(jbb.cannon.lm)$coefficients
+```
+
+
+2. Repeat your previous regression, but do two separate regressions: one on modern ships and one on classic ships. Is there relationship between cannons and JBB the same for both types of ships?
+
+```{r}
+# jbb.cannon.modern.lm  model
+# DV = jbb, IV = cannons. Only include modern ships
+jbb.cannon.modern.lm <- lm(formula = jbb ~ cannons, 
+                          data = subset(auction, style == "modern"))
+
+# jbb.cannon.classic.lm model
+# DV = jbb, IV = cannons. Only include classic ships
+jbb.cannon.classic.lm <- lm(formula = jbb ~ cannons, 
+                          data = subset(auction, style == "classic"))
+
+# Print jbb.cannon.modern.lm coefficients
+summary(jbb.cannon.modern.lm)$coefficients
+
+# Print jbb.cannon.classic.lm coefficients
+summary(jbb.cannon.classic.lm)$coefficients
+```
+
+3. Is there a significant interaction between a ship's style and its age on its JBB value? If so, how do you interpret the interaction?
+
+```{r}
+# int.lm model
+# DV = jbb, IV = interaction between style and age
+int.lm <- lm(formula = jbb ~ style * age,
+             data = auction
+             )
+
+# Print int.lm coefficients
+summary(int.lm)$coefficients
+```
+
+4.  Create a regression object called \texttt{jbb.all.lm} predicting the JBB value of ships based on cannons, rooms, age, condition, color, and style. Which aspects of a ship significantly affect its JBB value?
+
+```{r}
+# jbb.all.lm model
+# DV = jbb, IV = everything (except price)]
+jbb.all.lm <- lm(jbb ~ cannons + rooms + age + condition + color + style,
+                 data = auction
+                 )
+
+# Print jbb.all.lm coefficients
+summary(jbb.all.lm)$coefficients
+```
+
+
+5.  Create a regression object called \texttt{price.all.lm} predicting the actual selling value of ships based on cannons, rooms, age, condition, color, and style. Based on the results, does the JBB do a good job of capturing the effect of each variable on a ship's selling price?
+
+```{r}
+# price.all.lm model
+# DV = price, IV = everything (except jbb)]
+price.all.lm <- lm(price ~ cannons + rooms + age + condition + color + style,
+                 data = auction
+                 )
+
+# Print price.all.lm coefficients
+summary(price.all.lm)$coefficients
+```
+
+
+
+6. Repeat your previous regression analysis, but instead of using the price as the dependent variable, use the binary variable *price.gt.3500* indicating whether or not the ship had a selling price greater than 3500. Call the new regression object `price.all.blr`. Make sure to use the appropriate regression function!!.
+
+```{r}
+# Create new binary variable indicating whether
+#   a ship sold for more than 3500
+auction$price.gt.3500 <- auction$price > 3500
+
+# price.all.blr model
+# DV = price.gt.3500, IV = everything (except jbb)
+price.all.blr <- glm(price.gt.3500 ~ cannons + rooms + age + condition + color + style,
+                 data = auction,
+                 family = binomial   # Logistic regression
+                 )
+
+# price.all.blr coefficients
+summary(price.all.blr)$coefficients
+```
+
+
+
+7. Using `price.all.lm`, predict the selling price of the 3 new ships
+
+```{r, echo = FALSE}
+new <- data.frame(cannons = c(12, 8, 32),
+                  rooms = c(34, 26, 65),
+                  age = c(43, 54, 100),
+                  condition = c(7, 3, 5),
+                  color = c("black", "black", "red"),
+                  style = c("classic", "modern", "modern"),
+                  stringsAsFactors = F
+                  )
+
+library(knitr)
+
+knitr::kable(new)
+```
+
+
+```{r}
+# Create a dataframe with new ship data
+new.ships <- data.frame(cannons = c(12, 8, 32),
+                  rooms = c(34, 26, 65),
+                  age = c(43, 54, 100),
+                  condition = c(7, 3, 5),
+                  color = c("black", "black", "red"),
+                  style = c("classic", "modern", "modern"),
+                  stringsAsFactors = FALSE)
+
+# Predict new ship data based on price.all.lm model
+predict(object = price.all.lm,
+        newdata = new.ships
+        )
+```
+
+
+8. Using `price.all.blr`, predict the probability that the three new ships will have a selling price greater than 3500.
+
+```{r}
+# Calculate logit of predictions
+log.pred <- predict(object = price.all.blr,
+                    newdata = new.ships
+                    )
+
+# Convert logits to probabilities
+1 / (1 + exp(-log.pred))
+```
