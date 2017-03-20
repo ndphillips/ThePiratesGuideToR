@@ -476,7 +476,6 @@ Let's use the `subset()` function to create a new, subsetted dataset from the `T
 
 ```{r}
 # Get rows of ToothGrowth where len < 20 AND supp == "OJ" AND dose >= 1
-
 subset(x = ToothGrowth,
       subset = len < 20 &
                supp == "OJ" &
@@ -488,13 +487,10 @@ As you can see, there were only two cases that satisfied all 3 of our selection 
 In the example above, I didn't specify an input to the `select` argument because I wanted all columns. However, if you just want certain columns, you can just name the columns you want in the `select` argument:
 
 ```{r}
-# Get rows of ToothGrowth where len > 30 AND supp == "VC", but only return the len and index columns
-if (is.null(ToothGrowth$index)) { # if 'index' column is missing
-    ToothGrowth$index <- 1:dim(ToothGrowth)[1]
-}
+# Get rows of ToothGrowth where len > 30 AND supp == "VC", but only return the len and dose columns
 subset(x = ToothGrowth,
     subset = len > 30 & supp == "VC",
-    select = c(len, index))
+    select = c(len, dose))
 ```
 
 
