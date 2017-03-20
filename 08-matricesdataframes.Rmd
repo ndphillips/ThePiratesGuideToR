@@ -489,11 +489,12 @@ In the example above, I didn't specify an input to the `select` argument because
 
 ```{r}
 # Get rows of ToothGrowth where len > 30 AND supp == "VC", but only return the len and index columns
-
+if (is.null(ToothGrowth$index)) { # if 'index' column is missing
+    ToothGrowth$index <- 1:dim(ToothGrowth)[1]
+}
 subset(x = ToothGrowth,
-      subset = len > 30 &
-               supp == "VC",
-      select = c(len, index))
+    subset = len > 30 & supp == "VC",
+    select = c(len, index))
 ```
 
 
