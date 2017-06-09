@@ -6,7 +6,7 @@ library(yarrr)
 ```
 
 
-If you're like most people, you think of R as a statistics program. However, while R is definitely the coolest, most badass, pirate-y way to conduct statistics -- it's not really a program. Rather, it's a programming \textit{language} that was written by and for statisticians. To learn more about the history of R...just...you know...Google it.
+If you're like most people, you think of R as a statistics program. However, while R is definitely the coolest, most badass, pirate-y way to conduct statistics -- it's not really a program. Rather, it's a programming *language* that was written by and for statisticians. To learn more about the history of R...just...you know...Google it.
 
 
 ```{r, fig.cap= "Ross Ihaka and Robert Gentlemen. You have these two pirates to thank for creating R! You might not think much of them now, but by the end of this book there's a good chance you'll be dressing up as one of them on Halloween.", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
@@ -40,7 +40,7 @@ In R, the command-line interpreter starts with the `>` symbol. This is called th
 1+1
 ```
 
-As you can see, R returned the (thankfully correct) value of 2. You'll notice that the console also returns the text [1]. This is just telling you you the index of the value next to it. Don't worry about this for now, it will make more sense later. As you can see, R can, thankfully, do basic calculations. In fact, at its heart, R is technically just a fancy calculator. But that's like saying Michael Jordan is *just* a fancy ball bouncer or Donald Trump is *just* a orange with a dead fox on his head. It (and they), are much more than that.
+As you can see, R returned the (thankfully correct) value of 2. You'll notice that the console also returns the text [1]. This is just telling you you the index of the value next to it. Don't worry about this for now, it will make more sense later. As you can see, R can, thankfully, do basic calculations. In fact, at its heart, R is technically just a fancy calculator. But that's like saying Michael Jordan is *just* a fancy ball bouncer or Donald Trump is *just* an orange with a dead fox on his head. It (and they), are much more than that.
 
 ## Writing R scripts in an editor
 
@@ -115,7 +115,7 @@ names(movies)
 # What percent of movies are sequels?
 mean(movies$sequel, na.rm = T)
 
-# How much did Pirate's of the Caribbean: On Strager Tides make?
+# How much did Pirate's of the Caribbean: On Stranger Tides make?
 movies$revenue.all[movies$name == 'Pirates of the Caribbean: On Stranger Tides']
 ```
 
@@ -236,7 +236,7 @@ To create new objects in R, you need to do *object assignment*. Object assignmen
 
 To do an assignment, we use the almighty `<-` operator called *assign* To assign something to a new object (or to change an existing object), use the notation `object <- ...`}, where `object` is the new (or updated) object, and `...` is whatever you want to store in `object`. Let's start by creating a very simple object called `a` and assigning the value of 100 to it:
 
-Good object names strike a balance between being easy to type (i.e.; short names) and interpret. If you have several datasets, it's probably not a good idea to name them `a`, `b`, `c` because you'll forget which is which. However, using long names like `March2015Group1OnlyFemales` will give you carpel tunnel syndrome.
+Good object names strike a balance between being easy to type (i.e.; short names) and interpret. If you have several datasets, it's probably not a good idea to name them `a`, `b`, `c` because you'll forget which is which. However, using long names like `March2015Group1OnlyFemales` will give you carpal tunnel syndrome.
 
 
 ```{r}
