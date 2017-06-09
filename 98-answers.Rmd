@@ -15,6 +15,7 @@ library(yarrr)
 ```{r, eval = FALSE}
 thisone <- 1
 THISONE <- 2
+1This <- 3
 this.one <- 3
 This.1 <- 4
 ThIS.....ON...E <- 5
