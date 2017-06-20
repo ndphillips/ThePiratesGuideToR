@@ -68,7 +68,7 @@ Table: (\#tab:matrixfunctions) Functions to create matrices and dataframes.
 
 `cbind()` and `rbind()` both create matrices by combining several vectors of the same length. `cbind()` combines vectors as columns, while `rbind()` combines them as rows.
 
-Let's use these functions to create a matrix with the numbers 1 through 30. First, we'll create three vectors of length 10, then we'll combine them into one matrix. As you will see, the `cbind()` function will combine the vectors as columns in the final matrix, while the `rbind()` function will combine them as rows.
+Let's use these functions to create a matrix with the numbers 1 through 30. First, we'll create three vectors of length 5, then we'll combine them into one matrix. As you will see, the `cbind()` function will combine the vectors as columns in the final matrix, while the `rbind()` function will combine them as rows.
 
 
 ```{r}
@@ -139,9 +139,9 @@ survey
 
 #### `stringsAsFactors = FALSE`
 
-There is one key argument to `data.frame()` and similar functions called `stringsAsFactors`. By default, the `data.frame()` function will automatically convert any string columns to a specific type of object called a **factor** in R. A factor is nominal variable that has a well-specified possible set of values that it can take on. For example, one can create a factor `sex` that can *only* take on the values `"male"` and `"female"`.
+There is one key argument to `data.frame()` and similar functions called `stringsAsFactors`. By default, the `data.frame()` function will automatically convert any string columns to a specific type of object called a **factor** in R. A factor is a nominal variable that has a well-specified possible set of values that it can take on. For example, one can create a factor `sex` that can *only* take on the values `"male"` and `"female"`.
 
-However, as I'm sure you're discover, having R automatically convert your string data to factors can lead to lots of strange results. For example: if you have a factor of sex data, but then you want to add a new value called `other`, R will yell at you and return an error. I *hate*, *hate*, *HATE* when this happens. While there are very, very rare cases when I find factors useful, I almost always don't want or need them. For this reason, I avoid them at all costs.
+However, as I'm sure you'll discover, having R automatically convert your string data to factors can lead to lots of strange results. For example: if you have a factor of sex data, but then you want to add a new value called `other`, R will yell at you and return an error. I *hate*, *hate*, *HATE* when this happens. While there are very, very rare cases when I find factors useful, I almost always don't want or need them. For this reason, I avoid them at all costs.
 
 To tell R to *not* convert your string columns to factors, you need to include the argument `stringsAsFactors = FALSE` when using functions such as `data.frame()`
 
@@ -244,7 +244,7 @@ To learn about the classes of columns in a dataframe, in addition to some other 
 str(ToothGrowth)
 ```
 
-Here, we can see that `ToothGrowth` is a dataframe with 60 observations (ie., rows) and 3 variables (ie., columns). We can also see that the column names are `len`, `supp`, and `dose`
+Here, we can see that `ToothGrowth` is a dataframe with 60 observations (ie., rows) and 5 variables (ie., columns). We can also see that the column names are `index`, `len`, `len.cm`, `supp`, and `dose`
 
 
 
@@ -403,7 +403,7 @@ ToothGrowth[1:6, 1]
 ```
 
 
-Because the first column is `len`, the primary dependent measure, this means that the tooth lengths in the first 5 observations are `r ToothGrowth[1:6, 1]`.
+Because the first column is `len`, the primary dependent measure, this means that the tooth lengths in the first 6 observations are `r ToothGrowth[1:6, 1]`.
 
 Of course, you can index matrices and dataframes with longer vectors to get more data. Now, let's look at the first 3 rows of columns 1 and 3:
 
@@ -549,14 +549,14 @@ Now let's say we want to add a new column called `bmi` which represents a person
 
 ```{r}
 # Calculate bmi
-health$weight / health$height ^ 2
+health$height / health$weight ^ 2
 ```
 
 As you can see, we have to retype the name of the dataframe for each column. However, using the `with()` function, we can make it a bit easier by saying the name of the dataframe once.
 
 ```{r}
 # Save typing by using with()
-with(health, weight / height ^ 2)
+with(health, height / weight ^ 2)
 ```
 
 As you can see, the results are identical. In this case, we didn't save so much typing. But if you are doing many calculations, then `with()` can save you a lot of typing. For example, contrast these two lines of code that perform identical calculations:
