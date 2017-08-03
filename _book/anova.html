@@ -169,7 +169,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="basics.html"><a href="basics.html#test-your-r-might"><i class="fa fa-check"></i><b>4.5</b> Test your R might!</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="scalersvectors.html"><a href="scalersvectors.html"><i class="fa fa-check"></i><b>5</b> Scalers and vectors</a><ul>
+<li class="chapter" data-level="5" data-path="scalersvectors.html"><a href="scalersvectors.html"><i class="fa fa-check"></i><b>5</b> Scalars and vectors</a><ul>
 <li class="chapter" data-level="5.1" data-path="scalersvectors.html"><a href="scalersvectors.html#scalars"><i class="fa fa-check"></i><b>5.1</b> Scalars</a></li>
 <li class="chapter" data-level="5.2" data-path="scalersvectors.html"><a href="scalersvectors.html#vectors"><i class="fa fa-check"></i><b>5.2</b> Vectors</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="scalersvectors.html"><a href="scalersvectors.html#ab"><i class="fa fa-check"></i><b>5.2.1</b> a:b</a></li>
@@ -433,7 +433,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="anova" class="section level1">
 <h1><span class="header-section-number">Chapter 14</span> ANOVA</h1>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-372"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-371"></span>
 <img src="images/menageatroiswine.png" alt="Menage a trois wine -- the perfect pairing for a 3-way ANOVA" width="20%" />
 <p class="caption">
 Figure 14.1: Menage a trois wine – the perfect pairing for a 3-way ANOVA
@@ -462,7 +462,7 @@ Figure 14.1: Menage a trois wine – the perfect pairing for a 3-way ANOVA
            <span class="dt">back.col =</span> <span class="kw">gray</span>(.<span class="dv">97</span>), 
            <span class="dt">cap.beans =</span> <span class="ot">TRUE</span>, 
            <span class="dt">theme =</span> <span class="dv">2</span>)</code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-374-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-373-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Given this data, we can use ANOVAs to answer four separate questions:</p>
 <table>
 <colgroup>
@@ -507,8 +507,8 @@ Figure 14.1: Menage a trois wine – the perfect pairing for a 3-way ANOVA
 <div id="what-does-anova-stand-for" class="section level3">
 <h3><span class="header-section-number">14.1.1</span> What does ANOVA stand for?</h3>
 <p>ANOVA stands for “Analysis of variance.” At first glance, this sounds like a strange name to give to a test that you use to find differences in <strong>means</strong>, not differences in <strong>variances</strong>. However, ANOVA actually uses variances to determine whether or not there are ‘real’ differences in the means of groups. Specifically, it looks at how variable data are <em>within</em> groups and compares that to the variability of data <em>between</em> groups. If the between-group variance is large compared to the within group variance, the ANOVA will conclude that the groups <em>do</em> differ in their means. If the between-group variance is small compared to the within group variance, the ANOVA will conclude that the groups are all the same. See Figure~ for a visual depiction of an ANOVA.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-375"></span>
-<img src="YaRrr_files/figure-html/unnamed-chunk-375-1.png" alt="How ANOVAs work. ANOVA compares the variability between groups (i.e.; the differences in the group means) to the variability within groups (i.e.; how much individuals generally differ from each other). If the variability between groups is small compared to the variability between groups, ANOVA will return a non-significant result -- suggesting that the groups are not really different. If the variability between groups is large compared to the variability within groups, ANOVA will return a significant result -- indicating that the groups are really different." width="576" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-374"></span>
+<img src="YaRrr_files/figure-html/unnamed-chunk-374-1.png" alt="How ANOVAs work. ANOVA compares the variability between groups (i.e.; the differences in the group means) to the variability within groups (i.e.; how much individuals generally differ from each other). If the variability between groups is small compared to the variability between groups, ANOVA will return a non-significant result -- suggesting that the groups are not really different. If the variability between groups is large compared to the variability within groups, ANOVA will return a significant result -- indicating that the groups are really different." width="576" />
 <p class="caption">
 Figure 14.2: How ANOVAs work. ANOVA compares the variability between groups (i.e.; the differences in the group means) to the variability within groups (i.e.; how much individuals generally differ from each other). If the variability between groups is small compared to the variability between groups, ANOVA will return a non-significant result – suggesting that the groups are not really different. If the variability between groups is large compared to the variability within groups, ANOVA will return a significant result – indicating that the groups are really different.
 </p>
@@ -551,7 +551,7 @@ mod.lm &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt"
                   <span class="dt">theme =</span> <span class="dv">2</span>, 
                   <span class="dt">cap.beans =</span> <span class="ot">TRUE</span>,
                   <span class="dt">main =</span> <span class="st">&quot;formula = time ~ cleaner&quot;</span>)</code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-380-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-379-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>From the plot, it looks like cleaners a and b are the same, and cleaner c is a bit faster. To test this, we’ll create an ANOVA object with <code>aov</code>. Because <code>time</code> is the dependent variable and <code>cleaner</code> is the independent variable, we’ll set the formula to <code>formula = time ~ cleaner</code></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Step 1: aov object with time as DV and cleaner as IV</span>
 cleaner.aov &lt;-<span class="st"> </span><span class="kw">aov</span>(<span class="dt">formula =</span> time ~<span class="st"> </span>cleaner,
@@ -848,7 +848,7 @@ gitbook.start({
 "link": "https://github.com/ndphillips/ThePiratesGuideToR/edit/master/14-anova.Rmd",
 "text": "Edit"
 },
-"download": null,
+"download": ["YaRrr.pdf"],
 "toc": {
 "collapse": "subsection"
 }

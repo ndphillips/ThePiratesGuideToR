@@ -169,7 +169,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="basics.html"><a href="basics.html#test-your-r-might"><i class="fa fa-check"></i><b>4.5</b> Test your R might!</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="scalersvectors.html"><a href="scalersvectors.html"><i class="fa fa-check"></i><b>5</b> Scalers and vectors</a><ul>
+<li class="chapter" data-level="5" data-path="scalersvectors.html"><a href="scalersvectors.html"><i class="fa fa-check"></i><b>5</b> Scalars and vectors</a><ul>
 <li class="chapter" data-level="5.1" data-path="scalersvectors.html"><a href="scalersvectors.html#scalars"><i class="fa fa-check"></i><b>5.1</b> Scalars</a></li>
 <li class="chapter" data-level="5.2" data-path="scalersvectors.html"><a href="scalersvectors.html#vectors"><i class="fa fa-check"></i><b>5.2</b> Vectors</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="scalersvectors.html"><a href="scalersvectors.html#ab"><i class="fa fa-check"></i><b>5.2.1</b> a:b</a></li>
@@ -433,7 +433,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="regression" class="section level1">
 <h1><span class="header-section-number">Chapter 15</span> Regression</h1>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-400"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-399"></span>
 <img src="images/diamondskull.jpg" alt="Insert funny caption here." width="60%" />
 <p class="caption">
 Figure 15.1: Insert funny caption here.
@@ -585,14 +585,14 @@ diamonds$value.lm &lt;-<span class="st"> </span>diamonds.lm$fitted.values
      <span class="dt">main =</span> <span class="st">&quot;Regression fits of diamond values&quot;</span>)
 
 <span class="kw">abline</span>(<span class="dt">b =</span> <span class="dv">1</span>, <span class="dt">a =</span> <span class="dv">0</span>)                             <span class="co"># Values should fall around this line!</span></code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-408-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-407-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="using-predict-to-predict-new-data-from-a-model" class="section level3">
 <h3><span class="header-section-number">15.2.3</span> Using <code>predict()</code> to predict new data from a model</h3>
 <p>Once you have created a regression model with <code>lm()</code>, you can use it to easily predict results from new datasets using the <code>predict()</code> function.</p>
 <p>For example, let’s say I discovered 3 new diamonds with the following characteristics:</p>
 <table>
-<caption><span id="tab:unnamed-chunk-409">Table 15.1: </span>3 new diamonds</caption>
+<caption><span id="tab:unnamed-chunk-408">Table 15.1: </span>3 new diamonds</caption>
 <thead>
 <tr class="header">
 <th align="right">weight</th>
@@ -796,7 +796,7 @@ diamonds.aov &lt;-<span class="st"> </span><span class="kw">aov</span>(diamonds.
 </tbody>
 </table>
 <p>We can use standard regression with <code>lm()</code>when your dependent variable is Normally distributed (more or less). When your dependent variable does not follow a nice bell-shaped Normal distribution, you need to use the <em>Generalized Linear Model</em> (GLM). the GLM is a more general class of linear models that change the distribution of your dependent variable. In other words, it allows you to use the linear model even when your dependent variable isn’t a normal bell-shape. Here are 4 of the most common distributions you can can model with <code>glm()</code>:</p>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-419-1.png" width="585.6" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-418-1.png" width="585.6" style="display: block; margin: auto;" /></p>
 </div>
 <div id="logistic-regression-with-glmfamily-binomial" class="section level2">
 <h2><span class="header-section-number">15.5</span> Logistic regression with <code>glm(family = &quot;binomial&quot;</code></h2>
@@ -1020,7 +1020,7 @@ gitbook.start({
 "link": "https://github.com/ndphillips/ThePiratesGuideToR/edit/master/15-regression.Rmd",
 "text": "Edit"
 },
-"download": null,
+"download": ["YaRrr.pdf"],
 "toc": {
 "collapse": "subsection"
 }

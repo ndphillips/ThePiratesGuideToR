@@ -169,7 +169,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="basics.html"><a href="basics.html#test-your-r-might"><i class="fa fa-check"></i><b>4.5</b> Test your R might!</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="scalersvectors.html"><a href="scalersvectors.html"><i class="fa fa-check"></i><b>5</b> Scalers and vectors</a><ul>
+<li class="chapter" data-level="5" data-path="scalersvectors.html"><a href="scalersvectors.html"><i class="fa fa-check"></i><b>5</b> Scalars and vectors</a><ul>
 <li class="chapter" data-level="5.1" data-path="scalersvectors.html"><a href="scalersvectors.html#scalars"><i class="fa fa-check"></i><b>5.1</b> Scalars</a></li>
 <li class="chapter" data-level="5.2" data-path="scalersvectors.html"><a href="scalersvectors.html#vectors"><i class="fa fa-check"></i><b>5.2</b> Vectors</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="scalersvectors.html"><a href="scalersvectors.html#ab"><i class="fa fa-check"></i><b>5.2.1</b> a:b</a></li>
@@ -454,19 +454,19 @@ Figure 3.1: Despite what you might find at family friendly waterparks – this i
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Look at the first few rows of the data</span>
 <span class="kw">head</span>(pirates)
 ##      id  sex age height weight headband college tattoos tchests parrots
-## 2     2 male  31 209.25  105.6      yes   JSSFP       9      11       0
-## 793 793 male  25 209.06  103.7      yes    CCCC       8      27       9
-## 430 430 male  26 201.31   98.6      yes    CCCC       4       7       1
-## 292 292 male  29 200.62  101.6      yes    CCCC       9       2       3
-## 895 895 male  27 200.59  102.6      yes    CCCC      12       1       1
-## 409 409 male  28 200.57   96.7      yes    CCCC       7      10       0
+## 2     2 male  31    209    106      yes   JSSFP       9      11       0
+## 793 793 male  25    209    104      yes    CCCC       8      27       9
+## 430 430 male  26    201     99      yes    CCCC       4       7       1
+## 292 292 male  29    201    102      yes    CCCC       9       2       3
+## 895 895 male  27    201    103      yes    CCCC      12       1       1
+## 409 409 male  28    201     97      yes    CCCC       7      10       0
 ##     favorite.pirate sword.type eyepatch sword.time beard.length
-## 2      Jack Sparrow    cutlass        0       1.11           21
-## 793        Anicetus    cutlass        1       1.11           16
-## 430    Jack Sparrow    cutlass        1       0.90           14
-## 292    Jack Sparrow      sabre        1       9.90           14
-## 895            Hook    cutlass        1       2.29           25
-## 409    Jack Sparrow    cutlass        1       1.21           15
+## 2      Jack Sparrow    cutlass        0        1.1           21
+## 793        Anicetus    cutlass        1        1.1           16
+## 430    Jack Sparrow    cutlass        1        0.9           14
+## 292    Jack Sparrow      sabre        1        9.9           14
+## 895            Hook    cutlass        1        2.3           25
+## 409    Jack Sparrow    cutlass        1        1.2           15
 ##               fav.pixar grogg
 ## 2                WALL-E     9
 ## 793 Monsters University     8
@@ -492,11 +492,11 @@ Figure 3.1: Despite what you might find at family friendly waterparks – this i
 <p>Now let’s calculate some basic statistics on the entire dataset. We’ll calculate the mean age, maximum height, and number of pirates of each sex:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># What is the mean age?</span>
 <span class="kw">mean</span>(pirates$age)
-## [1] 27.36
+## [1] 27
 
 <span class="co"># What was the tallest pirate?</span>
 <span class="kw">max</span>(pirates$height)
-## [1] 209.25
+## [1] 209
 
 <span class="co"># How many pirates are there of each sex?</span>
 <span class="kw">table</span>(pirates$sex)
@@ -508,10 +508,10 @@ Figure 3.1: Despite what you might find at family friendly waterparks – this i
 <span class="kw">aggregate</span>(<span class="dt">formula =</span> age ~<span class="st"> </span>sex,
           <span class="dt">data =</span> pirates,
           <span class="dt">FUN =</span> mean)
-##      sex      age
-## 1 female 29.92241
-## 2   male 24.96735
-## 3  other 27.00000</code></pre></div>
+##      sex age
+## 1 female  30
+## 2   male  25
+## 3  other  27</code></pre></div>
 </div>
 <div id="plotting" class="section level2">
 <h2><span class="header-section-number">3.3</span> Plotting</h2>
@@ -578,13 +578,13 @@ model &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">
 ##  Welch Two Sample t-test
 ## 
 ## data:  age by headband
-## t = 0.35135, df = 135.47, p-value = 0.7259
+## t = 0.4, df = 100, p-value = 0.7
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -1.030754  1.476126
+##  -1.0  1.5
 ## sample estimates:
 ##  mean in group no mean in group yes 
-##          27.55752          27.33484</code></pre></div>
+##                28                27</code></pre></div>
 <p>With a p-value of 0.7259, we don’t have sufficient evidence say there is a difference in the men age of pirates who wear headbands and those that do not.</p>
 <p>Next, let’s test if there a significant correlation between a pirate’s height and weight using the <code>cor.test()</code> function:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor.test</span>(<span class="dt">formula =</span> ~<span class="st"> </span>height +<span class="st"> </span>weight,
@@ -593,13 +593,13 @@ model &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">
 ##  Pearson&#39;s product-moment correlation
 ## 
 ## data:  height and weight
-## t = 81.161, df = 998, p-value &lt; 2.2e-16
+## t = 80, df = 1000, p-value &lt;2e-16
 ## alternative hypothesis: true correlation is not equal to 0
 ## 95 percent confidence interval:
-##  0.9232371 0.9396050
+##  0.92 0.94
 ## sample estimates:
-##       cor 
-## 0.9318938</code></pre></div>
+##  cor 
+## 0.93</code></pre></div>
 <p>We got a p-value of <code>p &lt; 2.2e-16</code>, that’s scientific notation for <code>p &lt; .00000000000000016</code> – which is pretty much 0. Thus, we’d conclude that there is a significant (positive) relationship between a pirate’s height and weight.</p>
 <p>Now, let’s do an ANOVA testing if there is a difference between the number of tattoos pirates have based on their favorite sword</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create tattoos model</span>
@@ -611,9 +611,9 @@ tat.sword.lm &lt;-<span class="st"> </span><span class="kw">lm</span>(<span clas
 ## Analysis of Variance Table
 ## 
 ## Response: tattoos
-##             Df Sum Sq Mean Sq F value    Pr(&gt;F)    
-## sword.type   3 1587.8  529.28  54.106 &lt; 2.2e-16 ***
-## Residuals  996 9743.1    9.78                      
+##             Df Sum Sq Mean Sq F value Pr(&gt;F)    
+## sword.type   3   1588     529    54.1 &lt;2e-16 ***
+## Residuals  996   9743      10                   
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre></div>
 <p>Sure enough, we see another very small p-value of <code>p &lt; 2.2e-16</code>, suggesting that the number of tattoos pirate’s have are different based on their favorite sword.</p>
@@ -632,21 +632,21 @@ tchests.model &lt;-<span class="st"> </span><span class="kw">lm</span>(<span cla
 ## lm(formula = tchests ~ age + weight + tattoos, data = pirates)
 ## 
 ## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -33.302 -15.832  -6.860   8.407 119.966 
+##    Min     1Q Median     3Q    Max 
+## -33.30 -15.83  -6.86   8.41 119.97 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)  5.19084    7.18437   0.723     0.47    
-## age          0.78177    0.13438   5.818 8.03e-09 ***
-## weight      -0.09013    0.07183  -1.255     0.21    
-## tattoos      0.25398    0.22550   1.126     0.26    
+## (Intercept)   5.1908     7.1844    0.72     0.47    
+## age           0.7818     0.1344    5.82    8e-09 ***
+## weight       -0.0901     0.0718   -1.25     0.21    
+## tattoos       0.2540     0.2255    1.13     0.26    
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 23.99 on 996 degrees of freedom
-## Multiple R-squared:  0.04056,    Adjusted R-squared:  0.03767 
-## F-statistic: 14.04 on 3 and 996 DF,  p-value: 5.751e-09</code></pre></div>
+## Residual standard error: 24 on 996 degrees of freedom
+## Multiple R-squared:  0.0406, Adjusted R-squared:  0.0377 
+## F-statistic:   14 on 3 and 996 DF,  p-value: 5.75e-09</code></pre></div>
 <p>It looks like the only significant predictor of the number of treasure chests that a pirate has found is his/her age. There does not seem to be significant effect of weight or tattoos.</p>
 </div>
 <div id="bayesian-statistics" class="section level2">
@@ -661,7 +661,7 @@ tchests.model &lt;-<span class="st"> </span><span class="kw">lm</span>(<span cla
         <span class="dt">data =</span> pirates)
 ## Bayes factor analysis
 ## --------------
-## [1] Alt., r=0.707 : 0.1187807 ±0%
+## [1] Alt., r=0.707 : 0.12 ±0%
 ## 
 ## Against denominator:
 ##   Null, mu1-mu2 = 0 
@@ -714,7 +714,7 @@ gitbook.start({
 "link": "https://github.com/ndphillips/ThePiratesGuideToR/edit/master/03-jumpin.Rmd",
 "text": "Edit"
 },
-"download": null,
+"download": ["YaRrr.pdf"],
 "toc": {
 "collapse": "subsection"
 }

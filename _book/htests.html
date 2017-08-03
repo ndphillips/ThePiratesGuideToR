@@ -169,7 +169,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="basics.html"><a href="basics.html#test-your-r-might"><i class="fa fa-check"></i><b>4.5</b> Test your R might!</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="scalersvectors.html"><a href="scalersvectors.html"><i class="fa fa-check"></i><b>5</b> Scalers and vectors</a><ul>
+<li class="chapter" data-level="5" data-path="scalersvectors.html"><a href="scalersvectors.html"><i class="fa fa-check"></i><b>5</b> Scalars and vectors</a><ul>
 <li class="chapter" data-level="5.1" data-path="scalersvectors.html"><a href="scalersvectors.html#scalars"><i class="fa fa-check"></i><b>5.1</b> Scalars</a></li>
 <li class="chapter" data-level="5.2" data-path="scalersvectors.html"><a href="scalersvectors.html#vectors"><i class="fa fa-check"></i><b>5.2</b> Vectors</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="scalersvectors.html"><a href="scalersvectors.html#ab"><i class="fa fa-check"></i><b>5.2.1</b> a:b</a></li>
@@ -433,7 +433,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="htests" class="section level1">
 <h1><span class="header-section-number">Chapter 13</span> Hypothesis Tests</h1>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-331"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-330"></span>
 <img src="images/piratetattoo.jpg" alt="Sadly, this still counts as just one tattoo." width="40%" />
 <p class="caption">
 Figure 13.1: Sadly, this still counts as just one tattoo.
@@ -488,8 +488,8 @@ bp.survey &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span
                  <span class="dt">ylab =</span> <span class="st">&quot;Number of Body Piercings&quot;</span>,
                  <span class="dt">xlab =</span> <span class="st">&quot;Group&quot;</span>, 
                  <span class="dt">theme =</span> <span class="dv">2</span>, <span class="dt">point.o =</span> .<span class="dv">8</span>, <span class="dt">cap.beans =</span> <span class="ot">TRUE</span>)</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-335"></span>
-<img src="YaRrr_files/figure-html/unnamed-chunk-335-1.png" alt="A Pirateplot of the body piercing data." width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-334"></span>
+<img src="YaRrr_files/figure-html/unnamed-chunk-334-1.png" alt="A Pirateplot of the body piercing data." width="672" />
 <p class="caption">
 Figure 13.2: A Pirateplot of the body piercing data.
 </p>
@@ -551,7 +551,7 @@ bp.test$p.value
 </div>
 <div id="p-values-are-bullshit-detectors-against-the-null-hypothesis" class="section level4">
 <h4><span class="header-section-number">13.1.4.2</span> p-values are bullshit detectors against the null hypothesis</h4>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-339"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-338"></span>
 <img src="images/bsdetector.jpg" alt="p-values are like bullshit detectors against the null hypothesis. The smaller the p-value, the more likely it is that the null-hypothesis (the idea that the groups are the same) is bullshit." width="60%" />
 <p class="caption">
 Figure 13.3: p-values are like bullshit detectors against the null hypothesis. The smaller the p-value, the more likely it is that the null-hypothesis (the idea that the groups are the same) is bullshit.
@@ -567,7 +567,7 @@ Figure 13.3: p-values are like bullshit detectors against the null hypothesis. T
 <h4><span class="header-section-number">13.1.4.4</span> Does the p-value tell us the probability that the null hypothesis is true?</h4>
 <p><strong>No!!! The p-value does not tell you the probability that the null hypothesis is true</strong>. In other words, if you calculate a p-value of .04, this does not mean that the probability that the null hypothesis is true is 4%. Rather, it means that <em>if the null hypothesis was true</em>, the probability of obtaining the result you got is 4%. Now, this does indeed set off our bullshit detector, but again, it does not mean that the probability that the null hypothesis is true is 4%.</p>
 <p>Let me convince you of this with a short example. Imagine that you and your partner have been trying to have a baby for the past year. One day, your partner calls you and says “Guess what! I took a pregnancy test and it came back positive!! I’m pregnant!!” So, given the positive pregnancy test, what is the probability that your partner is really pregnant?</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-340"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-339"></span>
 <img src="images/juniorposter.jpeg" alt="Despite what you may see in movies, men cannot get pregnant. And despite what you may want to believe, p-values do not tell you the probability that the null hypothesis is true!" width="40%" />
 <p class="caption">
 Figure 13.4: Despite what you may see in movies, men cannot get pregnant. And despite what you may want to believe, p-values do not tell you the probability that the null hypothesis is true!
@@ -625,7 +625,7 @@ height.htest$conf.int
 </div>
 <div id="t-test-t.test" class="section level2">
 <h2><span class="header-section-number">13.3</span> T-test: <code>t.test()</code></h2>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-345-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-344-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>To compare the mean of 1 group to a specific value, or to compare the means of 2 groups, you do a <em>t-test</em>. The t-test function in R is <code>t.test()</code>. The <code>t.test()</code> function can take several arguments, here I’ll emphasize a few of them. To see them all, check the help menu for t.test (<code>?t.test</code>).</p>
 <div id="sample-t-test" class="section level3">
 <h3><span class="header-section-number">13.3.1</span> 1-sample t-test</h3>
@@ -807,8 +807,8 @@ tatage.htest
 </tbody>
 </table>
 <p>Next we’ll cover two-sample correlation tests. In a correlation test, you are accessing the relationship between two variables on a ratio or interval scale: like height and weight, or income and beard length. The test statistic in a correlation test is called a <em>correlation coefficient</em> and is represented by the letter r. The coefficient can range from -1 to +1, with -1 meaning a strong negative relationship, and +1 meaning a strong positive relationship. The null hypothesis in a correlation test is a correlation of 0, which means no relationship at all:</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-356"></span>
-<img src="YaRrr_files/figure-html/unnamed-chunk-356-1.png" alt="Three different correlations. A strong negative correlation, a very small positive correlation, and a strong positive correlation." width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-355"></span>
+<img src="YaRrr_files/figure-html/unnamed-chunk-355-1.png" alt="Three different correlations. A strong negative correlation, a very small positive correlation, and a strong positive correlation." width="672" />
 <p class="caption">
 Figure 13.5: Three different correlations. A strong negative correlation, a very small positive correlation, and a strong positive correlation.
 </p>
@@ -1049,7 +1049,7 @@ gitbook.start({
 "link": "https://github.com/ndphillips/ThePiratesGuideToR/edit/master/13-htests.Rmd",
 "text": "Edit"
 },
-"download": null,
+"download": ["YaRrr.pdf"],
 "toc": {
 "collapse": "subsection"
 }

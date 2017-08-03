@@ -169,7 +169,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="basics.html"><a href="basics.html#test-your-r-might"><i class="fa fa-check"></i><b>4.5</b> Test your R might!</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="scalersvectors.html"><a href="scalersvectors.html"><i class="fa fa-check"></i><b>5</b> Scalers and vectors</a><ul>
+<li class="chapter" data-level="5" data-path="scalersvectors.html"><a href="scalersvectors.html"><i class="fa fa-check"></i><b>5</b> Scalars and vectors</a><ul>
 <li class="chapter" data-level="5.1" data-path="scalersvectors.html"><a href="scalersvectors.html#scalars"><i class="fa fa-check"></i><b>5.1</b> Scalars</a></li>
 <li class="chapter" data-level="5.2" data-path="scalersvectors.html"><a href="scalersvectors.html#vectors"><i class="fa fa-check"></i><b>5.2</b> Vectors</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="scalersvectors.html"><a href="scalersvectors.html#ab"><i class="fa fa-check"></i><b>5.2.1</b> a:b</a></li>
@@ -433,7 +433,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="functions" class="section level1">
 <h1><span class="header-section-number">Chapter 16</span> Custom functions</h1>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-429"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-428"></span>
 <img src="images/bigdeal.jpg" alt="Functions. They're kind of a big deal." width="40%" />
 <p class="caption">
 Figure 16.1: Functions. They’re kind of a big deal.
@@ -473,7 +473,7 @@ top.text &lt;-<span class="st"> </span><span class="kw">paste</span>(
 <span class="kw">piratehist</span>(pirates$age,
         <span class="dt">xlab =</span> <span class="st">&quot;Age&quot;</span>,
         <span class="dt">main =</span> <span class="st">&quot;Pirates&#39; Ages&quot;</span>)</code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-431-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-430-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>As you can see, the resulting plot has all the customisations I specified in the function. So now, anytime I want to make a fancy pirate-y histogram, I can just use the <code>piratehist()</code> function rather than having to always write all the raw code from scratch.</p>
 <p>Of course, functions are limited to creating plots…oh no. You can write a function to do <em>anything</em> that you can program in R. Just think about a function as a container for R-code stored behind the scenes for you to use without having to see (or write) the code again. Now, if there’s anything you like to do repeatedly in R (like making multiple customized plots, you can define the code just once in a new function rather than having to write it all again and again.Some of you reading this will quickly see how how writing your own functions can save you tons of time. For those of you who haven’t…trust me, this is a big deal.</p>
 </div>
@@ -607,7 +607,7 @@ if(what ==<span class="st"> &quot;tellmeajoke&quot;</span>) {
 <p>Let’s try the <code>show.me()</code> function with different arguments:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">show.me</span>(<span class="dt">x =</span> pirates$beard.length, 
         <span class="dt">what =</span> <span class="st">&quot;plot&quot;</span>)</code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-443-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-442-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Looks good! Now let’s get the same function to tell us some statistics about the data by setting <code>what = &quot;stats&quot;</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">show.me</span>(<span class="dt">x =</span> pirates$beard.length, 
         <span class="dt">what =</span> <span class="st">&quot;stats&quot;</span>)
@@ -688,7 +688,7 @@ if(add.modeltext ==<span class="st"> </span><span class="ot">TRUE</span>) {
               <span class="dt">xlab =</span> <span class="st">&quot;Age&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Treasure Chests Found&quot;</span>,
               <span class="dt">pch =</span> <span class="dv">16</span>,
               <span class="dt">col =</span> <span class="kw">gray</span>(.<span class="dv">2</span>, .<span class="dv">3</span>))</code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-447-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-446-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div id="seeing-function-code" class="section level3">
 <h3><span class="header-section-number">16.4.1</span> Seeing function code</h3>
 <p>Because R is awesome, you can view the code underlying most functions by just evaluating the name of the function (without any parentheses or arguments). For example, the <code>yarrr</code> package contains a function called <code>transparent()</code> that converts standard colors into transparent colors. To see the code contained in the function, just evaluate its name:</p>
@@ -803,7 +803,7 @@ if(add.ci ==<span class="st"> </span><span class="ot">TRUE</span>) {
               <span class="dt">main =</span> <span class="st">&quot;Treasure Chests found&quot;</span>,
               <span class="dt">xlab =</span> <span class="st">&quot;Number of Chests&quot;</span>,
               <span class="dt">col =</span> <span class="st">&quot;lightblue&quot;</span>)</code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-457-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-456-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>As you can see, R has passed our optional plotting arguments down to the main <code>hist()</code> function in the function code.</p>
 </div>
 </div>
@@ -840,7 +840,7 @@ if(add.ci ==<span class="st"> </span><span class="ot">TRUE</span>) {
               <span class="dt">add.regression =</span> <span class="ot">TRUE</span>,
               <span class="dt">add.means =</span> <span class="ot">TRUE</span>,
               <span class="dt">add.test =</span> <span class="ot">TRUE</span>)</code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-465-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-464-1.png" width="672" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
@@ -882,7 +882,7 @@ gitbook.start({
 "link": "https://github.com/ndphillips/ThePiratesGuideToR/edit/master/16-functions.Rmd",
 "text": "Edit"
 },
-"download": null,
+"download": ["YaRrr.pdf"],
 "toc": {
 "collapse": "subsection"
 }

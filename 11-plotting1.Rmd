@@ -171,7 +171,7 @@ par("xpd" = FALSE)
 
 ```
 
-If you're a lonely, sexually repressed, 50+ year old housewife, then you might be interested in shades of gray. If so, the function \texttt{gray(x)} is your answer. The `gray()` function takes two arguments, `level` and `alpha`, and returns a shade of gray. For example, `gray(level = 1)` will return white. The second `alpha` argument specifies how transparent to make the color on a scale from 0 (completely transparent), to 1 (not transparent at all). The default value for alpha is 1 (not transparent at all). See Figure \@ref(fig:graylevels) for examples.
+If you're into erotic romance and BDSM, then you might be interested in [Shades of Gray](https://en.wikipedia.org/wiki/Fifty_Shades_of_Grey). If so, the function \texttt{gray(x)} is your answer. The `gray()` function takes two arguments, `level` and `alpha`, and returns a shade of gray. For example, `gray(level = 1)` will return white. The second `alpha` argument specifies how transparent to make the color on a scale from 0 (completely transparent), to 1 (not transparent at all). The default value for alpha is 1 (not transparent at all). See Figure \@ref(fig:graylevels) for examples.
 
 
 

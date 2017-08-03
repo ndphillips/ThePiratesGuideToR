@@ -169,7 +169,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="basics.html"><a href="basics.html#test-your-r-might"><i class="fa fa-check"></i><b>4.5</b> Test your R might!</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="scalersvectors.html"><a href="scalersvectors.html"><i class="fa fa-check"></i><b>5</b> Scalers and vectors</a><ul>
+<li class="chapter" data-level="5" data-path="scalersvectors.html"><a href="scalersvectors.html"><i class="fa fa-check"></i><b>5</b> Scalars and vectors</a><ul>
 <li class="chapter" data-level="5.1" data-path="scalersvectors.html"><a href="scalersvectors.html#scalars"><i class="fa fa-check"></i><b>5.1</b> Scalars</a></li>
 <li class="chapter" data-level="5.2" data-path="scalersvectors.html"><a href="scalersvectors.html#vectors"><i class="fa fa-check"></i><b>5.2</b> Vectors</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="scalersvectors.html"><a href="scalersvectors.html#ab"><i class="fa fa-check"></i><b>5.2.1</b> a:b</a></li>
@@ -498,12 +498,12 @@ Figure 11.2: 100 random named colors (out of all 657) in R.
 Figure 11.3: Examples of gray(level, alpha)
 </p>
 </div>
-<p>If you’re a lonely, sexually repressed, 50+ year old housewife, then you might be interested in shades of gray. If so, the function  is your answer. The <code>gray()</code> function takes two arguments, <code>level</code> and <code>alpha</code>, and returns a shade of gray. For example, <code>gray(level = 1)</code> will return white. The second <code>alpha</code> argument specifies how transparent to make the color on a scale from 0 (completely transparent), to 1 (not transparent at all). The default value for alpha is 1 (not transparent at all). See Figure <a href="plotting1.html#fig:graylevels">11.3</a> for examples.</p>
+<p>If you’re into erotic romance and BDSM, then you might be interested in <a href="https://en.wikipedia.org/wiki/Fifty_Shades_of_Grey">Shades of Gray</a>. If so, the function  is your answer. The <code>gray()</code> function takes two arguments, <code>level</code> and <code>alpha</code>, and returns a shade of gray. For example, <code>gray(level = 1)</code> will return white. The second <code>alpha</code> argument specifies how transparent to make the color on a scale from 0 (completely transparent), to 1 (not transparent at all). The default value for alpha is 1 (not transparent at all). See Figure <a href="plotting1.html#fig:graylevels">11.3</a> for examples.</p>
 </div>
 <div id="yarrrtransparent" class="section level3">
 <h3><span class="header-section-number">11.1.3</span> <code>yarrr::transparent()</code></h3>
 <p>I don’t know about you, but I almost always find transparent colors to be more appealing than solid colors. Not only do they help you see when multiple points are overlapping, but they’re just much nicer to look at. Just look at the overlapping circles in the plot below.</p>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-277-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-276-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>Unfortunately, as far as I know, base-R does not make it easy to make transparent colors. Thankfully, there is a function in the <code>yarrr</code> package called <code>transparent</code> that makes it very easy to make any color transparent. To use it, just enter the original color as the main argument <code>orig.col</code>, then enter how transparent you want to make it (from 0 to 1) as the second argument <code>trans.val</code>.</p>
 <p>Here is a basic scatterplot with standard (non-transparent) colors:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Plot with Standard Colors</span>
@@ -512,7 +512,7 @@ Figure 11.3: Examples of gray(level, alpha)
      <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, 
      <span class="dt">pch =</span> <span class="dv">16</span>, 
      <span class="dt">main =</span> <span class="st">&quot;col =&#39;blue&#39;&quot;</span>)</code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-278-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-277-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Now here’s the same plot using the <code>transparent()</code> function in the <code>yarrr</code> package:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Plot with transparent colors using the transparent() function in the yarrr package</span>
 <span class="kw">plot</span>(<span class="dt">x =</span> pirates$height, 
@@ -520,7 +520,7 @@ Figure 11.3: Examples of gray(level, alpha)
      <span class="dt">col =</span> yarrr::<span class="kw">transparent</span>(<span class="st">&quot;blue&quot;</span>, <span class="dt">trans.val =</span> .<span class="dv">9</span>), 
      <span class="dt">pch =</span> <span class="dv">16</span>, 
      <span class="dt">main =</span> <span class="st">&quot;col = yarrr::transparent(&#39;blue&#39;, .9)&quot;</span>)</code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-279-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-278-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Later on in the book, we’ll cover more advanced ways to come up with colors using color palettes (using the RColorBrewer package or the <code>piratepal()</code> function in the yarrr package) and functions that generate shades of colors based on numeric data (like the <code>colorRamp2()</code> function in the <code>circlize</code> package).</p>
 <!-- ## High vs. low-level plotting commands -->
 <!-- There are two general types of plotting commands in R: high and low-level. High level plotting commands, like `plot()`, `hist()` and `pirateplot()` create entirely new plots. Within these high level plotting commands, you can define the general layout of the plot - like the axis limits and plot margins. -->
@@ -590,20 +590,20 @@ Figure 11.3: Examples of gray(level, alpha)
      <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>,                     <span class="co"># Color of the points</span>
      <span class="dt">pch =</span> <span class="dv">16</span>,                         <span class="co"># Type of symbol (16 means Filled circle)</span>
      <span class="dt">cex =</span> <span class="dv">1</span>)                           <span class="co"># Size of the symbols</span></code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-280-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-279-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Aside from the x and y arguments, all of the arguments are optional. If you don’t specify a specific argument, then R will use a default value, or try to come up with a value that makes sense. For example, if you don’t specify the <code>xlim</code> and <code>ylim</code> arguments, R will set the limits so that all the points fit inside the plot.</p>
 <div id="symbol-types-pch" class="section level3">
 <h3><span class="header-section-number">11.3.1</span> Symbol types: <code>pch</code></h3>
 <p>When you create a plot with <code>plot()</code> (or points with <code>points()</code>), you can specify the type of symbol with the <code>pch</code> argument. You can specify the symbol type in one of two ways: with an integer, or with a string. If you use a string (like <code>&quot;p&quot;</code>), R will use that text as the plotting symbol. If you use an integer value, you’ll get the symbol that correspond to that number. See Figure for all the symbol types you can specify with an integer.</p>
 <p>Symbols differ in their shape and how they are colored. Symbols 1 through 14 only have borders and are always empty, while symbols 15 through 20 don’t have a border and are always filled. Symbols 21 through 25 have both a border and a filling. To specify the border color or background for symbols 1 through 20, use the <code>col</code> argument. For symbols 21 through 25, you set the color of the border with <code>col</code>, and the color of the background using <code>bg</code></p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-281"></span>
-<img src="YaRrr_files/figure-html/unnamed-chunk-281-1.png" alt="The symbol types associated with the pch plotting parameter." width="288" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-280"></span>
+<img src="YaRrr_files/figure-html/unnamed-chunk-280-1.png" alt="The symbol types associated with the pch plotting parameter." width="288" />
 <p class="caption">
 Figure 11.4: The symbol types associated with the pch plotting parameter.
 </p>
 </div>
 <p>Let’s look at some different symbol types in action when applied to the same data:</p>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-282-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-281-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="histogram-hist" class="section level2">
@@ -645,7 +645,7 @@ Figure 11.4: The symbol types associated with the pch plotting parameter.
      <span class="dt">main =</span> <span class="st">&quot;Chicken Weights&quot;</span>,
      <span class="dt">xlab =</span> <span class="st">&quot;Weight&quot;</span>,
      <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">500</span>))</code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-283-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-282-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>We can get more fancy by adding additional arguments like <code>breaks = 20</code> to force there to be 20 bins, and <code>col = &quot;papayawhip&quot;</code> and <code>bg = &quot;hotpink&quot;</code> to make it a bit more colorful:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(<span class="dt">x =</span> ChickWeight$weight,
      <span class="dt">main =</span> <span class="st">&quot;Fancy Chicken Weight Histogram&quot;</span>,
@@ -655,7 +655,7 @@ Figure 11.4: The symbol types associated with the pch plotting parameter.
      <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">500</span>),
      <span class="dt">col =</span> <span class="st">&quot;papayawhip&quot;</span>, <span class="co"># Filling Color</span>
      <span class="dt">border =</span> <span class="st">&quot;hotpink&quot;</span>) <span class="co"># Border Color</span></code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-284-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-283-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>If you want to plot two histograms on the same plot, for example, to show the distributions of two different groups, you can use the  argument to the second plot.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(<span class="dt">x =</span> ChickWeight$weight[ChickWeight$Diet ==<span class="st"> </span><span class="dv">1</span>],
      <span class="dt">main =</span> <span class="st">&quot;Two Histograms in one&quot;</span>,
@@ -669,7 +669,7 @@ Figure 11.4: The symbol types associated with the pch plotting parameter.
      <span class="dt">breaks =</span> <span class="dv">30</span>,
      <span class="dt">add =</span> <span class="ot">TRUE</span>, <span class="co"># Add plot to previous one!</span>
      <span class="dt">col =</span> <span class="kw">gray</span>(<span class="dv">1</span>, .<span class="dv">8</span>))</code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-285-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-284-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="barplot-barplot" class="section level2">
 <h2><span class="header-section-number">11.5</span> Barplot: <code>barplot()</code></h2>
@@ -679,7 +679,7 @@ Figure 11.4: The symbol types associated with the pch plotting parameter.
         <span class="dt">main =</span> <span class="st">&quot;Example Barplot&quot;</span>, 
         <span class="dt">xlab =</span> <span class="st">&quot;Group&quot;</span>, 
         <span class="dt">ylab =</span> <span class="st">&quot;Height&quot;</span>)</code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-286-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-285-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Of course, you should plot more interesting data than just a vector of integers with a barplot. In the plot below, I create a barplot with the average weight of chickens for each week:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Calculate mean weights for each time period</span>
 diet.weights &lt;-<span class="st"> </span><span class="kw">aggregate</span>(weight ~<span class="st"> </span>Time, 
@@ -693,7 +693,7 @@ diet.weights &lt;-<span class="st"> </span><span class="kw">aggregate</span>(wei
         <span class="dt">ylab =</span> <span class="st">&quot;Average Weight&quot;</span>,
         <span class="dt">main =</span> <span class="st">&quot;Average Chicken Weights by Time&quot;</span>,
         <span class="dt">col =</span> <span class="st">&quot;mistyrose&quot;</span>)</code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-287-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-286-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div id="clustered-barplot" class="section level3">
 <h3><span class="header-section-number">11.5.1</span> Clustered barplot</h3>
 <p>If you want to create a clustered barplot, with different bars for different groups of data, you can enter a matrix as the argument to <code>height</code>. R will then plot each column of the matrix as a separate set of bars. For example, let’s say I conducted an experiment where I compared how fast pirates can swim under four conditions: Wearing clothes versus being naked, and while being chased by a shark versus not being chased by a shark. Let’s say I conducted this experiment and calculated the following average swimming speed:</p>
@@ -740,7 +740,7 @@ swim.data
         <span class="dt">ylab =</span> <span class="st">&quot;Speed (in meters / second)&quot;</span>,
         <span class="dt">xlab =</span> <span class="st">&quot;Clothing Condition&quot;</span>,
         <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">4</span>))</code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-290-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-289-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="pirateplot" class="section level2">
@@ -829,20 +829,20 @@ Figure 11.5: The pirateplot(), an R pirate’s favorite plot!
 <div id="pirateplot-themes" class="section level3">
 <h3><span class="header-section-number">11.6.1</span> Pirateplot themes</h3>
 <p>There are many different pirateplot themes, these themes dictate the overall look of the plot. To specify a theme, just use the <code>theme = x</code> argument, where <code>x</code> is the theme number:</p>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-291-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-290-1.png" width="768" style="display: block; margin: auto;" /></p>
 <p>For example, here is a pirateplot height data from the <code>pirates</code> dataframe using <code>theme = 3</code>. Here, I’ll plot pirates’ heights as a function of their sex and whether or not they wear a headband. I’ll also make the plot all grayscale by using the <code>pal = &quot;gray&quot;</code> argument:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">yarrr::<span class="kw">pirateplot</span>(<span class="dt">formula =</span> height ~<span class="st"> </span>sex +<span class="st"> </span>headband,    <span class="co"># DV = height, IV1 = sex, IV2 = headband</span>
                   <span class="dt">data =</span> pirates,           
                   <span class="dt">theme =</span> <span class="dv">3</span>,
                   <span class="dt">main =</span> <span class="st">&quot;Pirate Heights&quot;</span>,
                   <span class="dt">pal =</span> <span class="st">&quot;gray&quot;</span>)</code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-292-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-291-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="customizing-pirateplots" class="section level3">
 <h3><span class="header-section-number">11.6.2</span> Customizing pirateplots</h3>
 <p>Regardless of the theme you use, you can always customize the color and opacity of graphical elements. To do this, specify one of the following arguments. Note: Arguments with <code>.f.</code> correspond to the <em>filling</em> of an element, while <code>.b.</code> correspond to the <em>border</em> of an element:</p>
 <table>
-<caption><span id="tab:unnamed-chunk-293">Table 11.6: </span>Customising plotting elements</caption>
+<caption><span id="tab:unnamed-chunk-292">Table 11.6: </span>Customising plotting elements</caption>
 <thead>
 <tr class="header">
 <th align="left">element</th>
@@ -898,7 +898,7 @@ Figure 11.5: The pirateplot(), an R pirate’s favorite plot!
            <span class="dt">point.bg =</span> <span class="st">&quot;white&quot;</span>,
            <span class="dt">point.col =</span> <span class="st">&quot;black&quot;</span>,
            <span class="dt">point.cex =</span> .<span class="dv">7</span>)</code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-294-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-293-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>If you don’t want to start from scratch, you can also start with a theme, and then make selective adjustments:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pirateplot</span>(<span class="dt">formula =</span> weight ~<span class="st"> </span>Time,
            <span class="dt">data =</span> ChickWeight,
@@ -912,7 +912,7 @@ Figure 11.5: The pirateplot(), an R pirate’s favorite plot!
            <span class="dt">bean.b.o =</span> .<span class="dv">2</span>, <span class="co"># Light bean border</span>
            <span class="dt">avg.line.o =</span> <span class="dv">0</span>, <span class="co"># Turn off average line</span>
            <span class="dt">point.col =</span> <span class="st">&quot;black&quot;</span>) <span class="co"># Black points</span></code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-295-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-294-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Just to drive the point home, as a barplot is a special case of a pirateplot, you can even reduce a pirateplot into a horrible barplot:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Reducing a pirateplot to a (at least colorful) barplot</span>
 <span class="kw">pirateplot</span>(<span class="dt">formula =</span> weight ~<span class="st"> </span>Diet,
@@ -924,7 +924,7 @@ Figure 11.5: The pirateplot(), an R pirate’s favorite plot!
            <span class="dt">inf.f.o =</span> <span class="dv">1</span>,                                  <span class="co"># Turn up inference opacity</span>
            <span class="dt">inf.f.col =</span> <span class="st">&quot;black&quot;</span>,                          <span class="co"># Set inference line color</span>
            <span class="dt">bar.f.o =</span> .<span class="dv">3</span>)                                </code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-296-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-295-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>There are many additional arguments to <code>pirateplot()</code> that you can use to complete customize the look of your plot. To see them all, look at the help menu with <code>?pirateplot</code> or look at the vignette at <a href=""></a></p>
 <table>
 <caption><span id="tab:pirateplotcustomisation">Table 11.7: </span> Additional <code>pirateplot()</code> customizations.</caption>
@@ -987,7 +987,7 @@ Figure 11.5: The pirateplot(), an R pirate’s favorite plot!
            <span class="dt">bean.b.o =</span> .<span class="dv">4</span>, <span class="co"># Turn down bean borders</span>
            <span class="dt">quant =</span> <span class="kw">c</span>(.<span class="dv">1</span>, .<span class="dv">9</span>), <span class="co"># 10th and 90th quantiles</span>
            <span class="dt">quant.col =</span> <span class="st">&quot;black&quot;</span>) <span class="co"># Black quantile lines</span></code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-297-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-296-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="saving-output" class="section level3">
 <h3><span class="header-section-number">11.6.3</span> Saving output</h3>
@@ -995,7 +995,7 @@ Figure 11.5: The pirateplot(), an R pirate’s favorite plot!
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create a pirateplot</span>
 <span class="kw">pirateplot</span>(<span class="dt">formula =</span> tattoos ~<span class="st"> </span>sex +<span class="st"> </span>headband,
            <span class="dt">data =</span> pirates)</code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-298-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-297-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="co"># Save data from the pirateplot to an object</span>
 tattoos.pp &lt;-<span class="st"> </span><span class="kw">pirateplot</span>(<span class="dt">formula =</span> tattoos ~<span class="st"> </span>sex +<span class="st"> </span>headband,
@@ -1180,7 +1180,7 @@ Figure 11.8: Using points() to add points with different colors
 <span class="co"># Add vertical line at mean weight</span>
 <span class="kw">abline</span>(<span class="dt">v =</span> <span class="kw">mean</span>(pirates$weight),
        <span class="dt">lty =</span> <span class="dv">2</span>)                        <span class="co"># Dashed line</span></code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-300-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-299-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>To change the look of your lines, use the <code>lty</code> argument, which changes the type of line (see Figure <a href="plotting1.html#fig:ltytypes">11.9</a>), <code>lwd</code>, which changes its thickness, and <code>col</code> which changes its color</p>
 <div class="figure" style="text-align: center"><span id="fig:ltytypes"></span>
 <img src="YaRrr_files/figure-html/ltytypes-1.png" alt="Changing line type with the lty argument." width="384" />
@@ -1199,7 +1199,7 @@ Figure 11.9: Changing line type with the lty argument.
 <span class="co"># Add the regression line</span>
 <span class="kw">abline</span>(<span class="kw">lm</span>(weight ~<span class="st"> </span>height, <span class="dt">data =</span> pirates), 
        <span class="dt">lty =</span> <span class="dv">2</span>)</code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-301-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-300-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>The <code>segments()</code> function works very similarly to <code>abline()</code> – however, with the <code>segments()</code> function, you specify the beginning and end points of the segments with the arguments <code>x0</code>, <code>y0</code>, <code>x1</code>, and <code>y1</code>. In Figure <a href="plotting1.html#fig:segments">11.10</a> I use <code>segments()</code> to connect two vectors of data:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Before and after data</span>
 before &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">2.1</span>, <span class="fl">3.5</span>, <span class="fl">1.8</span>, <span class="fl">4.2</span>, <span class="fl">2.4</span>, <span class="fl">3.9</span>, <span class="fl">2.1</span>, <span class="fl">4.4</span>)
@@ -1243,7 +1243,7 @@ Figure 11.10: Connecting points with segments().
 
 <span class="co"># Add gridlines</span>
 <span class="kw">grid</span>()</code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-302-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-301-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="text" class="section level3">
 <h3><span class="header-section-number">11.7.4</span> <code>text()</code></h3>
@@ -1369,7 +1369,7 @@ Figure 11.13: Break up lines in text with .
      <span class="dt">labels =</span> <span class="kw">paste</span>(<span class="st">&quot;Mean weight =&quot;</span>, 
                     <span class="kw">round</span>(<span class="kw">mean</span>(ChickWeight$weight), <span class="dv">2</span>)),
      <span class="dt">pos =</span> <span class="dv">3</span>)</code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-303-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-302-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="curve" class="section level3">
 <h3><span class="header-section-number">11.7.6</span> <code>curve()</code></h3>
@@ -1412,7 +1412,7 @@ Figure 11.13: Break up lines in text with .
 <span class="kw">curve</span>(<span class="dt">expr =</span> x^<span class="dv">2</span>, 
       <span class="dt">from =</span> -<span class="dv">10</span>, 
       <span class="dt">to =</span> <span class="dv">10</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-304-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-303-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>If you want to add a custom function to a plot, you can define the function and then use that function name as the argument to <code>expr</code>. For example, to plot the normal distribution with a mean of 10 and standard deviation of 3, you can use this code:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Plot the normal distribution with mean = 22 and sd = 3</span>
 
@@ -1422,7 +1422,7 @@ my.fun &lt;-<span class="st"> </span>function(x) {<span class="kw">dnorm</span>(
 <span class="kw">curve</span>(<span class="dt">expr =</span> my.fun, 
       <span class="dt">from =</span> -<span class="dv">10</span>, 
       <span class="dt">to =</span> <span class="dv">10</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-305-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-304-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>In Figure~<a href="plotting1.html#fig:functionlines">11.14</a>, I use the <code>curve()</code> function to create curves of several mathematical formulas.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create plotting space</span>
 <span class="kw">plot</span>(<span class="dv">1</span>, 
@@ -1688,15 +1688,15 @@ Figure 11.18: Specifying the size and color of points with a third variable.
 <ol style="list-style-type: decimal">
 <li>The <code>BeardLengths</code> dataframe (contained in the <code>yarrr</code> package or online at <a href="https://github.com/ndphillips/ThePiratesGuideToR/raw/master/data/BeardLengths.txt" class="uri">https://github.com/ndphillips/ThePiratesGuideToR/raw/master/data/BeardLengths.txt</a>) contains data on the lengths of beards from 3 different pirate ships. Calculate the average beard length for each ship using <code>aggregate()</code>, then create the following barplot:</li>
 </ol>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-307-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-306-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li>Now using the entire <code>BeardLengths</code> dataframe, create the following pirateplot:</li>
 </ol>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-308-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-307-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ol start="3" style="list-style-type: decimal">
 <li>Using the <code>pirates</code> dataset, create the following scatterplot showing the relationship between a pirate’s age and how many parrot’s (s)he has owned (hint: to make the points solid and transparent, use <code>pch = 16</code>, and <code>col = gray(level = .5, alpha = .1)</code>).</li>
 </ol>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-309-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-308-1.png" width="672" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
@@ -1738,7 +1738,7 @@ gitbook.start({
 "link": "https://github.com/ndphillips/ThePiratesGuideToR/edit/master/11-plotting1.Rmd",
 "text": "Edit"
 },
-"download": null,
+"download": ["YaRrr.pdf"],
 "toc": {
 "collapse": "subsection"
 }

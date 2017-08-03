@@ -169,7 +169,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="basics.html"><a href="basics.html#test-your-r-might"><i class="fa fa-check"></i><b>4.5</b> Test your R might!</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="scalersvectors.html"><a href="scalersvectors.html"><i class="fa fa-check"></i><b>5</b> Scalers and vectors</a><ul>
+<li class="chapter" data-level="5" data-path="scalersvectors.html"><a href="scalersvectors.html"><i class="fa fa-check"></i><b>5</b> Scalars and vectors</a><ul>
 <li class="chapter" data-level="5.1" data-path="scalersvectors.html"><a href="scalersvectors.html#scalars"><i class="fa fa-check"></i><b>5.1</b> Scalars</a></li>
 <li class="chapter" data-level="5.2" data-path="scalersvectors.html"><a href="scalersvectors.html#vectors"><i class="fa fa-check"></i><b>5.2</b> Vectors</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="scalersvectors.html"><a href="scalersvectors.html#ab"><i class="fa fa-check"></i><b>5.2.1</b> a:b</a></li>
@@ -433,24 +433,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="started" class="section level1">
 <h1><span class="header-section-number">Chapter 2</span> Getting Started</h1>
-<pre><code>## Loading required package: jpeg</code></pre>
-<pre><code>## Loading required package: BayesFactor</code></pre>
-<pre><code>## Loading required package: coda</code></pre>
-<pre><code>## Loading required package: Matrix</code></pre>
-<pre><code>## ************
-## Welcome to BayesFactor 0.9.12-2. If you have questions, please contact Richard Morey (richarddmorey@gmail.com).
-## 
-## Type BFManual() to open the manual.
-## ************</code></pre>
-<pre><code>## Loading required package: circlize</code></pre>
-<pre><code>## Warning: package &#39;circlize&#39; was built under R version 3.4.1</code></pre>
-<pre><code>## yarrr v0.1.6. Citation info at citation(&#39;yarrr&#39;). Package guide at yarrr.guide()</code></pre>
-<pre><code>## Email me at Nathaniel.D.Phillips.is@gmail.com</code></pre>
-<pre><code>## 
-## Attaching package: &#39;yarrr&#39;</code></pre>
-<pre><code>## The following objects are masked _by_ &#39;.GlobalEnv&#39;:
-## 
-##     auction, diamonds, movies, pirates, poopdeck</code></pre>
 <div id="installing-base-r-and-rstudio" class="section level2">
 <h2><span class="header-section-number">2.1</span> Installing Base-R and RStudio</h2>
 <p>To use R, we’ll need to download two software packages: <strong>Base-R</strong>, and <strong>RStudio</strong>. Base-R is the basic software which contains the R programming language. RStudio is software that makes R programming easier. Of course, they are totally free and open source.</p>
@@ -728,7 +710,7 @@ Error: unexpected numeric constant in “mean(c(1. 4.”
 <p>Because I used periods instead of commas, I get the above error. Here is the correct version</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Correct</span>
 <span class="kw">mean</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>))
-## [1] 2.333333</code></pre></div>
+## [1] 2.3</code></pre></div>
 <p>If you include an extra space in the middle of the name of an object or function, you’ll receive an error. In the code below, I’ll accidentally write <code>Chick Weight</code> instead of <code>ChickWeight</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Wrong: Extra space in the ChickWeight object name</span>
 <span class="kw">head</span>(Chick Weight)</code></pre></div>
@@ -780,7 +762,7 @@ gitbook.start({
 "link": "https://github.com/ndphillips/ThePiratesGuideToR/edit/master/02-gettingstarted.Rmd",
 "text": "Edit"
 },
-"download": null,
+"download": ["YaRrr.pdf"],
 "toc": {
 "collapse": "subsection"
 }

@@ -169,7 +169,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="basics.html"><a href="basics.html#test-your-r-might"><i class="fa fa-check"></i><b>4.5</b> Test your R might!</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="scalersvectors.html"><a href="scalersvectors.html"><i class="fa fa-check"></i><b>5</b> Scalers and vectors</a><ul>
+<li class="chapter" data-level="5" data-path="scalersvectors.html"><a href="scalersvectors.html"><i class="fa fa-check"></i><b>5</b> Scalars and vectors</a><ul>
 <li class="chapter" data-level="5.1" data-path="scalersvectors.html"><a href="scalersvectors.html#scalars"><i class="fa fa-check"></i><b>5.1</b> Scalars</a></li>
 <li class="chapter" data-level="5.2" data-path="scalersvectors.html"><a href="scalersvectors.html#vectors"><i class="fa fa-check"></i><b>5.2</b> Vectors</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="scalersvectors.html"><a href="scalersvectors.html#ab"><i class="fa fa-check"></i><b>5.2.1</b> a:b</a></li>
@@ -433,15 +433,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="advanceddataframe" class="section level1">
 <h1><span class="header-section-number">Chapter 10</span> Advanced dataframe manipulation</h1>
-<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.4.1
-## 
-## Attaching package: &#39;dplyr&#39;
-## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     filter, lag
-## The following objects are masked from &#39;package:base&#39;:
-## 
-##     intersect, setdiff, setequal, union</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:dance"></span>
 <img src="images/manipulation.jpg" alt="Make your dataframes dance for you" width="75%" />
 <p class="caption">
@@ -564,7 +555,7 @@ pirates &lt;-<span class="st"> </span>pirates[<span class="kw">order</span>(pira
 </table>
 <p>One of the most common data management tasks is <strong>merging</strong> (aka combining) two data sets together. For example, imagine you conduct a study where 5 participants are given a score from 1 to 5 on a risk assessment task. We can represent these data in a dataframe called <code>risk.survey</code>:</p>
 <table>
-<caption><span id="tab:unnamed-chunk-255">Table 10.1: </span>Results from a survey on risk.</caption>
+<caption><span id="tab:unnamed-chunk-254">Table 10.1: </span>Results from a survey on risk.</caption>
 <thead>
 <tr class="header">
 <th align="right">participant</th>
@@ -800,7 +791,7 @@ pirates.agg
 <p>To easily calculate means (or sums) across all rows or columns in a matrix or dataframe, use <code>rowMeans()</code>, <code>colMeans()</code>, <code>rowSums()</code> or <code>colSums()</code>.</p>
 <p>For example, imagine we have the following data frame representing scores from a quiz with 5 questions, where each row represents a student, and each column represents a question. Each value can be either 1 (correct) or 0 (incorrect)</p>
 <table>
-<caption><span id="tab:unnamed-chunk-269">Table 10.2: </span>Scores from an exam.</caption>
+<caption><span id="tab:unnamed-chunk-268">Table 10.2: </span>Scores from an exam.</caption>
 <thead>
 <tr class="header">
 <th align="right">q1</th>
@@ -941,7 +932,7 @@ gitbook.start({
 "link": "https://github.com/ndphillips/ThePiratesGuideToR/edit/master/10-advanceddataframe.Rmd",
 "text": "Edit"
 },
-"download": null,
+"download": ["YaRrr.pdf"],
 "toc": {
 "collapse": "subsection"
 }
