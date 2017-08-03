@@ -1,0 +1,397 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+# Loops {#loops}
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, fig.align='center')
+library(dplyr)
+library(yarrr)
+library(bookdown)
+options(digits = 2)
+```
+
+
+```{r, fig.cap= "Loops in R can be fun. Just...you know...don't screw it up.", fig.margin = TRUE, echo = FALSE, out.width = "60%", fig.align="center"}
+knitr::include_graphics(c("images/coasteraccident.jpg"))
+```
+
+One of the golden rules of programming is D.R.Y. ``Don't repeat yourself." Why? Not because you can't, but because it's almost certainly a waste of time. You see, while computers are still much, much worse than humans at some tasks (like recognizing faces), they are much, much better than humans at doing a few key things - like doing the same thing over...and over...and over. To tell R to do something over and over, we use a loop. Loops are absolutely critical in conducting many analyses because they allow you to write code once but evaluate it tens, hundreds, thousands, or millions of times without ever repeating yourself.
+
+For example, imagine that you conduct a survey of 50 people containing 100 yes/no questions. Question 1 might be "Do you ever pick your nose?" and Question 2 might be "No seriously, do you ever pick your nose?!" When you finish the survey, you could store the data as a dataframe with 50 rows (one row for each person surveyed), and 100 columns representing all 100 questions. Now, because every question should have a yes or no answer, the only values in the dataframe should be "yes" or "no" Unfortunately, as is the case with all real world data collection, you will likely get some invalid responses -- like "Maybe" or "What be yee phone number?!''. For this reason, you'd like to go through all the data, and recode any invalid response as NA (aka, missing). To do this sequentially, you'd have to write the following 100 lines of code...
+
+```{r, eval = FALSE}
+# SLOW way to convert any values that aren't equal to "Y", or "N" to NA
+survey.df$q.1[(survey.data$q1 %in% c("Y", "N")) == FALSE] <- NA
+survey.df$q.2[(survey.data$q2 %in% c("Y", "N")) == FALSE] <- NA
+# . ... Wait...I have to type this 98 more times?!
+# .
+# . ... My god this is boring...
+# .
+survey.df$q.100[(survey.data$q100 %in% c("Y", "N")) == FALSE] <- NA
+```
+
+Pretty brutal right? Imagine if you have a huge dataset with 1,000 columns, now you're really doing a lot of typing. Thankfully, with a loop you can take care of this in no time. Check out this following code chunk which uses a loop to convert the data for *all* 100 columns in our survey dataframe.
+
+```{r, eval = FALSE}
+# FAST way to convert values that aren't "Y", or "N" to NA
+
+for(i in 1:100) { # Loop over all 100 columns
+
+temp <- survey.df[, i]  # Get data for ith column and save in a new temporary object temp
+
+temp[(temp %in% c("Y", "N")) == FALSE] <- NA # Convert invalid values in temp to NA
+
+survey.df[, i] <- temp # Assign temp back to survey.df!
+
+} # Close loop!
+```
+
+
+Done. All 100 columns. Take a look at the code and see if you can understand the general idea. But if not, no worries. By the end of this chapter, you'll know all the basics of how to construct loops like this one.
+
+## What are loops?
+
+A loop is, very simply, code that tells a program like R to repeat a certain chunk of code several times with different values of a *loop object* that changes for every run of the loop. In R, the format of a for-loop is as follows:
+
+```{r, eval = FALSE}
+# General structure of a loop
+for(loop.object in loop.vector) {
+
+  LOOP.CODE
+
+  }
+```
+
+
+As you can see, there are three key aspects of loops: The *loop object*, the *loop vector*, and the *loop code*:
+
+1. Loop object: The object that will change for each iteration of the loop. This is usually a letter like `i`, or an object with subscript like `column.i` or `participant.i`. You can use any object name that you want for the index. While most people use single character object names, sometimes it's more transparent to use names that tell you something about the data the object represents. For example, if you are doing a loop over participants in a study, you can call the index `participant.i`
+
+2. Loop vector: A vector specifying all values that the loop object will take over the loop. You can specify the values any way you'd like (as long as it's a vector). If you're running a loop over numbers, you'll probably want to use `a:b` or `seq()`. However, if you want to run a loop over a few specific values, you can just use the `c()` function to type the values manually. For example, to run a loop over three different pirate ships, you could set the index values as `ship.i = c("Jolly Roger", "Black Pearl", "Queen Anne's Revenge")`.
+
+3. Loop code: The code that will be executed for all values in the loop vector. You can write any R code you'd like in the loop code - from plotting to analyses. R will run this code for all possible values of the loop object specified in the loop vector.
+
+### Printing numbers from 1 to 100
+
+
+Let's do a really simple loop that prints the integers from 1 to 10. For this code, our loop object is `i`, our loop vector is `1:10`, and our loop code is `print(i)`. You can verbally describe this loop as: *For every integer i between 1 and 10, print the integer i*:
+
+```{r}
+# Print the integers from 1 to 10
+for(i in 1:10) {
+  
+  print(i)
+  
+}
+```
+
+As you can see, the loop applied the loop code (which in this case was `print(i)`) to every value of the loop object `i` specified in the `loop vector`, `1:10`.
+
+### Adding the integers from 1 to 100
+
+Let's use a loop to add all the integers from 1 to 100. To do this, we'll need to create an object called `current.sum` that stores the latest sum of the numbers as we go through the loop. We'll set the loop object to `i`, the loop vector to `1:100`, and the loop code to `current.sum <- current.sum + i`. Because we want the starting sum to be 0, we'll set the initial value of `current.sum` to 0. Here is the code:
+
+```{r}
+# Loop to add integers from 1 to 100
+
+current.sum <- 0 # The starting value of current.sum
+
+for(i in 1:100) {
+
+ current.sum <- current.sum + i # Add i to current.sum
+
+}
+
+current.sum # Print the result!
+```
+
+Looks like we get an answer of 5050. To see if our loop gave us the correct answer, we can do the same calculation without a loop by using `a:b` and the `sum()` function:
+
+```{r}
+# Add the integers from 1 to 100 without a loop
+sum(1:100)
+```
+
+As you can see, the `sum(1:100)` code gives us the same answer as the loop (and is much simpler).
+
+There's actually a funny story about how to quickly add integers (without a loop). According to the story, a lazy teacher who wanted to take a nap decided that the best way to occupy his students was to ask them to privately count all the integers from 1 to 100 at their desks. To his surprise, a young student approached him after a few moments with the correct answer: 5050. The teacher suspected a cheat, but the student didn't count the numbers. Instead he realized that he could use the formula `n(n+1) / 2`. Don't believe the story? Check it out:
+
+```{r}
+# Calculate the sum of integers from 1 to 100 using Gauss' method
+n <- 100
+n * (n + 1) / 2
+```
+
+This boy grew up to be Gauss, a super legit mathematician.
+
+```{r, fig.cap= "Gauss. The guy was a total pirate. And totally would give us shit for using a loop to calculate the sum of 1 to 100...", fig.margin = TRUE, echo = FALSE, out.width = "60%", fig.align="center"}
+knitr::include_graphics(c("images/gauss.jpg"))
+```
+
+## Creating multiple plots with a loop
+
+One of the best uses of a loop is to create multiple graphs quickly and easily. Let's use a loop to create 4 plots representing data from an exam containing 4 questions. The data are represented in a matrix with 100 rows (representing 100 different people), and 4 columns representing scores on the different questions. The data are stored in the `yarrr` package in an object called `examscores`. Here are how the first few rows of the data look
+
+```{r}
+# First few rows of the examscores data
+head(examscores)
+```
+
+Now, we'll loop over the columns and create a histogram of the data in each column.  First, I'll set up a 2 x 2 plotting space with `par(mfrow())` (If you haven't seen `par(mfrow())` before, just know that it allows you to put multiple plots side-by-side). Next, I'll define the `loop object` as `i`, and the `loop vector` as the integers from 1 to 4 with `1:4`. In the `loop code`, I stored the data in column `i` as a new vector `x`. Finally, I created a histogram of the object `x`!
+
+
+```{r}
+par(mfrow = c(2, 2))  # Set up a 2 x 2 plotting space
+
+# Create the loop.vector (all the columns)
+loop.vector <- 1:4
+
+for (i in loop.vector) { # Loop over loop.vector
+
+  # store data in column.i as x
+  x <- examscores[,i]
+  
+  # Plot histogram of x
+  hist(x,
+       main = paste("Question", i),
+       xlab = "Scores",
+       xlim = c(0, 100))
+}
+```
+
+## Updating a container object with a loop
+
+```{r, fig.cap= "This is what I got when I googled ``funny container''.", fig.margin = TRUE, echo = FALSE, out.width = "60%", fig.align="center"}
+knitr::include_graphics(c("images/catboat.jpg"))
+```
+
+For many loops, you may want to update values of a 'container' object with each iteration of a loop. We can easily do this using indexing and assignment within a loop.
+
+Let's do an example with the `examscores` dataframe. We'll use a loop to calculate how many students failed each of the 4 exams -- where failing is a score less than 50. To do this, we will start by creating an NA vector called `failure.percent`. This will be a container object that we'll update later with the loop.
+
+```{r}
+# Create a container object of 4 NA values
+failure.percent <- rep(NA, 4)
+```
+
+
+We will then use a loop that fills this object with the percentage of failures for each exam. The loop will go over each column in `examscores`, calculates the percentage of scores less than 50 for that column, and assigns the result to the ith value of `failure.percent`. For the loop, our loop object will be `i` and our loop vector will be `1:4`. 
+
+```{r}
+for(i in 1:4) { # Loop over columns 1 through 4
+
+  # Get the scores for the ith column
+  x <- examscores[,i] 
+  
+  # Calculate the percent of failures
+  failures.i <- mean(x < 50)  
+  
+   # Assign result to the ith value of failure.percent
+  failure.percent[i] <- failures.i 
+
+}
+```
+
+Now let's look at the result.
+
+```{r}
+failure.percent
+```
+
+
+It looks like about 50% of the students failed exam 1, *everyone* (100%) failed exam 2, 3% failed exam 3, and 97% percent failed exam 4. To calculate `failure.percent` without a loop, we'd do the following:
+
+```{r}
+# Calculate failure percent without a loop
+failure.percent <- rep(NA, 4)
+failure.percent[1] <- mean(examscores[,1] < 50)
+failure.percent[2] <- mean(examscores[,2] < 50)
+failure.percent[3] <- mean(examscores[,3] < 50)
+failure.percent[4] <- mean(examscores[,4] < 50)
+failure.percent
+```
+
+As you can see, the results are identical.
+
+## Loops over multiple indices with a design matrix
+
+So far we've covered simple loops with a single index value - but how can you do loops over multiple indices? You could do this by creating multiple nested loops. However, these are ugly and cumbersome. Instead, I recommend that you use `design matrices` to reduce loops with multiple index values into a single loop with just one index. Here's how you do it:
+
+Let's say you want to calculate the mean, median, and standard deviation of some quantitative variable for all combinations of two factors. For a concrete example, let's say we wanted to calculate these summary statistics on the age of pirates for all combinations of colleges and sex.
+
+To do this, we'll start by creating a design matrix. This matrix will have all combinations of our two factors. To create this design matrix matrix, we'll use the `expand.grid()` function. This function takes several vectors as arguments, and returns a dataframe with all combinations of values of those vectors. For our two factors college and sex, we'll enter all the factor values we want. Additionally, we'll add NA columns for the three summary statistics we want to calculate
+
+```{r}
+design.matrix <- expand.grid("college" = c("JSSFP", "CCCC"), # college factor
+                             "sex" = c("male", "female"), # sex factor
+                             "median.age" = NA, # NA columns for our future calculations
+                             "mean.age" = NA, #...
+                             "sd.age" = NA, #...
+                             stringsAsFactors = FALSE)
+```
+
+Here's how the design matrix looks:
+
+```{r}
+design.matrix
+```
+
+
+As you can see, the design matrix contains all combinations of our factors in addition to three NA columns for our future statistics. Now that we have the matrix, we can use a single loop where the index is the row of the design.matrix, and the index values are all the rows in the design matrix. For each index value (that is, for each row), we'll get the value of each factor (college and sex) by indexing the current row of the design matrix. We'll then subset the `pirates` dataframe with those factor values, calculate our summary statistics, then assign them
+
+```{r}
+for(row.i in 1:nrow(design.matrix)) {
+
+# Get factor values for current row
+  college.i <- design.matrix$college[row.i]
+  sex.i <- design.matrix$sex[row.i]
+
+# Subset pirates with current factor values
+  data.temp <- subset(pirates, 
+                      college == college.i & sex == sex.i)
+
+# Calculate statistics
+  median.i <- median(data.temp$age)
+  mean.i <- mean(data.temp$age)
+  sd.i <- sd(data.temp$age)
+
+# Assign statistics to row.i of design.matrix
+  design.matrix$median.age[row.i] <- median.i
+  design.matrix$mean.age[row.i] <- mean.i
+  design.matrix$sd.age[row.i] <- sd.i
+
+}
+```
+
+Let's look at the result to see if it worked!
+
+```{r}
+design.matrix
+```
+
+Sweet! Our loop filled in the NA values with the statistics we wanted.
+
+## The list object
+
+Lists and loops go hand in hand. The more you program with R, the more you'll find yourself using loops.
+
+Let's say you are conducting a loop where the outcome of each index is a vector. However, the length of each vector could change - one might have a length of 1 and one might have a length of 100. How can you store each of these results in one object? Unfortunately, a vector, matrix or dataframe might not be appropriate because their size is fixed. The solution to this problem is to use a `list()`. A list is a special object in R that can store virtually *anything*. You can have a list that contains several vectors, matrices, or dataframes of any size. If you want to get really Inception-y, you can even make lists of lists (of lists of lists....).
+
+To create a list in R, use the `list()` function. Let's create a list that contains 3 vectors where each vector is a random sample from a normal distribution. We'll have the first element have 10 samples, the second will have 5, and the third will have 15.
+
+
+```{r}
+# Create a list with vectors of different lengths
+ number.list <- list(
+      "a" = rnorm(n = 10),
+      "b" = rnorm(n = 5),
+      "c" = rnorm(n = 15))
+ 
+ number.list
+```
+
+To index an element in a list, use double brackets [[]] or $ if the list has names.  For example, to get the first element of a list named `number.list`, we'd use `number.ls[[1]]`:
+
+```{r}
+# Give me the first element in number.list
+number.list[[1]]
+
+# Give me the element named b
+number.list$b
+```
+
+Ok, now let's use the list object within a loop. We'll create a loop that generates 5 different samples from a Normal distribution with mean 0 and standard deviation 1 and saves the results in a list called `samples.ls`. The first element will have 1 sample, the second element will have 2 samples, etc.
+
+First, we need to set up an empty list container object. To do this, use the `vector` function:
+
+```{r}
+# Create an empty list with 5 elements
+samples.ls <- vector("list", 5)
+```
+
+Now, let's run the loop. For each run of the loop, we'll generate `i` random samples and assign them to the ith element in `samples.ls`
+
+```{r}
+ for(i in 1:5) {
+   samples.ls[[i]] <- rnorm(n = i, mean = 0, sd = 1)
+ }
+```
+
+Let's look at the result:
+
+```{r}
+samples.ls
+```
+
+Looks like it worked. The first element has one sample, the second element has two samples and so on (you might get different specific values than I did because the samples were drawn randomly!).
+
+## Test your R might!
+
+1. Using a loop, create 4 histograms of the weights of chickens in the `ChickWeight` dataset, with a separate histogram for time periods 0, 2, 4 and 6.
+
+2. The following is a dataframe of survey data containing 5 questions I collected from 6 participants. The response to each question should be an integer between 1 and 5. Obviously, we have some invalid values in the dataframe. Let's fix them. Using a loop, create a new dataframe called `survey.clean` where all the invalid values (those that are not integers between 1 and 10) are set to NA.
+
+```{r}
+survey <- data.frame("q1" = c(5, 3, 2, 7, 11, 5),
+                     "q2" = c(4, 2, 2, 5, 5, 2),
+                     "q3" = c(2, 1, 4, 2, 9, 10),
+                     "q4" = c(2, 5, 2, 5, 4, 2),
+                     "q5" = c(1, 4, -20, 2, 4, 2))
+```
+
+Here's how your `survey.clean` dataframe should look:
+
+```{r, echo = FALSE}
+survey.clean <- survey
+
+for(i in 1:5){
+
+  x <- survey.clean[,i]
+  x[(x %in% 1:10) == FALSE] <- NA
+  survey.clean[,i] <- x
+
+}
+```
+
+```{r}
+# The cleaned survey data
+survey.clean
+```
+
+3.  Now, again using a loop, add a new column to the `survey.clean` dataframe called `invalid.answers` that indicates, for each participant, how many invalid answers they gave (Note: You may wish to use the `is.na()` function).
+
+4. Standardizing a variable means subtracting the mean, and then dividing by the standard deviation. Using a loop, create a new dataframe called `survey.z` that contains standardized versions of the columns in the following `survey.B` dataframe.
+
+```{r}
+survey.B <- data.frame("q1" = c(5, 3, 2, 7, 1, 9),
+                     "q2" = c(4, 2, 2, 5, 1, 10),
+                     "q3" = c(2, 1, 4, 2, 9, 10),
+                     "q4" = c(10, 5, 2, 10, 4, 2),
+                     "q5" = c(4, 4, 3, 2, 4, 2))
+```
+
+Here's how your `survey.B.z` dataframe should look:
+
+
+```{r, echo = FALSE}
+survey.B.z <- survey.B
+
+for(i in 1:5){
+
+  x <- survey.B.z[,i]
+  x.mean <- mean(x)
+  x.sd <- sd(x)
+
+  x <- (x - x.mean) / x.sd
+  survey.B.z[,i] <- x
+
+}
+```
+
+```{r}
+survey.B.z
+```
+

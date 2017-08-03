@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>YaRrr! The Pirate’s Guide to R</title>
   <meta name="description" content="An introductory book to R written by, and for, R pirates">
-  <meta name="generator" content="bookdown 0.3.9 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
 
   <meta property="og:title" content="YaRrr! The Pirate’s Guide to R" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Nathaniel D. Phillips">
 
 
-<meta name="date" content="2017-03-17">
+<meta name="date" content="2017-08-02">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -148,7 +148,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.2" data-path="jumpin.html"><a href="jumpin.html#descriptive-statistics"><i class="fa fa-check"></i><b>3.2</b> Descriptive statistics</a></li>
 <li class="chapter" data-level="3.3" data-path="jumpin.html"><a href="jumpin.html#plotting"><i class="fa fa-check"></i><b>3.3</b> Plotting</a></li>
 <li class="chapter" data-level="3.4" data-path="jumpin.html"><a href="jumpin.html#hypothesis-tests"><i class="fa fa-check"></i><b>3.4</b> Hypothesis tests</a></li>
-<li class="chapter" data-level="3.5" data-path="jumpin.html"><a href="jumpin.html#regression"><i class="fa fa-check"></i><b>3.5</b> Regression</a></li>
+<li class="chapter" data-level="3.5" data-path="jumpin.html"><a href="jumpin.html#regression-analysis"><i class="fa fa-check"></i><b>3.5</b> Regression analysis</a></li>
 <li class="chapter" data-level="3.6" data-path="jumpin.html"><a href="jumpin.html#bayesian-statistics"><i class="fa fa-check"></i><b>3.6</b> Bayesian Statistics</a></li>
 <li class="chapter" data-level="3.7" data-path="jumpin.html"><a href="jumpin.html#wasnt-that-easy"><i class="fa fa-check"></i><b>3.7</b> Wasn’t that easy?!</a></li>
 </ul></li>
@@ -353,8 +353,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="14.7" data-path="anova.html"><a href="anova.html#repeated-measures-anova-using-the-lme4-package"><i class="fa fa-check"></i><b>14.7</b> Repeated measures ANOVA using the lme4 package</a></li>
 <li class="chapter" data-level="14.8" data-path="anova.html"><a href="anova.html#test-your-r-might-5"><i class="fa fa-check"></i><b>14.8</b> Test your R might!</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="jumpin.html"><a href="jumpin.html#regression"><i class="fa fa-check"></i><b>15</b> Regression</a><ul>
-<li class="chapter" data-level="15.1" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>15.1</b> The Linear Model</a></li>
+<li class="chapter" data-level="15" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>15</b> Regression</a><ul>
+<li class="chapter" data-level="15.1" data-path="regression.html"><a href="regression.html#the-linear-model"><i class="fa fa-check"></i><b>15.1</b> The Linear Model</a></li>
 <li class="chapter" data-level="15.2" data-path="regression.html"><a href="regression.html#linear-regression-with-lm"><i class="fa fa-check"></i><b>15.2</b> Linear regression with <code>lm()</code></a><ul>
 <li class="chapter" data-level="15.2.1" data-path="regression.html"><a href="regression.html#estimating-the-value-of-diamonds-with-lm"><i class="fa fa-check"></i><b>15.2.1</b> Estimating the value of diamonds with <code>lm()</code></a></li>
 <li class="chapter" data-level="15.2.2" data-path="regression.html"><a href="regression.html#getting-model-fits-with-fitted.values"><i class="fa fa-check"></i><b>15.2.2</b> Getting model fits with <code>fitted.values</code></a></li>
@@ -371,15 +371,44 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="15.6" data-path="regression.html"><a href="regression.html#test-your-might-a-ship-auction"><i class="fa fa-check"></i><b>15.6</b> Test your might! A ship auction</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="solutions.html"><a href="solutions.html"><i class="fa fa-check"></i><b>16</b> Solutions</a><ul>
-<li class="chapter" data-level="16.1" data-path="solutions.html"><a href="solutions.html#chapter-4-the-basics"><i class="fa fa-check"></i><b>16.1</b> Chapter 4: The Basics</a></li>
-<li class="chapter" data-level="16.2" data-path="solutions.html"><a href="solutions.html#chapter-5-scalers-and-vectors"><i class="fa fa-check"></i><b>16.2</b> Chapter 5: Scalers and vectors</a></li>
-<li class="chapter" data-level="16.3" data-path="solutions.html"><a href="solutions.html#chapter-6-vector-functions"><i class="fa fa-check"></i><b>16.3</b> Chapter 6: Vector Functions</a></li>
-<li class="chapter" data-level="16.4" data-path="solutions.html"><a href="solutions.html#chapter-7-indexing-vectors-with"><i class="fa fa-check"></i><b>16.4</b> Chapter 7: Indexing vectors with []</a></li>
-<li class="chapter" data-level="16.5" data-path="solutions.html"><a href="solutions.html#chapter-8-matrices-and-dataframes"><i class="fa fa-check"></i><b>16.5</b> Chapter 8: Matrices and Dataframes</a></li>
-<li class="chapter" data-level="16.6" data-path="solutions.html"><a href="solutions.html#chapter-13-hypothesis-tests"><i class="fa fa-check"></i><b>16.6</b> Chapter 13: Hypothesis tests</a></li>
-<li class="chapter" data-level="16.7" data-path="solutions.html"><a href="solutions.html#chapter-14-anova"><i class="fa fa-check"></i><b>16.7</b> Chapter 14: ANOVA</a></li>
-<li class="chapter" data-level="16.8" data-path="solutions.html"><a href="solutions.html#chapter-15-regression"><i class="fa fa-check"></i><b>16.8</b> Chapter 15: Regression</a></li>
+<li class="chapter" data-level="16" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>16</b> Custom functions</a><ul>
+<li class="chapter" data-level="16.1" data-path="functions.html"><a href="functions.html#why-would-you-want-to-write-your-own-function"><i class="fa fa-check"></i><b>16.1</b> Why would you want to write your own function?</a></li>
+<li class="chapter" data-level="16.2" data-path="functions.html"><a href="functions.html#the-structure-of-a-custom-function"><i class="fa fa-check"></i><b>16.2</b> The structure of a custom function</a><ul>
+<li class="chapter" data-level="16.2.1" data-path="functions.html"><a href="functions.html#creating-my.mean"><i class="fa fa-check"></i><b>16.2.1</b> Creating <code>my.mean()</code></a></li>
+<li class="chapter" data-level="16.2.2" data-path="functions.html"><a href="functions.html#specifying-multiple-inputs"><i class="fa fa-check"></i><b>16.2.2</b> Specifying multiple inputs</a></li>
+<li class="chapter" data-level="16.2.3" data-path="functions.html"><a href="functions.html#including-default-values-for-arguments"><i class="fa fa-check"></i><b>16.2.3</b> Including default values for arguments</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="functions.html"><a href="functions.html#using-if-then-statements-in-functions"><i class="fa fa-check"></i><b>16.3</b> Using if, then statements in functions</a></li>
+<li class="chapter" data-level="16.4" data-path="functions.html"><a href="functions.html#a-worked-example-plot.advanced"><i class="fa fa-check"></i><b>16.4</b> A worked example: <code>plot.advanced()</code></a><ul>
+<li class="chapter" data-level="16.4.1" data-path="functions.html"><a href="functions.html#seeing-function-code"><i class="fa fa-check"></i><b>16.4.1</b> Seeing function code</a></li>
+<li class="chapter" data-level="16.4.2" data-path="functions.html"><a href="functions.html#using-stop-to-completely-stop-a-function-and-print-an-error"><i class="fa fa-check"></i><b>16.4.2</b> Using <code>stop()</code> to completely stop a function and print an error</a></li>
+<li class="chapter" data-level="16.4.3" data-path="functions.html"><a href="functions.html#using-vectors-as-arguments"><i class="fa fa-check"></i><b>16.4.3</b> Using vectors as arguments</a></li>
+<li class="chapter" data-level="16.4.4" data-path="functions.html"><a href="functions.html#storing-and-loading-your-functions-to-and-from-a-function-file-with-source"><i class="fa fa-check"></i><b>16.4.4</b> Storing and loading your functions to and from a function file with <code>source()</code></a></li>
+<li class="chapter" data-level="16.4.5" data-path="functions.html"><a href="functions.html#testing-functions"><i class="fa fa-check"></i><b>16.4.5</b> Testing functions</a></li>
+<li class="chapter" data-level="16.4.6" data-path="functions.html"><a href="functions.html#using-...-as-a-wildcard-argument"><i class="fa fa-check"></i><b>16.4.6</b> Using <code>...</code> as a wildcard argument</a></li>
+</ul></li>
+<li class="chapter" data-level="16.5" data-path="functions.html"><a href="functions.html#test-your-r-might-6"><i class="fa fa-check"></i><b>16.5</b> Test your R might!</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="loops.html"><a href="loops.html"><i class="fa fa-check"></i><b>17</b> Loops</a><ul>
+<li class="chapter" data-level="17.1" data-path="loops.html"><a href="loops.html#what-are-loops"><i class="fa fa-check"></i><b>17.1</b> What are loops?</a><ul>
+<li class="chapter" data-level="17.1.1" data-path="loops.html"><a href="loops.html#printing-numbers-from-1-to-100"><i class="fa fa-check"></i><b>17.1.1</b> Printing numbers from 1 to 100</a></li>
+<li class="chapter" data-level="17.1.2" data-path="loops.html"><a href="loops.html#adding-the-integers-from-1-to-100"><i class="fa fa-check"></i><b>17.1.2</b> Adding the integers from 1 to 100</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="loops.html"><a href="loops.html#creating-multiple-plots-with-a-loop"><i class="fa fa-check"></i><b>17.2</b> Creating multiple plots with a loop</a></li>
+<li class="chapter" data-level="17.3" data-path="loops.html"><a href="loops.html#updating-a-container-object-with-a-loop"><i class="fa fa-check"></i><b>17.3</b> Updating a container object with a loop</a></li>
+<li class="chapter" data-level="17.4" data-path="loops.html"><a href="loops.html#loops-over-multiple-indices-with-a-design-matrix"><i class="fa fa-check"></i><b>17.4</b> Loops over multiple indices with a design matrix</a></li>
+<li class="chapter" data-level="17.5" data-path="loops.html"><a href="loops.html#the-list-object"><i class="fa fa-check"></i><b>17.5</b> The list object</a></li>
+<li class="chapter" data-level="17.6" data-path="loops.html"><a href="loops.html#test-your-r-might-7"><i class="fa fa-check"></i><b>17.6</b> Test your R might!</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="solutions.html"><a href="solutions.html"><i class="fa fa-check"></i><b>18</b> Solutions</a><ul>
+<li class="chapter" data-level="18.1" data-path="solutions.html"><a href="solutions.html#chapter-4-the-basics"><i class="fa fa-check"></i><b>18.1</b> Chapter 4: The Basics</a></li>
+<li class="chapter" data-level="18.2" data-path="solutions.html"><a href="solutions.html#chapter-5-scalers-and-vectors"><i class="fa fa-check"></i><b>18.2</b> Chapter 5: Scalers and vectors</a></li>
+<li class="chapter" data-level="18.3" data-path="solutions.html"><a href="solutions.html#chapter-6-vector-functions"><i class="fa fa-check"></i><b>18.3</b> Chapter 6: Vector Functions</a></li>
+<li class="chapter" data-level="18.4" data-path="solutions.html"><a href="solutions.html#chapter-7-indexing-vectors-with"><i class="fa fa-check"></i><b>18.4</b> Chapter 7: Indexing vectors with []</a></li>
+<li class="chapter" data-level="18.5" data-path="solutions.html"><a href="solutions.html#chapter-8-matrices-and-dataframes"><i class="fa fa-check"></i><b>18.5</b> Chapter 8: Matrices and Dataframes</a></li>
+<li class="chapter" data-level="18.6" data-path="solutions.html"><a href="solutions.html#chapter-13-hypothesis-tests"><i class="fa fa-check"></i><b>18.6</b> Chapter 13: Hypothesis tests</a></li>
+<li class="chapter" data-level="18.7" data-path="solutions.html"><a href="solutions.html#chapter-14-anova"><i class="fa fa-check"></i><b>18.7</b> Chapter 14: ANOVA</a></li>
+<li class="chapter" data-level="18.8" data-path="solutions.html"><a href="solutions.html#chapter-15-regression"><i class="fa fa-check"></i><b>18.8</b> Chapter 15: Regression</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -434,7 +463,7 @@ final -<span class="st"> </span>midterm
 
 <span class="co"># Standard deviation of midterm grades</span>
 <span class="kw">sd</span>(midterm)
-## [1] 12.67
+## [1] 12.67368
 
 <span class="co"># Highest final grade</span>
 <span class="kw">max</span>(final)
@@ -536,7 +565,7 @@ total.sold
 <tr class="even">
 <td align="left"><code>sd(x), var(x), range(x)</code></td>
 <td align="left"><code>sd(1:10)</code></td>
-<td align="left">3.0277</td>
+<td align="left">3.0276504</td>
 </tr>
 <tr class="odd">
 <td align="left"><code>quantile(x, probs)</code></td>
@@ -558,7 +587,7 @@ total.sold
 <span class="kw">mean</span>(tattoos)
 ## [1] 24.1
 <span class="kw">sd</span>(tattoos)
-## [1] 31.32</code></pre></div>
+## [1] 31.32074</code></pre></div>
 <div id="length" class="section level3">
 <h3><span class="header-section-number">6.2.1</span> length()</h3>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-121"></span>
@@ -631,17 +660,17 @@ x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n
 
 <span class="co"># What are the mean and standard deviation of the sample?</span>
 <span class="kw">mean</span>(x)
-## [1] 10.55
+## [1] 10.55418
 <span class="kw">sd</span>(x)
-## [1] 2.518</code></pre></div>
+## [1] 2.517902</code></pre></div>
 <p>As you can see, the mean and standard deviation of our sample vector are close to the population values of 10 and 5 – but they aren’t exactly the same because these are sample data. If we take a much larger sample (say, 100,000), the sample statistics should get much closer to the population values:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 100,000 samples from a Normal dist with mean = 10, sd = 5</span>
 y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">100000</span>, <span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="dv">5</span>)
 
 <span class="kw">mean</span>(y)
-## [1] 10.01
+## [1] 10.00756
 <span class="kw">sd</span>(y)
-## [1] 4.996</code></pre></div>
+## [1] 4.99587</code></pre></div>
 <p>Yep, sure enough our new sample y (containing 100,000 values) has a sample mean and standard deviation much closer (almost identical) to the population values than our sample x (containing only 5 values). This is an example of what is called the law of large numbers. Google it.</p>
 </div>
 </div>
@@ -699,12 +728,12 @@ gender &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">
 <p>If you want to get a table of percentages instead of counts, you can just divide the result of the <code>table()</code> function by the sum of the result:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(vec) /<span class="st"> </span><span class="kw">sum</span>(<span class="kw">table</span>(vec))
 ## vec
-##      1      5     10 
-## 0.5556 0.1111 0.3333
+##         1         5        10 
+## 0.5555556 0.1111111 0.3333333
 <span class="kw">table</span>(gender) /<span class="st"> </span><span class="kw">sum</span>(<span class="kw">table</span>(gender))
 ## gender
-##      F      M 
-## 0.5556 0.4444</code></pre></div>
+##         F         M 
+## 0.5555556 0.4444444</code></pre></div>
 </div>
 <div id="missing-na-values" class="section level2">
 <h2><span class="header-section-number">6.4</span> Missing (NA) values</h2>
@@ -724,17 +753,18 @@ gender &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">
 <p>Let’s say you have a vector a containing some data. We’ll assign the vector to a new object called <code>a</code> then calculate the mean and standard deviation with the <code>mean()</code> and <code>sd()</code> functions:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">4</span>)
 <span class="kw">mean</span>(a)
-## [1] 4.571
+## [1] 4.571429
 <span class="kw">sd</span>(a)
-## [1] 1.397</code></pre></div>
+## [1] 1.397276</code></pre></div>
 <p>Ok. Now we’ll create a new vector called <code>a.z</code> which is a standardized version of a. To do this, we’ll simply subtract the mean of the vector, then divide by the standard deviation.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a.z &lt;-<span class="st"> </span>(a -<span class="st"> </span><span class="kw">mean</span>(a)) /<span class="st"> </span><span class="kw">sd</span>(a)</code></pre></div>
 <p>Now let’s look at the standardized values:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a.z
-## [1]  0.3067 -1.1246  1.7381  0.3067  0.3067 -1.1246 -0.4090</code></pre></div>
+## [1]  0.3067192 -1.1246370  1.7380754  0.3067192  0.3067192 -1.1246370
+## [7] -0.4089589</code></pre></div>
 <p>The mean of <code>a.z</code> should now be 0, and the standard deviation of <code>a.z</code> should now be 1. Let’s make sure:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(a.z)
-## [1] 1.982e-16
+## [1] 1.982309e-16
 <span class="kw">sd</span>(a.z)
 ## [1] 1</code></pre></div>
 <p>Sweet. Oh, don’t worry that the mean of <code>a.z</code> doesn’t look like exactly zero. Using non-scientific notation, the result is 0.000000000000000198. For all intents and purposes, that’s 0. The reason the result is not exactly 0 is due to computer science theoretical reasons that I cannot explain (because I don’t understand them).</p>
@@ -899,7 +929,7 @@ gitbook.start({
 "link": "https://github.com/ndphillips/ThePiratesGuideToR/edit/master/06-vectorfunctions.Rmd",
 "text": "Edit"
 },
-"download": ["YaRrr.pdf"],
+"download": null,
 "toc": {
 "collapse": "subsection"
 }
@@ -912,7 +942,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(script.src))
       script.src  = script.src.replace(/^https?:/, '');
     document.getElementsByTagName("head")[0].appendChild(script);

@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>YaRrr! The Pirate’s Guide to R</title>
   <meta name="description" content="An introductory book to R written by, and for, R pirates">
-  <meta name="generator" content="bookdown 0.3.9 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
 
   <meta property="og:title" content="YaRrr! The Pirate’s Guide to R" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Nathaniel D. Phillips">
 
 
-<meta name="date" content="2017-03-17">
+<meta name="date" content="2017-08-02">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -148,7 +148,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.2" data-path="jumpin.html"><a href="jumpin.html#descriptive-statistics"><i class="fa fa-check"></i><b>3.2</b> Descriptive statistics</a></li>
 <li class="chapter" data-level="3.3" data-path="jumpin.html"><a href="jumpin.html#plotting"><i class="fa fa-check"></i><b>3.3</b> Plotting</a></li>
 <li class="chapter" data-level="3.4" data-path="jumpin.html"><a href="jumpin.html#hypothesis-tests"><i class="fa fa-check"></i><b>3.4</b> Hypothesis tests</a></li>
-<li class="chapter" data-level="3.5" data-path="jumpin.html"><a href="jumpin.html#regression"><i class="fa fa-check"></i><b>3.5</b> Regression</a></li>
+<li class="chapter" data-level="3.5" data-path="jumpin.html"><a href="jumpin.html#regression-analysis"><i class="fa fa-check"></i><b>3.5</b> Regression analysis</a></li>
 <li class="chapter" data-level="3.6" data-path="jumpin.html"><a href="jumpin.html#bayesian-statistics"><i class="fa fa-check"></i><b>3.6</b> Bayesian Statistics</a></li>
 <li class="chapter" data-level="3.7" data-path="jumpin.html"><a href="jumpin.html#wasnt-that-easy"><i class="fa fa-check"></i><b>3.7</b> Wasn’t that easy?!</a></li>
 </ul></li>
@@ -353,8 +353,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="14.7" data-path="anova.html"><a href="anova.html#repeated-measures-anova-using-the-lme4-package"><i class="fa fa-check"></i><b>14.7</b> Repeated measures ANOVA using the lme4 package</a></li>
 <li class="chapter" data-level="14.8" data-path="anova.html"><a href="anova.html#test-your-r-might-5"><i class="fa fa-check"></i><b>14.8</b> Test your R might!</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="jumpin.html"><a href="jumpin.html#regression"><i class="fa fa-check"></i><b>15</b> Regression</a><ul>
-<li class="chapter" data-level="15.1" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>15.1</b> The Linear Model</a></li>
+<li class="chapter" data-level="15" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>15</b> Regression</a><ul>
+<li class="chapter" data-level="15.1" data-path="regression.html"><a href="regression.html#the-linear-model"><i class="fa fa-check"></i><b>15.1</b> The Linear Model</a></li>
 <li class="chapter" data-level="15.2" data-path="regression.html"><a href="regression.html#linear-regression-with-lm"><i class="fa fa-check"></i><b>15.2</b> Linear regression with <code>lm()</code></a><ul>
 <li class="chapter" data-level="15.2.1" data-path="regression.html"><a href="regression.html#estimating-the-value-of-diamonds-with-lm"><i class="fa fa-check"></i><b>15.2.1</b> Estimating the value of diamonds with <code>lm()</code></a></li>
 <li class="chapter" data-level="15.2.2" data-path="regression.html"><a href="regression.html#getting-model-fits-with-fitted.values"><i class="fa fa-check"></i><b>15.2.2</b> Getting model fits with <code>fitted.values</code></a></li>
@@ -371,15 +371,44 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="15.6" data-path="regression.html"><a href="regression.html#test-your-might-a-ship-auction"><i class="fa fa-check"></i><b>15.6</b> Test your might! A ship auction</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="solutions.html"><a href="solutions.html"><i class="fa fa-check"></i><b>16</b> Solutions</a><ul>
-<li class="chapter" data-level="16.1" data-path="solutions.html"><a href="solutions.html#chapter-4-the-basics"><i class="fa fa-check"></i><b>16.1</b> Chapter 4: The Basics</a></li>
-<li class="chapter" data-level="16.2" data-path="solutions.html"><a href="solutions.html#chapter-5-scalers-and-vectors"><i class="fa fa-check"></i><b>16.2</b> Chapter 5: Scalers and vectors</a></li>
-<li class="chapter" data-level="16.3" data-path="solutions.html"><a href="solutions.html#chapter-6-vector-functions"><i class="fa fa-check"></i><b>16.3</b> Chapter 6: Vector Functions</a></li>
-<li class="chapter" data-level="16.4" data-path="solutions.html"><a href="solutions.html#chapter-7-indexing-vectors-with"><i class="fa fa-check"></i><b>16.4</b> Chapter 7: Indexing vectors with []</a></li>
-<li class="chapter" data-level="16.5" data-path="solutions.html"><a href="solutions.html#chapter-8-matrices-and-dataframes"><i class="fa fa-check"></i><b>16.5</b> Chapter 8: Matrices and Dataframes</a></li>
-<li class="chapter" data-level="16.6" data-path="solutions.html"><a href="solutions.html#chapter-13-hypothesis-tests"><i class="fa fa-check"></i><b>16.6</b> Chapter 13: Hypothesis tests</a></li>
-<li class="chapter" data-level="16.7" data-path="solutions.html"><a href="solutions.html#chapter-14-anova"><i class="fa fa-check"></i><b>16.7</b> Chapter 14: ANOVA</a></li>
-<li class="chapter" data-level="16.8" data-path="solutions.html"><a href="solutions.html#chapter-15-regression"><i class="fa fa-check"></i><b>16.8</b> Chapter 15: Regression</a></li>
+<li class="chapter" data-level="16" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>16</b> Custom functions</a><ul>
+<li class="chapter" data-level="16.1" data-path="functions.html"><a href="functions.html#why-would-you-want-to-write-your-own-function"><i class="fa fa-check"></i><b>16.1</b> Why would you want to write your own function?</a></li>
+<li class="chapter" data-level="16.2" data-path="functions.html"><a href="functions.html#the-structure-of-a-custom-function"><i class="fa fa-check"></i><b>16.2</b> The structure of a custom function</a><ul>
+<li class="chapter" data-level="16.2.1" data-path="functions.html"><a href="functions.html#creating-my.mean"><i class="fa fa-check"></i><b>16.2.1</b> Creating <code>my.mean()</code></a></li>
+<li class="chapter" data-level="16.2.2" data-path="functions.html"><a href="functions.html#specifying-multiple-inputs"><i class="fa fa-check"></i><b>16.2.2</b> Specifying multiple inputs</a></li>
+<li class="chapter" data-level="16.2.3" data-path="functions.html"><a href="functions.html#including-default-values-for-arguments"><i class="fa fa-check"></i><b>16.2.3</b> Including default values for arguments</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="functions.html"><a href="functions.html#using-if-then-statements-in-functions"><i class="fa fa-check"></i><b>16.3</b> Using if, then statements in functions</a></li>
+<li class="chapter" data-level="16.4" data-path="functions.html"><a href="functions.html#a-worked-example-plot.advanced"><i class="fa fa-check"></i><b>16.4</b> A worked example: <code>plot.advanced()</code></a><ul>
+<li class="chapter" data-level="16.4.1" data-path="functions.html"><a href="functions.html#seeing-function-code"><i class="fa fa-check"></i><b>16.4.1</b> Seeing function code</a></li>
+<li class="chapter" data-level="16.4.2" data-path="functions.html"><a href="functions.html#using-stop-to-completely-stop-a-function-and-print-an-error"><i class="fa fa-check"></i><b>16.4.2</b> Using <code>stop()</code> to completely stop a function and print an error</a></li>
+<li class="chapter" data-level="16.4.3" data-path="functions.html"><a href="functions.html#using-vectors-as-arguments"><i class="fa fa-check"></i><b>16.4.3</b> Using vectors as arguments</a></li>
+<li class="chapter" data-level="16.4.4" data-path="functions.html"><a href="functions.html#storing-and-loading-your-functions-to-and-from-a-function-file-with-source"><i class="fa fa-check"></i><b>16.4.4</b> Storing and loading your functions to and from a function file with <code>source()</code></a></li>
+<li class="chapter" data-level="16.4.5" data-path="functions.html"><a href="functions.html#testing-functions"><i class="fa fa-check"></i><b>16.4.5</b> Testing functions</a></li>
+<li class="chapter" data-level="16.4.6" data-path="functions.html"><a href="functions.html#using-...-as-a-wildcard-argument"><i class="fa fa-check"></i><b>16.4.6</b> Using <code>...</code> as a wildcard argument</a></li>
+</ul></li>
+<li class="chapter" data-level="16.5" data-path="functions.html"><a href="functions.html#test-your-r-might-6"><i class="fa fa-check"></i><b>16.5</b> Test your R might!</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="loops.html"><a href="loops.html"><i class="fa fa-check"></i><b>17</b> Loops</a><ul>
+<li class="chapter" data-level="17.1" data-path="loops.html"><a href="loops.html#what-are-loops"><i class="fa fa-check"></i><b>17.1</b> What are loops?</a><ul>
+<li class="chapter" data-level="17.1.1" data-path="loops.html"><a href="loops.html#printing-numbers-from-1-to-100"><i class="fa fa-check"></i><b>17.1.1</b> Printing numbers from 1 to 100</a></li>
+<li class="chapter" data-level="17.1.2" data-path="loops.html"><a href="loops.html#adding-the-integers-from-1-to-100"><i class="fa fa-check"></i><b>17.1.2</b> Adding the integers from 1 to 100</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="loops.html"><a href="loops.html#creating-multiple-plots-with-a-loop"><i class="fa fa-check"></i><b>17.2</b> Creating multiple plots with a loop</a></li>
+<li class="chapter" data-level="17.3" data-path="loops.html"><a href="loops.html#updating-a-container-object-with-a-loop"><i class="fa fa-check"></i><b>17.3</b> Updating a container object with a loop</a></li>
+<li class="chapter" data-level="17.4" data-path="loops.html"><a href="loops.html#loops-over-multiple-indices-with-a-design-matrix"><i class="fa fa-check"></i><b>17.4</b> Loops over multiple indices with a design matrix</a></li>
+<li class="chapter" data-level="17.5" data-path="loops.html"><a href="loops.html#the-list-object"><i class="fa fa-check"></i><b>17.5</b> The list object</a></li>
+<li class="chapter" data-level="17.6" data-path="loops.html"><a href="loops.html#test-your-r-might-7"><i class="fa fa-check"></i><b>17.6</b> Test your R might!</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="solutions.html"><a href="solutions.html"><i class="fa fa-check"></i><b>18</b> Solutions</a><ul>
+<li class="chapter" data-level="18.1" data-path="solutions.html"><a href="solutions.html#chapter-4-the-basics"><i class="fa fa-check"></i><b>18.1</b> Chapter 4: The Basics</a></li>
+<li class="chapter" data-level="18.2" data-path="solutions.html"><a href="solutions.html#chapter-5-scalers-and-vectors"><i class="fa fa-check"></i><b>18.2</b> Chapter 5: Scalers and vectors</a></li>
+<li class="chapter" data-level="18.3" data-path="solutions.html"><a href="solutions.html#chapter-6-vector-functions"><i class="fa fa-check"></i><b>18.3</b> Chapter 6: Vector Functions</a></li>
+<li class="chapter" data-level="18.4" data-path="solutions.html"><a href="solutions.html#chapter-7-indexing-vectors-with"><i class="fa fa-check"></i><b>18.4</b> Chapter 7: Indexing vectors with []</a></li>
+<li class="chapter" data-level="18.5" data-path="solutions.html"><a href="solutions.html#chapter-8-matrices-and-dataframes"><i class="fa fa-check"></i><b>18.5</b> Chapter 8: Matrices and Dataframes</a></li>
+<li class="chapter" data-level="18.6" data-path="solutions.html"><a href="solutions.html#chapter-13-hypothesis-tests"><i class="fa fa-check"></i><b>18.6</b> Chapter 13: Hypothesis tests</a></li>
+<li class="chapter" data-level="18.7" data-path="solutions.html"><a href="solutions.html#chapter-14-anova"><i class="fa fa-check"></i><b>18.7</b> Chapter 14: ANOVA</a></li>
+<li class="chapter" data-level="18.8" data-path="solutions.html"><a href="solutions.html#chapter-15-regression"><i class="fa fa-check"></i><b>18.8</b> Chapter 15: Regression</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -410,12 +439,59 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 Figure 8.1: Did you actually think I could talk about matrices without a Matrix reference?!
 </p>
 </div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># -----------------------------</span>
+<span class="co"># Basic dataframe operations</span>
+<span class="co"># -----------------------------</span>
+
+<span class="co"># Create a dataframe of boat sale data called bsale</span>
+bsale &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">name =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;f&quot;</span>, <span class="st">&quot;g&quot;</span>, <span class="st">&quot;h&quot;</span>, <span class="st">&quot;i&quot;</span>, <span class="st">&quot;j&quot;</span>),
+                    <span class="dt">color =</span> <span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;pink&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;blue&quot;</span>, 
+                              <span class="st">&quot;green&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;black&quot;</span>),
+                    <span class="dt">age =</span> <span class="kw">c</span>(<span class="dv">143</span>, <span class="dv">53</span>, <span class="dv">356</span>, <span class="dv">23</span>, <span class="dv">647</span>, <span class="dv">24</span>, <span class="dv">532</span>, <span class="dv">43</span>, <span class="dv">66</span>, <span class="dv">86</span>),
+                    <span class="dt">price =</span> <span class="kw">c</span>(<span class="dv">53</span>, <span class="dv">87</span>, <span class="dv">54</span>, <span class="dv">66</span>, <span class="dv">264</span>, <span class="dv">32</span>, <span class="dv">532</span>, <span class="dv">58</span>, <span class="dv">99</span>, <span class="dv">132</span>),
+                    <span class="dt">cost =</span> <span class="kw">c</span>(<span class="dv">52</span>, <span class="dv">80</span>, <span class="dv">20</span>, <span class="dv">100</span>, <span class="dv">189</span>, <span class="dv">12</span>, <span class="dv">520</span>, <span class="dv">68</span>, <span class="dv">80</span>, <span class="dv">100</span>),
+                    <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)   <span class="co"># Don&#39;t convert strings to factors!</span>
+
+<span class="co"># Explore the bsale dataset:</span>
+<span class="kw">head</span>(bsale)     <span class="co"># Show me the first few rows</span>
+<span class="kw">str</span>(bsale)      <span class="co"># Show me the structure of the data</span>
+<span class="kw">View</span>(bsale)     <span class="co"># Open the data in a new window</span>
+<span class="kw">names</span>(bsale)    <span class="co"># What are the names of the columns?</span>
+<span class="kw">nrow</span>(bsale)     <span class="co"># How many rows are there in the data?</span>
+
+<span class="co"># Calculating statistics from column vectors</span>
+<span class="kw">mean</span>(bsale$age)       <span class="co"># What was the mean age?</span>
+<span class="kw">table</span>(bsale$color)    <span class="co"># How many boats were there of each color?</span>
+<span class="kw">max</span>(bsale$price)      <span class="co"># What was the maximum price?</span>
+
+<span class="co"># Adding new columns</span>
+bsale$id &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="kw">nrow</span>(bsale)
+bsale$age.decades &lt;-<span class="st"> </span>bsale$age /<span class="st"> </span><span class="dv">10</span>
+bsale$profit &lt;-<span class="st"> </span>bsale$price -<span class="st"> </span>bsale$cost
+
+<span class="co"># What was the mean price of green boats?</span>
+<span class="kw">with</span>(bsale, <span class="kw">mean</span>(price[color ==<span class="st"> &quot;green&quot;</span>]))
+
+<span class="co"># What were the names of boats older than 100 years?</span>
+<span class="kw">with</span>(bsale, name[age &gt;<span class="st"> </span><span class="dv">100</span>])
+
+<span class="co"># What percent of black boats had a positive profit?</span>
+<span class="kw">with</span>(<span class="kw">subset</span>(bsale, color ==<span class="st"> &quot;black&quot;</span>), <span class="kw">mean</span>(profit &gt;<span class="st"> </span><span class="dv">0</span>))
+
+<span class="co"># Save only the price and cost columns in a new dataframe</span>
+bsale<span class="fl">.2</span> &lt;-<span class="st"> </span>bsale[<span class="kw">c</span>(<span class="st">&quot;price&quot;</span>, <span class="st">&quot;cost&quot;</span>)]
+
+<span class="co"># Change the names of the columns to &quot;p&quot; and &quot;c&quot;</span>
+<span class="kw">names</span>(bsale<span class="fl">.2</span>) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;p&quot;</span>, <span class="st">&quot;c&quot;</span>)
+
+<span class="co"># Create a dataframe called old.black.bsale containing only data from black boats older than 50 years</span>
+old.black.bsale &lt;-<span class="st"> </span><span class="kw">subset</span>(bsale, color ==<span class="st"> &quot;black&quot;</span> &amp;<span class="st"> </span>age &gt;<span class="st"> </span><span class="dv">50</span>)</code></pre></div>
 <div id="what-are-matrices-and-dataframes" class="section level2">
 <h2><span class="header-section-number">8.1</span> What are matrices and dataframes?</h2>
 <p>By now, you should be comfortable with scalar and vector objects. However, you may have noticed that neither object types are appropriate for storing lots of data – such as the results of a survey or experiment. Thankfully, R has two object types that represent large data structures much better: <strong>matrices</strong> and <strong>dataframes</strong>.</p>
 <p>Matrices and dataframes are very similar to spreadsheets in Excel or data files in SPSS. Every matrix or dataframe contains rows (call that number m) and columns (n). Thus, wile a vector has 1 dimension (its length), matrices and dataframes both have 2-dimensions – representing their width and height. You can think of a matrix or dataframe as a combination of <code>n</code> vectors, where each vector has a length of <code>m</code>.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-185"></span>
-<img src="YaRrr_files/figure-html/unnamed-chunk-185-1.png" alt="scalar, Vector, MATRIX" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-186"></span>
+<img src="YaRrr_files/figure-html/unnamed-chunk-186-1.png" alt="scalar, Vector, MATRIX" width="672" />
 <p class="caption">
 Figure 8.2: scalar, Vector, MATRIX
 </p>
@@ -831,7 +907,7 @@ survey
 <div id="slicing-dataframes" class="section level2">
 <h2><span class="header-section-number">8.5</span> Slicing dataframes</h2>
 <p>Once you have a dataset stored as a matrix or dataframe in R, you’ll want to start accessing specific parts of the data based on some criteria. For example, if your dataset contains the result of an experiment comparing different experimental groups, you’ll want to calculate statistics for each experimental group separately. The process of selecting specific rows and columns of data based on some criteria is commonly known as <em>slicing</em>.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-207"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-208"></span>
 <img src="images/turnip.jpg" alt="Slicing and dicing data. The turnip represents your data, and the knife represents indexing with brackets, or subsetting functions like subset(). The red-eyed clown holding the knife is just off camera." width="30%" />
 <p class="caption">
 Figure 8.4: Slicing and dicing data. The turnip represents your data, and the knife represents indexing with brackets, or subsetting functions like subset(). The red-eyed clown holding the knife is just off camera.
@@ -848,14 +924,14 @@ df[, <span class="dv">5</span>]
 
 <span class="co"># Rows 1:5 and column 2</span>
 df[<span class="dv">1</span>:<span class="dv">5</span>, <span class="dv">2</span>]</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-209"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-210"></span>
 <img src="images/guineapig.jpg" alt="Ah the ToothGrowth dataframe. Yes, one of the dataframes stored in R contains data from an experiment testing the effectiveness of different doses of Vitamin C supplements on the growth of guinea pig teeth. The images I found by Googling ``guinea pig teeth'' were all pretty horrifying, so let's just go with this one." width="30%" />
 <p class="caption">
 Figure 8.5: Ah the ToothGrowth dataframe. Yes, one of the dataframes stored in R contains data from an experiment testing the effectiveness of different doses of Vitamin C supplements on the growth of guinea pig teeth. The images I found by Googling ``guinea pig teeth’’ were all pretty horrifying, so let’s just go with this one.
 </p>
 </div>
 <table>
-<caption><span id="tab:unnamed-chunk-210">Table 8.4: </span>First few rows of the ToothGrowth dataframe.</caption>
+<caption><span id="tab:unnamed-chunk-211">Table 8.4: </span>First few rows of the ToothGrowth dataframe.</caption>
 <thead>
 <tr class="header">
 <th align="right">len</th>
@@ -947,13 +1023,13 @@ ToothGrowth.VC &lt;-<span class="st"> </span>ToothGrowth[ToothGrowth$supp ==<spa
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create a new df with only the rows of ToothGrowth</span>
 <span class="co">#  where supp equals OJ and dose &lt; 1</span>
 
-ToothGrowth.VC.a &lt;-<span class="st"> </span>ToothGrowth[ToothGrowth$supp ==<span class="st"> &quot;OJ&quot;</span> &amp;
+ToothGrowth.OJ.a &lt;-<span class="st"> </span>ToothGrowth[ToothGrowth$supp ==<span class="st"> &quot;OJ&quot;</span> &amp;
 <span class="st">                                </span>ToothGrowth$dose &lt;<span class="st"> </span><span class="dv">1</span>, ]</code></pre></div>
 <p>Indexing with brackets is the standard way to slice and dice dataframes. However, the code can get a bit messy. A more elegant method is to use the <code>subset()</code> function.</p>
 </div>
 <div id="slicing-with-subset" class="section level3">
 <h3><span class="header-section-number">8.5.3</span> Slicing with <code>subset()</code></h3>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-217"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-218"></span>
 <img src="images/saber.jpeg" alt="The subset() function is like a lightsaber. An elegant function from a more civilized age." width="50%" />
 <p class="caption">
 Figure 8.6: The subset() function is like a lightsaber. An elegant function from a more civilized age.
@@ -985,7 +1061,6 @@ Figure 8.6: The subset() function is like a lightsaber. An elegant function from
 </table>
 <p>Let’s use the <code>subset()</code> function to create a new, subsetted dataset from the <code>ToothGrowth</code> dataframe containing data from guinea pigs who had a tooth length less than 20cm (<code>len &lt; 20</code>), given the OJ supplement (<code>supp == &quot;OJ&quot;</code>), and with a dose greater than or equal to 1 (<code>dose &gt;= 1</code>):</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Get rows of ToothGrowth where len &lt; 20 AND supp == &quot;OJ&quot; AND dose &gt;= 1</span>
-
 <span class="kw">subset</span>(<span class="dt">x =</span> ToothGrowth,
       <span class="dt">subset =</span> len &lt;<span class="st"> </span><span class="dv">20</span> &amp;
 <span class="st">               </span>supp ==<span class="st"> &quot;OJ&quot;</span> &amp;
@@ -995,15 +1070,13 @@ Figure 8.6: The subset() function is like a lightsaber. An elegant function from
 ## 49  14   OJ    1    1.4    49</code></pre></div>
 <p>As you can see, there were only two cases that satisfied all 3 of our selection criteria.</p>
 <p>In the example above, I didn’t specify an input to the <code>select</code> argument because I wanted all columns. However, if you just want certain columns, you can just name the columns you want in the <code>select</code> argument:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Get rows of ToothGrowth where len &gt; 30 AND supp == &quot;VC&quot;, but only return the len and index columns</span>
-
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Get rows of ToothGrowth where len &gt; 30 AND supp == &quot;VC&quot;, but only return the len and dose columns</span>
 <span class="kw">subset</span>(<span class="dt">x =</span> ToothGrowth,
-      <span class="dt">subset =</span> len &gt;<span class="st"> </span><span class="dv">30</span> &amp;
-<span class="st">               </span>supp ==<span class="st"> &quot;VC&quot;</span>,
-      <span class="dt">select =</span> <span class="kw">c</span>(len, index))
-##    len index
-## 23  34    23
-## 26  32    26</code></pre></div>
+    <span class="dt">subset =</span> len &gt;<span class="st"> </span><span class="dv">30</span> &amp;<span class="st"> </span>supp ==<span class="st"> &quot;VC&quot;</span>,
+    <span class="dt">select =</span> <span class="kw">c</span>(len, dose))
+##    len dose
+## 23  34    2
+## 26  32    2</code></pre></div>
 </div>
 </div>
 <div id="combining-slicing-with-functions" class="section level2">
@@ -1068,7 +1141,7 @@ health$weight +<span class="st"> </span>health$height /<span class="st"> </span>
 </div>
 <div id="test-your-r-might-pirates-and-superheroes" class="section level2">
 <h2><span class="header-section-number">8.7</span> Test your R might! Pirates and superheroes</h2>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-227"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-228"></span>
 <img src="images/maggot.jpg" alt="This is a lesser-known superhero named Maggott who could 'transform his body to get superhuman strength and endurance, but to do so he needed to release two huge parasitic worms from his stomach cavity and have them eat things' (http://heavy.com/comedy/2010/04/the-20-worst-superheroes/). Yeah...I'm shocked this guy wasn't a hit." width="50%" />
 <p class="caption">
 Figure 8.7: This is a lesser-known superhero named Maggott who could ‘transform his body to get superhuman strength and endurance, but to do so he needed to release two huge parasitic worms from his stomach cavity and have them eat things’ (<a href="http://heavy.com/comedy/2010/04/the-20-worst-superheroes/" class="uri">http://heavy.com/comedy/2010/04/the-20-worst-superheroes/</a>). Yeah…I’m shocked this guy wasn’t a hit.
@@ -1211,7 +1284,7 @@ gitbook.start({
 "link": "https://github.com/ndphillips/ThePiratesGuideToR/edit/master/08-matricesdataframes.Rmd",
 "text": "Edit"
 },
-"download": ["YaRrr.pdf"],
+"download": null,
 "toc": {
 "collapse": "subsection"
 }
@@ -1224,7 +1297,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(script.src))
       script.src  = script.src.replace(/^https?:/, '');
     document.getElementsByTagName("head")[0].appendChild(script);

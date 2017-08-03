@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # Jump In! {#jumpin}
 
 ```{r, echo = FALSE}
@@ -188,7 +193,7 @@ anova(tat.sword.lm)
 
 Sure enough, we see another very small p-value of `p < 2.2e-16`, suggesting that the number of tattoos pirate's have are different based on their favorite sword.
 
-## Regression
+## Regression analysis
 
 Finally, let's run a regression analysis to see if a pirate's age, weight, and number of tattoos (s)he has predicts how many treasure chests he/she's found:
 

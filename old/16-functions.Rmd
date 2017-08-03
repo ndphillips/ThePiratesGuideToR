@@ -1,0 +1,593 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+# Custom functions {#functions}
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, fig.align='center')
+library(dplyr)
+library(yarrr)
+library(bookdown)
+options(digits = 2)
+```
+
+
+```{r, fig.cap= "Functions. They're kind of a big deal.", fig.margin = TRUE, echo = FALSE, out.width = "40%", fig.align="center"}
+knitr::include_graphics(c("images/bigdeal.jpg"))
+```
+
+## Why would you want to write your own function?
+
+Throughout this book, you have been using tons of functions either built into base-R -- like `mean()`, `hist()`, `t.test()`, or written by other people and saved in packages -- like `pirateplot()` and `apa()` in the `yarrr` package. However, because R is a complete programming language, you can easily write your *own* functions that perform specific tasks you want.
+
+For example, let's say you think the standard histograms made with `hist()` are pretty boring. Instead, you'd like to you'd like use a fancier version with a more modern design that also displays statistical information. Now of course you know from an earlier chapter that you can customize plots in R any way that you'd like by adding customer parameter values like `col`, `bg` (etc.). However, it would be a pain to have to specify all of these custom parameters every time you want to create your custom histogram. To accomplish this, you can write your own custom function called `piratehist()` that automatically includes your custom specifications.
+
+In the following code, I will define a new function called `piratehist()`. Just like the standard `hist()` function,`piratehist()` will take a vector of data (plus optional arguments indicated by `...`), create a light gray histogram, and adds text to the top of the figure indicating the mean and 95\% CI of the data.
+
+```{r}
+# Create a function called piratehist
+piratehist <- function(x, ...) {
+
+# Create a customized histogram  
+hist(x,
+     col = gray(.5, .2),
+     border = "white",
+     yaxt = "n",
+     ylab = "",
+     ...)
+
+# Calculate the conf interval
+ci <- t.test(x)$conf.int
+
+# Define and add top-text
+top.text <- paste(
+  "Mean = ", round(mean(x), 2),
+  " (95% CI [", round(ci[1], 2),
+  ", ", round(ci[2], 2), 
+  "]), SD = ", round(sd(x), 2), 
+  sep = "")
+
+mtext(top.text, side = 3)
+}
+```
+
+Now that I've defined the `piratehist()` function, let's evaluate it on a vector of data! 
+
+```{r}
+# Create a pirate histogram!
+piratehist(pirates$age,
+        xlab = "Age",
+        main = "Pirates' Ages")
+```
+
+As you can see, the resulting plot has all the customisations I specified in the function. So now, anytime I want to make a fancy pirate-y histogram, I can just use the `piratehist()` function rather than having to always write all the raw code from scratch.
+
+Of course, functions are limited to creating plots...oh no. You can write a function to do *anything* that you can program in R. Just think about a function as a container for R-code stored behind the scenes for you to use without having to see (or write) the code again. Now, if there's anything you like to do repeatedly in R (like making multiple customized plots, you can define the code just once in a new function rather than having to write it all again and again.Some of you reading this will quickly see how how writing your own functions can save you tons of time. For those of you who haven't...trust me, this is a big deal.
+
+
+## The structure of a custom function
+
+
+A function is simply an object that (usually) takes some arguments, performs some action (executes some R code), and then (usually) returns some output. This might sound complicated, but you've been using functions pre-defined in R throughout this book. For example, the function `mean()` takes a numeric vector as an argument, and then returns the arithmetic mean of that vector as a single scalar value.
+
+Your custom functions will have the following 4 attributes:
+
+
+1. Name: What is the name of your function? You can give it any valid object name. However, be careful not to use names of existing functions or R might get confused.
+
+2. Arguments: What are the inputs to the function? Does it need a vector of numeric data? Or some text? You can specify as many inputs as you want.
+
+3. Actions: What do you want the function to do with the inputs? Create a plot? Calculate a statistic? Run a regression analysis? This is where you'll write all the real R code behind the function.
+
+4. Output: What do you want the code to return when it's finished with the actions? Should it return a scalar statistic? A vector of data? A dataframe?
+
+
+Here's how your function will look in R. When creating functions, you'll use two new functions (Yes, you use functions to create functions! Very Inception-y), called `function()` and `return()`. You'll put the function inputs as arguments to the `function()` function, and the output(s) as argument(s) to the `return()` function.
+
+```{r}
+# The basic structure of a function
+NAME <- function(ARGUMENTS) {
+
+  ACTIONS
+
+  return(OUTPUT)
+
+}
+```
+
+### Creating `my.mean()`
+
+Let's create a custom functino called `my.mean()` that does the exact same thing as the `mean()` function in R. This function will take a vector `x` as an argument, creates a new vector called `output` that is the mean of all the elements of x (by summing all the values in x and dividing by the length of x), then return the `output` object to the user.
+
+```{r}
+# Create the function my.mean()
+my.mean <- function(x) {   # Single input called x
+
+  output <- sum(x) / length(x) # Calculate output
+
+return(output)  # Return output to the user after running the function
+
+}
+```
+
+Try running the code above. When you do, nothing obvious happens. However, R has now stored the new function `my.mean()` in the current working directory for later use. To use the function, we can then just call our function like any other function in R. Let's call our new function on some data and make sure that it gives us the same result as `mean()`:
+
+```{r}
+data <- c(3, 1, 6, 4, 2, 8, 4, 2)
+my.mean(data)
+mean(data)
+```
+
+As you can see, our new function `my.mean()` gave the same result as R's built in `mean()` function! Obviously, this was a bit of a waste of time as we simply recreated a built-in R function. But you get the idea...
+
+### Specifying multiple inputs
+
+You can create functions with as many inputs as you'd like (even 0!). Let's do an example. We'll create a function called `oh.god.how.much.did.i.spend` that helps hungover pirates figure out how much gold they spent after a long night of pirate debauchery. The function will have three inputs: `grogg`: the number of mugs of grogg the pirate drank, `port`: the number of glasses of port the pirate drank, and `crabjuice`: the number of shots of fermented crab juice the pirate drank. Based on this input, the function will calculate how much gold the pirate spent. We'll also assume that a mug of grogg costs 1, a glass of port costs 3, and a shot of fermented crab juice costs 10.
+
+```{r}
+oh.god.how.much.did.i.spend <- function(grogg,
+                                        port,
+                                        crabjuice) {
+
+  output <- grogg * 1 + port * 3 + crabjuice * 10
+
+  return(output)
+}
+```
+
+Now let's test our new function with a few different values for the inputs grogg, port, and crab juice. How much gold did Tamara, who had had 10 mugs of grogg, 3 glasses of wine, and 0 shots of crab juice spend?
+
+```{r}
+oh.god.how.much.did.i.spend(grogg = 10,
+                            port = 3,
+                            crabjuice = 0)
+```
+
+Looks like Tamara spent 19 gold last night. Ok, now how about Cosima, who didn't drink any grogg or port, but went a bit nuts on the crab juice:
+
+```{r}
+oh.god.how.much.did.i.spend(grogg = 0,
+                            port = 0,
+                            crabjuice = 7)
+```
+
+Cosima's taste for crab juice set her back 70 gold pieces.
+
+### Including default values for arguments
+
+
+When you create functions with many inputs, you'll probably want to start adding *default* values. Default values are input values which the function will use if the user does not specify their own. Most functions that you've used so far have default values. For example, the `hist()` function will use default values for inputs like `main`, `xlab`, (etc.) if you don't specify them/ Including defaults can save the user a lot of time because it keeps them from having to specify *every* possible input to a function.
+
+To add a default value to a function input, just include `= DEFAULT}`after the input. For example, let's add a default value of 0 to each argument in the `oh.god.how.much.did.i.spend` function. By doing this, R will set any inputs that the user does not specify to 0 -- in other words, it will assume that if you don't tell it how many drinks of a certain type you had, then you must have had 0.
+
+```{r}
+# Including default values for function arguments
+oh.god.how.much.did.i.spend <- function(grogg = 0,
+                                        port = 0,
+                                        crabjuice = 0) {
+
+  output <- grogg * 1 + port * 3 + crabjuice * 10
+
+  return(output)
+}
+```
+
+Let's test the new version of our function with data from Hyejeong, who had 5 glasses of port but no grogg or crab juice. Because 0 is the default, we can just ignore these arguments:
+
+```{r}
+oh.god.how.much.did.i.spend(port = 5)
+```
+
+Looks like Hyejeong only spent 15 by sticking with port.
+
+## Using if, then statements in functions
+
+
+A good function is like a person who knows what to wear for each occasion -- it should put on different things depending on the occasion. In other words, rather than doing (i.e.; wearing) a tuxedo for every event, a good `dress()` function needs to first make sure that the input was (`event == "ball"`) rather than (`event == "jobinterview"`). To selectively evaluate code based on criteria, R uses *if-then* statements 
+
+To run an if-then statement in R, we use the `if() {}` function. The function has two main elements, a *logical test* in the parentheses, and *conditional code* in curly braces. The code in the curly braces is conditional because it is *only* evaluated if the logical test contained in the parentheses is `TRUE`. If the logical test is `FALSE`, R will completely ignore all of the conditional code.
+
+Let's put some simple `if() {}` statements in a new function called `is.it.true()`. The function will take a single input `x`. If the input x is `TRUE`, the function will print one sentence. If the input x is `FALSE`, it will return a different sentence: 
+
+```{r}
+is.it.true <- function(x) {
+  
+if(x == TRUE) {print("x was true!")}
+if(x == FALSE) {print("x was false!")}
+  
+}
+```
+
+Let's try evaluating the function on a few different inputs:
+
+```{r}
+is.it.true(TRUE)
+is.it.true(FALSE)
+is.it.true(10 > 0)
+is.it.true(10 < 0)
+```
+
+
+Using `if()` statements in your functions can allow you to do some really neat things. Let's create a function called `show.me()` that takes a vector of data, and either creates a plot, tells the user some statistics, or tells a joke! The function has two inputs: `x` -- a vector of data, and `what` -- a string value that tells the function what to do with x. We'll set the function up to accept three different values of `what` -- either `"plot"`, which will plot the data, `"stats"`, which will return basic statistics about the vector, or `"tellmeajoke"`, which will return a funny joke!
+
+```{r}
+show.me <- function(x, what) {
+
+if(what == "plot") {
+  
+  hist(x, yaxt = "n", ylab = "", border = "white", 
+       col = "skyblue", xlab = "",
+       main = "Ok! I hope you like the plot...")
+  
+}
+
+if(what == "stats") {
+  
+  print(paste("Yarr! The mean of this data be ", 
+                  round(mean(x), 2),
+              " and the standard deviation be ", 
+              round(sd(x), 2),
+              sep = ""))
+  
+}
+
+if(what == "tellmeajoke") {
+  
+  print("I am a pirate, not your joke monkey.")
+  
+}
+}
+```
+
+Let's try the `show.me()` function with different arguments:
+
+```{r}
+show.me(x = pirates$beard.length, 
+        what = "plot")
+```
+
+Looks good! Now let's get the same function to tell us some statistics about the data by setting `what = "stats"`:
+
+```{r}
+show.me(x = pirates$beard.length, 
+        what = "stats")
+```
+
+Phew that was exhausting, I need to hear a funny joke. Let's set `what = "tellmeajoke"`:
+
+```{r}
+show.me(what = "tellmeajoke")
+```
+
+That wasn't very funny.
+
+
+
+## A worked example: `plot.advanced()`
+
+Let's create our own advanced own custom plotting function called `plot.advanced()` that acts like the normal plotting function, but has several additional arguments
+
+
+1 `add.mean`: A logical value indicating whether or not to add vertical and horizontal lines at the mean value of x and y.
+2 `add.regression`: A logical value indicating whether or not to add a linear regression line
+3 `p.threshold`: A numeric scalar indicating the p.value threshold for determining significance
+4 `add.modeltext`: A logical value indicating whether or not to include the regression equation as a sub-title to the plot
+
+
+This plotting code is a bit long, but it's all stuff you've learned before.
+
+```{r}
+
+plot.advanced <- function (x = rnorm(100),
+                           y = rnorm(100),
+                           add.mean = FALSE,
+                           add.regression = FALSE,
+                           p.threshold = .05,
+                           add.modeltext = FALSE,
+                           ...  # Optional further arguments passed on to plot
+                           ) {
+
+# Generate the plot with optional arguments
+#   like main, xlab, ylab, etc.
+  plot(x, y, ...)
+
+# Add mean reference lines if add.mean is TRUE
+if(add.mean == TRUE) {
+
+  abline(h = mean(y), lty = 2)
+  abline(v = mean(x), lty = 2)
+}
+
+# Add regression line if add.regression is TRUE
+if(add.regression == TRUE) {
+
+  model <- lm(y ~ x)  # Run regression
+
+  p.value <- anova(model)$"Pr(>F)"[1] # Get p-value
+
+  # Define line color from model p-value and threshold
+  if(p.value < p.threshold) {line.col <- "red"}
+  if(p.value >= p.threshold) {line.col <- "black"}
+
+  abline(lm(y ~ x), col = line.col, lwd = 2) # Add regression line
+
+}
+
+  # Add regression equation text if add.modeltext is TRUE
+if(add.modeltext == TRUE) {
+
+  # Run regression
+  model <- lm(y ~ x)
+
+  # Determine coefficients from model object
+  coefficients <- model$coefficients
+  a <- round(coefficients[1], 2)
+  b <- round(coefficients[2], 2)
+
+  # Create text
+  model.text <- paste("Regression Equation: ", a, " + ",
+                      b, " * x", sep = "")
+
+  # Add text to top of plot
+  mtext(model.text, side = 3, line = .5, cex = .8)
+
+}
+}
+```
+
+Let's try it out!
+
+```{r}
+plot.advanced(x = pirates$age,
+              y = pirates$tchests,
+              add.regression = TRUE,
+              add.modeltext = TRUE,
+              p.threshold = .05,
+              main = "plot.advanced()",
+              xlab = "Age", ylab = "Treasure Chests Found",
+              pch = 16,
+              col = gray(.2, .3))
+```
+
+### Seeing function code
+
+Because R is awesome, you can view the code underlying most functions by just evaluating the name of the function (without any parentheses or arguments). For example, the `yarrr` package contains a function called `transparent()` that converts standard colors into transparent colors. To see the code contained in the function, just evaluate its name:
+
+```{r}
+# Show me the code in the transparent() function
+transparent
+```
+
+Once you know the code underlying a function, you can easily copy it and edit it to your own liking. Or print it and put it above your bed. Totally up to you.
+
+### Using `stop()` to completely stop a function and print an error
+
+By default, all the code in a function will be evaluated when it is executed. However, there may be cases where there's no point in evaluating some code and it's best to stop everything and leave the function altogether. For example, let's say you have a function called `do.stats()` that has a single argument called `mat` which is supposed to be a matrix. If the user accidentally enters a dataframe rather than a matrix, it might be best to stop the function altogether rather than to waste time executing code. To tell a function to stop running, use the `stop()` function.
+
+If R ever executes a `stop()` function, it will automatically quit the function it's currently evaluating, and print an error message. You can define the exact error message you want by including a string as the main argument.
+
+For example, the following function `do.stats` will print an error message if the argument `mat` is not a matrix.
+```{r}
+do.stats <- function(mat) {
+  
+if(is.matrix(mat) == F) {stop("Argument was not a matrix!")}
+
+# Only run if argument is a matrix!
+print(paste("Thanks for giving me a matrix. The matrix has ", nrow(mat), 
+" rows and ", ncol(mat), 
+" columns. If you did not give me a matrix, the function would have stopped by now!", 
+sep = ""))
+
+}
+```
+
+Let's test it. First I'll enter an argument that is definitely not a matrix:
+
+```{r, eval = FALSE}
+do.stats(mat = "This is a string, not a matrix") 
+```
+
+Now I'll enter a valid matrix argument:
+
+```{r}
+do.stats(mat = matrix(1:10, nrow = 2, ncol = 5))
+```
+
+### Using vectors as arguments
+
+You can use any kind of object as an argument to a function. For example, we could re-create the function `oh.god.how.much.did.i.spend` by having a single vector object as the argument, rather than three separate values. In this version, we'll extract the values of a, b and c using indexing:
+
+```{r}
+oh.god.how.much.did.i.spend <- function(drinks.vec) {
+
+  grogg <- drinks.vec[1]
+  port <- drinks.vec[2]
+  crabjuice <- drinks.vec[3]
+
+  output <- grogg * 1 + port * 3 + crabjuice * 10
+
+  return(output)
+
+}
+```
+
+To use this function, the pirate will enter the number of drinks she had as a single vector with length three rather than as 3 separate scalars.
+
+```{r}
+oh.god.how.much.did.i.spend(c(1, 5, 2))
+```
+
+### Storing and loading your functions to and from a function file with `source()`
+
+
+As you do more programming in R, you may find yourself writing several function that you'll want to use again and again in many different R scripts. It would be a bit of a pain to have to re-type your functions every time you start a new R session, but thankfully you don't need to do that. Instead, you can store all your functions in one R file and then load that file into each R session.
+
+I recommend that you put all of your custom R functions into a single R script with a name like `customfunctions.R`. Mine is called `Custom_Pirate_Functions.R`. Once you've done this, you can load all your functions into any R session by using the `source()` function. The source function takes a file directory as an argument (the location of your custom function file) and then executes the R script into your current session.
+
+For example, on my computer my custom function file is stored at Users/Nathaniel/Dropbox/Custom\_Pirate\_Functions.R. When I start a new R session, I load all of my custom functions by running the following code:
+
+```{r, eval = FALSE}
+# Evaluate all of the code in my custom function R script
+source(file = "Users/Nathaniel/Dropbox/Custom_Pirate_Functions.R")
+```
+
+Once I've run this, I have access to all of my functions, I highly recommend that you do the same thing!
+
+### Testing functions
+
+
+When you start writing more complex functions, with several inputs and lots of function code, you'll need to constantly test your function line-by-line to make sure it's working properly. However, because the input values are defined in the input definitions (which you won't execute when testing the function), you can't actually test the code line-by-line until you've defined the input objects in some other way. To do this, I recommend that you include temporary hard-coded values for the inputs at the beginning of the function code.
+
+For example, consider the following function called `remove.outliers`. The goal of this function is to take a vector of data and remove any data points that are outliers. This function takes two inputs `x` and `outlier.def`, where `x` is a vector of numerical data, and `outlier.def` is used to define what an outlier is: if a data point is `outlier.def` standard deviations away from the mean, then it is defined as an outlier and is removed from the data vector.
+
+In the following function definition, I've included two lines where I directly assign the function inputs to certain values (in this case, I set x to be a vector with 100 values of 1, and one outlier value of 999, and `outlier.def` to be 2). Now, if I want to test the function code line by line, I can uncomment these test values, execute the code that assigns those test values to the input objects, then run the function code line by line to make sure the rest of the code works.
+
+```{r}
+remove.outliers <- function(x, outlier.def = 2) {
+
+# Test values (only used to test the following code)
+#  x <- c(rep(1, 100), 999)
+#  outlier.def <- 2
+
+  is.outlier <- x > (mean(x) + outlier.def * sd(x)) | 
+                x < (mean(x) - outlier.def * sd(x))
+  
+  x.nooutliers <- x[is.outlier == FALSE]
+
+  return(x.nooutliers)
+
+}
+```
+
+Trust me, when you start building large complex functions, hard-coding these test values will save you many headaches. Just don't forget to comment them out when you are done testing or the function will always use those values!
+
+### Using `...` as a wildcard argument
+
+For some functions that you write, you may want the user to be able to specify inputs to functions within your overall function. For example, if I create a custom function that includes the histogram function `hist()` in R, I might also want the user to be able to specify optional inputs for the plot, like `main`, `xlab, ylab`, etc. However, it would be a real pain in the pirate ass to have to include all possible plotting parameters as inputs to our new function. Thankfully, we can take care of all of this by using the `...` notation as an input to the function. Note that the `...` notation will only pass arguments on to functions that are specifically written to allow for optional inputs. If you look at the help menu for `hist()`, you'll see that it does indeed allow for such option inputs passed on from other functions. The `...` input tells R that the user might add additional inputs that should be used later in the function.
+
+Here's a quick example, let's create a function called `hist.advanced()` that plots a histogram with some optional additional arguments passed on with `...`
+
+```{r}
+hist.advanced <- function(x, add.ci = TRUE, ...) {
+
+hist(x, # Main Data
+     ... # Here is where the additional arguments go
+     )
+
+if(add.ci == TRUE) {
+
+  ci <- t.test(x)$conf.int # Get 95% CI
+  segments(ci[1], 0, ci[2], 0, lwd = 5, col = "red")
+
+  mtext(paste("95% CI of Mean = [", round(ci[1], 2), ",",
+              round(ci[2], 2), "]"), side = 3, line = 0)
+}
+}
+```
+
+
+Now, let's test our function with the optional inputs `main`, `xlab`, and `col`. These arguments will be passed down to the `hist()` function within `hist.advanced()`. Here is the result:
+
+```{r}
+hist.advanced(x = rnorm(100), add.ci = TRUE,
+              main = "Treasure Chests found",
+              xlab = "Number of Chests",
+              col = "lightblue")
+```
+
+
+ As you can see, R has passed our optional plotting arguments down to the main \textt{hist()} function in the function code.
+ 
+## Test your R might!
+
+1. Captain Jack is convinced that he can predict how much gold he will find on an island with the following equation: `(a * b) - c * 324 + log(a)`, where a is the area of the island in square meters, b is the number of trees on the island, and c is how drunk he is on a scale of 1 to 10. Create a function called `Jacks.Equation` that takes a, b, and c as arguments and returns Captain Jack's predictions. Here is an example of `Jacks.Equation` in action:
+
+```{r, echo = FALSE}
+Jacks.Equation <- function(a, b, c) {
+  
+  return(a * b - c * 324 + log(a))
+  
+}
+```
+
+```{r}
+Jacks.Equation(a = 1000, b = 30, c = 7)
+```
+
+2. Write a function called `standardize.me` that takes a vector x as an argument, and returns a vector that standardizes the values of x (standardization means subtracting the mean and dividing by the standard deviation). Here is an example of `standardize.me` in action:
+
+```{r, echo = FALSE}
+standardize.me <- function(x) {return( (x - mean(x)) / sd(x))}
+```
+
+```{r}
+standardize.me(c(1, 2, 1, 100))
+```
+
+3. Often times you will need to recode values of a dataset. For example, if you have a survey of age data, you may want to convert any crazy values (like anything below 0 or above 100) to NA. Write a function called `recode.numeric()` with 3 arguments: `x`, `lb`, and `ub`. We'll assume that x is a numeric vector. The function should look at the values of x, convert any values below `lb` and above `ub` to NA, and then return the resulting vector. Here is the function in action:
+
+```{r, echo = FALSE}
+recode.numeric <- function(x, lb, ub) {
+  
+  x[x < lb] <- NA
+  x[x > ub] <- NA
+  
+  return(x)
+}
+```
+
+```{r}
+recode.numeric(x = c(5, 3, -5, 4, 3, 97),
+               lb = 0,
+               ub = 10)
+```
+
+4.  Create a function called `plot.advanced` that creates a scatterplot with the following arguments:
+
+    - `add.regression`, a logical value indicating whether or not to add a regression line to the plot.
+    - `add.means`, a logical value indicating whether or not to add a vertical line at the mean x value and a horizontal line at mean y value.
+    - `add.test`, a logical value indicating whether or not to add text to the top margin of the plot indicating the result of a correlation test between x and y. (Hint: use `mtext()` and `paste()` to add the text)
+
+```{r, echo = FALSE}
+plot.advanced <- function(x, y, add.regression = T, add.means = T, add.test = T, ...) {
+  
+  plot(x, y, ...)
+  
+  if(add.regression) {
+    
+    abline(lm(y ~ x), lwd = 2)
+    
+  }
+  
+  if(add.means) {
+    
+    abline(v = mean(x), lty = 2)
+    abline(h = mean(y), lty = 2)
+    
+  }
+  
+  if(add.test) {
+    
+    test <- cor.test(x, y)
+    
+    text.to.add <- paste("r = ", round(test$estimate, 2), ", t(", round(test$parameter, 2), ") = ", round(test$statistic, 2), ", p = ", round(test$p.value, 2), sep = "")
+    
+    mtext(text = text.to.add, side = 3, line = .5)
+    
+  }
+  
+}
+```
+
+Here is my version of `plot.advanced()` in action:
+
+```{r}
+plot.advanced(x = diamonds$weight,
+              y = diamonds$value,
+              add.regression = TRUE,
+              add.means = TRUE,
+              add.test = TRUE)
+```
+

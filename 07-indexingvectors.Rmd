@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # Indexing Vectors with [ ] {#vectorindexing}
 
 ```{r, echo = FALSE}
@@ -5,14 +10,14 @@ knitr::opts_chunk$set(collapse = TRUE)
 ```
 
 
-```{r, fig.cap= "", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
-knitr::include_graphics(c("images/antiqueboat.jpg"))
+```{r, fig.cap= "", echo = FALSE, fig.align='center'}
+ # knitr::include_graphics(c("images/legoship.jpg"))
 ```
 
 
 ```{r, echo = FALSE}
 boat.df <- data.frame(
-  boat.names = c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j"),
+boat.names = c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j"),
 boat.colors = c("black", "green", "pink", "blue", "blue", 
                 "green", "green", "yellow", "black", "black"),
 boat.ages = c(143, 53, 356, 23, 647, 24, 532, 43, 66, 86),

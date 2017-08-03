@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # Hypothesis Tests {#htests}
 
 ```{r, echo = FALSE}
@@ -485,7 +490,7 @@ age.parrots.ctest <- cor.test(x = pirates$age,
 age.parrots.ctest
 ```
 
-Looks like we have a positive correlation of `r round(age.parrots.ctest$estimate, 2)` and a very small p-value of `r age.parrots.ctest$p.value`. To see what information we can extract for this test, let's run the command `names()` on the test object:
+Looks like we have a positive correlation of `r round(age.parrots.ctest$estimate, 2)` and a very small p-value. To see what information we can extract for this test, let's run the command `names()` on the test object:
 
 ```{r}
 names(age.parrots.ctest)
@@ -546,7 +551,7 @@ college.cstest <- chisq.test(x = table(pirates$college))
 college.cstest
 ```
 
-Indeed, with a test statistic of `r round(college.cstest$statistic, 2)` and a p-value of `r round(college.cstest$p.value, 2)`, we can safely reject the null hypothesis and conclude that certain college *are* more popular than others.
+Indeed, with a test statistic of `r round(college.cstest$statistic, 2)` and a tiny p-value, we can safely reject the null hypothesis and conclude that certain college *are* more popular than others.
 
 #### 2-sample Chi-square test
 

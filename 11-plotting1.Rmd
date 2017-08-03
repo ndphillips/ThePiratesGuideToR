@@ -1,6 +1,11 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
 # Plotting (I) {#plotting1}
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, message = FALSE}
 knitr::opts_chunk$set(collapse = TRUE, fig.align='center')
 library(dplyr)
 library(yarrr)
@@ -991,28 +996,29 @@ text(x = height,
 ```
 
 
-
 When entering text in the `labels` argument, keep in mind that R will, by default, plot the entire text in one line. However, if you are adding a long text string (like a sentence), you may want to separate the text into separate lines. To do this, add the text `\n` where you want new lines to start. Look at Figure \@ref(fig:manylines) for an example.
 
-```{r manylines, fig.cap = "Break up lines in text with \\n."}
+
+```{r manylines, echo = TRUE, eval = TRUE, fig.cap = "Break up lines in text with \n."}
 plot(1, 
-     type = "n", 
+     type = "n",
      main = "The \\n tag",
      xlab = "", ylab = "")
 
-# Text without \n breaks
+# Text withoutbreaks
 text(x = 1, y = 1.3, labels = "Text without \\n", font = 2)
 text(x = 1, y = 1.2,
      labels = "Haikus are easy. But sometimes they don't make sense. Refrigerator",
      font = 3) # italic font
 
 abline(h = 1, lty = 2)
-# Text with \n breaks
+# Text with  breaks
 text(x = 1, y = .92, labels = "Text with \\n", font = 2)
 text(x = 1, y = .7,
      labels = "Haikus are easy\nBut sometimes they don't make sense\nRefrigerator",
      font = 3)   # italic font
 ```
+
 
 
 ### Combining text and numbers with `paste()`

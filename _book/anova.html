@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>YaRrr! The Pirate’s Guide to R</title>
   <meta name="description" content="An introductory book to R written by, and for, R pirates">
-  <meta name="generator" content="bookdown 0.3.9 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
 
   <meta property="og:title" content="YaRrr! The Pirate’s Guide to R" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Nathaniel D. Phillips">
 
 
-<meta name="date" content="2017-03-17">
+<meta name="date" content="2017-08-02">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -148,7 +148,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.2" data-path="jumpin.html"><a href="jumpin.html#descriptive-statistics"><i class="fa fa-check"></i><b>3.2</b> Descriptive statistics</a></li>
 <li class="chapter" data-level="3.3" data-path="jumpin.html"><a href="jumpin.html#plotting"><i class="fa fa-check"></i><b>3.3</b> Plotting</a></li>
 <li class="chapter" data-level="3.4" data-path="jumpin.html"><a href="jumpin.html#hypothesis-tests"><i class="fa fa-check"></i><b>3.4</b> Hypothesis tests</a></li>
-<li class="chapter" data-level="3.5" data-path="jumpin.html"><a href="jumpin.html#regression"><i class="fa fa-check"></i><b>3.5</b> Regression</a></li>
+<li class="chapter" data-level="3.5" data-path="jumpin.html"><a href="jumpin.html#regression-analysis"><i class="fa fa-check"></i><b>3.5</b> Regression analysis</a></li>
 <li class="chapter" data-level="3.6" data-path="jumpin.html"><a href="jumpin.html#bayesian-statistics"><i class="fa fa-check"></i><b>3.6</b> Bayesian Statistics</a></li>
 <li class="chapter" data-level="3.7" data-path="jumpin.html"><a href="jumpin.html#wasnt-that-easy"><i class="fa fa-check"></i><b>3.7</b> Wasn’t that easy?!</a></li>
 </ul></li>
@@ -353,8 +353,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="14.7" data-path="anova.html"><a href="anova.html#repeated-measures-anova-using-the-lme4-package"><i class="fa fa-check"></i><b>14.7</b> Repeated measures ANOVA using the lme4 package</a></li>
 <li class="chapter" data-level="14.8" data-path="anova.html"><a href="anova.html#test-your-r-might-5"><i class="fa fa-check"></i><b>14.8</b> Test your R might!</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="jumpin.html"><a href="jumpin.html#regression"><i class="fa fa-check"></i><b>15</b> Regression</a><ul>
-<li class="chapter" data-level="15.1" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>15.1</b> The Linear Model</a></li>
+<li class="chapter" data-level="15" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>15</b> Regression</a><ul>
+<li class="chapter" data-level="15.1" data-path="regression.html"><a href="regression.html#the-linear-model"><i class="fa fa-check"></i><b>15.1</b> The Linear Model</a></li>
 <li class="chapter" data-level="15.2" data-path="regression.html"><a href="regression.html#linear-regression-with-lm"><i class="fa fa-check"></i><b>15.2</b> Linear regression with <code>lm()</code></a><ul>
 <li class="chapter" data-level="15.2.1" data-path="regression.html"><a href="regression.html#estimating-the-value-of-diamonds-with-lm"><i class="fa fa-check"></i><b>15.2.1</b> Estimating the value of diamonds with <code>lm()</code></a></li>
 <li class="chapter" data-level="15.2.2" data-path="regression.html"><a href="regression.html#getting-model-fits-with-fitted.values"><i class="fa fa-check"></i><b>15.2.2</b> Getting model fits with <code>fitted.values</code></a></li>
@@ -371,15 +371,44 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="15.6" data-path="regression.html"><a href="regression.html#test-your-might-a-ship-auction"><i class="fa fa-check"></i><b>15.6</b> Test your might! A ship auction</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="solutions.html"><a href="solutions.html"><i class="fa fa-check"></i><b>16</b> Solutions</a><ul>
-<li class="chapter" data-level="16.1" data-path="solutions.html"><a href="solutions.html#chapter-4-the-basics"><i class="fa fa-check"></i><b>16.1</b> Chapter 4: The Basics</a></li>
-<li class="chapter" data-level="16.2" data-path="solutions.html"><a href="solutions.html#chapter-5-scalers-and-vectors"><i class="fa fa-check"></i><b>16.2</b> Chapter 5: Scalers and vectors</a></li>
-<li class="chapter" data-level="16.3" data-path="solutions.html"><a href="solutions.html#chapter-6-vector-functions"><i class="fa fa-check"></i><b>16.3</b> Chapter 6: Vector Functions</a></li>
-<li class="chapter" data-level="16.4" data-path="solutions.html"><a href="solutions.html#chapter-7-indexing-vectors-with"><i class="fa fa-check"></i><b>16.4</b> Chapter 7: Indexing vectors with []</a></li>
-<li class="chapter" data-level="16.5" data-path="solutions.html"><a href="solutions.html#chapter-8-matrices-and-dataframes"><i class="fa fa-check"></i><b>16.5</b> Chapter 8: Matrices and Dataframes</a></li>
-<li class="chapter" data-level="16.6" data-path="solutions.html"><a href="solutions.html#chapter-13-hypothesis-tests"><i class="fa fa-check"></i><b>16.6</b> Chapter 13: Hypothesis tests</a></li>
-<li class="chapter" data-level="16.7" data-path="solutions.html"><a href="solutions.html#chapter-14-anova"><i class="fa fa-check"></i><b>16.7</b> Chapter 14: ANOVA</a></li>
-<li class="chapter" data-level="16.8" data-path="solutions.html"><a href="solutions.html#chapter-15-regression"><i class="fa fa-check"></i><b>16.8</b> Chapter 15: Regression</a></li>
+<li class="chapter" data-level="16" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>16</b> Custom functions</a><ul>
+<li class="chapter" data-level="16.1" data-path="functions.html"><a href="functions.html#why-would-you-want-to-write-your-own-function"><i class="fa fa-check"></i><b>16.1</b> Why would you want to write your own function?</a></li>
+<li class="chapter" data-level="16.2" data-path="functions.html"><a href="functions.html#the-structure-of-a-custom-function"><i class="fa fa-check"></i><b>16.2</b> The structure of a custom function</a><ul>
+<li class="chapter" data-level="16.2.1" data-path="functions.html"><a href="functions.html#creating-my.mean"><i class="fa fa-check"></i><b>16.2.1</b> Creating <code>my.mean()</code></a></li>
+<li class="chapter" data-level="16.2.2" data-path="functions.html"><a href="functions.html#specifying-multiple-inputs"><i class="fa fa-check"></i><b>16.2.2</b> Specifying multiple inputs</a></li>
+<li class="chapter" data-level="16.2.3" data-path="functions.html"><a href="functions.html#including-default-values-for-arguments"><i class="fa fa-check"></i><b>16.2.3</b> Including default values for arguments</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="functions.html"><a href="functions.html#using-if-then-statements-in-functions"><i class="fa fa-check"></i><b>16.3</b> Using if, then statements in functions</a></li>
+<li class="chapter" data-level="16.4" data-path="functions.html"><a href="functions.html#a-worked-example-plot.advanced"><i class="fa fa-check"></i><b>16.4</b> A worked example: <code>plot.advanced()</code></a><ul>
+<li class="chapter" data-level="16.4.1" data-path="functions.html"><a href="functions.html#seeing-function-code"><i class="fa fa-check"></i><b>16.4.1</b> Seeing function code</a></li>
+<li class="chapter" data-level="16.4.2" data-path="functions.html"><a href="functions.html#using-stop-to-completely-stop-a-function-and-print-an-error"><i class="fa fa-check"></i><b>16.4.2</b> Using <code>stop()</code> to completely stop a function and print an error</a></li>
+<li class="chapter" data-level="16.4.3" data-path="functions.html"><a href="functions.html#using-vectors-as-arguments"><i class="fa fa-check"></i><b>16.4.3</b> Using vectors as arguments</a></li>
+<li class="chapter" data-level="16.4.4" data-path="functions.html"><a href="functions.html#storing-and-loading-your-functions-to-and-from-a-function-file-with-source"><i class="fa fa-check"></i><b>16.4.4</b> Storing and loading your functions to and from a function file with <code>source()</code></a></li>
+<li class="chapter" data-level="16.4.5" data-path="functions.html"><a href="functions.html#testing-functions"><i class="fa fa-check"></i><b>16.4.5</b> Testing functions</a></li>
+<li class="chapter" data-level="16.4.6" data-path="functions.html"><a href="functions.html#using-...-as-a-wildcard-argument"><i class="fa fa-check"></i><b>16.4.6</b> Using <code>...</code> as a wildcard argument</a></li>
+</ul></li>
+<li class="chapter" data-level="16.5" data-path="functions.html"><a href="functions.html#test-your-r-might-6"><i class="fa fa-check"></i><b>16.5</b> Test your R might!</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="loops.html"><a href="loops.html"><i class="fa fa-check"></i><b>17</b> Loops</a><ul>
+<li class="chapter" data-level="17.1" data-path="loops.html"><a href="loops.html#what-are-loops"><i class="fa fa-check"></i><b>17.1</b> What are loops?</a><ul>
+<li class="chapter" data-level="17.1.1" data-path="loops.html"><a href="loops.html#printing-numbers-from-1-to-100"><i class="fa fa-check"></i><b>17.1.1</b> Printing numbers from 1 to 100</a></li>
+<li class="chapter" data-level="17.1.2" data-path="loops.html"><a href="loops.html#adding-the-integers-from-1-to-100"><i class="fa fa-check"></i><b>17.1.2</b> Adding the integers from 1 to 100</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="loops.html"><a href="loops.html#creating-multiple-plots-with-a-loop"><i class="fa fa-check"></i><b>17.2</b> Creating multiple plots with a loop</a></li>
+<li class="chapter" data-level="17.3" data-path="loops.html"><a href="loops.html#updating-a-container-object-with-a-loop"><i class="fa fa-check"></i><b>17.3</b> Updating a container object with a loop</a></li>
+<li class="chapter" data-level="17.4" data-path="loops.html"><a href="loops.html#loops-over-multiple-indices-with-a-design-matrix"><i class="fa fa-check"></i><b>17.4</b> Loops over multiple indices with a design matrix</a></li>
+<li class="chapter" data-level="17.5" data-path="loops.html"><a href="loops.html#the-list-object"><i class="fa fa-check"></i><b>17.5</b> The list object</a></li>
+<li class="chapter" data-level="17.6" data-path="loops.html"><a href="loops.html#test-your-r-might-7"><i class="fa fa-check"></i><b>17.6</b> Test your R might!</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="solutions.html"><a href="solutions.html"><i class="fa fa-check"></i><b>18</b> Solutions</a><ul>
+<li class="chapter" data-level="18.1" data-path="solutions.html"><a href="solutions.html#chapter-4-the-basics"><i class="fa fa-check"></i><b>18.1</b> Chapter 4: The Basics</a></li>
+<li class="chapter" data-level="18.2" data-path="solutions.html"><a href="solutions.html#chapter-5-scalers-and-vectors"><i class="fa fa-check"></i><b>18.2</b> Chapter 5: Scalers and vectors</a></li>
+<li class="chapter" data-level="18.3" data-path="solutions.html"><a href="solutions.html#chapter-6-vector-functions"><i class="fa fa-check"></i><b>18.3</b> Chapter 6: Vector Functions</a></li>
+<li class="chapter" data-level="18.4" data-path="solutions.html"><a href="solutions.html#chapter-7-indexing-vectors-with"><i class="fa fa-check"></i><b>18.4</b> Chapter 7: Indexing vectors with []</a></li>
+<li class="chapter" data-level="18.5" data-path="solutions.html"><a href="solutions.html#chapter-8-matrices-and-dataframes"><i class="fa fa-check"></i><b>18.5</b> Chapter 8: Matrices and Dataframes</a></li>
+<li class="chapter" data-level="18.6" data-path="solutions.html"><a href="solutions.html#chapter-13-hypothesis-tests"><i class="fa fa-check"></i><b>18.6</b> Chapter 13: Hypothesis tests</a></li>
+<li class="chapter" data-level="18.7" data-path="solutions.html"><a href="solutions.html#chapter-14-anova"><i class="fa fa-check"></i><b>18.7</b> Chapter 14: ANOVA</a></li>
+<li class="chapter" data-level="18.8" data-path="solutions.html"><a href="solutions.html#chapter-15-regression"><i class="fa fa-check"></i><b>18.8</b> Chapter 15: Regression</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -404,7 +433,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="anova" class="section level1">
 <h1><span class="header-section-number">Chapter 14</span> ANOVA</h1>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-371"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-372"></span>
 <img src="images/menageatroiswine.png" alt="Menage a trois wine -- the perfect pairing for a 3-way ANOVA" width="20%" />
 <p class="caption">
 Figure 14.1: Menage a trois wine – the perfect pairing for a 3-way ANOVA
@@ -433,7 +462,7 @@ Figure 14.1: Menage a trois wine – the perfect pairing for a 3-way ANOVA
            <span class="dt">back.col =</span> <span class="kw">gray</span>(.<span class="dv">97</span>), 
            <span class="dt">cap.beans =</span> <span class="ot">TRUE</span>, 
            <span class="dt">theme =</span> <span class="dv">2</span>)</code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-373-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-374-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Given this data, we can use ANOVAs to answer four separate questions:</p>
 <table>
 <colgroup>
@@ -478,8 +507,8 @@ Figure 14.1: Menage a trois wine – the perfect pairing for a 3-way ANOVA
 <div id="what-does-anova-stand-for" class="section level3">
 <h3><span class="header-section-number">14.1.1</span> What does ANOVA stand for?</h3>
 <p>ANOVA stands for “Analysis of variance.” At first glance, this sounds like a strange name to give to a test that you use to find differences in <strong>means</strong>, not differences in <strong>variances</strong>. However, ANOVA actually uses variances to determine whether or not there are ‘real’ differences in the means of groups. Specifically, it looks at how variable data are <em>within</em> groups and compares that to the variability of data <em>between</em> groups. If the between-group variance is large compared to the within group variance, the ANOVA will conclude that the groups <em>do</em> differ in their means. If the between-group variance is small compared to the within group variance, the ANOVA will conclude that the groups are all the same. See Figure~ for a visual depiction of an ANOVA.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-374"></span>
-<img src="YaRrr_files/figure-html/unnamed-chunk-374-1.png" alt="How ANOVAs work. ANOVA compares the variability between groups (i.e.; the differences in the group means) to the variability within groups (i.e.; how much individuals generally differ from each other). If the variability between groups is small compared to the variability between groups, ANOVA will return a non-significant result -- suggesting that the groups are not really different. If the variability between groups is large compared to the variability within groups, ANOVA will return a significant result -- indicating that the groups are really different." width="576" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-375"></span>
+<img src="YaRrr_files/figure-html/unnamed-chunk-375-1.png" alt="How ANOVAs work. ANOVA compares the variability between groups (i.e.; the differences in the group means) to the variability within groups (i.e.; how much individuals generally differ from each other). If the variability between groups is small compared to the variability between groups, ANOVA will return a non-significant result -- suggesting that the groups are not really different. If the variability between groups is large compared to the variability within groups, ANOVA will return a significant result -- indicating that the groups are really different." width="576" />
 <p class="caption">
 Figure 14.2: How ANOVAs work. ANOVA compares the variability between groups (i.e.; the differences in the group means) to the variability within groups (i.e.; how much individuals generally differ from each other). If the variability between groups is small compared to the variability between groups, ANOVA will return a non-significant result – suggesting that the groups are not really different. If the variability between groups is large compared to the variability within groups, ANOVA will return a significant result – indicating that the groups are really different.
 </p>
@@ -522,7 +551,7 @@ mod.lm &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt"
                   <span class="dt">theme =</span> <span class="dv">2</span>, 
                   <span class="dt">cap.beans =</span> <span class="ot">TRUE</span>,
                   <span class="dt">main =</span> <span class="st">&quot;formula = time ~ cleaner&quot;</span>)</code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-379-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-380-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>From the plot, it looks like cleaners a and b are the same, and cleaner c is a bit faster. To test this, we’ll create an ANOVA object with <code>aov</code>. Because <code>time</code> is the dependent variable and <code>cleaner</code> is the independent variable, we’ll set the formula to <code>formula = time ~ cleaner</code></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Step 1: aov object with time as DV and cleaner as IV</span>
 cleaner.aov &lt;-<span class="st"> </span><span class="kw">aov</span>(<span class="dt">formula =</span> time ~<span class="st"> </span>cleaner,
@@ -819,7 +848,7 @@ gitbook.start({
 "link": "https://github.com/ndphillips/ThePiratesGuideToR/edit/master/14-anova.Rmd",
 "text": "Edit"
 },
-"download": ["YaRrr.pdf"],
+"download": null,
 "toc": {
 "collapse": "subsection"
 }
@@ -832,7 +861,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(script.src))
       script.src  = script.src.replace(/^https?:/, '');
     document.getElementsByTagName("head")[0].appendChild(script);

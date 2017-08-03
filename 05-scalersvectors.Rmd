@@ -1,3 +1,9 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+---
 # Scalers and vectors {#scalersvectors}
 
 ```{r, echo = FALSE}

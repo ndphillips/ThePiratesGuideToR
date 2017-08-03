@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>YaRrr! The Pirate’s Guide to R</title>
   <meta name="description" content="An introductory book to R written by, and for, R pirates">
-  <meta name="generator" content="bookdown 0.3.9 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
 
   <meta property="og:title" content="YaRrr! The Pirate’s Guide to R" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Nathaniel D. Phillips">
 
 
-<meta name="date" content="2017-03-17">
+<meta name="date" content="2017-08-02">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -148,7 +148,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.2" data-path="jumpin.html"><a href="jumpin.html#descriptive-statistics"><i class="fa fa-check"></i><b>3.2</b> Descriptive statistics</a></li>
 <li class="chapter" data-level="3.3" data-path="jumpin.html"><a href="jumpin.html#plotting"><i class="fa fa-check"></i><b>3.3</b> Plotting</a></li>
 <li class="chapter" data-level="3.4" data-path="jumpin.html"><a href="jumpin.html#hypothesis-tests"><i class="fa fa-check"></i><b>3.4</b> Hypothesis tests</a></li>
-<li class="chapter" data-level="3.5" data-path="jumpin.html"><a href="jumpin.html#regression"><i class="fa fa-check"></i><b>3.5</b> Regression</a></li>
+<li class="chapter" data-level="3.5" data-path="jumpin.html"><a href="jumpin.html#regression-analysis"><i class="fa fa-check"></i><b>3.5</b> Regression analysis</a></li>
 <li class="chapter" data-level="3.6" data-path="jumpin.html"><a href="jumpin.html#bayesian-statistics"><i class="fa fa-check"></i><b>3.6</b> Bayesian Statistics</a></li>
 <li class="chapter" data-level="3.7" data-path="jumpin.html"><a href="jumpin.html#wasnt-that-easy"><i class="fa fa-check"></i><b>3.7</b> Wasn’t that easy?!</a></li>
 </ul></li>
@@ -353,8 +353,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="14.7" data-path="anova.html"><a href="anova.html#repeated-measures-anova-using-the-lme4-package"><i class="fa fa-check"></i><b>14.7</b> Repeated measures ANOVA using the lme4 package</a></li>
 <li class="chapter" data-level="14.8" data-path="anova.html"><a href="anova.html#test-your-r-might-5"><i class="fa fa-check"></i><b>14.8</b> Test your R might!</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="jumpin.html"><a href="jumpin.html#regression"><i class="fa fa-check"></i><b>15</b> Regression</a><ul>
-<li class="chapter" data-level="15.1" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>15.1</b> The Linear Model</a></li>
+<li class="chapter" data-level="15" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>15</b> Regression</a><ul>
+<li class="chapter" data-level="15.1" data-path="regression.html"><a href="regression.html#the-linear-model"><i class="fa fa-check"></i><b>15.1</b> The Linear Model</a></li>
 <li class="chapter" data-level="15.2" data-path="regression.html"><a href="regression.html#linear-regression-with-lm"><i class="fa fa-check"></i><b>15.2</b> Linear regression with <code>lm()</code></a><ul>
 <li class="chapter" data-level="15.2.1" data-path="regression.html"><a href="regression.html#estimating-the-value-of-diamonds-with-lm"><i class="fa fa-check"></i><b>15.2.1</b> Estimating the value of diamonds with <code>lm()</code></a></li>
 <li class="chapter" data-level="15.2.2" data-path="regression.html"><a href="regression.html#getting-model-fits-with-fitted.values"><i class="fa fa-check"></i><b>15.2.2</b> Getting model fits with <code>fitted.values</code></a></li>
@@ -371,15 +371,44 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="15.6" data-path="regression.html"><a href="regression.html#test-your-might-a-ship-auction"><i class="fa fa-check"></i><b>15.6</b> Test your might! A ship auction</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="solutions.html"><a href="solutions.html"><i class="fa fa-check"></i><b>16</b> Solutions</a><ul>
-<li class="chapter" data-level="16.1" data-path="solutions.html"><a href="solutions.html#chapter-4-the-basics"><i class="fa fa-check"></i><b>16.1</b> Chapter 4: The Basics</a></li>
-<li class="chapter" data-level="16.2" data-path="solutions.html"><a href="solutions.html#chapter-5-scalers-and-vectors"><i class="fa fa-check"></i><b>16.2</b> Chapter 5: Scalers and vectors</a></li>
-<li class="chapter" data-level="16.3" data-path="solutions.html"><a href="solutions.html#chapter-6-vector-functions"><i class="fa fa-check"></i><b>16.3</b> Chapter 6: Vector Functions</a></li>
-<li class="chapter" data-level="16.4" data-path="solutions.html"><a href="solutions.html#chapter-7-indexing-vectors-with"><i class="fa fa-check"></i><b>16.4</b> Chapter 7: Indexing vectors with []</a></li>
-<li class="chapter" data-level="16.5" data-path="solutions.html"><a href="solutions.html#chapter-8-matrices-and-dataframes"><i class="fa fa-check"></i><b>16.5</b> Chapter 8: Matrices and Dataframes</a></li>
-<li class="chapter" data-level="16.6" data-path="solutions.html"><a href="solutions.html#chapter-13-hypothesis-tests"><i class="fa fa-check"></i><b>16.6</b> Chapter 13: Hypothesis tests</a></li>
-<li class="chapter" data-level="16.7" data-path="solutions.html"><a href="solutions.html#chapter-14-anova"><i class="fa fa-check"></i><b>16.7</b> Chapter 14: ANOVA</a></li>
-<li class="chapter" data-level="16.8" data-path="solutions.html"><a href="solutions.html#chapter-15-regression"><i class="fa fa-check"></i><b>16.8</b> Chapter 15: Regression</a></li>
+<li class="chapter" data-level="16" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>16</b> Custom functions</a><ul>
+<li class="chapter" data-level="16.1" data-path="functions.html"><a href="functions.html#why-would-you-want-to-write-your-own-function"><i class="fa fa-check"></i><b>16.1</b> Why would you want to write your own function?</a></li>
+<li class="chapter" data-level="16.2" data-path="functions.html"><a href="functions.html#the-structure-of-a-custom-function"><i class="fa fa-check"></i><b>16.2</b> The structure of a custom function</a><ul>
+<li class="chapter" data-level="16.2.1" data-path="functions.html"><a href="functions.html#creating-my.mean"><i class="fa fa-check"></i><b>16.2.1</b> Creating <code>my.mean()</code></a></li>
+<li class="chapter" data-level="16.2.2" data-path="functions.html"><a href="functions.html#specifying-multiple-inputs"><i class="fa fa-check"></i><b>16.2.2</b> Specifying multiple inputs</a></li>
+<li class="chapter" data-level="16.2.3" data-path="functions.html"><a href="functions.html#including-default-values-for-arguments"><i class="fa fa-check"></i><b>16.2.3</b> Including default values for arguments</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="functions.html"><a href="functions.html#using-if-then-statements-in-functions"><i class="fa fa-check"></i><b>16.3</b> Using if, then statements in functions</a></li>
+<li class="chapter" data-level="16.4" data-path="functions.html"><a href="functions.html#a-worked-example-plot.advanced"><i class="fa fa-check"></i><b>16.4</b> A worked example: <code>plot.advanced()</code></a><ul>
+<li class="chapter" data-level="16.4.1" data-path="functions.html"><a href="functions.html#seeing-function-code"><i class="fa fa-check"></i><b>16.4.1</b> Seeing function code</a></li>
+<li class="chapter" data-level="16.4.2" data-path="functions.html"><a href="functions.html#using-stop-to-completely-stop-a-function-and-print-an-error"><i class="fa fa-check"></i><b>16.4.2</b> Using <code>stop()</code> to completely stop a function and print an error</a></li>
+<li class="chapter" data-level="16.4.3" data-path="functions.html"><a href="functions.html#using-vectors-as-arguments"><i class="fa fa-check"></i><b>16.4.3</b> Using vectors as arguments</a></li>
+<li class="chapter" data-level="16.4.4" data-path="functions.html"><a href="functions.html#storing-and-loading-your-functions-to-and-from-a-function-file-with-source"><i class="fa fa-check"></i><b>16.4.4</b> Storing and loading your functions to and from a function file with <code>source()</code></a></li>
+<li class="chapter" data-level="16.4.5" data-path="functions.html"><a href="functions.html#testing-functions"><i class="fa fa-check"></i><b>16.4.5</b> Testing functions</a></li>
+<li class="chapter" data-level="16.4.6" data-path="functions.html"><a href="functions.html#using-...-as-a-wildcard-argument"><i class="fa fa-check"></i><b>16.4.6</b> Using <code>...</code> as a wildcard argument</a></li>
+</ul></li>
+<li class="chapter" data-level="16.5" data-path="functions.html"><a href="functions.html#test-your-r-might-6"><i class="fa fa-check"></i><b>16.5</b> Test your R might!</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="loops.html"><a href="loops.html"><i class="fa fa-check"></i><b>17</b> Loops</a><ul>
+<li class="chapter" data-level="17.1" data-path="loops.html"><a href="loops.html#what-are-loops"><i class="fa fa-check"></i><b>17.1</b> What are loops?</a><ul>
+<li class="chapter" data-level="17.1.1" data-path="loops.html"><a href="loops.html#printing-numbers-from-1-to-100"><i class="fa fa-check"></i><b>17.1.1</b> Printing numbers from 1 to 100</a></li>
+<li class="chapter" data-level="17.1.2" data-path="loops.html"><a href="loops.html#adding-the-integers-from-1-to-100"><i class="fa fa-check"></i><b>17.1.2</b> Adding the integers from 1 to 100</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="loops.html"><a href="loops.html#creating-multiple-plots-with-a-loop"><i class="fa fa-check"></i><b>17.2</b> Creating multiple plots with a loop</a></li>
+<li class="chapter" data-level="17.3" data-path="loops.html"><a href="loops.html#updating-a-container-object-with-a-loop"><i class="fa fa-check"></i><b>17.3</b> Updating a container object with a loop</a></li>
+<li class="chapter" data-level="17.4" data-path="loops.html"><a href="loops.html#loops-over-multiple-indices-with-a-design-matrix"><i class="fa fa-check"></i><b>17.4</b> Loops over multiple indices with a design matrix</a></li>
+<li class="chapter" data-level="17.5" data-path="loops.html"><a href="loops.html#the-list-object"><i class="fa fa-check"></i><b>17.5</b> The list object</a></li>
+<li class="chapter" data-level="17.6" data-path="loops.html"><a href="loops.html#test-your-r-might-7"><i class="fa fa-check"></i><b>17.6</b> Test your R might!</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="solutions.html"><a href="solutions.html"><i class="fa fa-check"></i><b>18</b> Solutions</a><ul>
+<li class="chapter" data-level="18.1" data-path="solutions.html"><a href="solutions.html#chapter-4-the-basics"><i class="fa fa-check"></i><b>18.1</b> Chapter 4: The Basics</a></li>
+<li class="chapter" data-level="18.2" data-path="solutions.html"><a href="solutions.html#chapter-5-scalers-and-vectors"><i class="fa fa-check"></i><b>18.2</b> Chapter 5: Scalers and vectors</a></li>
+<li class="chapter" data-level="18.3" data-path="solutions.html"><a href="solutions.html#chapter-6-vector-functions"><i class="fa fa-check"></i><b>18.3</b> Chapter 6: Vector Functions</a></li>
+<li class="chapter" data-level="18.4" data-path="solutions.html"><a href="solutions.html#chapter-7-indexing-vectors-with"><i class="fa fa-check"></i><b>18.4</b> Chapter 7: Indexing vectors with []</a></li>
+<li class="chapter" data-level="18.5" data-path="solutions.html"><a href="solutions.html#chapter-8-matrices-and-dataframes"><i class="fa fa-check"></i><b>18.5</b> Chapter 8: Matrices and Dataframes</a></li>
+<li class="chapter" data-level="18.6" data-path="solutions.html"><a href="solutions.html#chapter-13-hypothesis-tests"><i class="fa fa-check"></i><b>18.6</b> Chapter 13: Hypothesis tests</a></li>
+<li class="chapter" data-level="18.7" data-path="solutions.html"><a href="solutions.html#chapter-14-anova"><i class="fa fa-check"></i><b>18.7</b> Chapter 14: ANOVA</a></li>
+<li class="chapter" data-level="18.8" data-path="solutions.html"><a href="solutions.html#chapter-15-regression"><i class="fa fa-check"></i><b>18.8</b> Chapter 15: Regression</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -568,7 +597,8 @@ char.vec
 <p>If you use the <code>length.out</code> argument, the sequence will have length equal to <code>length.out</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create 10 numbers from 1 to 5</span>
 <span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">5</span>, <span class="dt">length.out =</span> <span class="dv">10</span>)
-##  [1] 1.000 1.444 1.889 2.333 2.778 3.222 3.667 4.111 4.556 5.000
+##  [1] 1.000000 1.444444 1.888889 2.333333 2.777778 3.222222 3.666667
+##  [8] 4.111111 4.555556 5.000000
 
 <span class="co"># 3 numbers from 0 to 100</span>
 <span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">0</span>, <span class="dt">to =</span> <span class="dv">100</span>, <span class="dt">length.out =</span> <span class="dv">3</span>)
@@ -667,14 +697,14 @@ my.vec
 <p>Let’s use <code>sample()</code> to draw 10 samples from a vector of integers from 1 to 10.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># From the integers 1:10, draw 5 numbers</span>
 <span class="kw">sample</span>(<span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">10</span>, <span class="dt">size  =</span> <span class="dv">5</span>)
-## [1]  6  3  7 10  2</code></pre></div>
+## [1] 9 5 7 3 2</code></pre></div>
 <div id="replace-true" class="section level4">
 <h4><span class="header-section-number">5.3.1.1</span> replace = TRUE</h4>
 <p>If you don’t specify the <code>replace</code> argument, R will assume that you are sampling <em>without</em> replacement. In other words, each element can only be sampled once. If you want to sample with replacement, use the <code>replace = TRUE</code> argument:</p>
 <p>Think about replacement like drawing balls from a bag. Sampling <em>with</em> replacement (<code>replace = TRUE</code>) means that each time you draw a ball, you return the ball back into the bag before drawing another ball. Sampling <em>without</em> replacement (<code>replace = FALSE</code>) means that after you draw a ball, you remove that ball from the bag so you can never draw it again.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Draw 30 samples from the integers 1:5 with replacement</span>
 <span class="kw">sample</span>(<span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">5</span>, <span class="dt">size =</span> <span class="dv">10</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
-##  [1] 3 5 2 2 3 4 1 2 4 2</code></pre></div>
+##  [1] 3 2 4 3 5 1 1 1 4 2</code></pre></div>
 <p>If you try to draw a large sample from a vector  replacement, R will return an error because it runs out of things to draw:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># You CAN&#39;T draw 10 samples without replacement from</span>
 <span class="co">#  a vector with length 5</span>
@@ -686,13 +716,13 @@ Error: cannot take a sample larger than the population when ‘replace = FALSE�
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># You CAN draw 10 samples with replacement from a</span>
 <span class="co">#  vector of length 5</span>
 <span class="kw">sample</span>(<span class="dt">x =</span> <span class="dv">1</span>:<span class="dv">5</span>, <span class="dt">size =</span> <span class="dv">10</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
-##  [1] 2 2 3 1 5 5 5 5 3 4</code></pre></div>
+##  [1] 2 2 3 3 2 3 2 1 1 3</code></pre></div>
 <p>To specify how likely each element in the vector <code>x</code> should be selected, use the <code>prob</code> argument. The length of the <code>prob</code> argument should be as long as the <code>x</code> argument. For example, let’s draw 10 samples (with replacement) from the vector [“a”, “b”], but we’ll make the probability of selecting “a” to be .90, and the probability of selecting “b” to be .10</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>), 
        <span class="dt">prob =</span> <span class="kw">c</span>(.<span class="dv">9</span>, .<span class="dv">1</span>),
        <span class="dt">size =</span> <span class="dv">10</span>, 
        <span class="dt">replace =</span> <span class="ot">TRUE</span>)
-##  [1] &quot;b&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot;</code></pre></div>
+##  [1] &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;b&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot;</code></pre></div>
 </div>
 <div id="ex-simulating-coin-flips" class="section level4">
 <h4><span class="header-section-number">5.3.1.2</span> Ex: Simulating coin flips</h4>
@@ -700,18 +730,18 @@ Error: cannot take a sample larger than the population when ‘replace = FALSE�
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="st">&quot;H&quot;</span>, <span class="st">&quot;T&quot;</span>), <span class="co"># The possible values of the coin</span>
        <span class="dt">size =</span> <span class="dv">10</span>,  <span class="co"># 10 flips</span>
        <span class="dt">replace =</span> <span class="ot">TRUE</span>) <span class="co"># Sampling with replacement</span>
-##  [1] &quot;T&quot; &quot;T&quot; &quot;H&quot; &quot;H&quot; &quot;H&quot; &quot;T&quot; &quot;T&quot; &quot;T&quot; &quot;T&quot; &quot;H&quot;</code></pre></div>
+##  [1] &quot;H&quot; &quot;T&quot; &quot;H&quot; &quot;T&quot; &quot;T&quot; &quot;T&quot; &quot;T&quot; &quot;T&quot; &quot;H&quot; &quot;H&quot;</code></pre></div>
 <p>Now let’s change it by simulating flips of a biased coin, where the probability of Heads is 0.8, and the probability of Tails is 0.2. Because the probabilities of each outcome are no longer equal, we’ll need to specify them with the <code>prob</code> argument:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="st">&quot;H&quot;</span>, <span class="st">&quot;T&quot;</span>),
        <span class="dt">prob =</span> <span class="kw">c</span>(.<span class="dv">8</span>, .<span class="dv">2</span>), <span class="co"># Make the coin biased for Heads</span>
        <span class="dt">size =</span> <span class="dv">10</span>,
        <span class="dt">replace =</span> <span class="ot">TRUE</span>)
-##  [1] &quot;H&quot; &quot;H&quot; &quot;H&quot; &quot;H&quot; &quot;H&quot; &quot;H&quot; &quot;H&quot; &quot;H&quot; &quot;T&quot; &quot;T&quot;</code></pre></div>
+##  [1] &quot;H&quot; &quot;H&quot; &quot;H&quot; &quot;T&quot; &quot;H&quot; &quot;H&quot; &quot;H&quot; &quot;T&quot; &quot;H&quot; &quot;H&quot;</code></pre></div>
 <p>As you can see, our function returned a vector of 10 values corresponding to our sample size of 10.</p>
 </div>
 <div id="ex-coins-from-a-chest" class="section level4">
 <h4><span class="header-section-number">5.3.1.3</span> Ex: Coins from a chest</h4>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-101-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-101-1.png" width="672" /></p>
 <p>Now, let’s sample drawing coins from a treasure chest Let’s say the chest has 100 coins: 20 gold, 30 silver, and 50 bronze. Let’s draw 10 random coins from this chest.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create chest with the 100 coins</span>
 
@@ -722,12 +752,12 @@ chest &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">r
 <span class="co"># Draw 10 coins from the chest</span>
 <span class="kw">sample</span>(<span class="dt">x =</span> chest,
        <span class="dt">size =</span> <span class="dv">10</span>)
-##  [1] &quot;silver&quot; &quot;bronze&quot; &quot;bronze&quot; &quot;silver&quot; &quot;gold&quot;   &quot;bronze&quot; &quot;bronze&quot;
+##  [1] &quot;bronze&quot; &quot;gold&quot;   &quot;silver&quot; &quot;silver&quot; &quot;bronze&quot; &quot;silver&quot; &quot;silver&quot;
 ##  [8] &quot;silver&quot; &quot;bronze&quot; &quot;bronze&quot;</code></pre></div>
 <p>The output of the <code>sample()</code> function above is a vector of 10 strings indicating the type of coin we drew on each sample. And like any random sampling function, this code will likely give you different results every time you run it! See how long it takes you to get 10 gold coins…</p>
 <p>In the next section, we’ll cover how to generate random data from specified <em>probability distributions</em>. What is a probability distribution? Well, it’s simply an equation – also called a likelihood function – that indicates how likely certain numerical values are to be drawn.</p>
 <p>We can use probability distributions to represent different types of data. For example, imagine you need to hire a new group of pirates for your crew. You have the option of hiring people form one of two different pirate training colleges that produce pirates of varying quality. One college “Pirate Training Unlimited” might tend to pirates that are generally ok - never great but never terrible. While another college “Unlimited Pirate Training” might produce pirates with a wide variety of quality, from very low to very high. In Figure <a href="scalersvectors.html#fig:piratecollege">5.4</a> I plotted 5 example pirates from each college, where each pirate is shown as a ball with a number written on it. As you can see, pirates from PTU all tend to be clustered between 40 and 60 (not terrible but not great), while pirates from UPT are all over the map, from 0 to 100. We can use probability distributions (in this case, the uniform distribution) to mathematically define how likely any possible value is to be drawn at random from a distribution. We could describe Pirate Training Unlimited with a uniform distribution with a small range, and Unlimited Pirate Training with a second uniform distribution with a wide range.</p>
-<div class="figure" style="text-align: center"><span id="fig:piratecollege"></span>
+<div class="figure"><span id="fig:piratecollege"></span>
 <img src="YaRrr_files/figure-html/piratecollege-1.png" alt="Sampling 5 potential pirates from two different pirate colleges. Pirate Training Unlimited (PTU) consistently produces average pirates (with scores between 40 and 60), while Unlimited Pirate Training (UPT), produces a wide range of pirates from 0 to 100." width="672" />
 <p class="caption">
 Figure 5.4: Sampling 5 potential pirates from two different pirate colleges. Pirate Training Unlimited (PTU) consistently produces average pirates (with scores between 40 and 60), while Unlimited Pirate Training (UPT), produces a wide range of pirates from 0 to 100.
@@ -740,7 +770,7 @@ Figure 5.4: Sampling 5 potential pirates from two different pirate colleges. Pir
 </div>
 <div id="normal-gaussian" class="section level3">
 <h3><span class="header-section-number">5.3.2</span> Normal (Gaussian)</h3>
-<div class="figure" style="text-align: center"><span id="fig:normaldist"></span>
+<div class="figure"><span id="fig:normaldist"></span>
 <img src="YaRrr_files/figure-html/normaldist-1.png" alt="Three different normal distributions with different means and standard deviations" width="672" />
 <p class="caption">
 Figure 5.5: Three different normal distributions with different means and standard deviations
@@ -771,16 +801,16 @@ Figure 5.5: Three different normal distributions with different means and standa
 <p>The Normal (a.k.a “Gaussian”) distribution is probably the most important distribution in all of statistics. The Normal distribution is bell-shaped, and has two parameters: a mean and a standard deviation. To generate samples from a normal distribution in R, we use the function <code>rnorm()</code></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 5 samples from a Normal dist with mean = 0, sd = 1</span>
 <span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
-## [1]  0.34696 -0.89780 -0.06419 -1.25490 -1.76451
+## [1]  0.05837807 -0.66602773  0.47348155 -0.78676820 -1.30984888
 
 <span class="co"># 3 samples from a Normal dist with mean = -10, sd = 15</span>
 <span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">3</span>, <span class="dt">mean =</span> -<span class="dv">10</span>, <span class="dt">sd =</span> <span class="dv">15</span>)
-## [1]  -0.7286  -6.6897 -11.3125</code></pre></div>
+## [1]   2.647162 -11.824277  -8.874027</code></pre></div>
 <p>Again, because the sampling is done randomly, you’ll get different values each time you run <code>rnorm()</code></p>
 </div>
 <div id="uniform" class="section level3">
 <h3><span class="header-section-number">5.3.3</span> Uniform</h3>
-<div class="figure" style="text-align: center"><span id="fig:uniformdist"></span>
+<div class="figure"><span id="fig:uniformdist"></span>
 <img src="YaRrr_files/figure-html/uniformdist-1.png" alt="The Uniform distribution - known colloquially as the Anthony Davis distribution." width="672" />
 <p class="caption">
 Figure 5.6: The Uniform distribution - known colloquially as the Anthony Davis distribution.
@@ -816,12 +846,12 @@ Figure 5.6: The Uniform distribution - known colloquially as the Anthony Davis d
 <p>Here are some samples from two different Uniform distributions:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 5 samples from Uniform dist with bounds at 0 and 1</span>
 <span class="kw">runif</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="dv">1</span>)
-## [1] 0.7456 0.2343 0.9592 0.4023 0.3216
+## [1] 0.9202073 0.9913646 0.7743784 0.5044269 0.1880088
 
 <span class="co"># 10 samples from Uniform dist with bounds at -100 and +100</span>
 <span class="kw">runif</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">min =</span> -<span class="dv">100</span>, <span class="dt">max =</span> <span class="dv">100</span>)
-##  [1]  63.767 -87.227 -78.120  39.824 -37.253  -9.907 -58.403 -75.010
-##  [9] -54.999 -65.847</code></pre></div>
+##  [1]  93.04759 -58.50102  18.46548 -77.21718 -13.49428  77.43070  29.21221
+##  [8]  40.36868 -25.16653  81.92644</code></pre></div>
 </div>
 <div id="notes-on-random-samples" class="section level3">
 <h3><span class="header-section-number">5.3.4</span> Notes on random samples</h3>
@@ -830,11 +860,11 @@ Figure 5.6: The Uniform distribution - known colloquially as the Anthony Davis d
 <p>Every time you draw a sample from a probability distribution, you’ll (likely) get a different result. For example, see what happens when I run the following two commands (you’ll learn the <code>rnorm()</code> function on the next page…)</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Draw a sample of size 5 from a normal distribution with mean 100 and sd 10</span>
 <span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">mean =</span> <span class="dv">100</span>, <span class="dt">sd =</span> <span class="dv">10</span>)
-## [1] 105.0 109.3 106.8 104.0 100.3
+## [1] 108.65638  96.46124 114.67549 105.93365  95.19521
 
 <span class="co"># Do it again!</span>
 <span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">mean =</span> <span class="dv">100</span>, <span class="dt">sd =</span> <span class="dv">10</span>)
-## [1] 110.25 105.91  98.97 103.25 101.27</code></pre></div>
+## [1]  95.85121 110.81145  89.52425  80.14247 115.13734</code></pre></div>
 <p>As you can see, the exact same code produced different results – and that’s exactly what we want! Each time you run <code>rnorm()</code>, or another distribution function, you’ll get a new random sample.</p>
 </div>
 <div id="use-set.seed-to-control-random-samples" class="section level4">
@@ -847,11 +877,11 @@ Figure 5.6: The Uniform distribution - known colloquially as the Anthony Davis d
 
 <span class="co"># The result will always be -0.5022, 0.1315, -0.0789</span>
 <span class="kw">rnorm</span>(<span class="dv">3</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
-## [1] -0.50219  0.13153 -0.07892
+## [1] -0.50219235  0.13153117 -0.07891709
 
 <span class="co"># The result will always be 0.887, 0.117, 0.319</span>
 <span class="kw">rnorm</span>(<span class="dv">3</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
-## [1] 0.8868 0.1170 0.3186</code></pre></div>
+## [1] 0.8867848 0.1169713 0.3186301</code></pre></div>
 <p>Try running the same code on your machine and you’ll see the exact same samples that I got above. Oh and the value of 100 I used above in <code>set.seed(100)</code> is totally arbitrary – you can set the seed to any integer you want. I just happen to like how <code>set.seed(100)</code> looks in my code.</p>
 </div>
 </div>
@@ -910,7 +940,7 @@ gitbook.start({
 "link": "https://github.com/ndphillips/ThePiratesGuideToR/edit/master/05-scalersvectors.Rmd",
 "text": "Edit"
 },
-"download": ["YaRrr.pdf"],
+"download": null,
 "toc": {
 "collapse": "subsection"
 }
@@ -923,7 +953,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(script.src))
       script.src  = script.src.replace(/^https?:/, '');
     document.getElementsByTagName("head")[0].appendChild(script);
