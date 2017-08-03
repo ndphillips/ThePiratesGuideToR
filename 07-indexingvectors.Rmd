@@ -92,7 +92,7 @@ boat.ages[c(1, 1, 1)]
 ```
 
 
-It it makes your code clearer, you can define an indexing object before doing your actual indexing. For example, let's define an object called `my.index` and use this object to index our data vector:
+If it makes your code clearer, you can define an indexing object before doing your actual indexing. For example, let's define an object called `my.index` and use this object to index our data vector:
 
 ```{r}
 my.index <- 3:5
@@ -123,7 +123,7 @@ a[c(TRUE, FALSE, TRUE, FALSE, TRUE)]
 
 As you can see, R returns all values of the vector `a` for which the logical vector is TRUE.
 
-```{r fig.cap = "Logical comparison operators in R", echo = FALSE}
+```{r comparison, fig.cap = "Logical comparison operators in R", echo = FALSE}
 par(mar = rep(.1, 4))
 plot(1, xlim = c(0, 1.1), ylim = c(0, 10),
      xlab = "", ylab = "", xaxt = "n", yaxt = "n",
@@ -143,7 +143,7 @@ text(rep(.2, 9), 9:1,
 ```
 
 
-However, creating logical vectors using `c()` is tedious. Instead, it's better to create logical vectors from *existing vectors* using comparison operators like < (less than), == (equals to), and != (not equal to). A complete list of the most common comparison operators is in  Figure~\ref{fig:comparison}. For example, let's create some logical vectors from our `boat.ages` vector:
+However, creating logical vectors using `c()` is tedious. Instead, it's better to create logical vectors from *existing vectors* using comparison operators like < (less than), == (equals to), and != (not equal to). A complete list of the most common comparison operators is in  Figure \@ref(fig:comparison). For example, let's create some logical vectors from our `boat.ages` vector:
 
 ```{r}
 # Which ages are > 100?

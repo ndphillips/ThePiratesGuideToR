@@ -4,7 +4,8 @@ output:
   html_document: default
   word_document: default
 ---
-# Scalers and vectors {#scalersvectors}
+
+# Scalars and vectors {#scalersvectors}
 
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(collapse = TRUE)
@@ -129,7 +130,7 @@ knitr::include_graphics(c("images/magrittepipe.jpg"))
 
 
 ```{r}
-char.vec <- c("Leci", "nest", "pas", "une", "pipe")
+char.vec <- c("Ceci", "nest", "pas", "une", "pipe")
 char.vec
 ```
 
@@ -164,7 +165,7 @@ Here are some examples of the `a:b` function in action. As you'll see, you can g
 |     `length.out`|   The desired length of the final sequence (only use if you don't specify `by`)|
 
 
-The `seq()` function is a more flexible version of `a:b`. Like `a:b`, `seq()` allows you to create a sequence from a starting number to an ending number. However, `seq()}`, has additional arguments that allow you to specify either the size of the steps between numbers, or the total length of the sequence:
+The `seq()` function is a more flexible version of `a:b`. Like `a:b`, `seq()` allows you to create a sequence from a starting number to an ending number. However, `seq()`, has additional arguments that allow you to specify either the size of the steps between numbers, or the total length of the sequence:
 
 
 The `seq()` function has two new arguments `by` and `length.out`. If you use the `by` argument, the sequence will be in steps of the input to the `by` argument:
@@ -360,7 +361,7 @@ The output of the `sample()` function above is a vector of 10 strings indicating
 
 In the next section, we'll cover how to generate random data from specified *probability distributions*. What is a probability distribution? Well, it's simply an equation -- also called a likelihood function -- that indicates how likely certain numerical values are to be drawn.
 
-We can use probability distributions to represent different types of data. For example, imagine you need to hire a new group of pirates for your crew. You have the option of hiring people form one of two different pirate training colleges that produce pirates of varying quality. One college "Pirate Training Unlimited" might tend to pirates that are generally ok - never great but never terrible. While another college "Unlimited Pirate Training" might produce pirates with a wide variety of quality, from very low to very high. In Figure \@ref(fig:piratecollege) I plotted 5 example pirates from each college, where each pirate is shown as a ball with a number written on it. As you can see, pirates from PTU all tend to be clustered between 40 and 60 (not terrible but not great), while pirates from UPT are all over the map, from 0 to 100. We can use probability distributions (in this case, the uniform distribution) to mathematically define how likely any possible value is to be drawn at random from a distribution. We could describe Pirate Training Unlimited with a uniform distribution with a small range, and Unlimited Pirate Training with a second uniform distribution with a wide range.
+We can use probability distributions to represent different types of data. For example, imagine you need to hire a new group of pirates for your crew. You have the option of hiring people from one of two different pirate training colleges that produce pirates of varying quality. One college "Pirate Training Unlimited" might tend to pirates that are generally ok - never great but never terrible. While another college "Unlimited Pirate Training" might produce pirates with a wide variety of quality, from very low to very high. In Figure \@ref(fig:piratecollege) I plotted 5 example pirates from each college, where each pirate is shown as a ball with a number written on it. As you can see, pirates from PTU all tend to be clustered between 40 and 60 (not terrible but not great), while pirates from UPT are all over the map, from 0 to 100. We can use probability distributions (in this case, the uniform distribution) to mathematically define how likely any possible value is to be drawn at random from a distribution. We could describe Pirate Training Unlimited with a uniform distribution with a small range, and Unlimited Pirate Training with a second uniform distribution with a wide range.
 
 
 ```{r piratecollege, fig.cap = "Sampling 5 potential pirates from two different pirate colleges. Pirate Training Unlimited (PTU) consistently produces average pirates (with scores between 40 and 60), while Unlimited Pirate Training (UPT), produces a wide range of pirates from 0 to 100.", echo = FALSE}
@@ -477,7 +478,7 @@ legend(x = -2, y = 1.2,
 
 
 
-Next, let's move on to the Uniform distribution. The Uniform distribution gives equal probability to all values between its minimum and maximum values. In other words, everything between its lower and upper bounds are equally likely to occur. To generate samples from a uniform distribution,use the function `runif()`, the function has 3 arguments:
+Next, let's move on to the Uniform distribution. The Uniform distribution gives equal probability to all values between its minimum and maximum values. In other words, everything between its lower and upper bounds are equally likely to occur. To generate samples from a uniform distribution, use the function `runif()`, the function has 3 arguments:
 
 
 | Argument| Definition|
