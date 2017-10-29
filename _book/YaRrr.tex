@@ -238,7 +238,7 @@ more reasons:
   Poogle\footnote{I am in the process of creating Poogle - Google for Pirates. Kickstarter page coming soon...}
   search will lead you to your answer virtually every single time.
 \item
-  R is the presnt, and future of statistical programming. To illustrate
+  R is the present, and future of statistical programming. To illustrate
   this, look at the following three figures. These are Google trend
   searches for three terms: R Programming, Matlab, and SPSS. Try and
   guess which one is which.
@@ -546,57 +546,6 @@ if you are familiar with GitHub, post an issue at
 Contributers will be added to the R pirate
 
 \chapter{Getting Started}\label{started}
-
-\begin{verbatim}
-## Loading required package: jpeg
-\end{verbatim}
-
-\begin{verbatim}
-## Loading required package: BayesFactor
-\end{verbatim}
-
-\begin{verbatim}
-## Loading required package: coda
-\end{verbatim}
-
-\begin{verbatim}
-## Loading required package: Matrix
-\end{verbatim}
-
-\begin{verbatim}
-## ************
-## Welcome to BayesFactor 0.9.12-2. If you have questions, please contact Richard Morey (richarddmorey@gmail.com).
-## 
-## Type BFManual() to open the manual.
-## ************
-\end{verbatim}
-
-\begin{verbatim}
-## Loading required package: circlize
-\end{verbatim}
-
-\begin{verbatim}
-## Warning: package 'circlize' was built under R version 3.4.1
-\end{verbatim}
-
-\begin{verbatim}
-## yarrr v0.1.6. Citation info at citation('yarrr'). Package guide at yarrr.guide()
-\end{verbatim}
-
-\begin{verbatim}
-## Email me at Nathaniel.D.Phillips.is@gmail.com
-\end{verbatim}
-
-\begin{verbatim}
-## 
-## Attaching package: 'yarrr'
-\end{verbatim}
-
-\begin{verbatim}
-## The following objects are masked _by_ '.GlobalEnv':
-## 
-##     auction, diamonds, movies, pirates, poopdeck
-\end{verbatim}
 
 \section{Installing Base-R and
 RStudio}\label{installing-base-r-and-rstudio}
@@ -1215,7 +1164,7 @@ the correct version
 \begin{Highlighting}[]
 \CommentTok{# Correct}
 \KeywordTok{mean}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{))}
-\NormalTok{## [1] 2.333333}
+\NormalTok{## [1] 2.3}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1300,19 +1249,19 @@ data.
 \CommentTok{# Look at the first few rows of the data}
 \KeywordTok{head}\NormalTok{(pirates)}
 \NormalTok{##      id  sex age height weight headband college tattoos tchests parrots}
-\NormalTok{## 2     2 male  31 209.25  105.6      yes   JSSFP       9      11       0}
-\NormalTok{## 793 793 male  25 209.06  103.7      yes    CCCC       8      27       9}
-\NormalTok{## 430 430 male  26 201.31   98.6      yes    CCCC       4       7       1}
-\NormalTok{## 292 292 male  29 200.62  101.6      yes    CCCC       9       2       3}
-\NormalTok{## 895 895 male  27 200.59  102.6      yes    CCCC      12       1       1}
-\NormalTok{## 409 409 male  28 200.57   96.7      yes    CCCC       7      10       0}
+\NormalTok{## 2     2 male  31    209    106      yes   JSSFP       9      11       0}
+\NormalTok{## 793 793 male  25    209    104      yes    CCCC       8      27       9}
+\NormalTok{## 430 430 male  26    201     99      yes    CCCC       4       7       1}
+\NormalTok{## 292 292 male  29    201    102      yes    CCCC       9       2       3}
+\NormalTok{## 895 895 male  27    201    103      yes    CCCC      12       1       1}
+\NormalTok{## 409 409 male  28    201     97      yes    CCCC       7      10       0}
 \NormalTok{##     favorite.pirate sword.type eyepatch sword.time beard.length}
-\NormalTok{## 2      Jack Sparrow    cutlass        0       1.11           21}
-\NormalTok{## 793        Anicetus    cutlass        1       1.11           16}
-\NormalTok{## 430    Jack Sparrow    cutlass        1       0.90           14}
-\NormalTok{## 292    Jack Sparrow      sabre        1       9.90           14}
-\NormalTok{## 895            Hook    cutlass        1       2.29           25}
-\NormalTok{## 409    Jack Sparrow    cutlass        1       1.21           15}
+\NormalTok{## 2      Jack Sparrow    cutlass        0        1.1           21}
+\NormalTok{## 793        Anicetus    cutlass        1        1.1           16}
+\NormalTok{## 430    Jack Sparrow    cutlass        1        0.9           14}
+\NormalTok{## 292    Jack Sparrow      sabre        1        9.9           14}
+\NormalTok{## 895            Hook    cutlass        1        2.3           25}
+\NormalTok{## 409    Jack Sparrow    cutlass        1        1.2           15}
 \NormalTok{##               fav.pixar grogg}
 \NormalTok{## 2                WALL-E     9}
 \NormalTok{## 793 Monsters University     8}
@@ -1359,11 +1308,11 @@ sex:
 \begin{Highlighting}[]
 \CommentTok{# What is the mean age?}
 \KeywordTok{mean}\NormalTok{(pirates}\OperatorTok{$}\NormalTok{age)}
-\NormalTok{## [1] 27.36}
+\NormalTok{## [1] 27}
 
 \CommentTok{# What was the tallest pirate?}
 \KeywordTok{max}\NormalTok{(pirates}\OperatorTok{$}\NormalTok{height)}
-\NormalTok{## [1] 209.25}
+\NormalTok{## [1] 209}
 
 \CommentTok{# How many pirates are there of each sex?}
 \KeywordTok{table}\NormalTok{(pirates}\OperatorTok{$}\NormalTok{sex)}
@@ -1383,10 +1332,10 @@ to calculate the mean age of pirates, separately for each sex.
 \KeywordTok{aggregate}\NormalTok{(}\DataTypeTok{formula =}\NormalTok{ age }\OperatorTok{~}\StringTok{ }\NormalTok{sex,}
           \DataTypeTok{data =}\NormalTok{ pirates,}
           \DataTypeTok{FUN =}\NormalTok{ mean)}
-\NormalTok{##      sex      age}
-\NormalTok{## 1 female 29.92241}
-\NormalTok{## 2   male 24.96735}
-\NormalTok{## 3  other 27.00000}
+\NormalTok{##      sex age}
+\NormalTok{## 1 female  30}
+\NormalTok{## 2   male  25}
+\NormalTok{## 3  other  27}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1511,13 +1460,13 @@ the ages of pirates who do wear a headband, and those who do not:
 \NormalTok{##  Welch Two Sample t-test}
 \NormalTok{## }
 \NormalTok{## data:  age by headband}
-\NormalTok{## t = 0.35135, df = 135.47, p-value = 0.7259}
+\NormalTok{## t = 0.4, df = 100, p-value = 0.7}
 \NormalTok{## alternative hypothesis: true difference in means is not equal to 0}
 \NormalTok{## 95 percent confidence interval:}
-\NormalTok{##  -1.030754  1.476126}
+\NormalTok{##  -1.0  1.5}
 \NormalTok{## sample estimates:}
 \NormalTok{##  mean in group no mean in group yes }
-\NormalTok{##          27.55752          27.33484}
+\NormalTok{##                28                27}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1536,13 +1485,13 @@ height and weight using the \texttt{cor.test()} function:
 \NormalTok{##  Pearson's product-moment correlation}
 \NormalTok{## }
 \NormalTok{## data:  height and weight}
-\NormalTok{## t = 81.161, df = 998, p-value < 2.2e-16}
+\NormalTok{## t = 80, df = 1000, p-value <2e-16}
 \NormalTok{## alternative hypothesis: true correlation is not equal to 0}
 \NormalTok{## 95 percent confidence interval:}
-\NormalTok{##  0.9232371 0.9396050}
+\NormalTok{##  0.92 0.94}
 \NormalTok{## sample estimates:}
-\NormalTok{##       cor }
-\NormalTok{## 0.9318938}
+\NormalTok{##  cor }
+\NormalTok{## 0.93}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1565,9 +1514,9 @@ number of tattoos pirates have based on their favorite sword
 \NormalTok{## Analysis of Variance Table}
 \NormalTok{## }
 \NormalTok{## Response: tattoos}
-\NormalTok{##             Df Sum Sq Mean Sq F value    Pr(>F)    }
-\NormalTok{## sword.type   3 1587.8  529.28  54.106 < 2.2e-16 ***}
-\NormalTok{## Residuals  996 9743.1    9.78                      }
+\NormalTok{##             Df Sum Sq Mean Sq F value Pr(>F)    }
+\NormalTok{## sword.type   3   1588     529    54.1 <2e-16 ***}
+\NormalTok{## Residuals  996   9743      10                   }
 \NormalTok{## ---}
 \NormalTok{## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1}
 \end{Highlighting}
@@ -1596,21 +1545,21 @@ chests he/she's found:
 \NormalTok{## lm(formula = tchests ~ age + weight + tattoos, data = pirates)}
 \NormalTok{## }
 \NormalTok{## Residuals:}
-\NormalTok{##     Min      1Q  Median      3Q     Max }
-\NormalTok{## -33.302 -15.832  -6.860   8.407 119.966 }
+\NormalTok{##    Min     1Q Median     3Q    Max }
+\NormalTok{## -33.30 -15.83  -6.86   8.41 119.97 }
 \NormalTok{## }
 \NormalTok{## Coefficients:}
 \NormalTok{##             Estimate Std. Error t value Pr(>|t|)    }
-\NormalTok{## (Intercept)  5.19084    7.18437   0.723     0.47    }
-\NormalTok{## age          0.78177    0.13438   5.818 8.03e-09 ***}
-\NormalTok{## weight      -0.09013    0.07183  -1.255     0.21    }
-\NormalTok{## tattoos      0.25398    0.22550   1.126     0.26    }
+\NormalTok{## (Intercept)   5.1908     7.1844    0.72     0.47    }
+\NormalTok{## age           0.7818     0.1344    5.82    8e-09 ***}
+\NormalTok{## weight       -0.0901     0.0718   -1.25     0.21    }
+\NormalTok{## tattoos       0.2540     0.2255    1.13     0.26    }
 \NormalTok{## ---}
 \NormalTok{## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1}
 \NormalTok{## }
-\NormalTok{## Residual standard error: 23.99 on 996 degrees of freedom}
-\NormalTok{## Multiple R-squared:  0.04056,    Adjusted R-squared:  0.03767 }
-\NormalTok{## F-statistic: 14.04 on 3 and 996 DF,  p-value: 5.751e-09}
+\NormalTok{## Residual standard error: 24 on 996 degrees of freedom}
+\NormalTok{## Multiple R-squared:  0.0406, Adjusted R-squared:  0.0377 }
+\NormalTok{## F-statistic:   14 on 3 and 996 DF,  p-value: 5.75e-09}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1643,7 +1592,7 @@ headband are older or younger than those who do not.
         \DataTypeTok{data =}\NormalTok{ pirates)}
 \NormalTok{## Bayes factor analysis}
 \NormalTok{## --------------}
-\NormalTok{## [1] Alt., r=0.707 : 0.1187807 ±0%}
+\NormalTok{## [1] Alt., r=0.707 : 0.12 ±0%}
 \NormalTok{## }
 \NormalTok{## Against denominator:}
 \NormalTok{##   Null, mu1-mu2 = 0 }
@@ -1968,7 +1917,7 @@ object called \texttt{tattoos} using a function \texttt{c()}:
 
 \CommentTok{# 2: Apply the mean() function to the tattoos object}
 \KeywordTok{mean}\NormalTok{(tattoos)}
-\NormalTok{## [1] 23.83333}
+\NormalTok{## [1] 24}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2312,7 +2261,7 @@ by 0.88 (assuming 1 USD = 0.88 EUR)
 \begin{Highlighting}[]
 \NormalTok{blackpearl.eur <-}\StringTok{ }\NormalTok{blackpearl.usd }\OperatorTok{*}\StringTok{ }\FloatTok{0.88}
 \NormalTok{blackpearl.eur}
-\NormalTok{## [1] 558759611}
+\NormalTok{## [1] 5.6e+08}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2333,7 +2282,7 @@ Now, I'll divide \texttt{deadman.usd} by \texttt{blackpearl.usd}:
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{deadman.usd }\OperatorTok{/}\StringTok{ }\NormalTok{blackpearl.usd}
-\NormalTok{## [1] 1.679201}
+\NormalTok{## [1] 1.7}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2689,8 +2638,7 @@ length equal to \texttt{length.out}.
 \begin{Highlighting}[]
 \CommentTok{# Create 10 numbers from 1 to 5}
 \KeywordTok{seq}\NormalTok{(}\DataTypeTok{from =} \DecValTok{1}\NormalTok{, }\DataTypeTok{to =} \DecValTok{5}\NormalTok{, }\DataTypeTok{length.out =} \DecValTok{10}\NormalTok{)}
-\NormalTok{##  [1] 1.000000 1.444444 1.888889 2.333333 2.777778 3.222222 3.666667}
-\NormalTok{##  [8] 4.111111 4.555556 5.000000}
+\NormalTok{##  [1] 1.0 1.4 1.9 2.3 2.8 3.2 3.7 4.1 4.6 5.0}
 
 \CommentTok{# 3 numbers from 0 to 100}
 \KeywordTok{seq}\NormalTok{(}\DataTypeTok{from =} \DecValTok{0}\NormalTok{, }\DataTypeTok{to =} \DecValTok{100}\NormalTok{, }\DataTypeTok{length.out =} \DecValTok{3}\NormalTok{)}
@@ -3051,11 +2999,11 @@ generate samples from a normal distribution in R, we use the function
 \begin{Highlighting}[]
 \CommentTok{# 5 samples from a Normal dist with mean = 0, sd = 1}
 \KeywordTok{rnorm}\NormalTok{(}\DataTypeTok{n =} \DecValTok{5}\NormalTok{, }\DataTypeTok{mean =} \DecValTok{0}\NormalTok{, }\DataTypeTok{sd =} \DecValTok{1}\NormalTok{)}
-\NormalTok{## [1] -1.3812915  2.4004962  0.3704356  0.5301593  0.6894852}
+\NormalTok{## [1] -1.38  2.40  0.37  0.53  0.69}
 
 \CommentTok{# 3 samples from a Normal dist with mean = -10, sd = 15}
 \KeywordTok{rnorm}\NormalTok{(}\DataTypeTok{n =} \DecValTok{3}\NormalTok{, }\DataTypeTok{mean =} \OperatorTok{-}\DecValTok{10}\NormalTok{, }\DataTypeTok{sd =} \DecValTok{15}\NormalTok{)}
-\NormalTok{## [1] -20.57584 -13.84697 -25.48026}
+\NormalTok{## [1] -21 -14 -25}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3113,12 +3061,11 @@ Here are some samples from two different Uniform distributions:
 \begin{Highlighting}[]
 \CommentTok{# 5 samples from Uniform dist with bounds at 0 and 1}
 \KeywordTok{runif}\NormalTok{(}\DataTypeTok{n =} \DecValTok{5}\NormalTok{, }\DataTypeTok{min =} \DecValTok{0}\NormalTok{, }\DataTypeTok{max =} \DecValTok{1}\NormalTok{)}
-\NormalTok{## [1] 0.9357006 0.7976297 0.5744534 0.1116068 0.2245453}
+\NormalTok{## [1] 0.94 0.80 0.57 0.11 0.22}
 
 \CommentTok{# 10 samples from Uniform dist with bounds at -100 and +100}
 \KeywordTok{runif}\NormalTok{(}\DataTypeTok{n =} \DecValTok{10}\NormalTok{, }\DataTypeTok{min =} \OperatorTok{-}\DecValTok{100}\NormalTok{, }\DataTypeTok{max =} \DecValTok{100}\NormalTok{)}
-\NormalTok{##  [1]  10.9414865 -80.4966081  52.3845476   0.4456113 -79.6523535}
-\NormalTok{##  [6]  31.9392082  87.2795171 -67.6851716 -58.6398627  -0.3676838}
+\NormalTok{##  [1]  10.94 -80.50  52.38   0.45 -79.65  31.94  87.28 -67.69 -58.64  -0.37}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3136,11 +3083,11 @@ function on the next page\ldots{})
 \begin{Highlighting}[]
 \CommentTok{# Draw a sample of size 5 from a normal distribution with mean 100 and sd 10}
 \KeywordTok{rnorm}\NormalTok{(}\DataTypeTok{n =} \DecValTok{5}\NormalTok{, }\DataTypeTok{mean =} \DecValTok{100}\NormalTok{, }\DataTypeTok{sd =} \DecValTok{10}\NormalTok{)}
-\NormalTok{## [1] 107.20919  94.25682 103.40248 105.79877  99.81698}
+\NormalTok{## [1] 107  94 103 106 100}
 
 \CommentTok{# Do it again!}
 \KeywordTok{rnorm}\NormalTok{(}\DataTypeTok{n =} \DecValTok{5}\NormalTok{, }\DataTypeTok{mean =} \DecValTok{100}\NormalTok{, }\DataTypeTok{sd =} \DecValTok{10}\NormalTok{)}
-\NormalTok{## [1] 112.80763 104.23147 108.90105 108.48350  96.49047}
+\NormalTok{## [1] 113 104 109 108  96}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3170,11 +3117,11 @@ results will always be consistent (because we fixed the sampling seed).
 
 \CommentTok{# The result will always be -0.5022, 0.1315, -0.0789}
 \KeywordTok{rnorm}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DataTypeTok{mean =} \DecValTok{0}\NormalTok{, }\DataTypeTok{sd =} \DecValTok{1}\NormalTok{)}
-\NormalTok{## [1] -0.50219235  0.13153117 -0.07891709}
+\NormalTok{## [1] -0.502  0.132 -0.079}
 
 \CommentTok{# The result will always be 0.887, 0.117, 0.319}
 \KeywordTok{rnorm}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DataTypeTok{mean =} \DecValTok{0}\NormalTok{, }\DataTypeTok{sd =} \DecValTok{1}\NormalTok{)}
-\NormalTok{## [1] 0.8867848 0.1169713 0.3186301}
+\NormalTok{## [1] 0.89 0.12 0.32}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3264,15 +3211,15 @@ statistics from two exams.
 
 \CommentTok{# Each student's average score}
 \NormalTok{(midterm }\OperatorTok{+}\StringTok{ }\NormalTok{final) }\OperatorTok{/}\StringTok{ }\DecValTok{2}
-\NormalTok{##  [1] 72.5 72.5 88.5 83.0 60.0 75.0 93.0 77.0 50.0 80.0}
+\NormalTok{##  [1] 72 72 88 83 60 75 93 77 50 80}
 
 \CommentTok{# Mean midterm grade}
 \KeywordTok{mean}\NormalTok{(midterm)}
-\NormalTok{## [1] 72.8}
+\NormalTok{## [1] 73}
 
 \CommentTok{# Standard deviation of midterm grades}
 \KeywordTok{sd}\NormalTok{(midterm)}
-\NormalTok{## [1] 12.67368}
+\NormalTok{## [1] 13}
 
 \CommentTok{# Highest final grade}
 \KeywordTok{max}\NormalTok{(final)}
@@ -3476,7 +3423,7 @@ Result\strut
 \end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\raggedright\strut
 \texttt{sd(1:10)}\strut
 \end{minipage} & \begin{minipage}[t]{0.32\columnwidth}\raggedright\strut
-3.0276504\strut
+3.03\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
 \texttt{quantile(x,\ probs)}\strut
@@ -3513,9 +3460,9 @@ using the summary statistics functions:
 \KeywordTok{min}\NormalTok{(tattoos)}
 \NormalTok{## [1] 2}
 \KeywordTok{mean}\NormalTok{(tattoos)}
-\NormalTok{## [1] 24.1}
+\NormalTok{## [1] 24}
 \KeywordTok{sd}\NormalTok{(tattoos)}
-\NormalTok{## [1] 31.32074}
+\NormalTok{## [1] 31}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3641,9 +3588,9 @@ summary statistics from this sample using \texttt{mean()} and
 
 \CommentTok{# What are the mean and standard deviation of the sample?}
 \KeywordTok{mean}\NormalTok{(x)}
-\NormalTok{## [1] 10.55418}
+\NormalTok{## [1] 11}
 \KeywordTok{sd}\NormalTok{(x)}
-\NormalTok{## [1] 2.517902}
+\NormalTok{## [1] 2.5}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3659,9 +3606,9 @@ population values:
 \NormalTok{y <-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DataTypeTok{n =} \DecValTok{100000}\NormalTok{, }\DataTypeTok{mean =} \DecValTok{10}\NormalTok{, }\DataTypeTok{sd =} \DecValTok{5}\NormalTok{)}
 
 \KeywordTok{mean}\NormalTok{(y)}
-\NormalTok{## [1] 10.00756}
+\NormalTok{## [1] 10}
 \KeywordTok{sd}\NormalTok{(y)}
-\NormalTok{## [1] 4.99587}
+\NormalTok{## [1] 5}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3779,12 +3726,12 @@ the result:
 \begin{Highlighting}[]
 \KeywordTok{table}\NormalTok{(vec) }\OperatorTok{/}\StringTok{ }\KeywordTok{sum}\NormalTok{(}\KeywordTok{table}\NormalTok{(vec))}
 \NormalTok{## vec}
-\NormalTok{##         1         5        10 }
-\NormalTok{## 0.5555556 0.1111111 0.3333333}
+\NormalTok{##    1    5   10 }
+\NormalTok{## 0.56 0.11 0.33}
 \KeywordTok{table}\NormalTok{(gender) }\OperatorTok{/}\StringTok{ }\KeywordTok{sum}\NormalTok{(}\KeywordTok{table}\NormalTok{(gender))}
 \NormalTok{## gender}
-\NormalTok{##         F         M }
-\NormalTok{## 0.5555556 0.4444444}
+\NormalTok{##    F    M }
+\NormalTok{## 0.56 0.44}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3845,9 +3792,9 @@ standard deviation with the \texttt{mean()} and \texttt{sd()} functions:
 \begin{Highlighting}[]
 \NormalTok{a <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{)}
 \KeywordTok{mean}\NormalTok{(a)}
-\NormalTok{## [1] 4.571429}
+\NormalTok{## [1] 4.6}
 \KeywordTok{sd}\NormalTok{(a)}
-\NormalTok{## [1] 1.397276}
+\NormalTok{## [1] 1.4}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3866,8 +3813,7 @@ Now let's look at the standardized values:
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{a.z}
-\NormalTok{## [1]  0.3067192 -1.1246370  1.7380754  0.3067192  0.3067192 -1.1246370}
-\NormalTok{## [7] -0.4089589}
+\NormalTok{## [1]  0.31 -1.12  1.74  0.31  0.31 -1.12 -0.41}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3877,7 +3823,7 @@ The mean of \texttt{a.z} should now be 0, and the standard deviation of
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{mean}\NormalTok{(a.z)}
-\NormalTok{## [1] 1.982309e-16}
+\NormalTok{## [1] 2e-16}
 \KeywordTok{sd}\NormalTok{(a.z)}
 \NormalTok{## [1] 1}
 \end{Highlighting}
@@ -6888,18 +6834,6 @@ and then read them into R with \texttt{read.table()}.
 \end{enumerate}
 
 \chapter{Advanced dataframe manipulation}\label{advanceddataframe}
-
-\begin{verbatim}
-## Warning: package 'dplyr' was built under R version 3.4.2
-## 
-## Attaching package: 'dplyr'
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-\end{verbatim}
 
 \begin{figure}
 
@@ -16234,10 +16168,6 @@ pirate auction.
   Using \texttt{price.all.lm}, predict the selling price of the 3 new
   ships
 \end{enumerate}
-
-\begin{verbatim}
-## Warning: package 'knitr' was built under R version 3.4.1
-\end{verbatim}
 
 \begin{tabular}{r|r|r|r|l|l}
 \hline
