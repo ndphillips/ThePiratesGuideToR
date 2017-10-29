@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="YaRrr! The Pirate’s Guide to R" />
+<meta property="og:type" content="book" />
+<meta property="og:url" content="https://bookdown.org/ndphillips/YaRrr/" />
+<meta property="og:image" content="https://bookdown.org/ndphillips/YaRrr/images/YaRrr_Cover.jpg" />
+<meta property="og:description" content="An introductory book to R written by, and for, R pirates" />
+<meta name="github-repo" content="ndphillips/ThePiratesGuideToR" />
+
+<meta name="author" content="Nathaniel D. Phillips" />
+
+<meta name="date" content="2017-10-29" />
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+
+<meta name="description" content="An introductory book to R written by, and for, R pirates">
+
+<title>YaRrr! The Pirate’s Guide to R</title>
+
+<script src="libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container-fluid main-container">
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul>
+<li class="has-sub"><a href="index.html#intro"><span class="toc-section-number">1</span> Preface</a><ul>
+<li><a href="1-1-where-did-this-book-come-from.html#where-did-this-book-come-from"><span class="toc-section-number">1.1</span> Where did this book come from?</a></li>
+<li><a href="1-2-who-is-this-book-for.html#who-is-this-book-for"><span class="toc-section-number">1.2</span> Who is this book for?</a></li>
+<li><a href="1-3-why-is-r-so-great.html#why-is-r-so-great"><span class="toc-section-number">1.3</span> Why is R so great?</a></li>
+<li><a href="1-4-rrelationship.html#rrelationship"><span class="toc-section-number">1.4</span> Why R is like a relationship…</a></li>
+<li class="has-sub"><a href="1-5-r-resources.html#r-resources"><span class="toc-section-number">1.5</span> R resources</a><ul>
+<li><a href="1-5-r-resources.html#r-cheatsheets"><span class="toc-section-number">1.5.1</span> R Cheatsheets</a></li>
+<li><a href="1-5-r-resources.html#getting-r-help-and-inspiration-online"><span class="toc-section-number">1.5.2</span> Getting R help and inspiration online</a></li>
+<li><a href="1-5-r-resources.html#other-r-books"><span class="toc-section-number">1.5.3</span> Other R books</a></li>
+</ul></li>
+<li class="has-sub"><a href="1-6-who-am-i.html#who-am-i"><span class="toc-section-number">1.6</span> Who am I?</a><ul>
+<li><a href="1-6-who-am-i.html#acknowledgements"><span class="toc-section-number">1.6.1</span> Acknowledgements</a></li>
+</ul></li>
+<li><a href="1-7-please-contribute.html#please-contribute"><span class="toc-section-number">1.7</span> Please Contribute!</a></li>
+</ul></li>
+<li class="has-sub"><a href="2-started.html#started"><span class="toc-section-number">2</span> Getting Started</a><ul>
+<li class="has-sub"><a href="2-1-installing-base-r-and-rstudio.html#installing-base-r-and-rstudio"><span class="toc-section-number">2.1</span> Installing Base-R and RStudio</a><ul>
+<li><a href="2-1-installing-base-r-and-rstudio.html#check-for-version-updates"><span class="toc-section-number">2.1.1</span> Check for version updates</a></li>
+</ul></li>
+<li class="has-sub"><a href="2-2-the-four-rstudio-windows.html#the-four-rstudio-windows"><span class="toc-section-number">2.2</span> The four RStudio Windows</a><ul>
+<li><a href="2-2-the-four-rstudio-windows.html#source---your-notepad-for-code"><span class="toc-section-number">2.2.1</span> Source - Your notepad for code</a></li>
+<li><a href="2-2-the-four-rstudio-windows.html#console-rs-heart"><span class="toc-section-number">2.2.2</span> Console: R’s Heart</a></li>
+<li><a href="2-2-the-four-rstudio-windows.html#environment-history"><span class="toc-section-number">2.2.3</span> Environment / History</a></li>
+<li><a href="2-2-the-four-rstudio-windows.html#files-plots-packages-help"><span class="toc-section-number">2.2.4</span> Files / Plots / Packages / Help</a></li>
+</ul></li>
+<li class="has-sub"><a href="2-3-packages.html#packages"><span class="toc-section-number">2.3</span> Packages</a><ul>
+<li><a href="2-3-packages.html#installing-a-new-package"><span class="toc-section-number">2.3.1</span> Installing a new package</a></li>
+<li><a href="2-3-packages.html#loading-a-package"><span class="toc-section-number">2.3.2</span> Loading a package</a></li>
+</ul></li>
+<li class="has-sub"><a href="2-4-reading-and-writing-code.html#reading-and-writing-code"><span class="toc-section-number">2.4</span> Reading and writing Code</a><ul>
+<li><a href="2-4-reading-and-writing-code.html#code-chunks"><span class="toc-section-number">2.4.1</span> Code Chunks</a></li>
+<li><a href="2-4-reading-and-writing-code.html#comments-with"><span class="toc-section-number">2.4.2</span> Comments with #</a></li>
+<li><a href="2-4-reading-and-writing-code.html#element-numbers-in-output-1"><span class="toc-section-number">2.4.3</span> Element numbers in output [1]</a></li>
+</ul></li>
+<li class="has-sub"><a href="2-5-debugging.html#debugging"><span class="toc-section-number">2.5</span> Debugging</a><ul>
+<li><a href="2-5-debugging.html#r-is-not-ready"><span class="toc-section-number">2.5.1</span> R is not ready (&gt;)</a></li>
+<li><a href="2-5-debugging.html#misspelled-object-or-function"><span class="toc-section-number">2.5.2</span> Misspelled object or function</a></li>
+<li><a href="2-5-debugging.html#punctuation-problems"><span class="toc-section-number">2.5.3</span> Punctuation problems</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="3-jumpin.html#jumpin"><span class="toc-section-number">3</span> Jump In!</a><ul>
+<li><a href="3-1-exploring-data.html#exploring-data"><span class="toc-section-number">3.1</span> Exploring data</a></li>
+<li><a href="3-2-descriptive-statistics.html#descriptive-statistics"><span class="toc-section-number">3.2</span> Descriptive statistics</a></li>
+<li><a href="3-3-plotting.html#plotting"><span class="toc-section-number">3.3</span> Plotting</a></li>
+<li><a href="3-4-hypothesis-tests.html#hypothesis-tests"><span class="toc-section-number">3.4</span> Hypothesis tests</a></li>
+<li><a href="3-5-regression-analysis.html#regression-analysis"><span class="toc-section-number">3.5</span> Regression analysis</a></li>
+<li><a href="3-6-bayesian-statistics.html#bayesian-statistics"><span class="toc-section-number">3.6</span> Bayesian Statistics</a></li>
+<li><a href="3-7-wasnt-that-easy.html#wasnt-that-easy"><span class="toc-section-number">3.7</span> Wasn’t that easy?!</a></li>
+</ul></li>
+<li class="has-sub"><a href="4-basics.html#basics"><span class="toc-section-number">4</span> The Basics</a><ul>
+<li><a href="4-1-the-command-line-console.html#the-command-line-console"><span class="toc-section-number">4.1</span> The command-line (Console)</a></li>
+<li class="has-sub"><a href="4-2-writing-r-scripts-in-an-editor.html#writing-r-scripts-in-an-editor"><span class="toc-section-number">4.2</span> Writing R scripts in an editor</a><ul>
+<li><a href="4-2-writing-r-scripts-in-an-editor.html#send-code-from-an-source-to-the-console"><span class="toc-section-number">4.2.1</span> Send code from an source to the console</a></li>
+</ul></li>
+<li class="has-sub"><a href="4-3-a-brief-style-guide-commenting-and-spacing.html#a-brief-style-guide-commenting-and-spacing"><span class="toc-section-number">4.3</span> A brief style guide: Commenting and spacing</a><ul>
+<li><a href="4-3-a-brief-style-guide-commenting-and-spacing.html#commenting-code-with-the-pound-sign"><span class="toc-section-number">4.3.1</span> Commenting code with the # (pound) sign</a></li>
+<li><a href="4-3-a-brief-style-guide-commenting-and-spacing.html#spacing"><span class="toc-section-number">4.3.2</span> Spacing</a></li>
+</ul></li>
+<li class="has-sub"><a href="4-4-objects-and-functions.html#objects-and-functions"><span class="toc-section-number">4.4</span> Objects and functions</a><ul>
+<li><a href="4-4-objects-and-functions.html#numbers-versus-characters"><span class="toc-section-number">4.4.1</span> Numbers versus characters</a></li>
+<li><a href="4-4-objects-and-functions.html#creating-new-objects-with--"><span class="toc-section-number">4.4.2</span> Creating new objects with &lt;-</a></li>
+<li><a href="4-4-objects-and-functions.html#how-to-name-objects"><span class="toc-section-number">4.4.3</span> How to name objects</a></li>
+<li><a href="4-4-objects-and-functions.html#example-pirates-of-the-caribbean"><span class="toc-section-number">4.4.4</span> Example: Pirates of The Caribbean</a></li>
+</ul></li>
+<li><a href="4-5-test-your-r-might.html#test-your-r-might"><span class="toc-section-number">4.5</span> Test your R might!</a></li>
+</ul></li>
+<li class="has-sub"><a href="5-scalersvectors.html#scalersvectors"><span class="toc-section-number">5</span> Scalars and vectors</a><ul>
+<li><a href="5-1-scalars.html#scalars"><span class="toc-section-number">5.1</span> Scalars</a></li>
+<li class="has-sub"><a href="5-2-vectors.html#vectors"><span class="toc-section-number">5.2</span> Vectors</a><ul>
+<li><a href="5-2-vectors.html#ab"><span class="toc-section-number">5.2.1</span> a:b</a></li>
+<li><a href="5-2-vectors.html#seq"><span class="toc-section-number">5.2.2</span> seq()</a></li>
+<li><a href="5-2-vectors.html#rep"><span class="toc-section-number">5.2.3</span> rep()</a></li>
+</ul></li>
+<li class="has-sub"><a href="5-3-generating-random-data.html#generating-random-data"><span class="toc-section-number">5.3</span> Generating random data</a><ul>
+<li><a href="5-3-generating-random-data.html#sample"><span class="toc-section-number">5.3.1</span> sample()</a></li>
+<li><a href="5-3-generating-random-data.html#normal-gaussian"><span class="toc-section-number">5.3.2</span> Normal (Gaussian)</a></li>
+<li><a href="5-3-generating-random-data.html#uniform"><span class="toc-section-number">5.3.3</span> Uniform</a></li>
+<li><a href="5-3-generating-random-data.html#notes-on-random-samples"><span class="toc-section-number">5.3.4</span> Notes on random samples</a></li>
+</ul></li>
+<li><a href="5-4-test-your-r-might-1.html#test-your-r-might-1"><span class="toc-section-number">5.4</span> Test your R might!</a></li>
+</ul></li>
+<li class="has-sub"><a href="6-vectorfunctions.html#vectorfunctions"><span class="toc-section-number">6</span> Vector functions</a><ul>
+<li class="has-sub"><a href="6-1-arithmetic-operations-on-vectors.html#arithmetic-operations-on-vectors"><span class="toc-section-number">6.1</span> Arithmetic operations on vectors</a><ul>
+<li><a href="6-1-arithmetic-operations-on-vectors.html#basic-math-with-multiple-vectors"><span class="toc-section-number">6.1.1</span> Basic math with multiple vectors</a></li>
+<li><a href="6-1-arithmetic-operations-on-vectors.html#ex-pirate-bake-sale"><span class="toc-section-number">6.1.2</span> Ex: Pirate Bake Sale</a></li>
+</ul></li>
+<li class="has-sub"><a href="6-2-summary-statistics.html#summary-statistics"><span class="toc-section-number">6.2</span> Summary statistics</a><ul>
+<li><a href="6-2-summary-statistics.html#length"><span class="toc-section-number">6.2.1</span> length()</a></li>
+<li><a href="6-2-summary-statistics.html#additional-numeric-vector-functions"><span class="toc-section-number">6.2.2</span> Additional numeric vector functions</a></li>
+<li><a href="6-2-summary-statistics.html#sample-statistics-from-random-samples"><span class="toc-section-number">6.2.3</span> Sample statistics from random samples</a></li>
+</ul></li>
+<li><a href="6-3-counting-statistics.html#counting-statistics"><span class="toc-section-number">6.3</span> Counting statistics</a></li>
+<li><a href="6-4-missing-na-values.html#missing-na-values"><span class="toc-section-number">6.4</span> Missing (NA) values</a></li>
+<li class="has-sub"><a href="6-5-standardization-z-score.html#standardization-z-score"><span class="toc-section-number">6.5</span> Standardization (z-score)</a><ul>
+<li><a href="6-5-standardization-z-score.html#ex-evaluating-a-competition"><span class="toc-section-number">6.5.1</span> Ex: Evaluating a competition</a></li>
+</ul></li>
+<li><a href="6-6-test-your-r-might-2.html#test-your-r-might-2"><span class="toc-section-number">6.6</span> Test your R Might!</a></li>
+</ul></li>
+<li class="has-sub"><a href="7-vectorindexing.html#vectorindexing"><span class="toc-section-number">7</span> Indexing Vectors with [ ]</a><ul>
+<li><a href="7-1-numerical-indexing.html#numerical-indexing"><span class="toc-section-number">7.1</span> Numerical Indexing</a></li>
+<li class="has-sub"><a href="7-2-logical-indexing.html#logical-indexing"><span class="toc-section-number">7.2</span> Logical Indexing</a><ul>
+<li><a href="7-2-logical-indexing.html#and-or-in"><span class="toc-section-number">7.2.1</span> <code>&amp;</code> (and), <code>|</code> (or), <code>%in%</code></a></li>
+<li><a href="7-2-logical-indexing.html#counts-and-percentages-from-logical-vectors"><span class="toc-section-number">7.2.2</span> Counts and percentages from logical vectors</a></li>
+<li><a href="7-2-logical-indexing.html#additional-logical-functions"><span class="toc-section-number">7.2.3</span> Additional Logical functions</a></li>
+</ul></li>
+<li class="has-sub"><a href="7-3-changing-values-of-a-vector.html#changing-values-of-a-vector"><span class="toc-section-number">7.3</span> Changing values of a vector</a><ul>
+<li><a href="7-3-changing-values-of-a-vector.html#ex-fixing-invalid-responses-to-a-happiness-survey"><span class="toc-section-number">7.3.1</span> Ex: Fixing invalid responses to a Happiness survey</a></li>
+</ul></li>
+<li><a href="7-4-test-your-r-might-movie-data.html#test-your-r-might-movie-data"><span class="toc-section-number">7.4</span> Test your R Might!: Movie data</a></li>
+</ul></li>
+<li class="has-sub"><a href="8-matricesdataframes.html#matricesdataframes"><span class="toc-section-number">8</span> Matrices and Dataframes</a><ul>
+<li><a href="8-1-what-are-matrices-and-dataframes.html#what-are-matrices-and-dataframes"><span class="toc-section-number">8.1</span> What are matrices and dataframes?</a></li>
+<li class="has-sub"><a href="8-2-creating-matrices-and-dataframes.html#creating-matrices-and-dataframes"><span class="toc-section-number">8.2</span> Creating matrices and dataframes</a><ul>
+<li><a href="8-2-creating-matrices-and-dataframes.html#cbind-rbind"><span class="toc-section-number">8.2.1</span> <code>cbind()</code>, <code>rbind()</code></a></li>
+<li><a href="8-2-creating-matrices-and-dataframes.html#matrix"><span class="toc-section-number">8.2.2</span> <code>matrix()</code></a></li>
+<li><a href="8-2-creating-matrices-and-dataframes.html#data.frame"><span class="toc-section-number">8.2.3</span> <code>data.frame()</code></a></li>
+<li><a href="8-2-creating-matrices-and-dataframes.html#dataframes-pre-loaded-in-r"><span class="toc-section-number">8.2.4</span> Dataframes pre-loaded in R</a></li>
+</ul></li>
+<li class="has-sub"><a href="8-3-matrix-and-dataframe-functions.html#matrix-and-dataframe-functions"><span class="toc-section-number">8.3</span> Matrix and dataframe functions</a><ul>
+<li><a href="8-3-matrix-and-dataframe-functions.html#head-tail-view"><span class="toc-section-number">8.3.1</span> <code>head(), tail(), View()</code></a></li>
+<li><a href="8-3-matrix-and-dataframe-functions.html#summary-str"><span class="toc-section-number">8.3.2</span> <code>summary()</code>, <code>str()</code></a></li>
+</ul></li>
+<li class="has-sub"><a href="8-4-dataframe-column-names.html#dataframe-column-names"><span class="toc-section-number">8.4</span> Dataframe column names</a><ul>
+<li><a href="8-4-dataframe-column-names.html#adding-new-columns"><span class="toc-section-number">8.4.1</span> Adding new columns</a></li>
+<li><a href="8-4-dataframe-column-names.html#changing-column-names"><span class="toc-section-number">8.4.2</span> Changing column names</a></li>
+</ul></li>
+<li class="has-sub"><a href="8-5-slicing-dataframes.html#slicing-dataframes"><span class="toc-section-number">8.5</span> Slicing dataframes</a><ul>
+<li><a href="8-5-slicing-dataframes.html#slicing-with"><span class="toc-section-number">8.5.1</span> Slicing with <code>[, ]</code></a></li>
+<li><a href="8-5-slicing-dataframes.html#slicing-with-logical-vectors"><span class="toc-section-number">8.5.2</span> Slicing with logical vectors</a></li>
+<li><a href="8-5-slicing-dataframes.html#slicing-with-subset"><span class="toc-section-number">8.5.3</span> Slicing with <code>subset()</code></a></li>
+</ul></li>
+<li class="has-sub"><a href="8-6-combining-slicing-with-functions.html#combining-slicing-with-functions"><span class="toc-section-number">8.6</span> Combining slicing with functions</a><ul>
+<li><a href="8-6-combining-slicing-with-functions.html#with"><span class="toc-section-number">8.6.1</span> <code>with()</code></a></li>
+</ul></li>
+<li><a href="8-7-test-your-r-might-pirates-and-superheroes.html#test-your-r-might-pirates-and-superheroes"><span class="toc-section-number">8.7</span> Test your R might! Pirates and superheroes</a></li>
+</ul></li>
+<li class="has-sub"><a href="9-importingdata.html#importingdata"><span class="toc-section-number">9</span> Importing, saving and managing data</a><ul>
+<li class="has-sub"><a href="9-1-workspace-management-functions.html#workspace-management-functions"><span class="toc-section-number">9.1</span> Workspace management functions</a><ul>
+<li><a href="9-1-workspace-management-functions.html#why-object-and-file-management-is-so-important"><span class="toc-section-number">9.1.1</span> Why object and file management is so important</a></li>
+</ul></li>
+<li><a href="9-2-the-working-directory.html#the-working-directory"><span class="toc-section-number">9.2</span> The working directory</a></li>
+<li><a href="9-3-projects-in-rstudio.html#projects-in-rstudio"><span class="toc-section-number">9.3</span> Projects in RStudio</a></li>
+<li class="has-sub"><a href="9-4-the-workspace.html#the-workspace"><span class="toc-section-number">9.4</span> The workspace</a><ul>
+<li><a href="9-4-the-workspace.html#ls"><span class="toc-section-number">9.4.1</span> ls()</a></li>
+</ul></li>
+<li class="has-sub"><a href="9-5-rdata-files.html#rdata-files"><span class="toc-section-number">9.5</span> .RData files</a><ul>
+<li><a href="9-5-rdata-files.html#save"><span class="toc-section-number">9.5.1</span> save()</a></li>
+<li><a href="9-5-rdata-files.html#save.image"><span class="toc-section-number">9.5.2</span> save.image()</a></li>
+<li><a href="9-5-rdata-files.html#load"><span class="toc-section-number">9.5.3</span> load()</a></li>
+<li><a href="9-5-rdata-files.html#rm"><span class="toc-section-number">9.5.4</span> rm()</a></li>
+</ul></li>
+<li class="has-sub"><a href="9-6-txt-files.html#txt-files"><span class="toc-section-number">9.6</span> .txt files</a><ul>
+<li><a href="9-6-txt-files.html#write.table"><span class="toc-section-number">9.6.1</span> write.table()</a></li>
+<li><a href="9-6-txt-files.html#read.table"><span class="toc-section-number">9.6.2</span> read.table()</a></li>
+<li><a href="9-6-txt-files.html#reading-files-directly-from-a-web-url"><span class="toc-section-number">9.6.3</span> Reading files directly from a web URL</a></li>
+</ul></li>
+<li><a href="9-7-excel-spss-and-other-data-files.html#excel-spss-and-other-data-files"><span class="toc-section-number">9.7</span> Excel, SPSS, and other data files</a></li>
+<li><a href="9-8-additional-tips.html#additional-tips"><span class="toc-section-number">9.8</span> Additional tips</a></li>
+<li><a href="9-9-test-your-r-might-3.html#test-your-r-might-3"><span class="toc-section-number">9.9</span> Test your R Might!</a></li>
+</ul></li>
+<li class="has-sub"><a href="10-advanceddataframe.html#advanceddataframe"><span class="toc-section-number">10</span> Advanced dataframe manipulation</a><ul>
+<li><a href="10-1-order-sorting-data.html#order-sorting-data"><span class="toc-section-number">10.1</span> <code>order()</code>: Sorting data</a></li>
+<li><a href="10-2-merge-combining-data.html#merge-combining-data"><span class="toc-section-number">10.2</span> <code>merge()</code>: Combining data</a></li>
+<li><a href="10-3-aggregate-grouped-aggregation.html#aggregate-grouped-aggregation"><span class="toc-section-number">10.3</span> <code>aggregate()</code>: Grouped aggregation</a></li>
+<li class="has-sub"><a href="10-4-dplyr.html#dplyr"><span class="toc-section-number">10.4</span> <code>dplyr</code></a><ul>
+<li><a href="10-4-dplyr.html#additional-dplyr-help"><span class="toc-section-number">10.4.1</span> Additional dplyr help</a></li>
+</ul></li>
+<li class="has-sub"><a href="10-5-additional-aggregation-functions.html#additional-aggregation-functions"><span class="toc-section-number">10.5</span> Additional aggregation functions</a><ul>
+<li><a href="10-5-additional-aggregation-functions.html#rowmeans-colmeans"><span class="toc-section-number">10.5.1</span> <code>rowMeans()</code>, <code>colMeans()</code></a></li>
+<li><a href="10-5-additional-aggregation-functions.html#apply-family"><span class="toc-section-number">10.5.2</span> <code>apply</code> family</a></li>
+</ul></li>
+<li><a href="10-6-test-your-r-might-mmmmmcaffeine.html#test-your-r-might-mmmmmcaffeine"><span class="toc-section-number">10.6</span> Test your R might!: Mmmmm…caffeine</a></li>
+</ul></li>
+<li class="has-sub"><a href="11-plotting1.html#plotting1"><span class="toc-section-number">11</span> Plotting (I)</a><ul>
+<li class="has-sub"><a href="11-1-colors.html#colors"><span class="toc-section-number">11.1</span> Colors</a><ul>
+<li><a href="11-1-colors.html#colors-by-name"><span class="toc-section-number">11.1.1</span> Colors by name</a></li>
+<li><a href="11-1-colors.html#gray"><span class="toc-section-number">11.1.2</span> gray()</a></li>
+<li><a href="11-1-colors.html#yarrrtransparent"><span class="toc-section-number">11.1.3</span> <code>yarrr::transparent()</code></a></li>
+</ul></li>
+<li><a href="11-2-plotting-arguments.html#plotting-arguments"><span class="toc-section-number">11.2</span> Plotting arguments</a></li>
+<li class="has-sub"><a href="11-3-scatterplot-plot.html#scatterplot-plot"><span class="toc-section-number">11.3</span> Scatterplot: <code>plot()</code></a><ul>
+<li><a href="11-3-scatterplot-plot.html#symbol-types-pch"><span class="toc-section-number">11.3.1</span> Symbol types: <code>pch</code></a></li>
+</ul></li>
+<li><a href="11-4-histogram-hist.html#histogram-hist"><span class="toc-section-number">11.4</span> Histogram: <code>hist()</code></a></li>
+<li class="has-sub"><a href="11-5-barplot-barplot.html#barplot-barplot"><span class="toc-section-number">11.5</span> Barplot: <code>barplot()</code></a><ul>
+<li><a href="11-5-barplot-barplot.html#clustered-barplot"><span class="toc-section-number">11.5.1</span> Clustered barplot</a></li>
+</ul></li>
+<li class="has-sub"><a href="11-6-pirateplot.html#pirateplot"><span class="toc-section-number">11.6</span> <code>pirateplot()</code></a><ul>
+<li><a href="11-6-pirateplot.html#pirateplot-themes"><span class="toc-section-number">11.6.1</span> Pirateplot themes</a></li>
+<li><a href="11-6-pirateplot.html#customizing-pirateplots"><span class="toc-section-number">11.6.2</span> Customizing pirateplots</a></li>
+<li><a href="11-6-pirateplot.html#saving-output"><span class="toc-section-number">11.6.3</span> Saving output</a></li>
+</ul></li>
+<li class="has-sub"><a href="11-7-low-level-plotting-functions.html#low-level-plotting-functions"><span class="toc-section-number">11.7</span> Low-level plotting functions</a><ul>
+<li><a href="11-7-low-level-plotting-functions.html#starting-with-a-blank-plot"><span class="toc-section-number">11.7.1</span> Starting with a blank plot</a></li>
+<li><a href="11-7-low-level-plotting-functions.html#points"><span class="toc-section-number">11.7.2</span> <code>points()</code></a></li>
+<li><a href="11-7-low-level-plotting-functions.html#abline-segments-grid"><span class="toc-section-number">11.7.3</span> <code>abline()</code>, <code>segments()</code>, <code>grid()</code></a></li>
+<li><a href="11-7-low-level-plotting-functions.html#text"><span class="toc-section-number">11.7.4</span> <code>text()</code></a></li>
+<li><a href="11-7-low-level-plotting-functions.html#combining-text-and-numbers-with-paste"><span class="toc-section-number">11.7.5</span> Combining text and numbers with <code>paste()</code></a></li>
+<li><a href="11-7-low-level-plotting-functions.html#curve"><span class="toc-section-number">11.7.6</span> <code>curve()</code></a></li>
+<li><a href="11-7-low-level-plotting-functions.html#legend"><span class="toc-section-number">11.7.7</span> <code>legend()</code></a></li>
+</ul></li>
+<li><a href="11-8-saving-plots-to-a-file-with-pdf-jpeg-and-png.html#saving-plots-to-a-file-with-pdf-jpeg-and-png"><span class="toc-section-number">11.8</span> Saving plots to a file with <code>pdf()</code>, <code>jpeg()</code> and <code>png()</code></a></li>
+<li><a href="11-9-examples.html#examples"><span class="toc-section-number">11.9</span> Examples</a></li>
+<li><a href="11-10-test-your-r-might-purdy-pictures.html#test-your-r-might-purdy-pictures"><span class="toc-section-number">11.10</span> Test your R might! Purdy pictures</a></li>
+</ul></li>
+<li class="has-sub"><a href="12-plotting2.html#plotting2"><span class="toc-section-number">12</span> Plotting (II)</a><ul>
+<li class="has-sub"><a href="12-1-more-colors.html#more-colors"><span class="toc-section-number">12.1</span> More colors</a><ul>
+<li><a href="12-1-more-colors.html#piratepal"><span class="toc-section-number">12.1.1</span> <code>piratepal()</code></a></li>
+<li><a href="12-1-more-colors.html#rcolorbrewer"><span class="toc-section-number">12.1.2</span> RColorBrewer</a></li>
+<li><a href="12-1-more-colors.html#colorramp2"><span class="toc-section-number">12.1.3</span> colorRamp2</a></li>
+<li><a href="12-1-more-colors.html#getting-colors-with-a-kuler"><span class="toc-section-number">12.1.4</span> Getting colors with a kuler</a></li>
+</ul></li>
+<li><a href="12-2-plot-margins.html#plot-margins"><span class="toc-section-number">12.2</span> Plot Margins</a></li>
+<li class="has-sub"><a href="12-3-arranging-plots-with-parmfrow-and-layout.html#arranging-plots-with-parmfrow-and-layout"><span class="toc-section-number">12.3</span> Arranging plots with <code>par(mfrow)</code> and <code>layout()</code></a><ul>
+<li><a href="12-3-arranging-plots-with-parmfrow-and-layout.html#complex-plot-layouts-with-layout"><span class="toc-section-number">12.3.1</span> Complex plot layouts with <code>layout()</code></a></li>
+</ul></li>
+<li><a href="12-4-additional-plotting-parameters.html#additional-plotting-parameters"><span class="toc-section-number">12.4</span> Additional plotting parameters</a></li>
+</ul></li>
+<li class="has-sub"><a href="13-htests.html#htests"><span class="toc-section-number">13</span> Hypothesis Tests</a><ul>
+<li class="has-sub"><a href="13-1-a-short-introduction-to-hypothesis-tests.html#a-short-introduction-to-hypothesis-tests"><span class="toc-section-number">13.1</span> A short introduction to hypothesis tests</a><ul>
+<li><a href="13-1-a-short-introduction-to-hypothesis-tests.html#null-v-alternative-hypothesis"><span class="toc-section-number">13.1.1</span> Null v Alternative Hypothesis</a></li>
+<li><a href="13-1-a-short-introduction-to-hypothesis-tests.html#descriptive-statistics-1"><span class="toc-section-number">13.1.2</span> Descriptive statistics</a></li>
+<li><a href="13-1-a-short-introduction-to-hypothesis-tests.html#test-statistics"><span class="toc-section-number">13.1.3</span> Test Statistics</a></li>
+<li><a href="13-1-a-short-introduction-to-hypothesis-tests.html#p-value"><span class="toc-section-number">13.1.4</span> p-value</a></li>
+</ul></li>
+<li><a href="13-2-hypothesis-test-objects-htest.html#hypothesis-test-objects-htest"><span class="toc-section-number">13.2</span> Hypothesis test objects: <code>htest</code></a></li>
+<li class="has-sub"><a href="13-3-t-test-t-test.html#t-test-t.test"><span class="toc-section-number">13.3</span> T-test: <code>t.test()</code></a><ul>
+<li><a href="13-3-t-test-t-test.html#sample-t-test"><span class="toc-section-number">13.3.1</span> 1-sample t-test</a></li>
+<li><a href="13-3-t-test-t-test.html#sample-t-test-1"><span class="toc-section-number">13.3.2</span> 2-sample t-test</a></li>
+</ul></li>
+<li><a href="13-4-correlation-cor-test.html#correlation-cor.test"><span class="toc-section-number">13.4</span> Correlation: <code>cor.test()</code></a></li>
+<li class="has-sub"><a href="13-5-chi-square-chsq-test.html#chi-square-chsq.test"><span class="toc-section-number">13.5</span> Chi-square: <code>chsq.test()</code></a><ul>
+<li><a href="13-5-chi-square-chsq-test.html#getting-apa-style-conclusions-with-the-apa-function"><span class="toc-section-number">13.5.1</span> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+</ul></li>
+<li><a href="13-6-test-your-r-might-4.html#test-your-r-might-4"><span class="toc-section-number">13.6</span> Test your R might!</a></li>
+</ul></li>
+<li class="has-sub"><a href="14-anova.html#anova"><span class="toc-section-number">14</span> ANOVA</a><ul>
+<li class="has-sub"><a href="14-1-full-factorial-between-subjects-anova.html#full-factorial-between-subjects-anova"><span class="toc-section-number">14.1</span> Full-factorial between-subjects ANOVA</a><ul>
+<li><a href="14-1-full-factorial-between-subjects-anova.html#what-does-anova-stand-for"><span class="toc-section-number">14.1.1</span> What does ANOVA stand for?</a></li>
+</ul></li>
+<li><a href="14-2-steps-to-conduct-an-anova.html#steps-to-conduct-an-anova"><span class="toc-section-number">14.2</span> 4 Steps to conduct an ANOVA</a></li>
+<li><a href="14-3-ex-one-way-anova.html#ex-one-way-anova"><span class="toc-section-number">14.3</span> Ex: One-way ANOVA</a></li>
+<li class="has-sub"><a href="14-4-ex-two-way-anova.html#ex-two-way-anova"><span class="toc-section-number">14.4</span> Ex: Two-way ANOVA</a><ul>
+<li><a href="14-4-ex-two-way-anova.html#anova-with-interactions"><span class="toc-section-number">14.4.1</span> ANOVA with interactions</a></li>
+</ul></li>
+<li><a href="14-5-type-i-type-ii-and-type-iii-anovas.html#type-i-type-ii-and-type-iii-anovas"><span class="toc-section-number">14.5</span> Type I, Type II, and Type III ANOVAs</a></li>
+<li><a href="14-6-getting-additional-information-from-anova-objects.html#getting-additional-information-from-anova-objects"><span class="toc-section-number">14.6</span> Getting additional information from ANOVA objects</a></li>
+<li><a href="14-7-repeated-measures-anova-using-the-lme4-package.html#repeated-measures-anova-using-the-lme4-package"><span class="toc-section-number">14.7</span> Repeated measures ANOVA using the lme4 package</a></li>
+<li><a href="14-8-test-your-r-might-5.html#test-your-r-might-5"><span class="toc-section-number">14.8</span> Test your R might!</a></li>
+</ul></li>
+<li class="has-sub"><a href="15-regression.html#regression"><span class="toc-section-number">15</span> Regression</a><ul>
+<li><a href="15-1-the-linear-model.html#the-linear-model"><span class="toc-section-number">15.1</span> The Linear Model</a></li>
+<li class="has-sub"><a href="15-2-linear-regression-with-lm.html#linear-regression-with-lm"><span class="toc-section-number">15.2</span> Linear regression with <code>lm()</code></a><ul>
+<li><a href="15-2-linear-regression-with-lm.html#estimating-the-value-of-diamonds-with-lm"><span class="toc-section-number">15.2.1</span> Estimating the value of diamonds with <code>lm()</code></a></li>
+<li><a href="15-2-linear-regression-with-lm.html#getting-model-fits-with-fitted.values"><span class="toc-section-number">15.2.2</span> Getting model fits with <code>fitted.values</code></a></li>
+<li><a href="15-2-linear-regression-with-lm.html#using-predict-to-predict-new-data-from-a-model"><span class="toc-section-number">15.2.3</span> Using <code>predict()</code> to predict new data from a model</a></li>
+<li><a href="15-2-linear-regression-with-lm.html#including-interactions-in-models-y-x1-x2"><span class="toc-section-number">15.2.4</span> Including interactions in models: <code>y ~ x1 * x2</code></a></li>
+<li><a href="15-2-linear-regression-with-lm.html#center-variables-before-computing-interactions"><span class="toc-section-number">15.2.5</span> Center variables before computing interactions!</a></li>
+<li><a href="15-2-linear-regression-with-lm.html#getting-an-anova-from-a-regression-model-with-aov"><span class="toc-section-number">15.2.6</span> Getting an ANOVA from a regression model with <code>aov()</code></a></li>
+</ul></li>
+<li><a href="15-3-comparing-regression-models-with-anova.html#comparing-regression-models-with-anova"><span class="toc-section-number">15.3</span> Comparing regression models with <code>anova()</code></a></li>
+<li><a href="15-4-regression-on-non-normal-data-with-glm.html#regression-on-non-normal-data-with-glm"><span class="toc-section-number">15.4</span> Regression on non-Normal data with <code>glm()</code></a></li>
+<li class="has-sub"><a href="15-5-logistic-regression-with-glmfamily-binomial.html#logistic-regression-with-glmfamily-binomial"><span class="toc-section-number">15.5</span> Logistic regression with <code>glm(family = &quot;binomial&quot;</code></a><ul>
+<li><a href="15-5-logistic-regression-with-glmfamily-binomial.html#adding-a-regression-line-to-a-plot"><span class="toc-section-number">15.5.1</span> Adding a regression line to a plot</a></li>
+<li><a href="15-5-logistic-regression-with-glmfamily-binomial.html#transforming-skewed-variables-prior-to-standard-regression"><span class="toc-section-number">15.5.2</span> Transforming skewed variables prior to standard regression</a></li>
+</ul></li>
+<li><a href="15-6-test-your-might-a-ship-auction.html#test-your-might-a-ship-auction"><span class="toc-section-number">15.6</span> Test your might! A ship auction</a></li>
+</ul></li>
+<li class="has-sub"><a href="16-functions.html#functions"><span class="toc-section-number">16</span> Custom functions</a><ul>
+<li><a href="16-1-why-would-you-want-to-write-your-own-function.html#why-would-you-want-to-write-your-own-function"><span class="toc-section-number">16.1</span> Why would you want to write your own function?</a></li>
+<li class="has-sub"><a href="16-2-the-structure-of-a-custom-function.html#the-structure-of-a-custom-function"><span class="toc-section-number">16.2</span> The structure of a custom function</a><ul>
+<li><a href="16-2-the-structure-of-a-custom-function.html#creating-my.mean"><span class="toc-section-number">16.2.1</span> Creating <code>my.mean()</code></a></li>
+<li><a href="16-2-the-structure-of-a-custom-function.html#specifying-multiple-inputs"><span class="toc-section-number">16.2.2</span> Specifying multiple inputs</a></li>
+<li><a href="16-2-the-structure-of-a-custom-function.html#including-default-values-for-arguments"><span class="toc-section-number">16.2.3</span> Including default values for arguments</a></li>
+</ul></li>
+<li><a href="16-3-using-if-then-statements-in-functions.html#using-if-then-statements-in-functions"><span class="toc-section-number">16.3</span> Using if, then statements in functions</a></li>
+<li class="has-sub"><a href="16-4-a-worked-example-plot-advanced.html#a-worked-example-plot.advanced"><span class="toc-section-number">16.4</span> A worked example: <code>plot.advanced()</code></a><ul>
+<li><a href="16-4-a-worked-example-plot-advanced.html#seeing-function-code"><span class="toc-section-number">16.4.1</span> Seeing function code</a></li>
+<li><a href="16-4-a-worked-example-plot-advanced.html#using-stop-to-completely-stop-a-function-and-print-an-error"><span class="toc-section-number">16.4.2</span> Using <code>stop()</code> to completely stop a function and print an error</a></li>
+<li><a href="16-4-a-worked-example-plot-advanced.html#using-vectors-as-arguments"><span class="toc-section-number">16.4.3</span> Using vectors as arguments</a></li>
+<li><a href="16-4-a-worked-example-plot-advanced.html#storing-and-loading-your-functions-to-and-from-a-function-file-with-source"><span class="toc-section-number">16.4.4</span> Storing and loading your functions to and from a function file with <code>source()</code></a></li>
+<li><a href="16-4-a-worked-example-plot-advanced.html#testing-functions"><span class="toc-section-number">16.4.5</span> Testing functions</a></li>
+<li><a href="16-4-a-worked-example-plot-advanced.html#using-...-as-a-wildcard-argument"><span class="toc-section-number">16.4.6</span> Using <code>...</code> as a wildcard argument</a></li>
+</ul></li>
+<li><a href="16-5-test-your-r-might-6.html#test-your-r-might-6"><span class="toc-section-number">16.5</span> Test your R might!</a></li>
+</ul></li>
+<li class="has-sub"><a href="17-loops.html#loops"><span class="toc-section-number">17</span> Loops</a><ul>
+<li class="has-sub"><a href="17-1-what-are-loops.html#what-are-loops"><span class="toc-section-number">17.1</span> What are loops?</a><ul>
+<li><a href="17-1-what-are-loops.html#printing-numbers-from-1-to-100"><span class="toc-section-number">17.1.1</span> Printing numbers from 1 to 100</a></li>
+<li><a href="17-1-what-are-loops.html#adding-the-integers-from-1-to-100"><span class="toc-section-number">17.1.2</span> Adding the integers from 1 to 100</a></li>
+</ul></li>
+<li><a href="17-2-creating-multiple-plots-with-a-loop.html#creating-multiple-plots-with-a-loop"><span class="toc-section-number">17.2</span> Creating multiple plots with a loop</a></li>
+<li><a href="17-3-updating-a-container-object-with-a-loop.html#updating-a-container-object-with-a-loop"><span class="toc-section-number">17.3</span> Updating a container object with a loop</a></li>
+<li><a href="17-4-loops-over-multiple-indices-with-a-design-matrix.html#loops-over-multiple-indices-with-a-design-matrix"><span class="toc-section-number">17.4</span> Loops over multiple indices with a design matrix</a></li>
+<li><a href="17-5-the-list-object.html#the-list-object"><span class="toc-section-number">17.5</span> The list object</a></li>
+<li><a href="17-6-test-your-r-might-7.html#test-your-r-might-7"><span class="toc-section-number">17.6</span> Test your R might!</a></li>
+</ul></li>
+<li class="has-sub"><a href="18-solutions.html#solutions"><span class="toc-section-number">18</span> Solutions</a><ul>
+<li><a href="18-1-chapter-4-the-basics.html#chapter-4-the-basics"><span class="toc-section-number">18.1</span> Chapter 4: The Basics</a></li>
+<li><a href="18-2-chapter-5-scalers-and-vectors.html#chapter-5-scalers-and-vectors"><span class="toc-section-number">18.2</span> Chapter 5: Scalers and vectors</a></li>
+<li><a href="18-3-chapter-6-vector-functions.html#chapter-6-vector-functions"><span class="toc-section-number">18.3</span> Chapter 6: Vector Functions</a></li>
+<li><a href="18-4-chapter-7-indexing-vectors-with.html#chapter-7-indexing-vectors-with"><span class="toc-section-number">18.4</span> Chapter 7: Indexing vectors with []</a></li>
+<li><a href="18-5-chapter-8-matrices-and-dataframes.html#chapter-8-matrices-and-dataframes"><span class="toc-section-number">18.5</span> Chapter 8: Matrices and Dataframes</a></li>
+<li><a href="18-6-chapter-13-hypothesis-tests.html#chapter-13-hypothesis-tests"><span class="toc-section-number">18.6</span> Chapter 13: Hypothesis tests</a></li>
+<li><a href="18-7-chapter-14-anova.html#chapter-14-anova"><span class="toc-section-number">18.7</span> Chapter 14: ANOVA</a></li>
+<li><a href="18-8-chapter-15-regression.html#chapter-15-regression"><span class="toc-section-number">18.8</span> Chapter 15: Regression</a></li>
+</ul></li>
+<li><a href="references.html#references">References</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="regression-on-non-normal-data-with-glm" class="section level2">
+<h2><span class="header-section-number">15.4</span> Regression on non-Normal data with <code>glm()</code></h2>
+<table style="width:90%;">
+<colgroup>
+<col width="19%" />
+<col width="70%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Argument</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>formula, data, subset</code></td>
+<td align="left">The same arguments as in <code>lm()</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>family</code></td>
+<td align="left">One of the following strings, indicating the link function for the general linear model</td>
+</tr>
+</tbody>
+</table>
+<table style="width:90%;">
+<colgroup>
+<col width="19%" />
+<col width="70%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Family name</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>&quot;binomial&quot;</code></td>
+<td align="left">Binary logistic regression, useful when the response is either 0 or 1.</td>
+</tr>
+<tr class="even">
+<td align="left"><code>&quot;gaussian&quot;</code></td>
+<td align="left">Standard linear regression. Using this family will give you the same result as <code>lm()</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>&quot;Gamma&quot;</code></td>
+<td align="left">Gamma regression, useful for highly positively skewed data</td>
+</tr>
+<tr class="even">
+<td align="left"><code>&quot;inverse.gaussian&quot;</code></td>
+<td align="left">Inverse-Gaussian regression, useful when the dv is strictly positive and skewed to the right.</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>&quot;poisson&quot;</code></td>
+<td align="left">Poisson regression, useful for count data. For example, ``How many parrots has a pirate owned over his/her lifetime?“</td>
+</tr>
+</tbody>
+</table>
+<p>We can use standard regression with <code>lm()</code>when your dependent variable is Normally distributed (more or less). When your dependent variable does not follow a nice bell-shaped Normal distribution, you need to use the <em>Generalized Linear Model</em> (GLM). the GLM is a more general class of linear models that change the distribution of your dependent variable. In other words, it allows you to use the linear model even when your dependent variable isn’t a normal bell-shape. Here are 4 of the most common distributions you can can model with <code>glm()</code>:</p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-418-1.png" width="585.6" style="display: block; margin: auto;" /></p>
+</div>
+<p style="text-align: center;">
+<a href="15-3-comparing-regression-models-with-anova.html"><button class="btn btn-default">Previous</button></a>
+<a href="15-5-logistic-regression-with-glmfamily-binomial.html"><button class="btn btn-default">Next</button></a>
+</p>
+</div>
+</div>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+</body>
+</html>
