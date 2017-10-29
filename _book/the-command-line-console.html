@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>YaRrr! The Pirate’s Guide to R</title>
+  <meta name="description" content="An introductory book to R written by, and for, R pirates">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="YaRrr! The Pirate’s Guide to R" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://bookdown.org/ndphillips/YaRrr/" />
+  <meta property="og:image" content="https://bookdown.org/ndphillips/YaRrr/images/YaRrr_Cover.jpg" />
+  <meta property="og:description" content="An introductory book to R written by, and for, R pirates" />
+  <meta name="github-repo" content="ndphillips/ThePiratesGuideToR" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="YaRrr! The Pirate’s Guide to R" />
+  
+  <meta name="twitter:description" content="An introductory book to R written by, and for, R pirates" />
+  <meta name="twitter:image" content="https://bookdown.org/ndphillips/YaRrr/images/YaRrr_Cover.jpg" />
+
+<meta name="author" content="Nathaniel D. Phillips">
+
+
+<meta name="date" content="2017-10-29">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="basics.html">
+<link rel="next" href="writing-r-scripts-in-an-editor.html">
+<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">YaRrr! The Pirate's Guide to R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a><ul>
+<li class="chapter" data-level="1.1" data-path="where-did-this-book-come-from.html"><a href="where-did-this-book-come-from.html"><i class="fa fa-check"></i><b>1.1</b> Where did this book come from?</a></li>
+<li class="chapter" data-level="1.2" data-path="who-is-this-book-for.html"><a href="who-is-this-book-for.html"><i class="fa fa-check"></i><b>1.2</b> Who is this book for?</a></li>
+<li class="chapter" data-level="1.3" data-path="why-is-r-so-great.html"><a href="why-is-r-so-great.html"><i class="fa fa-check"></i><b>1.3</b> Why is R so great?</a></li>
+<li class="chapter" data-level="1.4" data-path="rrelationship.html"><a href="rrelationship.html"><i class="fa fa-check"></i><b>1.4</b> Why R is like a relationship…</a></li>
+<li class="chapter" data-level="1.5" data-path="r-resources.html"><a href="r-resources.html"><i class="fa fa-check"></i><b>1.5</b> R resources</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="r-resources.html"><a href="r-resources.html#r-cheatsheets"><i class="fa fa-check"></i><b>1.5.1</b> R Cheatsheets</a></li>
+<li class="chapter" data-level="1.5.2" data-path="r-resources.html"><a href="r-resources.html#getting-r-help-and-inspiration-online"><i class="fa fa-check"></i><b>1.5.2</b> Getting R help and inspiration online</a></li>
+<li class="chapter" data-level="1.5.3" data-path="r-resources.html"><a href="r-resources.html#other-r-books"><i class="fa fa-check"></i><b>1.5.3</b> Other R books</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="who-am-i.html"><a href="who-am-i.html"><i class="fa fa-check"></i><b>1.6</b> Who am I?</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="who-am-i.html"><a href="who-am-i.html#acknowledgements"><i class="fa fa-check"></i><b>1.6.1</b> Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="please-contribute.html"><a href="please-contribute.html"><i class="fa fa-check"></i><b>1.7</b> Please Contribute!</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="started.html"><a href="started.html"><i class="fa fa-check"></i><b>2</b> Getting Started</a><ul>
+<li class="chapter" data-level="2.1" data-path="installing-base-r-and-rstudio.html"><a href="installing-base-r-and-rstudio.html"><i class="fa fa-check"></i><b>2.1</b> Installing Base-R and RStudio</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="installing-base-r-and-rstudio.html"><a href="installing-base-r-and-rstudio.html#check-for-version-updates"><i class="fa fa-check"></i><b>2.1.1</b> Check for version updates</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="the-four-rstudio-windows.html"><a href="the-four-rstudio-windows.html"><i class="fa fa-check"></i><b>2.2</b> The four RStudio Windows</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="the-four-rstudio-windows.html"><a href="the-four-rstudio-windows.html#source---your-notepad-for-code"><i class="fa fa-check"></i><b>2.2.1</b> Source - Your notepad for code</a></li>
+<li class="chapter" data-level="2.2.2" data-path="the-four-rstudio-windows.html"><a href="the-four-rstudio-windows.html#console-rs-heart"><i class="fa fa-check"></i><b>2.2.2</b> Console: R’s Heart</a></li>
+<li class="chapter" data-level="2.2.3" data-path="the-four-rstudio-windows.html"><a href="the-four-rstudio-windows.html#environment-history"><i class="fa fa-check"></i><b>2.2.3</b> Environment / History</a></li>
+<li class="chapter" data-level="2.2.4" data-path="the-four-rstudio-windows.html"><a href="the-four-rstudio-windows.html#files-plots-packages-help"><i class="fa fa-check"></i><b>2.2.4</b> Files / Plots / Packages / Help</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="packages.html"><a href="packages.html"><i class="fa fa-check"></i><b>2.3</b> Packages</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="packages.html"><a href="packages.html#installing-a-new-package"><i class="fa fa-check"></i><b>2.3.1</b> Installing a new package</a></li>
+<li class="chapter" data-level="2.3.2" data-path="packages.html"><a href="packages.html#loading-a-package"><i class="fa fa-check"></i><b>2.3.2</b> Loading a package</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="reading-and-writing-code.html"><a href="reading-and-writing-code.html"><i class="fa fa-check"></i><b>2.4</b> Reading and writing Code</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="reading-and-writing-code.html"><a href="reading-and-writing-code.html#code-chunks"><i class="fa fa-check"></i><b>2.4.1</b> Code Chunks</a></li>
+<li class="chapter" data-level="2.4.2" data-path="reading-and-writing-code.html"><a href="reading-and-writing-code.html#comments-with"><i class="fa fa-check"></i><b>2.4.2</b> Comments with #</a></li>
+<li class="chapter" data-level="2.4.3" data-path="reading-and-writing-code.html"><a href="reading-and-writing-code.html#element-numbers-in-output-1"><i class="fa fa-check"></i><b>2.4.3</b> Element numbers in output [1]</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="debugging.html"><a href="debugging.html"><i class="fa fa-check"></i><b>2.5</b> Debugging</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="debugging.html"><a href="debugging.html#r-is-not-ready"><i class="fa fa-check"></i><b>2.5.1</b> R is not ready (&gt;)</a></li>
+<li class="chapter" data-level="2.5.2" data-path="debugging.html"><a href="debugging.html#misspelled-object-or-function"><i class="fa fa-check"></i><b>2.5.2</b> Misspelled object or function</a></li>
+<li class="chapter" data-level="2.5.3" data-path="debugging.html"><a href="debugging.html#punctuation-problems"><i class="fa fa-check"></i><b>2.5.3</b> Punctuation problems</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="jumpin.html"><a href="jumpin.html"><i class="fa fa-check"></i><b>3</b> Jump In!</a><ul>
+<li class="chapter" data-level="3.1" data-path="exploring-data.html"><a href="exploring-data.html"><i class="fa fa-check"></i><b>3.1</b> Exploring data</a></li>
+<li class="chapter" data-level="3.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html"><i class="fa fa-check"></i><b>3.2</b> Descriptive statistics</a></li>
+<li class="chapter" data-level="3.3" data-path="plotting.html"><a href="plotting.html"><i class="fa fa-check"></i><b>3.3</b> Plotting</a></li>
+<li class="chapter" data-level="3.4" data-path="hypothesis-tests.html"><a href="hypothesis-tests.html"><i class="fa fa-check"></i><b>3.4</b> Hypothesis tests</a></li>
+<li class="chapter" data-level="3.5" data-path="regression-analysis.html"><a href="regression-analysis.html"><i class="fa fa-check"></i><b>3.5</b> Regression analysis</a></li>
+<li class="chapter" data-level="3.6" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html"><i class="fa fa-check"></i><b>3.6</b> Bayesian Statistics</a></li>
+<li class="chapter" data-level="3.7" data-path="wasnt-that-easy.html"><a href="wasnt-that-easy.html"><i class="fa fa-check"></i><b>3.7</b> Wasn’t that easy?!</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>4</b> The Basics</a><ul>
+<li class="chapter" data-level="4.1" data-path="the-command-line-console.html"><a href="the-command-line-console.html"><i class="fa fa-check"></i><b>4.1</b> The command-line (Console)</a></li>
+<li class="chapter" data-level="4.2" data-path="writing-r-scripts-in-an-editor.html"><a href="writing-r-scripts-in-an-editor.html"><i class="fa fa-check"></i><b>4.2</b> Writing R scripts in an editor</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="writing-r-scripts-in-an-editor.html"><a href="writing-r-scripts-in-an-editor.html#send-code-from-an-source-to-the-console"><i class="fa fa-check"></i><b>4.2.1</b> Send code from an source to the console</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="a-brief-style-guide-commenting-and-spacing.html"><a href="a-brief-style-guide-commenting-and-spacing.html"><i class="fa fa-check"></i><b>4.3</b> A brief style guide: Commenting and spacing</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="a-brief-style-guide-commenting-and-spacing.html"><a href="a-brief-style-guide-commenting-and-spacing.html#commenting-code-with-the-pound-sign"><i class="fa fa-check"></i><b>4.3.1</b> Commenting code with the # (pound) sign</a></li>
+<li class="chapter" data-level="4.3.2" data-path="a-brief-style-guide-commenting-and-spacing.html"><a href="a-brief-style-guide-commenting-and-spacing.html#spacing"><i class="fa fa-check"></i><b>4.3.2</b> Spacing</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="objects-and-functions.html"><a href="objects-and-functions.html"><i class="fa fa-check"></i><b>4.4</b> Objects and functions</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="objects-and-functions.html"><a href="objects-and-functions.html#numbers-versus-characters"><i class="fa fa-check"></i><b>4.4.1</b> Numbers versus characters</a></li>
+<li class="chapter" data-level="4.4.2" data-path="objects-and-functions.html"><a href="objects-and-functions.html#creating-new-objects-with--"><i class="fa fa-check"></i><b>4.4.2</b> Creating new objects with &lt;-</a></li>
+<li class="chapter" data-level="4.4.3" data-path="objects-and-functions.html"><a href="objects-and-functions.html#how-to-name-objects"><i class="fa fa-check"></i><b>4.4.3</b> How to name objects</a></li>
+<li class="chapter" data-level="4.4.4" data-path="objects-and-functions.html"><a href="objects-and-functions.html#example-pirates-of-the-caribbean"><i class="fa fa-check"></i><b>4.4.4</b> Example: Pirates of The Caribbean</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="test-your-r-might.html"><a href="test-your-r-might.html"><i class="fa fa-check"></i><b>4.5</b> Test your R might!</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="scalersvectors.html"><a href="scalersvectors.html"><i class="fa fa-check"></i><b>5</b> Scalars and vectors</a><ul>
+<li class="chapter" data-level="5.1" data-path="scalars.html"><a href="scalars.html"><i class="fa fa-check"></i><b>5.1</b> Scalars</a></li>
+<li class="chapter" data-level="5.2" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>5.2</b> Vectors</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="vectors.html"><a href="vectors.html#ab"><i class="fa fa-check"></i><b>5.2.1</b> a:b</a></li>
+<li class="chapter" data-level="5.2.2" data-path="vectors.html"><a href="vectors.html#seq"><i class="fa fa-check"></i><b>5.2.2</b> seq()</a></li>
+<li class="chapter" data-level="5.2.3" data-path="vectors.html"><a href="vectors.html#rep"><i class="fa fa-check"></i><b>5.2.3</b> rep()</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="generating-random-data.html"><a href="generating-random-data.html"><i class="fa fa-check"></i><b>5.3</b> Generating random data</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="generating-random-data.html"><a href="generating-random-data.html#sample"><i class="fa fa-check"></i><b>5.3.1</b> sample()</a></li>
+<li class="chapter" data-level="5.3.2" data-path="generating-random-data.html"><a href="generating-random-data.html#normal-gaussian"><i class="fa fa-check"></i><b>5.3.2</b> Normal (Gaussian)</a></li>
+<li class="chapter" data-level="5.3.3" data-path="generating-random-data.html"><a href="generating-random-data.html#uniform"><i class="fa fa-check"></i><b>5.3.3</b> Uniform</a></li>
+<li class="chapter" data-level="5.3.4" data-path="generating-random-data.html"><a href="generating-random-data.html#notes-on-random-samples"><i class="fa fa-check"></i><b>5.3.4</b> Notes on random samples</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="test-your-r-might-1.html"><a href="test-your-r-might-1.html"><i class="fa fa-check"></i><b>5.4</b> Test your R might!</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="vectorfunctions.html"><a href="vectorfunctions.html"><i class="fa fa-check"></i><b>6</b> Vector functions</a><ul>
+<li class="chapter" data-level="6.1" data-path="arithmetic-operations-on-vectors.html"><a href="arithmetic-operations-on-vectors.html"><i class="fa fa-check"></i><b>6.1</b> Arithmetic operations on vectors</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="arithmetic-operations-on-vectors.html"><a href="arithmetic-operations-on-vectors.html#basic-math-with-multiple-vectors"><i class="fa fa-check"></i><b>6.1.1</b> Basic math with multiple vectors</a></li>
+<li class="chapter" data-level="6.1.2" data-path="arithmetic-operations-on-vectors.html"><a href="arithmetic-operations-on-vectors.html#ex-pirate-bake-sale"><i class="fa fa-check"></i><b>6.1.2</b> Ex: Pirate Bake Sale</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="summary-statistics.html"><a href="summary-statistics.html"><i class="fa fa-check"></i><b>6.2</b> Summary statistics</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="summary-statistics.html"><a href="summary-statistics.html#length"><i class="fa fa-check"></i><b>6.2.1</b> length()</a></li>
+<li class="chapter" data-level="6.2.2" data-path="summary-statistics.html"><a href="summary-statistics.html#additional-numeric-vector-functions"><i class="fa fa-check"></i><b>6.2.2</b> Additional numeric vector functions</a></li>
+<li class="chapter" data-level="6.2.3" data-path="summary-statistics.html"><a href="summary-statistics.html#sample-statistics-from-random-samples"><i class="fa fa-check"></i><b>6.2.3</b> Sample statistics from random samples</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="counting-statistics.html"><a href="counting-statistics.html"><i class="fa fa-check"></i><b>6.3</b> Counting statistics</a></li>
+<li class="chapter" data-level="6.4" data-path="missing-na-values.html"><a href="missing-na-values.html"><i class="fa fa-check"></i><b>6.4</b> Missing (NA) values</a></li>
+<li class="chapter" data-level="6.5" data-path="standardization-z-score.html"><a href="standardization-z-score.html"><i class="fa fa-check"></i><b>6.5</b> Standardization (z-score)</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="standardization-z-score.html"><a href="standardization-z-score.html#ex-evaluating-a-competition"><i class="fa fa-check"></i><b>6.5.1</b> Ex: Evaluating a competition</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="test-your-r-might-2.html"><a href="test-your-r-might-2.html"><i class="fa fa-check"></i><b>6.6</b> Test your R Might!</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="vectorindexing.html"><a href="vectorindexing.html"><i class="fa fa-check"></i><b>7</b> Indexing Vectors with [ ]</a><ul>
+<li class="chapter" data-level="7.1" data-path="numerical-indexing.html"><a href="numerical-indexing.html"><i class="fa fa-check"></i><b>7.1</b> Numerical Indexing</a></li>
+<li class="chapter" data-level="7.2" data-path="logical-indexing.html"><a href="logical-indexing.html"><i class="fa fa-check"></i><b>7.2</b> Logical Indexing</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="logical-indexing.html"><a href="logical-indexing.html#and-or-in"><i class="fa fa-check"></i><b>7.2.1</b> <code>&amp;</code> (and), <code>|</code> (or), <code>%in%</code></a></li>
+<li class="chapter" data-level="7.2.2" data-path="logical-indexing.html"><a href="logical-indexing.html#counts-and-percentages-from-logical-vectors"><i class="fa fa-check"></i><b>7.2.2</b> Counts and percentages from logical vectors</a></li>
+<li class="chapter" data-level="7.2.3" data-path="logical-indexing.html"><a href="logical-indexing.html#additional-logical-functions"><i class="fa fa-check"></i><b>7.2.3</b> Additional Logical functions</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="changing-values-of-a-vector.html"><a href="changing-values-of-a-vector.html"><i class="fa fa-check"></i><b>7.3</b> Changing values of a vector</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="changing-values-of-a-vector.html"><a href="changing-values-of-a-vector.html#ex-fixing-invalid-responses-to-a-happiness-survey"><i class="fa fa-check"></i><b>7.3.1</b> Ex: Fixing invalid responses to a Happiness survey</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="test-your-r-might-movie-data.html"><a href="test-your-r-might-movie-data.html"><i class="fa fa-check"></i><b>7.4</b> Test your R Might!: Movie data</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="matricesdataframes.html"><a href="matricesdataframes.html"><i class="fa fa-check"></i><b>8</b> Matrices and Dataframes</a><ul>
+<li class="chapter" data-level="8.1" data-path="what-are-matrices-and-dataframes.html"><a href="what-are-matrices-and-dataframes.html"><i class="fa fa-check"></i><b>8.1</b> What are matrices and dataframes?</a></li>
+<li class="chapter" data-level="8.2" data-path="creating-matrices-and-dataframes.html"><a href="creating-matrices-and-dataframes.html"><i class="fa fa-check"></i><b>8.2</b> Creating matrices and dataframes</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="creating-matrices-and-dataframes.html"><a href="creating-matrices-and-dataframes.html#cbind-rbind"><i class="fa fa-check"></i><b>8.2.1</b> <code>cbind()</code>, <code>rbind()</code></a></li>
+<li class="chapter" data-level="8.2.2" data-path="creating-matrices-and-dataframes.html"><a href="creating-matrices-and-dataframes.html#matrix"><i class="fa fa-check"></i><b>8.2.2</b> <code>matrix()</code></a></li>
+<li class="chapter" data-level="8.2.3" data-path="creating-matrices-and-dataframes.html"><a href="creating-matrices-and-dataframes.html#data.frame"><i class="fa fa-check"></i><b>8.2.3</b> <code>data.frame()</code></a></li>
+<li class="chapter" data-level="8.2.4" data-path="creating-matrices-and-dataframes.html"><a href="creating-matrices-and-dataframes.html#dataframes-pre-loaded-in-r"><i class="fa fa-check"></i><b>8.2.4</b> Dataframes pre-loaded in R</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="matrix-and-dataframe-functions.html"><a href="matrix-and-dataframe-functions.html"><i class="fa fa-check"></i><b>8.3</b> Matrix and dataframe functions</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="matrix-and-dataframe-functions.html"><a href="matrix-and-dataframe-functions.html#head-tail-view"><i class="fa fa-check"></i><b>8.3.1</b> <code>head(), tail(), View()</code></a></li>
+<li class="chapter" data-level="8.3.2" data-path="matrix-and-dataframe-functions.html"><a href="matrix-and-dataframe-functions.html#summary-str"><i class="fa fa-check"></i><b>8.3.2</b> <code>summary()</code>, <code>str()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="dataframe-column-names.html"><a href="dataframe-column-names.html"><i class="fa fa-check"></i><b>8.4</b> Dataframe column names</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="dataframe-column-names.html"><a href="dataframe-column-names.html#adding-new-columns"><i class="fa fa-check"></i><b>8.4.1</b> Adding new columns</a></li>
+<li class="chapter" data-level="8.4.2" data-path="dataframe-column-names.html"><a href="dataframe-column-names.html#changing-column-names"><i class="fa fa-check"></i><b>8.4.2</b> Changing column names</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="slicing-dataframes.html"><a href="slicing-dataframes.html"><i class="fa fa-check"></i><b>8.5</b> Slicing dataframes</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="slicing-dataframes.html"><a href="slicing-dataframes.html#slicing-with"><i class="fa fa-check"></i><b>8.5.1</b> Slicing with <code>[, ]</code></a></li>
+<li class="chapter" data-level="8.5.2" data-path="slicing-dataframes.html"><a href="slicing-dataframes.html#slicing-with-logical-vectors"><i class="fa fa-check"></i><b>8.5.2</b> Slicing with logical vectors</a></li>
+<li class="chapter" data-level="8.5.3" data-path="slicing-dataframes.html"><a href="slicing-dataframes.html#slicing-with-subset"><i class="fa fa-check"></i><b>8.5.3</b> Slicing with <code>subset()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="combining-slicing-with-functions.html"><a href="combining-slicing-with-functions.html"><i class="fa fa-check"></i><b>8.6</b> Combining slicing with functions</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="combining-slicing-with-functions.html"><a href="combining-slicing-with-functions.html#with"><i class="fa fa-check"></i><b>8.6.1</b> <code>with()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="test-your-r-might-pirates-and-superheroes.html"><a href="test-your-r-might-pirates-and-superheroes.html"><i class="fa fa-check"></i><b>8.7</b> Test your R might! Pirates and superheroes</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="importingdata.html"><a href="importingdata.html"><i class="fa fa-check"></i><b>9</b> Importing, saving and managing data</a><ul>
+<li class="chapter" data-level="9.1" data-path="workspace-management-functions.html"><a href="workspace-management-functions.html"><i class="fa fa-check"></i><b>9.1</b> Workspace management functions</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="workspace-management-functions.html"><a href="workspace-management-functions.html#why-object-and-file-management-is-so-important"><i class="fa fa-check"></i><b>9.1.1</b> Why object and file management is so important</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="the-working-directory.html"><a href="the-working-directory.html"><i class="fa fa-check"></i><b>9.2</b> The working directory</a></li>
+<li class="chapter" data-level="9.3" data-path="projects-in-rstudio.html"><a href="projects-in-rstudio.html"><i class="fa fa-check"></i><b>9.3</b> Projects in RStudio</a></li>
+<li class="chapter" data-level="9.4" data-path="the-workspace.html"><a href="the-workspace.html"><i class="fa fa-check"></i><b>9.4</b> The workspace</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="the-workspace.html"><a href="the-workspace.html#ls"><i class="fa fa-check"></i><b>9.4.1</b> ls()</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="rdata-files.html"><a href="rdata-files.html"><i class="fa fa-check"></i><b>9.5</b> .RData files</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="rdata-files.html"><a href="rdata-files.html#save"><i class="fa fa-check"></i><b>9.5.1</b> save()</a></li>
+<li class="chapter" data-level="9.5.2" data-path="rdata-files.html"><a href="rdata-files.html#save.image"><i class="fa fa-check"></i><b>9.5.2</b> save.image()</a></li>
+<li class="chapter" data-level="9.5.3" data-path="rdata-files.html"><a href="rdata-files.html#load"><i class="fa fa-check"></i><b>9.5.3</b> load()</a></li>
+<li class="chapter" data-level="9.5.4" data-path="rdata-files.html"><a href="rdata-files.html#rm"><i class="fa fa-check"></i><b>9.5.4</b> rm()</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="txt-files.html"><a href="txt-files.html"><i class="fa fa-check"></i><b>9.6</b> .txt files</a><ul>
+<li class="chapter" data-level="9.6.1" data-path="txt-files.html"><a href="txt-files.html#write.table"><i class="fa fa-check"></i><b>9.6.1</b> write.table()</a></li>
+<li class="chapter" data-level="9.6.2" data-path="txt-files.html"><a href="txt-files.html#read.table"><i class="fa fa-check"></i><b>9.6.2</b> read.table()</a></li>
+<li class="chapter" data-level="9.6.3" data-path="txt-files.html"><a href="txt-files.html#reading-files-directly-from-a-web-url"><i class="fa fa-check"></i><b>9.6.3</b> Reading files directly from a web URL</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="excel-spss-and-other-data-files.html"><a href="excel-spss-and-other-data-files.html"><i class="fa fa-check"></i><b>9.7</b> Excel, SPSS, and other data files</a></li>
+<li class="chapter" data-level="9.8" data-path="additional-tips.html"><a href="additional-tips.html"><i class="fa fa-check"></i><b>9.8</b> Additional tips</a></li>
+<li class="chapter" data-level="9.9" data-path="test-your-r-might-3.html"><a href="test-your-r-might-3.html"><i class="fa fa-check"></i><b>9.9</b> Test your R Might!</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="advanceddataframe.html"><a href="advanceddataframe.html"><i class="fa fa-check"></i><b>10</b> Advanced dataframe manipulation</a><ul>
+<li class="chapter" data-level="10.1" data-path="order-sorting-data.html"><a href="order-sorting-data.html"><i class="fa fa-check"></i><b>10.1</b> <code>order()</code>: Sorting data</a></li>
+<li class="chapter" data-level="10.2" data-path="merge-combining-data.html"><a href="merge-combining-data.html"><i class="fa fa-check"></i><b>10.2</b> <code>merge()</code>: Combining data</a></li>
+<li class="chapter" data-level="10.3" data-path="aggregate-grouped-aggregation.html"><a href="aggregate-grouped-aggregation.html"><i class="fa fa-check"></i><b>10.3</b> <code>aggregate()</code>: Grouped aggregation</a></li>
+<li class="chapter" data-level="10.4" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>10.4</b> <code>dplyr</code></a><ul>
+<li class="chapter" data-level="10.4.1" data-path="dplyr.html"><a href="dplyr.html#additional-dplyr-help"><i class="fa fa-check"></i><b>10.4.1</b> Additional dplyr help</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="additional-aggregation-functions.html"><a href="additional-aggregation-functions.html"><i class="fa fa-check"></i><b>10.5</b> Additional aggregation functions</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="additional-aggregation-functions.html"><a href="additional-aggregation-functions.html#rowmeans-colmeans"><i class="fa fa-check"></i><b>10.5.1</b> <code>rowMeans()</code>, <code>colMeans()</code></a></li>
+<li class="chapter" data-level="10.5.2" data-path="additional-aggregation-functions.html"><a href="additional-aggregation-functions.html#apply-family"><i class="fa fa-check"></i><b>10.5.2</b> <code>apply</code> family</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="test-your-r-might-mmmmmcaffeine.html"><a href="test-your-r-might-mmmmmcaffeine.html"><i class="fa fa-check"></i><b>10.6</b> Test your R might!: Mmmmm…caffeine</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="plotting1.html"><a href="plotting1.html"><i class="fa fa-check"></i><b>11</b> Plotting (I)</a><ul>
+<li class="chapter" data-level="11.1" data-path="colors.html"><a href="colors.html"><i class="fa fa-check"></i><b>11.1</b> Colors</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="colors.html"><a href="colors.html#colors-by-name"><i class="fa fa-check"></i><b>11.1.1</b> Colors by name</a></li>
+<li class="chapter" data-level="11.1.2" data-path="colors.html"><a href="colors.html#gray"><i class="fa fa-check"></i><b>11.1.2</b> gray()</a></li>
+<li class="chapter" data-level="11.1.3" data-path="colors.html"><a href="colors.html#yarrrtransparent"><i class="fa fa-check"></i><b>11.1.3</b> <code>yarrr::transparent()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="plotting-arguments.html"><a href="plotting-arguments.html"><i class="fa fa-check"></i><b>11.2</b> Plotting arguments</a></li>
+<li class="chapter" data-level="11.3" data-path="scatterplot-plot.html"><a href="scatterplot-plot.html"><i class="fa fa-check"></i><b>11.3</b> Scatterplot: <code>plot()</code></a><ul>
+<li class="chapter" data-level="11.3.1" data-path="scatterplot-plot.html"><a href="scatterplot-plot.html#symbol-types-pch"><i class="fa fa-check"></i><b>11.3.1</b> Symbol types: <code>pch</code></a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="histogram-hist.html"><a href="histogram-hist.html"><i class="fa fa-check"></i><b>11.4</b> Histogram: <code>hist()</code></a></li>
+<li class="chapter" data-level="11.5" data-path="barplot-barplot.html"><a href="barplot-barplot.html"><i class="fa fa-check"></i><b>11.5</b> Barplot: <code>barplot()</code></a><ul>
+<li class="chapter" data-level="11.5.1" data-path="barplot-barplot.html"><a href="barplot-barplot.html#clustered-barplot"><i class="fa fa-check"></i><b>11.5.1</b> Clustered barplot</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="pirateplot.html"><a href="pirateplot.html"><i class="fa fa-check"></i><b>11.6</b> <code>pirateplot()</code></a><ul>
+<li class="chapter" data-level="11.6.1" data-path="pirateplot.html"><a href="pirateplot.html#pirateplot-themes"><i class="fa fa-check"></i><b>11.6.1</b> Pirateplot themes</a></li>
+<li class="chapter" data-level="11.6.2" data-path="pirateplot.html"><a href="pirateplot.html#customizing-pirateplots"><i class="fa fa-check"></i><b>11.6.2</b> Customizing pirateplots</a></li>
+<li class="chapter" data-level="11.6.3" data-path="pirateplot.html"><a href="pirateplot.html#saving-output"><i class="fa fa-check"></i><b>11.6.3</b> Saving output</a></li>
+</ul></li>
+<li class="chapter" data-level="11.7" data-path="low-level-plotting-functions.html"><a href="low-level-plotting-functions.html"><i class="fa fa-check"></i><b>11.7</b> Low-level plotting functions</a><ul>
+<li class="chapter" data-level="11.7.1" data-path="low-level-plotting-functions.html"><a href="low-level-plotting-functions.html#starting-with-a-blank-plot"><i class="fa fa-check"></i><b>11.7.1</b> Starting with a blank plot</a></li>
+<li class="chapter" data-level="11.7.2" data-path="low-level-plotting-functions.html"><a href="low-level-plotting-functions.html#points"><i class="fa fa-check"></i><b>11.7.2</b> <code>points()</code></a></li>
+<li class="chapter" data-level="11.7.3" data-path="low-level-plotting-functions.html"><a href="low-level-plotting-functions.html#abline-segments-grid"><i class="fa fa-check"></i><b>11.7.3</b> <code>abline()</code>, <code>segments()</code>, <code>grid()</code></a></li>
+<li class="chapter" data-level="11.7.4" data-path="low-level-plotting-functions.html"><a href="low-level-plotting-functions.html#text"><i class="fa fa-check"></i><b>11.7.4</b> <code>text()</code></a></li>
+<li class="chapter" data-level="11.7.5" data-path="low-level-plotting-functions.html"><a href="low-level-plotting-functions.html#combining-text-and-numbers-with-paste"><i class="fa fa-check"></i><b>11.7.5</b> Combining text and numbers with <code>paste()</code></a></li>
+<li class="chapter" data-level="11.7.6" data-path="low-level-plotting-functions.html"><a href="low-level-plotting-functions.html#curve"><i class="fa fa-check"></i><b>11.7.6</b> <code>curve()</code></a></li>
+<li class="chapter" data-level="11.7.7" data-path="low-level-plotting-functions.html"><a href="low-level-plotting-functions.html#legend"><i class="fa fa-check"></i><b>11.7.7</b> <code>legend()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="11.8" data-path="saving-plots-to-a-file-with-pdf-jpeg-and-png.html"><a href="saving-plots-to-a-file-with-pdf-jpeg-and-png.html"><i class="fa fa-check"></i><b>11.8</b> Saving plots to a file with <code>pdf()</code>, <code>jpeg()</code> and <code>png()</code></a></li>
+<li class="chapter" data-level="11.9" data-path="examples.html"><a href="examples.html"><i class="fa fa-check"></i><b>11.9</b> Examples</a></li>
+<li class="chapter" data-level="11.10" data-path="test-your-r-might-purdy-pictures.html"><a href="test-your-r-might-purdy-pictures.html"><i class="fa fa-check"></i><b>11.10</b> Test your R might! Purdy pictures</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="plotting2.html"><a href="plotting2.html"><i class="fa fa-check"></i><b>12</b> Plotting (II)</a><ul>
+<li class="chapter" data-level="12.1" data-path="more-colors.html"><a href="more-colors.html"><i class="fa fa-check"></i><b>12.1</b> More colors</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="more-colors.html"><a href="more-colors.html#piratepal"><i class="fa fa-check"></i><b>12.1.1</b> <code>piratepal()</code></a></li>
+<li class="chapter" data-level="12.1.2" data-path="more-colors.html"><a href="more-colors.html#rcolorbrewer"><i class="fa fa-check"></i><b>12.1.2</b> RColorBrewer</a></li>
+<li class="chapter" data-level="12.1.3" data-path="more-colors.html"><a href="more-colors.html#colorramp2"><i class="fa fa-check"></i><b>12.1.3</b> colorRamp2</a></li>
+<li class="chapter" data-level="12.1.4" data-path="more-colors.html"><a href="more-colors.html#getting-colors-with-a-kuler"><i class="fa fa-check"></i><b>12.1.4</b> Getting colors with a kuler</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="plot-margins.html"><a href="plot-margins.html"><i class="fa fa-check"></i><b>12.2</b> Plot Margins</a></li>
+<li class="chapter" data-level="12.3" data-path="arranging-plots-with-parmfrow-and-layout.html"><a href="arranging-plots-with-parmfrow-and-layout.html"><i class="fa fa-check"></i><b>12.3</b> Arranging plots with <code>par(mfrow)</code> and <code>layout()</code></a><ul>
+<li class="chapter" data-level="12.3.1" data-path="arranging-plots-with-parmfrow-and-layout.html"><a href="arranging-plots-with-parmfrow-and-layout.html#complex-plot-layouts-with-layout"><i class="fa fa-check"></i><b>12.3.1</b> Complex plot layouts with <code>layout()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="additional-plotting-parameters.html"><a href="additional-plotting-parameters.html"><i class="fa fa-check"></i><b>12.4</b> Additional plotting parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="htests.html"><a href="htests.html"><i class="fa fa-check"></i><b>13</b> Hypothesis Tests</a><ul>
+<li class="chapter" data-level="13.1" data-path="a-short-introduction-to-hypothesis-tests.html"><a href="a-short-introduction-to-hypothesis-tests.html"><i class="fa fa-check"></i><b>13.1</b> A short introduction to hypothesis tests</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="a-short-introduction-to-hypothesis-tests.html"><a href="a-short-introduction-to-hypothesis-tests.html#null-v-alternative-hypothesis"><i class="fa fa-check"></i><b>13.1.1</b> Null v Alternative Hypothesis</a></li>
+<li class="chapter" data-level="13.1.2" data-path="a-short-introduction-to-hypothesis-tests.html"><a href="a-short-introduction-to-hypothesis-tests.html#descriptive-statistics-1"><i class="fa fa-check"></i><b>13.1.2</b> Descriptive statistics</a></li>
+<li class="chapter" data-level="13.1.3" data-path="a-short-introduction-to-hypothesis-tests.html"><a href="a-short-introduction-to-hypothesis-tests.html#test-statistics"><i class="fa fa-check"></i><b>13.1.3</b> Test Statistics</a></li>
+<li class="chapter" data-level="13.1.4" data-path="a-short-introduction-to-hypothesis-tests.html"><a href="a-short-introduction-to-hypothesis-tests.html#p-value"><i class="fa fa-check"></i><b>13.1.4</b> p-value</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="hypothesis-test-objects-htest.html"><a href="hypothesis-test-objects-htest.html"><i class="fa fa-check"></i><b>13.2</b> Hypothesis test objects: <code>htest</code></a></li>
+<li class="chapter" data-level="13.3" data-path="t-test-t-test.html"><a href="t-test-t-test.html"><i class="fa fa-check"></i><b>13.3</b> T-test: <code>t.test()</code></a><ul>
+<li class="chapter" data-level="13.3.1" data-path="t-test-t-test.html"><a href="t-test-t-test.html#sample-t-test"><i class="fa fa-check"></i><b>13.3.1</b> 1-sample t-test</a></li>
+<li class="chapter" data-level="13.3.2" data-path="t-test-t-test.html"><a href="t-test-t-test.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.3.2</b> 2-sample t-test</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="correlation-cor-test.html"><a href="correlation-cor-test.html"><i class="fa fa-check"></i><b>13.4</b> Correlation: <code>cor.test()</code></a></li>
+<li class="chapter" data-level="13.5" data-path="chi-square-chsq-test.html"><a href="chi-square-chsq-test.html"><i class="fa fa-check"></i><b>13.5</b> Chi-square: <code>chsq.test()</code></a><ul>
+<li class="chapter" data-level="13.5.1" data-path="chi-square-chsq-test.html"><a href="chi-square-chsq-test.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.5.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+</ul></li>
+<li class="chapter" data-level="13.6" data-path="test-your-r-might-4.html"><a href="test-your-r-might-4.html"><i class="fa fa-check"></i><b>13.6</b> Test your R might!</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>14</b> ANOVA</a><ul>
+<li class="chapter" data-level="14.1" data-path="full-factorial-between-subjects-anova.html"><a href="full-factorial-between-subjects-anova.html"><i class="fa fa-check"></i><b>14.1</b> Full-factorial between-subjects ANOVA</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="full-factorial-between-subjects-anova.html"><a href="full-factorial-between-subjects-anova.html#what-does-anova-stand-for"><i class="fa fa-check"></i><b>14.1.1</b> What does ANOVA stand for?</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="steps-to-conduct-an-anova.html"><a href="steps-to-conduct-an-anova.html"><i class="fa fa-check"></i><b>14.2</b> 4 Steps to conduct an ANOVA</a></li>
+<li class="chapter" data-level="14.3" data-path="ex-one-way-anova.html"><a href="ex-one-way-anova.html"><i class="fa fa-check"></i><b>14.3</b> Ex: One-way ANOVA</a></li>
+<li class="chapter" data-level="14.4" data-path="ex-two-way-anova.html"><a href="ex-two-way-anova.html"><i class="fa fa-check"></i><b>14.4</b> Ex: Two-way ANOVA</a><ul>
+<li class="chapter" data-level="14.4.1" data-path="ex-two-way-anova.html"><a href="ex-two-way-anova.html#anova-with-interactions"><i class="fa fa-check"></i><b>14.4.1</b> ANOVA with interactions</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="type-i-type-ii-and-type-iii-anovas.html"><a href="type-i-type-ii-and-type-iii-anovas.html"><i class="fa fa-check"></i><b>14.5</b> Type I, Type II, and Type III ANOVAs</a></li>
+<li class="chapter" data-level="14.6" data-path="getting-additional-information-from-anova-objects.html"><a href="getting-additional-information-from-anova-objects.html"><i class="fa fa-check"></i><b>14.6</b> Getting additional information from ANOVA objects</a></li>
+<li class="chapter" data-level="14.7" data-path="repeated-measures-anova-using-the-lme4-package.html"><a href="repeated-measures-anova-using-the-lme4-package.html"><i class="fa fa-check"></i><b>14.7</b> Repeated measures ANOVA using the lme4 package</a></li>
+<li class="chapter" data-level="14.8" data-path="test-your-r-might-5.html"><a href="test-your-r-might-5.html"><i class="fa fa-check"></i><b>14.8</b> Test your R might!</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>15</b> Regression</a><ul>
+<li class="chapter" data-level="15.1" data-path="the-linear-model.html"><a href="the-linear-model.html"><i class="fa fa-check"></i><b>15.1</b> The Linear Model</a></li>
+<li class="chapter" data-level="15.2" data-path="linear-regression-with-lm.html"><a href="linear-regression-with-lm.html"><i class="fa fa-check"></i><b>15.2</b> Linear regression with <code>lm()</code></a><ul>
+<li class="chapter" data-level="15.2.1" data-path="linear-regression-with-lm.html"><a href="linear-regression-with-lm.html#estimating-the-value-of-diamonds-with-lm"><i class="fa fa-check"></i><b>15.2.1</b> Estimating the value of diamonds with <code>lm()</code></a></li>
+<li class="chapter" data-level="15.2.2" data-path="linear-regression-with-lm.html"><a href="linear-regression-with-lm.html#getting-model-fits-with-fitted.values"><i class="fa fa-check"></i><b>15.2.2</b> Getting model fits with <code>fitted.values</code></a></li>
+<li class="chapter" data-level="15.2.3" data-path="linear-regression-with-lm.html"><a href="linear-regression-with-lm.html#using-predict-to-predict-new-data-from-a-model"><i class="fa fa-check"></i><b>15.2.3</b> Using <code>predict()</code> to predict new data from a model</a></li>
+<li class="chapter" data-level="15.2.4" data-path="linear-regression-with-lm.html"><a href="linear-regression-with-lm.html#including-interactions-in-models-y-x1-x2"><i class="fa fa-check"></i><b>15.2.4</b> Including interactions in models: <code>y ~ x1 * x2</code></a></li>
+<li class="chapter" data-level="15.2.5" data-path="linear-regression-with-lm.html"><a href="linear-regression-with-lm.html#center-variables-before-computing-interactions"><i class="fa fa-check"></i><b>15.2.5</b> Center variables before computing interactions!</a></li>
+<li class="chapter" data-level="15.2.6" data-path="linear-regression-with-lm.html"><a href="linear-regression-with-lm.html#getting-an-anova-from-a-regression-model-with-aov"><i class="fa fa-check"></i><b>15.2.6</b> Getting an ANOVA from a regression model with <code>aov()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="comparing-regression-models-with-anova.html"><a href="comparing-regression-models-with-anova.html"><i class="fa fa-check"></i><b>15.3</b> Comparing regression models with <code>anova()</code></a></li>
+<li class="chapter" data-level="15.4" data-path="regression-on-non-normal-data-with-glm.html"><a href="regression-on-non-normal-data-with-glm.html"><i class="fa fa-check"></i><b>15.4</b> Regression on non-Normal data with <code>glm()</code></a></li>
+<li class="chapter" data-level="15.5" data-path="logistic-regression-with-glmfamily-binomial.html"><a href="logistic-regression-with-glmfamily-binomial.html"><i class="fa fa-check"></i><b>15.5</b> Logistic regression with <code>glm(family = &quot;binomial&quot;</code></a><ul>
+<li class="chapter" data-level="15.5.1" data-path="logistic-regression-with-glmfamily-binomial.html"><a href="logistic-regression-with-glmfamily-binomial.html#adding-a-regression-line-to-a-plot"><i class="fa fa-check"></i><b>15.5.1</b> Adding a regression line to a plot</a></li>
+<li class="chapter" data-level="15.5.2" data-path="logistic-regression-with-glmfamily-binomial.html"><a href="logistic-regression-with-glmfamily-binomial.html#transforming-skewed-variables-prior-to-standard-regression"><i class="fa fa-check"></i><b>15.5.2</b> Transforming skewed variables prior to standard regression</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="test-your-might-a-ship-auction.html"><a href="test-your-might-a-ship-auction.html"><i class="fa fa-check"></i><b>15.6</b> Test your might! A ship auction</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>16</b> Custom functions</a><ul>
+<li class="chapter" data-level="16.1" data-path="why-would-you-want-to-write-your-own-function.html"><a href="why-would-you-want-to-write-your-own-function.html"><i class="fa fa-check"></i><b>16.1</b> Why would you want to write your own function?</a></li>
+<li class="chapter" data-level="16.2" data-path="the-structure-of-a-custom-function.html"><a href="the-structure-of-a-custom-function.html"><i class="fa fa-check"></i><b>16.2</b> The structure of a custom function</a><ul>
+<li class="chapter" data-level="16.2.1" data-path="the-structure-of-a-custom-function.html"><a href="the-structure-of-a-custom-function.html#creating-my.mean"><i class="fa fa-check"></i><b>16.2.1</b> Creating <code>my.mean()</code></a></li>
+<li class="chapter" data-level="16.2.2" data-path="the-structure-of-a-custom-function.html"><a href="the-structure-of-a-custom-function.html#specifying-multiple-inputs"><i class="fa fa-check"></i><b>16.2.2</b> Specifying multiple inputs</a></li>
+<li class="chapter" data-level="16.2.3" data-path="the-structure-of-a-custom-function.html"><a href="the-structure-of-a-custom-function.html#including-default-values-for-arguments"><i class="fa fa-check"></i><b>16.2.3</b> Including default values for arguments</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="using-if-then-statements-in-functions.html"><a href="using-if-then-statements-in-functions.html"><i class="fa fa-check"></i><b>16.3</b> Using if, then statements in functions</a></li>
+<li class="chapter" data-level="16.4" data-path="a-worked-example-plot-advanced.html"><a href="a-worked-example-plot-advanced.html"><i class="fa fa-check"></i><b>16.4</b> A worked example: <code>plot.advanced()</code></a><ul>
+<li class="chapter" data-level="16.4.1" data-path="a-worked-example-plot-advanced.html"><a href="a-worked-example-plot-advanced.html#seeing-function-code"><i class="fa fa-check"></i><b>16.4.1</b> Seeing function code</a></li>
+<li class="chapter" data-level="16.4.2" data-path="a-worked-example-plot-advanced.html"><a href="a-worked-example-plot-advanced.html#using-stop-to-completely-stop-a-function-and-print-an-error"><i class="fa fa-check"></i><b>16.4.2</b> Using <code>stop()</code> to completely stop a function and print an error</a></li>
+<li class="chapter" data-level="16.4.3" data-path="a-worked-example-plot-advanced.html"><a href="a-worked-example-plot-advanced.html#using-vectors-as-arguments"><i class="fa fa-check"></i><b>16.4.3</b> Using vectors as arguments</a></li>
+<li class="chapter" data-level="16.4.4" data-path="a-worked-example-plot-advanced.html"><a href="a-worked-example-plot-advanced.html#storing-and-loading-your-functions-to-and-from-a-function-file-with-source"><i class="fa fa-check"></i><b>16.4.4</b> Storing and loading your functions to and from a function file with <code>source()</code></a></li>
+<li class="chapter" data-level="16.4.5" data-path="a-worked-example-plot-advanced.html"><a href="a-worked-example-plot-advanced.html#testing-functions"><i class="fa fa-check"></i><b>16.4.5</b> Testing functions</a></li>
+<li class="chapter" data-level="16.4.6" data-path="a-worked-example-plot-advanced.html"><a href="a-worked-example-plot-advanced.html#using-...-as-a-wildcard-argument"><i class="fa fa-check"></i><b>16.4.6</b> Using <code>...</code> as a wildcard argument</a></li>
+</ul></li>
+<li class="chapter" data-level="16.5" data-path="test-your-r-might-6.html"><a href="test-your-r-might-6.html"><i class="fa fa-check"></i><b>16.5</b> Test your R might!</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="loops.html"><a href="loops.html"><i class="fa fa-check"></i><b>17</b> Loops</a><ul>
+<li class="chapter" data-level="17.1" data-path="what-are-loops.html"><a href="what-are-loops.html"><i class="fa fa-check"></i><b>17.1</b> What are loops?</a><ul>
+<li class="chapter" data-level="17.1.1" data-path="what-are-loops.html"><a href="what-are-loops.html#printing-numbers-from-1-to-100"><i class="fa fa-check"></i><b>17.1.1</b> Printing numbers from 1 to 100</a></li>
+<li class="chapter" data-level="17.1.2" data-path="what-are-loops.html"><a href="what-are-loops.html#adding-the-integers-from-1-to-100"><i class="fa fa-check"></i><b>17.1.2</b> Adding the integers from 1 to 100</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="creating-multiple-plots-with-a-loop.html"><a href="creating-multiple-plots-with-a-loop.html"><i class="fa fa-check"></i><b>17.2</b> Creating multiple plots with a loop</a></li>
+<li class="chapter" data-level="17.3" data-path="updating-a-container-object-with-a-loop.html"><a href="updating-a-container-object-with-a-loop.html"><i class="fa fa-check"></i><b>17.3</b> Updating a container object with a loop</a></li>
+<li class="chapter" data-level="17.4" data-path="loops-over-multiple-indices-with-a-design-matrix.html"><a href="loops-over-multiple-indices-with-a-design-matrix.html"><i class="fa fa-check"></i><b>17.4</b> Loops over multiple indices with a design matrix</a></li>
+<li class="chapter" data-level="17.5" data-path="the-list-object.html"><a href="the-list-object.html"><i class="fa fa-check"></i><b>17.5</b> The list object</a></li>
+<li class="chapter" data-level="17.6" data-path="test-your-r-might-7.html"><a href="test-your-r-might-7.html"><i class="fa fa-check"></i><b>17.6</b> Test your R might!</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="solutions.html"><a href="solutions.html"><i class="fa fa-check"></i><b>18</b> Solutions</a><ul>
+<li class="chapter" data-level="18.1" data-path="chapter-4-the-basics.html"><a href="chapter-4-the-basics.html"><i class="fa fa-check"></i><b>18.1</b> Chapter 4: The Basics</a></li>
+<li class="chapter" data-level="18.2" data-path="chapter-5-scalers-and-vectors.html"><a href="chapter-5-scalers-and-vectors.html"><i class="fa fa-check"></i><b>18.2</b> Chapter 5: Scalers and vectors</a></li>
+<li class="chapter" data-level="18.3" data-path="chapter-6-vector-functions.html"><a href="chapter-6-vector-functions.html"><i class="fa fa-check"></i><b>18.3</b> Chapter 6: Vector Functions</a></li>
+<li class="chapter" data-level="18.4" data-path="chapter-7-indexing-vectors-with.html"><a href="chapter-7-indexing-vectors-with.html"><i class="fa fa-check"></i><b>18.4</b> Chapter 7: Indexing vectors with []</a></li>
+<li class="chapter" data-level="18.5" data-path="chapter-8-matrices-and-dataframes.html"><a href="chapter-8-matrices-and-dataframes.html"><i class="fa fa-check"></i><b>18.5</b> Chapter 8: Matrices and Dataframes</a></li>
+<li class="chapter" data-level="18.6" data-path="chapter-13-hypothesis-tests.html"><a href="chapter-13-hypothesis-tests.html"><i class="fa fa-check"></i><b>18.6</b> Chapter 13: Hypothesis tests</a></li>
+<li class="chapter" data-level="18.7" data-path="chapter-14-anova.html"><a href="chapter-14-anova.html"><i class="fa fa-check"></i><b>18.7</b> Chapter 14: ANOVA</a></li>
+<li class="chapter" data-level="18.8" data-path="chapter-15-regression.html"><a href="chapter-15-regression.html"><i class="fa fa-check"></i><b>18.8</b> Chapter 15: Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">YaRrr! The Pirate’s Guide to R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="the-command-line-console" class="section level2">
+<h2><span class="header-section-number">4.1</span> The command-line (Console)</h2>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-52"></span>
+<img src="images/woodcalc.jpg" alt="Yep. R is really just a fancy calculator. This R programming device was found on a shipwreck on the Bodensee in Germany. I stole it from a museum and made a pretty sweet plot with it. But I don't want to show it to you." width="50%" />
+<p class="caption">
+Figure 4.2: Yep. R is really just a fancy calculator. This R programming device was found on a shipwreck on the Bodensee in Germany. I stole it from a museum and made a pretty sweet plot with it. But I don’t want to show it to you.
+</p>
+</div>
+<p>R code, on its own, is just text. You can write R code in a new script within R or RStudio, or in any text editor. Hell, you can write R code on Twitter if you want. However, just writing the code won’t do the whole job – in order for your code to be executed (aka, interpreted) you need to send it to R’s <em>command-line interpreter</em>. In RStudio, the command-line interpreter is called the Console.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-53"></span>
+<img src="images/commandline.png" alt="You can always type code directly into the command line to get an immediate response." width="75%" />
+<p class="caption">
+Figure 4.3: You can always type code directly into the command line to get an immediate response.
+</p>
+</div>
+<p>In R, the command-line interpreter starts with the <code>&gt;</code> symbol. This is called the <strong>prompt</strong>. Why is it called the prompt? Well, it’s “prompting” you to feed it with some R code. The fastest way to have R evaluate code is to type your R code directly into the command-line interpreter. For example, if you type <code>1+1</code> into the interpreter and hit enter you’ll see the following</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span><span class="op">+</span><span class="dv">1</span>
+## [1] 2</code></pre></div>
+<p>As you can see, R returned the (thankfully correct) value of 2. You’ll notice that the console also returns the text [1]. This is just telling you you the index of the value next to it. Don’t worry about this for now, it will make more sense later. As you can see, R can, thankfully, do basic calculations. In fact, at its heart, R is technically just a fancy calculator. But that’s like saying Michael Jordan is <em>just</em> a fancy ball bouncer or Donald Trump is <em>just</em> an orange with a dead fox on his head. It (and they), are much more than that.</p>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="basics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="writing-r-scripts-in-an-editor.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ndphillips/ThePiratesGuideToR/edit/master/04-basics.Rmd",
+"text": "Edit"
+},
+"download": ["YaRrr.pdf", "YaRrr.epub"],
+"toc": {
+"collapse": "subsection"
+},
+"toolbar": {
+"position": "static"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

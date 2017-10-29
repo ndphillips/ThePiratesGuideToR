@@ -2,9 +2,4 @@ book_filename: "YaRrr"
 language:
   ui:
     chapter_name: "Chapter "
-documentclass: krantz
-lot: yes
-lof: yes
-fontsize: 12pt
-monofont: "Source Code Pro"
-monofontoptions: "Scale=0.7"
+delete_merged_file: true

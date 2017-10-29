@@ -1,11 +1,6 @@
-bookdown::pdf_book:
-  includes:
-    in_header: preamble.tex
-  latex_engine: xelatex
-  citation_package: natbib
-  keep_tex: yes
-bookdown::epub_book: default
 bookdown::gitbook:
+  lib_dir: assets
+  split_by: section
   css: style.css
   config:
     toc:
@@ -13,4 +8,16 @@ bookdown::gitbook:
         <li><a href="./">YaRrr! The Pirate's Guide to R</a></li>
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+    toolbar:
+      position: static
     edit: https://github.com/ndphillips/ThePiratesGuideToR/edit/master/%s
+    download: ["pdf", "epub"]
+bookdown::pdf_book:
+  includes:
+    in_header: preamble.tex
+  latex_engine: xelatex
+  citation_package: natbib
+  keep_tex: yes
+bookdown::epub_book: default
+bookdown::html_book:
+  css: toc.css
