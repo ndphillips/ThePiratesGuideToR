@@ -42,12 +42,8 @@ knitr::include_graphics(c("images/RScreenshot.png"))
 knitr::include_graphics(c("images/RStudio.png"))
 ```
 
-While you can do pretty much everything you want within base-R, you'll find that most people these days do their R programming in an application called RStudio. RStudio is a graphical user interface (GUI)-like interface for R that makes programming in R a bit easier. In fact, once you've installed RStudio, you'll likely never need to open the base R application again. To download and install RStudio (around 40mb), go to one of the links above and follow the instructions.
+While you can do pretty much everything you want within base-R, you'll find that most people these days do their R programming in an application called RStudio. RStudio is a graphical user interface (GUI)-like interface for R that makes programming in R a bit easier. In fact, once you've installed RStudio, you'll likely never need to open the base R application again. To download and install RStudio (around 40mb), go to[http://www.rstudio.com/products/rstudio/download/](http://www.rstudio.com/products/rstudio/download/)| and follow the instructions.
 
-
-| Operating System| Link|
-|:------|:----|
-|     All|    [http://www.rstudio.com/products/rstudio/download/](http://www.rstudio.com/products/rstudio/download/)|
 
 Let's go ahead and boot up RStudio and see how she looks!
 
@@ -151,7 +147,7 @@ knitr::include_graphics(c("images/plotpanelss.png"))
 When you download and install R for the first time, you are installing the Base R software. Base R will contain most of the functions you'll use on a daily basis like `mean()` and `hist()`. However, only functions written by the original authors of the R language will appear here. If you want to access data and code written by other people, you'll need to install it as a *package*. An R package is simply a bunch of data, from functions, to help menus, to vignettes (examples), stored in one neat package.
 
 
-```{r package, fig.cap= "An R package is light a lightbulb. First you need to order it with install.packages(). Then, every time you want to use it, you need to turn it on with library()", fig.margin = TRUE, fig.align = 'center', echo = FALSE, out.width = "50%"}
+```{r package, fig.cap= "An R package is like a lightbulb. First you need to order it with install.packages(). Then, every time you want to use it, you need to turn it on with library()", fig.margin = TRUE, fig.align = 'center', echo = FALSE, out.width = "50%"}
 knitr::include_graphics(c("images/packagebulb.png"))
 ```
 

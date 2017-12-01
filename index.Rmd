@@ -113,12 +113,17 @@ knitr::include_graphics(c("images/rreferencess.png"))
 
 Over the course of this book, you will be learning *lots* of new functions. Wouldn't it be nice if someone created a Cheatsheet / Dictionary of many common R functions? Yes it would, and thankfully several friendly R programmers have done just that. Below is a table of some of them that I recommend. I highly encourage you to print these out and start highlighting functions as you learn them!
 
-| CheatSheet| Link|
-|:----------------------------|:--------|
-|     R Basics by Tom Short|    [https://cran.r-project.org/doc/contrib/Short-refcard.pdf](https://cran.r-project.org/doc/contrib/Short-refcard.pdf)|
-|     R Basics by Mhairi McNeill|    [http://github.com/rstudio/cheatsheets/raw/master/source/pdfs/base-r.pdf](http://github.com/rstudio/cheatsheets/raw/master/source/pdfs/base-r.pdf)|
-|    Advanced R by Arianne Colton and Sean Chen|    [hhttps://www.rstudio.com/wp-content/uploads/2016/02/advancedR.pdf](https://www.rstudio.com/wp-content/uploads/2016/02/advancedR.pdf)|
-|     Plotting|    [https://www.rstudio.com/wp-content/uploads/2016/10/how-big-is-your-graph.pdf](https://www.rstudio.com/wp-content/uploads/2016/10/how-big-is-your-graph.pdf)|
+| CheatSheet| Author| Link|
+|:------------------------|:-----------|:-----------------------|
+|     R Basics| Tom Short |    [https://cran.r-project.org/doc/contrib/Short-refcard.pdf](https://cran.r-project.org/doc/contrib/Short-refcard.pdf)|
+|    Advanced R |   Arianne Colton and Sean Chen | [hhttps://www.rstudio.com/wp-content/uploads/2016/02/advancedR.pdf](https://www.rstudio.com/wp-content/uploads/2016/02/advancedR.pdf)|
+| Base R | [Mhairi McNeill](http://mhairihmcneill.com/) |http://github.com/rstudio/cheatsheets/raw/master/base-r.pdf|
+| Strings | [RStudio](https://www.rstudio.com) | https://github.com/rstudio/cheatsheets/raw/master/strings.pdf|
+| Data import| [RStudio](https://www.rstudio.com) | https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf|
+|Data transformation| [RStudio](https://www.rstudio.com) | https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf |
+|RStudio application| [RStudio](https://www.rstudio.com) | https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf|
+| Plotting with ggplot2 | [RStudio](https://www.rstudio.com) |https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf|
+| RMarkdown| [RStudio](https://www.rstudio.com) |https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf|
 
 
 ### Getting R help and inspiration online
@@ -127,10 +132,9 @@ Here are some great resources for R help and inspiration:
 
 | Site| Description|
 |:----------------------------|:-----------------------------------|
-|     [www.google.com](http://www.google.com)| If you haven't heard of it, Google is this amazing site that gives you access to all R knowledge that has ever existed. Just ask it an R question and 99.9\% of the time it will give you the answer!|
+|     [www.google.com](http://www.google.com)| Seriously, Google is any programmer's best friend. More likely than not you will be directed to [www.stackoverflow.com](www.stackoverflow.com) or [www.stackexchange.com](www.stackexchange.com)|
 |     [www.r-bloggers.com](http://www.r-bloggers.com)| R bloggers is my go-to place to discover the latest and greatest with R.|
 |     [blog.revolutionanalytics.com](http://blog.revolutionanalytics.com)| Revolution analytics always has great R related material.|
-|     [www.kaggle.com](http://www.kaggle.com)|Kaggle is a really cool website that posts data analysis challenges that anyone can try to solve. It also contains a wide range of real-world datasets and tutorials.|
 
 
 

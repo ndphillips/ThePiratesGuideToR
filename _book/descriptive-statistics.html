@@ -25,7 +25,7 @@
 <meta name="author" content="Nathaniel D. Phillips">
 
 
-<meta name="date" content="2017-10-29">
+<meta name="date" content="2017-12-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -436,11 +436,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Now let’s calculate some basic statistics on the entire dataset. We’ll calculate the mean age, maximum height, and number of pirates of each sex:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># What is the mean age?</span>
 <span class="kw">mean</span>(pirates<span class="op">$</span>age)
-## [1] 27
+## [1] 27.36
 
 <span class="co"># What was the tallest pirate?</span>
 <span class="kw">max</span>(pirates<span class="op">$</span>height)
-## [1] 209
+## [1] 209.25
 
 <span class="co"># How many pirates are there of each sex?</span>
 <span class="kw">table</span>(pirates<span class="op">$</span>sex)
@@ -452,10 +452,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="kw">aggregate</span>(<span class="dt">formula =</span> age <span class="op">~</span><span class="st"> </span>sex,
           <span class="dt">data =</span> pirates,
           <span class="dt">FUN =</span> mean)
-##      sex age
-## 1 female  30
-## 2   male  25
-## 3  other  27</code></pre></div>
+##      sex      age
+## 1 female 29.92241
+## 2   male 24.96735
+## 3  other 27.00000</code></pre></div>
 </div>
             </section>
 

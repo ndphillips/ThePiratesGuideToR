@@ -25,7 +25,7 @@
 <meta name="author" content="Nathaniel D. Phillips">
 
 
-<meta name="date" content="2017-10-29">
+<meta name="date" content="2017-12-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -575,11 +575,11 @@ Figure 5.5: Three different normal distributions with different means and standa
 <p>The Normal (a.k.a “Gaussian”) distribution is probably the most important distribution in all of statistics. The Normal distribution is bell-shaped, and has two parameters: a mean and a standard deviation. To generate samples from a normal distribution in R, we use the function <code>rnorm()</code></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 5 samples from a Normal dist with mean = 0, sd = 1</span>
 <span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
-## [1] -1.38  2.40  0.37  0.53  0.69
+## [1] -1.3812915  2.4004962  0.3704356  0.5301593  0.6894852
 
 <span class="co"># 3 samples from a Normal dist with mean = -10, sd = 15</span>
 <span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">3</span>, <span class="dt">mean =</span> <span class="op">-</span><span class="dv">10</span>, <span class="dt">sd =</span> <span class="dv">15</span>)
-## [1] -21 -14 -25</code></pre></div>
+## [1] -20.57584 -13.84697 -25.48026</code></pre></div>
 <p>Again, because the sampling is done randomly, you’ll get different values each time you run <code>rnorm()</code></p>
 </div>
 <div id="uniform" class="section level3">
@@ -620,11 +620,12 @@ Figure 5.6: The Uniform distribution - known colloquially as the Anthony Davis d
 <p>Here are some samples from two different Uniform distributions:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 5 samples from Uniform dist with bounds at 0 and 1</span>
 <span class="kw">runif</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="dv">1</span>)
-## [1] 0.94 0.80 0.57 0.11 0.22
+## [1] 0.9357006 0.7976297 0.5744534 0.1116068 0.2245453
 
 <span class="co"># 10 samples from Uniform dist with bounds at -100 and +100</span>
 <span class="kw">runif</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">min =</span> <span class="op">-</span><span class="dv">100</span>, <span class="dt">max =</span> <span class="dv">100</span>)
-##  [1]  10.94 -80.50  52.38   0.45 -79.65  31.94  87.28 -67.69 -58.64  -0.37</code></pre></div>
+##  [1]  10.9414865 -80.4966081  52.3845476   0.4456113 -79.6523535
+##  [6]  31.9392082  87.2795171 -67.6851716 -58.6398627  -0.3676838</code></pre></div>
 </div>
 <div id="notes-on-random-samples" class="section level3">
 <h3><span class="header-section-number">5.3.4</span> Notes on random samples</h3>
@@ -633,11 +634,11 @@ Figure 5.6: The Uniform distribution - known colloquially as the Anthony Davis d
 <p>Every time you draw a sample from a probability distribution, you’ll (likely) get a different result. For example, see what happens when I run the following two commands (you’ll learn the <code>rnorm()</code> function on the next page…)</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Draw a sample of size 5 from a normal distribution with mean 100 and sd 10</span>
 <span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">mean =</span> <span class="dv">100</span>, <span class="dt">sd =</span> <span class="dv">10</span>)
-## [1] 107  94 103 106 100
+## [1] 107.20919  94.25682 103.40248 105.79877  99.81698
 
 <span class="co"># Do it again!</span>
 <span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">mean =</span> <span class="dv">100</span>, <span class="dt">sd =</span> <span class="dv">10</span>)
-## [1] 113 104 109 108  96</code></pre></div>
+## [1] 112.80763 104.23147 108.90105 108.48350  96.49047</code></pre></div>
 <p>As you can see, the exact same code produced different results – and that’s exactly what we want! Each time you run <code>rnorm()</code>, or another distribution function, you’ll get a new random sample.</p>
 </div>
 <div id="use-set.seed-to-control-random-samples" class="section level4">
@@ -650,11 +651,11 @@ Figure 5.6: The Uniform distribution - known colloquially as the Anthony Davis d
 
 <span class="co"># The result will always be -0.5022, 0.1315, -0.0789</span>
 <span class="kw">rnorm</span>(<span class="dv">3</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
-## [1] -0.502  0.132 -0.079
+## [1] -0.50219235  0.13153117 -0.07891709
 
 <span class="co"># The result will always be 0.887, 0.117, 0.319</span>
 <span class="kw">rnorm</span>(<span class="dv">3</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
-## [1] 0.89 0.12 0.32</code></pre></div>
+## [1] 0.8867848 0.1169713 0.3186301</code></pre></div>
 <p>Try running the same code on your machine and you’ll see the exact same samples that I got above. Oh and the value of 100 I used above in <code>set.seed(100)</code> is totally arbitrary – you can set the seed to any integer you want. I just happen to like how <code>set.seed(100)</code> looks in my code.</p>
 </div>
 </div>

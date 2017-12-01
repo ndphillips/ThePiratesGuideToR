@@ -25,7 +25,7 @@
 <meta name="author" content="Nathaniel D. Phillips">
 
 
-<meta name="date" content="2017-10-29">
+<meta name="date" content="2017-12-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -438,17 +438,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Let’s say you have a vector a containing some data. We’ll assign the vector to a new object called <code>a</code> then calculate the mean and standard deviation with the <code>mean()</code> and <code>sd()</code> functions:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">4</span>)
 <span class="kw">mean</span>(a)
-## [1] 4.6
+## [1] 4.571429
 <span class="kw">sd</span>(a)
-## [1] 1.4</code></pre></div>
+## [1] 1.397276</code></pre></div>
 <p>Ok. Now we’ll create a new vector called <code>a.z</code> which is a standardized version of a. To do this, we’ll simply subtract the mean of the vector, then divide by the standard deviation.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a.z &lt;-<span class="st"> </span>(a <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(a)) <span class="op">/</span><span class="st"> </span><span class="kw">sd</span>(a)</code></pre></div>
 <p>Now let’s look at the standardized values:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a.z
-## [1]  0.31 -1.12  1.74  0.31  0.31 -1.12 -0.41</code></pre></div>
+## [1]  0.3067192 -1.1246370  1.7380754  0.3067192  0.3067192 -1.1246370
+## [7] -0.4089589</code></pre></div>
 <p>The mean of <code>a.z</code> should now be 0, and the standard deviation of <code>a.z</code> should now be 1. Let’s make sure:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(a.z)
-## [1] 2e-16
+## [1] 1.982309e-16
 <span class="kw">sd</span>(a.z)
 ## [1] 1</code></pre></div>
 <p>Sweet. Oh, don’t worry that the mean of <code>a.z</code> doesn’t look like exactly zero. Using non-scientific notation, the result is 0.000000000000000198. For all intents and purposes, that’s 0. The reason the result is not exactly 0 is due to computer science theoretical reasons that I cannot explain (because I don’t understand them).</p>

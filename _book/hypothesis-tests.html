@@ -25,7 +25,7 @@
 <meta name="author" content="Nathaniel D. Phillips">
 
 
-<meta name="date" content="2017-10-29">
+<meta name="date" content="2017-12-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -442,13 +442,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##  Welch Two Sample t-test
 ## 
 ## data:  age by headband
-## t = 0.4, df = 100, p-value = 0.7
+## t = 0.35135, df = 135.47, p-value = 0.7259
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -1.0  1.5
+##  -1.030754  1.476126
 ## sample estimates:
 ##  mean in group no mean in group yes 
-##                28                27</code></pre></div>
+##          27.55752          27.33484</code></pre></div>
 <p>With a p-value of 0.7259, we don’t have sufficient evidence say there is a difference in the men age of pirates who wear headbands and those that do not.</p>
 <p>Next, let’s test if there a significant correlation between a pirate’s height and weight using the <code>cor.test()</code> function:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor.test</span>(<span class="dt">formula =</span> <span class="op">~</span><span class="st"> </span>height <span class="op">+</span><span class="st"> </span>weight,
@@ -457,13 +457,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##  Pearson&#39;s product-moment correlation
 ## 
 ## data:  height and weight
-## t = 80, df = 1000, p-value &lt;2e-16
+## t = 81.161, df = 998, p-value &lt; 2.2e-16
 ## alternative hypothesis: true correlation is not equal to 0
 ## 95 percent confidence interval:
-##  0.92 0.94
+##  0.9232371 0.9396050
 ## sample estimates:
-##  cor 
-## 0.93</code></pre></div>
+##       cor 
+## 0.9318938</code></pre></div>
 <p>We got a p-value of <code>p &lt; 2.2e-16</code>, that’s scientific notation for <code>p &lt; .00000000000000016</code> – which is pretty much 0. Thus, we’d conclude that there is a significant (positive) relationship between a pirate’s height and weight.</p>
 <p>Now, let’s do an ANOVA testing if there is a difference between the number of tattoos pirates have based on their favorite sword</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create tattoos model</span>
@@ -475,9 +475,9 @@ tat.sword.lm &lt;-<span class="st"> </span><span class="kw">lm</span>(<span clas
 ## Analysis of Variance Table
 ## 
 ## Response: tattoos
-##             Df Sum Sq Mean Sq F value Pr(&gt;F)    
-## sword.type   3   1588     529    54.1 &lt;2e-16 ***
-## Residuals  996   9743      10                   
+##             Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+## sword.type   3 1587.8  529.28  54.106 &lt; 2.2e-16 ***
+## Residuals  996 9743.1    9.78                      
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre></div>
 <p>Sure enough, we see another very small p-value of <code>p &lt; 2.2e-16</code>, suggesting that the number of tattoos pirate’s have are different based on their favorite sword.</p>

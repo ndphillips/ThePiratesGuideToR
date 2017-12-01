@@ -25,7 +25,7 @@
 <meta name="author" content="Nathaniel D. Phillips">
 
 
-<meta name="date" content="2017-10-29">
+<meta name="date" content="2017-12-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -436,6 +436,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>If you are conducting an analyses where you’re repeating measurements over one or more third variables, like giving the same participant different tests, you should do a mixed-effects regression analysis. To do this, you should use the <code>lmer</code> function in the <code>lme4</code> package. For example, in our <code>poopdeck</code> data, we have repeated measurements for days. That is, on each day, we had 6 measurements. Now, it’s possible that the overall cleaning times differed depending on the day. We can account for this by including random intercepts for day by adding the <code>(1|day)</code> term to the formula specification. For more tips on mixed-effects analyses, check out this great tutorial by Bodo Winter at <a href="http://www.bodowinter.com/tutorial/bw_LME_tutorial2.pdf" class="uri">http://www.bodowinter.com/tutorial/bw_LME_tutorial2.pdf</a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages(lme4)  # If you don&#39;t have the package already</span>
 <span class="kw">library</span>(lme4)
+## Warning: package &#39;lme4&#39; was built under R version 3.4.2
 
 <span class="co"># Calculate a mixed-effects regression on time with</span>
 <span class="co">#  Two fixed factors (cleaner and type)</span>

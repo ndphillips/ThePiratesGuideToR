@@ -25,7 +25,7 @@
 <meta name="author" content="Nathaniel D. Phillips">
 
 
-<meta name="date" content="2017-10-29">
+<meta name="date" content="2017-12-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -440,11 +440,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3><span class="header-section-number">2.5.1</span> R is not ready (&gt;)</h3>
 <p>Another very common problem occurs when R does not seem to be responding to your code. That is, you might run some code like <code>mean(x)</code> expecting some output, but instead, nothing happens. This can be very frustrating because, rather than getting an error, just nothing happens at all. The most common reason for this is because R isn’t <em>ready</em> for new code, instead, it is <em>waiting</em> for you to finish code you started earlier, but never properly finished.</p>
 <p>Think about it this way, R can be in one of two states: it is either <strong>Ready</strong> (&gt;) for new code, or it is <strong>Waiting</strong> (+) for you to finish old code. To see which state R is in, all you have to do is look at the symbol on the console. The <code>&gt;</code> symbol means that R is Ready for new code – this is usually what you want to see. The <code>+</code> symbol means that R is Waiting for you to (properly) finish code you started before. If you see the <code>+</code> symbol, then no matter how much new code you write, R won’t actually evaluate it until you finish the code you started before.</p>
-<p>Thankfully there is an easy solution to this problem (See Figure <a href="debugging.html#fig:rstate">1.15</a>): Just hit the escape key on your keyboard. This will cancel R’s waiting state and make it Ready!</p>
+<p>Thankfully there is an easy solution to this problem (See Figure <a href="debugging.html#fig:rstate">2.10</a>): Just hit the escape key on your keyboard. This will cancel R’s waiting state and make it Ready!</p>
 <div class="figure" style="text-align: center"><span id="fig:rstate"></span>
 <img src="images/escapesolution.png" alt="To turn R from a Waiting (+) state to a Ready (&gt;) state, just hit Escape." width="50%" />
 <p class="caption">
-Figure 1.15: To turn R from a Waiting (+) state to a Ready (&gt;) state, just hit Escape.
+Figure 2.10: To turn R from a Waiting (+) state to a Ready (&gt;) state, just hit Escape.
 </p>
 </div>
 </div>
@@ -487,7 +487,7 @@ Error: unexpected numeric constant in “mean(c(1. 4.”
 <p>Because I used periods instead of commas, I get the above error. Here is the correct version</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Correct</span>
 <span class="kw">mean</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>))
-## [1] 2.3</code></pre></div>
+## [1] 2.333333</code></pre></div>
 <p>If you include an extra space in the middle of the name of an object or function, you’ll receive an error. In the code below, I’ll accidentally write <code>Chick Weight</code> instead of <code>ChickWeight</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Wrong: Extra space in the ChickWeight object name</span>
 <span class="kw">head</span>(Chick Weight)</code></pre></div>
