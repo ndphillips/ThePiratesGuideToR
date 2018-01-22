@@ -25,7 +25,7 @@
 <meta name="author" content="Nathaniel D. Phillips">
 
 
-<meta name="date" content="2017-12-01">
+<meta name="date" content="2018-01-22">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -117,9 +117,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1.6.1" data-path="who-am-i.html"><a href="who-am-i.html#please-consider-a-donation"><i class="fa fa-check"></i><b>1.6.1</b> Please consider a donation!</a></li>
 <li class="chapter" data-level="1.6.2" data-path="who-am-i.html"><a href="who-am-i.html#acknowledgements"><i class="fa fa-check"></i><b>1.6.2</b> Acknowledgements</a></li>
 </ul></li>
-<li class="chapter" data-level="1.7" data-path="please-contribute.html"><a href="please-contribute.html"><i class="fa fa-check"></i><b>1.7</b> Please Contribute!</a><ul>
-<li class="chapter" data-level="1.7.1" data-path="please-contribute.html"><a href="please-contribute.html#don"><i class="fa fa-check"></i><b>1.7.1</b> Don</a></li>
-</ul></li>
+<li class="chapter" data-level="1.7" data-path="contributions-and-acknowledgements.html"><a href="contributions-and-acknowledgements.html"><i class="fa fa-check"></i><b>1.7</b> Contributions and Acknowledgements</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="started.html"><a href="started.html"><i class="fa fa-check"></i><b>2</b> Getting Started</a><ul>
 <li class="chapter" data-level="2.1" data-path="installing-base-r-and-rstudio.html"><a href="installing-base-r-and-rstudio.html"><i class="fa fa-check"></i><b>2.1</b> Installing Base-R and RStudio</a><ul>
@@ -511,24 +509,18 @@ plot.advanced &lt;-<span class="st"> </span><span class="cf">function</span> (<s
 <p>Because R is awesome, you can view the code underlying most functions by just evaluating the name of the function (without any parentheses or arguments). For example, the <code>yarrr</code> package contains a function called <code>transparent()</code> that converts standard colors into transparent colors. To see the code contained in the function, just evaluate its name:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Show me the code in the transparent() function</span>
 transparent
-## function(orig.col = &quot;red&quot;, trans.val = 1, maxColorValue = 255) {
-## 
-##   n.cols &lt;- length(orig.col)
-##   orig.col &lt;- col2rgb(orig.col)
-## 
-##   final.col &lt;- rep(NA, n.cols)
-## 
-##   for(i in 1:n.cols) {
-## 
-##     final.col[i] &lt;- rgb(orig.col[1, i], orig.col[2, i], orig.col[3, i],
-##                         alpha = (1 - trans.val) * 255,
-##                         maxColorValue = maxColorValue)
-## 
-##   }
-## 
-##   return(final.col)
+## function (orig.col = &quot;red&quot;, trans.val = 1, maxColorValue = 255) 
+## {
+##     n.cols &lt;- length(orig.col)
+##     orig.col &lt;- col2rgb(orig.col)
+##     final.col &lt;- rep(NA, n.cols)
+##     for (i in 1:n.cols) {
+##         final.col[i] &lt;- rgb(orig.col[1, i], orig.col[2, i], orig.col[3, 
+##             i], alpha = (1 - trans.val) * 255, maxColorValue = maxColorValue)
+##     }
+##     return(final.col)
 ## }
-## &lt;bytecode: 0x10b4c7d10&gt;
+## &lt;bytecode: 0x1127bb108&gt;
 ## &lt;environment: namespace:yarrr&gt;</code></pre></div>
 <p>Once you know the code underlying a function, you can easily copy it and edit it to your own liking. Or print it and put it above your bed. Totally up to you.</p>
 </div>
