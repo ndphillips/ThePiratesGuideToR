@@ -114,9 +114,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1.5.3" data-path="r-resources.html"><a href="r-resources.html#other-r-books"><i class="fa fa-check"></i><b>1.5.3</b> Other R books</a></li>
 </ul></li>
 <li class="chapter" data-level="1.6" data-path="who-am-i.html"><a href="who-am-i.html"><i class="fa fa-check"></i><b>1.6</b> Who am I?</a><ul>
-<li class="chapter" data-level="1.6.1" data-path="who-am-i.html"><a href="who-am-i.html#acknowledgements"><i class="fa fa-check"></i><b>1.6.1</b> Acknowledgements</a></li>
+<li class="chapter" data-level="1.6.1" data-path="who-am-i.html"><a href="who-am-i.html#please-consider-a-donation"><i class="fa fa-check"></i><b>1.6.1</b> Please consider a donation!</a></li>
+<li class="chapter" data-level="1.6.2" data-path="who-am-i.html"><a href="who-am-i.html#acknowledgements"><i class="fa fa-check"></i><b>1.6.2</b> Acknowledgements</a></li>
 </ul></li>
-<li class="chapter" data-level="1.7" data-path="please-contribute.html"><a href="please-contribute.html"><i class="fa fa-check"></i><b>1.7</b> Please Contribute!</a></li>
+<li class="chapter" data-level="1.7" data-path="please-contribute.html"><a href="please-contribute.html"><i class="fa fa-check"></i><b>1.7</b> Please Contribute!</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="please-contribute.html"><a href="please-contribute.html#don"><i class="fa fa-check"></i><b>1.7.1</b> Don</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="started.html"><a href="started.html"><i class="fa fa-check"></i><b>2</b> Getting Started</a><ul>
 <li class="chapter" data-level="2.1" data-path="installing-base-r-and-rstudio.html"><a href="installing-base-r-and-rstudio.html"><i class="fa fa-check"></i><b>2.1</b> Installing Base-R and RStudio</a><ul>
@@ -436,7 +439,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>If you are conducting an analyses where you’re repeating measurements over one or more third variables, like giving the same participant different tests, you should do a mixed-effects regression analysis. To do this, you should use the <code>lmer</code> function in the <code>lme4</code> package. For example, in our <code>poopdeck</code> data, we have repeated measurements for days. That is, on each day, we had 6 measurements. Now, it’s possible that the overall cleaning times differed depending on the day. We can account for this by including random intercepts for day by adding the <code>(1|day)</code> term to the formula specification. For more tips on mixed-effects analyses, check out this great tutorial by Bodo Winter at <a href="http://www.bodowinter.com/tutorial/bw_LME_tutorial2.pdf" class="uri">http://www.bodowinter.com/tutorial/bw_LME_tutorial2.pdf</a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages(lme4)  # If you don&#39;t have the package already</span>
 <span class="kw">library</span>(lme4)
-## Warning: package &#39;lme4&#39; was built under R version 3.4.2
 
 <span class="co"># Calculate a mixed-effects regression on time with</span>
 <span class="co">#  Two fixed factors (cleaner and type)</span>

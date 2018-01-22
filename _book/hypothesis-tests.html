@@ -114,9 +114,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1.5.3" data-path="r-resources.html"><a href="r-resources.html#other-r-books"><i class="fa fa-check"></i><b>1.5.3</b> Other R books</a></li>
 </ul></li>
 <li class="chapter" data-level="1.6" data-path="who-am-i.html"><a href="who-am-i.html"><i class="fa fa-check"></i><b>1.6</b> Who am I?</a><ul>
-<li class="chapter" data-level="1.6.1" data-path="who-am-i.html"><a href="who-am-i.html#acknowledgements"><i class="fa fa-check"></i><b>1.6.1</b> Acknowledgements</a></li>
+<li class="chapter" data-level="1.6.1" data-path="who-am-i.html"><a href="who-am-i.html#please-consider-a-donation"><i class="fa fa-check"></i><b>1.6.1</b> Please consider a donation!</a></li>
+<li class="chapter" data-level="1.6.2" data-path="who-am-i.html"><a href="who-am-i.html#acknowledgements"><i class="fa fa-check"></i><b>1.6.2</b> Acknowledgements</a></li>
 </ul></li>
-<li class="chapter" data-level="1.7" data-path="please-contribute.html"><a href="please-contribute.html"><i class="fa fa-check"></i><b>1.7</b> Please Contribute!</a></li>
+<li class="chapter" data-level="1.7" data-path="please-contribute.html"><a href="please-contribute.html"><i class="fa fa-check"></i><b>1.7</b> Please Contribute!</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="please-contribute.html"><a href="please-contribute.html#don"><i class="fa fa-check"></i><b>1.7.1</b> Don</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="started.html"><a href="started.html"><i class="fa fa-check"></i><b>2</b> Getting Started</a><ul>
 <li class="chapter" data-level="2.1" data-path="installing-base-r-and-rstudio.html"><a href="installing-base-r-and-rstudio.html"><i class="fa fa-check"></i><b>2.1</b> Installing Base-R and RStudio</a><ul>
@@ -442,13 +445,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##  Welch Two Sample t-test
 ## 
 ## data:  age by headband
-## t = 0.35135, df = 135.47, p-value = 0.7259
+## t = 0.4, df = 100, p-value = 0.7
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -1.030754  1.476126
+##  -1.0  1.5
 ## sample estimates:
 ##  mean in group no mean in group yes 
-##          27.55752          27.33484</code></pre></div>
+##                28                27</code></pre></div>
 <p>With a p-value of 0.7259, we don’t have sufficient evidence say there is a difference in the men age of pirates who wear headbands and those that do not.</p>
 <p>Next, let’s test if there a significant correlation between a pirate’s height and weight using the <code>cor.test()</code> function:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor.test</span>(<span class="dt">formula =</span> <span class="op">~</span><span class="st"> </span>height <span class="op">+</span><span class="st"> </span>weight,
@@ -457,13 +460,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##  Pearson&#39;s product-moment correlation
 ## 
 ## data:  height and weight
-## t = 81.161, df = 998, p-value &lt; 2.2e-16
+## t = 80, df = 1000, p-value &lt;2e-16
 ## alternative hypothesis: true correlation is not equal to 0
 ## 95 percent confidence interval:
-##  0.9232371 0.9396050
+##  0.92 0.94
 ## sample estimates:
-##       cor 
-## 0.9318938</code></pre></div>
+##  cor 
+## 0.93</code></pre></div>
 <p>We got a p-value of <code>p &lt; 2.2e-16</code>, that’s scientific notation for <code>p &lt; .00000000000000016</code> – which is pretty much 0. Thus, we’d conclude that there is a significant (positive) relationship between a pirate’s height and weight.</p>
 <p>Now, let’s do an ANOVA testing if there is a difference between the number of tattoos pirates have based on their favorite sword</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create tattoos model</span>
@@ -475,9 +478,9 @@ tat.sword.lm &lt;-<span class="st"> </span><span class="kw">lm</span>(<span clas
 ## Analysis of Variance Table
 ## 
 ## Response: tattoos
-##             Df Sum Sq Mean Sq F value    Pr(&gt;F)    
-## sword.type   3 1587.8  529.28  54.106 &lt; 2.2e-16 ***
-## Residuals  996 9743.1    9.78                      
+##             Df Sum Sq Mean Sq F value Pr(&gt;F)    
+## sword.type   3   1588     529    54.1 &lt;2e-16 ***
+## Residuals  996   9743      10                   
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre></div>
 <p>Sure enough, we see another very small p-value of <code>p &lt; 2.2e-16</code>, suggesting that the number of tattoos pirate’s have are different based on their favorite sword.</p>

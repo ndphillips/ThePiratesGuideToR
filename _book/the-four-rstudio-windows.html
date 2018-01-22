@@ -114,9 +114,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1.5.3" data-path="r-resources.html"><a href="r-resources.html#other-r-books"><i class="fa fa-check"></i><b>1.5.3</b> Other R books</a></li>
 </ul></li>
 <li class="chapter" data-level="1.6" data-path="who-am-i.html"><a href="who-am-i.html"><i class="fa fa-check"></i><b>1.6</b> Who am I?</a><ul>
-<li class="chapter" data-level="1.6.1" data-path="who-am-i.html"><a href="who-am-i.html#acknowledgements"><i class="fa fa-check"></i><b>1.6.1</b> Acknowledgements</a></li>
+<li class="chapter" data-level="1.6.1" data-path="who-am-i.html"><a href="who-am-i.html#please-consider-a-donation"><i class="fa fa-check"></i><b>1.6.1</b> Please consider a donation!</a></li>
+<li class="chapter" data-level="1.6.2" data-path="who-am-i.html"><a href="who-am-i.html#acknowledgements"><i class="fa fa-check"></i><b>1.6.2</b> Acknowledgements</a></li>
 </ul></li>
-<li class="chapter" data-level="1.7" data-path="please-contribute.html"><a href="please-contribute.html"><i class="fa fa-check"></i><b>1.7</b> Please Contribute!</a></li>
+<li class="chapter" data-level="1.7" data-path="please-contribute.html"><a href="please-contribute.html"><i class="fa fa-check"></i><b>1.7</b> Please Contribute!</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="please-contribute.html"><a href="please-contribute.html#don"><i class="fa fa-check"></i><b>1.7.1</b> Don</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="started.html"><a href="started.html"><i class="fa fa-check"></i><b>2</b> Getting Started</a><ul>
 <li class="chapter" data-level="2.1" data-path="installing-base-r-and-rstudio.html"><a href="installing-base-r-and-rstudio.html"><i class="fa fa-check"></i><b>2.1</b> Installing Base-R and RStudio</a><ul>
@@ -433,11 +436,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="the-four-rstudio-windows" class="section level2">
 <h2><span class="header-section-number">2.2</span> The four RStudio Windows</h2>
-<p>When you open RStudio, you’ll see the following four windows (also called panes) shown in in Figure <a href="the-four-rstudio-windows.html#fig:rstudiowindows">2.2</a>. However, your windows might be in a different order that those in Figure <a href="the-four-rstudio-windows.html#fig:rstudiowindows">2.2</a>. If you’d like, you can change the order of the windows under RStudio preferences. You can also change their shape by either clicking the minimize or maximize buttons on the top right of each panel, or by clicking and dragging the middle of the borders of the windows.</p>
+<p>When you open RStudio, you’ll see the following four windows (also called panes) shown in in Figure <a href="the-four-rstudio-windows.html#fig:rstudiowindows">1.7</a>. However, your windows might be in a different order that those in Figure <a href="the-four-rstudio-windows.html#fig:rstudiowindows">1.7</a>. If you’d like, you can change the order of the windows under RStudio preferences. You can also change their shape by either clicking the minimize or maximize buttons on the top right of each panel, or by clicking and dragging the middle of the borders of the windows.</p>
 <div class="figure" style="text-align: center"><span id="fig:rstudiowindows"></span>
 <img src="images/RStudio_Screenshot_Labels.png" alt="The four panes of RStudio." width="100%" />
 <p class="caption">
-Figure 2.2: The four panes of RStudio.
+Figure 1.7: The four panes of RStudio.
 </p>
 </div>
 <p>Now, let’s see what each window does in detail.</p>
@@ -446,7 +449,7 @@ Figure 2.2: The four panes of RStudio.
 <div class="figure" style="text-align: center"><span id="fig:sourcewindow"></span>
 <img src="images/piratesanalysisss.png" alt="The Source contains all of your individual R scripts. The code won't be evaluated until you send it to the Console." width="100%" />
 <p class="caption">
-Figure 2.3: The Source contains all of your individual R scripts. The code won’t be evaluated until you send it to the Console.
+Figure 1.8: The Source contains all of your individual R scripts. The code won’t be evaluated until you send it to the Console.
 </p>
 </div>
 <p>The source pane is where you create and edit ``R Scripts&quot; - your collections of code. Don’t worry, R scripts are just text files with the “.R” extension. When you open RStudio, it will automatically start a new Untitled script. Before you start typing in an untitled R script, you should always save the file under a new file name (like, “2015PirateSurvey.R”). That way, if something on your computer crashes while you’re working, R will have your code waiting for you when you re-open RStudio.</p>
@@ -458,7 +461,7 @@ Figure 2.3: The Source contains all of your individual R scripts. The code won�
 <div class="figure"><span id="fig:consolewindow"></span>
 <img src="images/consoless.png" alt="The console the calculation heart of R. All of your code will (eventually) go through here." width="75%" />
 <p class="caption">
-Figure 2.4: The console the calculation heart of R. All of your code will (eventually) go through here.
+Figure 1.9: The console the calculation heart of R. All of your code will (eventually) go through here.
 </p>
 </div>
 <p>The console is the heart of R. Here is where R actually evaluates code. At the beginning of the console you’ll see the character . This is a prompt that tells you that R is ready for new code. You can type code directly into the console after the  prompt and get an immediate response. For example, if you type 1+1 into the console and press enter, you’ll see that R immediately gives an output of 2.</p>
@@ -473,7 +476,7 @@ Figure 2.4: The console the calculation heart of R. All of your code will (event
 <div class="figure"><span id="fig:environment"></span>
 <img src="images/environmentss.png" alt="The environment panel shows you all the objects you have defined in your current workspace. You'll learn more about workspaces in Chapter 7." width="75%" />
 <p class="caption">
-Figure 2.5: The environment panel shows you all the objects you have defined in your current workspace. You’ll learn more about workspaces in Chapter 7.
+Figure 1.10: The environment panel shows you all the objects you have defined in your current workspace. You’ll learn more about workspaces in Chapter 7.
 </p>
 </div>
 <p>The Environment tab of this panel shows you the names of all the data objects (like vectors, matrices, and dataframes) that you’ve defined in your current R session. You can also see information like the number of observations and rows in data objects. The tab also has a few clickable actions like ``Import Dataset&quot; which will open a graphical user interface (GUI) for important data into R. However, I almost never look at this menu.</p>
@@ -487,7 +490,7 @@ Figure 2.5: The environment panel shows you all the objects you have defined in 
 <li><p>Files - The files panel gives you access to the file directory on your hard drive. One nice feature of the “Files” panel is that you can use it to set your working directory - once you navigate to a folder you want to read and save files to, click “More” and then “Set As Working Directory.” We’ll talk about working directories in more detail soon.</p></li>
 <li><p>Plots - The Plots panel (no big surprise), shows all your plots. There are buttons for opening the plot in a separate window and exporting the plot as a pdf or jpeg (though you can also do this with code using the <code>pdf()</code> or <code>jpeg()</code> functions.)</p></li>
 </ol>
-<p>Let’s see how plots are displayed in the Plots panel. Run the code on the right to display a histogram of the weights of chickens stored in the <code>ChickWeight</code> dataset. When you do, you should see a plot similar to the one in Figure <a href="the-four-rstudio-windows.html#fig:plotpanel">2.6</a> show up in the Plots panel.</p>
+<p>Let’s see how plots are displayed in the Plots panel. Run the code on the right to display a histogram of the weights of chickens stored in the <code>ChickWeight</code> dataset. When you do, you should see a plot similar to the one in Figure <a href="the-four-rstudio-windows.html#fig:plotpanel">1.11</a> show up in the Plots panel.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(<span class="dt">x =</span> ChickWeight<span class="op">$</span>weight,
      <span class="dt">main =</span> <span class="st">&quot;Chicken Weights&quot;</span>,
      <span class="dt">xlab =</span> <span class="st">&quot;Weight&quot;</span>,
@@ -496,7 +499,7 @@ Figure 2.5: The environment panel shows you all the objects you have defined in 
 <div class="figure"><span id="fig:plotpanel"></span>
 <img src="images/plotpanelss.png" alt="The plot panel contains all of your plots, like this histogram of the distribution of chicken weights." width="75%" />
 <p class="caption">
-Figure 2.6: The plot panel contains all of your plots, like this histogram of the distribution of chicken weights.
+Figure 1.11: The plot panel contains all of your plots, like this histogram of the distribution of chicken weights.
 </p>
 </div>
 <ol start="3" style="list-style-type: decimal">

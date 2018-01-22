@@ -114,9 +114,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1.5.3" data-path="r-resources.html"><a href="r-resources.html#other-r-books"><i class="fa fa-check"></i><b>1.5.3</b> Other R books</a></li>
 </ul></li>
 <li class="chapter" data-level="1.6" data-path="who-am-i.html"><a href="who-am-i.html"><i class="fa fa-check"></i><b>1.6</b> Who am I?</a><ul>
-<li class="chapter" data-level="1.6.1" data-path="who-am-i.html"><a href="who-am-i.html#acknowledgements"><i class="fa fa-check"></i><b>1.6.1</b> Acknowledgements</a></li>
+<li class="chapter" data-level="1.6.1" data-path="who-am-i.html"><a href="who-am-i.html#please-consider-a-donation"><i class="fa fa-check"></i><b>1.6.1</b> Please consider a donation!</a></li>
+<li class="chapter" data-level="1.6.2" data-path="who-am-i.html"><a href="who-am-i.html#acknowledgements"><i class="fa fa-check"></i><b>1.6.2</b> Acknowledgements</a></li>
 </ul></li>
-<li class="chapter" data-level="1.7" data-path="please-contribute.html"><a href="please-contribute.html"><i class="fa fa-check"></i><b>1.7</b> Please Contribute!</a></li>
+<li class="chapter" data-level="1.7" data-path="please-contribute.html"><a href="please-contribute.html"><i class="fa fa-check"></i><b>1.7</b> Please Contribute!</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="please-contribute.html"><a href="please-contribute.html#don"><i class="fa fa-check"></i><b>1.7.1</b> Don</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="started.html"><a href="started.html"><i class="fa fa-check"></i><b>2</b> Getting Started</a><ul>
 <li class="chapter" data-level="2.1" data-path="installing-base-r-and-rstudio.html"><a href="installing-base-r-and-rstudio.html"><i class="fa fa-check"></i><b>2.1</b> Installing Base-R and RStudio</a><ul>
@@ -467,7 +470,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <tr class="even">
 <td align="left"><code>sd(x), var(x), range(x)</code></td>
 <td align="left"><code>sd(1:10)</code></td>
-<td align="left">3.0276504</td>
+<td align="left">3.03</td>
 </tr>
 <tr class="odd">
 <td align="left"><code>quantile(x, probs)</code></td>
@@ -487,9 +490,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">min</span>(tattoos)
 ## [1] 2
 <span class="kw">mean</span>(tattoos)
-## [1] 24.1
+## [1] 24
 <span class="kw">sd</span>(tattoos)
-## [1] 31.32074</code></pre></div>
+## [1] 31</code></pre></div>
 <div id="length" class="section level3">
 <h3><span class="header-section-number">6.2.1</span> length()</h3>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-121"></span>
@@ -562,17 +565,17 @@ x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n
 
 <span class="co"># What are the mean and standard deviation of the sample?</span>
 <span class="kw">mean</span>(x)
-## [1] 10.55418
+## [1] 11
 <span class="kw">sd</span>(x)
-## [1] 2.517902</code></pre></div>
+## [1] 2.5</code></pre></div>
 <p>As you can see, the mean and standard deviation of our sample vector are close to the population values of 10 and 5 – but they aren’t exactly the same because these are sample data. If we take a much larger sample (say, 100,000), the sample statistics should get much closer to the population values:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 100,000 samples from a Normal dist with mean = 10, sd = 5</span>
 y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">100000</span>, <span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="dv">5</span>)
 
 <span class="kw">mean</span>(y)
-## [1] 10.00756
+## [1] 10
 <span class="kw">sd</span>(y)
-## [1] 4.99587</code></pre></div>
+## [1] 5</code></pre></div>
 <p>Yep, sure enough our new sample y (containing 100,000 values) has a sample mean and standard deviation much closer (almost identical) to the population values than our sample x (containing only 5 values). This is an example of what is called the law of large numbers. Google it.</p>
 </div>
 </div>

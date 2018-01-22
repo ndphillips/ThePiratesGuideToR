@@ -114,9 +114,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1.5.3" data-path="r-resources.html"><a href="r-resources.html#other-r-books"><i class="fa fa-check"></i><b>1.5.3</b> Other R books</a></li>
 </ul></li>
 <li class="chapter" data-level="1.6" data-path="who-am-i.html"><a href="who-am-i.html"><i class="fa fa-check"></i><b>1.6</b> Who am I?</a><ul>
-<li class="chapter" data-level="1.6.1" data-path="who-am-i.html"><a href="who-am-i.html#acknowledgements"><i class="fa fa-check"></i><b>1.6.1</b> Acknowledgements</a></li>
+<li class="chapter" data-level="1.6.1" data-path="who-am-i.html"><a href="who-am-i.html#please-consider-a-donation"><i class="fa fa-check"></i><b>1.6.1</b> Please consider a donation!</a></li>
+<li class="chapter" data-level="1.6.2" data-path="who-am-i.html"><a href="who-am-i.html#acknowledgements"><i class="fa fa-check"></i><b>1.6.2</b> Acknowledgements</a></li>
 </ul></li>
-<li class="chapter" data-level="1.7" data-path="please-contribute.html"><a href="please-contribute.html"><i class="fa fa-check"></i><b>1.7</b> Please Contribute!</a></li>
+<li class="chapter" data-level="1.7" data-path="please-contribute.html"><a href="please-contribute.html"><i class="fa fa-check"></i><b>1.7</b> Please Contribute!</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="please-contribute.html"><a href="please-contribute.html#don"><i class="fa fa-check"></i><b>1.7.1</b> Don</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="started.html"><a href="started.html"><i class="fa fa-check"></i><b>2</b> Getting Started</a><ul>
 <li class="chapter" data-level="2.1" data-path="installing-base-r-and-rstudio.html"><a href="installing-base-r-and-rstudio.html"><i class="fa fa-check"></i><b>2.1</b> Installing Base-R and RStudio</a><ul>
@@ -439,7 +442,7 @@ tattoos &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv"
 
 <span class="co"># 2: Apply the mean() function to the tattoos object</span>
 <span class="kw">mean</span>(tattoos)
-## [1] 23.83333</code></pre></div>
+## [1] 24</code></pre></div>
 <p>What is an object? An object is a thing – like a number, a dataset, a summary statistic like a mean or standard deviation, or a statistical test. Objects come in many different shapes and sizes in R. There are simple objects like  which represent single numbers, <strong>vectors</strong> (like our <code>tattoos</code> object above) which represent several numbers, more complex objects like <strong>dataframes</strong> which represent tables of data, and even more complex objects like <strong>hypothesis tests</strong> or <strong>regression</strong> which contain all sorts of statistical information.</p>
 <p>Different types of objects have different <em>attributes</em>. For example, a vector of data has a length attribute (i.e.; how many numbers are in the vector), while a hypothesis test has many attributes such as a test-statistic and a p-value. Don’t worry if this is a bit confusing now – it will all become clearer when you meet these new objects in person in later chapters. For now, just know that objects in R are things, and different objects have different attributes.</p>
 <p>What is a function? A function is a <em>procedure</em> that typically takes one or more objects as arguments (aka, inputs), does something with those objects, then returns a new object. For example, the <code>mean()</code> function we used above takes a vector object, like <code>tattoos</code>, of numeric data as an argument, calculates the arithmetic mean of those data, then returns a single number (a scalar) as a result.A great thing about R is that you can easily create your own functions that do whatever you want – but we’ll get to that much later in the book. Thankfully, R has hundreds (thousands?) of built-in functions that perform most of the basic analysis tasks you can think of.</p>
@@ -562,12 +565,12 @@ PLUNDER &lt;-<span class="st"> </span><span class="dv">5</span></code></pre></di
 <p>Now, my fellow European pirates might want to know how much this is in Euros. Let’s create a new object called <code>{blackpearl.eur</code> which converts our original value to Euros by multiplying the original amount by 0.88 (assuming 1 USD = 0.88 EUR)</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">blackpearl.eur &lt;-<span class="st"> </span>blackpearl.usd <span class="op">*</span><span class="st"> </span><span class="fl">0.88</span>
 blackpearl.eur
-## [1] 558759611</code></pre></div>
+## [1] 5.6e+08</code></pre></div>
 <p>It looks like the movie made 558,759,611 in Euros. Not bad. Now, let’s see how much more Pirates of the Caribbean 2: Dead Man’s Chest made compared to “Curse of the Black Pearl.” Another Google search uncovered that Dead Man’s Chest made $1,066,215,812 (that wasn’t a mistype, the freaking movie made over a billion dollars).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">deadman.usd &lt;-<span class="st"> </span><span class="dv">1066215812</span></code></pre></div>
 <p>Now, I’ll divide <code>deadman.usd</code> by <code>blackpearl.usd</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">deadman.usd <span class="op">/</span><span class="st"> </span>blackpearl.usd
-## [1] 1.679201</code></pre></div>
+## [1] 1.7</code></pre></div>
 <p>It looks like “Dead Man’s Chest” made 168% as much as “Curse of the Black Pearl” - not bad for two movies based off of a ride from Disneyland.</p>
 </div>
 </div>

@@ -114,9 +114,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1.5.3" data-path="r-resources.html"><a href="r-resources.html#other-r-books"><i class="fa fa-check"></i><b>1.5.3</b> Other R books</a></li>
 </ul></li>
 <li class="chapter" data-level="1.6" data-path="who-am-i.html"><a href="who-am-i.html"><i class="fa fa-check"></i><b>1.6</b> Who am I?</a><ul>
-<li class="chapter" data-level="1.6.1" data-path="who-am-i.html"><a href="who-am-i.html#acknowledgements"><i class="fa fa-check"></i><b>1.6.1</b> Acknowledgements</a></li>
+<li class="chapter" data-level="1.6.1" data-path="who-am-i.html"><a href="who-am-i.html#please-consider-a-donation"><i class="fa fa-check"></i><b>1.6.1</b> Please consider a donation!</a></li>
+<li class="chapter" data-level="1.6.2" data-path="who-am-i.html"><a href="who-am-i.html#acknowledgements"><i class="fa fa-check"></i><b>1.6.2</b> Acknowledgements</a></li>
 </ul></li>
-<li class="chapter" data-level="1.7" data-path="please-contribute.html"><a href="please-contribute.html"><i class="fa fa-check"></i><b>1.7</b> Please Contribute!</a></li>
+<li class="chapter" data-level="1.7" data-path="please-contribute.html"><a href="please-contribute.html"><i class="fa fa-check"></i><b>1.7</b> Please Contribute!</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="please-contribute.html"><a href="please-contribute.html#don"><i class="fa fa-check"></i><b>1.7.1</b> Don</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="started.html"><a href="started.html"><i class="fa fa-check"></i><b>2</b> Getting Started</a><ul>
 <li class="chapter" data-level="2.1" data-path="installing-base-r-and-rstudio.html"><a href="installing-base-r-and-rstudio.html"><i class="fa fa-check"></i><b>2.1</b> Installing Base-R and RStudio</a><ul>
@@ -440,11 +443,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3><span class="header-section-number">2.5.1</span> R is not ready (&gt;)</h3>
 <p>Another very common problem occurs when R does not seem to be responding to your code. That is, you might run some code like <code>mean(x)</code> expecting some output, but instead, nothing happens. This can be very frustrating because, rather than getting an error, just nothing happens at all. The most common reason for this is because R isn’t <em>ready</em> for new code, instead, it is <em>waiting</em> for you to finish code you started earlier, but never properly finished.</p>
 <p>Think about it this way, R can be in one of two states: it is either <strong>Ready</strong> (&gt;) for new code, or it is <strong>Waiting</strong> (+) for you to finish old code. To see which state R is in, all you have to do is look at the symbol on the console. The <code>&gt;</code> symbol means that R is Ready for new code – this is usually what you want to see. The <code>+</code> symbol means that R is Waiting for you to (properly) finish code you started before. If you see the <code>+</code> symbol, then no matter how much new code you write, R won’t actually evaluate it until you finish the code you started before.</p>
-<p>Thankfully there is an easy solution to this problem (See Figure <a href="debugging.html#fig:rstate">2.10</a>): Just hit the escape key on your keyboard. This will cancel R’s waiting state and make it Ready!</p>
+<p>Thankfully there is an easy solution to this problem (See Figure <a href="debugging.html#fig:rstate">1.15</a>): Just hit the escape key on your keyboard. This will cancel R’s waiting state and make it Ready!</p>
 <div class="figure" style="text-align: center"><span id="fig:rstate"></span>
 <img src="images/escapesolution.png" alt="To turn R from a Waiting (+) state to a Ready (&gt;) state, just hit Escape." width="50%" />
 <p class="caption">
-Figure 2.10: To turn R from a Waiting (+) state to a Ready (&gt;) state, just hit Escape.
+Figure 1.15: To turn R from a Waiting (+) state to a Ready (&gt;) state, just hit Escape.
 </p>
 </div>
 </div>
@@ -487,7 +490,7 @@ Error: unexpected numeric constant in “mean(c(1. 4.”
 <p>Because I used periods instead of commas, I get the above error. Here is the correct version</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Correct</span>
 <span class="kw">mean</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>))
-## [1] 2.333333</code></pre></div>
+## [1] 2.3</code></pre></div>
 <p>If you include an extra space in the middle of the name of an object or function, you’ll receive an error. In the code below, I’ll accidentally write <code>Chick Weight</code> instead of <code>ChickWeight</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Wrong: Extra space in the ChickWeight object name</span>
 <span class="kw">head</span>(Chick Weight)</code></pre></div>

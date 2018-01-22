@@ -403,18 +403,18 @@ max(subset(piratesurvey,
 ```
 
 
-5. What percent of pirates under the age of 32 were female?
+5. What percent of pirates under the age of 25 were female?
 
 ```{r}
 with(piratesurvey, 
-     mean(sex[age < 32] == "F"))
+     mean(sex[age < 25] == "F"))
 ```
 
-6. What percent of female pirates are under the age of 32?
+6. What percent of female pirates are under the age of 25?
   
 ```{r}
 with(piratesurvey, 
-     mean(sex[age < 32] == "F"))
+     mean(age[sex == "F"] < 25))
 ```
 
 7. Add a new column to the dataframe called `tattoos.per.year` which shows how many tattoos each pirate has for each year in their life.

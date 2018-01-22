@@ -601,11 +601,11 @@ health <- data.frame("age" = c(32, 24, 43, 19, 43),
 health
 ```
 
-Now let's say we want to add a new column called `bmi` which represents a person's body mass index. The formula for bmi is $bmi = \frac{height}{weight^{2}} \times 703$. If we wanted to calculate the bmi of each person, we'd need to write `health$height / health$weight ^ 2`:
+Now let's say we want to add a new column called `bmi` which represents a person's body mass index (BMI). The formula for bmi is $bmi = \frac{weight}{height^{2}}$, where height is in meters and weight is in kilograms. If we wanted to calculate the bmi of each person, we'd need to write `health$weight / health$height ^ 2`:
 
 ```{r}
 # Calculate bmi
-health$height / health$weight ^ 2
+health$weight / health$height ^ 2
 ```
 
 As you can see, we have to retype the name of the dataframe for each column. However, using the `with()` function, we can make it a bit easier by saying the name of the dataframe once.

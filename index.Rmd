@@ -160,13 +160,19 @@ knitr::include_graphics("images/beer.jpg")
 
 My name is Nathaniel -- not Nathan...not Nate...and *definitely* not Nat. I am a psychologist with a background in statistics and judgment and decision making. You can find my R (and non-R) related musings at [http://ndphillips.github.io](http://ndphillips.github.io)
 
+### Please consider a donation!
+
+I am a huge proponent of open source software (like R) and open science. So a version of this book will always be freely available! That said translating and updating the book takes quite a bit of time. So if you like the book, and want to see it get even better with more pirate-speak and terrible jokes, consider throwing some gold my way at [paypal.me/ThePiratesGuideToR](paypal.me/ThePiratesGuideToR), It really means a lot to me!
+
 ### Acknowledgements
 
 I am deeply indebted to many people for either directly or indirectly helping me make this book happen. I would especially like to thank [Captain Thomas Moore](https://www.grinnell.edu/users/mooret) and [Captain Wei Linn](http://www.math.ohiou.edu/people/directory/linwei) for my early training in both statistics and R, [Captain Hansjoerg Neth](https://www.spds.uni-konstanz.de/hans-neth) for teaching me LaTeX and ultimately inspiring me to write (I mean translate) this book, and [Captain Dirk Wulff](https://psycho.unibas.ch/fakultaet/personen/profil/person/wulff/) for teaching me almost everything I know about R. If I hadn't been lucky enough to meet just one of these people, this book would not exist.
 
 ## Please Contribute!
 
-I am grateful for comments, questions, bug reports, and requests to future editions of the book! If there's anything you'd like to add or share, please contact me via email at yarrr.book@gmail.com, or if you are familiar with GitHub, post an issue at  [https://github.com/ndphillips/ThePiratesGuideToR/issues](https://github.com/ndphillips/ThePiratesGuideToR/issues). Contributers will be added to the R pirate 
+I am grateful for comments, questions, bug reports, and requests to future editions of the book! If there's anything you'd like to add or share, please contact me via email at yarrr.book@gmail.com, or if you are familiar with GitHub, post an issue at  [https://github.com/ndphillips/ThePiratesGuideToR/issues](https://github.com/ndphillips/ThePiratesGuideToR/issues).
 
+I would like to thank the following R pirates who have helped me track down typos, errors, and poorly phrased jokes in earlier versions of this book: Rikke Elgaard Christensen, Jean-Eudes Fahrner.
 
+### Don
 
