@@ -15,11 +15,11 @@ library(yarrr)
 ```{r, eval = FALSE}
 thisone <- 1
 THISONE <- 2
-1This <- 3
+1This <- 3              # this one starts with a number
 this.one <- 3
 This.1 <- 4
 ThIS.....ON...E <- 5
-This!One! <- 6           # only this one!
+This!One! <- 6           # this one has invalid symbols
 lkjasdfkjsdf <- 7
 ```
 
