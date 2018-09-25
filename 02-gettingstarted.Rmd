@@ -68,7 +68,7 @@ The source pane is where you create and edit "R Scripts" - your collections of c
 
 You'll notice that when you're typing code in a script in the Source panel, R won't actually evaluate the code as you type. To have R actually evaluate your code, you need to first 'send' the code to the Console (we'll talk about this in the next section).
 
-There are many ways to send your code from the Source to the console. The slowest way is to copy and paste. A faster way is to highlight the code you wish to evaluate and clicking on the "Run" button on the top right of the Source. Alternatively, you can use the hot-key "Command + Return" on Mac, or "Control + Enter" on PC to send all highlighted code to the console.
+There are many ways to send your code from the Source to the Console. The slowest way is to copy and paste. A faster way is to highlight the code you wish to evaluate and clicking on the "Run" button on the top right of the Source. Alternatively, you can use the hot-key "Command + Return" on Mac, or "Control + Enter" on PC to send all highlighted code to the Console.
 
 
 ### Console: R's Heart
@@ -78,7 +78,7 @@ knitr::include_graphics(c("images/consoless.png"))
 ```
 
 
-The console is the heart of R. Here is where R actually evaluates code. At the beginning of the console you'll see the character `>`. This is a prompt that tells you that R is ready for new code. You can type code directly into the console after the `>` prompt and get an immediate response. For example, if you type 1+1 into the console and press enter, you'll see that R immediately gives an output of 2.
+The Console is the heart of R. Here is where R actually evaluates code. At the beginning of the Console you'll see the character `>`. This is a prompt that tells you that R is ready for new code. You can type code directly into the Console after the `>` prompt and get an immediate response. For example, if you type 1+1 into the Console and press enter, you'll see that R immediately gives an output of 2.
 
 ```{r}
 1+1
@@ -89,7 +89,7 @@ Try calculating 1+1 by typing the code directly into the Console - then press En
 
 **Tip**: Try to write most of your code in a document in the Source. Only type directly into the Console to de-bug or do quick analyses.
 
-So as you can see, you can execute code either by running it from the Source or by typing it directly into the Console. However, 99\% most of the time, you should be using the Source rather than the Console. The reason for this is straightforward: If you type code into the console, it won't be saved (though you can look back on your command History). And if you make a mistake in typing code into the Console, you'd have to re-type everything all over again. Instead, it's better to write all your code in the Source. When you are ready to execute some code, you can then send "Run" it to the console.
+So as you can see, you can execute code either by running it from the Source or by typing it directly into the Console. However, 99\% of the time, you should be using the Source rather than the Console. The reason for this is straightforward: If you type code into the Console, it won't be saved (though you can look back on your command History). And if you make a mistake in typing code into the Console, you'd have to re-type everything all over again. Instead, it's better to write all your code in the Source. When you are ready to execute some code, you can then send "Run" it to the console.
 
 
 ### Environment / History
