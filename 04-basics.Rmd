@@ -173,7 +173,7 @@ plot(x = movies$budget,
 
 See how much better that second chunk of code looks? Not only do the comments tell us the purpose behind the code, but there are spaces and line-breaks separating distinct elements.
 
-There are a lot more aspects of good code formatting. For a list of recommendations on how to make your code easier to follow, check out Google's own company R Style guide at [https://google-styleguide.googlecode.com/svn/trunk/Rguide.xml](https://google-styleguide.googlecode.com/svn/trunk/Rguide.xml)
+There are a lot more aspects of good code formatting. For a list of recommendations on how to make your code easier to follow, check out Google's own company R Style guide at [https://google.github.io/styleguide/Rguide.xml](https://google.github.io/styleguide/Rguide.xml)
 
 ## Objects and functions
 
