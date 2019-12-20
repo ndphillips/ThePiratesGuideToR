@@ -169,7 +169,7 @@ t.test(formula = age ~ headband,
        alternative = 'two.sided')
 ```
 
-With a p-value of 0.7259, we don't have sufficient evidence say there is a difference in the men age of pirates who wear headbands and those that do not.
+With a p-value of 0.7259, we don't have sufficient evidence to say there is a difference in the mean age of pirates who wear headbands and those that do not.
 
 Next, let's test if there a significant correlation between a pirate's height and weight using the `cor.test()` function:
 
@@ -191,7 +191,7 @@ tat.sword.lm <- lm(formula = tattoos ~ sword.type,
 anova(tat.sword.lm)
 ```
 
-Sure enough, we see another very small p-value of `p < 2.2e-16`, suggesting that the number of tattoos pirate's have are different based on their favorite sword.
+Sure enough, we see another very small p-value of `p < 2.2e-16`, suggesting that the number of tattoos pirates have are different based on their favorite sword.
 
 ## Regression analysis
 
