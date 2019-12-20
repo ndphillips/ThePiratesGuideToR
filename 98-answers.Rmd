@@ -429,13 +429,13 @@ piratesurvey$tattoos.per.year <- with(piratesurvey, tattoos / age)
 piratesurvey$name[piratesurvey$tattoos.per.year == max(piratesurvey$tattoos.per.year)]
 ```
 
-9. What are the names of the female pirates whose favorite piratesurvey is Superman?
+9. What are the names of the female pirates whose favorite superhero is Superman?
   
 ```{r}
 piratesurvey$name[with(piratesurvey, sex == "F" & superhero == "Superman")]
 ```
   
-10. What was the median number of tattoos of pirates over the age of 20 whose favorite piratesurvey is Spiderman?
+10. What was the median number of tattoos of pirates over the age of 20 whose favorite superhero is Spiderman?
 
 ```{r}
 with(piratesurvey, (tattoos[age > 20 & superhero == "Spiderman"]))

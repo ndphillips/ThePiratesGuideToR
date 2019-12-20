@@ -244,6 +244,8 @@ To do an assignment, we use the almighty `<-` operator called *assign* To assign
 Good object names strike a balance between being easy to type (i.e.; short names) and interpret. If you have several datasets, it's probably not a good idea to name them `a`, `b`, `c` because you'll forget which is which. However, using long names like `March2015Group1OnlyFemales` will give you carpal tunnel syndrome.
 
 
+Let's start by creating a very simple object called `a` and assigning the value of 100 to it:
+
 ```{r}
 # Create a new object called a with a value of 100
 a <- 100
@@ -323,7 +325,9 @@ Phew, z is now 1. Because we used assignment, z has been updated. About freaking
 
 ### How to name objects
 
-You can create object names using any combination of letters and a few special characters (like `.` and `_`). Here are some valid object names
+Good object names strike a balance between being easy to type (i.e.; short names) and interpret. If you have several datasets, it's probably not a good idea to name them `a`, `b`, `c` because you'll forget which is which. However, using long names like `March2015Group1OnlyFemales` will give you carpal tunnel syndrome.
+
+You can name objects using any combination of letters and a few special characters (like `.` and `_`). Here are some valid object names:
 
 ```{r}
 # Valid object names
@@ -347,6 +351,7 @@ a! <- 50 # has an invalid character
 If you try running the code above in R, you will receive a warning message starting with <div class="error">Error: unexpected symbol</div> 
 Anytime you see this warning in R, it almost always means that you have a naming error of some kind.
 
+
 #### R is case-sensitive!
 
 ```{r datetext, fig.cap= "Like a text message, you should probably watch your use of capitalization in R.", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
@@ -355,6 +360,7 @@ knitr::include_graphics(c("images/datetext.png"))
 
 
 Like English, R is case-sensitive -- it R treats capital letters differently from lower-case letters. For example, the three following objects `Plunder`, `plunder` and `PLUNDER` are totally different objects in R:
+
 
 ```{r}
 # These are all different objects

@@ -22,7 +22,7 @@ plot(1, xlim = c(0, 4), ylim = c(-.5, 5),
 
 # scalar
 rect(rep(0, 1), rep(0, 1), rep(1, 1), rep(1, 1))
-text(.5, -.5, "scalar")
+text(.5, -.5, "Scalar")
 
 # Vector
 rect(rep(2, 5), 0:4, rep(3, 5), 1:5)
@@ -54,7 +54,7 @@ People are not objects. But R is full of them. Here are some of the basic ones.
 The simplest object type in R is a **scalar**. A scalar object is just a single value like a number or a name. In the previous chapter we defined several scalar objects. Here are examples of numeric scalars:
 
 ```{r}
-# Examples of numeric scalers
+# Examples of numeric scalars
 a <- 100
 b <- 3 / 100
 c <- (a + b) / b
@@ -63,7 +63,7 @@ c <- (a + b) / b
 Scalars don't have to be numeric, they can also be **characters** (also known as strings). In R, you denote characters using quotation marks. Here are examples of character scalars:
 
 ```{r}
-# Examples of character scalers
+# Examples of character scalars
 d <- "ship"
 e <- "cannon"
 f <- "Do any modern armies still use cannons?"
@@ -165,10 +165,10 @@ Here are some examples of the `a:b` function in action. As you'll see, you can g
 |     `length.out`|   The desired length of the final sequence (only use if you don't specify `by`)|
 
 
-The `seq()` function is a more flexible version of `a:b`. Like `a:b`, `seq()` allows you to create a sequence from a starting number to an ending number. However, `seq()`, has additional arguments that allow you to specify either the size of the steps between numbers, or the total length of the sequence:
+The `seq()` function is a more flexible version of `a:b`. Like `a:b`, `seq()` allows you to create a sequence from a starting number to an ending number. However, `seq()` has additional arguments that allow you to specify either the size of the steps between numbers, or the total length of the sequence.
 
 
-The `seq()` function has two new arguments `by` and `length.out`. If you use the `by` argument, the sequence will be in steps of the input to the `by` argument:
+The `seq()` function has two new arguments: `by` and `length.out`. If you use the `by` argument, the sequence will be in steps of the input to the `by` argument:
 
 
 ```{r}
@@ -179,7 +179,7 @@ seq(from = 1, to = 10, by = 1)
 seq(from = 0, to = 100, by = 10)
 ```
 
-If you use the `length.out` argument, the sequence will have length equal to `length.out`.
+If you use the `length.out` argument, the sequence will have a length equal to `length.out`.
 
 ```{r}
 # Create 10 numbers from 1 to 5
@@ -238,7 +238,7 @@ As you can see from the output, `my.vec` is stored as a character vector where a
 
 ## Generating random data
 
-Because R is a language built for statistics, it contains many functions that allow you generate random data -- either from a vector of data that you specify (like Heads or Tails from a coin), or from an established *probability distribution*, like the Normal or Uniform distribution.
+Because R is a language built for statistics, it contains many functions that allow you to generate random data -- either from a vector of data that you specify (like Heads or Tails from a coin), or from an established *probability distribution*, like the Normal or Uniform distribution.
 
 In the next section we'll go over the standard `sample()` function for drawing random values from a vector. We'll then cover some of the most commonly used probability distributions: Normal and Uniform.
 
@@ -304,12 +304,12 @@ sample(x = c("a", "b"),
 
 #### Ex: Simulating coin flips
 
-Let's simulate 10 flips of a fair coin, were the probably of getting either a Head or Tail is .50. Because all values are equally likely, we don't need to specify the `prob` argument
+Let's simulate 10 flips of a fair coin, where the probably of getting either a Head or Tail is .50. Because all values are equally likely, we don't need to specify the `prob` argument:
 
 ```{r}
 sample(x = c("H", "T"), # The possible values of the coin
-       size = 10,  # 10 flips
-       replace = TRUE) # Sampling with replacement
+       size = 10,       # 10 flips
+       replace = TRUE)  # Sampling with replacement
 ```
 
 Now let's change it by simulating flips of a biased coin, where the probability of Heads is 0.8, and the probability of Tails is 0.2. Because the probabilities of each outcome are no longer equal, we'll need to specify them with the `prob` argument:
@@ -342,7 +342,7 @@ points(runif(100, .1, .9),
 ```
 
 
-Now, let's sample drawing coins from a treasure chest Let's say the chest has 100 coins: 20 gold, 30 silver, and 50 bronze. Let's draw 10 random coins from this chest.
+Now, let's sample drawing coins from a treasure chest. Let's say the chest has 100 coins: 20 gold, 30 silver, and 50 bronze. Let's draw 10 random coins from this chest.
 
 ```{r}
 # Create chest with the 100 coins
@@ -364,7 +364,7 @@ In the next section, we'll cover how to generate random data from specified *pro
 We can use probability distributions to represent different types of data. For example, imagine you need to hire a new group of pirates for your crew. You have the option of hiring people from one of two different pirate training colleges that produce pirates of varying quality. One college "Pirate Training Unlimited" might tend to pirates that are generally ok - never great but never terrible. While another college "Unlimited Pirate Training" might produce pirates with a wide variety of quality, from very low to very high. In Figure \@ref(fig:piratecollege) I plotted 5 example pirates from each college, where each pirate is shown as a ball with a number written on it. As you can see, pirates from PTU all tend to be clustered between 40 and 60 (not terrible but not great), while pirates from UPT are all over the map, from 0 to 100. We can use probability distributions (in this case, the uniform distribution) to mathematically define how likely any possible value is to be drawn at random from a distribution. We could describe Pirate Training Unlimited with a uniform distribution with a small range, and Unlimited Pirate Training with a second uniform distribution with a wide range.
 
 
-```{r piratecollege, fig.cap = "Sampling 5 potential pirates from two different pirate colleges. Pirate Training Unlimited (PTU) consistently produces average pirates (with scores between 40 and 60), while Unlimited Pirate Training (UPT), produces a wide range of pirates from 0 to 100.", echo = FALSE}
+```{r piratecollege, fig.cap = "Sampling 5 potential pirates from two different pirate colleges. Pirate Training Unlimited (PTU) consistently produces average pirates (with scores between 40 and 60), while Unlimited Pirate Training (UPT), produces a wide range of pirates from 10 to 90.", echo = FALSE}
 # Create blank plot
 plot(1, xlim = c(0, 100), ylim = c(0, 100),
      xlab = "Pirate Quality", ylab = "", type = "n",

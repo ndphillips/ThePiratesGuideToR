@@ -69,7 +69,7 @@ old.black.bsale <- subset(bsale, color == "black" & age > 50)
 
 By now, you should be comfortable with scalar and vector objects. However, you may have noticed that neither object types are appropriate for storing lots of data -- such as the results of a survey or experiment. Thankfully, R has two object types that represent large data structures much better: **matrices** and **dataframes**.
 
-Matrices and dataframes are very similar to spreadsheets in Excel or data files in SPSS. Every matrix or dataframe contains rows (call that number m) and columns (n). Thus, wile a vector has 1 dimension (its length), matrices and dataframes both have 2-dimensions -- representing their width and height. You can think of a matrix or dataframe as a combination of `n` vectors, where each vector has a length of `m`. 
+Matrices and dataframes are very similar to spreadsheets in Excel or data files in SPSS. Every matrix or dataframe contains rows (call that number m) and columns (n). Thus, while a vector has 1 dimension (its length), matrices and dataframes both have 2-dimensions -- representing their width and height. You can think of a matrix or dataframe as a combination of `n` vectors, where each vector has a length of `m`. 
 
 ```{r, fig.cap = "scalar, Vector, MATRIX", echo = FALSE}
 # scalar v vector v matrix
