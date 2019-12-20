@@ -167,11 +167,10 @@ Now, let's do some basic hypothesis tests. First, let's conduct a two-sample t-t
 t.test(formula = age ~ headband,
        data = pirates,
        alternative = 'two.sided')
-```
 
-With a p-value of 0.7259, we don't have sufficient evidence to say there is a difference in the mean age of pirates who wear headbands and those that do not.
+With a p-value of 0.7259, we don't have sufficient evidence to say there is a difference in the mean age of pirates who wear headbands and those who do not.
 
-Next, let's test if there a significant correlation between a pirate's height and weight using the `cor.test()` function:
+Next, let's test if there is a significant correlation between a pirate's height and weight using the `cor.test()` function:
 
 ```{r}
 cor.test(formula = ~ height + weight,
@@ -218,7 +217,7 @@ install.packages('BayesFactor')
 library(BayesFactor)
 ```
 
-Now that the packages is installed and loaded, we're good to go! Let's do a Bayesian version of our earlier t-test asking if pirates who wear a headband are older or younger than those who do not.
+Now that the package is installed and loaded, we're good to go! Let's do a Bayesian version of our earlier t-test asking if pirates who wear a headband are older or younger than those who do not.
 
 ```{r}
 # Bayesian t-test comparing the age of pirates with and without headbands

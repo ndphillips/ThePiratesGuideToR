@@ -49,13 +49,13 @@ As you can see, R returned the (thankfully correct) value of 2. You'll notice th
 
 ## Writing R scripts in an editor
 
-There are certainly many cases where it makes sense to type code directly into the console. For example, to open a help menu for a new function with the ? command, to take a quick look at a dataset with the `head()` function, or to do simple calculations like `1+1`, you should type directly into the console. However, the problem with writing all your code in the console is that nothing that you write will be saved. So if you make an error, or want to make a change to some earlier code, you have to type it all over again. Not very efficient. For this (and many more reasons), you'll should write any important code that you want to save as an R script. An R script is just a bunch of R code in a single file. You can write an R script in any text editor, but you should save it with the `.R` suffix to make it clear that it contains R code.} in an editor. 
+There are certainly many cases where it makes sense to type code directly into the console. For example, to open a help menu for a new function with the ? command, to take a quick look at a dataset with the `head()` function, or to do simple calculations like `1+1`, you should type directly into the console. However, the problem with writing all your code in the console is that nothing that you write will be saved. So if you make an error, or want to make a change to some earlier code, you have to type it all over again. Not very efficient. For this (and many more reasons), you should write any important code that you want to save as an R script. An R script is just a bunch of R code in a single file. You can write an R script in any text editor, but you should save it with the `.R` suffix to make it clear that it contains R code.
 
 
 
 In RStudio, you'll write your R code in the...wait for it...*Source* window. To start writing a new R script in RStudio, click File -- New File -- R Script.
 
-**Shortcut!** To create a new script in R, you can also use the command--shift--N shortcut on Mac. I don't know what it is on PC...and I don't want to know.
+**Shortcut!** To create a new script in R, you can also use the command--shift--N shortcut on Mac. I don't know what it is on PC...and I don't want to know. (It's Ctrl--Shift--N)
 
 When you open a new script, you'll see a blank page waiting for you to write as much R code as you'd like. In Figure \@ref(fig:editor), I have a new script called `examplescript` with a few random calculations.
 
@@ -66,7 +66,7 @@ knitr::include_graphics(c("images/sourcess.png"))
 
 You can have several R scripts open in the source window in separate tabs (like I have above).
 
-### Send code from an source to the console
+### Send code from source to the console
 
 ```{r runcode, fig.cap= "To evaluate code from the source, highlight it and run it.", fig.margin = TRUE, echo = FALSE, out.width = "75%", fig.align='center'}
 knitr::include_graphics(c("images/runningcode.png"))
@@ -85,7 +85,7 @@ knitr::include_graphics(c("images/commandreturn.jpg"))
 ```
 
 
-99\% of the time, I use method 2, where I highlight the code I want, then use the Command--Return shortcut . However, method 3 is great for trouble-shooting code line-by-line.
+99\% of the time, I use method 2, where I highlight the code I want, then use the Command--Return shortcut. However, method 3 is great for trouble-shooting code line-by-line.
 
 ## A brief style guide: Commenting and spacing
 
@@ -191,7 +191,7 @@ What is an object? An object is a thing -- like a number, a dataset, a summary s
 
 Different types of objects have different *attributes*. For example, a vector of data has a length attribute (i.e.; how many numbers are in the vector), while a hypothesis test has many attributes such as a test-statistic and a p-value. Don't worry if this is a bit confusing now -- it will all become clearer when you meet these new objects in person in later chapters. For now, just know that objects in R are things, and different objects have different attributes.
  
-What is a function? A function is a *procedure* that typically takes one or more objects as arguments (aka, inputs), does something with those objects, then returns a new object. For example, the `mean()` function we used above takes a vector object, like `tattoos`, of numeric data as an argument, calculates the arithmetic mean of those data, then returns a single number (a scalar) as a result.A great thing about R is that you can easily create your own functions that do whatever you want -- but we'll get to that much later in the book. Thankfully, R has hundreds (thousands?) of built-in functions that perform most of the basic analysis tasks you can think of.
+What is a function? A function is a *procedure* that typically takes one or more objects as arguments (aka, inputs), does something with those objects, then returns a new object. For example, the `mean()` function we used above takes a vector object, like `tattoos`, of numeric data as an argument, calculates the arithmetic mean of those data, then returns a single number (a scalar) as a result. A great thing about R is that you can easily create your own functions that do whatever you want -- but we'll get to that much later in the book. Thankfully, R has hundreds (thousands?) of built-in functions that perform most of the basic analysis tasks you can think of.
 
 99\% of the time you are using R, you will do the following: 1) Define objects. 2) Apply functions to those objects. 3) Repeat!. Seriously, that's about it. However, as you'll soon learn, the hard part is knowing how to define objects they way you want them, and knowing which function(s) will accomplish the task you want for your objects.
 
@@ -235,11 +235,14 @@ mean(c(1, 10))
 
 ### Creating new objects with <-
 
-By now you know that you can use R to do simple calculations. But to really take advantage of R, you need to know how to create and manipulate objects. All of the data, analyses, and even plots, you use and create are, or can be, saved as objects in R. For example the `movies` dataset which we've used before is an object stored in the `yarrr` package. This object was defined in the `yarrr` package with the name `movies`. When you loaded the `yarrr` package with the `library('yarrr')` command, you told R to give you access to the `movies` object. Once the object was loaded, we could use it to calculate descriptive statistics, hypothesis tests, and to create plots.
+By now you know that you can use R to do simple calculations. But to really take advantage of R, you need to know how to create and manipulate objects. All of the data, analyses, and even plots, you use and create are, or can be, saved as objects in R. For example the `movies` dataset which we've used before is an object stored in the `yarrr` package. This object was defined in the `yarrr` package with the name `movies`. When you loaded the `yarrr` package with the `library(yarrr)` command, you told R to give you access to the `movies` object. Once the object was loaded, we could use it to calculate descriptive statistics, hypothesis tests, and to create plots.
 
 To create new objects in R, you need to do *object assignment*. Object assignment is our way of storing information, such as a number or a statistical test, into something we can easily refer to later. This is a pretty big deal. Object assignment allows us to store data objects under relevant names which we can then use to slice and dice specific data objects anytime we'd like to.
 
-To do an assignment, we use the almighty `<-` operator called *assign*. To assign something to a new object (or to change an existing object), use the notation `object <- ...`, where `object` is the new (or updated) object, and `...` is whatever you want to store in `object`.
+To do an assignment, we use the almighty `<-` operator called *assign* To assign something to a new object (or to change an existing object), use the notation `object <- ...`, where `object` is the new (or updated) object, and `...` is whatever you want to store in `object`. Let's start by creating a very simple object called `a` and assigning the value of 100 to it:
+
+Good object names strike a balance between being easy to type (i.e.; short names) and interpret. If you have several datasets, it's probably not a good idea to name them `a`, `b`, `c` because you'll forget which is which. However, using long names like `March2015Group1OnlyFemales` will give you carpal tunnel syndrome.
+
 
 Let's start by creating a very simple object called `a` and assigning the value of 100 to it:
 
@@ -345,7 +348,9 @@ a! <- 50 # has an invalid character
 ```
 
 
-If you try running the code above in R, you will receive a warning message starting with: <div class="error">Error: unexpected symbol</div> Anytime you see this warning in R, it almost always means that you have a naming error of some kind.
+If you try running the code above in R, you will receive a warning message starting with <div class="error">Error: unexpected symbol</div> 
+Anytime you see this warning in R, it almost always means that you have a naming error of some kind.
+
 
 #### R is case-sensitive!
 
@@ -354,7 +359,8 @@ knitr::include_graphics(c("images/datetext.png"))
 ```
 
 
-Like English, R is case-sensitive -- it treats capital letters differently from lower-case letters. For example, the four following objects `Plunder`, `plunder` and `PLUNDER` are totally different objects in R:
+Like English, R is case-sensitive -- it R treats capital letters differently from lower-case letters. For example, the three following objects `Plunder`, `plunder` and `PLUNDER` are totally different objects in R:
+
 
 ```{r}
 # These are all different objects
