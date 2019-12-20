@@ -191,7 +191,7 @@ tat.sword.lm <- lm(formula = tattoos ~ sword.type,
 anova(tat.sword.lm)
 ```
 
-Sure enough, we see another very small p-value of `p < 2.2e-16`, suggesting that the number of tattoos pirate's have are different based on their favorite sword.
+Sure enough, we see another very small p-value of `p < 2.2e-16`, suggesting that the number of tattoos pirates have are different based on their favorite sword.
 
 ## Regression analysis
 
