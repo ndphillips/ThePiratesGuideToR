@@ -239,10 +239,9 @@ By now you know that you can use R to do simple calculations. But to really take
 
 To create new objects in R, you need to do *object assignment*. Object assignment is our way of storing information, such as a number or a statistical test, into something we can easily refer to later. This is a pretty big deal. Object assignment allows us to store data objects under relevant names which we can then use to slice and dice specific data objects anytime we'd like to.
 
-To do an assignment, we use the almighty `<-` operator called *assign* To assign something to a new object (or to change an existing object), use the notation `object <- ...`}, where `object` is the new (or updated) object, and `...` is whatever you want to store in `object`. Let's start by creating a very simple object called `a` and assigning the value of 100 to it:
+To do an assignment, we use the almighty `<-` operator called *assign*. To assign something to a new object (or to change an existing object), use the notation `object <- ...`, where `object` is the new (or updated) object, and `...` is whatever you want to store in `object`.
 
-Good object names strike a balance between being easy to type (i.e.; short names) and interpret. If you have several datasets, it's probably not a good idea to name them `a`, `b`, `c` because you'll forget which is which. However, using long names like `March2015Group1OnlyFemales` will give you carpal tunnel syndrome.
-
+Let's start by creating a very simple object called `a` and assigning the value of 100 to it:
 
 ```{r}
 # Create a new object called a with a value of 100
@@ -323,7 +322,9 @@ Phew, z is now 1. Because we used assignment, z has been updated. About freaking
 
 ### How to name objects
 
-You can create object names using any combination of letters and a few special characters (like `.` and `_`). Here are some valid object names
+Good object names strike a balance between being easy to type (i.e.; short names) and interpret. If you have several datasets, it's probably not a good idea to name them `a`, `b`, `c` because you'll forget which is which. However, using long names like `March2015Group1OnlyFemales` will give you carpal tunnel syndrome.
+
+You can name objects using any combination of letters and a few special characters (like `.` and `_`). Here are some valid object names:
 
 ```{r}
 # Valid object names
@@ -344,7 +345,7 @@ a! <- 50 # has an invalid character
 ```
 
 
-If you try running the code above in R, you will receive a warning message starting with <div class="error">Error: unexpected symbol</div>. Anytime you see this warning in R, it almost always means that you have a naming error of some kind.
+If you try running the code above in R, you will receive a warning message starting with: <div class="error">Error: unexpected symbol</div> Anytime you see this warning in R, it almost always means that you have a naming error of some kind.
 
 #### R is case-sensitive!
 
@@ -353,7 +354,7 @@ knitr::include_graphics(c("images/datetext.png"))
 ```
 
 
-Like English, R is case-sensitive -- it R treats capital letters differently from lower-case letters. For example, the four following objects `Plunder`, `plunder` and `PLUNDER` are totally different objects in R:
+Like English, R is case-sensitive -- it treats capital letters differently from lower-case letters. For example, the four following objects `Plunder`, `plunder` and `PLUNDER` are totally different objects in R:
 
 ```{r}
 # These are all different objects
@@ -376,7 +377,7 @@ blackpearl.usd <- 634954103
 
 
 
-Now, my fellow European pirates might want to know how much this is in Euros. Let's create a new object called `{blackpearl.eur` which converts our original value to Euros by multiplying the original amount by 0.88 (assuming 1 USD = 0.88 EUR)
+Now, my fellow European pirates might want to know how much this is in Euros. Let's create a new object called `blackpearl.eur` which converts our original value to Euros by multiplying the original amount by 0.88 (assuming 1 USD = 0.88 EUR)
 
 ```{r}
 blackpearl.eur <- blackpearl.usd * 0.88
@@ -406,7 +407,7 @@ It looks like "Dead Man's Chest" made `r round(100 * round(deadman.usd / blackpe
 ## Test your R might!
 
 
-1. Create a new R script. Using comments, write your name, the date, and "Testing my Chapter 2 R Might" at the top of the script. Write your answers to the rest of these exercises on this script, and be sure to copy and paste the original questions using comments! Your script should **only** contain valid R code and comments. 
+1. Create a new R script. Using comments, write your name, the date, and "Testing my Chapter 4 R Might" at the top of the script. Write your answers to the rest of these exercises on this script, and be sure to copy and paste the original questions using comments! Your script should **only** contain valid R code and comments. 
 
 2. Which (if any) of the following objects names is/are invalid?
 
