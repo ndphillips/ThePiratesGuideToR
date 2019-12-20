@@ -407,7 +407,7 @@ It looks like "Dead Man's Chest" made `r round(100 * round(deadman.usd / blackpe
 ## Test your R might!
 
 
-1. Create a new R script. Using comments, write your name, the date, and "Testing my Chapter 2 R Might" at the top of the script. Write your answers to the rest of these exercises on this script, and be sure to copy and paste the original questions using comments! Your script should **only** contain valid R code and comments. 
+1. Create a new R script. Using comments, write your name, the date, and "Testing my Chapter 4 R Might" at the top of the script. Write your answers to the rest of these exercises on this script, and be sure to copy and paste the original questions using comments! Your script should **only** contain valid R code and comments. 
 
 2. Which (if any) of the following objects names is/are invalid?
 
