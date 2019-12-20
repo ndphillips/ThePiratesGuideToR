@@ -169,7 +169,7 @@ t.test(formula = age ~ headband,
        alternative = 'two.sided')
 ```
 
-With a p-value of 0.7259, we don't have sufficient evidence say there is a difference in the men age of pirates who wear headbands and those that do not.
+With a p-value of 0.7259, we don't have sufficient evidence to say there is a difference in the mean age of pirates who wear headbands and those that do not.
 
 Next, let's test if there a significant correlation between a pirate's height and weight using the `cor.test()` function:
 
