@@ -270,7 +270,7 @@ x > 0
 ```
 
 
-Now, we'll use `sum()` and `mean()` on that logical vector to see how many of the values in x are positive, and what percent are positive. We should find that there are 5 TRUE values, and that 50\% of the values (5 / 10) are TRUE.
+Now, we'll use `sum()` and `mean()` on that logical vector to see how many of the values in x are positive, and what percent are positive. We should find that there are 3 TRUE values, and that 37.5\% of the values (3 / 8) are TRUE.
 
 ```{r}
 sum(x > 0)
