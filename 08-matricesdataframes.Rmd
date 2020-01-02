@@ -139,9 +139,6 @@ cbind(x, y, z)
 rbind(x, y, z)
 ```
 
-
-### `matrix()`
-
 **Remember**: Matrices can either contain numbers *or* character vectors, not both!. If you try to create a matrix with both numbers and characters, it will turn all the numbers into characters:
 
 ```{r}
@@ -151,6 +148,8 @@ cbind(c(1, 2, 3, 4, 5),
       c("a", "b", "c", "d", "e"))
 ```
 
+
+### `matrix()`
 
 The `matrix()` function creates a matrix form a single vector of data. The function has 4 main inputs: `data` -- a vector of data, `nrow` -- the number of rows you want in the matrix, and `ncol` -- the number of columns you want in the matrix, and `byrow` -- a logical value indicating whether you want to fill the matrix by rows. Check out the help menu for the matrix function (`?matrix) to see some additional inputs.
 
