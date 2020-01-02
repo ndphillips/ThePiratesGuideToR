@@ -627,7 +627,7 @@ with(health, weight + height / age + 2 * height)
 ## Test your R might! Pirates and superheroes
 
 
-```{r, fig.cap= "This is a lesser-known superhero named Maggott who could 'transform his body to get superhuman strength and endurance, but to do so he needed to release two huge parasitic worms from his stomach cavity and have them eat things' (http://heavy.com/comedy/2010/04/the-20-worst-superheroes/). Yeah...I'm shocked this guy wasn't a hit.", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
+```{r, fig.cap= "This is a lesser-known superhero named Maggott who could 'transform his body to get superhuman strength and endurance, but to do so he needed to release two huge parasitic worms from his stomach cavity and have them eat things' (https://web.archive.org/web/20170715040556/http://heavy.com/comedy/2010/04/the-20-worst-superheroes/). Yeah...I'm shocked this guy wasn't a hit.", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
 knitr::include_graphics(c("images/maggot.jpg"))
 ```
 
