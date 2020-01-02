@@ -139,9 +139,6 @@ cbind(x, y, z)
 rbind(x, y, z)
 ```
 
-
-### `matrix()`
-
 **Remember**: Matrices can either contain numbers *or* character vectors, not both!. If you try to create a matrix with both numbers and characters, it will turn all the numbers into characters:
 
 ```{r}
@@ -151,6 +148,8 @@ cbind(c(1, 2, 3, 4, 5),
       c("a", "b", "c", "d", "e"))
 ```
 
+
+### `matrix()`
 
 The `matrix()` function creates a matrix form a single vector of data. The function has 4 main inputs: `data` -- a vector of data, `nrow` -- the number of rows you want in the matrix, and `ncol` -- the number of columns you want in the matrix, and `byrow` -- a logical value indicating whether you want to fill the matrix by rows. Check out the help menu for the matrix function (`?matrix) to see some additional inputs.
 
@@ -201,7 +200,7 @@ However, as I'm sure you'll discover, having R automatically convert your string
 
 To tell R to *not* convert your string columns to factors, you need to include the argument `stringsAsFactors = FALSE` when using functions such as `data.frame()`
 
-For example, let's look at the classes of the columns in the dataframe `survey` that we just created using the `str()` function (we'll go over this function in section XXX)
+For example, let's look at the classes of the columns in the dataframe `survey` that we just created using the `str()` function (we'll go over this function in section 8.3.2)
 
 ```{r}
 # Show me the structure of the survey dataframe
@@ -439,7 +438,7 @@ df[1:5, 2]
 
 
 
-```{r, fig.cap= "Ah the ToothGrowth dataframe. Yes, one of the dataframes stored in R contains data from an experiment testing the effectiveness of different doses of Vitamin C supplements on the growth of guinea pig teeth. The images I found by Googling ``guinea pig teeth'' were all pretty horrifying, so let's just go with this one.", fig.margin = TRUE, echo = FALSE, out.width = "30%", fig.align='center'}
+```{r, fig.cap= "Ah the ToothGrowth dataframe. Yes, one of the dataframes stored in R contains data from an experiment testing the effectiveness of different doses of Vitamin C supplements on the growth of guinea pig teeth. The images I found by Googling ''guinea pig teeth'' were all pretty horrifying, so let's just go with this one.", fig.margin = TRUE, echo = FALSE, out.width = "30%", fig.align='center'}
 knitr::include_graphics(c("images/guineapig.jpg"))
 ```
 
@@ -528,7 +527,7 @@ The `subset()` function is one of the most useful data management functions in R
 Table: (\#tab:subsetfunction) Main arguments for the `subset()` function.
 
 
-Let's use the `subset()` function to create a new, subsetted dataset from the `ToothGrowth` dataframe containing data from guinea pigs who had a tooth length less than 20cm (`len < 20`), given the OJ supplement (`supp == "OJ"`), and with a dose greater than or equal to 1 (`dose >= 1`):
+Let's use the `subset()` function to create a new, subsetted dataset from the `ToothGrowth` dataframe containing data from guinea pigs who had a tooth length less than 20 cm (`len < 20`), given the OJ supplement (`supp == "OJ"`), and with a dose greater than or equal to 1 (`dose >= 1`):
 
 ```{r}
 # Get rows of ToothGrowth where len < 20 AND supp == "OJ" AND dose >= 1
@@ -628,7 +627,7 @@ with(health, weight + height / age + 2 * height)
 ## Test your R might! Pirates and superheroes
 
 
-```{r, fig.cap= "This is a lesser-known superhero named Maggott who could 'transform his body to get superhuman strength and endurance, but to do so he needed to release two huge parasitic worms from his stomach cavity and have them eat things' (http://heavy.com/comedy/2010/04/the-20-worst-superheroes/). Yeah...I'm shocked this guy wasn't a hit.", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
+```{r, fig.cap= "This is a lesser-known superhero named Maggott who could 'transform his body to get superhuman strength and endurance, but to do so he needed to release two huge parasitic worms from his stomach cavity and have them eat things' (https://web.archive.org/web/20170715040556/http://heavy.com/comedy/2010/04/the-20-worst-superheroes/). Yeah...I'm shocked this guy wasn't a hit.", fig.margin = TRUE, echo = FALSE, out.width = "50%", fig.align='center'}
 knitr::include_graphics(c("images/maggot.jpg"))
 ```
 
