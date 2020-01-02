@@ -527,7 +527,7 @@ The `subset()` function is one of the most useful data management functions in R
 Table: (\#tab:subsetfunction) Main arguments for the `subset()` function.
 
 
-Let's use the `subset()` function to create a new, subsetted dataset from the `ToothGrowth` dataframe containing data from guinea pigs who had a tooth length less than 20cm (`len < 20`), given the OJ supplement (`supp == "OJ"`), and with a dose greater than or equal to 1 (`dose >= 1`):
+Let's use the `subset()` function to create a new, subsetted dataset from the `ToothGrowth` dataframe containing data from guinea pigs who had a tooth length less than 20 cm (`len < 20`), given the OJ supplement (`supp == "OJ"`), and with a dose greater than or equal to 1 (`dose >= 1`):
 
 ```{r}
 # Get rows of ToothGrowth where len < 20 AND supp == "OJ" AND dose >= 1
