@@ -438,7 +438,7 @@ df[1:5, 2]
 
 
 
-```{r, fig.cap= "Ah the ToothGrowth dataframe. Yes, one of the dataframes stored in R contains data from an experiment testing the effectiveness of different doses of Vitamin C supplements on the growth of guinea pig teeth. The images I found by Googling ``guinea pig teeth'' were all pretty horrifying, so let's just go with this one.", fig.margin = TRUE, echo = FALSE, out.width = "30%", fig.align='center'}
+```{r, fig.cap= "Ah the ToothGrowth dataframe. Yes, one of the dataframes stored in R contains data from an experiment testing the effectiveness of different doses of Vitamin C supplements on the growth of guinea pig teeth. The images I found by Googling ''guinea pig teeth'' were all pretty horrifying, so let's just go with this one.", fig.margin = TRUE, echo = FALSE, out.width = "30%", fig.align='center'}
 knitr::include_graphics(c("images/guineapig.jpg"))
 ```
 
