@@ -200,7 +200,7 @@ However, as I'm sure you'll discover, having R automatically convert your string
 
 To tell R to *not* convert your string columns to factors, you need to include the argument `stringsAsFactors = FALSE` when using functions such as `data.frame()`
 
-For example, let's look at the classes of the columns in the dataframe `survey` that we just created using the `str()` function (we'll go over this function in section XXX)
+For example, let's look at the classes of the columns in the dataframe `survey` that we just created using the `str()` function (we'll go over this function in section 8.3.2)
 
 ```{r}
 # Show me the structure of the survey dataframe
