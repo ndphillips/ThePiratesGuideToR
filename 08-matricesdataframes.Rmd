@@ -612,7 +612,7 @@ As you can see, we have to retype the name of the dataframe for each column. How
 
 ```{r}
 # Save typing by using with()
-with(health, height / weight ^ 2)
+with(health, weight / height ^ 2)
 ```
 
 As you can see, the results are identical. In this case, we didn't save so much typing. But if you are doing many calculations, then `with()` can save you a lot of typing. For example, contrast these two lines of code that perform identical calculations:
