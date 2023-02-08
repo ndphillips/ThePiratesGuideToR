@@ -218,7 +218,7 @@ All plots in R have margins surrounding them that separate the main plotting spa
 
 You can adjust the size of the margins by specifying a margin parameter using the syntax `par(mar = c(bottom, left, top, right))`, where the arguments `bottom`, `left` ... are the size of the margins. The default value for `mar` is c(5.1, 4.1, 4.1, 2.1). To change the size of the margins of a plot you must do so with `par(mar)` *before* you actually create the plot. 
 
-Let's see how this works by creating two plots with different margins:In the plot on the left, I'll set the margins to 3 on all sides. In the plot on the right, I'll set the margins to 6 on all sides.
+Let's see how this works by creating two plots with different margins:In the plot on the left, I'll set the margins to 2 on all sides. In the plot on the right, I'll set the margins to 5 on all sides.
 
 ```{r eval = FALSE}
 # First Plot with small margins
@@ -228,7 +228,7 @@ mtext("Small Margins", side = 3, line = 1, cex = 1.2)
 mtext("par(mar = c(2, 2, 2, 2))", side = 3)
 
 # Second Plot with large margins
-par(mar = c(5, 5, 5, 5)) # Set the margin on all sides to 6
+par(mar = c(5, 5, 5, 5)) # Set the margin on all sides to 5
 plot(1:10)
 mtext("Large Margins", side = 3, line = 1, cex = 1.2)
 mtext("par(mar = c(5, 5, 5, 5))", side = 3)
@@ -245,7 +245,7 @@ mtext("Small Margins", side = 3, line = 1, cex = 1.2)
 mtext("par(mar = c(2, 2, 2, 2))", side = 3)
 
 # Second Plot
-par(mar = c(5, 5, 5, 5)) # Set the margin on all sides to 6
+par(mar = c(5, 5, 5, 5)) # Set the margin on all sides to 5
 plot(1:10)
 mtext("Large Margins", side = 3, line = 1, cex = 1.2)
 mtext("par(mar = c(5, 5, 5, 5))", side = 3)
