@@ -117,13 +117,13 @@ Over the course of this book, you will be learning *lots* of new functions. Woul
 |:------------------------|:-----------|:-----------------------|
 |     R Basics| Tom Short |    [https://cran.r-project.org/doc/contrib/Short-refcard.pdf](https://cran.r-project.org/doc/contrib/Short-refcard.pdf)|
 |    Advanced R |   Arianne Colton and Sean Chen | [hhttps://www.rstudio.com/wp-content/uploads/2016/02/advancedR.pdf](https://www.rstudio.com/wp-content/uploads/2016/02/advancedR.pdf)|
-| Base R | [Mhairi McNeill](http://mhairihmcneill.com/) |http://github.com/rstudio/cheatsheets/raw/master/base-r.pdf|
-| Strings | [RStudio](https://www.rstudio.com) | https://github.com/rstudio/cheatsheets/raw/master/strings.pdf|
-| Data import| [RStudio](https://www.rstudio.com) | https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf|
-|Data transformation| [RStudio](https://www.rstudio.com) | https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf |
-|RStudio application| [RStudio](https://www.rstudio.com) | https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf|
-| Plotting with ggplot2 | [RStudio](https://www.rstudio.com) |https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf|
-| RMarkdown| [RStudio](https://www.rstudio.com) |https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf|
+| Base R | [Mhairi McNeill](http://mhairihmcneill.com/) |https://github.com/rstudio/cheatsheets/blob/main/base-r.pdf|
+| Strings | [RStudio](https://www.rstudio.com) | https://rstudio.github.io/cheatsheets/strings.pdf|
+| Data import| [RStudio](https://www.rstudio.com) | https://rstudio.github.io/cheatsheets/data-import.pdf|
+|Data transformation| [RStudio](https://www.rstudio.com) | https://rstudio.github.io/cheatsheets/data-transformation.pdf |
+|RStudio application| [RStudio](https://www.rstudio.com) | https://rstudio.github.io/cheatsheets/rstudio-ide.pdf|
+| Plotting with ggplot2 | [RStudio](https://www.rstudio.com) |https://rstudio.github.io/cheatsheets/data-visualization.pdf|
+| RMarkdown| [RStudio](https://www.rstudio.com) |https://rstudio.github.io/cheatsheets/rmarkdown.pdf|
 
 
 ### Getting R help and inspiration online
