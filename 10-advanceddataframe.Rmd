@@ -403,7 +403,7 @@ write.table(df, file = "data/caffeinestudy.txt", sep = "\t")
 
 You're in charge of analyzing the results of an experiment testing the effects of different forms of caffeine on a measure of performance. In the experiment, 100 participants were given either Green tea or coffee, in doses of either 1 or 5 servings. They then performed a cognitive test where higher scores indicate better performance.
 
-The data are stored in a tab--delimited dataframe at the following link: [https://raw.githubusercontent.com/ndphillips/ThePiratesGuideToR/master/data/caffeinestudy.txt](https://raw.githubusercontent.com/ndphillips/ThePiratesGuideToR/master/data/caffeinestudy.txt)
+The data are stored in a tab--delimited dataframe at the following link: [https://raw.githubusercontent.com/ndphillips/ThePiratesGuideToR/refs/heads/master/data/caffeinestudy.txt](https://raw.githubusercontent.com/ndphillips/ThePiratesGuideToR/refs/heads/master/data/caffeinestudy.txt)
 
 
 
@@ -412,8 +412,7 @@ The data are stored in a tab--delimited dataframe at the following link: [https:
 knitr::include_graphics(c("images/skullcaffeine.jpg"))
 ```
 
-1. Load the dataset from https://raw.githubusercontent.com/ndphillips/ThePiratesGuideToR/master/data/caffeinestudy.txt as a new dataframe called `caffeine`.
-
+1. Load the dataset from https://raw.githubusercontent.com/ndphillips/ThePiratesGuideToR/refs/heads/master/data/caffeinestudy.txt as a new dataframe called `caffeine`.
 
 2. Calculate the mean age for each gender
 
