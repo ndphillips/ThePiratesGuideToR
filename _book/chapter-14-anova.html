@@ -519,48 +519,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: decimal">
 <li>Is there a significant relationship between a pirate’s favorite pixar movie and the number of tattoos (s)he has? Conduct an appropriate ANOVA with <code>fav.pixar</code> as the independent variable, and <code>tattoos</code> as the dependent variable. If there is a significant relationship, conduct a post-hoc test to determine which levels of the independent variable(s) differ.</li>
 </ol>
-<div class="sourceCode" id="cb586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb586-1"><a href="chapter-14-anova.html#cb586-1" tabindex="-1"></a>pixar.aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(<span class="at">formula =</span> tattoos <span class="sc">~</span> fav.pixar,</span>
-<span id="cb586-2"><a href="chapter-14-anova.html#cb586-2" tabindex="-1"></a>             <span class="at">data =</span> pirates)</span>
-<span id="cb586-3"><a href="chapter-14-anova.html#cb586-3" tabindex="-1"></a></span>
-<span id="cb586-4"><a href="chapter-14-anova.html#cb586-4" tabindex="-1"></a><span class="fu">summary</span>(pixar.aov)</span>
-<span id="cb586-5"><a href="chapter-14-anova.html#cb586-5" tabindex="-1"></a><span class="do">##              Df Sum Sq Mean Sq F value Pr(&gt;F)</span></span>
-<span id="cb586-6"><a href="chapter-14-anova.html#cb586-6" tabindex="-1"></a><span class="do">## fav.pixar    14    226    16.1    1.43   0.13</span></span>
-<span id="cb586-7"><a href="chapter-14-anova.html#cb586-7" tabindex="-1"></a><span class="do">## Residuals   985  11105    11.3</span></span></code></pre></div>
+<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb585-1"><a href="chapter-14-anova.html#cb585-1" tabindex="-1"></a>pixar.aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(<span class="at">formula =</span> tattoos <span class="sc">~</span> fav.pixar,</span>
+<span id="cb585-2"><a href="chapter-14-anova.html#cb585-2" tabindex="-1"></a>             <span class="at">data =</span> pirates)</span>
+<span id="cb585-3"><a href="chapter-14-anova.html#cb585-3" tabindex="-1"></a></span>
+<span id="cb585-4"><a href="chapter-14-anova.html#cb585-4" tabindex="-1"></a><span class="fu">summary</span>(pixar.aov)</span>
+<span id="cb585-5"><a href="chapter-14-anova.html#cb585-5" tabindex="-1"></a><span class="do">##              Df Sum Sq Mean Sq F value Pr(&gt;F)</span></span>
+<span id="cb585-6"><a href="chapter-14-anova.html#cb585-6" tabindex="-1"></a><span class="do">## fav.pixar    14    226    16.1    1.43   0.13</span></span>
+<span id="cb585-7"><a href="chapter-14-anova.html#cb585-7" tabindex="-1"></a><span class="do">## Residuals   985  11105    11.3</span></span></code></pre></div>
 <p><em>Answer: No, there is no significant effect</em></p>
 <ol start="2" style="list-style-type: decimal">
 <li>Is there a significant relationship between a pirate’s favorite pirate and how many tattoos (s)he has? Conduct an appropriate ANOVA with <code>favorite.pirate</code> as the independent variable, and <code>tattoos</code> as the dependent variable. If there is a significant relationship, conduct a post-hoc test to determine which levels of the independent variable(s) differ.</li>
 </ol>
-<div class="sourceCode" id="cb587"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb587-1"><a href="chapter-14-anova.html#cb587-1" tabindex="-1"></a>favpirate.aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(<span class="at">formula =</span> tattoos <span class="sc">~</span> favorite.pirate,</span>
-<span id="cb587-2"><a href="chapter-14-anova.html#cb587-2" tabindex="-1"></a>                     <span class="at">data =</span> pirates)</span>
-<span id="cb587-3"><a href="chapter-14-anova.html#cb587-3" tabindex="-1"></a></span>
-<span id="cb587-4"><a href="chapter-14-anova.html#cb587-4" tabindex="-1"></a><span class="fu">summary</span>(favpirate.aov)</span>
-<span id="cb587-5"><a href="chapter-14-anova.html#cb587-5" tabindex="-1"></a><span class="do">##                  Df Sum Sq Mean Sq F value Pr(&gt;F)</span></span>
-<span id="cb587-6"><a href="chapter-14-anova.html#cb587-6" tabindex="-1"></a><span class="do">## favorite.pirate   5     83    16.6    1.47    0.2</span></span>
-<span id="cb587-7"><a href="chapter-14-anova.html#cb587-7" tabindex="-1"></a><span class="do">## Residuals       994  11248    11.3</span></span></code></pre></div>
+<div class="sourceCode" id="cb586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb586-1"><a href="chapter-14-anova.html#cb586-1" tabindex="-1"></a>favpirate.aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(<span class="at">formula =</span> tattoos <span class="sc">~</span> favorite.pirate,</span>
+<span id="cb586-2"><a href="chapter-14-anova.html#cb586-2" tabindex="-1"></a>                     <span class="at">data =</span> pirates)</span>
+<span id="cb586-3"><a href="chapter-14-anova.html#cb586-3" tabindex="-1"></a></span>
+<span id="cb586-4"><a href="chapter-14-anova.html#cb586-4" tabindex="-1"></a><span class="fu">summary</span>(favpirate.aov)</span>
+<span id="cb586-5"><a href="chapter-14-anova.html#cb586-5" tabindex="-1"></a><span class="do">##                  Df Sum Sq Mean Sq F value Pr(&gt;F)</span></span>
+<span id="cb586-6"><a href="chapter-14-anova.html#cb586-6" tabindex="-1"></a><span class="do">## favorite.pirate   5     83    16.6    1.47    0.2</span></span>
+<span id="cb586-7"><a href="chapter-14-anova.html#cb586-7" tabindex="-1"></a><span class="do">## Residuals       994  11248    11.3</span></span></code></pre></div>
 <p><em>Answer: No, there is no significant effect</em></p>
 <ol start="3" style="list-style-type: decimal">
 <li>Now, repeat your analysis from the previous two questions, but include both independent variables <code>fav.pixar</code> and <code>favorite.pirate</code> in the ANOVA. Do your conclusions differ when you include both variables?</li>
 </ol>
-<div class="sourceCode" id="cb588"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb588-1"><a href="chapter-14-anova.html#cb588-1" tabindex="-1"></a>pirpix.aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(<span class="at">formula =</span> tattoos <span class="sc">~</span> favorite.pirate <span class="sc">+</span> fav.pixar,</span>
-<span id="cb588-2"><a href="chapter-14-anova.html#cb588-2" tabindex="-1"></a>                  <span class="at">data =</span> pirates)</span>
-<span id="cb588-3"><a href="chapter-14-anova.html#cb588-3" tabindex="-1"></a></span>
-<span id="cb588-4"><a href="chapter-14-anova.html#cb588-4" tabindex="-1"></a><span class="fu">summary</span>(pirpix.aov)</span>
-<span id="cb588-5"><a href="chapter-14-anova.html#cb588-5" tabindex="-1"></a><span class="do">##                  Df Sum Sq Mean Sq F value Pr(&gt;F)</span></span>
-<span id="cb588-6"><a href="chapter-14-anova.html#cb588-6" tabindex="-1"></a><span class="do">## favorite.pirate   5     83    16.6    1.48   0.19</span></span>
-<span id="cb588-7"><a href="chapter-14-anova.html#cb588-7" tabindex="-1"></a><span class="do">## fav.pixar        14    218    15.6    1.39   0.15</span></span>
-<span id="cb588-8"><a href="chapter-14-anova.html#cb588-8" tabindex="-1"></a><span class="do">## Residuals       980  11029    11.2</span></span></code></pre></div>
+<div class="sourceCode" id="cb587"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb587-1"><a href="chapter-14-anova.html#cb587-1" tabindex="-1"></a>pirpix.aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(<span class="at">formula =</span> tattoos <span class="sc">~</span> favorite.pirate <span class="sc">+</span> fav.pixar,</span>
+<span id="cb587-2"><a href="chapter-14-anova.html#cb587-2" tabindex="-1"></a>                  <span class="at">data =</span> pirates)</span>
+<span id="cb587-3"><a href="chapter-14-anova.html#cb587-3" tabindex="-1"></a></span>
+<span id="cb587-4"><a href="chapter-14-anova.html#cb587-4" tabindex="-1"></a><span class="fu">summary</span>(pirpix.aov)</span>
+<span id="cb587-5"><a href="chapter-14-anova.html#cb587-5" tabindex="-1"></a><span class="do">##                  Df Sum Sq Mean Sq F value Pr(&gt;F)</span></span>
+<span id="cb587-6"><a href="chapter-14-anova.html#cb587-6" tabindex="-1"></a><span class="do">## favorite.pirate   5     83    16.6    1.48   0.19</span></span>
+<span id="cb587-7"><a href="chapter-14-anova.html#cb587-7" tabindex="-1"></a><span class="do">## fav.pixar        14    218    15.6    1.39   0.15</span></span>
+<span id="cb587-8"><a href="chapter-14-anova.html#cb587-8" tabindex="-1"></a><span class="do">## Residuals       980  11029    11.2</span></span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li>Finally, test if there is an interaction between <code>fav.pixar</code> and <code>favorite.pirate</code> on number of tattoos.</li>
 </ol>
-<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb589-1"><a href="chapter-14-anova.html#cb589-1" tabindex="-1"></a>pirpix.int.aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(<span class="at">formula =</span> tattoos <span class="sc">~</span> favorite.pirate <span class="sc">*</span> fav.pixar,</span>
-<span id="cb589-2"><a href="chapter-14-anova.html#cb589-2" tabindex="-1"></a>                      <span class="at">data =</span> pirates)</span>
-<span id="cb589-3"><a href="chapter-14-anova.html#cb589-3" tabindex="-1"></a></span>
-<span id="cb589-4"><a href="chapter-14-anova.html#cb589-4" tabindex="-1"></a><span class="fu">summary</span>(pirpix.int.aov)</span>
-<span id="cb589-5"><a href="chapter-14-anova.html#cb589-5" tabindex="-1"></a><span class="do">##                            Df Sum Sq Mean Sq F value Pr(&gt;F)</span></span>
-<span id="cb589-6"><a href="chapter-14-anova.html#cb589-6" tabindex="-1"></a><span class="do">## favorite.pirate             5     83    16.6    1.47   0.20</span></span>
-<span id="cb589-7"><a href="chapter-14-anova.html#cb589-7" tabindex="-1"></a><span class="do">## fav.pixar                  14    218    15.6    1.38   0.16</span></span>
-<span id="cb589-8"><a href="chapter-14-anova.html#cb589-8" tabindex="-1"></a><span class="do">## favorite.pirate:fav.pixar  65    685    10.5    0.93   0.63</span></span>
-<span id="cb589-9"><a href="chapter-14-anova.html#cb589-9" tabindex="-1"></a><span class="do">## Residuals                 915  10344    11.3</span></span></code></pre></div>
+<div class="sourceCode" id="cb588"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb588-1"><a href="chapter-14-anova.html#cb588-1" tabindex="-1"></a>pirpix.int.aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(<span class="at">formula =</span> tattoos <span class="sc">~</span> favorite.pirate <span class="sc">*</span> fav.pixar,</span>
+<span id="cb588-2"><a href="chapter-14-anova.html#cb588-2" tabindex="-1"></a>                      <span class="at">data =</span> pirates)</span>
+<span id="cb588-3"><a href="chapter-14-anova.html#cb588-3" tabindex="-1"></a></span>
+<span id="cb588-4"><a href="chapter-14-anova.html#cb588-4" tabindex="-1"></a><span class="fu">summary</span>(pirpix.int.aov)</span>
+<span id="cb588-5"><a href="chapter-14-anova.html#cb588-5" tabindex="-1"></a><span class="do">##                            Df Sum Sq Mean Sq F value Pr(&gt;F)</span></span>
+<span id="cb588-6"><a href="chapter-14-anova.html#cb588-6" tabindex="-1"></a><span class="do">## favorite.pirate             5     83    16.6    1.47   0.20</span></span>
+<span id="cb588-7"><a href="chapter-14-anova.html#cb588-7" tabindex="-1"></a><span class="do">## fav.pixar                  14    218    15.6    1.38   0.16</span></span>
+<span id="cb588-8"><a href="chapter-14-anova.html#cb588-8" tabindex="-1"></a><span class="do">## favorite.pirate:fav.pixar  65    685    10.5    0.93   0.63</span></span>
+<span id="cb588-9"><a href="chapter-14-anova.html#cb588-9" tabindex="-1"></a><span class="do">## Residuals                 915  10344    11.3</span></span></code></pre></div>
 <p><em>Answer: Nope still nothing</em></p>
 </div>
             </section>

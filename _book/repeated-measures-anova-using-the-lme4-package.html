@@ -517,16 +517,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="repeated-measures-anova-using-the-lme4-package" class="section level2 hasAnchor" number="14.5">
 <h2><span class="header-section-number">14.5</span> Repeated measures ANOVA using the lme4 package<a href="repeated-measures-anova-using-the-lme4-package.html#repeated-measures-anova-using-the-lme4-package" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If you are conducting an analyses where you’re repeating measurements over one or more third variables, like giving the same participant different tests, you should do a mixed-effects regression analysis. To do this, you should use the <code>lmer</code> function in the <code>lme4</code> package. For example, in our <code>poopdeck</code> data, we have repeated measurements for days. That is, on each day, we had 6 measurements. Now, it’s possible that the overall cleaning times differed depending on the day. We can account for this by including random intercepts for day by adding the <code>(1|day)</code> term to the formula specification. For more tips on mixed-effects analyses, check out this great tutorial by Bodo Winter at <a href="http://www.bodowinter.com/tutorial/bw_LME_tutorial2.pdf">http://www.bodowinter.com/tutorial/bw_LME_tutorial2.pdf</a>.</p>
-<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="repeated-measures-anova-using-the-lme4-package.html#cb420-1" tabindex="-1"></a><span class="co"># install.packages(lme4)  # If you don&#39;t have the package already</span></span>
-<span id="cb420-2"><a href="repeated-measures-anova-using-the-lme4-package.html#cb420-2" tabindex="-1"></a><span class="fu">library</span>(lme4)</span>
-<span id="cb420-3"><a href="repeated-measures-anova-using-the-lme4-package.html#cb420-3" tabindex="-1"></a></span>
-<span id="cb420-4"><a href="repeated-measures-anova-using-the-lme4-package.html#cb420-4" tabindex="-1"></a><span class="co"># Calculate a mixed-effects regression on time with</span></span>
-<span id="cb420-5"><a href="repeated-measures-anova-using-the-lme4-package.html#cb420-5" tabindex="-1"></a><span class="co">#  Two fixed factors (cleaner and type)</span></span>
-<span id="cb420-6"><a href="repeated-measures-anova-using-the-lme4-package.html#cb420-6" tabindex="-1"></a><span class="co">#  And one repeated measure (day)</span></span>
-<span id="cb420-7"><a href="repeated-measures-anova-using-the-lme4-package.html#cb420-7" tabindex="-1"></a></span>
-<span id="cb420-8"><a href="repeated-measures-anova-using-the-lme4-package.html#cb420-8" tabindex="-1"></a>my.mod <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">formula =</span> time <span class="sc">~</span> cleaner <span class="sc">+</span> type <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>day),</span>
-<span id="cb420-9"><a href="repeated-measures-anova-using-the-lme4-package.html#cb420-9" tabindex="-1"></a>                <span class="at">data =</span> poopdeck)</span>
-<span id="cb420-10"><a href="repeated-measures-anova-using-the-lme4-package.html#cb420-10" tabindex="-1"></a><span class="do">## boundary (singular) fit: see help(&#39;isSingular&#39;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="repeated-measures-anova-using-the-lme4-package.html#cb419-1" tabindex="-1"></a><span class="co"># install.packages(lme4)  # If you don&#39;t have the package already</span></span>
+<span id="cb419-2"><a href="repeated-measures-anova-using-the-lme4-package.html#cb419-2" tabindex="-1"></a><span class="fu">library</span>(lme4)</span>
+<span id="cb419-3"><a href="repeated-measures-anova-using-the-lme4-package.html#cb419-3" tabindex="-1"></a></span>
+<span id="cb419-4"><a href="repeated-measures-anova-using-the-lme4-package.html#cb419-4" tabindex="-1"></a><span class="co"># Calculate a mixed-effects regression on time with</span></span>
+<span id="cb419-5"><a href="repeated-measures-anova-using-the-lme4-package.html#cb419-5" tabindex="-1"></a><span class="co">#  Two fixed factors (cleaner and type)</span></span>
+<span id="cb419-6"><a href="repeated-measures-anova-using-the-lme4-package.html#cb419-6" tabindex="-1"></a><span class="co">#  And one repeated measure (day)</span></span>
+<span id="cb419-7"><a href="repeated-measures-anova-using-the-lme4-package.html#cb419-7" tabindex="-1"></a></span>
+<span id="cb419-8"><a href="repeated-measures-anova-using-the-lme4-package.html#cb419-8" tabindex="-1"></a>my.mod <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">formula =</span> time <span class="sc">~</span> cleaner <span class="sc">+</span> type <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>day),</span>
+<span id="cb419-9"><a href="repeated-measures-anova-using-the-lme4-package.html#cb419-9" tabindex="-1"></a>                <span class="at">data =</span> poopdeck)</span>
+<span id="cb419-10"><a href="repeated-measures-anova-using-the-lme4-package.html#cb419-10" tabindex="-1"></a><span class="do">## boundary (singular) fit: see help(&#39;isSingular&#39;)</span></span></code></pre></div>
 </div>
             </section>
 

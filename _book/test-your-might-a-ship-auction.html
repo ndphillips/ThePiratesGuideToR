@@ -517,14 +517,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="test-your-might-a-ship-auction" class="section level2 hasAnchor" number="15.6">
 <h2><span class="header-section-number">15.6</span> Test your might! A ship auction<a href="test-your-might-a-ship-auction.html#test-your-might-a-ship-auction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The following questions apply to the auction dataset in the yarrr package. This dataset contains information about 1,000 ships sold at a pirate auction. Here’s how the first few rows of the dataframe should look:</p>
-<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="test-your-might-a-ship-auction.html#cb446-1" tabindex="-1"></a><span class="fu">head</span>(auction)</span>
-<span id="cb446-2"><a href="test-your-might-a-ship-auction.html#cb446-2" tabindex="-1"></a><span class="do">##   cannons rooms age condition  color   style  jbb price</span></span>
-<span id="cb446-3"><a href="test-your-might-a-ship-auction.html#cb446-3" tabindex="-1"></a><span class="do">## 1      18    20 140         5    red classic 3976  3502</span></span>
-<span id="cb446-4"><a href="test-your-might-a-ship-auction.html#cb446-4" tabindex="-1"></a><span class="do">## 2      21    21  93         5    red  modern 3463  2955</span></span>
-<span id="cb446-5"><a href="test-your-might-a-ship-auction.html#cb446-5" tabindex="-1"></a><span class="do">## 3      20    18  48         2   plum classic 3175  3281</span></span>
-<span id="cb446-6"><a href="test-your-might-a-ship-auction.html#cb446-6" tabindex="-1"></a><span class="do">## 4      24    20  81         5 salmon classic 4463  4400</span></span>
-<span id="cb446-7"><a href="test-your-might-a-ship-auction.html#cb446-7" tabindex="-1"></a><span class="do">## 5      20    21  93         2    red  modern 2858  2177</span></span>
-<span id="cb446-8"><a href="test-your-might-a-ship-auction.html#cb446-8" tabindex="-1"></a><span class="do">## 6      21    19  60         6    red classic 4420  3792</span></span></code></pre></div>
+<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="test-your-might-a-ship-auction.html#cb445-1" tabindex="-1"></a><span class="fu">head</span>(auction)</span>
+<span id="cb445-2"><a href="test-your-might-a-ship-auction.html#cb445-2" tabindex="-1"></a><span class="do">##   cannons rooms age condition  color   style  jbb price price.gt.3500</span></span>
+<span id="cb445-3"><a href="test-your-might-a-ship-auction.html#cb445-3" tabindex="-1"></a><span class="do">## 1      18    20 140         5    red classic 3976  3502          TRUE</span></span>
+<span id="cb445-4"><a href="test-your-might-a-ship-auction.html#cb445-4" tabindex="-1"></a><span class="do">## 2      21    21  93         5    red  modern 3463  2955         FALSE</span></span>
+<span id="cb445-5"><a href="test-your-might-a-ship-auction.html#cb445-5" tabindex="-1"></a><span class="do">## 3      20    18  48         2   plum classic 3175  3281         FALSE</span></span>
+<span id="cb445-6"><a href="test-your-might-a-ship-auction.html#cb445-6" tabindex="-1"></a><span class="do">## 4      24    20  81         5 salmon classic 4463  4400          TRUE</span></span>
+<span id="cb445-7"><a href="test-your-might-a-ship-auction.html#cb445-7" tabindex="-1"></a><span class="do">## 5      20    21  93         2    red  modern 2858  2177         FALSE</span></span>
+<span id="cb445-8"><a href="test-your-might-a-ship-auction.html#cb445-8" tabindex="-1"></a><span class="do">## 6      21    19  60         6    red classic 4420  3792          TRUE</span></span></code></pre></div>
 <ol style="list-style-type: decimal">
 <li><p>The column jbb is the “Jack’s Blue Book” value of a ship. Create a regression object called <code>jbb.cannon.lm</code> predicting the JBB value of ships based on the number of cannons it has. Based on your result, how much value does each additional cannon bring to a ship?</p></li>
 <li><p>Repeat your previous regression, but do two separate regressions: one on modern ships and one on classic ships. Is there relationship between cannons and JBB the same for both types of ships?</p></li>

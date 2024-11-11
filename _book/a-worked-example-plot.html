@@ -522,91 +522,91 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 3 <code>p.threshold</code>: A numeric scalar indicating the p.value threshold for determining significance
 4 <code>add.modeltext</code>: A logical value indicating whether or not to include the regression equation as a sub-title to the plot</p>
 <p>This plotting code is a bit long, but it’s all stuff you’ve learned before.</p>
-<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="a-worked-example-plot.html#cb467-1" tabindex="-1"></a></span>
-<span id="cb467-2"><a href="a-worked-example-plot.html#cb467-2" tabindex="-1"></a>plot.advanced <span class="ot">&lt;-</span> <span class="cf">function</span> (<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>),</span>
-<span id="cb467-3"><a href="a-worked-example-plot.html#cb467-3" tabindex="-1"></a>                           <span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>),</span>
-<span id="cb467-4"><a href="a-worked-example-plot.html#cb467-4" tabindex="-1"></a>                           <span class="at">add.mean =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb467-5"><a href="a-worked-example-plot.html#cb467-5" tabindex="-1"></a>                           <span class="at">add.regression =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb467-6"><a href="a-worked-example-plot.html#cb467-6" tabindex="-1"></a>                           <span class="at">p.threshold =</span> .<span class="dv">05</span>,</span>
-<span id="cb467-7"><a href="a-worked-example-plot.html#cb467-7" tabindex="-1"></a>                           <span class="at">add.modeltext =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb467-8"><a href="a-worked-example-plot.html#cb467-8" tabindex="-1"></a>                           ...  <span class="co"># Optional further arguments passed on to plot</span></span>
-<span id="cb467-9"><a href="a-worked-example-plot.html#cb467-9" tabindex="-1"></a>                           ) {</span>
-<span id="cb467-10"><a href="a-worked-example-plot.html#cb467-10" tabindex="-1"></a></span>
-<span id="cb467-11"><a href="a-worked-example-plot.html#cb467-11" tabindex="-1"></a><span class="co"># Generate the plot with optional arguments</span></span>
-<span id="cb467-12"><a href="a-worked-example-plot.html#cb467-12" tabindex="-1"></a><span class="co">#   like main, xlab, ylab, etc.</span></span>
-<span id="cb467-13"><a href="a-worked-example-plot.html#cb467-13" tabindex="-1"></a>  <span class="fu">plot</span>(x, y, ...)</span>
-<span id="cb467-14"><a href="a-worked-example-plot.html#cb467-14" tabindex="-1"></a></span>
-<span id="cb467-15"><a href="a-worked-example-plot.html#cb467-15" tabindex="-1"></a><span class="co"># Add mean reference lines if add.mean is TRUE</span></span>
-<span id="cb467-16"><a href="a-worked-example-plot.html#cb467-16" tabindex="-1"></a><span class="cf">if</span>(add.mean <span class="sc">==</span> <span class="cn">TRUE</span>) {</span>
-<span id="cb467-17"><a href="a-worked-example-plot.html#cb467-17" tabindex="-1"></a></span>
-<span id="cb467-18"><a href="a-worked-example-plot.html#cb467-18" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">mean</span>(y), <span class="at">lty =</span> <span class="dv">2</span>)</span>
-<span id="cb467-19"><a href="a-worked-example-plot.html#cb467-19" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(x), <span class="at">lty =</span> <span class="dv">2</span>)</span>
-<span id="cb467-20"><a href="a-worked-example-plot.html#cb467-20" tabindex="-1"></a>}</span>
-<span id="cb467-21"><a href="a-worked-example-plot.html#cb467-21" tabindex="-1"></a></span>
-<span id="cb467-22"><a href="a-worked-example-plot.html#cb467-22" tabindex="-1"></a><span class="co"># Add regression line if add.regression is TRUE</span></span>
-<span id="cb467-23"><a href="a-worked-example-plot.html#cb467-23" tabindex="-1"></a><span class="cf">if</span>(add.regression <span class="sc">==</span> <span class="cn">TRUE</span>) {</span>
-<span id="cb467-24"><a href="a-worked-example-plot.html#cb467-24" tabindex="-1"></a></span>
-<span id="cb467-25"><a href="a-worked-example-plot.html#cb467-25" tabindex="-1"></a>  model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)  <span class="co"># Run regression</span></span>
-<span id="cb467-26"><a href="a-worked-example-plot.html#cb467-26" tabindex="-1"></a></span>
-<span id="cb467-27"><a href="a-worked-example-plot.html#cb467-27" tabindex="-1"></a>  p.value <span class="ot">&lt;-</span> <span class="fu">anova</span>(model)<span class="sc">$</span><span class="st">&quot;Pr(&gt;F)&quot;</span>[<span class="dv">1</span>] <span class="co"># Get p-value</span></span>
-<span id="cb467-28"><a href="a-worked-example-plot.html#cb467-28" tabindex="-1"></a></span>
-<span id="cb467-29"><a href="a-worked-example-plot.html#cb467-29" tabindex="-1"></a>  <span class="co"># Define line color from model p-value and threshold</span></span>
-<span id="cb467-30"><a href="a-worked-example-plot.html#cb467-30" tabindex="-1"></a>  <span class="cf">if</span>(p.value <span class="sc">&lt;</span> p.threshold) {line.col <span class="ot">&lt;-</span> <span class="st">&quot;red&quot;</span>}</span>
-<span id="cb467-31"><a href="a-worked-example-plot.html#cb467-31" tabindex="-1"></a>  <span class="cf">if</span>(p.value <span class="sc">&gt;=</span> p.threshold) {line.col <span class="ot">&lt;-</span> <span class="st">&quot;black&quot;</span>}</span>
-<span id="cb467-32"><a href="a-worked-example-plot.html#cb467-32" tabindex="-1"></a></span>
-<span id="cb467-33"><a href="a-worked-example-plot.html#cb467-33" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="fu">lm</span>(y <span class="sc">~</span> x), <span class="at">col =</span> line.col, <span class="at">lwd =</span> <span class="dv">2</span>) <span class="co"># Add regression line</span></span>
-<span id="cb467-34"><a href="a-worked-example-plot.html#cb467-34" tabindex="-1"></a></span>
-<span id="cb467-35"><a href="a-worked-example-plot.html#cb467-35" tabindex="-1"></a>}</span>
-<span id="cb467-36"><a href="a-worked-example-plot.html#cb467-36" tabindex="-1"></a></span>
-<span id="cb467-37"><a href="a-worked-example-plot.html#cb467-37" tabindex="-1"></a>  <span class="co"># Add regression equation text if add.modeltext is TRUE</span></span>
-<span id="cb467-38"><a href="a-worked-example-plot.html#cb467-38" tabindex="-1"></a><span class="cf">if</span>(add.modeltext <span class="sc">==</span> <span class="cn">TRUE</span>) {</span>
-<span id="cb467-39"><a href="a-worked-example-plot.html#cb467-39" tabindex="-1"></a></span>
-<span id="cb467-40"><a href="a-worked-example-plot.html#cb467-40" tabindex="-1"></a>  <span class="co"># Run regression</span></span>
-<span id="cb467-41"><a href="a-worked-example-plot.html#cb467-41" tabindex="-1"></a>  model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
-<span id="cb467-42"><a href="a-worked-example-plot.html#cb467-42" tabindex="-1"></a></span>
-<span id="cb467-43"><a href="a-worked-example-plot.html#cb467-43" tabindex="-1"></a>  <span class="co"># Determine coefficients from model object</span></span>
-<span id="cb467-44"><a href="a-worked-example-plot.html#cb467-44" tabindex="-1"></a>  coefficients <span class="ot">&lt;-</span> model<span class="sc">$</span>coefficients</span>
-<span id="cb467-45"><a href="a-worked-example-plot.html#cb467-45" tabindex="-1"></a>  a <span class="ot">&lt;-</span> <span class="fu">round</span>(coefficients[<span class="dv">1</span>], <span class="dv">2</span>)</span>
-<span id="cb467-46"><a href="a-worked-example-plot.html#cb467-46" tabindex="-1"></a>  b <span class="ot">&lt;-</span> <span class="fu">round</span>(coefficients[<span class="dv">2</span>], <span class="dv">2</span>)</span>
-<span id="cb467-47"><a href="a-worked-example-plot.html#cb467-47" tabindex="-1"></a></span>
-<span id="cb467-48"><a href="a-worked-example-plot.html#cb467-48" tabindex="-1"></a>  <span class="co"># Create text</span></span>
-<span id="cb467-49"><a href="a-worked-example-plot.html#cb467-49" tabindex="-1"></a>  model.text <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&quot;Regression Equation: &quot;</span>, a, <span class="st">&quot; + &quot;</span>,</span>
-<span id="cb467-50"><a href="a-worked-example-plot.html#cb467-50" tabindex="-1"></a>                      b, <span class="st">&quot; * x&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb467-51"><a href="a-worked-example-plot.html#cb467-51" tabindex="-1"></a></span>
-<span id="cb467-52"><a href="a-worked-example-plot.html#cb467-52" tabindex="-1"></a>  <span class="co"># Add text to top of plot</span></span>
-<span id="cb467-53"><a href="a-worked-example-plot.html#cb467-53" tabindex="-1"></a>  <span class="fu">mtext</span>(model.text, <span class="at">side =</span> <span class="dv">3</span>, <span class="at">line =</span> .<span class="dv">5</span>, <span class="at">cex =</span> .<span class="dv">8</span>)</span>
-<span id="cb467-54"><a href="a-worked-example-plot.html#cb467-54" tabindex="-1"></a></span>
-<span id="cb467-55"><a href="a-worked-example-plot.html#cb467-55" tabindex="-1"></a>}</span>
-<span id="cb467-56"><a href="a-worked-example-plot.html#cb467-56" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="a-worked-example-plot.html#cb466-1" tabindex="-1"></a></span>
+<span id="cb466-2"><a href="a-worked-example-plot.html#cb466-2" tabindex="-1"></a>plot.advanced <span class="ot">&lt;-</span> <span class="cf">function</span> (<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>),</span>
+<span id="cb466-3"><a href="a-worked-example-plot.html#cb466-3" tabindex="-1"></a>                           <span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>),</span>
+<span id="cb466-4"><a href="a-worked-example-plot.html#cb466-4" tabindex="-1"></a>                           <span class="at">add.mean =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb466-5"><a href="a-worked-example-plot.html#cb466-5" tabindex="-1"></a>                           <span class="at">add.regression =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb466-6"><a href="a-worked-example-plot.html#cb466-6" tabindex="-1"></a>                           <span class="at">p.threshold =</span> .<span class="dv">05</span>,</span>
+<span id="cb466-7"><a href="a-worked-example-plot.html#cb466-7" tabindex="-1"></a>                           <span class="at">add.modeltext =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb466-8"><a href="a-worked-example-plot.html#cb466-8" tabindex="-1"></a>                           ...  <span class="co"># Optional further arguments passed on to plot</span></span>
+<span id="cb466-9"><a href="a-worked-example-plot.html#cb466-9" tabindex="-1"></a>                           ) {</span>
+<span id="cb466-10"><a href="a-worked-example-plot.html#cb466-10" tabindex="-1"></a></span>
+<span id="cb466-11"><a href="a-worked-example-plot.html#cb466-11" tabindex="-1"></a><span class="co"># Generate the plot with optional arguments</span></span>
+<span id="cb466-12"><a href="a-worked-example-plot.html#cb466-12" tabindex="-1"></a><span class="co">#   like main, xlab, ylab, etc.</span></span>
+<span id="cb466-13"><a href="a-worked-example-plot.html#cb466-13" tabindex="-1"></a>  <span class="fu">plot</span>(x, y, ...)</span>
+<span id="cb466-14"><a href="a-worked-example-plot.html#cb466-14" tabindex="-1"></a></span>
+<span id="cb466-15"><a href="a-worked-example-plot.html#cb466-15" tabindex="-1"></a><span class="co"># Add mean reference lines if add.mean is TRUE</span></span>
+<span id="cb466-16"><a href="a-worked-example-plot.html#cb466-16" tabindex="-1"></a><span class="cf">if</span>(add.mean <span class="sc">==</span> <span class="cn">TRUE</span>) {</span>
+<span id="cb466-17"><a href="a-worked-example-plot.html#cb466-17" tabindex="-1"></a></span>
+<span id="cb466-18"><a href="a-worked-example-plot.html#cb466-18" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">mean</span>(y), <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb466-19"><a href="a-worked-example-plot.html#cb466-19" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(x), <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb466-20"><a href="a-worked-example-plot.html#cb466-20" tabindex="-1"></a>}</span>
+<span id="cb466-21"><a href="a-worked-example-plot.html#cb466-21" tabindex="-1"></a></span>
+<span id="cb466-22"><a href="a-worked-example-plot.html#cb466-22" tabindex="-1"></a><span class="co"># Add regression line if add.regression is TRUE</span></span>
+<span id="cb466-23"><a href="a-worked-example-plot.html#cb466-23" tabindex="-1"></a><span class="cf">if</span>(add.regression <span class="sc">==</span> <span class="cn">TRUE</span>) {</span>
+<span id="cb466-24"><a href="a-worked-example-plot.html#cb466-24" tabindex="-1"></a></span>
+<span id="cb466-25"><a href="a-worked-example-plot.html#cb466-25" tabindex="-1"></a>  model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)  <span class="co"># Run regression</span></span>
+<span id="cb466-26"><a href="a-worked-example-plot.html#cb466-26" tabindex="-1"></a></span>
+<span id="cb466-27"><a href="a-worked-example-plot.html#cb466-27" tabindex="-1"></a>  p.value <span class="ot">&lt;-</span> <span class="fu">anova</span>(model)<span class="sc">$</span><span class="st">&quot;Pr(&gt;F)&quot;</span>[<span class="dv">1</span>] <span class="co"># Get p-value</span></span>
+<span id="cb466-28"><a href="a-worked-example-plot.html#cb466-28" tabindex="-1"></a></span>
+<span id="cb466-29"><a href="a-worked-example-plot.html#cb466-29" tabindex="-1"></a>  <span class="co"># Define line color from model p-value and threshold</span></span>
+<span id="cb466-30"><a href="a-worked-example-plot.html#cb466-30" tabindex="-1"></a>  <span class="cf">if</span>(p.value <span class="sc">&lt;</span> p.threshold) {line.col <span class="ot">&lt;-</span> <span class="st">&quot;red&quot;</span>}</span>
+<span id="cb466-31"><a href="a-worked-example-plot.html#cb466-31" tabindex="-1"></a>  <span class="cf">if</span>(p.value <span class="sc">&gt;=</span> p.threshold) {line.col <span class="ot">&lt;-</span> <span class="st">&quot;black&quot;</span>}</span>
+<span id="cb466-32"><a href="a-worked-example-plot.html#cb466-32" tabindex="-1"></a></span>
+<span id="cb466-33"><a href="a-worked-example-plot.html#cb466-33" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="fu">lm</span>(y <span class="sc">~</span> x), <span class="at">col =</span> line.col, <span class="at">lwd =</span> <span class="dv">2</span>) <span class="co"># Add regression line</span></span>
+<span id="cb466-34"><a href="a-worked-example-plot.html#cb466-34" tabindex="-1"></a></span>
+<span id="cb466-35"><a href="a-worked-example-plot.html#cb466-35" tabindex="-1"></a>}</span>
+<span id="cb466-36"><a href="a-worked-example-plot.html#cb466-36" tabindex="-1"></a></span>
+<span id="cb466-37"><a href="a-worked-example-plot.html#cb466-37" tabindex="-1"></a>  <span class="co"># Add regression equation text if add.modeltext is TRUE</span></span>
+<span id="cb466-38"><a href="a-worked-example-plot.html#cb466-38" tabindex="-1"></a><span class="cf">if</span>(add.modeltext <span class="sc">==</span> <span class="cn">TRUE</span>) {</span>
+<span id="cb466-39"><a href="a-worked-example-plot.html#cb466-39" tabindex="-1"></a></span>
+<span id="cb466-40"><a href="a-worked-example-plot.html#cb466-40" tabindex="-1"></a>  <span class="co"># Run regression</span></span>
+<span id="cb466-41"><a href="a-worked-example-plot.html#cb466-41" tabindex="-1"></a>  model <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
+<span id="cb466-42"><a href="a-worked-example-plot.html#cb466-42" tabindex="-1"></a></span>
+<span id="cb466-43"><a href="a-worked-example-plot.html#cb466-43" tabindex="-1"></a>  <span class="co"># Determine coefficients from model object</span></span>
+<span id="cb466-44"><a href="a-worked-example-plot.html#cb466-44" tabindex="-1"></a>  coefficients <span class="ot">&lt;-</span> model<span class="sc">$</span>coefficients</span>
+<span id="cb466-45"><a href="a-worked-example-plot.html#cb466-45" tabindex="-1"></a>  a <span class="ot">&lt;-</span> <span class="fu">round</span>(coefficients[<span class="dv">1</span>], <span class="dv">2</span>)</span>
+<span id="cb466-46"><a href="a-worked-example-plot.html#cb466-46" tabindex="-1"></a>  b <span class="ot">&lt;-</span> <span class="fu">round</span>(coefficients[<span class="dv">2</span>], <span class="dv">2</span>)</span>
+<span id="cb466-47"><a href="a-worked-example-plot.html#cb466-47" tabindex="-1"></a></span>
+<span id="cb466-48"><a href="a-worked-example-plot.html#cb466-48" tabindex="-1"></a>  <span class="co"># Create text</span></span>
+<span id="cb466-49"><a href="a-worked-example-plot.html#cb466-49" tabindex="-1"></a>  model.text <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&quot;Regression Equation: &quot;</span>, a, <span class="st">&quot; + &quot;</span>,</span>
+<span id="cb466-50"><a href="a-worked-example-plot.html#cb466-50" tabindex="-1"></a>                      b, <span class="st">&quot; * x&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb466-51"><a href="a-worked-example-plot.html#cb466-51" tabindex="-1"></a></span>
+<span id="cb466-52"><a href="a-worked-example-plot.html#cb466-52" tabindex="-1"></a>  <span class="co"># Add text to top of plot</span></span>
+<span id="cb466-53"><a href="a-worked-example-plot.html#cb466-53" tabindex="-1"></a>  <span class="fu">mtext</span>(model.text, <span class="at">side =</span> <span class="dv">3</span>, <span class="at">line =</span> .<span class="dv">5</span>, <span class="at">cex =</span> .<span class="dv">8</span>)</span>
+<span id="cb466-54"><a href="a-worked-example-plot.html#cb466-54" tabindex="-1"></a></span>
+<span id="cb466-55"><a href="a-worked-example-plot.html#cb466-55" tabindex="-1"></a>}</span>
+<span id="cb466-56"><a href="a-worked-example-plot.html#cb466-56" tabindex="-1"></a>}</span></code></pre></div>
 <p>Let’s try it out!</p>
-<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="a-worked-example-plot.html#cb468-1" tabindex="-1"></a><span class="fu">plot.advanced</span>(<span class="at">x =</span> pirates<span class="sc">$</span>age,</span>
-<span id="cb468-2"><a href="a-worked-example-plot.html#cb468-2" tabindex="-1"></a>              <span class="at">y =</span> pirates<span class="sc">$</span>tchests,</span>
-<span id="cb468-3"><a href="a-worked-example-plot.html#cb468-3" tabindex="-1"></a>              <span class="at">add.regression =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb468-4"><a href="a-worked-example-plot.html#cb468-4" tabindex="-1"></a>              <span class="at">add.modeltext =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb468-5"><a href="a-worked-example-plot.html#cb468-5" tabindex="-1"></a>              <span class="at">p.threshold =</span> .<span class="dv">05</span>,</span>
-<span id="cb468-6"><a href="a-worked-example-plot.html#cb468-6" tabindex="-1"></a>              <span class="at">main =</span> <span class="st">&quot;plot.advanced()&quot;</span>,</span>
-<span id="cb468-7"><a href="a-worked-example-plot.html#cb468-7" tabindex="-1"></a>              <span class="at">xlab =</span> <span class="st">&quot;Age&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Treasure Chests Found&quot;</span>,</span>
-<span id="cb468-8"><a href="a-worked-example-plot.html#cb468-8" tabindex="-1"></a>              <span class="at">pch =</span> <span class="dv">16</span>,</span>
-<span id="cb468-9"><a href="a-worked-example-plot.html#cb468-9" tabindex="-1"></a>              <span class="at">col =</span> <span class="fu">gray</span>(.<span class="dv">2</span>, .<span class="dv">3</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="a-worked-example-plot.html#cb467-1" tabindex="-1"></a><span class="fu">plot.advanced</span>(<span class="at">x =</span> pirates<span class="sc">$</span>age,</span>
+<span id="cb467-2"><a href="a-worked-example-plot.html#cb467-2" tabindex="-1"></a>              <span class="at">y =</span> pirates<span class="sc">$</span>tchests,</span>
+<span id="cb467-3"><a href="a-worked-example-plot.html#cb467-3" tabindex="-1"></a>              <span class="at">add.regression =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb467-4"><a href="a-worked-example-plot.html#cb467-4" tabindex="-1"></a>              <span class="at">add.modeltext =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb467-5"><a href="a-worked-example-plot.html#cb467-5" tabindex="-1"></a>              <span class="at">p.threshold =</span> .<span class="dv">05</span>,</span>
+<span id="cb467-6"><a href="a-worked-example-plot.html#cb467-6" tabindex="-1"></a>              <span class="at">main =</span> <span class="st">&quot;plot.advanced()&quot;</span>,</span>
+<span id="cb467-7"><a href="a-worked-example-plot.html#cb467-7" tabindex="-1"></a>              <span class="at">xlab =</span> <span class="st">&quot;Age&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Treasure Chests Found&quot;</span>,</span>
+<span id="cb467-8"><a href="a-worked-example-plot.html#cb467-8" tabindex="-1"></a>              <span class="at">pch =</span> <span class="dv">16</span>,</span>
+<span id="cb467-9"><a href="a-worked-example-plot.html#cb467-9" tabindex="-1"></a>              <span class="at">col =</span> <span class="fu">gray</span>(.<span class="dv">2</span>, .<span class="dv">3</span>))</span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-446-1.png" width="672" style="display: block; margin: auto;" /></p>
 <div id="seeing-function-code" class="section level3 hasAnchor" number="16.4.1">
 <h3><span class="header-section-number">16.4.1</span> Seeing function code<a href="a-worked-example-plot.html#seeing-function-code" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Because R is awesome, you can view the code underlying most functions by just evaluating the name of the function (without any parentheses or arguments). For example, the <code>yarrr</code> package contains a function called <code>transparent()</code> that converts standard colors into transparent colors. To see the code contained in the function, just evaluate its name:</p>
-<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="a-worked-example-plot.html#cb469-1" tabindex="-1"></a><span class="co"># Show me the code in the transparent() function</span></span>
-<span id="cb469-2"><a href="a-worked-example-plot.html#cb469-2" tabindex="-1"></a>transparent</span>
-<span id="cb469-3"><a href="a-worked-example-plot.html#cb469-3" tabindex="-1"></a><span class="do">## function (orig.col = &quot;red&quot;, trans.val = 1, maxColorValue = 255) </span></span>
-<span id="cb469-4"><a href="a-worked-example-plot.html#cb469-4" tabindex="-1"></a><span class="do">## {</span></span>
-<span id="cb469-5"><a href="a-worked-example-plot.html#cb469-5" tabindex="-1"></a><span class="do">##     n.cols &lt;- length(orig.col)</span></span>
-<span id="cb469-6"><a href="a-worked-example-plot.html#cb469-6" tabindex="-1"></a><span class="do">##     orig.col &lt;- col2rgb(orig.col)</span></span>
-<span id="cb469-7"><a href="a-worked-example-plot.html#cb469-7" tabindex="-1"></a><span class="do">##     final.col &lt;- rep(NA, n.cols)</span></span>
-<span id="cb469-8"><a href="a-worked-example-plot.html#cb469-8" tabindex="-1"></a><span class="do">##     for (i in 1:n.cols) {</span></span>
-<span id="cb469-9"><a href="a-worked-example-plot.html#cb469-9" tabindex="-1"></a><span class="do">##         final.col[i] &lt;- rgb(orig.col[1, i], orig.col[2, i], orig.col[3, </span></span>
-<span id="cb469-10"><a href="a-worked-example-plot.html#cb469-10" tabindex="-1"></a><span class="do">##             i], alpha = (1 - trans.val) * 255, maxColorValue = maxColorValue)</span></span>
-<span id="cb469-11"><a href="a-worked-example-plot.html#cb469-11" tabindex="-1"></a><span class="do">##     }</span></span>
-<span id="cb469-12"><a href="a-worked-example-plot.html#cb469-12" tabindex="-1"></a><span class="do">##     return(final.col)</span></span>
-<span id="cb469-13"><a href="a-worked-example-plot.html#cb469-13" tabindex="-1"></a><span class="do">## }</span></span>
-<span id="cb469-14"><a href="a-worked-example-plot.html#cb469-14" tabindex="-1"></a><span class="do">## &lt;bytecode: 0x142655440&gt;</span></span>
-<span id="cb469-15"><a href="a-worked-example-plot.html#cb469-15" tabindex="-1"></a><span class="do">## &lt;environment: namespace:yarrr&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="a-worked-example-plot.html#cb468-1" tabindex="-1"></a><span class="co"># Show me the code in the transparent() function</span></span>
+<span id="cb468-2"><a href="a-worked-example-plot.html#cb468-2" tabindex="-1"></a>transparent</span>
+<span id="cb468-3"><a href="a-worked-example-plot.html#cb468-3" tabindex="-1"></a><span class="do">## function (orig.col = &quot;red&quot;, trans.val = 1, maxColorValue = 255) </span></span>
+<span id="cb468-4"><a href="a-worked-example-plot.html#cb468-4" tabindex="-1"></a><span class="do">## {</span></span>
+<span id="cb468-5"><a href="a-worked-example-plot.html#cb468-5" tabindex="-1"></a><span class="do">##     n.cols &lt;- length(orig.col)</span></span>
+<span id="cb468-6"><a href="a-worked-example-plot.html#cb468-6" tabindex="-1"></a><span class="do">##     orig.col &lt;- col2rgb(orig.col)</span></span>
+<span id="cb468-7"><a href="a-worked-example-plot.html#cb468-7" tabindex="-1"></a><span class="do">##     final.col &lt;- rep(NA, n.cols)</span></span>
+<span id="cb468-8"><a href="a-worked-example-plot.html#cb468-8" tabindex="-1"></a><span class="do">##     for (i in 1:n.cols) {</span></span>
+<span id="cb468-9"><a href="a-worked-example-plot.html#cb468-9" tabindex="-1"></a><span class="do">##         final.col[i] &lt;- rgb(orig.col[1, i], orig.col[2, i], orig.col[3, </span></span>
+<span id="cb468-10"><a href="a-worked-example-plot.html#cb468-10" tabindex="-1"></a><span class="do">##             i], alpha = (1 - trans.val) * 255, maxColorValue = maxColorValue)</span></span>
+<span id="cb468-11"><a href="a-worked-example-plot.html#cb468-11" tabindex="-1"></a><span class="do">##     }</span></span>
+<span id="cb468-12"><a href="a-worked-example-plot.html#cb468-12" tabindex="-1"></a><span class="do">##     return(final.col)</span></span>
+<span id="cb468-13"><a href="a-worked-example-plot.html#cb468-13" tabindex="-1"></a><span class="do">## }</span></span>
+<span id="cb468-14"><a href="a-worked-example-plot.html#cb468-14" tabindex="-1"></a><span class="do">## &lt;bytecode: 0x142655440&gt;</span></span>
+<span id="cb468-15"><a href="a-worked-example-plot.html#cb468-15" tabindex="-1"></a><span class="do">## &lt;environment: namespace:yarrr&gt;</span></span></code></pre></div>
 <p>Once you know the code underlying a function, you can easily copy it and edit it to your own liking. Or print it and put it above your bed. Totally up to you.</p>
 </div>
 <div id="using-stop-to-completely-stop-a-function-and-print-an-error" class="section level3 hasAnchor" number="16.4.2">
@@ -614,48 +614,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>By default, all the code in a function will be evaluated when it is executed. However, there may be cases where there’s no point in evaluating some code and it’s best to stop everything and leave the function altogether. For example, let’s say you have a function called <code>do.stats()</code> that has a single argument called <code>mat</code> which is supposed to be a matrix. If the user accidentally enters a dataframe rather than a matrix, it might be best to stop the function altogether rather than to waste time executing code. To tell a function to stop running, use the <code>stop()</code> function.</p>
 <p>If R ever executes a <code>stop()</code> function, it will automatically quit the function it’s currently evaluating, and print an error message. You can define the exact error message you want by including a string as the main argument.</p>
 <p>For example, the following function <code>do.stats</code> will print an error message if the argument <code>mat</code> is not a matrix.</p>
-<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="a-worked-example-plot.html#cb470-1" tabindex="-1"></a>do.stats <span class="ot">&lt;-</span> <span class="cf">function</span>(mat) {</span>
-<span id="cb470-2"><a href="a-worked-example-plot.html#cb470-2" tabindex="-1"></a>  </span>
-<span id="cb470-3"><a href="a-worked-example-plot.html#cb470-3" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">is.matrix</span>(mat) <span class="sc">==</span> F) {<span class="fu">stop</span>(<span class="st">&quot;Argument was not a matrix!&quot;</span>)}</span>
-<span id="cb470-4"><a href="a-worked-example-plot.html#cb470-4" tabindex="-1"></a></span>
-<span id="cb470-5"><a href="a-worked-example-plot.html#cb470-5" tabindex="-1"></a><span class="co"># Only run if argument is a matrix!</span></span>
-<span id="cb470-6"><a href="a-worked-example-plot.html#cb470-6" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Thanks for giving me a matrix. The matrix has &quot;</span>, <span class="fu">nrow</span>(mat), </span>
-<span id="cb470-7"><a href="a-worked-example-plot.html#cb470-7" tabindex="-1"></a><span class="st">&quot; rows and &quot;</span>, <span class="fu">ncol</span>(mat), </span>
-<span id="cb470-8"><a href="a-worked-example-plot.html#cb470-8" tabindex="-1"></a><span class="st">&quot; columns. If you did not give me a matrix, the function would have stopped by now!&quot;</span>, </span>
-<span id="cb470-9"><a href="a-worked-example-plot.html#cb470-9" tabindex="-1"></a><span class="at">sep =</span> <span class="st">&quot;&quot;</span>))</span>
-<span id="cb470-10"><a href="a-worked-example-plot.html#cb470-10" tabindex="-1"></a></span>
-<span id="cb470-11"><a href="a-worked-example-plot.html#cb470-11" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="a-worked-example-plot.html#cb469-1" tabindex="-1"></a>do.stats <span class="ot">&lt;-</span> <span class="cf">function</span>(mat) {</span>
+<span id="cb469-2"><a href="a-worked-example-plot.html#cb469-2" tabindex="-1"></a>  </span>
+<span id="cb469-3"><a href="a-worked-example-plot.html#cb469-3" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">is.matrix</span>(mat) <span class="sc">==</span> F) {<span class="fu">stop</span>(<span class="st">&quot;Argument was not a matrix!&quot;</span>)}</span>
+<span id="cb469-4"><a href="a-worked-example-plot.html#cb469-4" tabindex="-1"></a></span>
+<span id="cb469-5"><a href="a-worked-example-plot.html#cb469-5" tabindex="-1"></a><span class="co"># Only run if argument is a matrix!</span></span>
+<span id="cb469-6"><a href="a-worked-example-plot.html#cb469-6" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Thanks for giving me a matrix. The matrix has &quot;</span>, <span class="fu">nrow</span>(mat), </span>
+<span id="cb469-7"><a href="a-worked-example-plot.html#cb469-7" tabindex="-1"></a><span class="st">&quot; rows and &quot;</span>, <span class="fu">ncol</span>(mat), </span>
+<span id="cb469-8"><a href="a-worked-example-plot.html#cb469-8" tabindex="-1"></a><span class="st">&quot; columns. If you did not give me a matrix, the function would have stopped by now!&quot;</span>, </span>
+<span id="cb469-9"><a href="a-worked-example-plot.html#cb469-9" tabindex="-1"></a><span class="at">sep =</span> <span class="st">&quot;&quot;</span>))</span>
+<span id="cb469-10"><a href="a-worked-example-plot.html#cb469-10" tabindex="-1"></a></span>
+<span id="cb469-11"><a href="a-worked-example-plot.html#cb469-11" tabindex="-1"></a>}</span></code></pre></div>
 <p>Let’s test it. First I’ll enter an argument that is definitely not a matrix:</p>
-<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="a-worked-example-plot.html#cb471-1" tabindex="-1"></a><span class="fu">do.stats</span>(<span class="at">mat =</span> <span class="st">&quot;This is a string, not a matrix&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="a-worked-example-plot.html#cb470-1" tabindex="-1"></a><span class="fu">do.stats</span>(<span class="at">mat =</span> <span class="st">&quot;This is a string, not a matrix&quot;</span>) </span></code></pre></div>
 <p>Now I’ll enter a valid matrix argument:</p>
-<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="a-worked-example-plot.html#cb472-1" tabindex="-1"></a><span class="fu">do.stats</span>(<span class="at">mat =</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">5</span>))</span>
-<span id="cb472-2"><a href="a-worked-example-plot.html#cb472-2" tabindex="-1"></a><span class="do">## [1] &quot;Thanks for giving me a matrix. The matrix has 2 rows and 5 columns. If you did not give me a matrix, the function would have stopped by now!&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="a-worked-example-plot.html#cb471-1" tabindex="-1"></a><span class="fu">do.stats</span>(<span class="at">mat =</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">5</span>))</span>
+<span id="cb471-2"><a href="a-worked-example-plot.html#cb471-2" tabindex="-1"></a><span class="do">## [1] &quot;Thanks for giving me a matrix. The matrix has 2 rows and 5 columns. If you did not give me a matrix, the function would have stopped by now!&quot;</span></span></code></pre></div>
 </div>
 <div id="using-vectors-as-arguments" class="section level3 hasAnchor" number="16.4.3">
 <h3><span class="header-section-number">16.4.3</span> Using vectors as arguments<a href="a-worked-example-plot.html#using-vectors-as-arguments" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>You can use any kind of object as an argument to a function. For example, we could re-create the function <code>oh.god.how.much.did.i.spend</code> by having a single vector object as the argument, rather than three separate values. In this version, we’ll extract the values of a, b and c using indexing:</p>
-<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="a-worked-example-plot.html#cb473-1" tabindex="-1"></a>oh.god.how.much.did.i.spend <span class="ot">&lt;-</span> <span class="cf">function</span>(drinks.vec) {</span>
-<span id="cb473-2"><a href="a-worked-example-plot.html#cb473-2" tabindex="-1"></a></span>
-<span id="cb473-3"><a href="a-worked-example-plot.html#cb473-3" tabindex="-1"></a>  grogg <span class="ot">&lt;-</span> drinks.vec[<span class="dv">1</span>]</span>
-<span id="cb473-4"><a href="a-worked-example-plot.html#cb473-4" tabindex="-1"></a>  port <span class="ot">&lt;-</span> drinks.vec[<span class="dv">2</span>]</span>
-<span id="cb473-5"><a href="a-worked-example-plot.html#cb473-5" tabindex="-1"></a>  crabjuice <span class="ot">&lt;-</span> drinks.vec[<span class="dv">3</span>]</span>
-<span id="cb473-6"><a href="a-worked-example-plot.html#cb473-6" tabindex="-1"></a></span>
-<span id="cb473-7"><a href="a-worked-example-plot.html#cb473-7" tabindex="-1"></a>  output <span class="ot">&lt;-</span> grogg <span class="sc">*</span> <span class="dv">1</span> <span class="sc">+</span> port <span class="sc">*</span> <span class="dv">3</span> <span class="sc">+</span> crabjuice <span class="sc">*</span> <span class="dv">10</span></span>
-<span id="cb473-8"><a href="a-worked-example-plot.html#cb473-8" tabindex="-1"></a></span>
-<span id="cb473-9"><a href="a-worked-example-plot.html#cb473-9" tabindex="-1"></a>  <span class="fu">return</span>(output)</span>
-<span id="cb473-10"><a href="a-worked-example-plot.html#cb473-10" tabindex="-1"></a></span>
-<span id="cb473-11"><a href="a-worked-example-plot.html#cb473-11" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="a-worked-example-plot.html#cb472-1" tabindex="-1"></a>oh.god.how.much.did.i.spend <span class="ot">&lt;-</span> <span class="cf">function</span>(drinks.vec) {</span>
+<span id="cb472-2"><a href="a-worked-example-plot.html#cb472-2" tabindex="-1"></a></span>
+<span id="cb472-3"><a href="a-worked-example-plot.html#cb472-3" tabindex="-1"></a>  grogg <span class="ot">&lt;-</span> drinks.vec[<span class="dv">1</span>]</span>
+<span id="cb472-4"><a href="a-worked-example-plot.html#cb472-4" tabindex="-1"></a>  port <span class="ot">&lt;-</span> drinks.vec[<span class="dv">2</span>]</span>
+<span id="cb472-5"><a href="a-worked-example-plot.html#cb472-5" tabindex="-1"></a>  crabjuice <span class="ot">&lt;-</span> drinks.vec[<span class="dv">3</span>]</span>
+<span id="cb472-6"><a href="a-worked-example-plot.html#cb472-6" tabindex="-1"></a></span>
+<span id="cb472-7"><a href="a-worked-example-plot.html#cb472-7" tabindex="-1"></a>  output <span class="ot">&lt;-</span> grogg <span class="sc">*</span> <span class="dv">1</span> <span class="sc">+</span> port <span class="sc">*</span> <span class="dv">3</span> <span class="sc">+</span> crabjuice <span class="sc">*</span> <span class="dv">10</span></span>
+<span id="cb472-8"><a href="a-worked-example-plot.html#cb472-8" tabindex="-1"></a></span>
+<span id="cb472-9"><a href="a-worked-example-plot.html#cb472-9" tabindex="-1"></a>  <span class="fu">return</span>(output)</span>
+<span id="cb472-10"><a href="a-worked-example-plot.html#cb472-10" tabindex="-1"></a></span>
+<span id="cb472-11"><a href="a-worked-example-plot.html#cb472-11" tabindex="-1"></a>}</span></code></pre></div>
 <p>To use this function, the pirate will enter the number of drinks she had as a single vector with length three rather than as 3 separate scalars.</p>
-<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="a-worked-example-plot.html#cb474-1" tabindex="-1"></a><span class="fu">oh.god.how.much.did.i.spend</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>))</span>
-<span id="cb474-2"><a href="a-worked-example-plot.html#cb474-2" tabindex="-1"></a><span class="do">## [1] 36</span></span></code></pre></div>
+<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="a-worked-example-plot.html#cb473-1" tabindex="-1"></a><span class="fu">oh.god.how.much.did.i.spend</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>))</span>
+<span id="cb473-2"><a href="a-worked-example-plot.html#cb473-2" tabindex="-1"></a><span class="do">## [1] 36</span></span></code></pre></div>
 </div>
 <div id="storing-and-loading-your-functions-to-and-from-a-function-file-with-source" class="section level3 hasAnchor" number="16.4.4">
 <h3><span class="header-section-number">16.4.4</span> Storing and loading your functions to and from a function file with <code>source()</code><a href="a-worked-example-plot.html#storing-and-loading-your-functions-to-and-from-a-function-file-with-source" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>As you do more programming in R, you may find yourself writing several function that you’ll want to use again and again in many different R scripts. It would be a bit of a pain to have to re-type your functions every time you start a new R session, but thankfully you don’t need to do that. Instead, you can store all your functions in one R file and then load that file into each R session.</p>
 <p>I recommend that you put all of your custom R functions into a single R script with a name like <code>customfunctions.R</code>. Mine is called <code>Custom_Pirate_Functions.R</code>. Once you’ve done this, you can load all your functions into any R session by using the <code>source()</code> function. The source function takes a file directory as an argument (the location of your custom function file) and then executes the R script into your current session.</p>
 <p>For example, on my computer my custom function file is stored at Users/Nathaniel/Dropbox/Custom_Pirate_Functions.R. When I start a new R session, I load all of my custom functions by running the following code:</p>
-<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="a-worked-example-plot.html#cb475-1" tabindex="-1"></a><span class="co"># Evaluate all of the code in my custom function R script</span></span>
-<span id="cb475-2"><a href="a-worked-example-plot.html#cb475-2" tabindex="-1"></a><span class="fu">source</span>(<span class="at">file =</span> <span class="st">&quot;Users/Nathaniel/Dropbox/Custom_Pirate_Functions.R&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="a-worked-example-plot.html#cb474-1" tabindex="-1"></a><span class="co"># Evaluate all of the code in my custom function R script</span></span>
+<span id="cb474-2"><a href="a-worked-example-plot.html#cb474-2" tabindex="-1"></a><span class="fu">source</span>(<span class="at">file =</span> <span class="st">&quot;Users/Nathaniel/Dropbox/Custom_Pirate_Functions.R&quot;</span>)</span></code></pre></div>
 <p>Once I’ve run this, I have access to all of my functions, I highly recommend that you do the same thing!</p>
 </div>
 <div id="testing-functions" class="section level3 hasAnchor" number="16.4.5">
@@ -663,46 +663,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>When you start writing more complex functions, with several inputs and lots of function code, you’ll need to constantly test your function line-by-line to make sure it’s working properly. However, because the input values are defined in the input definitions (which you won’t execute when testing the function), you can’t actually test the code line-by-line until you’ve defined the input objects in some other way. To do this, I recommend that you include temporary hard-coded values for the inputs at the beginning of the function code.</p>
 <p>For example, consider the following function called <code>remove.outliers</code>. The goal of this function is to take a vector of data and remove any data points that are outliers. This function takes two inputs <code>x</code> and <code>outlier.def</code>, where <code>x</code> is a vector of numerical data, and <code>outlier.def</code> is used to define what an outlier is: if a data point is <code>outlier.def</code> standard deviations away from the mean, then it is defined as an outlier and is removed from the data vector.</p>
 <p>In the following function definition, I’ve included two lines where I directly assign the function inputs to certain values (in this case, I set x to be a vector with 100 values of 1, and one outlier value of 999, and <code>outlier.def</code> to be 2). Now, if I want to test the function code line by line, I can uncomment these test values, execute the code that assigns those test values to the input objects, then run the function code line by line to make sure the rest of the code works.</p>
-<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="a-worked-example-plot.html#cb476-1" tabindex="-1"></a>remove.outliers <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">outlier.def =</span> <span class="dv">2</span>) {</span>
-<span id="cb476-2"><a href="a-worked-example-plot.html#cb476-2" tabindex="-1"></a></span>
-<span id="cb476-3"><a href="a-worked-example-plot.html#cb476-3" tabindex="-1"></a><span class="co"># Test values (only used to test the following code)</span></span>
-<span id="cb476-4"><a href="a-worked-example-plot.html#cb476-4" tabindex="-1"></a><span class="co">#  x &lt;- c(rep(1, 100), 999)</span></span>
-<span id="cb476-5"><a href="a-worked-example-plot.html#cb476-5" tabindex="-1"></a><span class="co">#  outlier.def &lt;- 2</span></span>
-<span id="cb476-6"><a href="a-worked-example-plot.html#cb476-6" tabindex="-1"></a></span>
-<span id="cb476-7"><a href="a-worked-example-plot.html#cb476-7" tabindex="-1"></a>  is.outlier <span class="ot">&lt;-</span> x <span class="sc">&gt;</span> (<span class="fu">mean</span>(x) <span class="sc">+</span> outlier.def <span class="sc">*</span> <span class="fu">sd</span>(x)) <span class="sc">|</span> </span>
-<span id="cb476-8"><a href="a-worked-example-plot.html#cb476-8" tabindex="-1"></a>                x <span class="sc">&lt;</span> (<span class="fu">mean</span>(x) <span class="sc">-</span> outlier.def <span class="sc">*</span> <span class="fu">sd</span>(x))</span>
-<span id="cb476-9"><a href="a-worked-example-plot.html#cb476-9" tabindex="-1"></a>  </span>
-<span id="cb476-10"><a href="a-worked-example-plot.html#cb476-10" tabindex="-1"></a>  x.nooutliers <span class="ot">&lt;-</span> x[is.outlier <span class="sc">==</span> <span class="cn">FALSE</span>]</span>
-<span id="cb476-11"><a href="a-worked-example-plot.html#cb476-11" tabindex="-1"></a></span>
-<span id="cb476-12"><a href="a-worked-example-plot.html#cb476-12" tabindex="-1"></a>  <span class="fu">return</span>(x.nooutliers)</span>
-<span id="cb476-13"><a href="a-worked-example-plot.html#cb476-13" tabindex="-1"></a></span>
-<span id="cb476-14"><a href="a-worked-example-plot.html#cb476-14" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="a-worked-example-plot.html#cb475-1" tabindex="-1"></a>remove.outliers <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">outlier.def =</span> <span class="dv">2</span>) {</span>
+<span id="cb475-2"><a href="a-worked-example-plot.html#cb475-2" tabindex="-1"></a></span>
+<span id="cb475-3"><a href="a-worked-example-plot.html#cb475-3" tabindex="-1"></a><span class="co"># Test values (only used to test the following code)</span></span>
+<span id="cb475-4"><a href="a-worked-example-plot.html#cb475-4" tabindex="-1"></a><span class="co">#  x &lt;- c(rep(1, 100), 999)</span></span>
+<span id="cb475-5"><a href="a-worked-example-plot.html#cb475-5" tabindex="-1"></a><span class="co">#  outlier.def &lt;- 2</span></span>
+<span id="cb475-6"><a href="a-worked-example-plot.html#cb475-6" tabindex="-1"></a></span>
+<span id="cb475-7"><a href="a-worked-example-plot.html#cb475-7" tabindex="-1"></a>  is.outlier <span class="ot">&lt;-</span> x <span class="sc">&gt;</span> (<span class="fu">mean</span>(x) <span class="sc">+</span> outlier.def <span class="sc">*</span> <span class="fu">sd</span>(x)) <span class="sc">|</span> </span>
+<span id="cb475-8"><a href="a-worked-example-plot.html#cb475-8" tabindex="-1"></a>                x <span class="sc">&lt;</span> (<span class="fu">mean</span>(x) <span class="sc">-</span> outlier.def <span class="sc">*</span> <span class="fu">sd</span>(x))</span>
+<span id="cb475-9"><a href="a-worked-example-plot.html#cb475-9" tabindex="-1"></a>  </span>
+<span id="cb475-10"><a href="a-worked-example-plot.html#cb475-10" tabindex="-1"></a>  x.nooutliers <span class="ot">&lt;-</span> x[is.outlier <span class="sc">==</span> <span class="cn">FALSE</span>]</span>
+<span id="cb475-11"><a href="a-worked-example-plot.html#cb475-11" tabindex="-1"></a></span>
+<span id="cb475-12"><a href="a-worked-example-plot.html#cb475-12" tabindex="-1"></a>  <span class="fu">return</span>(x.nooutliers)</span>
+<span id="cb475-13"><a href="a-worked-example-plot.html#cb475-13" tabindex="-1"></a></span>
+<span id="cb475-14"><a href="a-worked-example-plot.html#cb475-14" tabindex="-1"></a>}</span></code></pre></div>
 <p>Trust me, when you start building large complex functions, hard-coding these test values will save you many headaches. Just don’t forget to comment them out when you are done testing or the function will always use those values!</p>
 </div>
 <div id="using-...-as-a-wildcard-argument" class="section level3 hasAnchor" number="16.4.6">
 <h3><span class="header-section-number">16.4.6</span> Using <code>...</code> as a wildcard argument<a href="a-worked-example-plot.html#using-...-as-a-wildcard-argument" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For some functions that you write, you may want the user to be able to specify inputs to functions within your overall function. For example, if I create a custom function that includes the histogram function <code>hist()</code> in R, I might also want the user to be able to specify optional inputs for the plot, like <code>main</code>, <code>xlab, ylab</code>, etc. However, it would be a real pain in the pirate ass to have to include all possible plotting parameters as inputs to our new function. Thankfully, we can take care of all of this by using the <code>...</code> notation as an input to the function. Note that the <code>...</code> notation will only pass arguments on to functions that are specifically written to allow for optional inputs. If you look at the help menu for <code>hist()</code>, you’ll see that it does indeed allow for such option inputs passed on from other functions. The <code>...</code> input tells R that the user might add additional inputs that should be used later in the function.</p>
 <p>Here’s a quick example, let’s create a function called <code>hist.advanced()</code> that plots a histogram with some optional additional arguments passed on with <code>...</code></p>
-<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="a-worked-example-plot.html#cb477-1" tabindex="-1"></a>hist.advanced <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">add.ci =</span> <span class="cn">TRUE</span>, ...) {</span>
-<span id="cb477-2"><a href="a-worked-example-plot.html#cb477-2" tabindex="-1"></a></span>
-<span id="cb477-3"><a href="a-worked-example-plot.html#cb477-3" tabindex="-1"></a><span class="fu">hist</span>(x, <span class="co"># Main Data</span></span>
-<span id="cb477-4"><a href="a-worked-example-plot.html#cb477-4" tabindex="-1"></a>     ... <span class="co"># Here is where the additional arguments go</span></span>
-<span id="cb477-5"><a href="a-worked-example-plot.html#cb477-5" tabindex="-1"></a>     )</span>
-<span id="cb477-6"><a href="a-worked-example-plot.html#cb477-6" tabindex="-1"></a></span>
-<span id="cb477-7"><a href="a-worked-example-plot.html#cb477-7" tabindex="-1"></a><span class="cf">if</span>(add.ci <span class="sc">==</span> <span class="cn">TRUE</span>) {</span>
-<span id="cb477-8"><a href="a-worked-example-plot.html#cb477-8" tabindex="-1"></a></span>
-<span id="cb477-9"><a href="a-worked-example-plot.html#cb477-9" tabindex="-1"></a>  ci <span class="ot">&lt;-</span> <span class="fu">t.test</span>(x)<span class="sc">$</span>conf.int <span class="co"># Get 95% CI</span></span>
-<span id="cb477-10"><a href="a-worked-example-plot.html#cb477-10" tabindex="-1"></a>  <span class="fu">segments</span>(ci[<span class="dv">1</span>], <span class="dv">0</span>, ci[<span class="dv">2</span>], <span class="dv">0</span>, <span class="at">lwd =</span> <span class="dv">5</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
-<span id="cb477-11"><a href="a-worked-example-plot.html#cb477-11" tabindex="-1"></a></span>
-<span id="cb477-12"><a href="a-worked-example-plot.html#cb477-12" tabindex="-1"></a>  <span class="fu">mtext</span>(<span class="fu">paste</span>(<span class="st">&quot;95% CI of Mean = [&quot;</span>, <span class="fu">round</span>(ci[<span class="dv">1</span>], <span class="dv">2</span>), <span class="st">&quot;,&quot;</span>,</span>
-<span id="cb477-13"><a href="a-worked-example-plot.html#cb477-13" tabindex="-1"></a>              <span class="fu">round</span>(ci[<span class="dv">2</span>], <span class="dv">2</span>), <span class="st">&quot;]&quot;</span>), <span class="at">side =</span> <span class="dv">3</span>, <span class="at">line =</span> <span class="dv">0</span>)</span>
-<span id="cb477-14"><a href="a-worked-example-plot.html#cb477-14" tabindex="-1"></a>}</span>
-<span id="cb477-15"><a href="a-worked-example-plot.html#cb477-15" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="a-worked-example-plot.html#cb476-1" tabindex="-1"></a>hist.advanced <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">add.ci =</span> <span class="cn">TRUE</span>, ...) {</span>
+<span id="cb476-2"><a href="a-worked-example-plot.html#cb476-2" tabindex="-1"></a></span>
+<span id="cb476-3"><a href="a-worked-example-plot.html#cb476-3" tabindex="-1"></a><span class="fu">hist</span>(x, <span class="co"># Main Data</span></span>
+<span id="cb476-4"><a href="a-worked-example-plot.html#cb476-4" tabindex="-1"></a>     ... <span class="co"># Here is where the additional arguments go</span></span>
+<span id="cb476-5"><a href="a-worked-example-plot.html#cb476-5" tabindex="-1"></a>     )</span>
+<span id="cb476-6"><a href="a-worked-example-plot.html#cb476-6" tabindex="-1"></a></span>
+<span id="cb476-7"><a href="a-worked-example-plot.html#cb476-7" tabindex="-1"></a><span class="cf">if</span>(add.ci <span class="sc">==</span> <span class="cn">TRUE</span>) {</span>
+<span id="cb476-8"><a href="a-worked-example-plot.html#cb476-8" tabindex="-1"></a></span>
+<span id="cb476-9"><a href="a-worked-example-plot.html#cb476-9" tabindex="-1"></a>  ci <span class="ot">&lt;-</span> <span class="fu">t.test</span>(x)<span class="sc">$</span>conf.int <span class="co"># Get 95% CI</span></span>
+<span id="cb476-10"><a href="a-worked-example-plot.html#cb476-10" tabindex="-1"></a>  <span class="fu">segments</span>(ci[<span class="dv">1</span>], <span class="dv">0</span>, ci[<span class="dv">2</span>], <span class="dv">0</span>, <span class="at">lwd =</span> <span class="dv">5</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb476-11"><a href="a-worked-example-plot.html#cb476-11" tabindex="-1"></a></span>
+<span id="cb476-12"><a href="a-worked-example-plot.html#cb476-12" tabindex="-1"></a>  <span class="fu">mtext</span>(<span class="fu">paste</span>(<span class="st">&quot;95% CI of Mean = [&quot;</span>, <span class="fu">round</span>(ci[<span class="dv">1</span>], <span class="dv">2</span>), <span class="st">&quot;,&quot;</span>,</span>
+<span id="cb476-13"><a href="a-worked-example-plot.html#cb476-13" tabindex="-1"></a>              <span class="fu">round</span>(ci[<span class="dv">2</span>], <span class="dv">2</span>), <span class="st">&quot;]&quot;</span>), <span class="at">side =</span> <span class="dv">3</span>, <span class="at">line =</span> <span class="dv">0</span>)</span>
+<span id="cb476-14"><a href="a-worked-example-plot.html#cb476-14" tabindex="-1"></a>}</span>
+<span id="cb476-15"><a href="a-worked-example-plot.html#cb476-15" tabindex="-1"></a>}</span></code></pre></div>
 <p>Now, let’s test our function with the optional inputs <code>main</code>, <code>xlab</code>, and <code>col</code>. These arguments will be passed down to the <code>hist()</code> function within <code>hist.advanced()</code>. Here is the result:</p>
-<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="a-worked-example-plot.html#cb478-1" tabindex="-1"></a><span class="fu">hist.advanced</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>), <span class="at">add.ci =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb478-2"><a href="a-worked-example-plot.html#cb478-2" tabindex="-1"></a>              <span class="at">main =</span> <span class="st">&quot;Treasure Chests found&quot;</span>,</span>
-<span id="cb478-3"><a href="a-worked-example-plot.html#cb478-3" tabindex="-1"></a>              <span class="at">xlab =</span> <span class="st">&quot;Number of Chests&quot;</span>,</span>
-<span id="cb478-4"><a href="a-worked-example-plot.html#cb478-4" tabindex="-1"></a>              <span class="at">col =</span> <span class="st">&quot;lightblue&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="a-worked-example-plot.html#cb477-1" tabindex="-1"></a><span class="fu">hist.advanced</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>), <span class="at">add.ci =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb477-2"><a href="a-worked-example-plot.html#cb477-2" tabindex="-1"></a>              <span class="at">main =</span> <span class="st">&quot;Treasure Chests found&quot;</span>,</span>
+<span id="cb477-3"><a href="a-worked-example-plot.html#cb477-3" tabindex="-1"></a>              <span class="at">xlab =</span> <span class="st">&quot;Number of Chests&quot;</span>,</span>
+<span id="cb477-4"><a href="a-worked-example-plot.html#cb477-4" tabindex="-1"></a>              <span class="at">col =</span> <span class="st">&quot;lightblue&quot;</span>)</span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-456-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>As you can see, R has passed our optional plotting arguments down to the main <code>hist()</code> function in the function code.</p>
 </div>

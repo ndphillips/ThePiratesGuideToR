@@ -519,20 +519,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: decimal">
 <li>Captain Jack is convinced that he can predict how much gold he will find on an island with the following equation: <code>(a * b) - c * 324 + log(a)</code>, where a is the area of the island in square meters, b is the number of trees on the island, and c is how drunk he is on a scale of 1 to 10. Create a function called <code>Jacks.Equation</code> that takes a, b, and c as arguments and returns Captain Jack’s predictions. Here is an example of <code>Jacks.Equation</code> in action:</li>
 </ol>
-<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="test-your-r-might-5.html#cb479-1" tabindex="-1"></a><span class="fu">Jacks.Equation</span>(<span class="at">a =</span> <span class="dv">1000</span>, <span class="at">b =</span> <span class="dv">30</span>, <span class="at">c =</span> <span class="dv">7</span>)</span>
-<span id="cb479-2"><a href="test-your-r-might-5.html#cb479-2" tabindex="-1"></a><span class="do">## [1] 27739</span></span></code></pre></div>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="test-your-r-might-5.html#cb478-1" tabindex="-1"></a><span class="fu">Jacks.Equation</span>(<span class="at">a =</span> <span class="dv">1000</span>, <span class="at">b =</span> <span class="dv">30</span>, <span class="at">c =</span> <span class="dv">7</span>)</span>
+<span id="cb478-2"><a href="test-your-r-might-5.html#cb478-2" tabindex="-1"></a><span class="do">## [1] 27739</span></span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Write a function called <code>standardize.me</code> that takes a vector x as an argument, and returns a vector that standardizes the values of x (standardization means subtracting the mean and dividing by the standard deviation). Here is an example of <code>standardize.me</code> in action:</li>
 </ol>
-<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="test-your-r-might-5.html#cb480-1" tabindex="-1"></a><span class="fu">standardize.me</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">100</span>))</span>
-<span id="cb480-2"><a href="test-your-r-might-5.html#cb480-2" tabindex="-1"></a><span class="do">## [1] -0.51 -0.49 -0.51  1.50</span></span></code></pre></div>
+<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="test-your-r-might-5.html#cb479-1" tabindex="-1"></a><span class="fu">standardize.me</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">100</span>))</span>
+<span id="cb479-2"><a href="test-your-r-might-5.html#cb479-2" tabindex="-1"></a><span class="do">## [1] -0.51 -0.49 -0.51  1.50</span></span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>Often times you will need to recode values of a dataset. For example, if you have a survey of age data, you may want to convert any crazy values (like anything below 0 or above 100) to NA. Write a function called <code>recode.numeric()</code> with 3 arguments: <code>x</code>, <code>lb</code>, and <code>ub</code>. We’ll assume that x is a numeric vector. The function should look at the values of x, convert any values below <code>lb</code> and above <code>ub</code> to NA, and then return the resulting vector. Here is the function in action:</li>
 </ol>
-<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="test-your-r-might-5.html#cb481-1" tabindex="-1"></a><span class="fu">recode.numeric</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="sc">-</span><span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">97</span>),</span>
-<span id="cb481-2"><a href="test-your-r-might-5.html#cb481-2" tabindex="-1"></a>               <span class="at">lb =</span> <span class="dv">0</span>,</span>
-<span id="cb481-3"><a href="test-your-r-might-5.html#cb481-3" tabindex="-1"></a>               <span class="at">ub =</span> <span class="dv">10</span>)</span>
-<span id="cb481-4"><a href="test-your-r-might-5.html#cb481-4" tabindex="-1"></a><span class="do">## [1]  5  3 NA  4  3 NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="test-your-r-might-5.html#cb480-1" tabindex="-1"></a><span class="fu">recode.numeric</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="sc">-</span><span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">97</span>),</span>
+<span id="cb480-2"><a href="test-your-r-might-5.html#cb480-2" tabindex="-1"></a>               <span class="at">lb =</span> <span class="dv">0</span>,</span>
+<span id="cb480-3"><a href="test-your-r-might-5.html#cb480-3" tabindex="-1"></a>               <span class="at">ub =</span> <span class="dv">10</span>)</span>
+<span id="cb480-4"><a href="test-your-r-might-5.html#cb480-4" tabindex="-1"></a><span class="do">## [1]  5  3 NA  4  3 NA</span></span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li><p>Create a function called <code>plot.advanced</code> that creates a scatterplot with the following arguments:</p>
 <ul>
@@ -542,11 +542,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ol>
 <p>Here is my version of <code>plot.advanced()</code> in action:</p>
-<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="test-your-r-might-5.html#cb482-1" tabindex="-1"></a><span class="fu">plot.advanced</span>(<span class="at">x =</span> diamonds<span class="sc">$</span>weight,</span>
-<span id="cb482-2"><a href="test-your-r-might-5.html#cb482-2" tabindex="-1"></a>              <span class="at">y =</span> diamonds<span class="sc">$</span>value,</span>
-<span id="cb482-3"><a href="test-your-r-might-5.html#cb482-3" tabindex="-1"></a>              <span class="at">add.regression =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb482-4"><a href="test-your-r-might-5.html#cb482-4" tabindex="-1"></a>              <span class="at">add.means =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb482-5"><a href="test-your-r-might-5.html#cb482-5" tabindex="-1"></a>              <span class="at">add.test =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="test-your-r-might-5.html#cb481-1" tabindex="-1"></a><span class="fu">plot.advanced</span>(<span class="at">x =</span> diamonds<span class="sc">$</span>weight,</span>
+<span id="cb481-2"><a href="test-your-r-might-5.html#cb481-2" tabindex="-1"></a>              <span class="at">y =</span> diamonds<span class="sc">$</span>value,</span>
+<span id="cb481-3"><a href="test-your-r-might-5.html#cb481-3" tabindex="-1"></a>              <span class="at">add.regression =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb481-4"><a href="test-your-r-might-5.html#cb481-4" tabindex="-1"></a>              <span class="at">add.means =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb481-5"><a href="test-your-r-might-5.html#cb481-5" tabindex="-1"></a>              <span class="at">add.test =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-464-1.png" width="672" style="display: block; margin: auto;" /></p>
 
 </div>

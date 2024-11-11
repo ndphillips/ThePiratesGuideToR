@@ -519,53 +519,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Lists and loops go hand in hand. The more you program with R, the more you’ll find yourself using loops.</p>
 <p>Let’s say you are conducting a loop where the outcome of each index is a vector. However, the length of each vector could change - one might have a length of 1 and one might have a length of 100. How can you store each of these results in one object? Unfortunately, a vector, matrix or dataframe might not be appropriate because their size is fixed. The solution to this problem is to use a <code>list()</code>. A list is a special object in R that can store virtually <em>anything</em>. You can have a list that contains several vectors, matrices, or dataframes of any size. If you want to get really Inception-y, you can even make lists of lists (of lists of lists….).</p>
 <p>To create a list in R, use the <code>list()</code> function. Let’s create a list that contains 3 vectors where each vector is a random sample from a normal distribution. We’ll have the first element have 10 samples, the second will have 5, and the third will have 15.</p>
-<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="the-list-object.html#cb500-1" tabindex="-1"></a><span class="co"># Create a list with vectors of different lengths</span></span>
-<span id="cb500-2"><a href="the-list-object.html#cb500-2" tabindex="-1"></a> number.list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb500-3"><a href="the-list-object.html#cb500-3" tabindex="-1"></a>      <span class="st">&quot;a&quot;</span> <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10</span>),</span>
-<span id="cb500-4"><a href="the-list-object.html#cb500-4" tabindex="-1"></a>      <span class="st">&quot;b&quot;</span> <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>),</span>
-<span id="cb500-5"><a href="the-list-object.html#cb500-5" tabindex="-1"></a>      <span class="st">&quot;c&quot;</span> <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">15</span>))</span>
-<span id="cb500-6"><a href="the-list-object.html#cb500-6" tabindex="-1"></a> </span>
-<span id="cb500-7"><a href="the-list-object.html#cb500-7" tabindex="-1"></a> number.list</span>
-<span id="cb500-8"><a href="the-list-object.html#cb500-8" tabindex="-1"></a><span class="do">## $a</span></span>
-<span id="cb500-9"><a href="the-list-object.html#cb500-9" tabindex="-1"></a><span class="do">##  [1] -1.24  0.17 -1.19 -0.58 -1.23  0.92  1.62 -2.02 -0.25  0.92</span></span>
-<span id="cb500-10"><a href="the-list-object.html#cb500-10" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb500-11"><a href="the-list-object.html#cb500-11" tabindex="-1"></a><span class="do">## $b</span></span>
-<span id="cb500-12"><a href="the-list-object.html#cb500-12" tabindex="-1"></a><span class="do">## [1] -1.627 -1.103 -0.524  0.072 -2.351</span></span>
-<span id="cb500-13"><a href="the-list-object.html#cb500-13" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb500-14"><a href="the-list-object.html#cb500-14" tabindex="-1"></a><span class="do">## $c</span></span>
-<span id="cb500-15"><a href="the-list-object.html#cb500-15" tabindex="-1"></a><span class="do">##  [1] -0.6539  0.4062 -0.6126 -0.3552 -1.0043 -0.4276 -2.3236 -0.6905 -0.4258 -1.0483  0.7000  0.7408 -0.0878  0.6970 -0.0016</span></span></code></pre></div>
+<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="the-list-object.html#cb499-1" tabindex="-1"></a><span class="co"># Create a list with vectors of different lengths</span></span>
+<span id="cb499-2"><a href="the-list-object.html#cb499-2" tabindex="-1"></a> number.list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb499-3"><a href="the-list-object.html#cb499-3" tabindex="-1"></a>      <span class="st">&quot;a&quot;</span> <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10</span>),</span>
+<span id="cb499-4"><a href="the-list-object.html#cb499-4" tabindex="-1"></a>      <span class="st">&quot;b&quot;</span> <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>),</span>
+<span id="cb499-5"><a href="the-list-object.html#cb499-5" tabindex="-1"></a>      <span class="st">&quot;c&quot;</span> <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">15</span>))</span>
+<span id="cb499-6"><a href="the-list-object.html#cb499-6" tabindex="-1"></a> </span>
+<span id="cb499-7"><a href="the-list-object.html#cb499-7" tabindex="-1"></a> number.list</span>
+<span id="cb499-8"><a href="the-list-object.html#cb499-8" tabindex="-1"></a><span class="do">## $a</span></span>
+<span id="cb499-9"><a href="the-list-object.html#cb499-9" tabindex="-1"></a><span class="do">##  [1] -1.24  0.17 -1.19 -0.58 -1.23  0.92  1.62 -2.02 -0.25  0.92</span></span>
+<span id="cb499-10"><a href="the-list-object.html#cb499-10" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb499-11"><a href="the-list-object.html#cb499-11" tabindex="-1"></a><span class="do">## $b</span></span>
+<span id="cb499-12"><a href="the-list-object.html#cb499-12" tabindex="-1"></a><span class="do">## [1] -1.627 -1.103 -0.524  0.072 -2.351</span></span>
+<span id="cb499-13"><a href="the-list-object.html#cb499-13" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb499-14"><a href="the-list-object.html#cb499-14" tabindex="-1"></a><span class="do">## $c</span></span>
+<span id="cb499-15"><a href="the-list-object.html#cb499-15" tabindex="-1"></a><span class="do">##  [1] -0.6539  0.4062 -0.6126 -0.3552 -1.0043 -0.4276 -2.3236 -0.6905 -0.4258 -1.0483  0.7000  0.7408 -0.0878  0.6970 -0.0016</span></span></code></pre></div>
 <p>To index an element in a list, use double brackets [[]] or $ if the list has names. For example, to get the first element of a list named <code>number.list</code>, we’d use <code>number.ls[[1]]</code>:</p>
-<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb501-1"><a href="the-list-object.html#cb501-1" tabindex="-1"></a><span class="co"># Give me the first element in number.list</span></span>
-<span id="cb501-2"><a href="the-list-object.html#cb501-2" tabindex="-1"></a>number.list[[<span class="dv">1</span>]]</span>
-<span id="cb501-3"><a href="the-list-object.html#cb501-3" tabindex="-1"></a><span class="do">##  [1] -1.24  0.17 -1.19 -0.58 -1.23  0.92  1.62 -2.02 -0.25  0.92</span></span></code></pre></div>
-<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="the-list-object.html#cb502-1" tabindex="-1"></a></span>
-<span id="cb502-2"><a href="the-list-object.html#cb502-2" tabindex="-1"></a><span class="co"># Give me the element named b</span></span>
-<span id="cb502-3"><a href="the-list-object.html#cb502-3" tabindex="-1"></a>number.list<span class="sc">$</span>b</span>
-<span id="cb502-4"><a href="the-list-object.html#cb502-4" tabindex="-1"></a><span class="do">## [1] -1.627 -1.103 -0.524  0.072 -2.351</span></span></code></pre></div>
+<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="the-list-object.html#cb500-1" tabindex="-1"></a><span class="co"># Give me the first element in number.list</span></span>
+<span id="cb500-2"><a href="the-list-object.html#cb500-2" tabindex="-1"></a>number.list[[<span class="dv">1</span>]]</span>
+<span id="cb500-3"><a href="the-list-object.html#cb500-3" tabindex="-1"></a><span class="do">##  [1] -1.24  0.17 -1.19 -0.58 -1.23  0.92  1.62 -2.02 -0.25  0.92</span></span></code></pre></div>
+<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb501-1"><a href="the-list-object.html#cb501-1" tabindex="-1"></a></span>
+<span id="cb501-2"><a href="the-list-object.html#cb501-2" tabindex="-1"></a><span class="co"># Give me the element named b</span></span>
+<span id="cb501-3"><a href="the-list-object.html#cb501-3" tabindex="-1"></a>number.list<span class="sc">$</span>b</span>
+<span id="cb501-4"><a href="the-list-object.html#cb501-4" tabindex="-1"></a><span class="do">## [1] -1.627 -1.103 -0.524  0.072 -2.351</span></span></code></pre></div>
 <p>Ok, now let’s use the list object within a loop. We’ll create a loop that generates 5 different samples from a Normal distribution with mean 0 and standard deviation 1 and saves the results in a list called <code>samples.ls</code>. The first element will have 1 sample, the second element will have 2 samples, etc.</p>
 <p>First, we need to set up an empty list container object. To do this, use the <code>vector</code> function:</p>
-<div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb503-1"><a href="the-list-object.html#cb503-1" tabindex="-1"></a><span class="co"># Create an empty list with 5 elements</span></span>
-<span id="cb503-2"><a href="the-list-object.html#cb503-2" tabindex="-1"></a>samples.ls <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="the-list-object.html#cb502-1" tabindex="-1"></a><span class="co"># Create an empty list with 5 elements</span></span>
+<span id="cb502-2"><a href="the-list-object.html#cb502-2" tabindex="-1"></a>samples.ls <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="dv">5</span>)</span></code></pre></div>
 <p>Now, let’s run the loop. For each run of the loop, we’ll generate <code>i</code> random samples and assign them to the ith element in <code>samples.ls</code></p>
-<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="the-list-object.html#cb504-1" tabindex="-1"></a> <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
-<span id="cb504-2"><a href="the-list-object.html#cb504-2" tabindex="-1"></a>   samples.ls[[i]] <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> i, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb504-3"><a href="the-list-object.html#cb504-3" tabindex="-1"></a> }</span></code></pre></div>
+<div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb503-1"><a href="the-list-object.html#cb503-1" tabindex="-1"></a> <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
+<span id="cb503-2"><a href="the-list-object.html#cb503-2" tabindex="-1"></a>   samples.ls[[i]] <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> i, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb503-3"><a href="the-list-object.html#cb503-3" tabindex="-1"></a> }</span></code></pre></div>
 <p>Let’s look at the result:</p>
-<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="the-list-object.html#cb505-1" tabindex="-1"></a>samples.ls</span>
-<span id="cb505-2"><a href="the-list-object.html#cb505-2" tabindex="-1"></a><span class="do">## [[1]]</span></span>
-<span id="cb505-3"><a href="the-list-object.html#cb505-3" tabindex="-1"></a><span class="do">## [1] 0.062</span></span>
-<span id="cb505-4"><a href="the-list-object.html#cb505-4" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb505-5"><a href="the-list-object.html#cb505-5" tabindex="-1"></a><span class="do">## [[2]]</span></span>
-<span id="cb505-6"><a href="the-list-object.html#cb505-6" tabindex="-1"></a><span class="do">## [1] 0.96 2.06</span></span>
-<span id="cb505-7"><a href="the-list-object.html#cb505-7" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb505-8"><a href="the-list-object.html#cb505-8" tabindex="-1"></a><span class="do">## [[3]]</span></span>
-<span id="cb505-9"><a href="the-list-object.html#cb505-9" tabindex="-1"></a><span class="do">## [1]  0.490  0.946 -0.023</span></span>
-<span id="cb505-10"><a href="the-list-object.html#cb505-10" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb505-11"><a href="the-list-object.html#cb505-11" tabindex="-1"></a><span class="do">## [[4]]</span></span>
-<span id="cb505-12"><a href="the-list-object.html#cb505-12" tabindex="-1"></a><span class="do">## [1]  1.45  0.28  0.67 -0.97</span></span>
-<span id="cb505-13"><a href="the-list-object.html#cb505-13" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb505-14"><a href="the-list-object.html#cb505-14" tabindex="-1"></a><span class="do">## [[5]]</span></span>
-<span id="cb505-15"><a href="the-list-object.html#cb505-15" tabindex="-1"></a><span class="do">## [1]  0.614 -0.098  0.778 -0.209  0.288</span></span></code></pre></div>
+<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="the-list-object.html#cb504-1" tabindex="-1"></a>samples.ls</span>
+<span id="cb504-2"><a href="the-list-object.html#cb504-2" tabindex="-1"></a><span class="do">## [[1]]</span></span>
+<span id="cb504-3"><a href="the-list-object.html#cb504-3" tabindex="-1"></a><span class="do">## [1] 0.062</span></span>
+<span id="cb504-4"><a href="the-list-object.html#cb504-4" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb504-5"><a href="the-list-object.html#cb504-5" tabindex="-1"></a><span class="do">## [[2]]</span></span>
+<span id="cb504-6"><a href="the-list-object.html#cb504-6" tabindex="-1"></a><span class="do">## [1] 0.96 2.06</span></span>
+<span id="cb504-7"><a href="the-list-object.html#cb504-7" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb504-8"><a href="the-list-object.html#cb504-8" tabindex="-1"></a><span class="do">## [[3]]</span></span>
+<span id="cb504-9"><a href="the-list-object.html#cb504-9" tabindex="-1"></a><span class="do">## [1]  0.490  0.946 -0.023</span></span>
+<span id="cb504-10"><a href="the-list-object.html#cb504-10" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb504-11"><a href="the-list-object.html#cb504-11" tabindex="-1"></a><span class="do">## [[4]]</span></span>
+<span id="cb504-12"><a href="the-list-object.html#cb504-12" tabindex="-1"></a><span class="do">## [1]  1.45  0.28  0.67 -0.97</span></span>
+<span id="cb504-13"><a href="the-list-object.html#cb504-13" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb504-14"><a href="the-list-object.html#cb504-14" tabindex="-1"></a><span class="do">## [[5]]</span></span>
+<span id="cb504-15"><a href="the-list-object.html#cb504-15" tabindex="-1"></a><span class="do">## [1]  0.614 -0.098  0.778 -0.209  0.288</span></span></code></pre></div>
 <p>Looks like it worked. The first element has one sample, the second element has two samples and so on (you might get different specific values than I did because the samples were drawn randomly!).</p>
 </div>
             </section>

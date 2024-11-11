@@ -519,150 +519,150 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: decimal">
 <li>Do male pirates have significantly longer beards than female pirates? Test this by conducting the appropriate test on the relevant data in the pirates dataset.</li>
 </ol>
-<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="chapter-13-hypothesis-tests.html#cb572-1" tabindex="-1"></a>beard.sex.htest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(<span class="at">formula =</span> beard.length <span class="sc">~</span> sex,</span>
-<span id="cb572-2"><a href="chapter-13-hypothesis-tests.html#cb572-2" tabindex="-1"></a>                           <span class="at">subset =</span> sex <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>),</span>
-<span id="cb572-3"><a href="chapter-13-hypothesis-tests.html#cb572-3" tabindex="-1"></a>                           <span class="at">data =</span> pirates)</span>
-<span id="cb572-4"><a href="chapter-13-hypothesis-tests.html#cb572-4" tabindex="-1"></a></span>
-<span id="cb572-5"><a href="chapter-13-hypothesis-tests.html#cb572-5" tabindex="-1"></a>beard.sex.htest</span>
-<span id="cb572-6"><a href="chapter-13-hypothesis-tests.html#cb572-6" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb572-7"><a href="chapter-13-hypothesis-tests.html#cb572-7" tabindex="-1"></a><span class="do">##  Welch Two Sample t-test</span></span>
-<span id="cb572-8"><a href="chapter-13-hypothesis-tests.html#cb572-8" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb572-9"><a href="chapter-13-hypothesis-tests.html#cb572-9" tabindex="-1"></a><span class="do">## data:  beard.length by sex</span></span>
-<span id="cb572-10"><a href="chapter-13-hypothesis-tests.html#cb572-10" tabindex="-1"></a><span class="do">## t = -71, df = 500, p-value &lt;2e-16</span></span>
-<span id="cb572-11"><a href="chapter-13-hypothesis-tests.html#cb572-11" tabindex="-1"></a><span class="do">## alternative hypothesis: true difference in means between group female and group male is not equal to 0</span></span>
-<span id="cb572-12"><a href="chapter-13-hypothesis-tests.html#cb572-12" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
-<span id="cb572-13"><a href="chapter-13-hypothesis-tests.html#cb572-13" tabindex="-1"></a><span class="do">##  -20 -18</span></span>
-<span id="cb572-14"><a href="chapter-13-hypothesis-tests.html#cb572-14" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
-<span id="cb572-15"><a href="chapter-13-hypothesis-tests.html#cb572-15" tabindex="-1"></a><span class="do">## mean in group female   mean in group male </span></span>
-<span id="cb572-16"><a href="chapter-13-hypothesis-tests.html#cb572-16" tabindex="-1"></a><span class="do">##                  0.4                 19.4</span></span></code></pre></div>
-<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb573-1"><a href="chapter-13-hypothesis-tests.html#cb573-1" tabindex="-1"></a></span>
-<span id="cb573-2"><a href="chapter-13-hypothesis-tests.html#cb573-2" tabindex="-1"></a><span class="fu">apa</span>(beard.sex.htest)</span>
-<span id="cb573-3"><a href="chapter-13-hypothesis-tests.html#cb573-3" tabindex="-1"></a><span class="do">## [1] &quot;mean difference = 19.02, t(499.82) = -70.89, p &lt; 0.01 (2-tailed)&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="chapter-13-hypothesis-tests.html#cb571-1" tabindex="-1"></a>beard.sex.htest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(<span class="at">formula =</span> beard.length <span class="sc">~</span> sex,</span>
+<span id="cb571-2"><a href="chapter-13-hypothesis-tests.html#cb571-2" tabindex="-1"></a>                           <span class="at">subset =</span> sex <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>),</span>
+<span id="cb571-3"><a href="chapter-13-hypothesis-tests.html#cb571-3" tabindex="-1"></a>                           <span class="at">data =</span> pirates)</span>
+<span id="cb571-4"><a href="chapter-13-hypothesis-tests.html#cb571-4" tabindex="-1"></a></span>
+<span id="cb571-5"><a href="chapter-13-hypothesis-tests.html#cb571-5" tabindex="-1"></a>beard.sex.htest</span>
+<span id="cb571-6"><a href="chapter-13-hypothesis-tests.html#cb571-6" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb571-7"><a href="chapter-13-hypothesis-tests.html#cb571-7" tabindex="-1"></a><span class="do">##  Welch Two Sample t-test</span></span>
+<span id="cb571-8"><a href="chapter-13-hypothesis-tests.html#cb571-8" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb571-9"><a href="chapter-13-hypothesis-tests.html#cb571-9" tabindex="-1"></a><span class="do">## data:  beard.length by sex</span></span>
+<span id="cb571-10"><a href="chapter-13-hypothesis-tests.html#cb571-10" tabindex="-1"></a><span class="do">## t = -71, df = 500, p-value &lt;2e-16</span></span>
+<span id="cb571-11"><a href="chapter-13-hypothesis-tests.html#cb571-11" tabindex="-1"></a><span class="do">## alternative hypothesis: true difference in means between group female and group male is not equal to 0</span></span>
+<span id="cb571-12"><a href="chapter-13-hypothesis-tests.html#cb571-12" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb571-13"><a href="chapter-13-hypothesis-tests.html#cb571-13" tabindex="-1"></a><span class="do">##  -20 -18</span></span>
+<span id="cb571-14"><a href="chapter-13-hypothesis-tests.html#cb571-14" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb571-15"><a href="chapter-13-hypothesis-tests.html#cb571-15" tabindex="-1"></a><span class="do">## mean in group female   mean in group male </span></span>
+<span id="cb571-16"><a href="chapter-13-hypothesis-tests.html#cb571-16" tabindex="-1"></a><span class="do">##                  0.4                 19.4</span></span></code></pre></div>
+<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="chapter-13-hypothesis-tests.html#cb572-1" tabindex="-1"></a></span>
+<span id="cb572-2"><a href="chapter-13-hypothesis-tests.html#cb572-2" tabindex="-1"></a><span class="fu">apa</span>(beard.sex.htest)</span>
+<span id="cb572-3"><a href="chapter-13-hypothesis-tests.html#cb572-3" tabindex="-1"></a><span class="do">## [1] &quot;mean difference = 19.02, t(499.82) = -70.89, p &lt; 0.01 (2-tailed)&quot;</span></span></code></pre></div>
 <p><em>Answer</em>: Yes, men have significantly longer beards than women, mean difference = 19.02, t(499.82) = -70.89, p &lt; 0.01 (2-tailed)</p>
 <ol start="2" style="list-style-type: decimal">
 <li>Are pirates whose favorite pixar movie is Up more or less likely to wear an eye patch than those whose favorite pixar movie is Inside Out? Test this by conducting the appropriate test on the relevant data in the pirates dataset.</li>
 </ol>
-<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="chapter-13-hypothesis-tests.html#cb574-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">subset</span>(pirates, fav.pixar <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Up&quot;</span>, <span class="st">&quot;Inside Out&quot;</span>))</span>
-<span id="cb574-2"><a href="chapter-13-hypothesis-tests.html#cb574-2" tabindex="-1"></a>pixar.ep.table <span class="ot">&lt;-</span> <span class="fu">table</span>(df<span class="sc">$</span>fav.pixar, df<span class="sc">$</span>eyepatch)</span>
-<span id="cb574-3"><a href="chapter-13-hypothesis-tests.html#cb574-3" tabindex="-1"></a></span>
-<span id="cb574-4"><a href="chapter-13-hypothesis-tests.html#cb574-4" tabindex="-1"></a>pixar.ep.htest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(pixar.ep.table)</span>
-<span id="cb574-5"><a href="chapter-13-hypothesis-tests.html#cb574-5" tabindex="-1"></a>pixar.ep.htest</span>
-<span id="cb574-6"><a href="chapter-13-hypothesis-tests.html#cb574-6" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb574-7"><a href="chapter-13-hypothesis-tests.html#cb574-7" tabindex="-1"></a><span class="do">##  Pearson&#39;s Chi-squared test with Yates&#39; continuity correction</span></span>
-<span id="cb574-8"><a href="chapter-13-hypothesis-tests.html#cb574-8" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb574-9"><a href="chapter-13-hypothesis-tests.html#cb574-9" tabindex="-1"></a><span class="do">## data:  pixar.ep.table</span></span>
-<span id="cb574-10"><a href="chapter-13-hypothesis-tests.html#cb574-10" tabindex="-1"></a><span class="do">## X-squared = 89, df = 1, p-value &lt;2e-16</span></span></code></pre></div>
-<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb575-1"><a href="chapter-13-hypothesis-tests.html#cb575-1" tabindex="-1"></a></span>
-<span id="cb575-2"><a href="chapter-13-hypothesis-tests.html#cb575-2" tabindex="-1"></a><span class="fu">apa</span>(pixar.ep.htest)</span>
-<span id="cb575-3"><a href="chapter-13-hypothesis-tests.html#cb575-3" tabindex="-1"></a><span class="do">## [1] &quot;X(1, N = 422) = 88.96, p &lt; 0.01 (2-tailed)&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb573-1"><a href="chapter-13-hypothesis-tests.html#cb573-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">subset</span>(pirates, fav.pixar <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Up&quot;</span>, <span class="st">&quot;Inside Out&quot;</span>))</span>
+<span id="cb573-2"><a href="chapter-13-hypothesis-tests.html#cb573-2" tabindex="-1"></a>pixar.ep.table <span class="ot">&lt;-</span> <span class="fu">table</span>(df<span class="sc">$</span>fav.pixar, df<span class="sc">$</span>eyepatch)</span>
+<span id="cb573-3"><a href="chapter-13-hypothesis-tests.html#cb573-3" tabindex="-1"></a></span>
+<span id="cb573-4"><a href="chapter-13-hypothesis-tests.html#cb573-4" tabindex="-1"></a>pixar.ep.htest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(pixar.ep.table)</span>
+<span id="cb573-5"><a href="chapter-13-hypothesis-tests.html#cb573-5" tabindex="-1"></a>pixar.ep.htest</span>
+<span id="cb573-6"><a href="chapter-13-hypothesis-tests.html#cb573-6" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb573-7"><a href="chapter-13-hypothesis-tests.html#cb573-7" tabindex="-1"></a><span class="do">##  Pearson&#39;s Chi-squared test with Yates&#39; continuity correction</span></span>
+<span id="cb573-8"><a href="chapter-13-hypothesis-tests.html#cb573-8" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb573-9"><a href="chapter-13-hypothesis-tests.html#cb573-9" tabindex="-1"></a><span class="do">## data:  pixar.ep.table</span></span>
+<span id="cb573-10"><a href="chapter-13-hypothesis-tests.html#cb573-10" tabindex="-1"></a><span class="do">## X-squared = 89, df = 1, p-value &lt;2e-16</span></span></code></pre></div>
+<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="chapter-13-hypothesis-tests.html#cb574-1" tabindex="-1"></a></span>
+<span id="cb574-2"><a href="chapter-13-hypothesis-tests.html#cb574-2" tabindex="-1"></a><span class="fu">apa</span>(pixar.ep.htest)</span>
+<span id="cb574-3"><a href="chapter-13-hypothesis-tests.html#cb574-3" tabindex="-1"></a><span class="do">## [1] &quot;X(1, N = 422) = 88.96, p &lt; 0.01 (2-tailed)&quot;</span></span></code></pre></div>
 <p><em>Answer</em>: Yes, pirates whose favorite movie is Inside Out are much more likely to wear an eye patch than those whose favorite Pixar movie is Up, X(1, N = 422) = 88.96, p &lt; 0.01 (2-tailed)</p>
 <ol start="3" style="list-style-type: decimal">
 <li>Do longer movies have significantly higher budgets than shorter movies? Answer this question by conducting the appropriate test in the movies dataset.</li>
 </ol>
-<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="chapter-13-hypothesis-tests.html#cb576-1" tabindex="-1"></a>budget.time.htest <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(<span class="at">formula =</span> <span class="sc">~</span> budget <span class="sc">+</span> time,</span>
-<span id="cb576-2"><a href="chapter-13-hypothesis-tests.html#cb576-2" tabindex="-1"></a>                              <span class="at">data =</span> movies)</span>
-<span id="cb576-3"><a href="chapter-13-hypothesis-tests.html#cb576-3" tabindex="-1"></a></span>
-<span id="cb576-4"><a href="chapter-13-hypothesis-tests.html#cb576-4" tabindex="-1"></a>budget.time.htest</span>
-<span id="cb576-5"><a href="chapter-13-hypothesis-tests.html#cb576-5" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb576-6"><a href="chapter-13-hypothesis-tests.html#cb576-6" tabindex="-1"></a><span class="do">##  Pearson&#39;s product-moment correlation</span></span>
-<span id="cb576-7"><a href="chapter-13-hypothesis-tests.html#cb576-7" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb576-8"><a href="chapter-13-hypothesis-tests.html#cb576-8" tabindex="-1"></a><span class="do">## data:  budget and time</span></span>
-<span id="cb576-9"><a href="chapter-13-hypothesis-tests.html#cb576-9" tabindex="-1"></a><span class="do">## t = 14, df = 2313, p-value &lt;2e-16</span></span>
-<span id="cb576-10"><a href="chapter-13-hypothesis-tests.html#cb576-10" tabindex="-1"></a><span class="do">## alternative hypothesis: true correlation is not equal to 0</span></span>
-<span id="cb576-11"><a href="chapter-13-hypothesis-tests.html#cb576-11" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
-<span id="cb576-12"><a href="chapter-13-hypothesis-tests.html#cb576-12" tabindex="-1"></a><span class="do">##  0.24 0.32</span></span>
-<span id="cb576-13"><a href="chapter-13-hypothesis-tests.html#cb576-13" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
-<span id="cb576-14"><a href="chapter-13-hypothesis-tests.html#cb576-14" tabindex="-1"></a><span class="do">##  cor </span></span>
-<span id="cb576-15"><a href="chapter-13-hypothesis-tests.html#cb576-15" tabindex="-1"></a><span class="do">## 0.28</span></span></code></pre></div>
-<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="chapter-13-hypothesis-tests.html#cb577-1" tabindex="-1"></a></span>
-<span id="cb577-2"><a href="chapter-13-hypothesis-tests.html#cb577-2" tabindex="-1"></a><span class="fu">apa</span>(budget.time.htest)</span>
-<span id="cb577-3"><a href="chapter-13-hypothesis-tests.html#cb577-3" tabindex="-1"></a><span class="do">## [1] &quot;r = 0.28, t(2313) = 14.09, p &lt; 0.01 (2-tailed)&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb575-1"><a href="chapter-13-hypothesis-tests.html#cb575-1" tabindex="-1"></a>budget.time.htest <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(<span class="at">formula =</span> <span class="sc">~</span> budget <span class="sc">+</span> time,</span>
+<span id="cb575-2"><a href="chapter-13-hypothesis-tests.html#cb575-2" tabindex="-1"></a>                              <span class="at">data =</span> movies)</span>
+<span id="cb575-3"><a href="chapter-13-hypothesis-tests.html#cb575-3" tabindex="-1"></a></span>
+<span id="cb575-4"><a href="chapter-13-hypothesis-tests.html#cb575-4" tabindex="-1"></a>budget.time.htest</span>
+<span id="cb575-5"><a href="chapter-13-hypothesis-tests.html#cb575-5" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb575-6"><a href="chapter-13-hypothesis-tests.html#cb575-6" tabindex="-1"></a><span class="do">##  Pearson&#39;s product-moment correlation</span></span>
+<span id="cb575-7"><a href="chapter-13-hypothesis-tests.html#cb575-7" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb575-8"><a href="chapter-13-hypothesis-tests.html#cb575-8" tabindex="-1"></a><span class="do">## data:  budget and time</span></span>
+<span id="cb575-9"><a href="chapter-13-hypothesis-tests.html#cb575-9" tabindex="-1"></a><span class="do">## t = 14, df = 2313, p-value &lt;2e-16</span></span>
+<span id="cb575-10"><a href="chapter-13-hypothesis-tests.html#cb575-10" tabindex="-1"></a><span class="do">## alternative hypothesis: true correlation is not equal to 0</span></span>
+<span id="cb575-11"><a href="chapter-13-hypothesis-tests.html#cb575-11" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb575-12"><a href="chapter-13-hypothesis-tests.html#cb575-12" tabindex="-1"></a><span class="do">##  0.24 0.32</span></span>
+<span id="cb575-13"><a href="chapter-13-hypothesis-tests.html#cb575-13" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb575-14"><a href="chapter-13-hypothesis-tests.html#cb575-14" tabindex="-1"></a><span class="do">##  cor </span></span>
+<span id="cb575-15"><a href="chapter-13-hypothesis-tests.html#cb575-15" tabindex="-1"></a><span class="do">## 0.28</span></span></code></pre></div>
+<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="chapter-13-hypothesis-tests.html#cb576-1" tabindex="-1"></a></span>
+<span id="cb576-2"><a href="chapter-13-hypothesis-tests.html#cb576-2" tabindex="-1"></a><span class="fu">apa</span>(budget.time.htest)</span>
+<span id="cb576-3"><a href="chapter-13-hypothesis-tests.html#cb576-3" tabindex="-1"></a><span class="do">## [1] &quot;r = 0.28, t(2313) = 14.09, p &lt; 0.01 (2-tailed)&quot;</span></span></code></pre></div>
 <p><em>Answer</em>: Yes, longer movies tend to have higher budgets than shorter movies, r = 0.28, t(2313) = 14.09, p &lt; 0.01 (2-tailed)</p>
 <ol start="4" style="list-style-type: decimal">
 <li>Do R rated movies earn significantly more money than PG-13 movies? Test this by conducting a the appropriate test on the relevant data in the movies dataset.</li>
 </ol>
-<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="chapter-13-hypothesis-tests.html#cb578-1" tabindex="-1"></a>revenue.rating.htest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(<span class="at">formula =</span> revenue.all <span class="sc">~</span> rating,</span>
-<span id="cb578-2"><a href="chapter-13-hypothesis-tests.html#cb578-2" tabindex="-1"></a>                               <span class="at">subset =</span> rating <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;R&quot;</span>, <span class="st">&quot;PG-13&quot;</span>),</span>
-<span id="cb578-3"><a href="chapter-13-hypothesis-tests.html#cb578-3" tabindex="-1"></a>                               <span class="at">data =</span> movies)</span>
-<span id="cb578-4"><a href="chapter-13-hypothesis-tests.html#cb578-4" tabindex="-1"></a></span>
-<span id="cb578-5"><a href="chapter-13-hypothesis-tests.html#cb578-5" tabindex="-1"></a>revenue.rating.htest</span>
-<span id="cb578-6"><a href="chapter-13-hypothesis-tests.html#cb578-6" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb578-7"><a href="chapter-13-hypothesis-tests.html#cb578-7" tabindex="-1"></a><span class="do">##  Welch Two Sample t-test</span></span>
-<span id="cb578-8"><a href="chapter-13-hypothesis-tests.html#cb578-8" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb578-9"><a href="chapter-13-hypothesis-tests.html#cb578-9" tabindex="-1"></a><span class="do">## data:  revenue.all by rating</span></span>
-<span id="cb578-10"><a href="chapter-13-hypothesis-tests.html#cb578-10" tabindex="-1"></a><span class="do">## t = 11, df = 1779, p-value &lt;2e-16</span></span>
-<span id="cb578-11"><a href="chapter-13-hypothesis-tests.html#cb578-11" tabindex="-1"></a><span class="do">## alternative hypothesis: true difference in means between group PG-13 and group R is not equal to 0</span></span>
-<span id="cb578-12"><a href="chapter-13-hypothesis-tests.html#cb578-12" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
-<span id="cb578-13"><a href="chapter-13-hypothesis-tests.html#cb578-13" tabindex="-1"></a><span class="do">##  56 82</span></span>
-<span id="cb578-14"><a href="chapter-13-hypothesis-tests.html#cb578-14" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
-<span id="cb578-15"><a href="chapter-13-hypothesis-tests.html#cb578-15" tabindex="-1"></a><span class="do">## mean in group PG-13     mean in group R </span></span>
-<span id="cb578-16"><a href="chapter-13-hypothesis-tests.html#cb578-16" tabindex="-1"></a><span class="do">##                 148                  80</span></span></code></pre></div>
-<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb579-1"><a href="chapter-13-hypothesis-tests.html#cb579-1" tabindex="-1"></a></span>
-<span id="cb579-2"><a href="chapter-13-hypothesis-tests.html#cb579-2" tabindex="-1"></a><span class="fu">apa</span>(revenue.rating.htest)</span>
-<span id="cb579-3"><a href="chapter-13-hypothesis-tests.html#cb579-3" tabindex="-1"></a><span class="do">## [1] &quot;mean difference = -68.86, t(1779.2) = 10.67, p &lt; 0.01 (2-tailed)&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="chapter-13-hypothesis-tests.html#cb577-1" tabindex="-1"></a>revenue.rating.htest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(<span class="at">formula =</span> revenue.all <span class="sc">~</span> rating,</span>
+<span id="cb577-2"><a href="chapter-13-hypothesis-tests.html#cb577-2" tabindex="-1"></a>                               <span class="at">subset =</span> rating <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;R&quot;</span>, <span class="st">&quot;PG-13&quot;</span>),</span>
+<span id="cb577-3"><a href="chapter-13-hypothesis-tests.html#cb577-3" tabindex="-1"></a>                               <span class="at">data =</span> movies)</span>
+<span id="cb577-4"><a href="chapter-13-hypothesis-tests.html#cb577-4" tabindex="-1"></a></span>
+<span id="cb577-5"><a href="chapter-13-hypothesis-tests.html#cb577-5" tabindex="-1"></a>revenue.rating.htest</span>
+<span id="cb577-6"><a href="chapter-13-hypothesis-tests.html#cb577-6" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb577-7"><a href="chapter-13-hypothesis-tests.html#cb577-7" tabindex="-1"></a><span class="do">##  Welch Two Sample t-test</span></span>
+<span id="cb577-8"><a href="chapter-13-hypothesis-tests.html#cb577-8" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb577-9"><a href="chapter-13-hypothesis-tests.html#cb577-9" tabindex="-1"></a><span class="do">## data:  revenue.all by rating</span></span>
+<span id="cb577-10"><a href="chapter-13-hypothesis-tests.html#cb577-10" tabindex="-1"></a><span class="do">## t = 11, df = 1779, p-value &lt;2e-16</span></span>
+<span id="cb577-11"><a href="chapter-13-hypothesis-tests.html#cb577-11" tabindex="-1"></a><span class="do">## alternative hypothesis: true difference in means between group PG-13 and group R is not equal to 0</span></span>
+<span id="cb577-12"><a href="chapter-13-hypothesis-tests.html#cb577-12" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb577-13"><a href="chapter-13-hypothesis-tests.html#cb577-13" tabindex="-1"></a><span class="do">##  56 82</span></span>
+<span id="cb577-14"><a href="chapter-13-hypothesis-tests.html#cb577-14" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb577-15"><a href="chapter-13-hypothesis-tests.html#cb577-15" tabindex="-1"></a><span class="do">## mean in group PG-13     mean in group R </span></span>
+<span id="cb577-16"><a href="chapter-13-hypothesis-tests.html#cb577-16" tabindex="-1"></a><span class="do">##                 148                  80</span></span></code></pre></div>
+<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="chapter-13-hypothesis-tests.html#cb578-1" tabindex="-1"></a></span>
+<span id="cb578-2"><a href="chapter-13-hypothesis-tests.html#cb578-2" tabindex="-1"></a><span class="fu">apa</span>(revenue.rating.htest)</span>
+<span id="cb578-3"><a href="chapter-13-hypothesis-tests.html#cb578-3" tabindex="-1"></a><span class="do">## [1] &quot;mean difference = -68.86, t(1779.2) = 10.67, p &lt; 0.01 (2-tailed)&quot;</span></span></code></pre></div>
 <p><em>Answer</em>: No, R Rated movies do not earn significantly more than PG-13 movies. In fact, PG-13 movies earn significantly more than R rated movies.</p>
 <ol start="5" style="list-style-type: decimal">
 <li>Are certain movie genres significantly more common than others in the movies dataset?</li>
 </ol>
-<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb580-1"><a href="chapter-13-hypothesis-tests.html#cb580-1" tabindex="-1"></a>genre.table <span class="ot">&lt;-</span> <span class="fu">table</span>(movies<span class="sc">$</span>genre)</span>
-<span id="cb580-2"><a href="chapter-13-hypothesis-tests.html#cb580-2" tabindex="-1"></a>genre.htest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(genre.table)</span>
-<span id="cb580-3"><a href="chapter-13-hypothesis-tests.html#cb580-3" tabindex="-1"></a></span>
-<span id="cb580-4"><a href="chapter-13-hypothesis-tests.html#cb580-4" tabindex="-1"></a>genre.htest</span>
-<span id="cb580-5"><a href="chapter-13-hypothesis-tests.html#cb580-5" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb580-6"><a href="chapter-13-hypothesis-tests.html#cb580-6" tabindex="-1"></a><span class="do">##  Chi-squared test for given probabilities</span></span>
-<span id="cb580-7"><a href="chapter-13-hypothesis-tests.html#cb580-7" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb580-8"><a href="chapter-13-hypothesis-tests.html#cb580-8" tabindex="-1"></a><span class="do">## data:  genre.table</span></span>
-<span id="cb580-9"><a href="chapter-13-hypothesis-tests.html#cb580-9" tabindex="-1"></a><span class="do">## X-squared = 6409, df = 13, p-value &lt;2e-16</span></span></code></pre></div>
-<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="chapter-13-hypothesis-tests.html#cb581-1" tabindex="-1"></a></span>
-<span id="cb581-2"><a href="chapter-13-hypothesis-tests.html#cb581-2" tabindex="-1"></a><span class="fu">apa</span>(genre.htest)</span>
-<span id="cb581-3"><a href="chapter-13-hypothesis-tests.html#cb581-3" tabindex="-1"></a><span class="do">## [1] &quot;X(13, N = 4682) = 6408.91, p &lt; 0.01 (2-tailed)&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb579-1"><a href="chapter-13-hypothesis-tests.html#cb579-1" tabindex="-1"></a>genre.table <span class="ot">&lt;-</span> <span class="fu">table</span>(movies<span class="sc">$</span>genre)</span>
+<span id="cb579-2"><a href="chapter-13-hypothesis-tests.html#cb579-2" tabindex="-1"></a>genre.htest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(genre.table)</span>
+<span id="cb579-3"><a href="chapter-13-hypothesis-tests.html#cb579-3" tabindex="-1"></a></span>
+<span id="cb579-4"><a href="chapter-13-hypothesis-tests.html#cb579-4" tabindex="-1"></a>genre.htest</span>
+<span id="cb579-5"><a href="chapter-13-hypothesis-tests.html#cb579-5" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb579-6"><a href="chapter-13-hypothesis-tests.html#cb579-6" tabindex="-1"></a><span class="do">##  Chi-squared test for given probabilities</span></span>
+<span id="cb579-7"><a href="chapter-13-hypothesis-tests.html#cb579-7" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb579-8"><a href="chapter-13-hypothesis-tests.html#cb579-8" tabindex="-1"></a><span class="do">## data:  genre.table</span></span>
+<span id="cb579-9"><a href="chapter-13-hypothesis-tests.html#cb579-9" tabindex="-1"></a><span class="do">## X-squared = 6409, df = 13, p-value &lt;2e-16</span></span></code></pre></div>
+<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb580-1"><a href="chapter-13-hypothesis-tests.html#cb580-1" tabindex="-1"></a></span>
+<span id="cb580-2"><a href="chapter-13-hypothesis-tests.html#cb580-2" tabindex="-1"></a><span class="fu">apa</span>(genre.htest)</span>
+<span id="cb580-3"><a href="chapter-13-hypothesis-tests.html#cb580-3" tabindex="-1"></a><span class="do">## [1] &quot;X(13, N = 4682) = 6408.91, p &lt; 0.01 (2-tailed)&quot;</span></span></code></pre></div>
 <p><em>Answer</em>: Yes, some movie genres are more common than others, X(13, N = 4682) = 6408.91, p &lt; 0.01 (2-tailed)</p>
 <ol start="6" style="list-style-type: decimal">
 <li>Do sequels and non-sequels differ in their ratings?</li>
 </ol>
-<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb582-1"><a href="chapter-13-hypothesis-tests.html#cb582-1" tabindex="-1"></a>genre.sequel.table <span class="ot">&lt;-</span> <span class="fu">table</span>(movies<span class="sc">$</span>genre, movies<span class="sc">$</span>sequel)</span>
-<span id="cb582-2"><a href="chapter-13-hypothesis-tests.html#cb582-2" tabindex="-1"></a></span>
-<span id="cb582-3"><a href="chapter-13-hypothesis-tests.html#cb582-3" tabindex="-1"></a>genre.sequel.htest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(genre.sequel.table)</span>
-<span id="cb582-4"><a href="chapter-13-hypothesis-tests.html#cb582-4" tabindex="-1"></a><span class="do">## Warning in chisq.test(genre.sequel.table): Chi-squared approximation may be incorrect</span></span></code></pre></div>
-<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="chapter-13-hypothesis-tests.html#cb583-1" tabindex="-1"></a></span>
-<span id="cb583-2"><a href="chapter-13-hypothesis-tests.html#cb583-2" tabindex="-1"></a><span class="fu">apa</span>(genre.sequel.htest)</span>
-<span id="cb583-3"><a href="chapter-13-hypothesis-tests.html#cb583-3" tabindex="-1"></a><span class="do">## [1] &quot;X(13, N = 4669) = 387.17, p &lt; 0.01 (2-tailed)&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="chapter-13-hypothesis-tests.html#cb581-1" tabindex="-1"></a>genre.sequel.table <span class="ot">&lt;-</span> <span class="fu">table</span>(movies<span class="sc">$</span>genre, movies<span class="sc">$</span>sequel)</span>
+<span id="cb581-2"><a href="chapter-13-hypothesis-tests.html#cb581-2" tabindex="-1"></a></span>
+<span id="cb581-3"><a href="chapter-13-hypothesis-tests.html#cb581-3" tabindex="-1"></a>genre.sequel.htest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(genre.sequel.table)</span>
+<span id="cb581-4"><a href="chapter-13-hypothesis-tests.html#cb581-4" tabindex="-1"></a><span class="do">## Warning in chisq.test(genre.sequel.table): Chi-squared approximation may be incorrect</span></span></code></pre></div>
+<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb582-1"><a href="chapter-13-hypothesis-tests.html#cb582-1" tabindex="-1"></a></span>
+<span id="cb582-2"><a href="chapter-13-hypothesis-tests.html#cb582-2" tabindex="-1"></a><span class="fu">apa</span>(genre.sequel.htest)</span>
+<span id="cb582-3"><a href="chapter-13-hypothesis-tests.html#cb582-3" tabindex="-1"></a><span class="do">## [1] &quot;X(13, N = 4669) = 387.17, p &lt; 0.01 (2-tailed)&quot;</span></span></code></pre></div>
 <p><em>Answer</em>: Yes, sequels are more likely in some genres than others.</p>
 <p>Note: The error “Warning in chisq.test” we get in this code is due to the fact that some cells have no entries. This can make the test statistic unreliable. You can correct it by adding a value of 20 to every element in the table as follows:</p>
-<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb584-1"><a href="chapter-13-hypothesis-tests.html#cb584-1" tabindex="-1"></a>genre.sequel.table <span class="ot">&lt;-</span> <span class="fu">table</span>(movies<span class="sc">$</span>genre, movies<span class="sc">$</span>sequel)</span>
-<span id="cb584-2"><a href="chapter-13-hypothesis-tests.html#cb584-2" tabindex="-1"></a></span>
-<span id="cb584-3"><a href="chapter-13-hypothesis-tests.html#cb584-3" tabindex="-1"></a><span class="co"># Add 20 to each cell to correct for empty cells</span></span>
-<span id="cb584-4"><a href="chapter-13-hypothesis-tests.html#cb584-4" tabindex="-1"></a>genre.sequel.table <span class="ot">&lt;-</span> genre.sequel.table <span class="sc">+</span> <span class="dv">20</span></span>
-<span id="cb584-5"><a href="chapter-13-hypothesis-tests.html#cb584-5" tabindex="-1"></a></span>
-<span id="cb584-6"><a href="chapter-13-hypothesis-tests.html#cb584-6" tabindex="-1"></a><span class="co"># Here is the result</span></span>
-<span id="cb584-7"><a href="chapter-13-hypothesis-tests.html#cb584-7" tabindex="-1"></a>genre.sequel.table</span>
-<span id="cb584-8"><a href="chapter-13-hypothesis-tests.html#cb584-8" tabindex="-1"></a><span class="do">##                      </span></span>
-<span id="cb584-9"><a href="chapter-13-hypothesis-tests.html#cb584-9" tabindex="-1"></a><span class="do">##                          0    1</span></span>
-<span id="cb584-10"><a href="chapter-13-hypothesis-tests.html#cb584-10" tabindex="-1"></a><span class="do">##   Action               550  178</span></span>
-<span id="cb584-11"><a href="chapter-13-hypothesis-tests.html#cb584-11" tabindex="-1"></a><span class="do">##   Adventure            384  141</span></span>
-<span id="cb584-12"><a href="chapter-13-hypothesis-tests.html#cb584-12" tabindex="-1"></a><span class="do">##   Black Comedy          54   20</span></span>
-<span id="cb584-13"><a href="chapter-13-hypothesis-tests.html#cb584-13" tabindex="-1"></a><span class="do">##   Comedy              1078  172</span></span>
-<span id="cb584-14"><a href="chapter-13-hypothesis-tests.html#cb584-14" tabindex="-1"></a><span class="do">##   Concert/Performance   34   20</span></span>
-<span id="cb584-15"><a href="chapter-13-hypothesis-tests.html#cb584-15" tabindex="-1"></a><span class="do">##   Documentary           83   20</span></span>
-<span id="cb584-16"><a href="chapter-13-hypothesis-tests.html#cb584-16" tabindex="-1"></a><span class="do">##   Drama               1077   46</span></span>
-<span id="cb584-17"><a href="chapter-13-hypothesis-tests.html#cb584-17" tabindex="-1"></a><span class="do">##   Horror               235  105</span></span>
-<span id="cb584-18"><a href="chapter-13-hypothesis-tests.html#cb584-18" tabindex="-1"></a><span class="do">##   Multiple Genres       21   20</span></span>
-<span id="cb584-19"><a href="chapter-13-hypothesis-tests.html#cb584-19" tabindex="-1"></a><span class="do">##   Musical               92   25</span></span>
-<span id="cb584-20"><a href="chapter-13-hypothesis-tests.html#cb584-20" tabindex="-1"></a><span class="do">##   Reality               22   20</span></span>
-<span id="cb584-21"><a href="chapter-13-hypothesis-tests.html#cb584-21" tabindex="-1"></a><span class="do">##   Romantic Comedy      265   23</span></span>
-<span id="cb584-22"><a href="chapter-13-hypothesis-tests.html#cb584-22" tabindex="-1"></a><span class="do">##   Thriller/Suspense    425   41</span></span>
-<span id="cb584-23"><a href="chapter-13-hypothesis-tests.html#cb584-23" tabindex="-1"></a><span class="do">##   Western               57   21</span></span></code></pre></div>
-<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb585-1"><a href="chapter-13-hypothesis-tests.html#cb585-1" tabindex="-1"></a></span>
-<span id="cb585-2"><a href="chapter-13-hypothesis-tests.html#cb585-2" tabindex="-1"></a><span class="co"># Run a chi-square test on the table</span></span>
-<span id="cb585-3"><a href="chapter-13-hypothesis-tests.html#cb585-3" tabindex="-1"></a>genre.sequel.htest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(genre.sequel.table)</span>
-<span id="cb585-4"><a href="chapter-13-hypothesis-tests.html#cb585-4" tabindex="-1"></a></span>
-<span id="cb585-5"><a href="chapter-13-hypothesis-tests.html#cb585-5" tabindex="-1"></a><span class="co"># Print the result</span></span>
-<span id="cb585-6"><a href="chapter-13-hypothesis-tests.html#cb585-6" tabindex="-1"></a>genre.sequel.htest</span>
-<span id="cb585-7"><a href="chapter-13-hypothesis-tests.html#cb585-7" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb585-8"><a href="chapter-13-hypothesis-tests.html#cb585-8" tabindex="-1"></a><span class="do">##  Pearson&#39;s Chi-squared test</span></span>
-<span id="cb585-9"><a href="chapter-13-hypothesis-tests.html#cb585-9" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb585-10"><a href="chapter-13-hypothesis-tests.html#cb585-10" tabindex="-1"></a><span class="do">## data:  genre.sequel.table</span></span>
-<span id="cb585-11"><a href="chapter-13-hypothesis-tests.html#cb585-11" tabindex="-1"></a><span class="do">## X-squared = 388, df = 13, p-value &lt;2e-16</span></span></code></pre></div>
+<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="chapter-13-hypothesis-tests.html#cb583-1" tabindex="-1"></a>genre.sequel.table <span class="ot">&lt;-</span> <span class="fu">table</span>(movies<span class="sc">$</span>genre, movies<span class="sc">$</span>sequel)</span>
+<span id="cb583-2"><a href="chapter-13-hypothesis-tests.html#cb583-2" tabindex="-1"></a></span>
+<span id="cb583-3"><a href="chapter-13-hypothesis-tests.html#cb583-3" tabindex="-1"></a><span class="co"># Add 20 to each cell to correct for empty cells</span></span>
+<span id="cb583-4"><a href="chapter-13-hypothesis-tests.html#cb583-4" tabindex="-1"></a>genre.sequel.table <span class="ot">&lt;-</span> genre.sequel.table <span class="sc">+</span> <span class="dv">20</span></span>
+<span id="cb583-5"><a href="chapter-13-hypothesis-tests.html#cb583-5" tabindex="-1"></a></span>
+<span id="cb583-6"><a href="chapter-13-hypothesis-tests.html#cb583-6" tabindex="-1"></a><span class="co"># Here is the result</span></span>
+<span id="cb583-7"><a href="chapter-13-hypothesis-tests.html#cb583-7" tabindex="-1"></a>genre.sequel.table</span>
+<span id="cb583-8"><a href="chapter-13-hypothesis-tests.html#cb583-8" tabindex="-1"></a><span class="do">##                      </span></span>
+<span id="cb583-9"><a href="chapter-13-hypothesis-tests.html#cb583-9" tabindex="-1"></a><span class="do">##                          0    1</span></span>
+<span id="cb583-10"><a href="chapter-13-hypothesis-tests.html#cb583-10" tabindex="-1"></a><span class="do">##   Action               550  178</span></span>
+<span id="cb583-11"><a href="chapter-13-hypothesis-tests.html#cb583-11" tabindex="-1"></a><span class="do">##   Adventure            384  141</span></span>
+<span id="cb583-12"><a href="chapter-13-hypothesis-tests.html#cb583-12" tabindex="-1"></a><span class="do">##   Black Comedy          54   20</span></span>
+<span id="cb583-13"><a href="chapter-13-hypothesis-tests.html#cb583-13" tabindex="-1"></a><span class="do">##   Comedy              1078  172</span></span>
+<span id="cb583-14"><a href="chapter-13-hypothesis-tests.html#cb583-14" tabindex="-1"></a><span class="do">##   Concert/Performance   34   20</span></span>
+<span id="cb583-15"><a href="chapter-13-hypothesis-tests.html#cb583-15" tabindex="-1"></a><span class="do">##   Documentary           83   20</span></span>
+<span id="cb583-16"><a href="chapter-13-hypothesis-tests.html#cb583-16" tabindex="-1"></a><span class="do">##   Drama               1077   46</span></span>
+<span id="cb583-17"><a href="chapter-13-hypothesis-tests.html#cb583-17" tabindex="-1"></a><span class="do">##   Horror               235  105</span></span>
+<span id="cb583-18"><a href="chapter-13-hypothesis-tests.html#cb583-18" tabindex="-1"></a><span class="do">##   Multiple Genres       21   20</span></span>
+<span id="cb583-19"><a href="chapter-13-hypothesis-tests.html#cb583-19" tabindex="-1"></a><span class="do">##   Musical               92   25</span></span>
+<span id="cb583-20"><a href="chapter-13-hypothesis-tests.html#cb583-20" tabindex="-1"></a><span class="do">##   Reality               22   20</span></span>
+<span id="cb583-21"><a href="chapter-13-hypothesis-tests.html#cb583-21" tabindex="-1"></a><span class="do">##   Romantic Comedy      265   23</span></span>
+<span id="cb583-22"><a href="chapter-13-hypothesis-tests.html#cb583-22" tabindex="-1"></a><span class="do">##   Thriller/Suspense    425   41</span></span>
+<span id="cb583-23"><a href="chapter-13-hypothesis-tests.html#cb583-23" tabindex="-1"></a><span class="do">##   Western               57   21</span></span></code></pre></div>
+<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb584-1"><a href="chapter-13-hypothesis-tests.html#cb584-1" tabindex="-1"></a></span>
+<span id="cb584-2"><a href="chapter-13-hypothesis-tests.html#cb584-2" tabindex="-1"></a><span class="co"># Run a chi-square test on the table</span></span>
+<span id="cb584-3"><a href="chapter-13-hypothesis-tests.html#cb584-3" tabindex="-1"></a>genre.sequel.htest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(genre.sequel.table)</span>
+<span id="cb584-4"><a href="chapter-13-hypothesis-tests.html#cb584-4" tabindex="-1"></a></span>
+<span id="cb584-5"><a href="chapter-13-hypothesis-tests.html#cb584-5" tabindex="-1"></a><span class="co"># Print the result</span></span>
+<span id="cb584-6"><a href="chapter-13-hypothesis-tests.html#cb584-6" tabindex="-1"></a>genre.sequel.htest</span>
+<span id="cb584-7"><a href="chapter-13-hypothesis-tests.html#cb584-7" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb584-8"><a href="chapter-13-hypothesis-tests.html#cb584-8" tabindex="-1"></a><span class="do">##  Pearson&#39;s Chi-squared test</span></span>
+<span id="cb584-9"><a href="chapter-13-hypothesis-tests.html#cb584-9" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb584-10"><a href="chapter-13-hypothesis-tests.html#cb584-10" tabindex="-1"></a><span class="do">## data:  genre.sequel.table</span></span>
+<span id="cb584-11"><a href="chapter-13-hypothesis-tests.html#cb584-11" tabindex="-1"></a><span class="do">## X-squared = 388, df = 13, p-value &lt;2e-16</span></span></code></pre></div>
 </div>
             </section>
 

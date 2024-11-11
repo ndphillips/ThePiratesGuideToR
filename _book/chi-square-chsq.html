@@ -521,51 +521,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="sample-chi-square-test" class="section level4 hasAnchor" number="13.4.0.1">
 <h4><span class="header-section-number">13.4.0.1</span> 1-sample Chi-square test<a href="chi-square-chsq.html#sample-chi-square-test" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>If you conduct a 1-sample chi-square test, you are testing if there is a difference in the number of members of each category in the vector. Or in other words, are all category memberships equally prevalent? Here’s the general form of a one-sample chi-square test:</p>
-<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="chi-square-chsq.html#cb386-1" tabindex="-1"></a><span class="co"># General form of a one-sample chi-square test</span></span>
-<span id="cb386-2"><a href="chi-square-chsq.html#cb386-2" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="at">x =</span> <span class="fu">table</span>(x))</span></code></pre></div>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="chi-square-chsq.html#cb385-1" tabindex="-1"></a><span class="co"># General form of a one-sample chi-square test</span></span>
+<span id="cb385-2"><a href="chi-square-chsq.html#cb385-2" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="at">x =</span> <span class="fu">table</span>(x))</span></code></pre></div>
 <p>As you can see, the main argument to <code>chisq.test()</code> should be a <em>table</em> of values created using the <code>table()</code> function. For example, let’s conduct a chi-square test to see if all pirate colleges are equally prevalent in the <code>pirates</code> data. We’ll start by creating a table of the college data:</p>
-<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="chi-square-chsq.html#cb387-1" tabindex="-1"></a><span class="co"># Frequency table of pirate colleges</span></span>
-<span id="cb387-2"><a href="chi-square-chsq.html#cb387-2" tabindex="-1"></a><span class="fu">table</span>(pirates<span class="sc">$</span>college)</span>
-<span id="cb387-3"><a href="chi-square-chsq.html#cb387-3" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb387-4"><a href="chi-square-chsq.html#cb387-4" tabindex="-1"></a><span class="do">##  CCCC JSSFP </span></span>
-<span id="cb387-5"><a href="chi-square-chsq.html#cb387-5" tabindex="-1"></a><span class="do">##   658   342</span></span></code></pre></div>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="chi-square-chsq.html#cb386-1" tabindex="-1"></a><span class="co"># Frequency table of pirate colleges</span></span>
+<span id="cb386-2"><a href="chi-square-chsq.html#cb386-2" tabindex="-1"></a><span class="fu">table</span>(pirates<span class="sc">$</span>college)</span>
+<span id="cb386-3"><a href="chi-square-chsq.html#cb386-3" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb386-4"><a href="chi-square-chsq.html#cb386-4" tabindex="-1"></a><span class="do">##  CCCC JSSFP </span></span>
+<span id="cb386-5"><a href="chi-square-chsq.html#cb386-5" tabindex="-1"></a><span class="do">##   658   342</span></span></code></pre></div>
 <p>Just by looking at the table, it looks like pirates are much more likely to come from Captain Chunk’s Cannon Crew (CCCC) than Jack Sparrow’s School of Fashion and Piratery (JSSFP). For this reason, we should expect a very large test statistic and a very small p-value. Let’s test it using the <code>chisq.test()</code> function.</p>
-<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="chi-square-chsq.html#cb388-1" tabindex="-1"></a><span class="co"># Are all colleges equally prevelant?</span></span>
-<span id="cb388-2"><a href="chi-square-chsq.html#cb388-2" tabindex="-1"></a>college.cstest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(<span class="at">x =</span> <span class="fu">table</span>(pirates<span class="sc">$</span>college))</span>
-<span id="cb388-3"><a href="chi-square-chsq.html#cb388-3" tabindex="-1"></a></span>
-<span id="cb388-4"><a href="chi-square-chsq.html#cb388-4" tabindex="-1"></a>college.cstest</span>
-<span id="cb388-5"><a href="chi-square-chsq.html#cb388-5" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb388-6"><a href="chi-square-chsq.html#cb388-6" tabindex="-1"></a><span class="do">##  Chi-squared test for given probabilities</span></span>
-<span id="cb388-7"><a href="chi-square-chsq.html#cb388-7" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb388-8"><a href="chi-square-chsq.html#cb388-8" tabindex="-1"></a><span class="do">## data:  table(pirates$college)</span></span>
-<span id="cb388-9"><a href="chi-square-chsq.html#cb388-9" tabindex="-1"></a><span class="do">## X-squared = 100, df = 1, p-value &lt;2e-16</span></span></code></pre></div>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="chi-square-chsq.html#cb387-1" tabindex="-1"></a><span class="co"># Are all colleges equally prevelant?</span></span>
+<span id="cb387-2"><a href="chi-square-chsq.html#cb387-2" tabindex="-1"></a>college.cstest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(<span class="at">x =</span> <span class="fu">table</span>(pirates<span class="sc">$</span>college))</span>
+<span id="cb387-3"><a href="chi-square-chsq.html#cb387-3" tabindex="-1"></a></span>
+<span id="cb387-4"><a href="chi-square-chsq.html#cb387-4" tabindex="-1"></a>college.cstest</span>
+<span id="cb387-5"><a href="chi-square-chsq.html#cb387-5" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb387-6"><a href="chi-square-chsq.html#cb387-6" tabindex="-1"></a><span class="do">##  Chi-squared test for given probabilities</span></span>
+<span id="cb387-7"><a href="chi-square-chsq.html#cb387-7" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb387-8"><a href="chi-square-chsq.html#cb387-8" tabindex="-1"></a><span class="do">## data:  table(pirates$college)</span></span>
+<span id="cb387-9"><a href="chi-square-chsq.html#cb387-9" tabindex="-1"></a><span class="do">## X-squared = 100, df = 1, p-value &lt;2e-16</span></span></code></pre></div>
 <p>Indeed, with a test statistic of 99.86 and a tiny p-value, we can safely reject the null hypothesis and conclude that certain college <em>are</em> more popular than others.</p>
 </div>
 <div id="sample-chi-square-test-1" class="section level4 hasAnchor" number="13.4.0.2">
 <h4><span class="header-section-number">13.4.0.2</span> 2-sample Chi-square test<a href="chi-square-chsq.html#sample-chi-square-test-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>If you want to see if the frequency of one nominal variable depends on a second nominal variable, you’d conduct a 2-sample chi-square test. For example, we might want to know if there is a relationship between the college a pirate went to, and whether or not he/she wears an eyepatch. We can get a contingency table of the data from the <code>pirates</code> dataframe as follows:</p>
-<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="chi-square-chsq.html#cb389-1" tabindex="-1"></a><span class="co"># Do pirates that wear eyepatches have come from different colleges</span></span>
-<span id="cb389-2"><a href="chi-square-chsq.html#cb389-2" tabindex="-1"></a><span class="co">#  than those that do not wear eyepatches?</span></span>
-<span id="cb389-3"><a href="chi-square-chsq.html#cb389-3" tabindex="-1"></a></span>
-<span id="cb389-4"><a href="chi-square-chsq.html#cb389-4" tabindex="-1"></a><span class="fu">table</span>(pirates<span class="sc">$</span>eyepatch, </span>
-<span id="cb389-5"><a href="chi-square-chsq.html#cb389-5" tabindex="-1"></a>      pirates<span class="sc">$</span>college)</span>
-<span id="cb389-6"><a href="chi-square-chsq.html#cb389-6" tabindex="-1"></a><span class="do">##    </span></span>
-<span id="cb389-7"><a href="chi-square-chsq.html#cb389-7" tabindex="-1"></a><span class="do">##     CCCC JSSFP</span></span>
-<span id="cb389-8"><a href="chi-square-chsq.html#cb389-8" tabindex="-1"></a><span class="do">##   0  225   117</span></span>
-<span id="cb389-9"><a href="chi-square-chsq.html#cb389-9" tabindex="-1"></a><span class="do">##   1  433   225</span></span></code></pre></div>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="chi-square-chsq.html#cb388-1" tabindex="-1"></a><span class="co"># Do pirates that wear eyepatches have come from different colleges</span></span>
+<span id="cb388-2"><a href="chi-square-chsq.html#cb388-2" tabindex="-1"></a><span class="co">#  than those that do not wear eyepatches?</span></span>
+<span id="cb388-3"><a href="chi-square-chsq.html#cb388-3" tabindex="-1"></a></span>
+<span id="cb388-4"><a href="chi-square-chsq.html#cb388-4" tabindex="-1"></a><span class="fu">table</span>(pirates<span class="sc">$</span>eyepatch, </span>
+<span id="cb388-5"><a href="chi-square-chsq.html#cb388-5" tabindex="-1"></a>      pirates<span class="sc">$</span>college)</span>
+<span id="cb388-6"><a href="chi-square-chsq.html#cb388-6" tabindex="-1"></a><span class="do">##    </span></span>
+<span id="cb388-7"><a href="chi-square-chsq.html#cb388-7" tabindex="-1"></a><span class="do">##     CCCC JSSFP</span></span>
+<span id="cb388-8"><a href="chi-square-chsq.html#cb388-8" tabindex="-1"></a><span class="do">##   0  225   117</span></span>
+<span id="cb388-9"><a href="chi-square-chsq.html#cb388-9" tabindex="-1"></a><span class="do">##   1  433   225</span></span></code></pre></div>
 <p>To conduct a chi-square test on these data, we will enter table of the two data vectors:</p>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="chi-square-chsq.html#cb390-1" tabindex="-1"></a><span class="co"># Is there a relationship between a pirate&#39;s</span></span>
-<span id="cb390-2"><a href="chi-square-chsq.html#cb390-2" tabindex="-1"></a><span class="co"># college and whether or not they wear an eyepatch?</span></span>
-<span id="cb390-3"><a href="chi-square-chsq.html#cb390-3" tabindex="-1"></a></span>
-<span id="cb390-4"><a href="chi-square-chsq.html#cb390-4" tabindex="-1"></a>colpatch.cstest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(<span class="at">x =</span> <span class="fu">table</span>(pirates<span class="sc">$</span>college,</span>
-<span id="cb390-5"><a href="chi-square-chsq.html#cb390-5" tabindex="-1"></a>                                        pirates<span class="sc">$</span>eyepatch))</span>
-<span id="cb390-6"><a href="chi-square-chsq.html#cb390-6" tabindex="-1"></a></span>
-<span id="cb390-7"><a href="chi-square-chsq.html#cb390-7" tabindex="-1"></a>colpatch.cstest</span>
-<span id="cb390-8"><a href="chi-square-chsq.html#cb390-8" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb390-9"><a href="chi-square-chsq.html#cb390-9" tabindex="-1"></a><span class="do">##  Pearson&#39;s Chi-squared test with Yates&#39; continuity correction</span></span>
-<span id="cb390-10"><a href="chi-square-chsq.html#cb390-10" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb390-11"><a href="chi-square-chsq.html#cb390-11" tabindex="-1"></a><span class="do">## data:  table(pirates$college, pirates$eyepatch)</span></span>
-<span id="cb390-12"><a href="chi-square-chsq.html#cb390-12" tabindex="-1"></a><span class="do">## X-squared = 0, df = 1, p-value = 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="chi-square-chsq.html#cb389-1" tabindex="-1"></a><span class="co"># Is there a relationship between a pirate&#39;s</span></span>
+<span id="cb389-2"><a href="chi-square-chsq.html#cb389-2" tabindex="-1"></a><span class="co"># college and whether or not they wear an eyepatch?</span></span>
+<span id="cb389-3"><a href="chi-square-chsq.html#cb389-3" tabindex="-1"></a></span>
+<span id="cb389-4"><a href="chi-square-chsq.html#cb389-4" tabindex="-1"></a>colpatch.cstest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(<span class="at">x =</span> <span class="fu">table</span>(pirates<span class="sc">$</span>college,</span>
+<span id="cb389-5"><a href="chi-square-chsq.html#cb389-5" tabindex="-1"></a>                                        pirates<span class="sc">$</span>eyepatch))</span>
+<span id="cb389-6"><a href="chi-square-chsq.html#cb389-6" tabindex="-1"></a></span>
+<span id="cb389-7"><a href="chi-square-chsq.html#cb389-7" tabindex="-1"></a>colpatch.cstest</span>
+<span id="cb389-8"><a href="chi-square-chsq.html#cb389-8" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb389-9"><a href="chi-square-chsq.html#cb389-9" tabindex="-1"></a><span class="do">##  Pearson&#39;s Chi-squared test with Yates&#39; continuity correction</span></span>
+<span id="cb389-10"><a href="chi-square-chsq.html#cb389-10" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb389-11"><a href="chi-square-chsq.html#cb389-11" tabindex="-1"></a><span class="do">## data:  table(pirates$college, pirates$eyepatch)</span></span>
+<span id="cb389-12"><a href="chi-square-chsq.html#cb389-12" tabindex="-1"></a><span class="do">## X-squared = 0, df = 1, p-value = 1</span></span></code></pre></div>
 <p>It looks like we got a test statistic of <span class="math inline">\(\chi^2\)</span> = 0 and a p-value of 1. At the traditional p = .05 threshold for significance, we would conclude that we fail to reject the null hypothesis and state that we do not have enough information to determine if pirates from different colleges differ in how likely they are to wear eye patches.</p>
 </div>
 <div id="getting-apa-style-conclusions-with-the-apa-function" class="section level3 hasAnchor" number="13.4.1">
@@ -573,46 +573,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Most people think that R pirates are a completely unhinged, drunken bunch of pillaging buffoons. But nothing could be further from the truth! R pirates are a very organized and formal people who like their statistical output to follow strict rules. The most famous rules are those written by the American Pirate Association (APA). These rules specify exactly how an R pirate should report the results of the most common hypothesis tests to her fellow pirates.</p>
 <p>For example, in reporting a t-test, APA style dictates that the result should be in the form t(df) = X, p = Y (Z-tailed), where df is the degrees of freedom of the text, X is the test statistic, Y is the p-value, and Z is the number of tails in the test. Now you can of course read these values directly from the test result, but if you want to save some time and get the APA style conclusion quickly, just use the apa function. Here’s how it works:</p>
 <p>Consider the following two-sample t-test on the pirates dataset that compares whether or not there is a significant age difference between pirates who wear headbands and those who do not:</p>
-<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="chi-square-chsq.html#cb391-1" tabindex="-1"></a>test.result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(age <span class="sc">~</span> headband,</span>
-<span id="cb391-2"><a href="chi-square-chsq.html#cb391-2" tabindex="-1"></a>                      <span class="at">data =</span> pirates)</span>
-<span id="cb391-3"><a href="chi-square-chsq.html#cb391-3" tabindex="-1"></a>test.result</span>
-<span id="cb391-4"><a href="chi-square-chsq.html#cb391-4" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb391-5"><a href="chi-square-chsq.html#cb391-5" tabindex="-1"></a><span class="do">##  Welch Two Sample t-test</span></span>
-<span id="cb391-6"><a href="chi-square-chsq.html#cb391-6" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb391-7"><a href="chi-square-chsq.html#cb391-7" tabindex="-1"></a><span class="do">## data:  age by headband</span></span>
-<span id="cb391-8"><a href="chi-square-chsq.html#cb391-8" tabindex="-1"></a><span class="do">## t = 0.4, df = 135, p-value = 0.7</span></span>
-<span id="cb391-9"><a href="chi-square-chsq.html#cb391-9" tabindex="-1"></a><span class="do">## alternative hypothesis: true difference in means between group no and group yes is not equal to 0</span></span>
-<span id="cb391-10"><a href="chi-square-chsq.html#cb391-10" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
-<span id="cb391-11"><a href="chi-square-chsq.html#cb391-11" tabindex="-1"></a><span class="do">##  -1.0  1.5</span></span>
-<span id="cb391-12"><a href="chi-square-chsq.html#cb391-12" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
-<span id="cb391-13"><a href="chi-square-chsq.html#cb391-13" tabindex="-1"></a><span class="do">##  mean in group no mean in group yes </span></span>
-<span id="cb391-14"><a href="chi-square-chsq.html#cb391-14" tabindex="-1"></a><span class="do">##                28                27</span></span></code></pre></div>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="chi-square-chsq.html#cb390-1" tabindex="-1"></a>test.result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(age <span class="sc">~</span> headband,</span>
+<span id="cb390-2"><a href="chi-square-chsq.html#cb390-2" tabindex="-1"></a>                      <span class="at">data =</span> pirates)</span>
+<span id="cb390-3"><a href="chi-square-chsq.html#cb390-3" tabindex="-1"></a>test.result</span>
+<span id="cb390-4"><a href="chi-square-chsq.html#cb390-4" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb390-5"><a href="chi-square-chsq.html#cb390-5" tabindex="-1"></a><span class="do">##  Welch Two Sample t-test</span></span>
+<span id="cb390-6"><a href="chi-square-chsq.html#cb390-6" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb390-7"><a href="chi-square-chsq.html#cb390-7" tabindex="-1"></a><span class="do">## data:  age by headband</span></span>
+<span id="cb390-8"><a href="chi-square-chsq.html#cb390-8" tabindex="-1"></a><span class="do">## t = 0.4, df = 135, p-value = 0.7</span></span>
+<span id="cb390-9"><a href="chi-square-chsq.html#cb390-9" tabindex="-1"></a><span class="do">## alternative hypothesis: true difference in means between group no and group yes is not equal to 0</span></span>
+<span id="cb390-10"><a href="chi-square-chsq.html#cb390-10" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb390-11"><a href="chi-square-chsq.html#cb390-11" tabindex="-1"></a><span class="do">##  -1.0  1.5</span></span>
+<span id="cb390-12"><a href="chi-square-chsq.html#cb390-12" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb390-13"><a href="chi-square-chsq.html#cb390-13" tabindex="-1"></a><span class="do">##  mean in group no mean in group yes </span></span>
+<span id="cb390-14"><a href="chi-square-chsq.html#cb390-14" tabindex="-1"></a><span class="do">##                28                27</span></span></code></pre></div>
 <p>It looks like the test statistic is 0.35, degrees of freedom is 135.47, and the p-value is 0.73. Let’s see how the apa function gets these values directly from the test object:</p>
-<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="chi-square-chsq.html#cb392-1" tabindex="-1"></a>yarrr<span class="sc">::</span><span class="fu">apa</span>(test.result)</span>
-<span id="cb392-2"><a href="chi-square-chsq.html#cb392-2" tabindex="-1"></a><span class="do">## [1] &quot;mean difference = -0.22, t(135.47) = 0.35, p = 0.73 (2-tailed)&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="chi-square-chsq.html#cb391-1" tabindex="-1"></a>yarrr<span class="sc">::</span><span class="fu">apa</span>(test.result)</span>
+<span id="cb391-2"><a href="chi-square-chsq.html#cb391-2" tabindex="-1"></a><span class="do">## [1] &quot;mean difference = -0.22, t(135.47) = 0.35, p = 0.73 (2-tailed)&quot;</span></span></code></pre></div>
 <p>As you can see, the apa function got the values we wanted and reported them in proper APA style. The apa function will even automatically adapt the output for Chi-Square and correlation tests if you enter such a test object. Let’s see how it works on a correlation test where we correlate a pirate’s age with the number of parrots she has owned:</p>
-<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="chi-square-chsq.html#cb393-1" tabindex="-1"></a><span class="co"># Print an APA style conclusion of the correlation</span></span>
-<span id="cb393-2"><a href="chi-square-chsq.html#cb393-2" tabindex="-1"></a><span class="co">#  between a pirate&#39;s age and # of parrots</span></span>
-<span id="cb393-3"><a href="chi-square-chsq.html#cb393-3" tabindex="-1"></a>age.parrots.ctest <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(<span class="at">formula =</span> <span class="sc">~</span> age <span class="sc">+</span> parrots,</span>
-<span id="cb393-4"><a href="chi-square-chsq.html#cb393-4" tabindex="-1"></a>                              <span class="at">data =</span> pirates)</span>
-<span id="cb393-5"><a href="chi-square-chsq.html#cb393-5" tabindex="-1"></a></span>
-<span id="cb393-6"><a href="chi-square-chsq.html#cb393-6" tabindex="-1"></a><span class="co"># Pring result</span></span>
-<span id="cb393-7"><a href="chi-square-chsq.html#cb393-7" tabindex="-1"></a>age.parrots.ctest</span>
-<span id="cb393-8"><a href="chi-square-chsq.html#cb393-8" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb393-9"><a href="chi-square-chsq.html#cb393-9" tabindex="-1"></a><span class="do">##  Pearson&#39;s product-moment correlation</span></span>
-<span id="cb393-10"><a href="chi-square-chsq.html#cb393-10" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb393-11"><a href="chi-square-chsq.html#cb393-11" tabindex="-1"></a><span class="do">## data:  age and parrots</span></span>
-<span id="cb393-12"><a href="chi-square-chsq.html#cb393-12" tabindex="-1"></a><span class="do">## t = 6, df = 998, p-value = 1e-09</span></span>
-<span id="cb393-13"><a href="chi-square-chsq.html#cb393-13" tabindex="-1"></a><span class="do">## alternative hypothesis: true correlation is not equal to 0</span></span>
-<span id="cb393-14"><a href="chi-square-chsq.html#cb393-14" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
-<span id="cb393-15"><a href="chi-square-chsq.html#cb393-15" tabindex="-1"></a><span class="do">##  0.13 0.25</span></span>
-<span id="cb393-16"><a href="chi-square-chsq.html#cb393-16" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
-<span id="cb393-17"><a href="chi-square-chsq.html#cb393-17" tabindex="-1"></a><span class="do">##  cor </span></span>
-<span id="cb393-18"><a href="chi-square-chsq.html#cb393-18" tabindex="-1"></a><span class="do">## 0.19</span></span></code></pre></div>
-<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="chi-square-chsq.html#cb394-1" tabindex="-1"></a></span>
-<span id="cb394-2"><a href="chi-square-chsq.html#cb394-2" tabindex="-1"></a><span class="co"># Print the apa style conclusion!</span></span>
-<span id="cb394-3"><a href="chi-square-chsq.html#cb394-3" tabindex="-1"></a>yarrr<span class="sc">::</span><span class="fu">apa</span>(age.parrots.ctest)</span>
-<span id="cb394-4"><a href="chi-square-chsq.html#cb394-4" tabindex="-1"></a><span class="do">## [1] &quot;r = 0.19, t(998) = 6.13, p &lt; 0.01 (2-tailed)&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="chi-square-chsq.html#cb392-1" tabindex="-1"></a><span class="co"># Print an APA style conclusion of the correlation</span></span>
+<span id="cb392-2"><a href="chi-square-chsq.html#cb392-2" tabindex="-1"></a><span class="co">#  between a pirate&#39;s age and # of parrots</span></span>
+<span id="cb392-3"><a href="chi-square-chsq.html#cb392-3" tabindex="-1"></a>age.parrots.ctest <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(<span class="at">formula =</span> <span class="sc">~</span> age <span class="sc">+</span> parrots,</span>
+<span id="cb392-4"><a href="chi-square-chsq.html#cb392-4" tabindex="-1"></a>                              <span class="at">data =</span> pirates)</span>
+<span id="cb392-5"><a href="chi-square-chsq.html#cb392-5" tabindex="-1"></a></span>
+<span id="cb392-6"><a href="chi-square-chsq.html#cb392-6" tabindex="-1"></a><span class="co"># Pring result</span></span>
+<span id="cb392-7"><a href="chi-square-chsq.html#cb392-7" tabindex="-1"></a>age.parrots.ctest</span>
+<span id="cb392-8"><a href="chi-square-chsq.html#cb392-8" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb392-9"><a href="chi-square-chsq.html#cb392-9" tabindex="-1"></a><span class="do">##  Pearson&#39;s product-moment correlation</span></span>
+<span id="cb392-10"><a href="chi-square-chsq.html#cb392-10" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb392-11"><a href="chi-square-chsq.html#cb392-11" tabindex="-1"></a><span class="do">## data:  age and parrots</span></span>
+<span id="cb392-12"><a href="chi-square-chsq.html#cb392-12" tabindex="-1"></a><span class="do">## t = 6, df = 998, p-value = 1e-09</span></span>
+<span id="cb392-13"><a href="chi-square-chsq.html#cb392-13" tabindex="-1"></a><span class="do">## alternative hypothesis: true correlation is not equal to 0</span></span>
+<span id="cb392-14"><a href="chi-square-chsq.html#cb392-14" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb392-15"><a href="chi-square-chsq.html#cb392-15" tabindex="-1"></a><span class="do">##  0.13 0.25</span></span>
+<span id="cb392-16"><a href="chi-square-chsq.html#cb392-16" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb392-17"><a href="chi-square-chsq.html#cb392-17" tabindex="-1"></a><span class="do">##  cor </span></span>
+<span id="cb392-18"><a href="chi-square-chsq.html#cb392-18" tabindex="-1"></a><span class="do">## 0.19</span></span></code></pre></div>
+<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="chi-square-chsq.html#cb393-1" tabindex="-1"></a></span>
+<span id="cb393-2"><a href="chi-square-chsq.html#cb393-2" tabindex="-1"></a><span class="co"># Print the apa style conclusion!</span></span>
+<span id="cb393-3"><a href="chi-square-chsq.html#cb393-3" tabindex="-1"></a>yarrr<span class="sc">::</span><span class="fu">apa</span>(age.parrots.ctest)</span>
+<span id="cb393-4"><a href="chi-square-chsq.html#cb393-4" tabindex="-1"></a><span class="do">## [1] &quot;r = 0.19, t(998) = 6.13, p &lt; 0.01 (2-tailed)&quot;</span></span></code></pre></div>
 <p>The apa function has a few optional arguments that control things like the number of significant digits in the output, and the number of tails in the test. Run <code>?apa</code> to see all the options.</p>
 </div>
 </div>

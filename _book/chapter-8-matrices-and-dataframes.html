@@ -603,89 +603,89 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: decimal">
 <li>Combine the data into a single dataframe. Complete all the following exercises from the dataframe!</li>
 </ol>
-<div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb556-1"><a href="chapter-8-matrices-and-dataframes.html#cb556-1" tabindex="-1"></a>piratesurvey <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb556-2"><a href="chapter-8-matrices-and-dataframes.html#cb556-2" tabindex="-1"></a>  <span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;Astrid&quot;</span>, <span class="st">&quot;Lea&quot;</span>, <span class="st">&quot;Sarina&quot;</span>, <span class="st">&quot;Remon&quot;</span>, <span class="st">&quot;Letizia&quot;</span>, <span class="st">&quot;Babice&quot;</span>, <span class="st">&quot;Jonas&quot;</span>, <span class="st">&quot;Wendy&quot;</span>, <span class="st">&quot;Niveditha&quot;</span>, <span class="st">&quot;Gioia&quot;</span>),</span>
-<span id="cb556-3"><a href="chapter-8-matrices-and-dataframes.html#cb556-3" tabindex="-1"></a>  <span class="at">sex =</span> <span class="fu">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;F&quot;</span>),</span>
-<span id="cb556-4"><a href="chapter-8-matrices-and-dataframes.html#cb556-4" tabindex="-1"></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">25</span>, <span class="dv">25</span>, <span class="dv">29</span>, <span class="dv">22</span>, <span class="dv">22</span>, <span class="dv">35</span>, <span class="dv">19</span>, <span class="dv">32</span>, <span class="dv">21</span>),</span>
-<span id="cb556-5"><a href="chapter-8-matrices-and-dataframes.html#cb556-5" tabindex="-1"></a>  <span class="at">superhero =</span> <span class="fu">c</span>(<span class="st">&quot;Batman&quot;</span>, <span class="st">&quot;Superman&quot;</span>, <span class="st">&quot;Batman&quot;</span>, <span class="st">&quot;Spiderman&quot;</span>, <span class="st">&quot;Batman&quot;</span>,</span>
-<span id="cb556-6"><a href="chapter-8-matrices-and-dataframes.html#cb556-6" tabindex="-1"></a>               <span class="st">&quot;Antman&quot;</span>, <span class="st">&quot;Batman&quot;</span>, <span class="st">&quot;Superman&quot;</span>, <span class="st">&quot;Maggott&quot;</span>, <span class="st">&quot;Superman&quot;</span>),</span>
-<span id="cb556-7"><a href="chapter-8-matrices-and-dataframes.html#cb556-7" tabindex="-1"></a>  <span class="at">tattoos =</span> <span class="fu">c</span>(<span class="dv">11</span>, <span class="dv">15</span>, <span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">65</span>, <span class="dv">3</span>, <span class="dv">9</span>, <span class="dv">13</span>, <span class="dv">900</span>, <span class="dv">0</span>),</span>
-<span id="cb556-8"><a href="chapter-8-matrices-and-dataframes.html#cb556-8" tabindex="-1"></a>  <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
-<span id="cb556-9"><a href="chapter-8-matrices-and-dataframes.html#cb556-9" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="chapter-8-matrices-and-dataframes.html#cb555-1" tabindex="-1"></a>piratesurvey <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb555-2"><a href="chapter-8-matrices-and-dataframes.html#cb555-2" tabindex="-1"></a>  <span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;Astrid&quot;</span>, <span class="st">&quot;Lea&quot;</span>, <span class="st">&quot;Sarina&quot;</span>, <span class="st">&quot;Remon&quot;</span>, <span class="st">&quot;Letizia&quot;</span>, <span class="st">&quot;Babice&quot;</span>, <span class="st">&quot;Jonas&quot;</span>, <span class="st">&quot;Wendy&quot;</span>, <span class="st">&quot;Niveditha&quot;</span>, <span class="st">&quot;Gioia&quot;</span>),</span>
+<span id="cb555-3"><a href="chapter-8-matrices-and-dataframes.html#cb555-3" tabindex="-1"></a>  <span class="at">sex =</span> <span class="fu">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;F&quot;</span>),</span>
+<span id="cb555-4"><a href="chapter-8-matrices-and-dataframes.html#cb555-4" tabindex="-1"></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">25</span>, <span class="dv">25</span>, <span class="dv">29</span>, <span class="dv">22</span>, <span class="dv">22</span>, <span class="dv">35</span>, <span class="dv">19</span>, <span class="dv">32</span>, <span class="dv">21</span>),</span>
+<span id="cb555-5"><a href="chapter-8-matrices-and-dataframes.html#cb555-5" tabindex="-1"></a>  <span class="at">superhero =</span> <span class="fu">c</span>(<span class="st">&quot;Batman&quot;</span>, <span class="st">&quot;Superman&quot;</span>, <span class="st">&quot;Batman&quot;</span>, <span class="st">&quot;Spiderman&quot;</span>, <span class="st">&quot;Batman&quot;</span>,</span>
+<span id="cb555-6"><a href="chapter-8-matrices-and-dataframes.html#cb555-6" tabindex="-1"></a>               <span class="st">&quot;Antman&quot;</span>, <span class="st">&quot;Batman&quot;</span>, <span class="st">&quot;Superman&quot;</span>, <span class="st">&quot;Maggott&quot;</span>, <span class="st">&quot;Superman&quot;</span>),</span>
+<span id="cb555-7"><a href="chapter-8-matrices-and-dataframes.html#cb555-7" tabindex="-1"></a>  <span class="at">tattoos =</span> <span class="fu">c</span>(<span class="dv">11</span>, <span class="dv">15</span>, <span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">65</span>, <span class="dv">3</span>, <span class="dv">9</span>, <span class="dv">13</span>, <span class="dv">900</span>, <span class="dv">0</span>),</span>
+<span id="cb555-8"><a href="chapter-8-matrices-and-dataframes.html#cb555-8" tabindex="-1"></a>  <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
+<span id="cb555-9"><a href="chapter-8-matrices-and-dataframes.html#cb555-9" tabindex="-1"></a>)</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>What is the median age of the 10 pirates?</li>
 </ol>
-<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="chapter-8-matrices-and-dataframes.html#cb557-1" tabindex="-1"></a><span class="fu">median</span>(piratesurvey<span class="sc">$</span>age)</span>
-<span id="cb557-2"><a href="chapter-8-matrices-and-dataframes.html#cb557-2" tabindex="-1"></a><span class="do">## [1] 25</span></span></code></pre></div>
+<div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb556-1"><a href="chapter-8-matrices-and-dataframes.html#cb556-1" tabindex="-1"></a><span class="fu">median</span>(piratesurvey<span class="sc">$</span>age)</span>
+<span id="cb556-2"><a href="chapter-8-matrices-and-dataframes.html#cb556-2" tabindex="-1"></a><span class="do">## [1] 25</span></span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>What was the mean age of female and male pirates separately?</li>
 </ol>
-<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="chapter-8-matrices-and-dataframes.html#cb558-1" tabindex="-1"></a><span class="fu">mean</span>(piratesurvey<span class="sc">$</span>age[piratesurvey<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span>])</span>
-<span id="cb558-2"><a href="chapter-8-matrices-and-dataframes.html#cb558-2" tabindex="-1"></a><span class="do">## [1] 24</span></span></code></pre></div>
-<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="chapter-8-matrices-and-dataframes.html#cb559-1" tabindex="-1"></a><span class="fu">mean</span>(piratesurvey<span class="sc">$</span>age[piratesurvey<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span>])</span>
-<span id="cb559-2"><a href="chapter-8-matrices-and-dataframes.html#cb559-2" tabindex="-1"></a><span class="do">## [1] 32</span></span></code></pre></div>
+<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="chapter-8-matrices-and-dataframes.html#cb557-1" tabindex="-1"></a><span class="fu">mean</span>(piratesurvey<span class="sc">$</span>age[piratesurvey<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span>])</span>
+<span id="cb557-2"><a href="chapter-8-matrices-and-dataframes.html#cb557-2" tabindex="-1"></a><span class="do">## [1] 24</span></span></code></pre></div>
+<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="chapter-8-matrices-and-dataframes.html#cb558-1" tabindex="-1"></a><span class="fu">mean</span>(piratesurvey<span class="sc">$</span>age[piratesurvey<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span>])</span>
+<span id="cb558-2"><a href="chapter-8-matrices-and-dataframes.html#cb558-2" tabindex="-1"></a><span class="do">## [1] 32</span></span></code></pre></div>
+<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="chapter-8-matrices-and-dataframes.html#cb559-1" tabindex="-1"></a></span>
+<span id="cb559-2"><a href="chapter-8-matrices-and-dataframes.html#cb559-2" tabindex="-1"></a><span class="do">## OR</span></span>
+<span id="cb559-3"><a href="chapter-8-matrices-and-dataframes.html#cb559-3" tabindex="-1"></a><span class="fu">with</span>(piratesurvey, </span>
+<span id="cb559-4"><a href="chapter-8-matrices-and-dataframes.html#cb559-4" tabindex="-1"></a>     <span class="fu">mean</span>(age[sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span>]))</span>
+<span id="cb559-5"><a href="chapter-8-matrices-and-dataframes.html#cb559-5" tabindex="-1"></a><span class="do">## [1] 24</span></span></code></pre></div>
 <div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="chapter-8-matrices-and-dataframes.html#cb560-1" tabindex="-1"></a></span>
-<span id="cb560-2"><a href="chapter-8-matrices-and-dataframes.html#cb560-2" tabindex="-1"></a><span class="do">## OR</span></span>
-<span id="cb560-3"><a href="chapter-8-matrices-and-dataframes.html#cb560-3" tabindex="-1"></a><span class="fu">with</span>(piratesurvey, </span>
-<span id="cb560-4"><a href="chapter-8-matrices-and-dataframes.html#cb560-4" tabindex="-1"></a>     <span class="fu">mean</span>(age[sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span>]))</span>
-<span id="cb560-5"><a href="chapter-8-matrices-and-dataframes.html#cb560-5" tabindex="-1"></a><span class="do">## [1] 24</span></span></code></pre></div>
+<span id="cb560-2"><a href="chapter-8-matrices-and-dataframes.html#cb560-2" tabindex="-1"></a><span class="fu">with</span>(piratesurvey, </span>
+<span id="cb560-3"><a href="chapter-8-matrices-and-dataframes.html#cb560-3" tabindex="-1"></a>     <span class="fu">mean</span>(age[sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span>]))</span>
+<span id="cb560-4"><a href="chapter-8-matrices-and-dataframes.html#cb560-4" tabindex="-1"></a><span class="do">## [1] 32</span></span></code></pre></div>
 <div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="chapter-8-matrices-and-dataframes.html#cb561-1" tabindex="-1"></a></span>
-<span id="cb561-2"><a href="chapter-8-matrices-and-dataframes.html#cb561-2" tabindex="-1"></a><span class="fu">with</span>(piratesurvey, </span>
-<span id="cb561-3"><a href="chapter-8-matrices-and-dataframes.html#cb561-3" tabindex="-1"></a>     <span class="fu">mean</span>(age[sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span>]))</span>
-<span id="cb561-4"><a href="chapter-8-matrices-and-dataframes.html#cb561-4" tabindex="-1"></a><span class="do">## [1] 32</span></span></code></pre></div>
+<span id="cb561-2"><a href="chapter-8-matrices-and-dataframes.html#cb561-2" tabindex="-1"></a><span class="do">## OR</span></span>
+<span id="cb561-3"><a href="chapter-8-matrices-and-dataframes.html#cb561-3" tabindex="-1"></a></span>
+<span id="cb561-4"><a href="chapter-8-matrices-and-dataframes.html#cb561-4" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">subset</span>(piratesurvey,</span>
+<span id="cb561-5"><a href="chapter-8-matrices-and-dataframes.html#cb561-5" tabindex="-1"></a>       <span class="at">subset =</span> sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span>)<span class="sc">$</span>age)</span>
+<span id="cb561-6"><a href="chapter-8-matrices-and-dataframes.html#cb561-6" tabindex="-1"></a><span class="do">## [1] 24</span></span></code></pre></div>
 <div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="chapter-8-matrices-and-dataframes.html#cb562-1" tabindex="-1"></a></span>
-<span id="cb562-2"><a href="chapter-8-matrices-and-dataframes.html#cb562-2" tabindex="-1"></a><span class="do">## OR</span></span>
-<span id="cb562-3"><a href="chapter-8-matrices-and-dataframes.html#cb562-3" tabindex="-1"></a></span>
-<span id="cb562-4"><a href="chapter-8-matrices-and-dataframes.html#cb562-4" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">subset</span>(piratesurvey,</span>
-<span id="cb562-5"><a href="chapter-8-matrices-and-dataframes.html#cb562-5" tabindex="-1"></a>       <span class="at">subset =</span> sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span>)<span class="sc">$</span>age)</span>
-<span id="cb562-6"><a href="chapter-8-matrices-and-dataframes.html#cb562-6" tabindex="-1"></a><span class="do">## [1] 24</span></span></code></pre></div>
-<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="chapter-8-matrices-and-dataframes.html#cb563-1" tabindex="-1"></a></span>
-<span id="cb563-2"><a href="chapter-8-matrices-and-dataframes.html#cb563-2" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">subset</span>(piratesurvey,</span>
-<span id="cb563-3"><a href="chapter-8-matrices-and-dataframes.html#cb563-3" tabindex="-1"></a>       <span class="at">subset =</span> sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span>)<span class="sc">$</span>age)</span>
-<span id="cb563-4"><a href="chapter-8-matrices-and-dataframes.html#cb563-4" tabindex="-1"></a><span class="do">## [1] 32</span></span></code></pre></div>
+<span id="cb562-2"><a href="chapter-8-matrices-and-dataframes.html#cb562-2" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">subset</span>(piratesurvey,</span>
+<span id="cb562-3"><a href="chapter-8-matrices-and-dataframes.html#cb562-3" tabindex="-1"></a>       <span class="at">subset =</span> sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span>)<span class="sc">$</span>age)</span>
+<span id="cb562-4"><a href="chapter-8-matrices-and-dataframes.html#cb562-4" tabindex="-1"></a><span class="do">## [1] 32</span></span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li>What was the most number of tattoos owned by a male pirate?</li>
 </ol>
-<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="chapter-8-matrices-and-dataframes.html#cb564-1" tabindex="-1"></a><span class="fu">with</span>(piratesurvey, </span>
-<span id="cb564-2"><a href="chapter-8-matrices-and-dataframes.html#cb564-2" tabindex="-1"></a>     <span class="fu">max</span>(tattoos[sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span>]))</span>
-<span id="cb564-3"><a href="chapter-8-matrices-and-dataframes.html#cb564-3" tabindex="-1"></a><span class="do">## [1] 9</span></span></code></pre></div>
-<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="chapter-8-matrices-and-dataframes.html#cb565-1" tabindex="-1"></a></span>
-<span id="cb565-2"><a href="chapter-8-matrices-and-dataframes.html#cb565-2" tabindex="-1"></a><span class="co"># OR</span></span>
-<span id="cb565-3"><a href="chapter-8-matrices-and-dataframes.html#cb565-3" tabindex="-1"></a></span>
-<span id="cb565-4"><a href="chapter-8-matrices-and-dataframes.html#cb565-4" tabindex="-1"></a><span class="fu">max</span>(<span class="fu">subset</span>(piratesurvey, </span>
-<span id="cb565-5"><a href="chapter-8-matrices-and-dataframes.html#cb565-5" tabindex="-1"></a>           <span class="at">subset =</span> sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span>)<span class="sc">$</span>tattoos)</span>
-<span id="cb565-6"><a href="chapter-8-matrices-and-dataframes.html#cb565-6" tabindex="-1"></a><span class="do">## [1] 9</span></span></code></pre></div>
+<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="chapter-8-matrices-and-dataframes.html#cb563-1" tabindex="-1"></a><span class="fu">with</span>(piratesurvey, </span>
+<span id="cb563-2"><a href="chapter-8-matrices-and-dataframes.html#cb563-2" tabindex="-1"></a>     <span class="fu">max</span>(tattoos[sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span>]))</span>
+<span id="cb563-3"><a href="chapter-8-matrices-and-dataframes.html#cb563-3" tabindex="-1"></a><span class="do">## [1] 9</span></span></code></pre></div>
+<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="chapter-8-matrices-and-dataframes.html#cb564-1" tabindex="-1"></a></span>
+<span id="cb564-2"><a href="chapter-8-matrices-and-dataframes.html#cb564-2" tabindex="-1"></a><span class="co"># OR</span></span>
+<span id="cb564-3"><a href="chapter-8-matrices-and-dataframes.html#cb564-3" tabindex="-1"></a></span>
+<span id="cb564-4"><a href="chapter-8-matrices-and-dataframes.html#cb564-4" tabindex="-1"></a><span class="fu">max</span>(<span class="fu">subset</span>(piratesurvey, </span>
+<span id="cb564-5"><a href="chapter-8-matrices-and-dataframes.html#cb564-5" tabindex="-1"></a>           <span class="at">subset =</span> sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span>)<span class="sc">$</span>tattoos)</span>
+<span id="cb564-6"><a href="chapter-8-matrices-and-dataframes.html#cb564-6" tabindex="-1"></a><span class="do">## [1] 9</span></span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li>What percent of pirates under the age of 25 were female?</li>
 </ol>
-<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="chapter-8-matrices-and-dataframes.html#cb566-1" tabindex="-1"></a><span class="fu">with</span>(piratesurvey, </span>
-<span id="cb566-2"><a href="chapter-8-matrices-and-dataframes.html#cb566-2" tabindex="-1"></a>     <span class="fu">mean</span>(sex[age <span class="sc">&lt;</span> <span class="dv">25</span>] <span class="sc">==</span> <span class="st">&quot;F&quot;</span>))</span>
-<span id="cb566-3"><a href="chapter-8-matrices-and-dataframes.html#cb566-3" tabindex="-1"></a><span class="do">## [1] 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="chapter-8-matrices-and-dataframes.html#cb565-1" tabindex="-1"></a><span class="fu">with</span>(piratesurvey, </span>
+<span id="cb565-2"><a href="chapter-8-matrices-and-dataframes.html#cb565-2" tabindex="-1"></a>     <span class="fu">mean</span>(sex[age <span class="sc">&lt;</span> <span class="dv">25</span>] <span class="sc">==</span> <span class="st">&quot;F&quot;</span>))</span>
+<span id="cb565-3"><a href="chapter-8-matrices-and-dataframes.html#cb565-3" tabindex="-1"></a><span class="do">## [1] 1</span></span></code></pre></div>
 <ol start="6" style="list-style-type: decimal">
 <li>What percent of female pirates are under the age of 25?</li>
 </ol>
-<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="chapter-8-matrices-and-dataframes.html#cb567-1" tabindex="-1"></a><span class="fu">with</span>(piratesurvey, </span>
-<span id="cb567-2"><a href="chapter-8-matrices-and-dataframes.html#cb567-2" tabindex="-1"></a>     <span class="fu">mean</span>(age[sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span>] <span class="sc">&lt;</span> <span class="dv">25</span>))</span>
-<span id="cb567-3"><a href="chapter-8-matrices-and-dataframes.html#cb567-3" tabindex="-1"></a><span class="do">## [1] 0.5</span></span></code></pre></div>
+<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="chapter-8-matrices-and-dataframes.html#cb566-1" tabindex="-1"></a><span class="fu">with</span>(piratesurvey, </span>
+<span id="cb566-2"><a href="chapter-8-matrices-and-dataframes.html#cb566-2" tabindex="-1"></a>     <span class="fu">mean</span>(age[sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span>] <span class="sc">&lt;</span> <span class="dv">25</span>))</span>
+<span id="cb566-3"><a href="chapter-8-matrices-and-dataframes.html#cb566-3" tabindex="-1"></a><span class="do">## [1] 0.5</span></span></code></pre></div>
 <ol start="7" style="list-style-type: decimal">
 <li>Add a new column to the dataframe called <code>tattoos.per.year</code> which shows how many tattoos each pirate has for each year in their life.</li>
 </ol>
-<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="chapter-8-matrices-and-dataframes.html#cb568-1" tabindex="-1"></a>piratesurvey<span class="sc">$</span>tattoos.per.year <span class="ot">&lt;-</span> <span class="fu">with</span>(piratesurvey, tattoos <span class="sc">/</span> age)</span></code></pre></div>
+<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="chapter-8-matrices-and-dataframes.html#cb567-1" tabindex="-1"></a>piratesurvey<span class="sc">$</span>tattoos.per.year <span class="ot">&lt;-</span> <span class="fu">with</span>(piratesurvey, tattoos <span class="sc">/</span> age)</span></code></pre></div>
 <ol start="8" style="list-style-type: decimal">
 <li>Which pirate had the most number of tattoos per year?</li>
 </ol>
-<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="chapter-8-matrices-and-dataframes.html#cb569-1" tabindex="-1"></a>piratesurvey<span class="sc">$</span>name[piratesurvey<span class="sc">$</span>tattoos.per.year <span class="sc">==</span> <span class="fu">max</span>(piratesurvey<span class="sc">$</span>tattoos.per.year)]</span>
-<span id="cb569-2"><a href="chapter-8-matrices-and-dataframes.html#cb569-2" tabindex="-1"></a><span class="do">## [1] &quot;Niveditha&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="chapter-8-matrices-and-dataframes.html#cb568-1" tabindex="-1"></a>piratesurvey<span class="sc">$</span>name[piratesurvey<span class="sc">$</span>tattoos.per.year <span class="sc">==</span> <span class="fu">max</span>(piratesurvey<span class="sc">$</span>tattoos.per.year)]</span>
+<span id="cb568-2"><a href="chapter-8-matrices-and-dataframes.html#cb568-2" tabindex="-1"></a><span class="do">## [1] &quot;Niveditha&quot;</span></span></code></pre></div>
 <ol start="9" style="list-style-type: decimal">
 <li>What are the names of the female pirates whose favorite superhero is Superman?</li>
 </ol>
-<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="chapter-8-matrices-and-dataframes.html#cb570-1" tabindex="-1"></a>piratesurvey<span class="sc">$</span>name[<span class="fu">with</span>(piratesurvey, sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span> <span class="sc">&amp;</span> superhero <span class="sc">==</span> <span class="st">&quot;Superman&quot;</span>)]</span>
-<span id="cb570-2"><a href="chapter-8-matrices-and-dataframes.html#cb570-2" tabindex="-1"></a><span class="do">## [1] &quot;Lea&quot;   &quot;Wendy&quot; &quot;Gioia&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="chapter-8-matrices-and-dataframes.html#cb569-1" tabindex="-1"></a>piratesurvey<span class="sc">$</span>name[<span class="fu">with</span>(piratesurvey, sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span> <span class="sc">&amp;</span> superhero <span class="sc">==</span> <span class="st">&quot;Superman&quot;</span>)]</span>
+<span id="cb569-2"><a href="chapter-8-matrices-and-dataframes.html#cb569-2" tabindex="-1"></a><span class="do">## [1] &quot;Lea&quot;   &quot;Wendy&quot; &quot;Gioia&quot;</span></span></code></pre></div>
 <ol start="10" style="list-style-type: decimal">
 <li>What was the median number of tattoos of pirates over the age of 20 whose favorite superhero is Spiderman?</li>
 </ol>
-<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="chapter-8-matrices-and-dataframes.html#cb571-1" tabindex="-1"></a><span class="fu">with</span>(piratesurvey, (tattoos[age <span class="sc">&gt;</span> <span class="dv">20</span> <span class="sc">&amp;</span> superhero <span class="sc">==</span> <span class="st">&quot;Spiderman&quot;</span>]))</span>
-<span id="cb571-2"><a href="chapter-8-matrices-and-dataframes.html#cb571-2" tabindex="-1"></a><span class="do">## [1] 5</span></span></code></pre></div>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="chapter-8-matrices-and-dataframes.html#cb570-1" tabindex="-1"></a><span class="fu">with</span>(piratesurvey, (tattoos[age <span class="sc">&gt;</span> <span class="dv">20</span> <span class="sc">&amp;</span> superhero <span class="sc">==</span> <span class="st">&quot;Spiderman&quot;</span>]))</span>
+<span id="cb570-2"><a href="chapter-8-matrices-and-dataframes.html#cb570-2" tabindex="-1"></a><span class="do">## [1] 5</span></span></code></pre></div>
 </div>
             </section>
 

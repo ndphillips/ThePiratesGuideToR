@@ -520,27 +520,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: decimal">
 <li>Create an ANOVA object using the <code>aov()</code> function. In the <code>aov()</code> function, specify the independent and dependent variable(s) with a formula with the format <code>y ~ x1 + x2</code> where y is the dependent variable, and x1, x2 … are one (more more) factor independent variables.</li>
 </ol>
-<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="steps-to-conduct-an-anova.html#cb397-1" tabindex="-1"></a><span class="co"># Step 1: Create an aov object</span></span>
-<span id="cb397-2"><a href="steps-to-conduct-an-anova.html#cb397-2" tabindex="-1"></a>mod.aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(<span class="at">formula =</span> y <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">+</span> ...,</span>
-<span id="cb397-3"><a href="steps-to-conduct-an-anova.html#cb397-3" tabindex="-1"></a>               <span class="at">data =</span> data)</span></code></pre></div>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="steps-to-conduct-an-anova.html#cb396-1" tabindex="-1"></a><span class="co"># Step 1: Create an aov object</span></span>
+<span id="cb396-2"><a href="steps-to-conduct-an-anova.html#cb396-2" tabindex="-1"></a>mod.aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(<span class="at">formula =</span> y <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">+</span> ...,</span>
+<span id="cb396-3"><a href="steps-to-conduct-an-anova.html#cb396-3" tabindex="-1"></a>               <span class="at">data =</span> data)</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Create a summary ANOVA table by applying the <code>summary()</code> function to the ANOVA object you created in Step 1.</li>
 </ol>
-<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="steps-to-conduct-an-anova.html#cb398-1" tabindex="-1"></a><span class="co"># Step 2: Look at a summary of the aov object</span></span>
-<span id="cb398-2"><a href="steps-to-conduct-an-anova.html#cb398-2" tabindex="-1"></a><span class="fu">summary</span>(mod.aov)</span></code></pre></div>
+<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="steps-to-conduct-an-anova.html#cb397-1" tabindex="-1"></a><span class="co"># Step 2: Look at a summary of the aov object</span></span>
+<span id="cb397-2"><a href="steps-to-conduct-an-anova.html#cb397-2" tabindex="-1"></a><span class="fu">summary</span>(mod.aov)</span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>If necessary, calculate post-hoc tests by applying a post-hoc testing function like <code>TukeyHSD()</code> to the ANOVA object you created in Step 1.</li>
 </ol>
-<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="steps-to-conduct-an-anova.html#cb399-1" tabindex="-1"></a><span class="co"># Step 3: Calculate post-hoc tests</span></span>
-<span id="cb399-2"><a href="steps-to-conduct-an-anova.html#cb399-2" tabindex="-1"></a><span class="fu">TukeyHSD</span>(mod.aov)</span></code></pre></div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="steps-to-conduct-an-anova.html#cb398-1" tabindex="-1"></a><span class="co"># Step 3: Calculate post-hoc tests</span></span>
+<span id="cb398-2"><a href="steps-to-conduct-an-anova.html#cb398-2" tabindex="-1"></a><span class="fu">TukeyHSD</span>(mod.aov)</span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li>If necessary, interpret the nature of the group differences by creating a linear regression object using <code>lm()</code> using the same arguments you used in the <code>aov()</code> function in Step 1.</li>
 </ol>
-<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="steps-to-conduct-an-anova.html#cb400-1" tabindex="-1"></a><span class="co"># Step 4: Look at coefficients</span></span>
-<span id="cb400-2"><a href="steps-to-conduct-an-anova.html#cb400-2" tabindex="-1"></a>mod.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> y <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">+</span> ...,</span>
-<span id="cb400-3"><a href="steps-to-conduct-an-anova.html#cb400-3" tabindex="-1"></a>             <span class="at">data =</span> data)</span>
-<span id="cb400-4"><a href="steps-to-conduct-an-anova.html#cb400-4" tabindex="-1"></a></span>
-<span id="cb400-5"><a href="steps-to-conduct-an-anova.html#cb400-5" tabindex="-1"></a><span class="fu">summary</span>(mod.lm)</span></code></pre></div>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="steps-to-conduct-an-anova.html#cb399-1" tabindex="-1"></a><span class="co"># Step 4: Look at coefficients</span></span>
+<span id="cb399-2"><a href="steps-to-conduct-an-anova.html#cb399-2" tabindex="-1"></a>mod.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> y <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">+</span> ...,</span>
+<span id="cb399-3"><a href="steps-to-conduct-an-anova.html#cb399-3" tabindex="-1"></a>             <span class="at">data =</span> data)</span>
+<span id="cb399-4"><a href="steps-to-conduct-an-anova.html#cb399-4" tabindex="-1"></a></span>
+<span id="cb399-5"><a href="steps-to-conduct-an-anova.html#cb399-5" tabindex="-1"></a><span class="fu">summary</span>(mod.lm)</span></code></pre></div>
 </div>
             </section>
 

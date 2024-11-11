@@ -517,171 +517,171 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="ex-one-way-anova" class="section level2 hasAnchor" number="14.2">
 <h2><span class="header-section-number">14.2</span> Ex: One-way ANOVA<a href="ex-one-way-anova.html#ex-one-way-anova" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let’s do an example by running both a one-way ANOVA on the <code>poopdeck</code> data. We’ll set cleaning time <code>time</code> as the dependent variable and the cleaner type <code>cleaner</code> as the independent variable. We can represent the data as a pirateplot:</p>
-<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="ex-one-way-anova.html#cb401-1" tabindex="-1"></a>yarrr<span class="sc">::</span><span class="fu">pirateplot</span>(time <span class="sc">~</span> cleaner, </span>
-<span id="cb401-2"><a href="ex-one-way-anova.html#cb401-2" tabindex="-1"></a>                  <span class="at">data =</span> poopdeck, </span>
-<span id="cb401-3"><a href="ex-one-way-anova.html#cb401-3" tabindex="-1"></a>                  <span class="at">theme =</span> <span class="dv">2</span>, </span>
-<span id="cb401-4"><a href="ex-one-way-anova.html#cb401-4" tabindex="-1"></a>                  <span class="at">cap.beans =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb401-5"><a href="ex-one-way-anova.html#cb401-5" tabindex="-1"></a>                  <span class="at">main =</span> <span class="st">&quot;formula = time ~ cleaner&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="ex-one-way-anova.html#cb400-1" tabindex="-1"></a>yarrr<span class="sc">::</span><span class="fu">pirateplot</span>(time <span class="sc">~</span> cleaner, </span>
+<span id="cb400-2"><a href="ex-one-way-anova.html#cb400-2" tabindex="-1"></a>                  <span class="at">data =</span> poopdeck, </span>
+<span id="cb400-3"><a href="ex-one-way-anova.html#cb400-3" tabindex="-1"></a>                  <span class="at">theme =</span> <span class="dv">2</span>, </span>
+<span id="cb400-4"><a href="ex-one-way-anova.html#cb400-4" tabindex="-1"></a>                  <span class="at">cap.beans =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb400-5"><a href="ex-one-way-anova.html#cb400-5" tabindex="-1"></a>                  <span class="at">main =</span> <span class="st">&quot;formula = time ~ cleaner&quot;</span>)</span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-379-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>From the plot, it looks like cleaners a and b are the same, and cleaner c is a bit faster. To test this, we’ll create an ANOVA object with <code>aov</code>. Because <code>time</code> is the dependent variable and <code>cleaner</code> is the independent variable, we’ll set the formula to <code>formula = time ~ cleaner</code></p>
-<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="ex-one-way-anova.html#cb402-1" tabindex="-1"></a><span class="co"># Step 1: aov object with time as DV and cleaner as IV</span></span>
-<span id="cb402-2"><a href="ex-one-way-anova.html#cb402-2" tabindex="-1"></a>cleaner.aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(<span class="at">formula =</span> time <span class="sc">~</span> cleaner,</span>
-<span id="cb402-3"><a href="ex-one-way-anova.html#cb402-3" tabindex="-1"></a>                   <span class="at">data =</span> poopdeck)</span></code></pre></div>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="ex-one-way-anova.html#cb401-1" tabindex="-1"></a><span class="co"># Step 1: aov object with time as DV and cleaner as IV</span></span>
+<span id="cb401-2"><a href="ex-one-way-anova.html#cb401-2" tabindex="-1"></a>cleaner.aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(<span class="at">formula =</span> time <span class="sc">~</span> cleaner,</span>
+<span id="cb401-3"><a href="ex-one-way-anova.html#cb401-3" tabindex="-1"></a>                   <span class="at">data =</span> poopdeck)</span></code></pre></div>
 <p>Now, to see a full ANOVA summary table of the ANOVA object, apply the <code>summary()</code> to the ANOVA object from Step 1.</p>
-<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="ex-one-way-anova.html#cb403-1" tabindex="-1"></a><span class="co"># Step 2: Look at the summary of the anova object</span></span>
-<span id="cb403-2"><a href="ex-one-way-anova.html#cb403-2" tabindex="-1"></a><span class="fu">summary</span>(cleaner.aov)</span>
-<span id="cb403-3"><a href="ex-one-way-anova.html#cb403-3" tabindex="-1"></a><span class="do">##              Df Sum Sq Mean Sq F value Pr(&gt;F)   </span></span>
-<span id="cb403-4"><a href="ex-one-way-anova.html#cb403-4" tabindex="-1"></a><span class="do">## cleaner       2   6057    3028    5.29 0.0053 **</span></span>
-<span id="cb403-5"><a href="ex-one-way-anova.html#cb403-5" tabindex="-1"></a><span class="do">## Residuals   597 341511     572                  </span></span>
-<span id="cb403-6"><a href="ex-one-way-anova.html#cb403-6" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb403-7"><a href="ex-one-way-anova.html#cb403-7" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="ex-one-way-anova.html#cb402-1" tabindex="-1"></a><span class="co"># Step 2: Look at the summary of the anova object</span></span>
+<span id="cb402-2"><a href="ex-one-way-anova.html#cb402-2" tabindex="-1"></a><span class="fu">summary</span>(cleaner.aov)</span>
+<span id="cb402-3"><a href="ex-one-way-anova.html#cb402-3" tabindex="-1"></a><span class="do">##              Df Sum Sq Mean Sq F value Pr(&gt;F)   </span></span>
+<span id="cb402-4"><a href="ex-one-way-anova.html#cb402-4" tabindex="-1"></a><span class="do">## cleaner       2   6057    3028    5.29 0.0053 **</span></span>
+<span id="cb402-5"><a href="ex-one-way-anova.html#cb402-5" tabindex="-1"></a><span class="do">## Residuals   597 341511     572                  </span></span>
+<span id="cb402-6"><a href="ex-one-way-anova.html#cb402-6" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb402-7"><a href="ex-one-way-anova.html#cb402-7" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span></code></pre></div>
 <p>The main result from our table is that we have a significant effect of cleaner on cleaning time (F(2, 597) = 5.29, p = 0.005. However, the ANOVA table does not tell us which levels of the independent variable differ. In other words, we don’t know which cleaner is better than which. To answer this, we need to conduct a post-hoc test.</p>
 <p>If you’ve found a significant effect of a factor, you can then do post-hoc tests to test the difference between each all pairs of levels of the independent variable. There are many types of pairwise comparisons that make different assumptions. To learn more about the logic behind different post-hoc tests, check out the Wikipedia page here: <a href="https://en.wikipedia.org/wiki/Post_hoc_analysis">https://en.wikipedia.org/wiki/Post_hoc_analysis</a>. One of the most common post-hoc tests for standard ANOVAs is the Tukey Honestly Significant Difference (HSD) test. To see additional information about the Tukey HSD test, check out the Wikipedia page here: <a href="https://en.wikipedia.org/wiki/Tukey&#39;s_range_test">https://en.wikipedia.org/wiki/Tukey’s_range_test</a> To do an HSD test, apply the <code>TukeyHSD()</code> function to your ANOVA object as follows:</p>
-<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="ex-one-way-anova.html#cb404-1" tabindex="-1"></a><span class="co"># Step 3: Conduct post-hoc tests</span></span>
-<span id="cb404-2"><a href="ex-one-way-anova.html#cb404-2" tabindex="-1"></a><span class="fu">TukeyHSD</span>(cleaner.aov)</span>
-<span id="cb404-3"><a href="ex-one-way-anova.html#cb404-3" tabindex="-1"></a><span class="do">##   Tukey multiple comparisons of means</span></span>
-<span id="cb404-4"><a href="ex-one-way-anova.html#cb404-4" tabindex="-1"></a><span class="do">##     95% family-wise confidence level</span></span>
-<span id="cb404-5"><a href="ex-one-way-anova.html#cb404-5" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb404-6"><a href="ex-one-way-anova.html#cb404-6" tabindex="-1"></a><span class="do">## Fit: aov(formula = time ~ cleaner, data = poopdeck)</span></span>
-<span id="cb404-7"><a href="ex-one-way-anova.html#cb404-7" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb404-8"><a href="ex-one-way-anova.html#cb404-8" tabindex="-1"></a><span class="do">## $cleaner</span></span>
-<span id="cb404-9"><a href="ex-one-way-anova.html#cb404-9" tabindex="-1"></a><span class="do">##      diff lwr  upr p adj</span></span>
-<span id="cb404-10"><a href="ex-one-way-anova.html#cb404-10" tabindex="-1"></a><span class="do">## b-a -0.42  -6  5.2  0.98</span></span>
-<span id="cb404-11"><a href="ex-one-way-anova.html#cb404-11" tabindex="-1"></a><span class="do">## c-a -6.94 -13 -1.3  0.01</span></span>
-<span id="cb404-12"><a href="ex-one-way-anova.html#cb404-12" tabindex="-1"></a><span class="do">## c-b -6.52 -12 -0.9  0.02</span></span></code></pre></div>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="ex-one-way-anova.html#cb403-1" tabindex="-1"></a><span class="co"># Step 3: Conduct post-hoc tests</span></span>
+<span id="cb403-2"><a href="ex-one-way-anova.html#cb403-2" tabindex="-1"></a><span class="fu">TukeyHSD</span>(cleaner.aov)</span>
+<span id="cb403-3"><a href="ex-one-way-anova.html#cb403-3" tabindex="-1"></a><span class="do">##   Tukey multiple comparisons of means</span></span>
+<span id="cb403-4"><a href="ex-one-way-anova.html#cb403-4" tabindex="-1"></a><span class="do">##     95% family-wise confidence level</span></span>
+<span id="cb403-5"><a href="ex-one-way-anova.html#cb403-5" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb403-6"><a href="ex-one-way-anova.html#cb403-6" tabindex="-1"></a><span class="do">## Fit: aov(formula = time ~ cleaner, data = poopdeck)</span></span>
+<span id="cb403-7"><a href="ex-one-way-anova.html#cb403-7" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb403-8"><a href="ex-one-way-anova.html#cb403-8" tabindex="-1"></a><span class="do">## $cleaner</span></span>
+<span id="cb403-9"><a href="ex-one-way-anova.html#cb403-9" tabindex="-1"></a><span class="do">##      diff lwr  upr p adj</span></span>
+<span id="cb403-10"><a href="ex-one-way-anova.html#cb403-10" tabindex="-1"></a><span class="do">## b-a -0.42  -6  5.2  0.98</span></span>
+<span id="cb403-11"><a href="ex-one-way-anova.html#cb403-11" tabindex="-1"></a><span class="do">## c-a -6.94 -13 -1.3  0.01</span></span>
+<span id="cb403-12"><a href="ex-one-way-anova.html#cb403-12" tabindex="-1"></a><span class="do">## c-b -6.52 -12 -0.9  0.02</span></span></code></pre></div>
 <p>This table shows us pair-wise differences between each group pair. The <code>diff</code> column shows us the mean differences between groups (which thankfully are identical to what we found in the summary of the regression object before), a confidence interval for the difference, and a p-value testing the null hypothesis that the group differences are not different.</p>
 <p>I almost always find it helpful to combine an ANOVA summary table with a regression summary table. Because ANOVA is just a special case of regression (where all the independent variables are factors), you’ll get the same results with a regression object as you will with an ANOVA object. However, the format of the results are different and frequently easier to interpret.</p>
 <p>To create a regression object, use the <code>lm()</code> function. Your inputs to this function will be <em>identical</em> to your inputs to the <code>aov()</code> function</p>
-<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="ex-one-way-anova.html#cb405-1" tabindex="-1"></a><span class="co"># Step 4: Create a regression object</span></span>
-<span id="cb405-2"><a href="ex-one-way-anova.html#cb405-2" tabindex="-1"></a>cleaner.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> time <span class="sc">~</span> cleaner,</span>
-<span id="cb405-3"><a href="ex-one-way-anova.html#cb405-3" tabindex="-1"></a>                 <span class="at">data =</span> poopdeck)</span>
-<span id="cb405-4"><a href="ex-one-way-anova.html#cb405-4" tabindex="-1"></a></span>
-<span id="cb405-5"><a href="ex-one-way-anova.html#cb405-5" tabindex="-1"></a><span class="co"># Show summary</span></span>
-<span id="cb405-6"><a href="ex-one-way-anova.html#cb405-6" tabindex="-1"></a><span class="fu">summary</span>(cleaner.lm)</span>
-<span id="cb405-7"><a href="ex-one-way-anova.html#cb405-7" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb405-8"><a href="ex-one-way-anova.html#cb405-8" tabindex="-1"></a><span class="do">## Call:</span></span>
-<span id="cb405-9"><a href="ex-one-way-anova.html#cb405-9" tabindex="-1"></a><span class="do">## lm(formula = time ~ cleaner, data = poopdeck)</span></span>
-<span id="cb405-10"><a href="ex-one-way-anova.html#cb405-10" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb405-11"><a href="ex-one-way-anova.html#cb405-11" tabindex="-1"></a><span class="do">## Residuals:</span></span>
-<span id="cb405-12"><a href="ex-one-way-anova.html#cb405-12" tabindex="-1"></a><span class="do">##    Min     1Q Median     3Q    Max </span></span>
-<span id="cb405-13"><a href="ex-one-way-anova.html#cb405-13" tabindex="-1"></a><span class="do">## -63.02 -16.60  -1.05  16.92  71.92 </span></span>
-<span id="cb405-14"><a href="ex-one-way-anova.html#cb405-14" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb405-15"><a href="ex-one-way-anova.html#cb405-15" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
-<span id="cb405-16"><a href="ex-one-way-anova.html#cb405-16" tabindex="-1"></a><span class="do">##             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
-<span id="cb405-17"><a href="ex-one-way-anova.html#cb405-17" tabindex="-1"></a><span class="do">## (Intercept)    66.02       1.69   39.04   &lt;2e-16 ***</span></span>
-<span id="cb405-18"><a href="ex-one-way-anova.html#cb405-18" tabindex="-1"></a><span class="do">## cleanerb       -0.42       2.39   -0.18   0.8607    </span></span>
-<span id="cb405-19"><a href="ex-one-way-anova.html#cb405-19" tabindex="-1"></a><span class="do">## cleanerc       -6.94       2.39   -2.90   0.0038 ** </span></span>
-<span id="cb405-20"><a href="ex-one-way-anova.html#cb405-20" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb405-21"><a href="ex-one-way-anova.html#cb405-21" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb405-22"><a href="ex-one-way-anova.html#cb405-22" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb405-23"><a href="ex-one-way-anova.html#cb405-23" tabindex="-1"></a><span class="do">## Residual standard error: 24 on 597 degrees of freedom</span></span>
-<span id="cb405-24"><a href="ex-one-way-anova.html#cb405-24" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.0174, Adjusted R-squared:  0.0141 </span></span>
-<span id="cb405-25"><a href="ex-one-way-anova.html#cb405-25" tabindex="-1"></a><span class="do">## F-statistic: 5.29 on 2 and 597 DF,  p-value: 0.00526</span></span></code></pre></div>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="ex-one-way-anova.html#cb404-1" tabindex="-1"></a><span class="co"># Step 4: Create a regression object</span></span>
+<span id="cb404-2"><a href="ex-one-way-anova.html#cb404-2" tabindex="-1"></a>cleaner.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> time <span class="sc">~</span> cleaner,</span>
+<span id="cb404-3"><a href="ex-one-way-anova.html#cb404-3" tabindex="-1"></a>                 <span class="at">data =</span> poopdeck)</span>
+<span id="cb404-4"><a href="ex-one-way-anova.html#cb404-4" tabindex="-1"></a></span>
+<span id="cb404-5"><a href="ex-one-way-anova.html#cb404-5" tabindex="-1"></a><span class="co"># Show summary</span></span>
+<span id="cb404-6"><a href="ex-one-way-anova.html#cb404-6" tabindex="-1"></a><span class="fu">summary</span>(cleaner.lm)</span>
+<span id="cb404-7"><a href="ex-one-way-anova.html#cb404-7" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb404-8"><a href="ex-one-way-anova.html#cb404-8" tabindex="-1"></a><span class="do">## Call:</span></span>
+<span id="cb404-9"><a href="ex-one-way-anova.html#cb404-9" tabindex="-1"></a><span class="do">## lm(formula = time ~ cleaner, data = poopdeck)</span></span>
+<span id="cb404-10"><a href="ex-one-way-anova.html#cb404-10" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb404-11"><a href="ex-one-way-anova.html#cb404-11" tabindex="-1"></a><span class="do">## Residuals:</span></span>
+<span id="cb404-12"><a href="ex-one-way-anova.html#cb404-12" tabindex="-1"></a><span class="do">##    Min     1Q Median     3Q    Max </span></span>
+<span id="cb404-13"><a href="ex-one-way-anova.html#cb404-13" tabindex="-1"></a><span class="do">## -63.02 -16.60  -1.05  16.92  71.92 </span></span>
+<span id="cb404-14"><a href="ex-one-way-anova.html#cb404-14" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb404-15"><a href="ex-one-way-anova.html#cb404-15" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
+<span id="cb404-16"><a href="ex-one-way-anova.html#cb404-16" tabindex="-1"></a><span class="do">##             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb404-17"><a href="ex-one-way-anova.html#cb404-17" tabindex="-1"></a><span class="do">## (Intercept)    66.02       1.69   39.04   &lt;2e-16 ***</span></span>
+<span id="cb404-18"><a href="ex-one-way-anova.html#cb404-18" tabindex="-1"></a><span class="do">## cleanerb       -0.42       2.39   -0.18   0.8607    </span></span>
+<span id="cb404-19"><a href="ex-one-way-anova.html#cb404-19" tabindex="-1"></a><span class="do">## cleanerc       -6.94       2.39   -2.90   0.0038 ** </span></span>
+<span id="cb404-20"><a href="ex-one-way-anova.html#cb404-20" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb404-21"><a href="ex-one-way-anova.html#cb404-21" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb404-22"><a href="ex-one-way-anova.html#cb404-22" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb404-23"><a href="ex-one-way-anova.html#cb404-23" tabindex="-1"></a><span class="do">## Residual standard error: 24 on 597 degrees of freedom</span></span>
+<span id="cb404-24"><a href="ex-one-way-anova.html#cb404-24" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.0174, Adjusted R-squared:  0.0141 </span></span>
+<span id="cb404-25"><a href="ex-one-way-anova.html#cb404-25" tabindex="-1"></a><span class="do">## F-statistic: 5.29 on 2 and 597 DF,  p-value: 0.00526</span></span></code></pre></div>
 <p>As you can see, the regression table does not give us tests for each variable like the ANOVA table does. Instead, it tells us how different each level of an independent variable is from a <em>default</em> value. You can tell which value of an independent variable is the default variable just by seeing which value is missing from the table. In this case, I don’t see a coefficient for cleaner a, so that must be the default value.</p>
 <p>The intercept in the table tells us the mean of the default value. In this case, the mean time of cleaner a was 66.02. The coefficients for the other levels tell us that cleaner b is, on average 0.42 minutes faster than cleaner a, and cleaner c is on average 6.94 minutes faster than cleaner a. Not surprisingly, these are the same differences we saw in the Tukey HSD test!</p>
 <p>##Ex: Two-way ANOVA</p>
 <p>To conduct a two-way ANOVA or a Menage a trois NOVA, just include additional independent variables in the regression model formula with the + sign. That’s it. All the steps are the same. Let’s conduct a two-way ANOVA with both cleaner and type as independent variables. To do this, we’ll set <code>formula = time ~ cleaner + type</code>.</p>
-<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="ex-one-way-anova.html#cb406-1" tabindex="-1"></a><span class="co"># Step 1: Create ANOVA object with aov()</span></span>
-<span id="cb406-2"><a href="ex-one-way-anova.html#cb406-2" tabindex="-1"></a>cleaner.type.aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(<span class="at">formula =</span> time <span class="sc">~</span> cleaner <span class="sc">+</span> type,</span>
-<span id="cb406-3"><a href="ex-one-way-anova.html#cb406-3" tabindex="-1"></a>                        <span class="at">data =</span> poopdeck)</span></code></pre></div>
-<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="ex-one-way-anova.html#cb407-1" tabindex="-1"></a><span class="co"># Step 2: Get ANOVA table with summary()</span></span>
-<span id="cb407-2"><a href="ex-one-way-anova.html#cb407-2" tabindex="-1"></a><span class="fu">summary</span>(cleaner.type.aov)</span>
-<span id="cb407-3"><a href="ex-one-way-anova.html#cb407-3" tabindex="-1"></a><span class="do">##              Df Sum Sq Mean Sq F value Pr(&gt;F)    </span></span>
-<span id="cb407-4"><a href="ex-one-way-anova.html#cb407-4" tabindex="-1"></a><span class="do">## cleaner       2   6057    3028    6.94  0.001 ** </span></span>
-<span id="cb407-5"><a href="ex-one-way-anova.html#cb407-5" tabindex="-1"></a><span class="do">## type          1  81620   81620  187.18 &lt;2e-16 ***</span></span>
-<span id="cb407-6"><a href="ex-one-way-anova.html#cb407-6" tabindex="-1"></a><span class="do">## Residuals   596 259891     436                   </span></span>
-<span id="cb407-7"><a href="ex-one-way-anova.html#cb407-7" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb407-8"><a href="ex-one-way-anova.html#cb407-8" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="ex-one-way-anova.html#cb405-1" tabindex="-1"></a><span class="co"># Step 1: Create ANOVA object with aov()</span></span>
+<span id="cb405-2"><a href="ex-one-way-anova.html#cb405-2" tabindex="-1"></a>cleaner.type.aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(<span class="at">formula =</span> time <span class="sc">~</span> cleaner <span class="sc">+</span> type,</span>
+<span id="cb405-3"><a href="ex-one-way-anova.html#cb405-3" tabindex="-1"></a>                        <span class="at">data =</span> poopdeck)</span></code></pre></div>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="ex-one-way-anova.html#cb406-1" tabindex="-1"></a><span class="co"># Step 2: Get ANOVA table with summary()</span></span>
+<span id="cb406-2"><a href="ex-one-way-anova.html#cb406-2" tabindex="-1"></a><span class="fu">summary</span>(cleaner.type.aov)</span>
+<span id="cb406-3"><a href="ex-one-way-anova.html#cb406-3" tabindex="-1"></a><span class="do">##              Df Sum Sq Mean Sq F value Pr(&gt;F)    </span></span>
+<span id="cb406-4"><a href="ex-one-way-anova.html#cb406-4" tabindex="-1"></a><span class="do">## cleaner       2   6057    3028    6.94  0.001 ** </span></span>
+<span id="cb406-5"><a href="ex-one-way-anova.html#cb406-5" tabindex="-1"></a><span class="do">## type          1  81620   81620  187.18 &lt;2e-16 ***</span></span>
+<span id="cb406-6"><a href="ex-one-way-anova.html#cb406-6" tabindex="-1"></a><span class="do">## Residuals   596 259891     436                   </span></span>
+<span id="cb406-7"><a href="ex-one-way-anova.html#cb406-7" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb406-8"><a href="ex-one-way-anova.html#cb406-8" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span></code></pre></div>
 <p>It looks like we found significant effects of both independent variables.</p>
-<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="ex-one-way-anova.html#cb408-1" tabindex="-1"></a><span class="co"># Step 3: Conduct post-hoc tests</span></span>
-<span id="cb408-2"><a href="ex-one-way-anova.html#cb408-2" tabindex="-1"></a><span class="fu">TukeyHSD</span>(cleaner.type.aov)</span>
-<span id="cb408-3"><a href="ex-one-way-anova.html#cb408-3" tabindex="-1"></a><span class="do">##   Tukey multiple comparisons of means</span></span>
-<span id="cb408-4"><a href="ex-one-way-anova.html#cb408-4" tabindex="-1"></a><span class="do">##     95% family-wise confidence level</span></span>
-<span id="cb408-5"><a href="ex-one-way-anova.html#cb408-5" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb408-6"><a href="ex-one-way-anova.html#cb408-6" tabindex="-1"></a><span class="do">## Fit: aov(formula = time ~ cleaner + type, data = poopdeck)</span></span>
-<span id="cb408-7"><a href="ex-one-way-anova.html#cb408-7" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb408-8"><a href="ex-one-way-anova.html#cb408-8" tabindex="-1"></a><span class="do">## $cleaner</span></span>
-<span id="cb408-9"><a href="ex-one-way-anova.html#cb408-9" tabindex="-1"></a><span class="do">##      diff   lwr  upr p adj</span></span>
-<span id="cb408-10"><a href="ex-one-way-anova.html#cb408-10" tabindex="-1"></a><span class="do">## b-a -0.42  -5.3  4.5  0.98</span></span>
-<span id="cb408-11"><a href="ex-one-way-anova.html#cb408-11" tabindex="-1"></a><span class="do">## c-a -6.94 -11.8 -2.0  0.00</span></span>
-<span id="cb408-12"><a href="ex-one-way-anova.html#cb408-12" tabindex="-1"></a><span class="do">## c-b -6.52 -11.4 -1.6  0.01</span></span>
-<span id="cb408-13"><a href="ex-one-way-anova.html#cb408-13" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb408-14"><a href="ex-one-way-anova.html#cb408-14" tabindex="-1"></a><span class="do">## $type</span></span>
-<span id="cb408-15"><a href="ex-one-way-anova.html#cb408-15" tabindex="-1"></a><span class="do">##              diff lwr upr p adj</span></span>
-<span id="cb408-16"><a href="ex-one-way-anova.html#cb408-16" tabindex="-1"></a><span class="do">## shark-parrot   23  20  27     0</span></span></code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="ex-one-way-anova.html#cb407-1" tabindex="-1"></a><span class="co"># Step 3: Conduct post-hoc tests</span></span>
+<span id="cb407-2"><a href="ex-one-way-anova.html#cb407-2" tabindex="-1"></a><span class="fu">TukeyHSD</span>(cleaner.type.aov)</span>
+<span id="cb407-3"><a href="ex-one-way-anova.html#cb407-3" tabindex="-1"></a><span class="do">##   Tukey multiple comparisons of means</span></span>
+<span id="cb407-4"><a href="ex-one-way-anova.html#cb407-4" tabindex="-1"></a><span class="do">##     95% family-wise confidence level</span></span>
+<span id="cb407-5"><a href="ex-one-way-anova.html#cb407-5" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb407-6"><a href="ex-one-way-anova.html#cb407-6" tabindex="-1"></a><span class="do">## Fit: aov(formula = time ~ cleaner + type, data = poopdeck)</span></span>
+<span id="cb407-7"><a href="ex-one-way-anova.html#cb407-7" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb407-8"><a href="ex-one-way-anova.html#cb407-8" tabindex="-1"></a><span class="do">## $cleaner</span></span>
+<span id="cb407-9"><a href="ex-one-way-anova.html#cb407-9" tabindex="-1"></a><span class="do">##      diff   lwr  upr p adj</span></span>
+<span id="cb407-10"><a href="ex-one-way-anova.html#cb407-10" tabindex="-1"></a><span class="do">## b-a -0.42  -5.3  4.5  0.98</span></span>
+<span id="cb407-11"><a href="ex-one-way-anova.html#cb407-11" tabindex="-1"></a><span class="do">## c-a -6.94 -11.8 -2.0  0.00</span></span>
+<span id="cb407-12"><a href="ex-one-way-anova.html#cb407-12" tabindex="-1"></a><span class="do">## c-b -6.52 -11.4 -1.6  0.01</span></span>
+<span id="cb407-13"><a href="ex-one-way-anova.html#cb407-13" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb407-14"><a href="ex-one-way-anova.html#cb407-14" tabindex="-1"></a><span class="do">## $type</span></span>
+<span id="cb407-15"><a href="ex-one-way-anova.html#cb407-15" tabindex="-1"></a><span class="do">##              diff lwr upr p adj</span></span>
+<span id="cb407-16"><a href="ex-one-way-anova.html#cb407-16" tabindex="-1"></a><span class="do">## shark-parrot   23  20  27     0</span></span></code></pre></div>
 <p>The only non-significant group difference we found is between cleaner b and cleaner a. All other comparisons were significant.</p>
-<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="ex-one-way-anova.html#cb409-1" tabindex="-1"></a><span class="co"># Step 4: Look at regression coefficients</span></span>
-<span id="cb409-2"><a href="ex-one-way-anova.html#cb409-2" tabindex="-1"></a>cleaner.type.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> time <span class="sc">~</span> cleaner <span class="sc">+</span> type,</span>
-<span id="cb409-3"><a href="ex-one-way-anova.html#cb409-3" tabindex="-1"></a>                      <span class="at">data =</span> poopdeck)</span>
-<span id="cb409-4"><a href="ex-one-way-anova.html#cb409-4" tabindex="-1"></a></span>
-<span id="cb409-5"><a href="ex-one-way-anova.html#cb409-5" tabindex="-1"></a><span class="fu">summary</span>(cleaner.type.lm)</span>
-<span id="cb409-6"><a href="ex-one-way-anova.html#cb409-6" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb409-7"><a href="ex-one-way-anova.html#cb409-7" tabindex="-1"></a><span class="do">## Call:</span></span>
-<span id="cb409-8"><a href="ex-one-way-anova.html#cb409-8" tabindex="-1"></a><span class="do">## lm(formula = time ~ cleaner + type, data = poopdeck)</span></span>
-<span id="cb409-9"><a href="ex-one-way-anova.html#cb409-9" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb409-10"><a href="ex-one-way-anova.html#cb409-10" tabindex="-1"></a><span class="do">## Residuals:</span></span>
-<span id="cb409-11"><a href="ex-one-way-anova.html#cb409-11" tabindex="-1"></a><span class="do">##    Min     1Q Median     3Q    Max </span></span>
-<span id="cb409-12"><a href="ex-one-way-anova.html#cb409-12" tabindex="-1"></a><span class="do">## -59.74 -13.79  -0.68  13.58  83.58 </span></span>
-<span id="cb409-13"><a href="ex-one-way-anova.html#cb409-13" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb409-14"><a href="ex-one-way-anova.html#cb409-14" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
-<span id="cb409-15"><a href="ex-one-way-anova.html#cb409-15" tabindex="-1"></a><span class="do">##             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
-<span id="cb409-16"><a href="ex-one-way-anova.html#cb409-16" tabindex="-1"></a><span class="do">## (Intercept)    54.36       1.71   31.88  &lt; 2e-16 ***</span></span>
-<span id="cb409-17"><a href="ex-one-way-anova.html#cb409-17" tabindex="-1"></a><span class="do">## cleanerb       -0.42       2.09   -0.20  0.84067    </span></span>
-<span id="cb409-18"><a href="ex-one-way-anova.html#cb409-18" tabindex="-1"></a><span class="do">## cleanerc       -6.94       2.09   -3.32  0.00094 ***</span></span>
-<span id="cb409-19"><a href="ex-one-way-anova.html#cb409-19" tabindex="-1"></a><span class="do">## typeshark      23.33       1.71   13.68  &lt; 2e-16 ***</span></span>
-<span id="cb409-20"><a href="ex-one-way-anova.html#cb409-20" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb409-21"><a href="ex-one-way-anova.html#cb409-21" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb409-22"><a href="ex-one-way-anova.html#cb409-22" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb409-23"><a href="ex-one-way-anova.html#cb409-23" tabindex="-1"></a><span class="do">## Residual standard error: 21 on 596 degrees of freedom</span></span>
-<span id="cb409-24"><a href="ex-one-way-anova.html#cb409-24" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.252,  Adjusted R-squared:  0.248 </span></span>
-<span id="cb409-25"><a href="ex-one-way-anova.html#cb409-25" tabindex="-1"></a><span class="do">## F-statistic:   67 on 3 and 596 DF,  p-value: &lt;2e-16</span></span></code></pre></div>
+<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="ex-one-way-anova.html#cb408-1" tabindex="-1"></a><span class="co"># Step 4: Look at regression coefficients</span></span>
+<span id="cb408-2"><a href="ex-one-way-anova.html#cb408-2" tabindex="-1"></a>cleaner.type.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> time <span class="sc">~</span> cleaner <span class="sc">+</span> type,</span>
+<span id="cb408-3"><a href="ex-one-way-anova.html#cb408-3" tabindex="-1"></a>                      <span class="at">data =</span> poopdeck)</span>
+<span id="cb408-4"><a href="ex-one-way-anova.html#cb408-4" tabindex="-1"></a></span>
+<span id="cb408-5"><a href="ex-one-way-anova.html#cb408-5" tabindex="-1"></a><span class="fu">summary</span>(cleaner.type.lm)</span>
+<span id="cb408-6"><a href="ex-one-way-anova.html#cb408-6" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb408-7"><a href="ex-one-way-anova.html#cb408-7" tabindex="-1"></a><span class="do">## Call:</span></span>
+<span id="cb408-8"><a href="ex-one-way-anova.html#cb408-8" tabindex="-1"></a><span class="do">## lm(formula = time ~ cleaner + type, data = poopdeck)</span></span>
+<span id="cb408-9"><a href="ex-one-way-anova.html#cb408-9" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb408-10"><a href="ex-one-way-anova.html#cb408-10" tabindex="-1"></a><span class="do">## Residuals:</span></span>
+<span id="cb408-11"><a href="ex-one-way-anova.html#cb408-11" tabindex="-1"></a><span class="do">##    Min     1Q Median     3Q    Max </span></span>
+<span id="cb408-12"><a href="ex-one-way-anova.html#cb408-12" tabindex="-1"></a><span class="do">## -59.74 -13.79  -0.68  13.58  83.58 </span></span>
+<span id="cb408-13"><a href="ex-one-way-anova.html#cb408-13" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb408-14"><a href="ex-one-way-anova.html#cb408-14" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
+<span id="cb408-15"><a href="ex-one-way-anova.html#cb408-15" tabindex="-1"></a><span class="do">##             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb408-16"><a href="ex-one-way-anova.html#cb408-16" tabindex="-1"></a><span class="do">## (Intercept)    54.36       1.71   31.88  &lt; 2e-16 ***</span></span>
+<span id="cb408-17"><a href="ex-one-way-anova.html#cb408-17" tabindex="-1"></a><span class="do">## cleanerb       -0.42       2.09   -0.20  0.84067    </span></span>
+<span id="cb408-18"><a href="ex-one-way-anova.html#cb408-18" tabindex="-1"></a><span class="do">## cleanerc       -6.94       2.09   -3.32  0.00094 ***</span></span>
+<span id="cb408-19"><a href="ex-one-way-anova.html#cb408-19" tabindex="-1"></a><span class="do">## typeshark      23.33       1.71   13.68  &lt; 2e-16 ***</span></span>
+<span id="cb408-20"><a href="ex-one-way-anova.html#cb408-20" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb408-21"><a href="ex-one-way-anova.html#cb408-21" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb408-22"><a href="ex-one-way-anova.html#cb408-22" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb408-23"><a href="ex-one-way-anova.html#cb408-23" tabindex="-1"></a><span class="do">## Residual standard error: 21 on 596 degrees of freedom</span></span>
+<span id="cb408-24"><a href="ex-one-way-anova.html#cb408-24" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.252,  Adjusted R-squared:  0.248 </span></span>
+<span id="cb408-25"><a href="ex-one-way-anova.html#cb408-25" tabindex="-1"></a><span class="do">## F-statistic:   67 on 3 and 596 DF,  p-value: &lt;2e-16</span></span></code></pre></div>
 <p>Now we need to interpret the results in respect to two default values (here, cleaner = a and type = parrot). The intercept means that the average time for cleaner a on parrot poop was 54.36 minutes. Additionally, the average time to clean shark poop was 23.33 minutes slower than when cleaning parrot poop.</p>
 <div id="anova-with-interactions" class="section level3 hasAnchor" number="14.2.1">
 <h3><span class="header-section-number">14.2.1</span> ANOVA with interactions<a href="ex-one-way-anova.html#anova-with-interactions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Interactions between variables test whether or not the effect of one variable depends on another variable. For example, we could use an interaction to answer the question: <em>Does the effect of cleaners depend on the type of poop they are used to clean?</em> To include interaction terms in an ANOVA, just use an asterix (*) instead of the plus (+) between the terms in your formula. Note that when you include an interaction term in a regression object, R will automatically include the main effects as well/</p>
 <p>Let’s repeat our previous ANOVA with two independent variables, but now we’ll include the interaction between cleaner and type. To do this, we’ll set the formula to <code>time ~ cleaner * type</code>.</p>
-<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="ex-one-way-anova.html#cb410-1" tabindex="-1"></a><span class="co"># Step 1: Create ANOVA object with interactions</span></span>
-<span id="cb410-2"><a href="ex-one-way-anova.html#cb410-2" tabindex="-1"></a>cleaner.type.int.aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(<span class="at">formula =</span> time <span class="sc">~</span> cleaner <span class="sc">*</span> type,</span>
-<span id="cb410-3"><a href="ex-one-way-anova.html#cb410-3" tabindex="-1"></a>                          <span class="at">data =</span> poopdeck)</span>
-<span id="cb410-4"><a href="ex-one-way-anova.html#cb410-4" tabindex="-1"></a></span>
-<span id="cb410-5"><a href="ex-one-way-anova.html#cb410-5" tabindex="-1"></a><span class="co"># Step 2: Look at summary table</span></span>
-<span id="cb410-6"><a href="ex-one-way-anova.html#cb410-6" tabindex="-1"></a><span class="fu">summary</span>(cleaner.type.int.aov)</span>
-<span id="cb410-7"><a href="ex-one-way-anova.html#cb410-7" tabindex="-1"></a><span class="do">##               Df Sum Sq Mean Sq F value  Pr(&gt;F)    </span></span>
-<span id="cb410-8"><a href="ex-one-way-anova.html#cb410-8" tabindex="-1"></a><span class="do">## cleaner        2   6057    3028    7.82 0.00044 ***</span></span>
-<span id="cb410-9"><a href="ex-one-way-anova.html#cb410-9" tabindex="-1"></a><span class="do">## type           1  81620   81620  210.86 &lt; 2e-16 ***</span></span>
-<span id="cb410-10"><a href="ex-one-way-anova.html#cb410-10" tabindex="-1"></a><span class="do">## cleaner:type   2  29968   14984   38.71 &lt; 2e-16 ***</span></span>
-<span id="cb410-11"><a href="ex-one-way-anova.html#cb410-11" tabindex="-1"></a><span class="do">## Residuals    594 229923     387                    </span></span>
-<span id="cb410-12"><a href="ex-one-way-anova.html#cb410-12" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb410-13"><a href="ex-one-way-anova.html#cb410-13" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="ex-one-way-anova.html#cb409-1" tabindex="-1"></a><span class="co"># Step 1: Create ANOVA object with interactions</span></span>
+<span id="cb409-2"><a href="ex-one-way-anova.html#cb409-2" tabindex="-1"></a>cleaner.type.int.aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(<span class="at">formula =</span> time <span class="sc">~</span> cleaner <span class="sc">*</span> type,</span>
+<span id="cb409-3"><a href="ex-one-way-anova.html#cb409-3" tabindex="-1"></a>                          <span class="at">data =</span> poopdeck)</span>
+<span id="cb409-4"><a href="ex-one-way-anova.html#cb409-4" tabindex="-1"></a></span>
+<span id="cb409-5"><a href="ex-one-way-anova.html#cb409-5" tabindex="-1"></a><span class="co"># Step 2: Look at summary table</span></span>
+<span id="cb409-6"><a href="ex-one-way-anova.html#cb409-6" tabindex="-1"></a><span class="fu">summary</span>(cleaner.type.int.aov)</span>
+<span id="cb409-7"><a href="ex-one-way-anova.html#cb409-7" tabindex="-1"></a><span class="do">##               Df Sum Sq Mean Sq F value  Pr(&gt;F)    </span></span>
+<span id="cb409-8"><a href="ex-one-way-anova.html#cb409-8" tabindex="-1"></a><span class="do">## cleaner        2   6057    3028    7.82 0.00044 ***</span></span>
+<span id="cb409-9"><a href="ex-one-way-anova.html#cb409-9" tabindex="-1"></a><span class="do">## type           1  81620   81620  210.86 &lt; 2e-16 ***</span></span>
+<span id="cb409-10"><a href="ex-one-way-anova.html#cb409-10" tabindex="-1"></a><span class="do">## cleaner:type   2  29968   14984   38.71 &lt; 2e-16 ***</span></span>
+<span id="cb409-11"><a href="ex-one-way-anova.html#cb409-11" tabindex="-1"></a><span class="do">## Residuals    594 229923     387                    </span></span>
+<span id="cb409-12"><a href="ex-one-way-anova.html#cb409-12" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb409-13"><a href="ex-one-way-anova.html#cb409-13" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span></code></pre></div>
 <p>Looks like we did indeed find a significant interaction between cleaner and type. In other words, the effectiveness of a cleaner depends on the type of poop it’s being applied to. This makes sense given our plot of the data at the beginning of the chapter.</p>
 <p>To understand the nature of the difference, we’ll look at the regression coefficients from a regression object:</p>
-<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="ex-one-way-anova.html#cb411-1" tabindex="-1"></a><span class="co"># Step 4: Calculate regression coefficients</span></span>
-<span id="cb411-2"><a href="ex-one-way-anova.html#cb411-2" tabindex="-1"></a>cleaner.type.int.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> time <span class="sc">~</span> cleaner <span class="sc">*</span> type,</span>
-<span id="cb411-3"><a href="ex-one-way-anova.html#cb411-3" tabindex="-1"></a>                          <span class="at">data =</span> poopdeck)</span>
-<span id="cb411-4"><a href="ex-one-way-anova.html#cb411-4" tabindex="-1"></a></span>
-<span id="cb411-5"><a href="ex-one-way-anova.html#cb411-5" tabindex="-1"></a><span class="fu">summary</span>(cleaner.type.int.lm)</span>
-<span id="cb411-6"><a href="ex-one-way-anova.html#cb411-6" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb411-7"><a href="ex-one-way-anova.html#cb411-7" tabindex="-1"></a><span class="do">## Call:</span></span>
-<span id="cb411-8"><a href="ex-one-way-anova.html#cb411-8" tabindex="-1"></a><span class="do">## lm(formula = time ~ cleaner * type, data = poopdeck)</span></span>
-<span id="cb411-9"><a href="ex-one-way-anova.html#cb411-9" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb411-10"><a href="ex-one-way-anova.html#cb411-10" tabindex="-1"></a><span class="do">## Residuals:</span></span>
-<span id="cb411-11"><a href="ex-one-way-anova.html#cb411-11" tabindex="-1"></a><span class="do">##    Min     1Q Median     3Q    Max </span></span>
-<span id="cb411-12"><a href="ex-one-way-anova.html#cb411-12" tabindex="-1"></a><span class="do">## -54.28 -12.83  -0.08  12.29  74.87 </span></span>
-<span id="cb411-13"><a href="ex-one-way-anova.html#cb411-13" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb411-14"><a href="ex-one-way-anova.html#cb411-14" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
-<span id="cb411-15"><a href="ex-one-way-anova.html#cb411-15" tabindex="-1"></a><span class="do">##                    Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
-<span id="cb411-16"><a href="ex-one-way-anova.html#cb411-16" tabindex="-1"></a><span class="do">## (Intercept)           45.76       1.97   23.26  &lt; 2e-16 ***</span></span>
-<span id="cb411-17"><a href="ex-one-way-anova.html#cb411-17" tabindex="-1"></a><span class="do">## cleanerb               8.06       2.78    2.90  0.00391 ** </span></span>
-<span id="cb411-18"><a href="ex-one-way-anova.html#cb411-18" tabindex="-1"></a><span class="do">## cleanerc              10.37       2.78    3.73  0.00021 ***</span></span>
-<span id="cb411-19"><a href="ex-one-way-anova.html#cb411-19" tabindex="-1"></a><span class="do">## typeshark             40.52       2.78   14.56  &lt; 2e-16 ***</span></span>
-<span id="cb411-20"><a href="ex-one-way-anova.html#cb411-20" tabindex="-1"></a><span class="do">## cleanerb:typeshark   -16.96       3.93   -4.31  1.9e-05 ***</span></span>
-<span id="cb411-21"><a href="ex-one-way-anova.html#cb411-21" tabindex="-1"></a><span class="do">## cleanerc:typeshark   -34.62       3.93   -8.80  &lt; 2e-16 ***</span></span>
-<span id="cb411-22"><a href="ex-one-way-anova.html#cb411-22" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb411-23"><a href="ex-one-way-anova.html#cb411-23" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb411-24"><a href="ex-one-way-anova.html#cb411-24" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb411-25"><a href="ex-one-way-anova.html#cb411-25" tabindex="-1"></a><span class="do">## Residual standard error: 20 on 594 degrees of freedom</span></span>
-<span id="cb411-26"><a href="ex-one-way-anova.html#cb411-26" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.338,  Adjusted R-squared:  0.333 </span></span>
-<span id="cb411-27"><a href="ex-one-way-anova.html#cb411-27" tabindex="-1"></a><span class="do">## F-statistic: 60.8 on 5 and 594 DF,  p-value: &lt;2e-16</span></span></code></pre></div>
+<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="ex-one-way-anova.html#cb410-1" tabindex="-1"></a><span class="co"># Step 4: Calculate regression coefficients</span></span>
+<span id="cb410-2"><a href="ex-one-way-anova.html#cb410-2" tabindex="-1"></a>cleaner.type.int.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> time <span class="sc">~</span> cleaner <span class="sc">*</span> type,</span>
+<span id="cb410-3"><a href="ex-one-way-anova.html#cb410-3" tabindex="-1"></a>                          <span class="at">data =</span> poopdeck)</span>
+<span id="cb410-4"><a href="ex-one-way-anova.html#cb410-4" tabindex="-1"></a></span>
+<span id="cb410-5"><a href="ex-one-way-anova.html#cb410-5" tabindex="-1"></a><span class="fu">summary</span>(cleaner.type.int.lm)</span>
+<span id="cb410-6"><a href="ex-one-way-anova.html#cb410-6" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb410-7"><a href="ex-one-way-anova.html#cb410-7" tabindex="-1"></a><span class="do">## Call:</span></span>
+<span id="cb410-8"><a href="ex-one-way-anova.html#cb410-8" tabindex="-1"></a><span class="do">## lm(formula = time ~ cleaner * type, data = poopdeck)</span></span>
+<span id="cb410-9"><a href="ex-one-way-anova.html#cb410-9" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb410-10"><a href="ex-one-way-anova.html#cb410-10" tabindex="-1"></a><span class="do">## Residuals:</span></span>
+<span id="cb410-11"><a href="ex-one-way-anova.html#cb410-11" tabindex="-1"></a><span class="do">##    Min     1Q Median     3Q    Max </span></span>
+<span id="cb410-12"><a href="ex-one-way-anova.html#cb410-12" tabindex="-1"></a><span class="do">## -54.28 -12.83  -0.08  12.29  74.87 </span></span>
+<span id="cb410-13"><a href="ex-one-way-anova.html#cb410-13" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb410-14"><a href="ex-one-way-anova.html#cb410-14" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
+<span id="cb410-15"><a href="ex-one-way-anova.html#cb410-15" tabindex="-1"></a><span class="do">##                    Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb410-16"><a href="ex-one-way-anova.html#cb410-16" tabindex="-1"></a><span class="do">## (Intercept)           45.76       1.97   23.26  &lt; 2e-16 ***</span></span>
+<span id="cb410-17"><a href="ex-one-way-anova.html#cb410-17" tabindex="-1"></a><span class="do">## cleanerb               8.06       2.78    2.90  0.00391 ** </span></span>
+<span id="cb410-18"><a href="ex-one-way-anova.html#cb410-18" tabindex="-1"></a><span class="do">## cleanerc              10.37       2.78    3.73  0.00021 ***</span></span>
+<span id="cb410-19"><a href="ex-one-way-anova.html#cb410-19" tabindex="-1"></a><span class="do">## typeshark             40.52       2.78   14.56  &lt; 2e-16 ***</span></span>
+<span id="cb410-20"><a href="ex-one-way-anova.html#cb410-20" tabindex="-1"></a><span class="do">## cleanerb:typeshark   -16.96       3.93   -4.31  1.9e-05 ***</span></span>
+<span id="cb410-21"><a href="ex-one-way-anova.html#cb410-21" tabindex="-1"></a><span class="do">## cleanerc:typeshark   -34.62       3.93   -8.80  &lt; 2e-16 ***</span></span>
+<span id="cb410-22"><a href="ex-one-way-anova.html#cb410-22" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb410-23"><a href="ex-one-way-anova.html#cb410-23" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb410-24"><a href="ex-one-way-anova.html#cb410-24" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb410-25"><a href="ex-one-way-anova.html#cb410-25" tabindex="-1"></a><span class="do">## Residual standard error: 20 on 594 degrees of freedom</span></span>
+<span id="cb410-26"><a href="ex-one-way-anova.html#cb410-26" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.338,  Adjusted R-squared:  0.333 </span></span>
+<span id="cb410-27"><a href="ex-one-way-anova.html#cb410-27" tabindex="-1"></a><span class="do">## F-statistic: 60.8 on 5 and 594 DF,  p-value: &lt;2e-16</span></span></code></pre></div>
 <p>Again, to interpret this table, we first need to know what the default values are. We can tell this from the coefficients that are ‘missing’ from the table. Because I don’t see terms for <code>cleanera</code> or <code>typeparrot</code>, this means that <code>cleaner = "a"</code> and <code>type = "parrot"</code> are the defaults. Again, we can interpret the coefficients as <code>differences</code> between a level and the default. It looks like for parrot poop, cleaners b and c both take more time than cleaner a (the default). Additionally, shark poop tends to take much longer than parrot poop to clean (the estimate for typeshark is positive).</p>
 <p>The interaction terms tell us how the effect of cleaners <code>changes</code> when one is cleaning shark poop. The negative estimate (-16.96) for <code>cleanerb:typeshark</code> means that cleaner b is, on average 16.96 minutes <code>faster</code> when cleaning shark poop compared to parrot poop. Because the previous estimate for cleaner b (for parrot poop) was just 8.06, this suggests that cleaner b is <code>slower</code> than cleaner a for parrot poop, but <code>faster</code> than cleaner a for shark poop. Same thing for cleaner c which simply has stronger effects in both directions.</p>
 </div>

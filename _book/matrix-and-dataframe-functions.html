@@ -557,23 +557,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>To see the first few rows of a dataframe, use <code>head()</code>, to see the last few rows, use <code>tail()</code></p>
 <div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="matrix-and-dataframe-functions.html#cb219-1" tabindex="-1"></a><span class="co"># head() shows the first few rows</span></span>
 <span id="cb219-2"><a href="matrix-and-dataframe-functions.html#cb219-2" tabindex="-1"></a><span class="fu">head</span>(ChickWeight)</span>
-<span id="cb219-3"><a href="matrix-and-dataframe-functions.html#cb219-3" tabindex="-1"></a><span class="do">##   weight Time Chick Diet</span></span>
-<span id="cb219-4"><a href="matrix-and-dataframe-functions.html#cb219-4" tabindex="-1"></a><span class="do">## 1     42    0     1    1</span></span>
-<span id="cb219-5"><a href="matrix-and-dataframe-functions.html#cb219-5" tabindex="-1"></a><span class="do">## 2     51    2     1    1</span></span>
-<span id="cb219-6"><a href="matrix-and-dataframe-functions.html#cb219-6" tabindex="-1"></a><span class="do">## 3     59    4     1    1</span></span>
-<span id="cb219-7"><a href="matrix-and-dataframe-functions.html#cb219-7" tabindex="-1"></a><span class="do">## 4     64    6     1    1</span></span>
-<span id="cb219-8"><a href="matrix-and-dataframe-functions.html#cb219-8" tabindex="-1"></a><span class="do">## 5     76    8     1    1</span></span>
-<span id="cb219-9"><a href="matrix-and-dataframe-functions.html#cb219-9" tabindex="-1"></a><span class="do">## 6     93   10     1    1</span></span></code></pre></div>
+<span id="cb219-3"><a href="matrix-and-dataframe-functions.html#cb219-3" tabindex="-1"></a><span class="do">## Grouped Data: weight ~ Time | Chick</span></span>
+<span id="cb219-4"><a href="matrix-and-dataframe-functions.html#cb219-4" tabindex="-1"></a><span class="do">##   weight Time Chick Diet</span></span>
+<span id="cb219-5"><a href="matrix-and-dataframe-functions.html#cb219-5" tabindex="-1"></a><span class="do">## 1     42    0     1    1</span></span>
+<span id="cb219-6"><a href="matrix-and-dataframe-functions.html#cb219-6" tabindex="-1"></a><span class="do">## 2     51    2     1    1</span></span>
+<span id="cb219-7"><a href="matrix-and-dataframe-functions.html#cb219-7" tabindex="-1"></a><span class="do">## 3     59    4     1    1</span></span>
+<span id="cb219-8"><a href="matrix-and-dataframe-functions.html#cb219-8" tabindex="-1"></a><span class="do">## 4     64    6     1    1</span></span>
+<span id="cb219-9"><a href="matrix-and-dataframe-functions.html#cb219-9" tabindex="-1"></a><span class="do">## 5     76    8     1    1</span></span>
+<span id="cb219-10"><a href="matrix-and-dataframe-functions.html#cb219-10" tabindex="-1"></a><span class="do">## 6     93   10     1    1</span></span></code></pre></div>
 <div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="matrix-and-dataframe-functions.html#cb220-1" tabindex="-1"></a></span>
 <span id="cb220-2"><a href="matrix-and-dataframe-functions.html#cb220-2" tabindex="-1"></a><span class="co"># tail() shows he last few rows</span></span>
 <span id="cb220-3"><a href="matrix-and-dataframe-functions.html#cb220-3" tabindex="-1"></a><span class="fu">tail</span>(ChickWeight)</span>
-<span id="cb220-4"><a href="matrix-and-dataframe-functions.html#cb220-4" tabindex="-1"></a><span class="do">##     weight Time Chick Diet</span></span>
-<span id="cb220-5"><a href="matrix-and-dataframe-functions.html#cb220-5" tabindex="-1"></a><span class="do">## 573    155   12    50    4</span></span>
-<span id="cb220-6"><a href="matrix-and-dataframe-functions.html#cb220-6" tabindex="-1"></a><span class="do">## 574    175   14    50    4</span></span>
-<span id="cb220-7"><a href="matrix-and-dataframe-functions.html#cb220-7" tabindex="-1"></a><span class="do">## 575    205   16    50    4</span></span>
-<span id="cb220-8"><a href="matrix-and-dataframe-functions.html#cb220-8" tabindex="-1"></a><span class="do">## 576    234   18    50    4</span></span>
-<span id="cb220-9"><a href="matrix-and-dataframe-functions.html#cb220-9" tabindex="-1"></a><span class="do">## 577    264   20    50    4</span></span>
-<span id="cb220-10"><a href="matrix-and-dataframe-functions.html#cb220-10" tabindex="-1"></a><span class="do">## 578    264   21    50    4</span></span></code></pre></div>
+<span id="cb220-4"><a href="matrix-and-dataframe-functions.html#cb220-4" tabindex="-1"></a><span class="do">## Grouped Data: weight ~ Time | Chick</span></span>
+<span id="cb220-5"><a href="matrix-and-dataframe-functions.html#cb220-5" tabindex="-1"></a><span class="do">##     weight Time Chick Diet</span></span>
+<span id="cb220-6"><a href="matrix-and-dataframe-functions.html#cb220-6" tabindex="-1"></a><span class="do">## 573    155   12    50    4</span></span>
+<span id="cb220-7"><a href="matrix-and-dataframe-functions.html#cb220-7" tabindex="-1"></a><span class="do">## 574    175   14    50    4</span></span>
+<span id="cb220-8"><a href="matrix-and-dataframe-functions.html#cb220-8" tabindex="-1"></a><span class="do">## 575    205   16    50    4</span></span>
+<span id="cb220-9"><a href="matrix-and-dataframe-functions.html#cb220-9" tabindex="-1"></a><span class="do">## 576    234   18    50    4</span></span>
+<span id="cb220-10"><a href="matrix-and-dataframe-functions.html#cb220-10" tabindex="-1"></a><span class="do">## 577    264   20    50    4</span></span>
+<span id="cb220-11"><a href="matrix-and-dataframe-functions.html#cb220-11" tabindex="-1"></a><span class="do">## 578    264   21    50    4</span></span></code></pre></div>
 <p>To see an entire dataframe in a separate window that looks like spreadsheet, use <code>View()</code></p>
 <div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="matrix-and-dataframe-functions.html#cb221-1" tabindex="-1"></a><span class="co"># View() opens the entire dataframe in a new window</span></span>
 <span id="cb221-2"><a href="matrix-and-dataframe-functions.html#cb221-2" tabindex="-1"></a><span class="fu">View</span>(ChickWeight)</span></code></pre></div>
