@@ -299,11 +299,11 @@ mydata <- read.table(file = 'data/mydata.txt',    # file is in a data folder in 
 
 ### Reading files directly from a web URL
 
-A really neat feature of the `read.table()` function is that you can use it to load text files directly from the web (assuming you are online). To do this, just set the file path to the document's web URL (beginning with `http://`). For example, I have a text file stored at `http://goo.gl/jTNf6P`. You can import and save this tab--delimited text file as a new object called `fromweb` as follows:
+A really neat feature of the `read.table()` function is that you can use it to load text files directly from the web (assuming you are online). To do this, just set the file path to the document's web URL (beginning with `http://`). For example, I have a text file stored at `https://raw.githubusercontent.com/ndphillips/ThePiratesGuideToR/refs/heads/master/data/BeardLengths.txt`. You can import and save this tab--delimited text file as a new object called `fromweb` as follows:
 
 ```{r}
 # Read a text file from the web
-fromweb <- read.table(file = 'http://goo.gl/jTNf6P',
+fromweb <- read.table(file = 'https://raw.githubusercontent.com/ndphillips/ThePiratesGuideToR/refs/heads/master/data/BeardLengths.txt',
                       sep = '\t',
                       header = TRUE)
 

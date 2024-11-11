@@ -38,13 +38,13 @@ combined <- merge(x = exam,
               by = "id")
 
 # Mean q1 score for each sex
-aggregate(formula = q1 ~ sex, 
+aggregate(x = q1 ~ sex, 
           data = combined, 
           FUN = mean)
 
 # Median q3 score for each sex, but only for those
 #   older than 20
-aggregate(formula = q3 ~ sex, 
+aggregate(x = q3 ~ sex, 
           data = combined,
           subset = age > 20,
           FUN = mean)
@@ -181,7 +181,7 @@ The first aggregation function we'll cover is `aggregate()`. Aggregate allows yo
 
 ```{r eval = FALSE}
 # General structure of aggregate()
-aggregate(formula = dv ~ iv, # dv is the data, iv is the group 
+aggregate(x = dv ~ iv, # dv is the data, iv is the group 
           FUN = fun, # The function you want to apply
           data = df) # The dataframe object containing dv and iv
 ```
@@ -203,7 +203,7 @@ If you are ever writing code like this, there is almost always a simpler way to 
 
 ```{r}
 # Calculate the mean weight for each value of Diet
-aggregate(formula = weight ~ Diet,  # DV is weight, IV is Diet
+aggregate(x = weight ~ Diet,  # DV is weight, IV is Diet
           FUN = mean,               # Calculate the mean of each group
           data = ChickWeight)       # dataframe is ChickWeight
 ```
@@ -218,7 +218,7 @@ You can also include a `subset` argument within an `aggregate()` function to app
 # Calculate the mean weight for each value of Diet,
 #  But only when chicks are less than 10 weeks old
 
-aggregate(formula = weight ~ Diet,  # DV is weight, IV is Diet
+aggregate(x = weight ~ Diet,  # DV is weight, IV is Diet
           FUN = mean,               # Calculate the mean of each group
           subset = Time < 10,       # Only when Chicks are less than 10 weeks old
           data = ChickWeight)       # dataframe is ChickWeight
@@ -232,7 +232,7 @@ You can also include multiple independent variables in the formula argument to `
 # Calculate the mean weight for each value of Diet and Time,
 #  But only when chicks are 0, 2 or 4 weeks okd
 
-aggregate(formula = weight ~ Diet + Time,  # DV is weight, IVs are Diet and Time
+aggregate(x = weight ~ Diet + Time,  # DV is weight, IVs are Diet and Time
           FUN = mean,                      # Calculate the mean of each group
           subset = Time %in% c(0, 2, 4),   # Only when Chicks are 0, 2, and 4 weeks old
           data = ChickWeight)              # dataframe is ChickWeight

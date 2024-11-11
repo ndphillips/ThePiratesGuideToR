@@ -1,45 +1,46 @@
 <!DOCTYPE html>
-<html >
-
+<html lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>YaRrr! The Pirate’s Guide to R</title>
-  <meta name="description" content="An introductory book to R written by, and for, R pirates">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>11.7 Low-level plotting functions | YaRrr! The Pirate’s Guide to R</title>
+  <meta name="description" content="An introductory book to R written by, and for, R pirates" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="YaRrr! The Pirate’s Guide to R" />
+  <meta property="og:title" content="11.7 Low-level plotting functions | YaRrr! The Pirate’s Guide to R" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://bookdown.org/ndphillips/YaRrr/" />
-  <meta property="og:image" content="https://bookdown.org/ndphillips/YaRrr/images/YaRrr_Cover.jpg" />
+  <meta property="og:image" content="https://bookdown.org/ndphillips/YaRrr//images/YaRrr_Cover.jpg" />
   <meta property="og:description" content="An introductory book to R written by, and for, R pirates" />
   <meta name="github-repo" content="ndphillips/ThePiratesGuideToR" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="YaRrr! The Pirate’s Guide to R" />
+  <meta name="twitter:title" content="11.7 Low-level plotting functions | YaRrr! The Pirate’s Guide to R" />
   
   <meta name="twitter:description" content="An introductory book to R written by, and for, R pirates" />
-  <meta name="twitter:image" content="https://bookdown.org/ndphillips/YaRrr/images/YaRrr_Cover.jpg" />
+  <meta name="twitter:image" content="https://bookdown.org/ndphillips/YaRrr//images/YaRrr_Cover.jpg" />
 
-<meta name="author" content="Nathaniel D. Phillips">
+<meta name="author" content="Nathaniel D. Phillips" />
 
 
-<meta name="date" content="2018-01-22">
+<meta name="date" content="2024-11-11" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="pirateplot.html">
-<link rel="next" href="saving-plots-to-a-file-with-pdf-jpeg-and-png.html">
-<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<link rel="prev" href="pirateplot.html"/>
+<link rel="next" href="saving-plots-to-a-file-with-pdf-jpeg-and-png.html"/>
+<script src="assets/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -47,44 +48,80 @@
 
 
 
+
+<link href="assets/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="assets/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="assets/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -103,48 +140,58 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="./">YaRrr! The Pirate's Guide to R</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a><ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="where-did-this-book-come-from.html"><a href="where-did-this-book-come-from.html"><i class="fa fa-check"></i><b>1.1</b> Where did this book come from?</a></li>
 <li class="chapter" data-level="1.2" data-path="who-is-this-book-for.html"><a href="who-is-this-book-for.html"><i class="fa fa-check"></i><b>1.2</b> Who is this book for?</a></li>
 <li class="chapter" data-level="1.3" data-path="why-is-r-so-great.html"><a href="why-is-r-so-great.html"><i class="fa fa-check"></i><b>1.3</b> Why is R so great?</a></li>
 <li class="chapter" data-level="1.4" data-path="rrelationship.html"><a href="rrelationship.html"><i class="fa fa-check"></i><b>1.4</b> Why R is like a relationship…</a></li>
-<li class="chapter" data-level="1.5" data-path="r-resources.html"><a href="r-resources.html"><i class="fa fa-check"></i><b>1.5</b> R resources</a><ul>
+<li class="chapter" data-level="1.5" data-path="r-resources.html"><a href="r-resources.html"><i class="fa fa-check"></i><b>1.5</b> R resources</a>
+<ul>
 <li class="chapter" data-level="1.5.1" data-path="r-resources.html"><a href="r-resources.html#r-cheatsheets"><i class="fa fa-check"></i><b>1.5.1</b> R Cheatsheets</a></li>
 <li class="chapter" data-level="1.5.2" data-path="r-resources.html"><a href="r-resources.html#getting-r-help-and-inspiration-online"><i class="fa fa-check"></i><b>1.5.2</b> Getting R help and inspiration online</a></li>
 <li class="chapter" data-level="1.5.3" data-path="r-resources.html"><a href="r-resources.html#other-r-books"><i class="fa fa-check"></i><b>1.5.3</b> Other R books</a></li>
 </ul></li>
-<li class="chapter" data-level="1.6" data-path="who-am-i.html"><a href="who-am-i.html"><i class="fa fa-check"></i><b>1.6</b> Who am I?</a><ul>
+<li class="chapter" data-level="1.6" data-path="who-am-i.html"><a href="who-am-i.html"><i class="fa fa-check"></i><b>1.6</b> Who am I?</a>
+<ul>
 <li class="chapter" data-level="1.6.1" data-path="who-am-i.html"><a href="who-am-i.html#please-consider-a-donation"><i class="fa fa-check"></i><b>1.6.1</b> Please consider a donation!</a></li>
 <li class="chapter" data-level="1.6.2" data-path="who-am-i.html"><a href="who-am-i.html#acknowledgements"><i class="fa fa-check"></i><b>1.6.2</b> Acknowledgements</a></li>
 </ul></li>
 <li class="chapter" data-level="1.7" data-path="contributions-and-acknowledgements.html"><a href="contributions-and-acknowledgements.html"><i class="fa fa-check"></i><b>1.7</b> Contributions and Acknowledgements</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="started.html"><a href="started.html"><i class="fa fa-check"></i><b>2</b> Getting Started</a><ul>
-<li class="chapter" data-level="2.1" data-path="installing-base-r-and-rstudio.html"><a href="installing-base-r-and-rstudio.html"><i class="fa fa-check"></i><b>2.1</b> Installing Base-R and RStudio</a><ul>
+<li class="chapter" data-level="2" data-path="started.html"><a href="started.html"><i class="fa fa-check"></i><b>2</b> Getting Started</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="installing-base-r-and-rstudio.html"><a href="installing-base-r-and-rstudio.html"><i class="fa fa-check"></i><b>2.1</b> Installing Base-R and RStudio</a>
+<ul>
 <li class="chapter" data-level="2.1.1" data-path="installing-base-r-and-rstudio.html"><a href="installing-base-r-and-rstudio.html#check-for-version-updates"><i class="fa fa-check"></i><b>2.1.1</b> Check for version updates</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="the-four-rstudio-windows.html"><a href="the-four-rstudio-windows.html"><i class="fa fa-check"></i><b>2.2</b> The four RStudio Windows</a><ul>
+<li class="chapter" data-level="2.2" data-path="the-four-rstudio-windows.html"><a href="the-four-rstudio-windows.html"><i class="fa fa-check"></i><b>2.2</b> The four RStudio Windows</a>
+<ul>
 <li class="chapter" data-level="2.2.1" data-path="the-four-rstudio-windows.html"><a href="the-four-rstudio-windows.html#source---your-notepad-for-code"><i class="fa fa-check"></i><b>2.2.1</b> Source - Your notepad for code</a></li>
 <li class="chapter" data-level="2.2.2" data-path="the-four-rstudio-windows.html"><a href="the-four-rstudio-windows.html#console-rs-heart"><i class="fa fa-check"></i><b>2.2.2</b> Console: R’s Heart</a></li>
 <li class="chapter" data-level="2.2.3" data-path="the-four-rstudio-windows.html"><a href="the-four-rstudio-windows.html#environment-history"><i class="fa fa-check"></i><b>2.2.3</b> Environment / History</a></li>
 <li class="chapter" data-level="2.2.4" data-path="the-four-rstudio-windows.html"><a href="the-four-rstudio-windows.html#files-plots-packages-help"><i class="fa fa-check"></i><b>2.2.4</b> Files / Plots / Packages / Help</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="packages.html"><a href="packages.html"><i class="fa fa-check"></i><b>2.3</b> Packages</a><ul>
+<li class="chapter" data-level="2.3" data-path="packages.html"><a href="packages.html"><i class="fa fa-check"></i><b>2.3</b> Packages</a>
+<ul>
 <li class="chapter" data-level="2.3.1" data-path="packages.html"><a href="packages.html#installing-a-new-package"><i class="fa fa-check"></i><b>2.3.1</b> Installing a new package</a></li>
 <li class="chapter" data-level="2.3.2" data-path="packages.html"><a href="packages.html#loading-a-package"><i class="fa fa-check"></i><b>2.3.2</b> Loading a package</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="reading-and-writing-code.html"><a href="reading-and-writing-code.html"><i class="fa fa-check"></i><b>2.4</b> Reading and writing Code</a><ul>
+<li class="chapter" data-level="2.4" data-path="reading-and-writing-code.html"><a href="reading-and-writing-code.html"><i class="fa fa-check"></i><b>2.4</b> Reading and writing Code</a>
+<ul>
 <li class="chapter" data-level="2.4.1" data-path="reading-and-writing-code.html"><a href="reading-and-writing-code.html#code-chunks"><i class="fa fa-check"></i><b>2.4.1</b> Code Chunks</a></li>
 <li class="chapter" data-level="2.4.2" data-path="reading-and-writing-code.html"><a href="reading-and-writing-code.html#comments-with"><i class="fa fa-check"></i><b>2.4.2</b> Comments with #</a></li>
 <li class="chapter" data-level="2.4.3" data-path="reading-and-writing-code.html"><a href="reading-and-writing-code.html#element-numbers-in-output-1"><i class="fa fa-check"></i><b>2.4.3</b> Element numbers in output [1]</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="debugging.html"><a href="debugging.html"><i class="fa fa-check"></i><b>2.5</b> Debugging</a><ul>
+<li class="chapter" data-level="2.5" data-path="debugging.html"><a href="debugging.html"><i class="fa fa-check"></i><b>2.5</b> Debugging</a>
+<ul>
 <li class="chapter" data-level="2.5.1" data-path="debugging.html"><a href="debugging.html#r-is-not-ready"><i class="fa fa-check"></i><b>2.5.1</b> R is not ready (&gt;)</a></li>
 <li class="chapter" data-level="2.5.2" data-path="debugging.html"><a href="debugging.html#misspelled-object-or-function"><i class="fa fa-check"></i><b>2.5.2</b> Misspelled object or function</a></li>
 <li class="chapter" data-level="2.5.3" data-path="debugging.html"><a href="debugging.html#punctuation-problems"><i class="fa fa-check"></i><b>2.5.3</b> Punctuation problems</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="jumpin.html"><a href="jumpin.html"><i class="fa fa-check"></i><b>3</b> Jump In!</a><ul>
+<li class="chapter" data-level="3" data-path="jumpin.html"><a href="jumpin.html"><i class="fa fa-check"></i><b>3</b> Jump In!</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="exploring-data.html"><a href="exploring-data.html"><i class="fa fa-check"></i><b>3.1</b> Exploring data</a></li>
 <li class="chapter" data-level="3.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html"><i class="fa fa-check"></i><b>3.2</b> Descriptive statistics</a></li>
 <li class="chapter" data-level="3.3" data-path="plotting.html"><a href="plotting.html"><i class="fa fa-check"></i><b>3.3</b> Plotting</a></li>
@@ -153,150 +200,173 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.6" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html"><i class="fa fa-check"></i><b>3.6</b> Bayesian Statistics</a></li>
 <li class="chapter" data-level="3.7" data-path="wasnt-that-easy.html"><a href="wasnt-that-easy.html"><i class="fa fa-check"></i><b>3.7</b> Wasn’t that easy?!</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>4</b> The Basics</a><ul>
+<li class="chapter" data-level="4" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>4</b> The Basics</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="the-command-line-console.html"><a href="the-command-line-console.html"><i class="fa fa-check"></i><b>4.1</b> The command-line (Console)</a></li>
-<li class="chapter" data-level="4.2" data-path="writing-r-scripts-in-an-editor.html"><a href="writing-r-scripts-in-an-editor.html"><i class="fa fa-check"></i><b>4.2</b> Writing R scripts in an editor</a><ul>
-<li class="chapter" data-level="4.2.1" data-path="writing-r-scripts-in-an-editor.html"><a href="writing-r-scripts-in-an-editor.html#send-code-from-an-source-to-the-console"><i class="fa fa-check"></i><b>4.2.1</b> Send code from an source to the console</a></li>
+<li class="chapter" data-level="4.2" data-path="writing-r-scripts-in-an-editor.html"><a href="writing-r-scripts-in-an-editor.html"><i class="fa fa-check"></i><b>4.2</b> Writing R scripts in an editor</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="writing-r-scripts-in-an-editor.html"><a href="writing-r-scripts-in-an-editor.html#send-code-from-source-to-the-console"><i class="fa fa-check"></i><b>4.2.1</b> Send code from source to the console</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="a-brief-style-guide-commenting-and-spacing.html"><a href="a-brief-style-guide-commenting-and-spacing.html"><i class="fa fa-check"></i><b>4.3</b> A brief style guide: Commenting and spacing</a><ul>
+<li class="chapter" data-level="4.3" data-path="a-brief-style-guide-commenting-and-spacing.html"><a href="a-brief-style-guide-commenting-and-spacing.html"><i class="fa fa-check"></i><b>4.3</b> A brief style guide: Commenting and spacing</a>
+<ul>
 <li class="chapter" data-level="4.3.1" data-path="a-brief-style-guide-commenting-and-spacing.html"><a href="a-brief-style-guide-commenting-and-spacing.html#commenting-code-with-the-pound-sign"><i class="fa fa-check"></i><b>4.3.1</b> Commenting code with the # (pound) sign</a></li>
 <li class="chapter" data-level="4.3.2" data-path="a-brief-style-guide-commenting-and-spacing.html"><a href="a-brief-style-guide-commenting-and-spacing.html#spacing"><i class="fa fa-check"></i><b>4.3.2</b> Spacing</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="objects-and-functions.html"><a href="objects-and-functions.html"><i class="fa fa-check"></i><b>4.4</b> Objects and functions</a><ul>
+<li class="chapter" data-level="4.4" data-path="objects-and-functions.html"><a href="objects-and-functions.html"><i class="fa fa-check"></i><b>4.4</b> Objects and functions</a>
+<ul>
 <li class="chapter" data-level="4.4.1" data-path="objects-and-functions.html"><a href="objects-and-functions.html#numbers-versus-characters"><i class="fa fa-check"></i><b>4.4.1</b> Numbers versus characters</a></li>
 <li class="chapter" data-level="4.4.2" data-path="objects-and-functions.html"><a href="objects-and-functions.html#creating-new-objects-with--"><i class="fa fa-check"></i><b>4.4.2</b> Creating new objects with &lt;-</a></li>
 <li class="chapter" data-level="4.4.3" data-path="objects-and-functions.html"><a href="objects-and-functions.html#how-to-name-objects"><i class="fa fa-check"></i><b>4.4.3</b> How to name objects</a></li>
-<li class="chapter" data-level="4.4.4" data-path="objects-and-functions.html"><a href="objects-and-functions.html#example-pirates-of-the-caribbean"><i class="fa fa-check"></i><b>4.4.4</b> Example: Pirates of The Caribbean</a></li>
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="test-your-r-might.html"><a href="test-your-r-might.html"><i class="fa fa-check"></i><b>4.5</b> Test your R might!</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="scalersvectors.html"><a href="scalersvectors.html"><i class="fa fa-check"></i><b>5</b> Scalars and vectors</a><ul>
-<li class="chapter" data-level="5.1" data-path="scalars.html"><a href="scalars.html"><i class="fa fa-check"></i><b>5.1</b> Scalars</a></li>
-<li class="chapter" data-level="5.2" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>5.2</b> Vectors</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="vectors.html"><a href="vectors.html#ab"><i class="fa fa-check"></i><b>5.2.1</b> a:b</a></li>
-<li class="chapter" data-level="5.2.2" data-path="vectors.html"><a href="vectors.html#seq"><i class="fa fa-check"></i><b>5.2.2</b> seq()</a></li>
-<li class="chapter" data-level="5.2.3" data-path="vectors.html"><a href="vectors.html#rep"><i class="fa fa-check"></i><b>5.2.3</b> rep()</a></li>
+<li class="chapter" data-level="5" data-path="scalersvectors.html"><a href="scalersvectors.html"><i class="fa fa-check"></i><b>5</b> Scalars and vectors</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="scalars.html"><a href="scalars.html"><i class="fa fa-check"></i><b>5.1</b> Scalars</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="scalars.html"><a href="scalars.html#ab"><i class="fa fa-check"></i><b>5.1.1</b> a:b</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="generating-random-data.html"><a href="generating-random-data.html"><i class="fa fa-check"></i><b>5.3</b> Generating random data</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="generating-random-data.html"><a href="generating-random-data.html#sample"><i class="fa fa-check"></i><b>5.3.1</b> sample()</a></li>
-<li class="chapter" data-level="5.3.2" data-path="generating-random-data.html"><a href="generating-random-data.html#normal-gaussian"><i class="fa fa-check"></i><b>5.3.2</b> Normal (Gaussian)</a></li>
-<li class="chapter" data-level="5.3.3" data-path="generating-random-data.html"><a href="generating-random-data.html#uniform"><i class="fa fa-check"></i><b>5.3.3</b> Uniform</a></li>
-<li class="chapter" data-level="5.3.4" data-path="generating-random-data.html"><a href="generating-random-data.html#notes-on-random-samples"><i class="fa fa-check"></i><b>5.3.4</b> Notes on random samples</a></li>
+<li class="chapter" data-level="5.2" data-path="generating-random-data.html"><a href="generating-random-data.html"><i class="fa fa-check"></i><b>5.2</b> Generating random data</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="generating-random-data.html"><a href="generating-random-data.html#sample"><i class="fa fa-check"></i><b>5.2.1</b> sample()</a></li>
+<li class="chapter" data-level="5.2.2" data-path="generating-random-data.html"><a href="generating-random-data.html#normal-gaussian"><i class="fa fa-check"></i><b>5.2.2</b> Normal (Gaussian)</a></li>
+<li class="chapter" data-level="5.2.3" data-path="generating-random-data.html"><a href="generating-random-data.html#uniform"><i class="fa fa-check"></i><b>5.2.3</b> Uniform</a></li>
+<li class="chapter" data-level="5.2.4" data-path="generating-random-data.html"><a href="generating-random-data.html#notes-on-random-samples"><i class="fa fa-check"></i><b>5.2.4</b> Notes on random samples</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="test-your-r-might-1.html"><a href="test-your-r-might-1.html"><i class="fa fa-check"></i><b>5.4</b> Test your R might!</a></li>
+<li class="chapter" data-level="5.3" data-path="test-your-r-might-1.html"><a href="test-your-r-might-1.html"><i class="fa fa-check"></i><b>5.3</b> Test your R might!</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="vectorfunctions.html"><a href="vectorfunctions.html"><i class="fa fa-check"></i><b>6</b> Vector functions</a><ul>
-<li class="chapter" data-level="6.1" data-path="arithmetic-operations-on-vectors.html"><a href="arithmetic-operations-on-vectors.html"><i class="fa fa-check"></i><b>6.1</b> Arithmetic operations on vectors</a><ul>
+<li class="chapter" data-level="6" data-path="vectorfunctions.html"><a href="vectorfunctions.html"><i class="fa fa-check"></i><b>6</b> Vector functions</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="arithmetic-operations-on-vectors.html"><a href="arithmetic-operations-on-vectors.html"><i class="fa fa-check"></i><b>6.1</b> Arithmetic operations on vectors</a>
+<ul>
 <li class="chapter" data-level="6.1.1" data-path="arithmetic-operations-on-vectors.html"><a href="arithmetic-operations-on-vectors.html#basic-math-with-multiple-vectors"><i class="fa fa-check"></i><b>6.1.1</b> Basic math with multiple vectors</a></li>
 <li class="chapter" data-level="6.1.2" data-path="arithmetic-operations-on-vectors.html"><a href="arithmetic-operations-on-vectors.html#ex-pirate-bake-sale"><i class="fa fa-check"></i><b>6.1.2</b> Ex: Pirate Bake Sale</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="summary-statistics.html"><a href="summary-statistics.html"><i class="fa fa-check"></i><b>6.2</b> Summary statistics</a><ul>
+<li class="chapter" data-level="6.2" data-path="summary-statistics.html"><a href="summary-statistics.html"><i class="fa fa-check"></i><b>6.2</b> Summary statistics</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="summary-statistics.html"><a href="summary-statistics.html#length"><i class="fa fa-check"></i><b>6.2.1</b> length()</a></li>
 <li class="chapter" data-level="6.2.2" data-path="summary-statistics.html"><a href="summary-statistics.html#additional-numeric-vector-functions"><i class="fa fa-check"></i><b>6.2.2</b> Additional numeric vector functions</a></li>
 <li class="chapter" data-level="6.2.3" data-path="summary-statistics.html"><a href="summary-statistics.html#sample-statistics-from-random-samples"><i class="fa fa-check"></i><b>6.2.3</b> Sample statistics from random samples</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="counting-statistics.html"><a href="counting-statistics.html"><i class="fa fa-check"></i><b>6.3</b> Counting statistics</a></li>
 <li class="chapter" data-level="6.4" data-path="missing-na-values.html"><a href="missing-na-values.html"><i class="fa fa-check"></i><b>6.4</b> Missing (NA) values</a></li>
-<li class="chapter" data-level="6.5" data-path="standardization-z-score.html"><a href="standardization-z-score.html"><i class="fa fa-check"></i><b>6.5</b> Standardization (z-score)</a><ul>
+<li class="chapter" data-level="6.5" data-path="standardization-z-score.html"><a href="standardization-z-score.html"><i class="fa fa-check"></i><b>6.5</b> Standardization (z-score)</a>
+<ul>
 <li class="chapter" data-level="6.5.1" data-path="standardization-z-score.html"><a href="standardization-z-score.html#ex-evaluating-a-competition"><i class="fa fa-check"></i><b>6.5.1</b> Ex: Evaluating a competition</a></li>
 </ul></li>
 <li class="chapter" data-level="6.6" data-path="test-your-r-might-2.html"><a href="test-your-r-might-2.html"><i class="fa fa-check"></i><b>6.6</b> Test your R Might!</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="vectorindexing.html"><a href="vectorindexing.html"><i class="fa fa-check"></i><b>7</b> Indexing Vectors with [ ]</a><ul>
-<li class="chapter" data-level="7.1" data-path="numerical-indexing.html"><a href="numerical-indexing.html"><i class="fa fa-check"></i><b>7.1</b> Numerical Indexing</a></li>
-<li class="chapter" data-level="7.2" data-path="logical-indexing.html"><a href="logical-indexing.html"><i class="fa fa-check"></i><b>7.2</b> Logical Indexing</a><ul>
-<li class="chapter" data-level="7.2.1" data-path="logical-indexing.html"><a href="logical-indexing.html#and-or-in"><i class="fa fa-check"></i><b>7.2.1</b> <code>&amp;</code> (and), <code>|</code> (or), <code>%in%</code></a></li>
-<li class="chapter" data-level="7.2.2" data-path="logical-indexing.html"><a href="logical-indexing.html#counts-and-percentages-from-logical-vectors"><i class="fa fa-check"></i><b>7.2.2</b> Counts and percentages from logical vectors</a></li>
-<li class="chapter" data-level="7.2.3" data-path="logical-indexing.html"><a href="logical-indexing.html#additional-logical-functions"><i class="fa fa-check"></i><b>7.2.3</b> Additional Logical functions</a></li>
+<li class="chapter" data-level="7" data-path="vectorindexing.html"><a href="vectorindexing.html"><i class="fa fa-check"></i><b>7</b> Indexing Vectors with [ ]</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="logical-indexing.html"><a href="logical-indexing.html"><i class="fa fa-check"></i><b>7.1</b> Logical Indexing</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="logical-indexing.html"><a href="logical-indexing.html#and-or-in"><i class="fa fa-check"></i><b>7.1.1</b> <code>&amp;</code> (and), <code>|</code> (or), <code>%in%</code></a></li>
+<li class="chapter" data-level="7.1.2" data-path="logical-indexing.html"><a href="logical-indexing.html#counts-and-percentages-from-logical-vectors"><i class="fa fa-check"></i><b>7.1.2</b> Counts and percentages from logical vectors</a></li>
+<li class="chapter" data-level="7.1.3" data-path="logical-indexing.html"><a href="logical-indexing.html#additional-logical-functions"><i class="fa fa-check"></i><b>7.1.3</b> Additional Logical functions</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="changing-values-of-a-vector.html"><a href="changing-values-of-a-vector.html"><i class="fa fa-check"></i><b>7.3</b> Changing values of a vector</a><ul>
-<li class="chapter" data-level="7.3.1" data-path="changing-values-of-a-vector.html"><a href="changing-values-of-a-vector.html#ex-fixing-invalid-responses-to-a-happiness-survey"><i class="fa fa-check"></i><b>7.3.1</b> Ex: Fixing invalid responses to a Happiness survey</a></li>
+<li class="chapter" data-level="7.2" data-path="changing-values-of-a-vector.html"><a href="changing-values-of-a-vector.html"><i class="fa fa-check"></i><b>7.2</b> Changing values of a vector</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="changing-values-of-a-vector.html"><a href="changing-values-of-a-vector.html#ex-fixing-invalid-responses-to-a-happiness-survey"><i class="fa fa-check"></i><b>7.2.1</b> Ex: Fixing invalid responses to a Happiness survey</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="test-your-r-might-movie-data.html"><a href="test-your-r-might-movie-data.html"><i class="fa fa-check"></i><b>7.4</b> Test your R Might!: Movie data</a></li>
+<li class="chapter" data-level="7.3" data-path="test-your-r-might-movie-data.html"><a href="test-your-r-might-movie-data.html"><i class="fa fa-check"></i><b>7.3</b> Test your R Might!: Movie data</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="matricesdataframes.html"><a href="matricesdataframes.html"><i class="fa fa-check"></i><b>8</b> Matrices and Dataframes</a><ul>
+<li class="chapter" data-level="8" data-path="matricesdataframes.html"><a href="matricesdataframes.html"><i class="fa fa-check"></i><b>8</b> Matrices and Dataframes</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="what-are-matrices-and-dataframes.html"><a href="what-are-matrices-and-dataframes.html"><i class="fa fa-check"></i><b>8.1</b> What are matrices and dataframes?</a></li>
-<li class="chapter" data-level="8.2" data-path="creating-matrices-and-dataframes.html"><a href="creating-matrices-and-dataframes.html"><i class="fa fa-check"></i><b>8.2</b> Creating matrices and dataframes</a><ul>
+<li class="chapter" data-level="8.2" data-path="creating-matrices-and-dataframes.html"><a href="creating-matrices-and-dataframes.html"><i class="fa fa-check"></i><b>8.2</b> Creating matrices and dataframes</a>
+<ul>
 <li class="chapter" data-level="8.2.1" data-path="creating-matrices-and-dataframes.html"><a href="creating-matrices-and-dataframes.html#cbind-rbind"><i class="fa fa-check"></i><b>8.2.1</b> <code>cbind()</code>, <code>rbind()</code></a></li>
 <li class="chapter" data-level="8.2.2" data-path="creating-matrices-and-dataframes.html"><a href="creating-matrices-and-dataframes.html#matrix"><i class="fa fa-check"></i><b>8.2.2</b> <code>matrix()</code></a></li>
 <li class="chapter" data-level="8.2.3" data-path="creating-matrices-and-dataframes.html"><a href="creating-matrices-and-dataframes.html#data.frame"><i class="fa fa-check"></i><b>8.2.3</b> <code>data.frame()</code></a></li>
 <li class="chapter" data-level="8.2.4" data-path="creating-matrices-and-dataframes.html"><a href="creating-matrices-and-dataframes.html#dataframes-pre-loaded-in-r"><i class="fa fa-check"></i><b>8.2.4</b> Dataframes pre-loaded in R</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="matrix-and-dataframe-functions.html"><a href="matrix-and-dataframe-functions.html"><i class="fa fa-check"></i><b>8.3</b> Matrix and dataframe functions</a><ul>
+<li class="chapter" data-level="8.3" data-path="matrix-and-dataframe-functions.html"><a href="matrix-and-dataframe-functions.html"><i class="fa fa-check"></i><b>8.3</b> Matrix and dataframe functions</a>
+<ul>
 <li class="chapter" data-level="8.3.1" data-path="matrix-and-dataframe-functions.html"><a href="matrix-and-dataframe-functions.html#head-tail-view"><i class="fa fa-check"></i><b>8.3.1</b> <code>head(), tail(), View()</code></a></li>
 <li class="chapter" data-level="8.3.2" data-path="matrix-and-dataframe-functions.html"><a href="matrix-and-dataframe-functions.html#summary-str"><i class="fa fa-check"></i><b>8.3.2</b> <code>summary()</code>, <code>str()</code></a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="dataframe-column-names.html"><a href="dataframe-column-names.html"><i class="fa fa-check"></i><b>8.4</b> Dataframe column names</a><ul>
+<li class="chapter" data-level="8.4" data-path="dataframe-column-names.html"><a href="dataframe-column-names.html"><i class="fa fa-check"></i><b>8.4</b> Dataframe column names</a>
+<ul>
 <li class="chapter" data-level="8.4.1" data-path="dataframe-column-names.html"><a href="dataframe-column-names.html#adding-new-columns"><i class="fa fa-check"></i><b>8.4.1</b> Adding new columns</a></li>
 <li class="chapter" data-level="8.4.2" data-path="dataframe-column-names.html"><a href="dataframe-column-names.html#changing-column-names"><i class="fa fa-check"></i><b>8.4.2</b> Changing column names</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="slicing-dataframes.html"><a href="slicing-dataframes.html"><i class="fa fa-check"></i><b>8.5</b> Slicing dataframes</a><ul>
+<li class="chapter" data-level="8.5" data-path="slicing-dataframes.html"><a href="slicing-dataframes.html"><i class="fa fa-check"></i><b>8.5</b> Slicing dataframes</a>
+<ul>
 <li class="chapter" data-level="8.5.1" data-path="slicing-dataframes.html"><a href="slicing-dataframes.html#slicing-with"><i class="fa fa-check"></i><b>8.5.1</b> Slicing with <code>[, ]</code></a></li>
 <li class="chapter" data-level="8.5.2" data-path="slicing-dataframes.html"><a href="slicing-dataframes.html#slicing-with-logical-vectors"><i class="fa fa-check"></i><b>8.5.2</b> Slicing with logical vectors</a></li>
 <li class="chapter" data-level="8.5.3" data-path="slicing-dataframes.html"><a href="slicing-dataframes.html#slicing-with-subset"><i class="fa fa-check"></i><b>8.5.3</b> Slicing with <code>subset()</code></a></li>
 </ul></li>
-<li class="chapter" data-level="8.6" data-path="combining-slicing-with-functions.html"><a href="combining-slicing-with-functions.html"><i class="fa fa-check"></i><b>8.6</b> Combining slicing with functions</a><ul>
+<li class="chapter" data-level="8.6" data-path="combining-slicing-with-functions.html"><a href="combining-slicing-with-functions.html"><i class="fa fa-check"></i><b>8.6</b> Combining slicing with functions</a>
+<ul>
 <li class="chapter" data-level="8.6.1" data-path="combining-slicing-with-functions.html"><a href="combining-slicing-with-functions.html#with"><i class="fa fa-check"></i><b>8.6.1</b> <code>with()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="8.7" data-path="test-your-r-might-pirates-and-superheroes.html"><a href="test-your-r-might-pirates-and-superheroes.html"><i class="fa fa-check"></i><b>8.7</b> Test your R might! Pirates and superheroes</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="importingdata.html"><a href="importingdata.html"><i class="fa fa-check"></i><b>9</b> Importing, saving and managing data</a><ul>
-<li class="chapter" data-level="9.1" data-path="workspace-management-functions.html"><a href="workspace-management-functions.html"><i class="fa fa-check"></i><b>9.1</b> Workspace management functions</a><ul>
+<li class="chapter" data-level="9" data-path="importingdata.html"><a href="importingdata.html"><i class="fa fa-check"></i><b>9</b> Importing, saving and managing data</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="workspace-management-functions.html"><a href="workspace-management-functions.html"><i class="fa fa-check"></i><b>9.1</b> Workspace management functions</a>
+<ul>
 <li class="chapter" data-level="9.1.1" data-path="workspace-management-functions.html"><a href="workspace-management-functions.html#why-object-and-file-management-is-so-important"><i class="fa fa-check"></i><b>9.1.1</b> Why object and file management is so important</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="the-working-directory.html"><a href="the-working-directory.html"><i class="fa fa-check"></i><b>9.2</b> The working directory</a></li>
-<li class="chapter" data-level="9.3" data-path="projects-in-rstudio.html"><a href="projects-in-rstudio.html"><i class="fa fa-check"></i><b>9.3</b> Projects in RStudio</a></li>
-<li class="chapter" data-level="9.4" data-path="the-workspace.html"><a href="the-workspace.html"><i class="fa fa-check"></i><b>9.4</b> The workspace</a><ul>
-<li class="chapter" data-level="9.4.1" data-path="the-workspace.html"><a href="the-workspace.html#ls"><i class="fa fa-check"></i><b>9.4.1</b> ls()</a></li>
+<li class="chapter" data-level="9.2" data-path="the-workspace.html"><a href="the-workspace.html"><i class="fa fa-check"></i><b>9.2</b> The workspace</a></li>
+<li class="chapter" data-level="9.3" data-path="rdata-files.html"><a href="rdata-files.html"><i class="fa fa-check"></i><b>9.3</b> .RData files</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="rdata-files.html"><a href="rdata-files.html#save"><i class="fa fa-check"></i><b>9.3.1</b> save()</a></li>
+<li class="chapter" data-level="9.3.2" data-path="rdata-files.html"><a href="rdata-files.html#save.image"><i class="fa fa-check"></i><b>9.3.2</b> save.image()</a></li>
+<li class="chapter" data-level="9.3.3" data-path="rdata-files.html"><a href="rdata-files.html#load"><i class="fa fa-check"></i><b>9.3.3</b> load()</a></li>
+<li class="chapter" data-level="9.3.4" data-path="rdata-files.html"><a href="rdata-files.html#rm"><i class="fa fa-check"></i><b>9.3.4</b> rm()</a></li>
 </ul></li>
-<li class="chapter" data-level="9.5" data-path="rdata-files.html"><a href="rdata-files.html"><i class="fa fa-check"></i><b>9.5</b> .RData files</a><ul>
-<li class="chapter" data-level="9.5.1" data-path="rdata-files.html"><a href="rdata-files.html#save"><i class="fa fa-check"></i><b>9.5.1</b> save()</a></li>
-<li class="chapter" data-level="9.5.2" data-path="rdata-files.html"><a href="rdata-files.html#save.image"><i class="fa fa-check"></i><b>9.5.2</b> save.image()</a></li>
-<li class="chapter" data-level="9.5.3" data-path="rdata-files.html"><a href="rdata-files.html#load"><i class="fa fa-check"></i><b>9.5.3</b> load()</a></li>
-<li class="chapter" data-level="9.5.4" data-path="rdata-files.html"><a href="rdata-files.html#rm"><i class="fa fa-check"></i><b>9.5.4</b> rm()</a></li>
+<li class="chapter" data-level="9.4" data-path="txt-files.html"><a href="txt-files.html"><i class="fa fa-check"></i><b>9.4</b> .txt files</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="txt-files.html"><a href="txt-files.html#write.table"><i class="fa fa-check"></i><b>9.4.1</b> write.table()</a></li>
+<li class="chapter" data-level="9.4.2" data-path="txt-files.html"><a href="txt-files.html#read.table"><i class="fa fa-check"></i><b>9.4.2</b> read.table()</a></li>
+<li class="chapter" data-level="9.4.3" data-path="txt-files.html"><a href="txt-files.html#reading-files-directly-from-a-web-url"><i class="fa fa-check"></i><b>9.4.3</b> Reading files directly from a web URL</a></li>
 </ul></li>
-<li class="chapter" data-level="9.6" data-path="txt-files.html"><a href="txt-files.html"><i class="fa fa-check"></i><b>9.6</b> .txt files</a><ul>
-<li class="chapter" data-level="9.6.1" data-path="txt-files.html"><a href="txt-files.html#write.table"><i class="fa fa-check"></i><b>9.6.1</b> write.table()</a></li>
-<li class="chapter" data-level="9.6.2" data-path="txt-files.html"><a href="txt-files.html#read.table"><i class="fa fa-check"></i><b>9.6.2</b> read.table()</a></li>
-<li class="chapter" data-level="9.6.3" data-path="txt-files.html"><a href="txt-files.html#reading-files-directly-from-a-web-url"><i class="fa fa-check"></i><b>9.6.3</b> Reading files directly from a web URL</a></li>
+<li class="chapter" data-level="9.5" data-path="excel-spss-and-other-data-files.html"><a href="excel-spss-and-other-data-files.html"><i class="fa fa-check"></i><b>9.5</b> Excel, SPSS, and other data files</a></li>
+<li class="chapter" data-level="9.6" data-path="additional-tips.html"><a href="additional-tips.html"><i class="fa fa-check"></i><b>9.6</b> Additional tips</a></li>
 </ul></li>
-<li class="chapter" data-level="9.7" data-path="excel-spss-and-other-data-files.html"><a href="excel-spss-and-other-data-files.html"><i class="fa fa-check"></i><b>9.7</b> Excel, SPSS, and other data files</a></li>
-<li class="chapter" data-level="9.8" data-path="additional-tips.html"><a href="additional-tips.html"><i class="fa fa-check"></i><b>9.8</b> Additional tips</a></li>
-<li class="chapter" data-level="9.9" data-path="test-your-r-might-3.html"><a href="test-your-r-might-3.html"><i class="fa fa-check"></i><b>9.9</b> Test your R Might!</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="advanceddataframe.html"><a href="advanceddataframe.html"><i class="fa fa-check"></i><b>10</b> Advanced dataframe manipulation</a><ul>
+<li class="chapter" data-level="10" data-path="advanceddataframe.html"><a href="advanceddataframe.html"><i class="fa fa-check"></i><b>10</b> Advanced dataframe manipulation</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="order-sorting-data.html"><a href="order-sorting-data.html"><i class="fa fa-check"></i><b>10.1</b> <code>order()</code>: Sorting data</a></li>
 <li class="chapter" data-level="10.2" data-path="merge-combining-data.html"><a href="merge-combining-data.html"><i class="fa fa-check"></i><b>10.2</b> <code>merge()</code>: Combining data</a></li>
 <li class="chapter" data-level="10.3" data-path="aggregate-grouped-aggregation.html"><a href="aggregate-grouped-aggregation.html"><i class="fa fa-check"></i><b>10.3</b> <code>aggregate()</code>: Grouped aggregation</a></li>
-<li class="chapter" data-level="10.4" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>10.4</b> <code>dplyr</code></a><ul>
+<li class="chapter" data-level="10.4" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>10.4</b> <code>dplyr</code></a>
+<ul>
 <li class="chapter" data-level="10.4.1" data-path="dplyr.html"><a href="dplyr.html#additional-dplyr-help"><i class="fa fa-check"></i><b>10.4.1</b> Additional dplyr help</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="additional-aggregation-functions.html"><a href="additional-aggregation-functions.html"><i class="fa fa-check"></i><b>10.5</b> Additional aggregation functions</a><ul>
+<li class="chapter" data-level="10.5" data-path="additional-aggregation-functions.html"><a href="additional-aggregation-functions.html"><i class="fa fa-check"></i><b>10.5</b> Additional aggregation functions</a>
+<ul>
 <li class="chapter" data-level="10.5.1" data-path="additional-aggregation-functions.html"><a href="additional-aggregation-functions.html#rowmeans-colmeans"><i class="fa fa-check"></i><b>10.5.1</b> <code>rowMeans()</code>, <code>colMeans()</code></a></li>
 <li class="chapter" data-level="10.5.2" data-path="additional-aggregation-functions.html"><a href="additional-aggregation-functions.html#apply-family"><i class="fa fa-check"></i><b>10.5.2</b> <code>apply</code> family</a></li>
 </ul></li>
 <li class="chapter" data-level="10.6" data-path="test-your-r-might-mmmmmcaffeine.html"><a href="test-your-r-might-mmmmmcaffeine.html"><i class="fa fa-check"></i><b>10.6</b> Test your R might!: Mmmmm…caffeine</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="plotting1.html"><a href="plotting1.html"><i class="fa fa-check"></i><b>11</b> Plotting (I)</a><ul>
-<li class="chapter" data-level="11.1" data-path="colors.html"><a href="colors.html"><i class="fa fa-check"></i><b>11.1</b> Colors</a><ul>
+<li class="chapter" data-level="11" data-path="plotting1.html"><a href="plotting1.html"><i class="fa fa-check"></i><b>11</b> Plotting (I)</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="colors.html"><a href="colors.html"><i class="fa fa-check"></i><b>11.1</b> Colors</a>
+<ul>
 <li class="chapter" data-level="11.1.1" data-path="colors.html"><a href="colors.html#colors-by-name"><i class="fa fa-check"></i><b>11.1.1</b> Colors by name</a></li>
 <li class="chapter" data-level="11.1.2" data-path="colors.html"><a href="colors.html#gray"><i class="fa fa-check"></i><b>11.1.2</b> gray()</a></li>
 <li class="chapter" data-level="11.1.3" data-path="colors.html"><a href="colors.html#yarrrtransparent"><i class="fa fa-check"></i><b>11.1.3</b> <code>yarrr::transparent()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="11.2" data-path="plotting-arguments.html"><a href="plotting-arguments.html"><i class="fa fa-check"></i><b>11.2</b> Plotting arguments</a></li>
-<li class="chapter" data-level="11.3" data-path="scatterplot-plot.html"><a href="scatterplot-plot.html"><i class="fa fa-check"></i><b>11.3</b> Scatterplot: <code>plot()</code></a><ul>
+<li class="chapter" data-level="11.3" data-path="scatterplot-plot.html"><a href="scatterplot-plot.html"><i class="fa fa-check"></i><b>11.3</b> Scatterplot: <code>plot()</code></a>
+<ul>
 <li class="chapter" data-level="11.3.1" data-path="scatterplot-plot.html"><a href="scatterplot-plot.html#symbol-types-pch"><i class="fa fa-check"></i><b>11.3.1</b> Symbol types: <code>pch</code></a></li>
 </ul></li>
 <li class="chapter" data-level="11.4" data-path="histogram-hist.html"><a href="histogram-hist.html"><i class="fa fa-check"></i><b>11.4</b> Histogram: <code>hist()</code></a></li>
-<li class="chapter" data-level="11.5" data-path="barplot-barplot.html"><a href="barplot-barplot.html"><i class="fa fa-check"></i><b>11.5</b> Barplot: <code>barplot()</code></a><ul>
+<li class="chapter" data-level="11.5" data-path="barplot-barplot.html"><a href="barplot-barplot.html"><i class="fa fa-check"></i><b>11.5</b> Barplot: <code>barplot()</code></a>
+<ul>
 <li class="chapter" data-level="11.5.1" data-path="barplot-barplot.html"><a href="barplot-barplot.html#clustered-barplot"><i class="fa fa-check"></i><b>11.5.1</b> Clustered barplot</a></li>
 </ul></li>
-<li class="chapter" data-level="11.6" data-path="pirateplot.html"><a href="pirateplot.html"><i class="fa fa-check"></i><b>11.6</b> <code>pirateplot()</code></a><ul>
+<li class="chapter" data-level="11.6" data-path="pirateplot.html"><a href="pirateplot.html"><i class="fa fa-check"></i><b>11.6</b> <code>pirateplot()</code></a>
+<ul>
 <li class="chapter" data-level="11.6.1" data-path="pirateplot.html"><a href="pirateplot.html#pirateplot-themes"><i class="fa fa-check"></i><b>11.6.1</b> Pirateplot themes</a></li>
 <li class="chapter" data-level="11.6.2" data-path="pirateplot.html"><a href="pirateplot.html#customizing-pirateplots"><i class="fa fa-check"></i><b>11.6.2</b> Customizing pirateplots</a></li>
 <li class="chapter" data-level="11.6.3" data-path="pirateplot.html"><a href="pirateplot.html#saving-output"><i class="fa fa-check"></i><b>11.6.3</b> Saving output</a></li>
 </ul></li>
-<li class="chapter" data-level="11.7" data-path="low-level-plotting-functions.html"><a href="low-level-plotting-functions.html"><i class="fa fa-check"></i><b>11.7</b> Low-level plotting functions</a><ul>
+<li class="chapter" data-level="11.7" data-path="low-level-plotting-functions.html"><a href="low-level-plotting-functions.html"><i class="fa fa-check"></i><b>11.7</b> Low-level plotting functions</a>
+<ul>
 <li class="chapter" data-level="11.7.1" data-path="low-level-plotting-functions.html"><a href="low-level-plotting-functions.html#starting-with-a-blank-plot"><i class="fa fa-check"></i><b>11.7.1</b> Starting with a blank plot</a></li>
 <li class="chapter" data-level="11.7.2" data-path="low-level-plotting-functions.html"><a href="low-level-plotting-functions.html#points"><i class="fa fa-check"></i><b>11.7.2</b> <code>points()</code></a></li>
 <li class="chapter" data-level="11.7.3" data-path="low-level-plotting-functions.html"><a href="low-level-plotting-functions.html#abline-segments-grid"><i class="fa fa-check"></i><b>11.7.3</b> <code>abline()</code>, <code>segments()</code>, <code>grid()</code></a></li>
@@ -309,89 +379,100 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="11.9" data-path="examples.html"><a href="examples.html"><i class="fa fa-check"></i><b>11.9</b> Examples</a></li>
 <li class="chapter" data-level="11.10" data-path="test-your-r-might-purdy-pictures.html"><a href="test-your-r-might-purdy-pictures.html"><i class="fa fa-check"></i><b>11.10</b> Test your R might! Purdy pictures</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="plotting2.html"><a href="plotting2.html"><i class="fa fa-check"></i><b>12</b> Plotting (II)</a><ul>
-<li class="chapter" data-level="12.1" data-path="more-colors.html"><a href="more-colors.html"><i class="fa fa-check"></i><b>12.1</b> More colors</a><ul>
+<li class="chapter" data-level="12" data-path="plotting2.html"><a href="plotting2.html"><i class="fa fa-check"></i><b>12</b> Plotting (II)</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="more-colors.html"><a href="more-colors.html"><i class="fa fa-check"></i><b>12.1</b> More colors</a>
+<ul>
 <li class="chapter" data-level="12.1.1" data-path="more-colors.html"><a href="more-colors.html#piratepal"><i class="fa fa-check"></i><b>12.1.1</b> <code>piratepal()</code></a></li>
 <li class="chapter" data-level="12.1.2" data-path="more-colors.html"><a href="more-colors.html#rcolorbrewer"><i class="fa fa-check"></i><b>12.1.2</b> RColorBrewer</a></li>
 <li class="chapter" data-level="12.1.3" data-path="more-colors.html"><a href="more-colors.html#colorramp2"><i class="fa fa-check"></i><b>12.1.3</b> colorRamp2</a></li>
 <li class="chapter" data-level="12.1.4" data-path="more-colors.html"><a href="more-colors.html#getting-colors-with-a-kuler"><i class="fa fa-check"></i><b>12.1.4</b> Getting colors with a kuler</a></li>
 </ul></li>
 <li class="chapter" data-level="12.2" data-path="plot-margins.html"><a href="plot-margins.html"><i class="fa fa-check"></i><b>12.2</b> Plot Margins</a></li>
-<li class="chapter" data-level="12.3" data-path="arranging-plots-with-parmfrow-and-layout.html"><a href="arranging-plots-with-parmfrow-and-layout.html"><i class="fa fa-check"></i><b>12.3</b> Arranging plots with <code>par(mfrow)</code> and <code>layout()</code></a><ul>
+<li class="chapter" data-level="12.3" data-path="arranging-plots-with-parmfrow-and-layout.html"><a href="arranging-plots-with-parmfrow-and-layout.html"><i class="fa fa-check"></i><b>12.3</b> Arranging plots with <code>par(mfrow)</code> and <code>layout()</code></a>
+<ul>
 <li class="chapter" data-level="12.3.1" data-path="arranging-plots-with-parmfrow-and-layout.html"><a href="arranging-plots-with-parmfrow-and-layout.html#complex-plot-layouts-with-layout"><i class="fa fa-check"></i><b>12.3.1</b> Complex plot layouts with <code>layout()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="12.4" data-path="additional-plotting-parameters.html"><a href="additional-plotting-parameters.html"><i class="fa fa-check"></i><b>12.4</b> Additional plotting parameters</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="htests.html"><a href="htests.html"><i class="fa fa-check"></i><b>13</b> Hypothesis Tests</a><ul>
-<li class="chapter" data-level="13.1" data-path="a-short-introduction-to-hypothesis-tests.html"><a href="a-short-introduction-to-hypothesis-tests.html"><i class="fa fa-check"></i><b>13.1</b> A short introduction to hypothesis tests</a><ul>
+<li class="chapter" data-level="13" data-path="htests.html"><a href="htests.html"><i class="fa fa-check"></i><b>13</b> Hypothesis Tests</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="a-short-introduction-to-hypothesis-tests.html"><a href="a-short-introduction-to-hypothesis-tests.html"><i class="fa fa-check"></i><b>13.1</b> A short introduction to hypothesis tests</a>
+<ul>
 <li class="chapter" data-level="13.1.1" data-path="a-short-introduction-to-hypothesis-tests.html"><a href="a-short-introduction-to-hypothesis-tests.html#null-v-alternative-hypothesis"><i class="fa fa-check"></i><b>13.1.1</b> Null v Alternative Hypothesis</a></li>
 <li class="chapter" data-level="13.1.2" data-path="a-short-introduction-to-hypothesis-tests.html"><a href="a-short-introduction-to-hypothesis-tests.html#descriptive-statistics-1"><i class="fa fa-check"></i><b>13.1.2</b> Descriptive statistics</a></li>
 <li class="chapter" data-level="13.1.3" data-path="a-short-introduction-to-hypothesis-tests.html"><a href="a-short-introduction-to-hypothesis-tests.html#test-statistics"><i class="fa fa-check"></i><b>13.1.3</b> Test Statistics</a></li>
 <li class="chapter" data-level="13.1.4" data-path="a-short-introduction-to-hypothesis-tests.html"><a href="a-short-introduction-to-hypothesis-tests.html#p-value"><i class="fa fa-check"></i><b>13.1.4</b> p-value</a></li>
 </ul></li>
-<li class="chapter" data-level="13.2" data-path="hypothesis-test-objects-htest.html"><a href="hypothesis-test-objects-htest.html"><i class="fa fa-check"></i><b>13.2</b> Hypothesis test objects: <code>htest</code></a></li>
-<li class="chapter" data-level="13.3" data-path="t-test-t-test.html"><a href="t-test-t-test.html"><i class="fa fa-check"></i><b>13.3</b> T-test: <code>t.test()</code></a><ul>
-<li class="chapter" data-level="13.3.1" data-path="t-test-t-test.html"><a href="t-test-t-test.html#sample-t-test"><i class="fa fa-check"></i><b>13.3.1</b> 1-sample t-test</a></li>
-<li class="chapter" data-level="13.3.2" data-path="t-test-t-test.html"><a href="t-test-t-test.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.3.2</b> 2-sample t-test</a></li>
+<li class="chapter" data-level="13.2" data-path="t-test-t.html"><a href="t-test-t.html"><i class="fa fa-check"></i><b>13.2</b> T-test: <code>t.test()</code></a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="t-test-t.html"><a href="t-test-t.html#sample-t-test"><i class="fa fa-check"></i><b>13.2.1</b> 1-sample t-test</a></li>
+<li class="chapter" data-level="13.2.2" data-path="t-test-t.html"><a href="t-test-t.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.2.2</b> 2-sample t-test</a></li>
 </ul></li>
-<li class="chapter" data-level="13.4" data-path="correlation-cor-test.html"><a href="correlation-cor-test.html"><i class="fa fa-check"></i><b>13.4</b> Correlation: <code>cor.test()</code></a></li>
-<li class="chapter" data-level="13.5" data-path="chi-square-chsq-test.html"><a href="chi-square-chsq-test.html"><i class="fa fa-check"></i><b>13.5</b> Chi-square: <code>chsq.test()</code></a><ul>
-<li class="chapter" data-level="13.5.1" data-path="chi-square-chsq-test.html"><a href="chi-square-chsq-test.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.5.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+<li class="chapter" data-level="13.3" data-path="correlation-cor.html"><a href="correlation-cor.html"><i class="fa fa-check"></i><b>13.3</b> Correlation: <code>cor.test()</code></a></li>
+<li class="chapter" data-level="13.4" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chsq.test()</code></a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
 </ul></li>
-<li class="chapter" data-level="13.6" data-path="test-your-r-might-4.html"><a href="test-your-r-might-4.html"><i class="fa fa-check"></i><b>13.6</b> Test your R might!</a></li>
+<li class="chapter" data-level="13.5" data-path="test-your-r-might-3.html"><a href="test-your-r-might-3.html"><i class="fa fa-check"></i><b>13.5</b> Test your R might!</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>14</b> ANOVA</a><ul>
-<li class="chapter" data-level="14.1" data-path="full-factorial-between-subjects-anova.html"><a href="full-factorial-between-subjects-anova.html"><i class="fa fa-check"></i><b>14.1</b> Full-factorial between-subjects ANOVA</a><ul>
-<li class="chapter" data-level="14.1.1" data-path="full-factorial-between-subjects-anova.html"><a href="full-factorial-between-subjects-anova.html#what-does-anova-stand-for"><i class="fa fa-check"></i><b>14.1.1</b> What does ANOVA stand for?</a></li>
+<li class="chapter" data-level="14" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>14</b> ANOVA</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="steps-to-conduct-an-anova.html"><a href="steps-to-conduct-an-anova.html"><i class="fa fa-check"></i><b>14.1</b> 4 Steps to conduct an ANOVA</a></li>
+<li class="chapter" data-level="14.2" data-path="ex-one-way-anova.html"><a href="ex-one-way-anova.html"><i class="fa fa-check"></i><b>14.2</b> Ex: One-way ANOVA</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="ex-one-way-anova.html"><a href="ex-one-way-anova.html#anova-with-interactions"><i class="fa fa-check"></i><b>14.2.1</b> ANOVA with interactions</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="steps-to-conduct-an-anova.html"><a href="steps-to-conduct-an-anova.html"><i class="fa fa-check"></i><b>14.2</b> 4 Steps to conduct an ANOVA</a></li>
-<li class="chapter" data-level="14.3" data-path="ex-one-way-anova.html"><a href="ex-one-way-anova.html"><i class="fa fa-check"></i><b>14.3</b> Ex: One-way ANOVA</a></li>
-<li class="chapter" data-level="14.4" data-path="ex-two-way-anova.html"><a href="ex-two-way-anova.html"><i class="fa fa-check"></i><b>14.4</b> Ex: Two-way ANOVA</a><ul>
-<li class="chapter" data-level="14.4.1" data-path="ex-two-way-anova.html"><a href="ex-two-way-anova.html#anova-with-interactions"><i class="fa fa-check"></i><b>14.4.1</b> ANOVA with interactions</a></li>
+<li class="chapter" data-level="14.3" data-path="type-i-type-ii-and-type-iii-anovas.html"><a href="type-i-type-ii-and-type-iii-anovas.html"><i class="fa fa-check"></i><b>14.3</b> Type I, Type II, and Type III ANOVAs</a></li>
+<li class="chapter" data-level="14.4" data-path="getting-additional-information-from-anova-objects.html"><a href="getting-additional-information-from-anova-objects.html"><i class="fa fa-check"></i><b>14.4</b> Getting additional information from ANOVA objects</a></li>
+<li class="chapter" data-level="14.5" data-path="repeated-measures-anova-using-the-lme4-package.html"><a href="repeated-measures-anova-using-the-lme4-package.html"><i class="fa fa-check"></i><b>14.5</b> Repeated measures ANOVA using the lme4 package</a></li>
+<li class="chapter" data-level="14.6" data-path="test-your-r-might-4.html"><a href="test-your-r-might-4.html"><i class="fa fa-check"></i><b>14.6</b> Test your R might!</a></li>
 </ul></li>
-<li class="chapter" data-level="14.5" data-path="type-i-type-ii-and-type-iii-anovas.html"><a href="type-i-type-ii-and-type-iii-anovas.html"><i class="fa fa-check"></i><b>14.5</b> Type I, Type II, and Type III ANOVAs</a></li>
-<li class="chapter" data-level="14.6" data-path="getting-additional-information-from-anova-objects.html"><a href="getting-additional-information-from-anova-objects.html"><i class="fa fa-check"></i><b>14.6</b> Getting additional information from ANOVA objects</a></li>
-<li class="chapter" data-level="14.7" data-path="repeated-measures-anova-using-the-lme4-package.html"><a href="repeated-measures-anova-using-the-lme4-package.html"><i class="fa fa-check"></i><b>14.7</b> Repeated measures ANOVA using the lme4 package</a></li>
-<li class="chapter" data-level="14.8" data-path="test-your-r-might-5.html"><a href="test-your-r-might-5.html"><i class="fa fa-check"></i><b>14.8</b> Test your R might!</a></li>
-</ul></li>
-<li class="chapter" data-level="15" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>15</b> Regression</a><ul>
+<li class="chapter" data-level="15" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>15</b> Regression</a>
+<ul>
 <li class="chapter" data-level="15.1" data-path="the-linear-model.html"><a href="the-linear-model.html"><i class="fa fa-check"></i><b>15.1</b> The Linear Model</a></li>
-<li class="chapter" data-level="15.2" data-path="linear-regression-with-lm.html"><a href="linear-regression-with-lm.html"><i class="fa fa-check"></i><b>15.2</b> Linear regression with <code>lm()</code></a><ul>
+<li class="chapter" data-level="15.2" data-path="linear-regression-with-lm.html"><a href="linear-regression-with-lm.html"><i class="fa fa-check"></i><b>15.2</b> Linear regression with <code>lm()</code></a>
+<ul>
 <li class="chapter" data-level="15.2.1" data-path="linear-regression-with-lm.html"><a href="linear-regression-with-lm.html#estimating-the-value-of-diamonds-with-lm"><i class="fa fa-check"></i><b>15.2.1</b> Estimating the value of diamonds with <code>lm()</code></a></li>
-<li class="chapter" data-level="15.2.2" data-path="linear-regression-with-lm.html"><a href="linear-regression-with-lm.html#getting-model-fits-with-fitted.values"><i class="fa fa-check"></i><b>15.2.2</b> Getting model fits with <code>fitted.values</code></a></li>
-<li class="chapter" data-level="15.2.3" data-path="linear-regression-with-lm.html"><a href="linear-regression-with-lm.html#using-predict-to-predict-new-data-from-a-model"><i class="fa fa-check"></i><b>15.2.3</b> Using <code>predict()</code> to predict new data from a model</a></li>
-<li class="chapter" data-level="15.2.4" data-path="linear-regression-with-lm.html"><a href="linear-regression-with-lm.html#including-interactions-in-models-y-x1-x2"><i class="fa fa-check"></i><b>15.2.4</b> Including interactions in models: <code>y ~ x1 * x2</code></a></li>
-<li class="chapter" data-level="15.2.5" data-path="linear-regression-with-lm.html"><a href="linear-regression-with-lm.html#center-variables-before-computing-interactions"><i class="fa fa-check"></i><b>15.2.5</b> Center variables before computing interactions!</a></li>
-<li class="chapter" data-level="15.2.6" data-path="linear-regression-with-lm.html"><a href="linear-regression-with-lm.html#getting-an-anova-from-a-regression-model-with-aov"><i class="fa fa-check"></i><b>15.2.6</b> Getting an ANOVA from a regression model with <code>aov()</code></a></li>
+<li class="chapter" data-level="15.2.2" data-path="linear-regression-with-lm.html"><a href="linear-regression-with-lm.html#using-predict-to-predict-new-data-from-a-model"><i class="fa fa-check"></i><b>15.2.2</b> Using <code>predict()</code> to predict new data from a model</a></li>
+<li class="chapter" data-level="15.2.3" data-path="linear-regression-with-lm.html"><a href="linear-regression-with-lm.html#including-interactions-in-models-y-x1-x2"><i class="fa fa-check"></i><b>15.2.3</b> Including interactions in models: <code>y ~ x1 * x2</code></a></li>
+<li class="chapter" data-level="15.2.4" data-path="linear-regression-with-lm.html"><a href="linear-regression-with-lm.html#center-variables-before-computing-interactions"><i class="fa fa-check"></i><b>15.2.4</b> Center variables before computing interactions!</a></li>
+<li class="chapter" data-level="15.2.5" data-path="linear-regression-with-lm.html"><a href="linear-regression-with-lm.html#getting-an-anova-from-a-regression-model-with-aov"><i class="fa fa-check"></i><b>15.2.5</b> Getting an ANOVA from a regression model with <code>aov()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="15.3" data-path="comparing-regression-models-with-anova.html"><a href="comparing-regression-models-with-anova.html"><i class="fa fa-check"></i><b>15.3</b> Comparing regression models with <code>anova()</code></a></li>
 <li class="chapter" data-level="15.4" data-path="regression-on-non-normal-data-with-glm.html"><a href="regression-on-non-normal-data-with-glm.html"><i class="fa fa-check"></i><b>15.4</b> Regression on non-Normal data with <code>glm()</code></a></li>
-<li class="chapter" data-level="15.5" data-path="logistic-regression-with-glmfamily-binomial.html"><a href="logistic-regression-with-glmfamily-binomial.html"><i class="fa fa-check"></i><b>15.5</b> Logistic regression with <code>glm(family = &quot;binomial&quot;</code></a><ul>
+<li class="chapter" data-level="15.5" data-path="logistic-regression-with-glmfamily-binomial.html"><a href="logistic-regression-with-glmfamily-binomial.html"><i class="fa fa-check"></i><b>15.5</b> Logistic regression with <code>glm(family = "binomial"</code></a>
+<ul>
 <li class="chapter" data-level="15.5.1" data-path="logistic-regression-with-glmfamily-binomial.html"><a href="logistic-regression-with-glmfamily-binomial.html#adding-a-regression-line-to-a-plot"><i class="fa fa-check"></i><b>15.5.1</b> Adding a regression line to a plot</a></li>
 <li class="chapter" data-level="15.5.2" data-path="logistic-regression-with-glmfamily-binomial.html"><a href="logistic-regression-with-glmfamily-binomial.html#transforming-skewed-variables-prior-to-standard-regression"><i class="fa fa-check"></i><b>15.5.2</b> Transforming skewed variables prior to standard regression</a></li>
 </ul></li>
 <li class="chapter" data-level="15.6" data-path="test-your-might-a-ship-auction.html"><a href="test-your-might-a-ship-auction.html"><i class="fa fa-check"></i><b>15.6</b> Test your might! A ship auction</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>16</b> Custom functions</a><ul>
+<li class="chapter" data-level="16" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>16</b> Custom functions</a>
+<ul>
 <li class="chapter" data-level="16.1" data-path="why-would-you-want-to-write-your-own-function.html"><a href="why-would-you-want-to-write-your-own-function.html"><i class="fa fa-check"></i><b>16.1</b> Why would you want to write your own function?</a></li>
-<li class="chapter" data-level="16.2" data-path="the-structure-of-a-custom-function.html"><a href="the-structure-of-a-custom-function.html"><i class="fa fa-check"></i><b>16.2</b> The structure of a custom function</a><ul>
+<li class="chapter" data-level="16.2" data-path="the-structure-of-a-custom-function.html"><a href="the-structure-of-a-custom-function.html"><i class="fa fa-check"></i><b>16.2</b> The structure of a custom function</a>
+<ul>
 <li class="chapter" data-level="16.2.1" data-path="the-structure-of-a-custom-function.html"><a href="the-structure-of-a-custom-function.html#creating-my.mean"><i class="fa fa-check"></i><b>16.2.1</b> Creating <code>my.mean()</code></a></li>
 <li class="chapter" data-level="16.2.2" data-path="the-structure-of-a-custom-function.html"><a href="the-structure-of-a-custom-function.html#specifying-multiple-inputs"><i class="fa fa-check"></i><b>16.2.2</b> Specifying multiple inputs</a></li>
 <li class="chapter" data-level="16.2.3" data-path="the-structure-of-a-custom-function.html"><a href="the-structure-of-a-custom-function.html#including-default-values-for-arguments"><i class="fa fa-check"></i><b>16.2.3</b> Including default values for arguments</a></li>
 </ul></li>
 <li class="chapter" data-level="16.3" data-path="using-if-then-statements-in-functions.html"><a href="using-if-then-statements-in-functions.html"><i class="fa fa-check"></i><b>16.3</b> Using if, then statements in functions</a></li>
-<li class="chapter" data-level="16.4" data-path="a-worked-example-plot-advanced.html"><a href="a-worked-example-plot-advanced.html"><i class="fa fa-check"></i><b>16.4</b> A worked example: <code>plot.advanced()</code></a><ul>
-<li class="chapter" data-level="16.4.1" data-path="a-worked-example-plot-advanced.html"><a href="a-worked-example-plot-advanced.html#seeing-function-code"><i class="fa fa-check"></i><b>16.4.1</b> Seeing function code</a></li>
-<li class="chapter" data-level="16.4.2" data-path="a-worked-example-plot-advanced.html"><a href="a-worked-example-plot-advanced.html#using-stop-to-completely-stop-a-function-and-print-an-error"><i class="fa fa-check"></i><b>16.4.2</b> Using <code>stop()</code> to completely stop a function and print an error</a></li>
-<li class="chapter" data-level="16.4.3" data-path="a-worked-example-plot-advanced.html"><a href="a-worked-example-plot-advanced.html#using-vectors-as-arguments"><i class="fa fa-check"></i><b>16.4.3</b> Using vectors as arguments</a></li>
-<li class="chapter" data-level="16.4.4" data-path="a-worked-example-plot-advanced.html"><a href="a-worked-example-plot-advanced.html#storing-and-loading-your-functions-to-and-from-a-function-file-with-source"><i class="fa fa-check"></i><b>16.4.4</b> Storing and loading your functions to and from a function file with <code>source()</code></a></li>
-<li class="chapter" data-level="16.4.5" data-path="a-worked-example-plot-advanced.html"><a href="a-worked-example-plot-advanced.html#testing-functions"><i class="fa fa-check"></i><b>16.4.5</b> Testing functions</a></li>
-<li class="chapter" data-level="16.4.6" data-path="a-worked-example-plot-advanced.html"><a href="a-worked-example-plot-advanced.html#using-...-as-a-wildcard-argument"><i class="fa fa-check"></i><b>16.4.6</b> Using <code>...</code> as a wildcard argument</a></li>
+<li class="chapter" data-level="16.4" data-path="a-worked-example-plot.html"><a href="a-worked-example-plot.html"><i class="fa fa-check"></i><b>16.4</b> A worked example: <code>plot.advanced()</code></a>
+<ul>
+<li class="chapter" data-level="16.4.1" data-path="a-worked-example-plot.html"><a href="a-worked-example-plot.html#seeing-function-code"><i class="fa fa-check"></i><b>16.4.1</b> Seeing function code</a></li>
+<li class="chapter" data-level="16.4.2" data-path="a-worked-example-plot.html"><a href="a-worked-example-plot.html#using-stop-to-completely-stop-a-function-and-print-an-error"><i class="fa fa-check"></i><b>16.4.2</b> Using <code>stop()</code> to completely stop a function and print an error</a></li>
+<li class="chapter" data-level="16.4.3" data-path="a-worked-example-plot.html"><a href="a-worked-example-plot.html#using-vectors-as-arguments"><i class="fa fa-check"></i><b>16.4.3</b> Using vectors as arguments</a></li>
+<li class="chapter" data-level="16.4.4" data-path="a-worked-example-plot.html"><a href="a-worked-example-plot.html#storing-and-loading-your-functions-to-and-from-a-function-file-with-source"><i class="fa fa-check"></i><b>16.4.4</b> Storing and loading your functions to and from a function file with <code>source()</code></a></li>
+<li class="chapter" data-level="16.4.5" data-path="a-worked-example-plot.html"><a href="a-worked-example-plot.html#testing-functions"><i class="fa fa-check"></i><b>16.4.5</b> Testing functions</a></li>
+<li class="chapter" data-level="16.4.6" data-path="a-worked-example-plot.html"><a href="a-worked-example-plot.html#using-...-as-a-wildcard-argument"><i class="fa fa-check"></i><b>16.4.6</b> Using <code>...</code> as a wildcard argument</a></li>
 </ul></li>
-<li class="chapter" data-level="16.5" data-path="test-your-r-might-6.html"><a href="test-your-r-might-6.html"><i class="fa fa-check"></i><b>16.5</b> Test your R might!</a></li>
+<li class="chapter" data-level="16.5" data-path="test-your-r-might-5.html"><a href="test-your-r-might-5.html"><i class="fa fa-check"></i><b>16.5</b> Test your R might!</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="loops.html"><a href="loops.html"><i class="fa fa-check"></i><b>17</b> Loops</a><ul>
-<li class="chapter" data-level="17.1" data-path="what-are-loops.html"><a href="what-are-loops.html"><i class="fa fa-check"></i><b>17.1</b> What are loops?</a><ul>
+<li class="chapter" data-level="17" data-path="loops.html"><a href="loops.html"><i class="fa fa-check"></i><b>17</b> Loops</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="what-are-loops.html"><a href="what-are-loops.html"><i class="fa fa-check"></i><b>17.1</b> What are loops?</a>
+<ul>
 <li class="chapter" data-level="17.1.1" data-path="what-are-loops.html"><a href="what-are-loops.html#printing-numbers-from-1-to-100"><i class="fa fa-check"></i><b>17.1.1</b> Printing numbers from 1 to 100</a></li>
 <li class="chapter" data-level="17.1.2" data-path="what-are-loops.html"><a href="what-are-loops.html#adding-the-integers-from-1-to-100"><i class="fa fa-check"></i><b>17.1.2</b> Adding the integers from 1 to 100</a></li>
 </ul></li>
@@ -399,9 +480,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="17.3" data-path="updating-a-container-object-with-a-loop.html"><a href="updating-a-container-object-with-a-loop.html"><i class="fa fa-check"></i><b>17.3</b> Updating a container object with a loop</a></li>
 <li class="chapter" data-level="17.4" data-path="loops-over-multiple-indices-with-a-design-matrix.html"><a href="loops-over-multiple-indices-with-a-design-matrix.html"><i class="fa fa-check"></i><b>17.4</b> Loops over multiple indices with a design matrix</a></li>
 <li class="chapter" data-level="17.5" data-path="the-list-object.html"><a href="the-list-object.html"><i class="fa fa-check"></i><b>17.5</b> The list object</a></li>
-<li class="chapter" data-level="17.6" data-path="test-your-r-might-7.html"><a href="test-your-r-might-7.html"><i class="fa fa-check"></i><b>17.6</b> Test your R might!</a></li>
+<li class="chapter" data-level="17.6" data-path="test-your-r-might-6.html"><a href="test-your-r-might-6.html"><i class="fa fa-check"></i><b>17.6</b> Test your R might!</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="solutions.html"><a href="solutions.html"><i class="fa fa-check"></i><b>18</b> Solutions</a><ul>
+<li class="chapter" data-level="18" data-path="solutions.html"><a href="solutions.html"><i class="fa fa-check"></i><b>18</b> Solutions</a>
+<ul>
 <li class="chapter" data-level="18.1" data-path="chapter-4-the-basics.html"><a href="chapter-4-the-basics.html"><i class="fa fa-check"></i><b>18.1</b> Chapter 4: The Basics</a></li>
 <li class="chapter" data-level="18.2" data-path="chapter-5-scalers-and-vectors.html"><a href="chapter-5-scalers-and-vectors.html"><i class="fa fa-check"></i><b>18.2</b> Chapter 5: Scalers and vectors</a></li>
 <li class="chapter" data-level="18.3" data-path="chapter-6-vector-functions.html"><a href="chapter-6-vector-functions.html"><i class="fa fa-check"></i><b>18.3</b> Chapter 6: Vector Functions</a></li>
@@ -432,11 +514,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="low-level-plotting-functions" class="section level2">
-<h2><span class="header-section-number">11.7</span> Low-level plotting functions</h2>
+<div id="low-level-plotting-functions" class="section level2 hasAnchor" number="11.7">
+<h2><span class="header-section-number">11.7</span> Low-level plotting functions<a href="low-level-plotting-functions.html#low-level-plotting-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Low-level plotting functions allow you to add elements, like points, or lines, to an existing plot. Here are the most common low-level plotting functions:</p>
 <table>
 <caption><span id="tab:lowlevelplotting">Table 11.8: </span> Common low-level plotting functions.</caption>
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Function</th>
@@ -478,69 +564,69 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </tr>
 </tbody>
 </table>
-<div id="starting-with-a-blank-plot" class="section level3">
-<h3><span class="header-section-number">11.7.1</span> Starting with a blank plot</h3>
-<div class="figure" style="text-align: center"><span id="fig:canvas"></span>
+<div id="starting-with-a-blank-plot" class="section level3 hasAnchor" number="11.7.1">
+<h3><span class="header-section-number">11.7.1</span> Starting with a blank plot<a href="low-level-plotting-functions.html#starting-with-a-blank-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:canvas"></span>
 <img src="images/canvas.jpg" alt="Sometimes it's nice to start with a blank plotting canvas, and then add each element individually with low-level plotting commands" width="75%" />
 <p class="caption">
 Figure 11.6: Sometimes it’s nice to start with a blank plotting canvas, and then add each element individually with low-level plotting commands
 </p>
 </div>
-<p>Before you start adding elements with low-level plotting functions, it’s useful to start with a blank plotting space like the one I have in Figure <a href="low-level-plotting-functions.html#fig:blankplot">11.7</a>. To do this, execute the <code>plot()</code> function, but use the <code>type = &quot;n&quot;</code> argument to tell R that you don’t want to plot anything yet. Once you’ve created a blank plot, you can additional elements with low-level plotting commands.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create a blank plotting space</span>
-<span class="kw">plot</span>(<span class="dt">x =</span> <span class="dv">1</span>,                 
-     <span class="dt">xlab =</span> <span class="st">&quot;X Label&quot;</span>, 
-     <span class="dt">ylab =</span> <span class="st">&quot;Y Label&quot;</span>,
-     <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">100</span>), 
-     <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">100</span>),
-     <span class="dt">main =</span> <span class="st">&quot;Blank Plotting Canvas&quot;</span>,
-     <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>)</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:blankplot"></span>
+<p>Before you start adding elements with low-level plotting functions, it’s useful to start with a blank plotting space like the one I have in Figure <a href="low-level-plotting-functions.html#fig:blankplot">11.7</a>. To do this, execute the <code>plot()</code> function, but use the <code>type = "n"</code> argument to tell R that you don’t want to plot anything yet. Once you’ve created a blank plot, you can additional elements with low-level plotting commands.</p>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="low-level-plotting-functions.html#cb317-1" tabindex="-1"></a><span class="co"># Create a blank plotting space</span></span>
+<span id="cb317-2"><a href="low-level-plotting-functions.html#cb317-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> <span class="dv">1</span>,                 </span>
+<span id="cb317-3"><a href="low-level-plotting-functions.html#cb317-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;X Label&quot;</span>, </span>
+<span id="cb317-4"><a href="low-level-plotting-functions.html#cb317-4" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Y Label&quot;</span>,</span>
+<span id="cb317-5"><a href="low-level-plotting-functions.html#cb317-5" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>), </span>
+<span id="cb317-6"><a href="low-level-plotting-functions.html#cb317-6" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>),</span>
+<span id="cb317-7"><a href="low-level-plotting-functions.html#cb317-7" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Blank Plotting Canvas&quot;</span>,</span>
+<span id="cb317-8"><a href="low-level-plotting-functions.html#cb317-8" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;n&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:blankplot"></span>
 <img src="YaRrr_files/figure-html/blankplot-1.png" alt="A blank plotting space, ready for additional elements!" width="672" />
 <p class="caption">
 Figure 11.7: A blank plotting space, ready for additional elements!
 </p>
 </div>
 </div>
-<div id="points" class="section level3">
-<h3><span class="header-section-number">11.7.2</span> <code>points()</code></h3>
+<div id="points" class="section level3 hasAnchor" number="11.7.2">
+<h3><span class="header-section-number">11.7.2</span> <code>points()</code><a href="low-level-plotting-functions.html#points" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To add new points to an existing plot, use the <code>points()</code> function. The <code>points</code> function has many similar arguments to the <code>plot()</code> function, like <code>x</code> (for the x-coordinates), <code>y</code> (for the y-coordinates), and parameters like <code>col</code> (border color), <code>cex</code> (point size), and <code>pch</code> (symbol type). To see all of them, look at the help menu with <code>?points()</code>.</p>
 <p>Let’s use <code>points()</code> to create a plot with different symbol types for different data. I’ll use the pirates dataset and plot the relationship between a pirate’s age and the number of tattoos he/she has. I’ll create separate points for male and female pirates:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create a blank plot</span>
-<span class="kw">plot</span>(<span class="dt">x =</span> <span class="dv">1</span>,
-     <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>,
-     <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">100</span>, <span class="dv">225</span>), 
-     <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">30</span>, <span class="dv">110</span>),
-     <span class="dt">pch =</span> <span class="dv">16</span>,
-     <span class="dt">xlab =</span> <span class="st">&quot;Height&quot;</span>, 
-     <span class="dt">ylab =</span> <span class="st">&quot;Weight&quot;</span>,
-     <span class="dt">main =</span> <span class="st">&quot;Adding points to a plot with points()&quot;</span>)
-
-<span class="co"># Add coral2 points for male data</span>
-<span class="kw">points</span>(<span class="dt">x =</span> pirates<span class="op">$</span>height[pirates<span class="op">$</span>sex <span class="op">==</span><span class="st"> &quot;male&quot;</span>],
-       <span class="dt">y =</span> pirates<span class="op">$</span>weight[pirates<span class="op">$</span>sex <span class="op">==</span><span class="st"> &quot;male&quot;</span>],
-       <span class="dt">pch =</span> <span class="dv">16</span>,
-       <span class="dt">col =</span> <span class="kw">transparent</span>(<span class="st">&quot;coral2&quot;</span>, <span class="dt">trans.val =</span> .<span class="dv">8</span>))
-
-<span class="co"># Add steelblue points for female data</span>
-<span class="kw">points</span>(<span class="dt">x =</span> pirates<span class="op">$</span>height[pirates<span class="op">$</span>sex <span class="op">==</span><span class="st"> &quot;female&quot;</span>],
-       <span class="dt">y =</span> pirates<span class="op">$</span>weight[pirates<span class="op">$</span>sex <span class="op">==</span><span class="st"> &quot;female&quot;</span>],
-       <span class="dt">pch =</span> <span class="dv">16</span>,
-       <span class="dt">col =</span> <span class="kw">transparent</span>(<span class="st">&quot;steelblue3&quot;</span>, <span class="dt">trans.val =</span> .<span class="dv">8</span>))</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:pointsexample"></span>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="low-level-plotting-functions.html#cb318-1" tabindex="-1"></a><span class="co"># Create a blank plot</span></span>
+<span id="cb318-2"><a href="low-level-plotting-functions.html#cb318-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> <span class="dv">1</span>,</span>
+<span id="cb318-3"><a href="low-level-plotting-functions.html#cb318-3" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;n&quot;</span>,</span>
+<span id="cb318-4"><a href="low-level-plotting-functions.html#cb318-4" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">225</span>), </span>
+<span id="cb318-5"><a href="low-level-plotting-functions.html#cb318-5" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">110</span>),</span>
+<span id="cb318-6"><a href="low-level-plotting-functions.html#cb318-6" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>,</span>
+<span id="cb318-7"><a href="low-level-plotting-functions.html#cb318-7" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Height&quot;</span>, </span>
+<span id="cb318-8"><a href="low-level-plotting-functions.html#cb318-8" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Weight&quot;</span>,</span>
+<span id="cb318-9"><a href="low-level-plotting-functions.html#cb318-9" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Adding points to a plot with points()&quot;</span>)</span>
+<span id="cb318-10"><a href="low-level-plotting-functions.html#cb318-10" tabindex="-1"></a></span>
+<span id="cb318-11"><a href="low-level-plotting-functions.html#cb318-11" tabindex="-1"></a><span class="co"># Add coral2 points for male data</span></span>
+<span id="cb318-12"><a href="low-level-plotting-functions.html#cb318-12" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> pirates<span class="sc">$</span>height[pirates<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">&quot;male&quot;</span>],</span>
+<span id="cb318-13"><a href="low-level-plotting-functions.html#cb318-13" tabindex="-1"></a>       <span class="at">y =</span> pirates<span class="sc">$</span>weight[pirates<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">&quot;male&quot;</span>],</span>
+<span id="cb318-14"><a href="low-level-plotting-functions.html#cb318-14" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">16</span>,</span>
+<span id="cb318-15"><a href="low-level-plotting-functions.html#cb318-15" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">transparent</span>(<span class="st">&quot;coral2&quot;</span>, <span class="at">trans.val =</span> .<span class="dv">8</span>))</span>
+<span id="cb318-16"><a href="low-level-plotting-functions.html#cb318-16" tabindex="-1"></a></span>
+<span id="cb318-17"><a href="low-level-plotting-functions.html#cb318-17" tabindex="-1"></a><span class="co"># Add steelblue points for female data</span></span>
+<span id="cb318-18"><a href="low-level-plotting-functions.html#cb318-18" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> pirates<span class="sc">$</span>height[pirates<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">&quot;female&quot;</span>],</span>
+<span id="cb318-19"><a href="low-level-plotting-functions.html#cb318-19" tabindex="-1"></a>       <span class="at">y =</span> pirates<span class="sc">$</span>weight[pirates<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">&quot;female&quot;</span>],</span>
+<span id="cb318-20"><a href="low-level-plotting-functions.html#cb318-20" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">16</span>,</span>
+<span id="cb318-21"><a href="low-level-plotting-functions.html#cb318-21" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">transparent</span>(<span class="st">&quot;steelblue3&quot;</span>, <span class="at">trans.val =</span> .<span class="dv">8</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pointsexample"></span>
 <img src="YaRrr_files/figure-html/pointsexample-1.png" alt="Using points() to add points with different colors" width="672" />
 <p class="caption">
 Figure 11.8: Using points() to add points with different colors
 </p>
 </div>
 </div>
-<div id="abline-segments-grid" class="section level3">
-<h3><span class="header-section-number">11.7.3</span> <code>abline()</code>, <code>segments()</code>, <code>grid()</code></h3>
-<table style="width:68%;">
+<div id="abline-segments-grid" class="section level3 hasAnchor" number="11.7.3">
+<h3><span class="header-section-number">11.7.3</span> <code>abline()</code>, <code>segments()</code>, <code>grid()</code><a href="low-level-plotting-functions.html#abline-segments-grid" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
 <caption><span id="tab:linearguments">Table 11.9: </span> Arguments to <code>abline()</code> and <code>segments()</code></caption>
 <colgroup>
-<col width="15%" />
-<col width="52%" />
+<col width="21%" />
+<col width="78%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -573,93 +659,93 @@ Figure 11.8: Using points() to add points with different colors
 </table>
 <p>To add straight lines to a plot, use <code>abline()</code> or <code>segments()</code>. <code>abline()</code> will add a line across the entire plot, while <code>segments()</code> will add a line with defined starting and end points.</p>
 <p>For example, we can add reference lines to a plot with <code>abline()</code>. In the following plot, I’ll add vertical and horizontal reference lines showing the means of the variables on the x and y axes, for the horizontal line, I’ll specify <code>h = mean(pirates$height)</code>, for the vertical line, I’ll specify <code>v = mean(pirates$weight)</code></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> pirates<span class="op">$</span>weight,
-     <span class="dt">y =</span> pirates<span class="op">$</span>height,
-     <span class="dt">xlab =</span> <span class="st">&quot;weight&quot;</span>,
-     <span class="dt">ylab =</span> <span class="st">&quot;height&quot;</span>,
-     <span class="dt">main =</span> <span class="st">&quot;Adding reference lines with abline&quot;</span>, 
-     <span class="dt">pch =</span> <span class="dv">16</span>, 
-     <span class="dt">col =</span> <span class="kw">gray</span>(.<span class="dv">5</span>, .<span class="dv">2</span>))
-
-<span class="co"># Add horizontal line at mean height</span>
-<span class="kw">abline</span>(<span class="dt">h =</span> <span class="kw">mean</span>(pirates<span class="op">$</span>height), 
-       <span class="dt">lty =</span> <span class="dv">2</span>)                        <span class="co"># Dashed line</span>
-
-<span class="co"># Add vertical line at mean weight</span>
-<span class="kw">abline</span>(<span class="dt">v =</span> <span class="kw">mean</span>(pirates<span class="op">$</span>weight),
-       <span class="dt">lty =</span> <span class="dv">2</span>)                        <span class="co"># Dashed line</span></code></pre></div>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="low-level-plotting-functions.html#cb319-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> pirates<span class="sc">$</span>weight,</span>
+<span id="cb319-2"><a href="low-level-plotting-functions.html#cb319-2" tabindex="-1"></a>     <span class="at">y =</span> pirates<span class="sc">$</span>height,</span>
+<span id="cb319-3"><a href="low-level-plotting-functions.html#cb319-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;weight&quot;</span>,</span>
+<span id="cb319-4"><a href="low-level-plotting-functions.html#cb319-4" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;height&quot;</span>,</span>
+<span id="cb319-5"><a href="low-level-plotting-functions.html#cb319-5" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Adding reference lines with abline&quot;</span>, </span>
+<span id="cb319-6"><a href="low-level-plotting-functions.html#cb319-6" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>, </span>
+<span id="cb319-7"><a href="low-level-plotting-functions.html#cb319-7" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">gray</span>(.<span class="dv">5</span>, .<span class="dv">2</span>))</span>
+<span id="cb319-8"><a href="low-level-plotting-functions.html#cb319-8" tabindex="-1"></a></span>
+<span id="cb319-9"><a href="low-level-plotting-functions.html#cb319-9" tabindex="-1"></a><span class="co"># Add horizontal line at mean height</span></span>
+<span id="cb319-10"><a href="low-level-plotting-functions.html#cb319-10" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">mean</span>(pirates<span class="sc">$</span>height), </span>
+<span id="cb319-11"><a href="low-level-plotting-functions.html#cb319-11" tabindex="-1"></a>       <span class="at">lty =</span> <span class="dv">2</span>)                        <span class="co"># Dashed line</span></span>
+<span id="cb319-12"><a href="low-level-plotting-functions.html#cb319-12" tabindex="-1"></a></span>
+<span id="cb319-13"><a href="low-level-plotting-functions.html#cb319-13" tabindex="-1"></a><span class="co"># Add vertical line at mean weight</span></span>
+<span id="cb319-14"><a href="low-level-plotting-functions.html#cb319-14" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(pirates<span class="sc">$</span>weight),</span>
+<span id="cb319-15"><a href="low-level-plotting-functions.html#cb319-15" tabindex="-1"></a>       <span class="at">lty =</span> <span class="dv">2</span>)                        <span class="co"># Dashed line</span></span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-299-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>To change the look of your lines, use the <code>lty</code> argument, which changes the type of line (see Figure <a href="low-level-plotting-functions.html#fig:ltytypes">11.9</a>), <code>lwd</code>, which changes its thickness, and <code>col</code> which changes its color</p>
-<div class="figure" style="text-align: center"><span id="fig:ltytypes"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ltytypes"></span>
 <img src="YaRrr_files/figure-html/ltytypes-1.png" alt="Changing line type with the lty argument." width="384" />
 <p class="caption">
 Figure 11.9: Changing line type with the lty argument.
 </p>
 </div>
 <p>You can also add a regression line (also called a line of best fit) to a scatterplot by entering a regression object created with <code>lm()</code> as the main argument to <code>abline()</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Add a regression line to a scatterplot</span>
-<span class="kw">plot</span>(<span class="dt">x =</span> pirates<span class="op">$</span>height,
-     <span class="dt">y =</span> pirates<span class="op">$</span>weight,
-     <span class="dt">pch =</span> <span class="dv">16</span>,
-     <span class="dt">col =</span> <span class="kw">transparent</span>(<span class="st">&quot;purple&quot;</span>, .<span class="dv">7</span>),
-     <span class="dt">main =</span> <span class="st">&quot;Adding a regression line to a scatterplot()&quot;</span>)
-
-<span class="co"># Add the regression line</span>
-<span class="kw">abline</span>(<span class="kw">lm</span>(weight <span class="op">~</span><span class="st"> </span>height, <span class="dt">data =</span> pirates), 
-       <span class="dt">lty =</span> <span class="dv">2</span>)</code></pre></div>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="low-level-plotting-functions.html#cb320-1" tabindex="-1"></a><span class="co"># Add a regression line to a scatterplot</span></span>
+<span id="cb320-2"><a href="low-level-plotting-functions.html#cb320-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> pirates<span class="sc">$</span>height,</span>
+<span id="cb320-3"><a href="low-level-plotting-functions.html#cb320-3" tabindex="-1"></a>     <span class="at">y =</span> pirates<span class="sc">$</span>weight,</span>
+<span id="cb320-4"><a href="low-level-plotting-functions.html#cb320-4" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>,</span>
+<span id="cb320-5"><a href="low-level-plotting-functions.html#cb320-5" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">transparent</span>(<span class="st">&quot;purple&quot;</span>, .<span class="dv">7</span>),</span>
+<span id="cb320-6"><a href="low-level-plotting-functions.html#cb320-6" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Adding a regression line to a scatterplot()&quot;</span>)</span>
+<span id="cb320-7"><a href="low-level-plotting-functions.html#cb320-7" tabindex="-1"></a></span>
+<span id="cb320-8"><a href="low-level-plotting-functions.html#cb320-8" tabindex="-1"></a><span class="co"># Add the regression line</span></span>
+<span id="cb320-9"><a href="low-level-plotting-functions.html#cb320-9" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(weight <span class="sc">~</span> height, <span class="at">data =</span> pirates), </span>
+<span id="cb320-10"><a href="low-level-plotting-functions.html#cb320-10" tabindex="-1"></a>       <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-300-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>The <code>segments()</code> function works very similarly to <code>abline()</code> – however, with the <code>segments()</code> function, you specify the beginning and end points of the segments with the arguments <code>x0</code>, <code>y0</code>, <code>x1</code>, and <code>y1</code>. In Figure <a href="low-level-plotting-functions.html#fig:segments">11.10</a> I use <code>segments()</code> to connect two vectors of data:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Before and after data</span>
-before &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">2.1</span>, <span class="fl">3.5</span>, <span class="fl">1.8</span>, <span class="fl">4.2</span>, <span class="fl">2.4</span>, <span class="fl">3.9</span>, <span class="fl">2.1</span>, <span class="fl">4.4</span>)
-after &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">7.5</span>, <span class="fl">5.1</span>, <span class="fl">6.9</span>, <span class="fl">3.6</span>, <span class="fl">7.5</span>, <span class="fl">5.2</span>, <span class="fl">6.1</span>, <span class="fl">7.3</span>)
-
-<span class="co"># Create plotting space and before scores</span>
-<span class="kw">plot</span>(<span class="dt">x =</span> <span class="kw">rep</span>(<span class="dv">1</span>, <span class="kw">length</span>(before)), 
-     <span class="dt">y =</span> before, 
-     <span class="dt">xlim =</span> <span class="kw">c</span>(.<span class="dv">5</span>, <span class="fl">2.5</span>), 
-     <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">11</span>),
-     <span class="dt">ylab =</span> <span class="st">&quot;Score&quot;</span>, 
-     <span class="dt">xlab =</span> <span class="st">&quot;Time&quot;</span>,
-     <span class="dt">main =</span> <span class="st">&quot;Using segments() to connect points&quot;</span>, 
-     <span class="dt">xaxt =</span> <span class="st">&quot;n&quot;</span>)
-
-<span class="co"># Add after scores</span>
-<span class="kw">points</span>(<span class="dt">x =</span> <span class="kw">rep</span>(<span class="dv">2</span>, <span class="kw">length</span>(after)), <span class="dt">y =</span> after)
-
-<span class="co"># Add connections with segments()</span>
-<span class="kw">segments</span>(<span class="dt">x0 =</span> <span class="kw">rep</span>(<span class="dv">1</span>, <span class="kw">length</span>(before)), 
-         <span class="dt">y0 =</span> before, 
-         <span class="dt">x1 =</span> <span class="kw">rep</span>(<span class="dv">2</span>, <span class="kw">length</span>(after)), 
-         <span class="dt">y1 =</span> after, 
-         <span class="dt">col =</span> <span class="kw">gray</span>(<span class="dv">0</span>, .<span class="dv">5</span>))
-
-<span class="co"># Add labels</span>
-<span class="kw">mtext</span>(<span class="dt">text =</span> <span class="kw">c</span>(<span class="st">&quot;Before&quot;</span>, <span class="st">&quot;After&quot;</span>), 
-      <span class="dt">side =</span> <span class="dv">1</span>, <span class="dt">at =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">line =</span> <span class="dv">1</span>)</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:segments"></span>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="low-level-plotting-functions.html#cb321-1" tabindex="-1"></a><span class="co"># Before and after data</span></span>
+<span id="cb321-2"><a href="low-level-plotting-functions.html#cb321-2" tabindex="-1"></a>before <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.1</span>, <span class="fl">3.5</span>, <span class="fl">1.8</span>, <span class="fl">4.2</span>, <span class="fl">2.4</span>, <span class="fl">3.9</span>, <span class="fl">2.1</span>, <span class="fl">4.4</span>)</span>
+<span id="cb321-3"><a href="low-level-plotting-functions.html#cb321-3" tabindex="-1"></a>after <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">7.5</span>, <span class="fl">5.1</span>, <span class="fl">6.9</span>, <span class="fl">3.6</span>, <span class="fl">7.5</span>, <span class="fl">5.2</span>, <span class="fl">6.1</span>, <span class="fl">7.3</span>)</span>
+<span id="cb321-4"><a href="low-level-plotting-functions.html#cb321-4" tabindex="-1"></a></span>
+<span id="cb321-5"><a href="low-level-plotting-functions.html#cb321-5" tabindex="-1"></a><span class="co"># Create plotting space and before scores</span></span>
+<span id="cb321-6"><a href="low-level-plotting-functions.html#cb321-6" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> <span class="fu">rep</span>(<span class="dv">1</span>, <span class="fu">length</span>(before)), </span>
+<span id="cb321-7"><a href="low-level-plotting-functions.html#cb321-7" tabindex="-1"></a>     <span class="at">y =</span> before, </span>
+<span id="cb321-8"><a href="low-level-plotting-functions.html#cb321-8" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(.<span class="dv">5</span>, <span class="fl">2.5</span>), </span>
+<span id="cb321-9"><a href="low-level-plotting-functions.html#cb321-9" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">11</span>),</span>
+<span id="cb321-10"><a href="low-level-plotting-functions.html#cb321-10" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Score&quot;</span>, </span>
+<span id="cb321-11"><a href="low-level-plotting-functions.html#cb321-11" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Time&quot;</span>,</span>
+<span id="cb321-12"><a href="low-level-plotting-functions.html#cb321-12" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Using segments() to connect points&quot;</span>, </span>
+<span id="cb321-13"><a href="low-level-plotting-functions.html#cb321-13" tabindex="-1"></a>     <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>)</span>
+<span id="cb321-14"><a href="low-level-plotting-functions.html#cb321-14" tabindex="-1"></a></span>
+<span id="cb321-15"><a href="low-level-plotting-functions.html#cb321-15" tabindex="-1"></a><span class="co"># Add after scores</span></span>
+<span id="cb321-16"><a href="low-level-plotting-functions.html#cb321-16" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> <span class="fu">rep</span>(<span class="dv">2</span>, <span class="fu">length</span>(after)), <span class="at">y =</span> after)</span>
+<span id="cb321-17"><a href="low-level-plotting-functions.html#cb321-17" tabindex="-1"></a></span>
+<span id="cb321-18"><a href="low-level-plotting-functions.html#cb321-18" tabindex="-1"></a><span class="co"># Add connections with segments()</span></span>
+<span id="cb321-19"><a href="low-level-plotting-functions.html#cb321-19" tabindex="-1"></a><span class="fu">segments</span>(<span class="at">x0 =</span> <span class="fu">rep</span>(<span class="dv">1</span>, <span class="fu">length</span>(before)), </span>
+<span id="cb321-20"><a href="low-level-plotting-functions.html#cb321-20" tabindex="-1"></a>         <span class="at">y0 =</span> before, </span>
+<span id="cb321-21"><a href="low-level-plotting-functions.html#cb321-21" tabindex="-1"></a>         <span class="at">x1 =</span> <span class="fu">rep</span>(<span class="dv">2</span>, <span class="fu">length</span>(after)), </span>
+<span id="cb321-22"><a href="low-level-plotting-functions.html#cb321-22" tabindex="-1"></a>         <span class="at">y1 =</span> after, </span>
+<span id="cb321-23"><a href="low-level-plotting-functions.html#cb321-23" tabindex="-1"></a>         <span class="at">col =</span> <span class="fu">gray</span>(<span class="dv">0</span>, .<span class="dv">5</span>))</span>
+<span id="cb321-24"><a href="low-level-plotting-functions.html#cb321-24" tabindex="-1"></a></span>
+<span id="cb321-25"><a href="low-level-plotting-functions.html#cb321-25" tabindex="-1"></a><span class="co"># Add labels</span></span>
+<span id="cb321-26"><a href="low-level-plotting-functions.html#cb321-26" tabindex="-1"></a><span class="fu">mtext</span>(<span class="at">text =</span> <span class="fu">c</span>(<span class="st">&quot;Before&quot;</span>, <span class="st">&quot;After&quot;</span>), </span>
+<span id="cb321-27"><a href="low-level-plotting-functions.html#cb321-27" tabindex="-1"></a>      <span class="at">side =</span> <span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">line =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:segments"></span>
 <img src="YaRrr_files/figure-html/segments-1.png" alt="Connecting points with segments()." width="672" />
 <p class="caption">
 Figure 11.10: Connecting points with segments().
 </p>
 </div>
 <p>The <code>grid()</code> function allows you to easily add grid lines to a plot (you can customize your grid lines further with <code>lty</code>, <code>lwd</code>, and <code>col</code> arguments):</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Add gridlines to a plot with grid()</span>
-<span class="kw">plot</span>(pirates<span class="op">$</span>age,
-     pirates<span class="op">$</span>beard.length,
-     <span class="dt">pch =</span> <span class="dv">16</span>,
-     <span class="dt">col =</span> <span class="kw">gray</span>(.<span class="dv">1</span>, .<span class="dv">2</span>), <span class="dt">main =</span> <span class="st">&quot;Add grid lines to a plot with grid()&quot;</span>)
-
-<span class="co"># Add gridlines</span>
-<span class="kw">grid</span>()</code></pre></div>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="low-level-plotting-functions.html#cb322-1" tabindex="-1"></a><span class="co"># Add gridlines to a plot with grid()</span></span>
+<span id="cb322-2"><a href="low-level-plotting-functions.html#cb322-2" tabindex="-1"></a><span class="fu">plot</span>(pirates<span class="sc">$</span>age,</span>
+<span id="cb322-3"><a href="low-level-plotting-functions.html#cb322-3" tabindex="-1"></a>     pirates<span class="sc">$</span>beard.length,</span>
+<span id="cb322-4"><a href="low-level-plotting-functions.html#cb322-4" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>,</span>
+<span id="cb322-5"><a href="low-level-plotting-functions.html#cb322-5" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">gray</span>(.<span class="dv">1</span>, .<span class="dv">2</span>), <span class="at">main =</span> <span class="st">&quot;Add grid lines to a plot with grid()&quot;</span>)</span>
+<span id="cb322-6"><a href="low-level-plotting-functions.html#cb322-6" tabindex="-1"></a></span>
+<span id="cb322-7"><a href="low-level-plotting-functions.html#cb322-7" tabindex="-1"></a><span class="co"># Add gridlines</span></span>
+<span id="cb322-8"><a href="low-level-plotting-functions.html#cb322-8" tabindex="-1"></a><span class="fu">grid</span>()</span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-301-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
-<div id="text" class="section level3">
-<h3><span class="header-section-number">11.7.4</span> <code>text()</code></h3>
-<table style="width:90%;">
+<div id="text" class="section level3 hasAnchor" number="11.7.4">
+<h3><span class="header-section-number">11.7.4</span> <code>text()</code><a href="low-level-plotting-functions.html#text" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
 <caption><span id="tab:textarguments">Table 11.10: </span> Arguments to <code>text()</code></caption>
 <colgroup>
 <col width="15%" />
-<col width="75%" />
+<col width="84%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -691,101 +777,102 @@ Figure 11.10: Connecting points with segments().
 </tbody>
 </table>
 <p>With <code>text()</code>, you can add text to a plot. You can use <code>text()</code> to highlight specific points of interest in the plot, or to add information (like a third variable) for every point in a plot. For example, the following code adds the three words “Put”, “Text”, and “Here” at the coordinates (1, 9), (5, 5), and (9, 1) respectively. See Figure <a href="low-level-plotting-functions.html#fig:puttexthere">11.11</a> for the plot:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dv">1</span>, 
-     <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10</span>), 
-     <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10</span>), 
-     <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>)
-
-<span class="kw">text</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">9</span>),
-     <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">5</span>, <span class="dv">1</span>),
-     <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Put&quot;</span>, <span class="st">&quot;text&quot;</span>, <span class="st">&quot;here&quot;</span>))</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:puttexthere"></span>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="low-level-plotting-functions.html#cb323-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span>, </span>
+<span id="cb323-2"><a href="low-level-plotting-functions.html#cb323-2" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>), </span>
+<span id="cb323-3"><a href="low-level-plotting-functions.html#cb323-3" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>), </span>
+<span id="cb323-4"><a href="low-level-plotting-functions.html#cb323-4" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;n&quot;</span>)</span>
+<span id="cb323-5"><a href="low-level-plotting-functions.html#cb323-5" tabindex="-1"></a></span>
+<span id="cb323-6"><a href="low-level-plotting-functions.html#cb323-6" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">9</span>),</span>
+<span id="cb323-7"><a href="low-level-plotting-functions.html#cb323-7" tabindex="-1"></a>     <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">5</span>, <span class="dv">1</span>),</span>
+<span id="cb323-8"><a href="low-level-plotting-functions.html#cb323-8" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Put&quot;</span>, <span class="st">&quot;text&quot;</span>, <span class="st">&quot;here&quot;</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:puttexthere"></span>
 <img src="YaRrr_files/figure-html/puttexthere-1.png" alt="Adding text to a plot with text()" width="672" />
 <p class="caption">
 Figure 11.11: Adding text to a plot with text()
 </p>
 </div>
 <p>You can do some cool things with <code>text()</code>, in Figure <a href="low-level-plotting-functions.html#fig:textlabels">11.12</a> I create a scatterplot of data, and add data labels above each point by including the <code>pos = 3</code> argument:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create data vectors</span>
-height &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">156</span>, <span class="dv">175</span>, <span class="dv">160</span>, <span class="dv">172</span>, <span class="dv">159</span>, <span class="dv">165</span>, <span class="dv">178</span>)
-weight &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">65</span>, <span class="dv">74</span>, <span class="dv">69</span>, <span class="dv">72</span>, <span class="dv">66</span>, <span class="dv">75</span>, <span class="dv">75</span>)
-id &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;andrew&quot;</span>, <span class="st">&quot;heidi&quot;</span>, <span class="st">&quot;becki&quot;</span>, <span class="st">&quot;madisen&quot;</span>, <span class="st">&quot;david&quot;</span>, <span class="st">&quot;vincent&quot;</span>, <span class="st">&quot;jack&quot;</span>)
-
-<span class="co"># Plot data</span>
-<span class="kw">plot</span>(<span class="dt">x =</span> height, 
-     <span class="dt">y =</span> weight, 
-     <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">155</span>, <span class="dv">180</span>), 
-     <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">65</span>, <span class="dv">80</span>), 
-     <span class="dt">pch =</span> <span class="dv">16</span>,
-     <span class="dt">col =</span> yarrr<span class="op">::</span><span class="kw">piratepal</span>(<span class="st">&quot;xmen&quot;</span>))
-
-<span class="co"># Add id labels</span>
-<span class="kw">text</span>(<span class="dt">x =</span> height, 
-     <span class="dt">y =</span> weight,
-     <span class="dt">labels =</span> id, 
-     <span class="dt">pos =</span> <span class="dv">3</span>)            <span class="co"># Put labels above the points</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:textlabels"></span>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="low-level-plotting-functions.html#cb324-1" tabindex="-1"></a><span class="co"># Create data vectors</span></span>
+<span id="cb324-2"><a href="low-level-plotting-functions.html#cb324-2" tabindex="-1"></a>height <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">156</span>, <span class="dv">175</span>, <span class="dv">160</span>, <span class="dv">172</span>, <span class="dv">159</span>, <span class="dv">165</span>, <span class="dv">178</span>)</span>
+<span id="cb324-3"><a href="low-level-plotting-functions.html#cb324-3" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">65</span>, <span class="dv">74</span>, <span class="dv">69</span>, <span class="dv">72</span>, <span class="dv">66</span>, <span class="dv">75</span>, <span class="dv">75</span>)</span>
+<span id="cb324-4"><a href="low-level-plotting-functions.html#cb324-4" tabindex="-1"></a>id <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;andrew&quot;</span>, <span class="st">&quot;heidi&quot;</span>, <span class="st">&quot;becki&quot;</span>, <span class="st">&quot;madisen&quot;</span>, <span class="st">&quot;david&quot;</span>, <span class="st">&quot;vincent&quot;</span>, <span class="st">&quot;jack&quot;</span>)</span>
+<span id="cb324-5"><a href="low-level-plotting-functions.html#cb324-5" tabindex="-1"></a></span>
+<span id="cb324-6"><a href="low-level-plotting-functions.html#cb324-6" tabindex="-1"></a><span class="co"># Plot data</span></span>
+<span id="cb324-7"><a href="low-level-plotting-functions.html#cb324-7" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> height, </span>
+<span id="cb324-8"><a href="low-level-plotting-functions.html#cb324-8" tabindex="-1"></a>     <span class="at">y =</span> weight, </span>
+<span id="cb324-9"><a href="low-level-plotting-functions.html#cb324-9" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">155</span>, <span class="dv">180</span>), </span>
+<span id="cb324-10"><a href="low-level-plotting-functions.html#cb324-10" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">65</span>, <span class="dv">80</span>), </span>
+<span id="cb324-11"><a href="low-level-plotting-functions.html#cb324-11" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>,</span>
+<span id="cb324-12"><a href="low-level-plotting-functions.html#cb324-12" tabindex="-1"></a>     <span class="at">col =</span> yarrr<span class="sc">::</span><span class="fu">piratepal</span>(<span class="st">&quot;xmen&quot;</span>))</span>
+<span id="cb324-13"><a href="low-level-plotting-functions.html#cb324-13" tabindex="-1"></a></span>
+<span id="cb324-14"><a href="low-level-plotting-functions.html#cb324-14" tabindex="-1"></a><span class="co"># Add id labels</span></span>
+<span id="cb324-15"><a href="low-level-plotting-functions.html#cb324-15" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> height, </span>
+<span id="cb324-16"><a href="low-level-plotting-functions.html#cb324-16" tabindex="-1"></a>     <span class="at">y =</span> weight,</span>
+<span id="cb324-17"><a href="low-level-plotting-functions.html#cb324-17" tabindex="-1"></a>     <span class="at">labels =</span> id, </span>
+<span id="cb324-18"><a href="low-level-plotting-functions.html#cb324-18" tabindex="-1"></a>     <span class="at">pos =</span> <span class="dv">3</span>)            <span class="co"># Put labels above the points</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:textlabels"></span>
 <img src="YaRrr_files/figure-html/textlabels-1.png" alt="Adding labels to points with text()" width="672" />
 <p class="caption">
 Figure 11.12: Adding labels to points with text()
 </p>
 </div>
 <p>When entering text in the <code>labels</code> argument, keep in mind that R will, by default, plot the entire text in one line. However, if you are adding a long text string (like a sentence), you may want to separate the text into separate lines. To do this, add the text <code>\n</code> where you want new lines to start. Look at Figure <a href="low-level-plotting-functions.html#fig:manylines">11.13</a> for an example.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dv">1</span>, 
-     <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>,
-     <span class="dt">main =</span> <span class="st">&quot;The </span><span class="ch">\\</span><span class="st">n tag&quot;</span>,
-     <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;&quot;</span>)
-
-<span class="co"># Text withoutbreaks</span>
-<span class="kw">text</span>(<span class="dt">x =</span> <span class="dv">1</span>, <span class="dt">y =</span> <span class="fl">1.3</span>, <span class="dt">labels =</span> <span class="st">&quot;Text without </span><span class="ch">\\</span><span class="st">n&quot;</span>, <span class="dt">font =</span> <span class="dv">2</span>)
-<span class="kw">text</span>(<span class="dt">x =</span> <span class="dv">1</span>, <span class="dt">y =</span> <span class="fl">1.2</span>,
-     <span class="dt">labels =</span> <span class="st">&quot;Haikus are easy. But sometimes they don&#39;t make sense. Refrigerator&quot;</span>,
-     <span class="dt">font =</span> <span class="dv">3</span>) <span class="co"># italic font</span>
-
-<span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">1</span>, <span class="dt">lty =</span> <span class="dv">2</span>)
-<span class="co"># Text with  breaks</span>
-<span class="kw">text</span>(<span class="dt">x =</span> <span class="dv">1</span>, <span class="dt">y =</span> .<span class="dv">92</span>, <span class="dt">labels =</span> <span class="st">&quot;Text with </span><span class="ch">\\</span><span class="st">n&quot;</span>, <span class="dt">font =</span> <span class="dv">2</span>)
-<span class="kw">text</span>(<span class="dt">x =</span> <span class="dv">1</span>, <span class="dt">y =</span> .<span class="dv">7</span>,
-     <span class="dt">labels =</span> <span class="st">&quot;Haikus are easy</span><span class="ch">\n</span><span class="st">But sometimes they don&#39;t make sense</span><span class="ch">\n</span><span class="st">Refrigerator&quot;</span>,
-     <span class="dt">font =</span> <span class="dv">3</span>)   <span class="co"># italic font</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:manylines"></span>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="low-level-plotting-functions.html#cb325-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span>, </span>
+<span id="cb325-2"><a href="low-level-plotting-functions.html#cb325-2" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;n&quot;</span>,</span>
+<span id="cb325-3"><a href="low-level-plotting-functions.html#cb325-3" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;The </span><span class="sc">\\</span><span class="st">n tag&quot;</span>,</span>
+<span id="cb325-4"><a href="low-level-plotting-functions.html#cb325-4" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb325-5"><a href="low-level-plotting-functions.html#cb325-5" tabindex="-1"></a></span>
+<span id="cb325-6"><a href="low-level-plotting-functions.html#cb325-6" tabindex="-1"></a><span class="co"># Text withoutbreaks</span></span>
+<span id="cb325-7"><a href="low-level-plotting-functions.html#cb325-7" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="fl">1.3</span>, <span class="at">labels =</span> <span class="st">&quot;Text without </span><span class="sc">\\</span><span class="st">n&quot;</span>, <span class="at">font =</span> <span class="dv">2</span>)</span>
+<span id="cb325-8"><a href="low-level-plotting-functions.html#cb325-8" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="fl">1.2</span>,</span>
+<span id="cb325-9"><a href="low-level-plotting-functions.html#cb325-9" tabindex="-1"></a>     <span class="at">labels =</span> <span class="st">&quot;Haikus are easy. But sometimes they don&#39;t make sense. Refrigerator&quot;</span>,</span>
+<span id="cb325-10"><a href="low-level-plotting-functions.html#cb325-10" tabindex="-1"></a>     <span class="at">font =</span> <span class="dv">3</span>) <span class="co"># italic font</span></span>
+<span id="cb325-11"><a href="low-level-plotting-functions.html#cb325-11" tabindex="-1"></a></span>
+<span id="cb325-12"><a href="low-level-plotting-functions.html#cb325-12" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">1</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb325-13"><a href="low-level-plotting-functions.html#cb325-13" tabindex="-1"></a><span class="co"># Text with  breaks</span></span>
+<span id="cb325-14"><a href="low-level-plotting-functions.html#cb325-14" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> .<span class="dv">92</span>, <span class="at">labels =</span> <span class="st">&quot;Text with </span><span class="sc">\\</span><span class="st">n&quot;</span>, <span class="at">font =</span> <span class="dv">2</span>)</span>
+<span id="cb325-15"><a href="low-level-plotting-functions.html#cb325-15" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> .<span class="dv">7</span>,</span>
+<span id="cb325-16"><a href="low-level-plotting-functions.html#cb325-16" tabindex="-1"></a>     <span class="at">labels =</span> <span class="st">&quot;Haikus are easy</span><span class="sc">\n</span><span class="st">But sometimes they don&#39;t make sense</span><span class="sc">\n</span><span class="st">Refrigerator&quot;</span>,</span>
+<span id="cb325-17"><a href="low-level-plotting-functions.html#cb325-17" tabindex="-1"></a>     <span class="at">font =</span> <span class="dv">3</span>)   <span class="co"># italic font</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:manylines"></span>
 <img src="YaRrr_files/figure-html/manylines-1.png" alt="Break up lines in text with 
 ." width="672" />
 <p class="caption">
-Figure 11.13: Break up lines in text with .
+Figure 11.13: Break up lines in text with
+.
 </p>
 </div>
 </div>
-<div id="combining-text-and-numbers-with-paste" class="section level3">
-<h3><span class="header-section-number">11.7.5</span> Combining text and numbers with <code>paste()</code></h3>
+<div id="combining-text-and-numbers-with-paste" class="section level3 hasAnchor" number="11.7.5">
+<h3><span class="header-section-number">11.7.5</span> Combining text and numbers with <code>paste()</code><a href="low-level-plotting-functions.html#combining-text-and-numbers-with-paste" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A common way to use text in a plot, either in the main title of a plot or using the <code>text()</code>function, is to combine text with numerical data. For example, you may want to include the text “Mean = 3.14” in a plot to show that the mean of the data is 3.14. But how can we combine numerical data with text? In R, we can do this with the <code>paste()</code> function:</p>
 <p>The paste function will be helpful to you anytime you want to combine either multiple strings, or text and strings together. For example, let’s say you want to write text in a plot that says <code>The mean of these data are XXX</code>, where XXX is replaced by the group mean. To do this, just include the main text and the object referring to the numerical mean as arguments to <code>paste()</code>. In Figure X I plot the chicken weights over time, and add text to the plot specifying the overall mean of weights.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create the plot</span>
-<span class="kw">plot</span>(<span class="dt">x =</span> ChickWeight<span class="op">$</span>Time,
-     <span class="dt">y =</span> ChickWeight<span class="op">$</span>weight, 
-     <span class="dt">col =</span> <span class="kw">gray</span>(.<span class="dv">3</span>, .<span class="dv">5</span>), 
-     <span class="dt">pch =</span> <span class="dv">16</span>,
-     <span class="dt">main =</span> <span class="st">&quot;Combining text with numeric scalers using paste()&quot;</span>)
-
-<span class="co"># Add reference line</span>
-<span class="kw">abline</span>(<span class="dt">h =</span> <span class="kw">mean</span>(ChickWeight<span class="op">$</span>weight), 
-       <span class="dt">lty =</span> <span class="dv">2</span>)
-
-<span class="co"># Add text</span>
-<span class="kw">text</span>(<span class="dt">x =</span> <span class="dv">3</span>, 
-     <span class="dt">y =</span> <span class="kw">mean</span>(ChickWeight<span class="op">$</span>weight), 
-     <span class="dt">labels =</span> <span class="kw">paste</span>(<span class="st">&quot;Mean weight =&quot;</span>, 
-                    <span class="kw">round</span>(<span class="kw">mean</span>(ChickWeight<span class="op">$</span>weight), <span class="dv">2</span>)),
-     <span class="dt">pos =</span> <span class="dv">3</span>)</code></pre></div>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="low-level-plotting-functions.html#cb326-1" tabindex="-1"></a><span class="co"># Create the plot</span></span>
+<span id="cb326-2"><a href="low-level-plotting-functions.html#cb326-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> ChickWeight<span class="sc">$</span>Time,</span>
+<span id="cb326-3"><a href="low-level-plotting-functions.html#cb326-3" tabindex="-1"></a>     <span class="at">y =</span> ChickWeight<span class="sc">$</span>weight, </span>
+<span id="cb326-4"><a href="low-level-plotting-functions.html#cb326-4" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">gray</span>(.<span class="dv">3</span>, .<span class="dv">5</span>), </span>
+<span id="cb326-5"><a href="low-level-plotting-functions.html#cb326-5" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>,</span>
+<span id="cb326-6"><a href="low-level-plotting-functions.html#cb326-6" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Combining text with numeric scalers using paste()&quot;</span>)</span>
+<span id="cb326-7"><a href="low-level-plotting-functions.html#cb326-7" tabindex="-1"></a></span>
+<span id="cb326-8"><a href="low-level-plotting-functions.html#cb326-8" tabindex="-1"></a><span class="co"># Add reference line</span></span>
+<span id="cb326-9"><a href="low-level-plotting-functions.html#cb326-9" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">mean</span>(ChickWeight<span class="sc">$</span>weight), </span>
+<span id="cb326-10"><a href="low-level-plotting-functions.html#cb326-10" tabindex="-1"></a>       <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb326-11"><a href="low-level-plotting-functions.html#cb326-11" tabindex="-1"></a></span>
+<span id="cb326-12"><a href="low-level-plotting-functions.html#cb326-12" tabindex="-1"></a><span class="co"># Add text</span></span>
+<span id="cb326-13"><a href="low-level-plotting-functions.html#cb326-13" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">3</span>, </span>
+<span id="cb326-14"><a href="low-level-plotting-functions.html#cb326-14" tabindex="-1"></a>     <span class="at">y =</span> <span class="fu">mean</span>(ChickWeight<span class="sc">$</span>weight), </span>
+<span id="cb326-15"><a href="low-level-plotting-functions.html#cb326-15" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">paste</span>(<span class="st">&quot;Mean weight =&quot;</span>, </span>
+<span id="cb326-16"><a href="low-level-plotting-functions.html#cb326-16" tabindex="-1"></a>                    <span class="fu">round</span>(<span class="fu">mean</span>(ChickWeight<span class="sc">$</span>weight), <span class="dv">2</span>)),</span>
+<span id="cb326-17"><a href="low-level-plotting-functions.html#cb326-17" tabindex="-1"></a>     <span class="at">pos =</span> <span class="dv">3</span>)</span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-302-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
-<div id="curve" class="section level3">
-<h3><span class="header-section-number">11.7.6</span> <code>curve()</code></h3>
-<table style="width:90%;">
+<div id="curve" class="section level3 hasAnchor" number="11.7.6">
+<h3><span class="header-section-number">11.7.6</span> <code>curve()</code><a href="low-level-plotting-functions.html#curve" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
 <caption><span id="tab:curvearguments">Table 11.11: </span> Arguments to <code>curve()</code></caption>
 <colgroup>
 <col width="15%" />
-<col width="75%" />
+<col width="84%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -808,6 +895,7 @@ Figure 11.13: Break up lines in text with .
 </tr>
 <tr class="even">
 <td align="left"></td>
+<td align="left"></td>
 </tr>
 <tr class="odd">
 <td align="left"><code>lty, lwd, col</code></td>
@@ -816,70 +904,70 @@ Figure 11.13: Break up lines in text with .
 </tbody>
 </table>
 <p>The <code>curve()</code> function allows you to add a line showing a specific function or equation to a plot. For example, to add the function <span class="math inline">\(x^2\)</span> to a plot from the x-values -10 to 10, you can run the code:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Plot the function x^2 from -10 to +10</span>
-<span class="kw">curve</span>(<span class="dt">expr =</span> x<span class="op">^</span><span class="dv">2</span>, 
-      <span class="dt">from =</span> <span class="op">-</span><span class="dv">10</span>, 
-      <span class="dt">to =</span> <span class="dv">10</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</code></pre></div>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="low-level-plotting-functions.html#cb327-1" tabindex="-1"></a><span class="co"># Plot the function x^2 from -10 to +10</span></span>
+<span id="cb327-2"><a href="low-level-plotting-functions.html#cb327-2" tabindex="-1"></a><span class="fu">curve</span>(<span class="at">expr =</span> x<span class="sc">^</span><span class="dv">2</span>, </span>
+<span id="cb327-3"><a href="low-level-plotting-functions.html#cb327-3" tabindex="-1"></a>      <span class="at">from =</span> <span class="sc">-</span><span class="dv">10</span>, </span>
+<span id="cb327-4"><a href="low-level-plotting-functions.html#cb327-4" tabindex="-1"></a>      <span class="at">to =</span> <span class="dv">10</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-303-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>If you want to add a custom function to a plot, you can define the function and then use that function name as the argument to <code>expr</code>. For example, to plot the normal distribution with a mean of 10 and standard deviation of 3, you can use this code:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Plot the normal distribution with mean = 22 and sd = 3</span>
-
-<span class="co"># Create a function</span>
-my.fun &lt;-<span class="st"> </span><span class="cf">function</span>(x) {<span class="kw">dnorm</span>(x, <span class="dt">mean =</span> <span class="dv">2</span>, <span class="dt">sd =</span> <span class="dv">3</span>)}
-
-<span class="kw">curve</span>(<span class="dt">expr =</span> my.fun, 
-      <span class="dt">from =</span> <span class="op">-</span><span class="dv">10</span>, 
-      <span class="dt">to =</span> <span class="dv">10</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</code></pre></div>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="low-level-plotting-functions.html#cb328-1" tabindex="-1"></a><span class="co"># Plot the normal distribution with mean = 22 and sd = 3</span></span>
+<span id="cb328-2"><a href="low-level-plotting-functions.html#cb328-2" tabindex="-1"></a></span>
+<span id="cb328-3"><a href="low-level-plotting-functions.html#cb328-3" tabindex="-1"></a><span class="co"># Create a function</span></span>
+<span id="cb328-4"><a href="low-level-plotting-functions.html#cb328-4" tabindex="-1"></a>my.fun <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {<span class="fu">dnorm</span>(x, <span class="at">mean =</span> <span class="dv">2</span>, <span class="at">sd =</span> <span class="dv">3</span>)}</span>
+<span id="cb328-5"><a href="low-level-plotting-functions.html#cb328-5" tabindex="-1"></a></span>
+<span id="cb328-6"><a href="low-level-plotting-functions.html#cb328-6" tabindex="-1"></a><span class="fu">curve</span>(<span class="at">expr =</span> my.fun, </span>
+<span id="cb328-7"><a href="low-level-plotting-functions.html#cb328-7" tabindex="-1"></a>      <span class="at">from =</span> <span class="sc">-</span><span class="dv">10</span>, </span>
+<span id="cb328-8"><a href="low-level-plotting-functions.html#cb328-8" tabindex="-1"></a>      <span class="at">to =</span> <span class="dv">10</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-304-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>In Figure~<a href="low-level-plotting-functions.html#fig:functionlines">11.14</a>, I use the <code>curve()</code> function to create curves of several mathematical formulas.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create plotting space</span>
-<span class="kw">plot</span>(<span class="dv">1</span>, 
-     <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>),
-     <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>, 
-     <span class="dt">main =</span> <span class="st">&quot;Plotting function lines with curve()&quot;</span>,
-     <span class="dt">ylab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>)
-
-<span class="co"># Add x and y-axis lines</span>
-<span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>)
-<span class="kw">abline</span>(<span class="dt">v =</span> <span class="dv">0</span>)
-
-<span class="co"># set up colors</span>
-col.vec &lt;-<span class="st"> </span><span class="kw">piratepal</span>(<span class="st">&quot;google&quot;</span>)
-
-<span class="co"># x ^ 2</span>
-<span class="kw">curve</span>(<span class="dt">expr =</span> x<span class="op">^</span><span class="dv">2</span>, <span class="dt">from =</span> <span class="op">-</span><span class="dv">5</span>, <span class="dt">to =</span> <span class="dv">5</span>,
-      <span class="dt">add =</span> <span class="ot">TRUE</span>, <span class="dt">lwd =</span> <span class="dv">3</span>, <span class="dt">col =</span> col.vec[<span class="dv">1</span>])
-
-<span class="co"># sin(x)</span>
-<span class="kw">curve</span>(<span class="dt">expr =</span> sin, <span class="dt">from =</span> <span class="op">-</span><span class="dv">5</span>, <span class="dt">to =</span> <span class="dv">5</span>,
-      <span class="dt">add =</span> <span class="ot">TRUE</span>, <span class="dt">lwd =</span> <span class="dv">3</span>, <span class="dt">col =</span> col.vec[<span class="dv">2</span>])
-
-<span class="co"># dnorm(mean = 2, sd = .2)</span>
-my.fun &lt;-<span class="st"> </span><span class="cf">function</span>(x) {<span class="kw">return</span>(<span class="kw">dnorm</span>(x, <span class="dt">mean =</span> <span class="dv">2</span>, <span class="dt">sd =</span> .<span class="dv">2</span>))}
-<span class="kw">curve</span>(<span class="dt">expr =</span> my.fun, 
-      <span class="dt">from =</span> <span class="op">-</span><span class="dv">5</span>, <span class="dt">to =</span> <span class="dv">5</span>,
-      <span class="dt">add =</span> <span class="ot">TRUE</span>, 
-      <span class="dt">lwd =</span> <span class="dv">3</span>, <span class="dt">col =</span> col.vec[<span class="dv">3</span>])
-
-<span class="co"># Add legend</span>
-<span class="kw">legend</span>(<span class="st">&quot;bottomright&quot;</span>,
-       <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;x^2&quot;</span>, <span class="st">&quot;sin(x)&quot;</span>, <span class="st">&quot;dnorm(x, 2, .2)&quot;</span>),
-       <span class="dt">col =</span> col.vec[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>], 
-       <span class="dt">lwd =</span> <span class="dv">3</span>)</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:functionlines"></span>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="low-level-plotting-functions.html#cb329-1" tabindex="-1"></a><span class="co"># Create plotting space</span></span>
+<span id="cb329-2"><a href="low-level-plotting-functions.html#cb329-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span>, </span>
+<span id="cb329-3"><a href="low-level-plotting-functions.html#cb329-3" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>),</span>
+<span id="cb329-4"><a href="low-level-plotting-functions.html#cb329-4" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, </span>
+<span id="cb329-5"><a href="low-level-plotting-functions.html#cb329-5" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Plotting function lines with curve()&quot;</span>,</span>
+<span id="cb329-6"><a href="low-level-plotting-functions.html#cb329-6" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb329-7"><a href="low-level-plotting-functions.html#cb329-7" tabindex="-1"></a></span>
+<span id="cb329-8"><a href="low-level-plotting-functions.html#cb329-8" tabindex="-1"></a><span class="co"># Add x and y-axis lines</span></span>
+<span id="cb329-9"><a href="low-level-plotting-functions.html#cb329-9" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>)</span>
+<span id="cb329-10"><a href="low-level-plotting-functions.html#cb329-10" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">0</span>)</span>
+<span id="cb329-11"><a href="low-level-plotting-functions.html#cb329-11" tabindex="-1"></a></span>
+<span id="cb329-12"><a href="low-level-plotting-functions.html#cb329-12" tabindex="-1"></a><span class="co"># set up colors</span></span>
+<span id="cb329-13"><a href="low-level-plotting-functions.html#cb329-13" tabindex="-1"></a>col.vec <span class="ot">&lt;-</span> <span class="fu">piratepal</span>(<span class="st">&quot;google&quot;</span>)</span>
+<span id="cb329-14"><a href="low-level-plotting-functions.html#cb329-14" tabindex="-1"></a></span>
+<span id="cb329-15"><a href="low-level-plotting-functions.html#cb329-15" tabindex="-1"></a><span class="co"># x ^ 2</span></span>
+<span id="cb329-16"><a href="low-level-plotting-functions.html#cb329-16" tabindex="-1"></a><span class="fu">curve</span>(<span class="at">expr =</span> x<span class="sc">^</span><span class="dv">2</span>, <span class="at">from =</span> <span class="sc">-</span><span class="dv">5</span>, <span class="at">to =</span> <span class="dv">5</span>,</span>
+<span id="cb329-17"><a href="low-level-plotting-functions.html#cb329-17" tabindex="-1"></a>      <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">col =</span> col.vec[<span class="dv">1</span>])</span>
+<span id="cb329-18"><a href="low-level-plotting-functions.html#cb329-18" tabindex="-1"></a></span>
+<span id="cb329-19"><a href="low-level-plotting-functions.html#cb329-19" tabindex="-1"></a><span class="co"># sin(x)</span></span>
+<span id="cb329-20"><a href="low-level-plotting-functions.html#cb329-20" tabindex="-1"></a><span class="fu">curve</span>(<span class="at">expr =</span> sin, <span class="at">from =</span> <span class="sc">-</span><span class="dv">5</span>, <span class="at">to =</span> <span class="dv">5</span>,</span>
+<span id="cb329-21"><a href="low-level-plotting-functions.html#cb329-21" tabindex="-1"></a>      <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">col =</span> col.vec[<span class="dv">2</span>])</span>
+<span id="cb329-22"><a href="low-level-plotting-functions.html#cb329-22" tabindex="-1"></a></span>
+<span id="cb329-23"><a href="low-level-plotting-functions.html#cb329-23" tabindex="-1"></a><span class="co"># dnorm(mean = 2, sd = .2)</span></span>
+<span id="cb329-24"><a href="low-level-plotting-functions.html#cb329-24" tabindex="-1"></a>my.fun <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {<span class="fu">return</span>(<span class="fu">dnorm</span>(x, <span class="at">mean =</span> <span class="dv">2</span>, <span class="at">sd =</span> .<span class="dv">2</span>))}</span>
+<span id="cb329-25"><a href="low-level-plotting-functions.html#cb329-25" tabindex="-1"></a><span class="fu">curve</span>(<span class="at">expr =</span> my.fun, </span>
+<span id="cb329-26"><a href="low-level-plotting-functions.html#cb329-26" tabindex="-1"></a>      <span class="at">from =</span> <span class="sc">-</span><span class="dv">5</span>, <span class="at">to =</span> <span class="dv">5</span>,</span>
+<span id="cb329-27"><a href="low-level-plotting-functions.html#cb329-27" tabindex="-1"></a>      <span class="at">add =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb329-28"><a href="low-level-plotting-functions.html#cb329-28" tabindex="-1"></a>      <span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">col =</span> col.vec[<span class="dv">3</span>])</span>
+<span id="cb329-29"><a href="low-level-plotting-functions.html#cb329-29" tabindex="-1"></a></span>
+<span id="cb329-30"><a href="low-level-plotting-functions.html#cb329-30" tabindex="-1"></a><span class="co"># Add legend</span></span>
+<span id="cb329-31"><a href="low-level-plotting-functions.html#cb329-31" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;bottomright&quot;</span>,</span>
+<span id="cb329-32"><a href="low-level-plotting-functions.html#cb329-32" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;x^2&quot;</span>, <span class="st">&quot;sin(x)&quot;</span>, <span class="st">&quot;dnorm(x, 2, .2)&quot;</span>),</span>
+<span id="cb329-33"><a href="low-level-plotting-functions.html#cb329-33" tabindex="-1"></a>       <span class="at">col =</span> col.vec[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>], </span>
+<span id="cb329-34"><a href="low-level-plotting-functions.html#cb329-34" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:functionlines"></span>
 <img src="YaRrr_files/figure-html/functionlines-1.png" alt="Drawing function lines with curve()" width="672" />
 <p class="caption">
 Figure 11.14: Drawing function lines with curve()
 </p>
 </div>
 </div>
-<div id="legend" class="section level3">
-<h3><span class="header-section-number">11.7.7</span> <code>legend()</code></h3>
-<table style="width:90%;">
+<div id="legend" class="section level3 hasAnchor" number="11.7.7">
+<h3><span class="header-section-number">11.7.7</span> <code>legend()</code><a href="low-level-plotting-functions.html#legend" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
 <caption><span id="tab:legendarguments">Table 11.12: </span> Arguments to <code>legend()</code></caption>
 <colgroup>
 <col width="15%" />
-<col width="75%" />
+<col width="84%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -890,11 +978,11 @@ Figure 11.14: Drawing function lines with curve()
 <tbody>
 <tr class="odd">
 <td align="left"><code>x, y</code></td>
-<td align="left">Coordinates of the legend - for example, <code>x = 0, y = 0</code> will put the text at the coordinates (0, 0). Alternatively, you can enter a string indicating where to put the legend (i.e.; <code>&quot;topright&quot;</code>, <code>&quot;topleft&quot;</code>). For example, <code>&quot;bottomright&quot;</code> will always put the legend at the bottom right corner of the plot.</td>
+<td align="left">Coordinates of the legend - for example, <code>x = 0, y = 0</code> will put the text at the coordinates (0, 0). Alternatively, you can enter a string indicating where to put the legend (i.e.; <code>"topright"</code>, <code>"topleft"</code>). For example, <code>"bottomright"</code> will always put the legend at the bottom right corner of the plot.</td>
 </tr>
 <tr class="even">
 <td align="left"><code>labels</code></td>
-<td align="left">A string vector specifying the text in the legend. For example, <code>legend = c(&quot;Males, &quot;Females&quot;)</code> will create two groups with names Males and Females.</td>
+<td align="left">A string vector specifying the text in the legend. For example, <code>legend = c("Males, "Females")</code> will create two groups with names Males and Females.</td>
 </tr>
 <tr class="odd">
 <td align="left"><code>pch, lty, lwd, col, pt.bg, ...</code></td>
@@ -903,73 +991,73 @@ Figure 11.14: Drawing function lines with curve()
 </tbody>
 </table>
 <p>The last low-level plotting function that we’ll go over in detail is <code>legend()</code> which adds a legend to a plot. For example, to add a legend to to bottom-right of an existing graph where data from females are plotted in blue circles and data from males are plotted in pink circles, you’d use the following code:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Add a legend to the bottom right of a plot</span>
-
-<span class="kw">legend</span>(<span class="st">&quot;bottomright&quot;</span>,                  <span class="co"># Put legend in bottom right of graph</span>
-       <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;Females&quot;</span>, <span class="st">&quot;Males&quot;</span>), <span class="co"># Names of groups</span>
-       <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;orange&quot;</span>),      <span class="co"># Colors of symbols</span>
-       <span class="dt">pch =</span> <span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">16</span>))                <span class="co"># Symbol types</span></code></pre></div>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="low-level-plotting-functions.html#cb330-1" tabindex="-1"></a><span class="co"># Add a legend to the bottom right of a plot</span></span>
+<span id="cb330-2"><a href="low-level-plotting-functions.html#cb330-2" tabindex="-1"></a></span>
+<span id="cb330-3"><a href="low-level-plotting-functions.html#cb330-3" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;bottomright&quot;</span>,                  <span class="co"># Put legend in bottom right of graph</span></span>
+<span id="cb330-4"><a href="low-level-plotting-functions.html#cb330-4" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Females&quot;</span>, <span class="st">&quot;Males&quot;</span>), <span class="co"># Names of groups</span></span>
+<span id="cb330-5"><a href="low-level-plotting-functions.html#cb330-5" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;orange&quot;</span>),      <span class="co"># Colors of symbols</span></span>
+<span id="cb330-6"><a href="low-level-plotting-functions.html#cb330-6" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">16</span>, <span class="dv">16</span>))                <span class="co"># Symbol types</span></span></code></pre></div>
 <p>In Figure <a href="low-level-plotting-functions.html#fig:legendexample">11.15</a> I use this code to add a legend to plot containing data from males and females:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create plot with data from females</span>
-<span class="kw">plot</span>(<span class="dt">x =</span> pirates<span class="op">$</span>age[pirates<span class="op">$</span>sex <span class="op">==</span><span class="st"> &quot;female&quot;</span>], 
-     <span class="dt">y =</span> pirates<span class="op">$</span>tattoos[pirates<span class="op">$</span>sex <span class="op">==</span><span class="st"> &quot;female&quot;</span>],
-     <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50</span>),
-     <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">20</span>),
-     <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">col =</span> yarrr<span class="op">::</span><span class="kw">transparent</span>(<span class="st">&quot;red&quot;</span>, .<span class="dv">7</span>),
-     <span class="dt">xlab =</span> <span class="st">&quot;Age&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Tattoos&quot;</span>, 
-     <span class="dt">main =</span> <span class="st">&quot;Adding a legend with legend()&quot;</span>)
-
-<span class="co"># Add data from males</span>
-<span class="kw">points</span>(<span class="dt">x =</span> pirates<span class="op">$</span>age[pirates<span class="op">$</span>sex <span class="op">==</span><span class="st"> &quot;male&quot;</span>], 
-       <span class="dt">y =</span> pirates<span class="op">$</span>tattoos[pirates<span class="op">$</span>sex <span class="op">==</span><span class="st"> &quot;male&quot;</span>],
-       <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">col =</span> yarrr<span class="op">::</span><span class="kw">transparent</span>(<span class="st">&quot;blue&quot;</span>, .<span class="dv">7</span>))
-
-<span class="co"># Add legend</span>
-<span class="kw">legend</span>(<span class="st">&quot;bottomright&quot;</span>,
-       <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;Females&quot;</span>, <span class="st">&quot;Males&quot;</span>),
-       <span class="dt">col =</span> <span class="kw">transparent</span>(<span class="kw">c</span>(<span class="st">&#39;red&#39;</span>, <span class="st">&#39;blue&#39;</span>), .<span class="dv">5</span>),
-       <span class="dt">pch =</span> <span class="kw">c</span>(<span class="dv">16</span>, <span class="dv">16</span>),
-       <span class="dt">bg =</span> <span class="st">&quot;white&quot;</span>)</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:legendexample"></span>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="low-level-plotting-functions.html#cb331-1" tabindex="-1"></a><span class="co"># Create plot with data from females</span></span>
+<span id="cb331-2"><a href="low-level-plotting-functions.html#cb331-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> pirates<span class="sc">$</span>age[pirates<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">&quot;female&quot;</span>], </span>
+<span id="cb331-3"><a href="low-level-plotting-functions.html#cb331-3" tabindex="-1"></a>     <span class="at">y =</span> pirates<span class="sc">$</span>tattoos[pirates<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">&quot;female&quot;</span>],</span>
+<span id="cb331-4"><a href="low-level-plotting-functions.html#cb331-4" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">50</span>),</span>
+<span id="cb331-5"><a href="low-level-plotting-functions.html#cb331-5" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">20</span>),</span>
+<span id="cb331-6"><a href="low-level-plotting-functions.html#cb331-6" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> yarrr<span class="sc">::</span><span class="fu">transparent</span>(<span class="st">&quot;red&quot;</span>, .<span class="dv">7</span>),</span>
+<span id="cb331-7"><a href="low-level-plotting-functions.html#cb331-7" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Age&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Tattoos&quot;</span>, </span>
+<span id="cb331-8"><a href="low-level-plotting-functions.html#cb331-8" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Adding a legend with legend()&quot;</span>)</span>
+<span id="cb331-9"><a href="low-level-plotting-functions.html#cb331-9" tabindex="-1"></a></span>
+<span id="cb331-10"><a href="low-level-plotting-functions.html#cb331-10" tabindex="-1"></a><span class="co"># Add data from males</span></span>
+<span id="cb331-11"><a href="low-level-plotting-functions.html#cb331-11" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> pirates<span class="sc">$</span>age[pirates<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">&quot;male&quot;</span>], </span>
+<span id="cb331-12"><a href="low-level-plotting-functions.html#cb331-12" tabindex="-1"></a>       <span class="at">y =</span> pirates<span class="sc">$</span>tattoos[pirates<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">&quot;male&quot;</span>],</span>
+<span id="cb331-13"><a href="low-level-plotting-functions.html#cb331-13" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> yarrr<span class="sc">::</span><span class="fu">transparent</span>(<span class="st">&quot;blue&quot;</span>, .<span class="dv">7</span>))</span>
+<span id="cb331-14"><a href="low-level-plotting-functions.html#cb331-14" tabindex="-1"></a></span>
+<span id="cb331-15"><a href="low-level-plotting-functions.html#cb331-15" tabindex="-1"></a><span class="co"># Add legend</span></span>
+<span id="cb331-16"><a href="low-level-plotting-functions.html#cb331-16" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;bottomright&quot;</span>,</span>
+<span id="cb331-17"><a href="low-level-plotting-functions.html#cb331-17" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Females&quot;</span>, <span class="st">&quot;Males&quot;</span>),</span>
+<span id="cb331-18"><a href="low-level-plotting-functions.html#cb331-18" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">transparent</span>(<span class="fu">c</span>(<span class="st">&#39;red&#39;</span>, <span class="st">&#39;blue&#39;</span>), .<span class="dv">5</span>),</span>
+<span id="cb331-19"><a href="low-level-plotting-functions.html#cb331-19" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">16</span>, <span class="dv">16</span>),</span>
+<span id="cb331-20"><a href="low-level-plotting-functions.html#cb331-20" tabindex="-1"></a>       <span class="at">bg =</span> <span class="st">&quot;white&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:legendexample"></span>
 <img src="YaRrr_files/figure-html/legendexample-1.png" alt="Adding a legend to a plot with legend()." width="672" />
 <p class="caption">
 Figure 11.15: Adding a legend to a plot with legend().
 </p>
 </div>
 <p>There are many more low-level plotting functions that can add additional elements to your plots. Here are some I use. To see examples of how to use each one, check out their associated help menus.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dv">1</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">100</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">100</span>),
-     <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">xaxt =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">yaxt =</span> <span class="st">&quot;n&quot;</span>,
-     <span class="dt">ylab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Adding simple figures to a plot&quot;</span>)
-
-<span class="kw">text</span>(<span class="dv">25</span>, <span class="dv">95</span>, <span class="dt">labels =</span> <span class="st">&quot;rect()&quot;</span>)
-<span class="kw">rect</span>(<span class="dt">xleft =</span> <span class="dv">10</span>, <span class="dt">ybottom =</span> <span class="dv">70</span>,
-     <span class="dt">xright =</span> <span class="dv">40</span>, <span class="dt">ytop =</span> <span class="dv">90</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&quot;coral&quot;</span>)
-
-<span class="kw">text</span>(<span class="dv">25</span>, <span class="dv">60</span>, <span class="dt">labels =</span> <span class="st">&quot;polygon()&quot;</span>)
-<span class="kw">polygon</span>(<span class="dt">x =</span> <span class="kw">runif</span>(<span class="dv">6</span>, <span class="dv">15</span>, <span class="dv">35</span>),
-        <span class="dt">y =</span> <span class="kw">runif</span>(<span class="dv">6</span>, <span class="dv">40</span>, <span class="dv">55</span>),
-        <span class="dt">col =</span> <span class="st">&quot;skyblue&quot;</span>)
-
-<span class="kw">text</span>(<span class="dv">25</span>, <span class="dv">30</span>, <span class="dt">labels =</span> <span class="st">&quot;segments()&quot;</span>)
-<span class="kw">segments</span>(<span class="dt">x0 =</span> <span class="kw">runif</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">40</span>),
-         <span class="dt">y0 =</span> <span class="kw">runif</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">25</span>),
-         <span class="dt">x1 =</span> <span class="kw">runif</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">40</span>),
-         <span class="dt">y1 =</span> <span class="kw">runif</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">25</span>), 
-         <span class="dt">lwd =</span> <span class="dv">2</span>)
-
-<span class="kw">text</span>(<span class="dv">75</span>, <span class="dv">95</span>, <span class="dt">labels =</span> <span class="st">&quot;symbols(circles)&quot;</span>)
-<span class="kw">symbols</span>(<span class="dt">x =</span> <span class="kw">runif</span>(<span class="dv">3</span>, <span class="dv">60</span>, <span class="dv">90</span>),
-        <span class="dt">y =</span> <span class="kw">runif</span>(<span class="dv">3</span>, <span class="dv">60</span>, <span class="dv">70</span>),
-        <span class="dt">circles =</span> <span class="kw">c</span>(<span class="dv">1</span>, .<span class="dv">1</span>, .<span class="dv">3</span>),
-        <span class="dt">add =</span> <span class="ot">TRUE</span>, <span class="dt">bg =</span> <span class="kw">gray</span>(.<span class="dv">5</span>, .<span class="dv">1</span>))
-
-<span class="kw">text</span>(<span class="dv">75</span>, <span class="dv">30</span>, <span class="dt">labels =</span> <span class="st">&quot;arrows()&quot;</span>)
-<span class="kw">arrows</span>(<span class="dt">x0 =</span> <span class="kw">runif</span>(<span class="dv">3</span>, <span class="dv">60</span>, <span class="dv">90</span>),
-       <span class="dt">y0 =</span> <span class="kw">runif</span>(<span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">25</span>),
-       <span class="dt">x1 =</span> <span class="kw">runif</span>(<span class="dv">3</span>, <span class="dv">60</span>, <span class="dv">90</span>),
-       <span class="dt">y1 =</span> <span class="kw">runif</span>(<span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">25</span>),
-       <span class="dt">length =</span> .<span class="dv">1</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:simplefigures"></span>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="low-level-plotting-functions.html#cb332-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">100</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">100</span>),</span>
+<span id="cb332-2"><a href="low-level-plotting-functions.html#cb332-2" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>, <span class="at">yaxt =</span> <span class="st">&quot;n&quot;</span>,</span>
+<span id="cb332-3"><a href="low-level-plotting-functions.html#cb332-3" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Adding simple figures to a plot&quot;</span>)</span>
+<span id="cb332-4"><a href="low-level-plotting-functions.html#cb332-4" tabindex="-1"></a></span>
+<span id="cb332-5"><a href="low-level-plotting-functions.html#cb332-5" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">25</span>, <span class="dv">95</span>, <span class="at">labels =</span> <span class="st">&quot;rect()&quot;</span>)</span>
+<span id="cb332-6"><a href="low-level-plotting-functions.html#cb332-6" tabindex="-1"></a><span class="fu">rect</span>(<span class="at">xleft =</span> <span class="dv">10</span>, <span class="at">ybottom =</span> <span class="dv">70</span>,</span>
+<span id="cb332-7"><a href="low-level-plotting-functions.html#cb332-7" tabindex="-1"></a>     <span class="at">xright =</span> <span class="dv">40</span>, <span class="at">ytop =</span> <span class="dv">90</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;coral&quot;</span>)</span>
+<span id="cb332-8"><a href="low-level-plotting-functions.html#cb332-8" tabindex="-1"></a></span>
+<span id="cb332-9"><a href="low-level-plotting-functions.html#cb332-9" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">25</span>, <span class="dv">60</span>, <span class="at">labels =</span> <span class="st">&quot;polygon()&quot;</span>)</span>
+<span id="cb332-10"><a href="low-level-plotting-functions.html#cb332-10" tabindex="-1"></a><span class="fu">polygon</span>(<span class="at">x =</span> <span class="fu">runif</span>(<span class="dv">6</span>, <span class="dv">15</span>, <span class="dv">35</span>),</span>
+<span id="cb332-11"><a href="low-level-plotting-functions.html#cb332-11" tabindex="-1"></a>        <span class="at">y =</span> <span class="fu">runif</span>(<span class="dv">6</span>, <span class="dv">40</span>, <span class="dv">55</span>),</span>
+<span id="cb332-12"><a href="low-level-plotting-functions.html#cb332-12" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">&quot;skyblue&quot;</span>)</span>
+<span id="cb332-13"><a href="low-level-plotting-functions.html#cb332-13" tabindex="-1"></a></span>
+<span id="cb332-14"><a href="low-level-plotting-functions.html#cb332-14" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">25</span>, <span class="dv">30</span>, <span class="at">labels =</span> <span class="st">&quot;segments()&quot;</span>)</span>
+<span id="cb332-15"><a href="low-level-plotting-functions.html#cb332-15" tabindex="-1"></a><span class="fu">segments</span>(<span class="at">x0 =</span> <span class="fu">runif</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">40</span>),</span>
+<span id="cb332-16"><a href="low-level-plotting-functions.html#cb332-16" tabindex="-1"></a>         <span class="at">y0 =</span> <span class="fu">runif</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">25</span>),</span>
+<span id="cb332-17"><a href="low-level-plotting-functions.html#cb332-17" tabindex="-1"></a>         <span class="at">x1 =</span> <span class="fu">runif</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">40</span>),</span>
+<span id="cb332-18"><a href="low-level-plotting-functions.html#cb332-18" tabindex="-1"></a>         <span class="at">y1 =</span> <span class="fu">runif</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">25</span>), </span>
+<span id="cb332-19"><a href="low-level-plotting-functions.html#cb332-19" tabindex="-1"></a>         <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb332-20"><a href="low-level-plotting-functions.html#cb332-20" tabindex="-1"></a></span>
+<span id="cb332-21"><a href="low-level-plotting-functions.html#cb332-21" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">75</span>, <span class="dv">95</span>, <span class="at">labels =</span> <span class="st">&quot;symbols(circles)&quot;</span>)</span>
+<span id="cb332-22"><a href="low-level-plotting-functions.html#cb332-22" tabindex="-1"></a><span class="fu">symbols</span>(<span class="at">x =</span> <span class="fu">runif</span>(<span class="dv">3</span>, <span class="dv">60</span>, <span class="dv">90</span>),</span>
+<span id="cb332-23"><a href="low-level-plotting-functions.html#cb332-23" tabindex="-1"></a>        <span class="at">y =</span> <span class="fu">runif</span>(<span class="dv">3</span>, <span class="dv">60</span>, <span class="dv">70</span>),</span>
+<span id="cb332-24"><a href="low-level-plotting-functions.html#cb332-24" tabindex="-1"></a>        <span class="at">circles =</span> <span class="fu">c</span>(<span class="dv">1</span>, .<span class="dv">1</span>, .<span class="dv">3</span>),</span>
+<span id="cb332-25"><a href="low-level-plotting-functions.html#cb332-25" tabindex="-1"></a>        <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">bg =</span> <span class="fu">gray</span>(.<span class="dv">5</span>, .<span class="dv">1</span>))</span>
+<span id="cb332-26"><a href="low-level-plotting-functions.html#cb332-26" tabindex="-1"></a></span>
+<span id="cb332-27"><a href="low-level-plotting-functions.html#cb332-27" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">75</span>, <span class="dv">30</span>, <span class="at">labels =</span> <span class="st">&quot;arrows()&quot;</span>)</span>
+<span id="cb332-28"><a href="low-level-plotting-functions.html#cb332-28" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0 =</span> <span class="fu">runif</span>(<span class="dv">3</span>, <span class="dv">60</span>, <span class="dv">90</span>),</span>
+<span id="cb332-29"><a href="low-level-plotting-functions.html#cb332-29" tabindex="-1"></a>       <span class="at">y0 =</span> <span class="fu">runif</span>(<span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">25</span>),</span>
+<span id="cb332-30"><a href="low-level-plotting-functions.html#cb332-30" tabindex="-1"></a>       <span class="at">x1 =</span> <span class="fu">runif</span>(<span class="dv">3</span>, <span class="dv">60</span>, <span class="dv">90</span>),</span>
+<span id="cb332-31"><a href="low-level-plotting-functions.html#cb332-31" tabindex="-1"></a>       <span class="at">y1 =</span> <span class="fu">runif</span>(<span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">25</span>),</span>
+<span id="cb332-32"><a href="low-level-plotting-functions.html#cb332-32" tabindex="-1"></a>       <span class="at">length =</span> .<span class="dv">1</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:simplefigures"></span>
 <img src="YaRrr_files/figure-html/simplefigures-1.png" alt="Additional figures one can add to a plot with rect(), polygon(), segments(), symbols(), and arrows()." width="672" />
 <p class="caption">
 Figure 11.16: Additional figures one can add to a plot with rect(), polygon(), segments(), symbols(), and arrows().
@@ -987,12 +1075,13 @@ Figure 11.16: Additional figures one can add to a plot with rect(), polygon(), s
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>
-<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="assets/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -1000,11 +1089,12 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
+"linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -1015,7 +1105,19 @@ gitbook.start({
 "link": "https://github.com/ndphillips/ThePiratesGuideToR/edit/master/11-plotting1.Rmd",
 "text": "Edit"
 },
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
 "download": ["YaRrr.pdf", "YaRrr.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 },
@@ -1031,9 +1133,12 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

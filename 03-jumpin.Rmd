@@ -79,7 +79,7 @@ Now, let's calculate statistics for different groups of pirates. For example, th
 
 ```{r}
 # Calculate the mean age, separately for each sex
-aggregate(formula = age ~ sex,
+aggregate(x = age ~ sex,
           data = pirates,
           FUN = mean)
 ```
@@ -167,6 +167,7 @@ Now, let's do some basic hypothesis tests. First, let's conduct a two-sample t-t
 t.test(formula = age ~ headband,
        data = pirates,
        alternative = 'two.sided')
+```
 
 With a p-value of 0.7259, we don't have sufficient evidence to say there is a difference in the mean age of pirates who wear headbands and those who do not.
 
