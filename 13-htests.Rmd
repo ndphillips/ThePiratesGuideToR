@@ -518,7 +518,7 @@ cor.test(formula = ~ age + parrots,
 
 The results look pretty much identical. In other words, the strength of the relationship between a pirate's age and the number of parrot's they've owned is pretty much the same for female pirates and pirates in general.
 
-## Chi-square: `chsq.test()`
+## Chi-square: `chisq.test()`
 
 
 Next, we'll cover chi-square tests. In a chi-square test test, we test whether or not there is a difference in the rates of outcomes on a nominal scale (like sex, eye color, first name etc.). The test statistic of a chi-square text is $\chi^2$ and can range from 0 to Infinity. The null-hypothesis of a chi-square test is that $\chi^2$ = 0 which means no relationship.
