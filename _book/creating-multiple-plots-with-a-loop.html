@@ -410,9 +410,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.2" data-path="t-test-t.html"><a href="t-test-t.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.2.2</b> 2-sample t-test</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="correlation-cor.html"><a href="correlation-cor.html"><i class="fa fa-check"></i><b>13.3</b> Correlation: <code>cor.test()</code></a></li>
-<li class="chapter" data-level="13.4" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chsq.test()</code></a>
+<li class="chapter" data-level="13.4" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chisq.test()</code></a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+<li class="chapter" data-level="13.4.1" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="test-your-r-might-3.html"><a href="test-your-r-might-3.html"><i class="fa fa-check"></i><b>13.5</b> Test your R might!</a></li>
 </ul></li>
@@ -517,32 +517,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="creating-multiple-plots-with-a-loop" class="section level2 hasAnchor" number="17.2">
 <h2><span class="header-section-number">17.2</span> Creating multiple plots with a loop<a href="creating-multiple-plots-with-a-loop.html#creating-multiple-plots-with-a-loop" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>One of the best uses of a loop is to create multiple graphs quickly and easily. Let’s use a loop to create 4 plots representing data from an exam containing 4 questions. The data are represented in a matrix with 100 rows (representing 100 different people), and 4 columns representing scores on the different questions. The data are stored in the <code>yarrr</code> package in an object called <code>examscores</code>. Here are how the first few rows of the data look</p>
-<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="creating-multiple-plots-with-a-loop.html#cb489-1" tabindex="-1"></a><span class="co"># First few rows of the examscores data</span></span>
-<span id="cb489-2"><a href="creating-multiple-plots-with-a-loop.html#cb489-2" tabindex="-1"></a><span class="fu">head</span>(examscores)</span>
-<span id="cb489-3"><a href="creating-multiple-plots-with-a-loop.html#cb489-3" tabindex="-1"></a><span class="do">##    a  b  c  d</span></span>
-<span id="cb489-4"><a href="creating-multiple-plots-with-a-loop.html#cb489-4" tabindex="-1"></a><span class="do">## 1 43 31 68 34</span></span>
-<span id="cb489-5"><a href="creating-multiple-plots-with-a-loop.html#cb489-5" tabindex="-1"></a><span class="do">## 2 61 27 56 39</span></span>
-<span id="cb489-6"><a href="creating-multiple-plots-with-a-loop.html#cb489-6" tabindex="-1"></a><span class="do">## 3 37 41 74 46</span></span>
-<span id="cb489-7"><a href="creating-multiple-plots-with-a-loop.html#cb489-7" tabindex="-1"></a><span class="do">## 4 54 36 62 41</span></span>
-<span id="cb489-8"><a href="creating-multiple-plots-with-a-loop.html#cb489-8" tabindex="-1"></a><span class="do">## 5 56 34 82 40</span></span>
-<span id="cb489-9"><a href="creating-multiple-plots-with-a-loop.html#cb489-9" tabindex="-1"></a><span class="do">## 6 73 29 79 35</span></span></code></pre></div>
+<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="creating-multiple-plots-with-a-loop.html#cb487-1" tabindex="-1"></a><span class="co"># First few rows of the examscores data</span></span>
+<span id="cb487-2"><a href="creating-multiple-plots-with-a-loop.html#cb487-2" tabindex="-1"></a><span class="fu">head</span>(examscores)</span>
+<span id="cb487-3"><a href="creating-multiple-plots-with-a-loop.html#cb487-3" tabindex="-1"></a><span class="do">##    a  b  c  d</span></span>
+<span id="cb487-4"><a href="creating-multiple-plots-with-a-loop.html#cb487-4" tabindex="-1"></a><span class="do">## 1 43 31 68 34</span></span>
+<span id="cb487-5"><a href="creating-multiple-plots-with-a-loop.html#cb487-5" tabindex="-1"></a><span class="do">## 2 61 27 56 39</span></span>
+<span id="cb487-6"><a href="creating-multiple-plots-with-a-loop.html#cb487-6" tabindex="-1"></a><span class="do">## 3 37 41 74 46</span></span>
+<span id="cb487-7"><a href="creating-multiple-plots-with-a-loop.html#cb487-7" tabindex="-1"></a><span class="do">## 4 54 36 62 41</span></span>
+<span id="cb487-8"><a href="creating-multiple-plots-with-a-loop.html#cb487-8" tabindex="-1"></a><span class="do">## 5 56 34 82 40</span></span>
+<span id="cb487-9"><a href="creating-multiple-plots-with-a-loop.html#cb487-9" tabindex="-1"></a><span class="do">## 6 73 29 79 35</span></span></code></pre></div>
 <p>Now, we’ll loop over the columns and create a histogram of the data in each column. First, I’ll set up a 2 x 2 plotting space with <code>par(mfrow())</code> (If you haven’t seen <code>par(mfrow())</code> before, just know that it allows you to put multiple plots side-by-side). Next, I’ll define the <code>loop object</code> as <code>i</code>, and the <code>loop vector</code> as the integers from 1 to 4 with <code>1:4</code>. In the <code>loop code</code>, I stored the data in column <code>i</code> as a new vector <code>x</code>. Finally, I created a histogram of the object <code>x</code>!</p>
-<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="creating-multiple-plots-with-a-loop.html#cb490-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))  <span class="co"># Set up a 2 x 2 plotting space</span></span>
-<span id="cb490-2"><a href="creating-multiple-plots-with-a-loop.html#cb490-2" tabindex="-1"></a></span>
-<span id="cb490-3"><a href="creating-multiple-plots-with-a-loop.html#cb490-3" tabindex="-1"></a><span class="co"># Create the loop.vector (all the columns)</span></span>
-<span id="cb490-4"><a href="creating-multiple-plots-with-a-loop.html#cb490-4" tabindex="-1"></a>loop.vector <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
-<span id="cb490-5"><a href="creating-multiple-plots-with-a-loop.html#cb490-5" tabindex="-1"></a></span>
-<span id="cb490-6"><a href="creating-multiple-plots-with-a-loop.html#cb490-6" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> loop.vector) { <span class="co"># Loop over loop.vector</span></span>
-<span id="cb490-7"><a href="creating-multiple-plots-with-a-loop.html#cb490-7" tabindex="-1"></a></span>
-<span id="cb490-8"><a href="creating-multiple-plots-with-a-loop.html#cb490-8" tabindex="-1"></a>  <span class="co"># store data in column.i as x</span></span>
-<span id="cb490-9"><a href="creating-multiple-plots-with-a-loop.html#cb490-9" tabindex="-1"></a>  x <span class="ot">&lt;-</span> examscores[,i]</span>
-<span id="cb490-10"><a href="creating-multiple-plots-with-a-loop.html#cb490-10" tabindex="-1"></a>  </span>
-<span id="cb490-11"><a href="creating-multiple-plots-with-a-loop.html#cb490-11" tabindex="-1"></a>  <span class="co"># Plot histogram of x</span></span>
-<span id="cb490-12"><a href="creating-multiple-plots-with-a-loop.html#cb490-12" tabindex="-1"></a>  <span class="fu">hist</span>(x,</span>
-<span id="cb490-13"><a href="creating-multiple-plots-with-a-loop.html#cb490-13" tabindex="-1"></a>       <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">&quot;Question&quot;</span>, i),</span>
-<span id="cb490-14"><a href="creating-multiple-plots-with-a-loop.html#cb490-14" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">&quot;Scores&quot;</span>,</span>
-<span id="cb490-15"><a href="creating-multiple-plots-with-a-loop.html#cb490-15" tabindex="-1"></a>       <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>))</span>
-<span id="cb490-16"><a href="creating-multiple-plots-with-a-loop.html#cb490-16" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="creating-multiple-plots-with-a-loop.html#cb488-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))  <span class="co"># Set up a 2 x 2 plotting space</span></span>
+<span id="cb488-2"><a href="creating-multiple-plots-with-a-loop.html#cb488-2" tabindex="-1"></a></span>
+<span id="cb488-3"><a href="creating-multiple-plots-with-a-loop.html#cb488-3" tabindex="-1"></a><span class="co"># Create the loop.vector (all the columns)</span></span>
+<span id="cb488-4"><a href="creating-multiple-plots-with-a-loop.html#cb488-4" tabindex="-1"></a>loop.vector <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
+<span id="cb488-5"><a href="creating-multiple-plots-with-a-loop.html#cb488-5" tabindex="-1"></a></span>
+<span id="cb488-6"><a href="creating-multiple-plots-with-a-loop.html#cb488-6" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> loop.vector) { <span class="co"># Loop over loop.vector</span></span>
+<span id="cb488-7"><a href="creating-multiple-plots-with-a-loop.html#cb488-7" tabindex="-1"></a></span>
+<span id="cb488-8"><a href="creating-multiple-plots-with-a-loop.html#cb488-8" tabindex="-1"></a>  <span class="co"># store data in column.i as x</span></span>
+<span id="cb488-9"><a href="creating-multiple-plots-with-a-loop.html#cb488-9" tabindex="-1"></a>  x <span class="ot">&lt;-</span> examscores[,i]</span>
+<span id="cb488-10"><a href="creating-multiple-plots-with-a-loop.html#cb488-10" tabindex="-1"></a>  </span>
+<span id="cb488-11"><a href="creating-multiple-plots-with-a-loop.html#cb488-11" tabindex="-1"></a>  <span class="co"># Plot histogram of x</span></span>
+<span id="cb488-12"><a href="creating-multiple-plots-with-a-loop.html#cb488-12" tabindex="-1"></a>  <span class="fu">hist</span>(x,</span>
+<span id="cb488-13"><a href="creating-multiple-plots-with-a-loop.html#cb488-13" tabindex="-1"></a>       <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">&quot;Question&quot;</span>, i),</span>
+<span id="cb488-14"><a href="creating-multiple-plots-with-a-loop.html#cb488-14" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">&quot;Scores&quot;</span>,</span>
+<span id="cb488-15"><a href="creating-multiple-plots-with-a-loop.html#cb488-15" tabindex="-1"></a>       <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>))</span>
+<span id="cb488-16"><a href="creating-multiple-plots-with-a-loop.html#cb488-16" tabindex="-1"></a>}</span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-476-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
             </section>

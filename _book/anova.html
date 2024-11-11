@@ -410,9 +410,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.2" data-path="t-test-t.html"><a href="t-test-t.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.2.2</b> 2-sample t-test</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="correlation-cor.html"><a href="correlation-cor.html"><i class="fa fa-check"></i><b>13.3</b> Correlation: <code>cor.test()</code></a></li>
-<li class="chapter" data-level="13.4" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chsq.test()</code></a>
+<li class="chapter" data-level="13.4" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chisq.test()</code></a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+<li class="chapter" data-level="13.4.1" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="test-your-r-might-3.html"><a href="test-your-r-might-3.html"><i class="fa fa-check"></i><b>13.5</b> Test your R might!</a></li>
 </ul></li>
@@ -527,24 +527,24 @@ Figure 14.1: Menage a trois wine – the perfect pairing for a 3-way ANOVA
 <p>Ok maybe it’s not yet, but we repeat it enough it will be and we can change the world.</p>
 <p>For example, let’s say you want to test how well each of three different cleaning fluids are at getting poop off of your poop deck.To test this, you could do the following: over the course of 300 cleaning days, you clean different areas of the deck with the three different cleaners. You then record how long it takes for each cleaner to clean its portion of the deck. At the same time, you could also measure how well the cleaner is cleaning two different types of poop that typically show up on your deck: shark and parrot. Here, your independent variables <em>cleaner</em> and <em>type</em> are factors, and your dependent variable <em>time</em> is numeric.</p>
 <p>Thankfully, this experiment has already been conducted. The data are recorded in a dataframe called <code>poopdeck</code> in the yarrr package. Here’s how the first few rows of the data look:</p>
-<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="anova.html#cb394-1" tabindex="-1"></a><span class="fu">head</span>(poopdeck)</span>
-<span id="cb394-2"><a href="anova.html#cb394-2" tabindex="-1"></a><span class="do">##   day cleaner   type time int.fit me.fit</span></span>
-<span id="cb394-3"><a href="anova.html#cb394-3" tabindex="-1"></a><span class="do">## 1   1       a parrot   47      46     54</span></span>
-<span id="cb394-4"><a href="anova.html#cb394-4" tabindex="-1"></a><span class="do">## 2   1       b parrot   55      54     54</span></span>
-<span id="cb394-5"><a href="anova.html#cb394-5" tabindex="-1"></a><span class="do">## 3   1       c parrot   64      56     47</span></span>
-<span id="cb394-6"><a href="anova.html#cb394-6" tabindex="-1"></a><span class="do">## 4   1       a  shark  101      86     78</span></span>
-<span id="cb394-7"><a href="anova.html#cb394-7" tabindex="-1"></a><span class="do">## 5   1       b  shark   76      77     77</span></span>
-<span id="cb394-8"><a href="anova.html#cb394-8" tabindex="-1"></a><span class="do">## 6   1       c  shark   63      62     71</span></span></code></pre></div>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="anova.html#cb392-1" tabindex="-1"></a><span class="fu">head</span>(poopdeck)</span>
+<span id="cb392-2"><a href="anova.html#cb392-2" tabindex="-1"></a><span class="do">##   day cleaner   type time</span></span>
+<span id="cb392-3"><a href="anova.html#cb392-3" tabindex="-1"></a><span class="do">## 1   1       a parrot   47</span></span>
+<span id="cb392-4"><a href="anova.html#cb392-4" tabindex="-1"></a><span class="do">## 2   1       b parrot   55</span></span>
+<span id="cb392-5"><a href="anova.html#cb392-5" tabindex="-1"></a><span class="do">## 3   1       c parrot   64</span></span>
+<span id="cb392-6"><a href="anova.html#cb392-6" tabindex="-1"></a><span class="do">## 4   1       a  shark  101</span></span>
+<span id="cb392-7"><a href="anova.html#cb392-7" tabindex="-1"></a><span class="do">## 5   1       b  shark   76</span></span>
+<span id="cb392-8"><a href="anova.html#cb392-8" tabindex="-1"></a><span class="do">## 6   1       c  shark   63</span></span></code></pre></div>
 <p>We can visualize the poopdeck data using (of course) a pirate plot:</p>
-<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="anova.html#cb395-1" tabindex="-1"></a><span class="fu">pirateplot</span>(<span class="at">formula =</span> time <span class="sc">~</span> cleaner <span class="sc">+</span> type,</span>
-<span id="cb395-2"><a href="anova.html#cb395-2" tabindex="-1"></a>           <span class="at">data =</span> poopdeck,</span>
-<span id="cb395-3"><a href="anova.html#cb395-3" tabindex="-1"></a>           <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">150</span>),</span>
-<span id="cb395-4"><a href="anova.html#cb395-4" tabindex="-1"></a>           <span class="at">xlab =</span> <span class="st">&quot;Cleaner&quot;</span>,</span>
-<span id="cb395-5"><a href="anova.html#cb395-5" tabindex="-1"></a>           <span class="at">ylab =</span> <span class="st">&quot;Cleaning Time (minutes)&quot;</span>,</span>
-<span id="cb395-6"><a href="anova.html#cb395-6" tabindex="-1"></a>           <span class="at">main =</span> <span class="st">&quot;poopdeck data&quot;</span>,</span>
-<span id="cb395-7"><a href="anova.html#cb395-7" tabindex="-1"></a>           <span class="at">back.col =</span> <span class="fu">gray</span>(.<span class="dv">97</span>), </span>
-<span id="cb395-8"><a href="anova.html#cb395-8" tabindex="-1"></a>           <span class="at">cap.beans =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb395-9"><a href="anova.html#cb395-9" tabindex="-1"></a>           <span class="at">theme =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="anova.html#cb393-1" tabindex="-1"></a><span class="fu">pirateplot</span>(<span class="at">formula =</span> time <span class="sc">~</span> cleaner <span class="sc">+</span> type,</span>
+<span id="cb393-2"><a href="anova.html#cb393-2" tabindex="-1"></a>           <span class="at">data =</span> poopdeck,</span>
+<span id="cb393-3"><a href="anova.html#cb393-3" tabindex="-1"></a>           <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">150</span>),</span>
+<span id="cb393-4"><a href="anova.html#cb393-4" tabindex="-1"></a>           <span class="at">xlab =</span> <span class="st">&quot;Cleaner&quot;</span>,</span>
+<span id="cb393-5"><a href="anova.html#cb393-5" tabindex="-1"></a>           <span class="at">ylab =</span> <span class="st">&quot;Cleaning Time (minutes)&quot;</span>,</span>
+<span id="cb393-6"><a href="anova.html#cb393-6" tabindex="-1"></a>           <span class="at">main =</span> <span class="st">&quot;poopdeck data&quot;</span>,</span>
+<span id="cb393-7"><a href="anova.html#cb393-7" tabindex="-1"></a>           <span class="at">back.col =</span> <span class="fu">gray</span>(.<span class="dv">97</span>), </span>
+<span id="cb393-8"><a href="anova.html#cb393-8" tabindex="-1"></a>           <span class="at">cap.beans =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb393-9"><a href="anova.html#cb393-9" tabindex="-1"></a>           <span class="at">theme =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-373-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Given this data, we can use ANOVAs to answer four separate questions:</p>
 <table>
@@ -588,16 +588,10 @@ Figure 14.1: Menage a trois wine – the perfect pairing for a 3-way ANOVA
 <p>For the rest of this chapter, I will refer to full-factorial between-subjects ANOVAs as `standard’ ANOVAs</p>
 <p>###What does ANOVA stand for?</p>
 <p>ANOVA stands for “Analysis of variance.” At first glance, this sounds like a strange name to give to a test that you use to find differences in <strong>means</strong>, not differences in <strong>variances</strong>. However, ANOVA actually uses variances to determine whether or not there are ‘real’ differences in the means of groups. Specifically, it looks at how variable data are <em>within</em> groups and compares that to the variability of data <em>between</em> groups. If the between-group variance is large compared to the within group variance, the ANOVA will conclude that the groups <em>do</em> differ in their means. If the between-group variance is small compared to the within group variance, the ANOVA will conclude that the groups are all the same. See Figure~<span class="math inline">\(\ref{fig:anovadiagram}\)</span> for a visual depiction of an ANOVA.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-374-1"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-374"></span>
 <img src="YaRrr_files/figure-html/unnamed-chunk-374-1.png" alt="How ANOVAs work. ANOVA compares the variability between groups (i.e.; the differences in the group means) to the variability within groups (i.e.; how much individuals generally differ from each other). If the variability between groups is small compared to the variability between groups, ANOVA will return a non-significant result -- suggesting that the groups are not really different. If the variability between groups is large compared to the variability within groups, ANOVA will return a significant result -- indicating that the groups are really different." width="576" />
 <p class="caption">
 Figure 14.2: How ANOVAs work. ANOVA compares the variability between groups (i.e.; the differences in the group means) to the variability within groups (i.e.; how much individuals generally differ from each other). If the variability between groups is small compared to the variability between groups, ANOVA will return a non-significant result – suggesting that the groups are not really different. If the variability between groups is large compared to the variability within groups, ANOVA will return a significant result – indicating that the groups are really different.
-</p>
-</div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-374-2"></span>
-<img src="YaRrr_files/figure-html/unnamed-chunk-374-2.png" alt="How ANOVAs work. ANOVA compares the variability between groups (i.e.; the differences in the group means) to the variability within groups (i.e.; how much individuals generally differ from each other). If the variability between groups is small compared to the variability between groups, ANOVA will return a non-significant result -- suggesting that the groups are not really different. If the variability between groups is large compared to the variability within groups, ANOVA will return a significant result -- indicating that the groups are really different." width="576" />
-<p class="caption">
-Figure 14.3: How ANOVAs work. ANOVA compares the variability between groups (i.e.; the differences in the group means) to the variability within groups (i.e.; how much individuals generally differ from each other). If the variability between groups is small compared to the variability between groups, ANOVA will return a non-significant result – suggesting that the groups are not really different. If the variability between groups is large compared to the variability within groups, ANOVA will return a significant result – indicating that the groups are really different.
 </p>
 </div>
 </div>

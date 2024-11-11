@@ -410,9 +410,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.2" data-path="t-test-t.html"><a href="t-test-t.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.2.2</b> 2-sample t-test</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="correlation-cor.html"><a href="correlation-cor.html"><i class="fa fa-check"></i><b>13.3</b> Correlation: <code>cor.test()</code></a></li>
-<li class="chapter" data-level="13.4" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chsq.test()</code></a>
+<li class="chapter" data-level="13.4" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chisq.test()</code></a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+<li class="chapter" data-level="13.4.1" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="test-your-r-might-3.html"><a href="test-your-r-might-3.html"><i class="fa fa-check"></i><b>13.5</b> Test your R might!</a></li>
 </ul></li>
@@ -549,34 +549,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <p>Histograms are the most common way to plot a vector of numeric data. To create a histogram we’ll use the <code>hist()</code> function. The main argument to <code>hist()</code> is a <code>x</code>, a vector of numeric data. If you want to specify how the histogram bins are created, you can use the <code>breaks</code> argument. To change the color of the border or background of the bins, use <code>col</code> and <code>border</code>:</p>
 <p>Let’s create a histogram of the weights in the ChickWeight dataset:</p>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="histogram-hist.html#cb301-1" tabindex="-1"></a><span class="fu">hist</span>(<span class="at">x =</span> ChickWeight<span class="sc">$</span>weight,</span>
-<span id="cb301-2"><a href="histogram-hist.html#cb301-2" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Chicken Weights&quot;</span>,</span>
-<span id="cb301-3"><a href="histogram-hist.html#cb301-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Weight&quot;</span>,</span>
-<span id="cb301-4"><a href="histogram-hist.html#cb301-4" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">500</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="histogram-hist.html#cb300-1" tabindex="-1"></a><span class="fu">hist</span>(<span class="at">x =</span> ChickWeight<span class="sc">$</span>weight,</span>
+<span id="cb300-2"><a href="histogram-hist.html#cb300-2" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Chicken Weights&quot;</span>,</span>
+<span id="cb300-3"><a href="histogram-hist.html#cb300-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Weight&quot;</span>,</span>
+<span id="cb300-4"><a href="histogram-hist.html#cb300-4" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">500</span>))</span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-282-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>We can get more fancy by adding additional arguments like <code>breaks = 20</code> to force there to be 20 bins, and <code>col = "papayawhip"</code> and <code>bg = "hotpink"</code> to make it a bit more colorful:</p>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="histogram-hist.html#cb302-1" tabindex="-1"></a><span class="fu">hist</span>(<span class="at">x =</span> ChickWeight<span class="sc">$</span>weight,</span>
-<span id="cb302-2"><a href="histogram-hist.html#cb302-2" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Fancy Chicken Weight Histogram&quot;</span>,</span>
-<span id="cb302-3"><a href="histogram-hist.html#cb302-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Weight&quot;</span>,</span>
-<span id="cb302-4"><a href="histogram-hist.html#cb302-4" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Frequency&quot;</span>,</span>
-<span id="cb302-5"><a href="histogram-hist.html#cb302-5" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">20</span>, <span class="co"># 20 Bins</span></span>
-<span id="cb302-6"><a href="histogram-hist.html#cb302-6" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">500</span>),</span>
-<span id="cb302-7"><a href="histogram-hist.html#cb302-7" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;papayawhip&quot;</span>, <span class="co"># Filling Color</span></span>
-<span id="cb302-8"><a href="histogram-hist.html#cb302-8" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;hotpink&quot;</span>) <span class="co"># Border Color</span></span></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="histogram-hist.html#cb301-1" tabindex="-1"></a><span class="fu">hist</span>(<span class="at">x =</span> ChickWeight<span class="sc">$</span>weight,</span>
+<span id="cb301-2"><a href="histogram-hist.html#cb301-2" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Fancy Chicken Weight Histogram&quot;</span>,</span>
+<span id="cb301-3"><a href="histogram-hist.html#cb301-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Weight&quot;</span>,</span>
+<span id="cb301-4"><a href="histogram-hist.html#cb301-4" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Frequency&quot;</span>,</span>
+<span id="cb301-5"><a href="histogram-hist.html#cb301-5" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">20</span>, <span class="co"># 20 Bins</span></span>
+<span id="cb301-6"><a href="histogram-hist.html#cb301-6" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">500</span>),</span>
+<span id="cb301-7"><a href="histogram-hist.html#cb301-7" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;papayawhip&quot;</span>, <span class="co"># Filling Color</span></span>
+<span id="cb301-8"><a href="histogram-hist.html#cb301-8" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;hotpink&quot;</span>) <span class="co"># Border Color</span></span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-283-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>If you want to plot two histograms on the same plot, for example, to show the distributions of two different groups, you can use the argument to the second plot.</p>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="histogram-hist.html#cb303-1" tabindex="-1"></a><span class="fu">hist</span>(<span class="at">x =</span> ChickWeight<span class="sc">$</span>weight[ChickWeight<span class="sc">$</span>Diet <span class="sc">==</span> <span class="dv">1</span>],</span>
-<span id="cb303-2"><a href="histogram-hist.html#cb303-2" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Two Histograms in one&quot;</span>,</span>
-<span id="cb303-3"><a href="histogram-hist.html#cb303-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Weight&quot;</span>,</span>
-<span id="cb303-4"><a href="histogram-hist.html#cb303-4" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Frequency&quot;</span>,</span>
-<span id="cb303-5"><a href="histogram-hist.html#cb303-5" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">20</span>,</span>
-<span id="cb303-6"><a href="histogram-hist.html#cb303-6" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">500</span>),</span>
-<span id="cb303-7"><a href="histogram-hist.html#cb303-7" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">gray</span>(<span class="dv">0</span>, .<span class="dv">5</span>))</span>
-<span id="cb303-8"><a href="histogram-hist.html#cb303-8" tabindex="-1"></a></span>
-<span id="cb303-9"><a href="histogram-hist.html#cb303-9" tabindex="-1"></a><span class="fu">hist</span>(<span class="at">x =</span> ChickWeight<span class="sc">$</span>weight[ChickWeight<span class="sc">$</span>Diet <span class="sc">==</span> <span class="dv">2</span>],</span>
-<span id="cb303-10"><a href="histogram-hist.html#cb303-10" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">30</span>,</span>
-<span id="cb303-11"><a href="histogram-hist.html#cb303-11" tabindex="-1"></a>     <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="co"># Add plot to previous one!</span></span>
-<span id="cb303-12"><a href="histogram-hist.html#cb303-12" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">gray</span>(<span class="dv">1</span>, .<span class="dv">8</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="histogram-hist.html#cb302-1" tabindex="-1"></a><span class="fu">hist</span>(<span class="at">x =</span> ChickWeight<span class="sc">$</span>weight[ChickWeight<span class="sc">$</span>Diet <span class="sc">==</span> <span class="dv">1</span>],</span>
+<span id="cb302-2"><a href="histogram-hist.html#cb302-2" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Two Histograms in one&quot;</span>,</span>
+<span id="cb302-3"><a href="histogram-hist.html#cb302-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Weight&quot;</span>,</span>
+<span id="cb302-4"><a href="histogram-hist.html#cb302-4" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Frequency&quot;</span>,</span>
+<span id="cb302-5"><a href="histogram-hist.html#cb302-5" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">20</span>,</span>
+<span id="cb302-6"><a href="histogram-hist.html#cb302-6" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">500</span>),</span>
+<span id="cb302-7"><a href="histogram-hist.html#cb302-7" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">gray</span>(<span class="dv">0</span>, .<span class="dv">5</span>))</span>
+<span id="cb302-8"><a href="histogram-hist.html#cb302-8" tabindex="-1"></a></span>
+<span id="cb302-9"><a href="histogram-hist.html#cb302-9" tabindex="-1"></a><span class="fu">hist</span>(<span class="at">x =</span> ChickWeight<span class="sc">$</span>weight[ChickWeight<span class="sc">$</span>Diet <span class="sc">==</span> <span class="dv">2</span>],</span>
+<span id="cb302-10"><a href="histogram-hist.html#cb302-10" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">30</span>,</span>
+<span id="cb302-11"><a href="histogram-hist.html#cb302-11" tabindex="-1"></a>     <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="co"># Add plot to previous one!</span></span>
+<span id="cb302-12"><a href="histogram-hist.html#cb302-12" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">gray</span>(<span class="dv">1</span>, .<span class="dv">8</span>))</span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-284-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
             </section>

@@ -410,9 +410,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.2" data-path="t-test-t.html"><a href="t-test-t.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.2.2</b> 2-sample t-test</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="correlation-cor.html"><a href="correlation-cor.html"><i class="fa fa-check"></i><b>13.3</b> Correlation: <code>cor.test()</code></a></li>
-<li class="chapter" data-level="13.4" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chsq.test()</code></a>
+<li class="chapter" data-level="13.4" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chisq.test()</code></a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+<li class="chapter" data-level="13.4.1" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="test-your-r-might-3.html"><a href="test-your-r-might-3.html"><i class="fa fa-check"></i><b>13.5</b> Test your R might!</a></li>
 </ul></li>
@@ -519,67 +519,68 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: decimal">
 <li>Create the vector [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] in three ways: once using <code>c()</code>, once using <code>a:b</code>, and once using <code>seq()</code>.</li>
 </ol>
-<div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb513-1"><a href="chapter-5-scalers-and-vectors.html#cb513-1" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>)</span>
-<span id="cb513-2"><a href="chapter-5-scalers-and-vectors.html#cb513-2" tabindex="-1"></a><span class="do">##  [1]  1  2  3  4  5  6  7  8  9 10</span></span></code></pre></div>
-<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="chapter-5-scalers-and-vectors.html#cb514-1" tabindex="-1"></a></span>
-<span id="cb514-2"><a href="chapter-5-scalers-and-vectors.html#cb514-2" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb514-3"><a href="chapter-5-scalers-and-vectors.html#cb514-3" tabindex="-1"></a><span class="do">##  [1]  1  2  3  4  5  6  7  8  9 10</span></span></code></pre></div>
-<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="chapter-5-scalers-and-vectors.html#cb515-1" tabindex="-1"></a></span>
-<span id="cb515-2"><a href="chapter-5-scalers-and-vectors.html#cb515-2" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">10</span>, <span class="at">by =</span> <span class="dv">1</span>)</span>
-<span id="cb515-3"><a href="chapter-5-scalers-and-vectors.html#cb515-3" tabindex="-1"></a><span class="do">##  [1]  1  2  3  4  5  6  7  8  9 10</span></span></code></pre></div>
+<div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb511-1"><a href="chapter-5-scalers-and-vectors.html#cb511-1" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>)</span>
+<span id="cb511-2"><a href="chapter-5-scalers-and-vectors.html#cb511-2" tabindex="-1"></a><span class="do">##  [1]  1  2  3  4  5  6  7  8  9 10</span></span></code></pre></div>
+<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="chapter-5-scalers-and-vectors.html#cb512-1" tabindex="-1"></a></span>
+<span id="cb512-2"><a href="chapter-5-scalers-and-vectors.html#cb512-2" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb512-3"><a href="chapter-5-scalers-and-vectors.html#cb512-3" tabindex="-1"></a><span class="do">##  [1]  1  2  3  4  5  6  7  8  9 10</span></span></code></pre></div>
+<div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb513-1"><a href="chapter-5-scalers-and-vectors.html#cb513-1" tabindex="-1"></a></span>
+<span id="cb513-2"><a href="chapter-5-scalers-and-vectors.html#cb513-2" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">10</span>, <span class="at">by =</span> <span class="dv">1</span>)</span>
+<span id="cb513-3"><a href="chapter-5-scalers-and-vectors.html#cb513-3" tabindex="-1"></a><span class="do">##  [1]  1  2  3  4  5  6  7  8  9 10</span></span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Create the vector [2.1, 4.1, 6.1, 8.1] in two ways, once using <code>c()</code> and once using <code>seq()</code></li>
 </ol>
-<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="chapter-5-scalers-and-vectors.html#cb516-1" tabindex="-1"></a></span>
-<span id="cb516-2"><a href="chapter-5-scalers-and-vectors.html#cb516-2" tabindex="-1"></a><span class="fu">c</span>(<span class="fl">2.1</span>, <span class="fl">6.1</span>, <span class="fl">6.1</span>, <span class="fl">8.1</span>)</span>
-<span id="cb516-3"><a href="chapter-5-scalers-and-vectors.html#cb516-3" tabindex="-1"></a><span class="do">## [1] 2.1 6.1 6.1 8.1</span></span></code></pre></div>
-<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="chapter-5-scalers-and-vectors.html#cb517-1" tabindex="-1"></a></span>
-<span id="cb517-2"><a href="chapter-5-scalers-and-vectors.html#cb517-2" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="fl">2.1</span>, <span class="at">to =</span> <span class="fl">8.1</span>, <span class="at">by =</span> <span class="dv">2</span>)</span>
-<span id="cb517-3"><a href="chapter-5-scalers-and-vectors.html#cb517-3" tabindex="-1"></a><span class="do">## [1] 2.1 4.1 6.1 8.1</span></span></code></pre></div>
+<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="chapter-5-scalers-and-vectors.html#cb514-1" tabindex="-1"></a></span>
+<span id="cb514-2"><a href="chapter-5-scalers-and-vectors.html#cb514-2" tabindex="-1"></a><span class="fu">c</span>(<span class="fl">2.1</span>, <span class="fl">6.1</span>, <span class="fl">6.1</span>, <span class="fl">8.1</span>)</span>
+<span id="cb514-3"><a href="chapter-5-scalers-and-vectors.html#cb514-3" tabindex="-1"></a><span class="do">## [1] 2.1 6.1 6.1 8.1</span></span></code></pre></div>
+<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="chapter-5-scalers-and-vectors.html#cb515-1" tabindex="-1"></a></span>
+<span id="cb515-2"><a href="chapter-5-scalers-and-vectors.html#cb515-2" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="fl">2.1</span>, <span class="at">to =</span> <span class="fl">8.1</span>, <span class="at">by =</span> <span class="dv">2</span>)</span>
+<span id="cb515-3"><a href="chapter-5-scalers-and-vectors.html#cb515-3" tabindex="-1"></a><span class="do">## [1] 2.1 4.1 6.1 8.1</span></span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>Create the vector [0, 5, 10, 15] in 3 ways: using <code>c()</code>, <code>seq()</code> with a <code>by</code> argument, and <code>seq()</code> with a <code>length.out</code> argument.</li>
 </ol>
-<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="chapter-5-scalers-and-vectors.html#cb518-1" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>)</span>
-<span id="cb518-2"><a href="chapter-5-scalers-and-vectors.html#cb518-2" tabindex="-1"></a><span class="do">## [1]  0  5 10 15</span></span></code></pre></div>
-<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="chapter-5-scalers-and-vectors.html#cb519-1" tabindex="-1"></a></span>
-<span id="cb519-2"><a href="chapter-5-scalers-and-vectors.html#cb519-2" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">15</span>, <span class="at">by =</span> <span class="dv">5</span>)</span>
-<span id="cb519-3"><a href="chapter-5-scalers-and-vectors.html#cb519-3" tabindex="-1"></a><span class="do">## [1]  0  5 10 15</span></span></code></pre></div>
-<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="chapter-5-scalers-and-vectors.html#cb520-1" tabindex="-1"></a></span>
-<span id="cb520-2"><a href="chapter-5-scalers-and-vectors.html#cb520-2" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">15</span>, <span class="at">length.out =</span> <span class="dv">4</span>)</span>
-<span id="cb520-3"><a href="chapter-5-scalers-and-vectors.html#cb520-3" tabindex="-1"></a><span class="do">## [1]  0  5 10 15</span></span></code></pre></div>
+<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="chapter-5-scalers-and-vectors.html#cb516-1" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>)</span>
+<span id="cb516-2"><a href="chapter-5-scalers-and-vectors.html#cb516-2" tabindex="-1"></a><span class="do">## [1]  0  5 10 15</span></span></code></pre></div>
+<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="chapter-5-scalers-and-vectors.html#cb517-1" tabindex="-1"></a></span>
+<span id="cb517-2"><a href="chapter-5-scalers-and-vectors.html#cb517-2" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">15</span>, <span class="at">by =</span> <span class="dv">5</span>)</span>
+<span id="cb517-3"><a href="chapter-5-scalers-and-vectors.html#cb517-3" tabindex="-1"></a><span class="do">## [1]  0  5 10 15</span></span></code></pre></div>
+<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="chapter-5-scalers-and-vectors.html#cb518-1" tabindex="-1"></a></span>
+<span id="cb518-2"><a href="chapter-5-scalers-and-vectors.html#cb518-2" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">15</span>, <span class="at">length.out =</span> <span class="dv">4</span>)</span>
+<span id="cb518-3"><a href="chapter-5-scalers-and-vectors.html#cb518-3" tabindex="-1"></a><span class="do">## [1]  0  5 10 15</span></span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li>Create the vector [101, 102, 103, 200, 205, 210, 1000, 1100, 1200] using a combination of the <code>c()</code> and <code>seq()</code> functions</li>
 </ol>
-<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="chapter-5-scalers-and-vectors.html#cb521-1" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">101</span>, <span class="at">to =</span> <span class="dv">103</span>, <span class="at">by =</span> <span class="dv">3</span>), </span>
-<span id="cb521-2"><a href="chapter-5-scalers-and-vectors.html#cb521-2" tabindex="-1"></a>  <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">200</span>, <span class="at">to =</span> <span class="dv">210</span>, <span class="at">by =</span> <span class="dv">5</span>), </span>
-<span id="cb521-3"><a href="chapter-5-scalers-and-vectors.html#cb521-3" tabindex="-1"></a>  <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1000</span>, <span class="at">to =</span> <span class="dv">1200</span>, <span class="at">by =</span> <span class="dv">100</span>))</span>
-<span id="cb521-4"><a href="chapter-5-scalers-and-vectors.html#cb521-4" tabindex="-1"></a><span class="do">## [1]  101  200  205  210 1000 1100 1200</span></span></code></pre></div>
+<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="chapter-5-scalers-and-vectors.html#cb519-1" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">101</span>, <span class="at">to =</span> <span class="dv">103</span>, <span class="at">by =</span> <span class="dv">3</span>), </span>
+<span id="cb519-2"><a href="chapter-5-scalers-and-vectors.html#cb519-2" tabindex="-1"></a>  <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">200</span>, <span class="at">to =</span> <span class="dv">210</span>, <span class="at">by =</span> <span class="dv">5</span>), </span>
+<span id="cb519-3"><a href="chapter-5-scalers-and-vectors.html#cb519-3" tabindex="-1"></a>  <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1000</span>, <span class="at">to =</span> <span class="dv">1200</span>, <span class="at">by =</span> <span class="dv">100</span>))</span>
+<span id="cb519-4"><a href="chapter-5-scalers-and-vectors.html#cb519-4" tabindex="-1"></a><span class="do">## [1]  101  200  205  210 1000 1100 1200</span></span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li>A new batch of 100 pirates are boarding your ship and need new swords. You have 10 scimitars, 40 broadswords, and 50 cutlasses that you need to distribute evenly to the 100 pirates as they board. Create a vector of length 100 where there is 1 scimitar, 4 broadswords, and 5 cutlasses in each group of 10. That is, in the first 10 elements there should be exactly 1 scimitar, 4 broadswords and 5 cutlasses. The next 10 elements should also have the same number of each sword (and so on).</li>
 </ol>
-<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="chapter-5-scalers-and-vectors.html#cb522-1" tabindex="-1"></a>swords <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;scimitar&quot;</span>, <span class="fu">rep</span>(<span class="st">&quot;broadswoard&quot;</span>, <span class="dv">4</span>), <span class="fu">rep</span>(<span class="st">&quot;cutlass&quot;</span>, <span class="dv">5</span>)), <span class="at">times =</span> <span class="dv">100</span>)</span>
-<span id="cb522-2"><a href="chapter-5-scalers-and-vectors.html#cb522-2" tabindex="-1"></a><span class="fu">head</span>(swords)</span>
-<span id="cb522-3"><a href="chapter-5-scalers-and-vectors.html#cb522-3" tabindex="-1"></a><span class="do">## [1] &quot;scimitar&quot;    &quot;broadswoard&quot; &quot;broadswoard&quot; &quot;broadswoard&quot; &quot;broadswoard&quot; &quot;cutlass&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="chapter-5-scalers-and-vectors.html#cb520-1" tabindex="-1"></a>swords <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;scimitar&quot;</span>, <span class="fu">rep</span>(<span class="st">&quot;broadswoard&quot;</span>, <span class="dv">4</span>), <span class="fu">rep</span>(<span class="st">&quot;cutlass&quot;</span>, <span class="dv">5</span>)), <span class="at">times =</span> <span class="dv">100</span>)</span>
+<span id="cb520-2"><a href="chapter-5-scalers-and-vectors.html#cb520-2" tabindex="-1"></a><span class="fu">head</span>(swords)</span>
+<span id="cb520-3"><a href="chapter-5-scalers-and-vectors.html#cb520-3" tabindex="-1"></a><span class="do">## [1] &quot;scimitar&quot;    &quot;broadswoard&quot; &quot;broadswoard&quot; &quot;broadswoard&quot; &quot;broadswoard&quot; &quot;cutlass&quot;</span></span></code></pre></div>
 <ol start="6" style="list-style-type: decimal">
 <li>Create a vector that repeats the integers from 1 to 5, 10 times. That is [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, …]. The length of the vector should be 50!</li>
 </ol>
-<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="chapter-5-scalers-and-vectors.html#cb523-1" tabindex="-1"></a><span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">times =</span> <span class="dv">10</span>)</span>
-<span id="cb523-2"><a href="chapter-5-scalers-and-vectors.html#cb523-2" tabindex="-1"></a><span class="do">##  [1] 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5</span></span></code></pre></div>
+<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="chapter-5-scalers-and-vectors.html#cb521-1" tabindex="-1"></a><span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">times =</span> <span class="dv">10</span>)</span>
+<span id="cb521-2"><a href="chapter-5-scalers-and-vectors.html#cb521-2" tabindex="-1"></a><span class="do">##  [1] 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5</span></span></code></pre></div>
 <ol start="7" style="list-style-type: decimal">
 <li>Now, create the same vector as before, but this time repeat 1, 10 times, then 2, 10 times, etc., That is [1, 1, 1, …, 2, 2, 2, …, … 5, 5, 5]. The length of the vector should also be 50</li>
 </ol>
-<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="chapter-5-scalers-and-vectors.html#cb524-1" tabindex="-1"></a><span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">each =</span> <span class="dv">10</span>)</span>
-<span id="cb524-2"><a href="chapter-5-scalers-and-vectors.html#cb524-2" tabindex="-1"></a><span class="do">##  [1] 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4 4 4 4 5 5 5 5 5 5 5 5 5 5</span></span></code></pre></div>
+<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="chapter-5-scalers-and-vectors.html#cb522-1" tabindex="-1"></a><span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">each =</span> <span class="dv">10</span>)</span>
+<span id="cb522-2"><a href="chapter-5-scalers-and-vectors.html#cb522-2" tabindex="-1"></a><span class="do">##  [1] 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3 4 4 4 4 4 4 4 4 4 4 5 5 5 5 5 5 5 5 5 5</span></span></code></pre></div>
 <ol start="8" style="list-style-type: decimal">
 <li>Create a vector containing 50 samples from a Normal distribution with a population mean of 20 and standard deviation of 2.</li>
 </ol>
-<div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb525-1"><a href="chapter-5-scalers-and-vectors.html#cb525-1" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">20</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
-<span id="cb525-2"><a href="chapter-5-scalers-and-vectors.html#cb525-2" tabindex="-1"></a><span class="do">##  [1] 18 22 23 17 22 22 17 22 20 21 22 23 24 21 22 23 23 20 21 18 21 23 18 20 17 19 19 20 22 23 20 18 18 21 21 19 22 23 24 20 19 17 19 24 16 21 22 18 18 23</span></span></code></pre></div>
+<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="chapter-5-scalers-and-vectors.html#cb523-1" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">20</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
+<span id="cb523-2"><a href="chapter-5-scalers-and-vectors.html#cb523-2" tabindex="-1"></a><span class="do">##  [1] 18 22 23 17 22 22 17 22 20 21 22 23 24 21 22 23 23 20 21 18 21 23 18 20 17 19 19 20 22 23 20 18 18 21 21 19 22 23 24 20 19 17</span></span>
+<span id="cb523-3"><a href="chapter-5-scalers-and-vectors.html#cb523-3" tabindex="-1"></a><span class="do">## [43] 19 24 16 21 22 18 18 23</span></span></code></pre></div>
 <ol start="9" style="list-style-type: decimal">
 <li>Create a vector containing 25 samples from a Uniform distribution with a lower bound of -100 and an upper bound of -50.</li>
 </ol>
-<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb526-1"><a href="chapter-5-scalers-and-vectors.html#cb526-1" tabindex="-1"></a><span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">25</span>, <span class="at">min =</span> <span class="sc">-</span><span class="dv">100</span>, <span class="at">max =</span> <span class="sc">-</span><span class="dv">50</span>)</span>
-<span id="cb526-2"><a href="chapter-5-scalers-and-vectors.html#cb526-2" tabindex="-1"></a><span class="do">##  [1]  -65 -100  -53  -63  -92  -78  -75  -60  -76  -69  -77  -76  -73  -75  -53  -60  -59  -96  -78  -61  -90  -77  -72  -91  -70</span></span></code></pre></div>
+<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="chapter-5-scalers-and-vectors.html#cb524-1" tabindex="-1"></a><span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">25</span>, <span class="at">min =</span> <span class="sc">-</span><span class="dv">100</span>, <span class="at">max =</span> <span class="sc">-</span><span class="dv">50</span>)</span>
+<span id="cb524-2"><a href="chapter-5-scalers-and-vectors.html#cb524-2" tabindex="-1"></a><span class="do">##  [1]  -65 -100  -53  -63  -92  -78  -75  -60  -76  -69  -77  -76  -73  -75  -53  -60  -59  -96  -78  -61  -90  -77  -72  -91  -70</span></span></code></pre></div>
 </div>
             </section>
 

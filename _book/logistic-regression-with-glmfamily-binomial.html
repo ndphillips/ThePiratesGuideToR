@@ -410,9 +410,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.2" data-path="t-test-t.html"><a href="t-test-t.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.2.2</b> 2-sample t-test</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="correlation-cor.html"><a href="correlation-cor.html"><i class="fa fa-check"></i><b>13.3</b> Correlation: <code>cor.test()</code></a></li>
-<li class="chapter" data-level="13.4" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chsq.test()</code></a>
+<li class="chapter" data-level="13.4" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chisq.test()</code></a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+<li class="chapter" data-level="13.4.1" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="test-your-r-might-3.html"><a href="test-your-r-might-3.html"><i class="fa fa-check"></i><b>13.5</b> Test your R might!</a></li>
 </ul></li>
@@ -524,78 +524,78 @@ Figure 15.3: The inverse logit function used in binary logistic regression to co
 </div>
 <p>The most common non-normal regression analysis is logistic regression, where your dependent variable is just 0s and 1. To do a logistic regression analysis with <code>glm()</code>, use the <code>family = binomial</code> argument.</p>
 <p>Let’s run a logistic regression on the diamonds dataset. First, I’ll create a binary variable called <code>value.g190</code> indicating whether the value of a diamond is greater than 190 or not. Then, I’ll conduct a logistic regression with our new binary variable as the dependent variable. We’ll set <code>family = "binomial"</code> to tell <code>glm()</code> that the dependent variable is binary.</p>
-<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="logistic-regression-with-glmfamily-binomial.html#cb436-1" tabindex="-1"></a><span class="co"># Create a binary variable indicating whether or not</span></span>
-<span id="cb436-2"><a href="logistic-regression-with-glmfamily-binomial.html#cb436-2" tabindex="-1"></a><span class="co">#   a diamond&#39;s value is greater than 190</span></span>
-<span id="cb436-3"><a href="logistic-regression-with-glmfamily-binomial.html#cb436-3" tabindex="-1"></a>diamonds<span class="sc">$</span>value.g190 <span class="ot">&lt;-</span> diamonds<span class="sc">$</span>value <span class="sc">&gt;</span> <span class="dv">190</span></span>
-<span id="cb436-4"><a href="logistic-regression-with-glmfamily-binomial.html#cb436-4" tabindex="-1"></a></span>
-<span id="cb436-5"><a href="logistic-regression-with-glmfamily-binomial.html#cb436-5" tabindex="-1"></a><span class="co"># Conduct a logistic regression on the new binary variable</span></span>
-<span id="cb436-6"><a href="logistic-regression-with-glmfamily-binomial.html#cb436-6" tabindex="-1"></a>diamond.glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(<span class="at">formula =</span> value.g190 <span class="sc">~</span> weight <span class="sc">+</span> clarity <span class="sc">+</span> color,</span>
-<span id="cb436-7"><a href="logistic-regression-with-glmfamily-binomial.html#cb436-7" tabindex="-1"></a>                   <span class="at">data =</span> diamonds,</span>
-<span id="cb436-8"><a href="logistic-regression-with-glmfamily-binomial.html#cb436-8" tabindex="-1"></a>                   <span class="at">family =</span> binomial)</span></code></pre></div>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="logistic-regression-with-glmfamily-binomial.html#cb434-1" tabindex="-1"></a><span class="co"># Create a binary variable indicating whether or not</span></span>
+<span id="cb434-2"><a href="logistic-regression-with-glmfamily-binomial.html#cb434-2" tabindex="-1"></a><span class="co">#   a diamond&#39;s value is greater than 190</span></span>
+<span id="cb434-3"><a href="logistic-regression-with-glmfamily-binomial.html#cb434-3" tabindex="-1"></a>diamonds<span class="sc">$</span>value.g190 <span class="ot">&lt;-</span> diamonds<span class="sc">$</span>value <span class="sc">&gt;</span> <span class="dv">190</span></span>
+<span id="cb434-4"><a href="logistic-regression-with-glmfamily-binomial.html#cb434-4" tabindex="-1"></a></span>
+<span id="cb434-5"><a href="logistic-regression-with-glmfamily-binomial.html#cb434-5" tabindex="-1"></a><span class="co"># Conduct a logistic regression on the new binary variable</span></span>
+<span id="cb434-6"><a href="logistic-regression-with-glmfamily-binomial.html#cb434-6" tabindex="-1"></a>diamond.glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(<span class="at">formula =</span> value.g190 <span class="sc">~</span> weight <span class="sc">+</span> clarity <span class="sc">+</span> color,</span>
+<span id="cb434-7"><a href="logistic-regression-with-glmfamily-binomial.html#cb434-7" tabindex="-1"></a>                   <span class="at">data =</span> diamonds,</span>
+<span id="cb434-8"><a href="logistic-regression-with-glmfamily-binomial.html#cb434-8" tabindex="-1"></a>                   <span class="at">family =</span> binomial)</span></code></pre></div>
 <p>Here are the resulting coefficients:</p>
-<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="logistic-regression-with-glmfamily-binomial.html#cb437-1" tabindex="-1"></a><span class="co"># Print coefficients from logistic regression</span></span>
-<span id="cb437-2"><a href="logistic-regression-with-glmfamily-binomial.html#cb437-2" tabindex="-1"></a><span class="fu">summary</span>(diamond.glm)<span class="sc">$</span>coefficients</span>
-<span id="cb437-3"><a href="logistic-regression-with-glmfamily-binomial.html#cb437-3" tabindex="-1"></a><span class="do">##             Estimate Std. Error z value  Pr(&gt;|z|)</span></span>
-<span id="cb437-4"><a href="logistic-regression-with-glmfamily-binomial.html#cb437-4" tabindex="-1"></a><span class="do">## (Intercept) -18.8009     3.4634  -5.428 5.686e-08</span></span>
-<span id="cb437-5"><a href="logistic-regression-with-glmfamily-binomial.html#cb437-5" tabindex="-1"></a><span class="do">## weight        1.1251     0.1968   5.716 1.088e-08</span></span>
-<span id="cb437-6"><a href="logistic-regression-with-glmfamily-binomial.html#cb437-6" tabindex="-1"></a><span class="do">## clarity       9.2910     1.9629   4.733 2.209e-06</span></span>
-<span id="cb437-7"><a href="logistic-regression-with-glmfamily-binomial.html#cb437-7" tabindex="-1"></a><span class="do">## color        -0.3836     0.2481  -1.547 1.220e-01</span></span></code></pre></div>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="logistic-regression-with-glmfamily-binomial.html#cb435-1" tabindex="-1"></a><span class="co"># Print coefficients from logistic regression</span></span>
+<span id="cb435-2"><a href="logistic-regression-with-glmfamily-binomial.html#cb435-2" tabindex="-1"></a><span class="fu">summary</span>(diamond.glm)<span class="sc">$</span>coefficients</span>
+<span id="cb435-3"><a href="logistic-regression-with-glmfamily-binomial.html#cb435-3" tabindex="-1"></a><span class="do">##             Estimate Std. Error z value  Pr(&gt;|z|)</span></span>
+<span id="cb435-4"><a href="logistic-regression-with-glmfamily-binomial.html#cb435-4" tabindex="-1"></a><span class="do">## (Intercept) -18.8009     3.4634  -5.428 5.686e-08</span></span>
+<span id="cb435-5"><a href="logistic-regression-with-glmfamily-binomial.html#cb435-5" tabindex="-1"></a><span class="do">## weight        1.1251     0.1968   5.716 1.088e-08</span></span>
+<span id="cb435-6"><a href="logistic-regression-with-glmfamily-binomial.html#cb435-6" tabindex="-1"></a><span class="do">## clarity       9.2910     1.9629   4.733 2.209e-06</span></span>
+<span id="cb435-7"><a href="logistic-regression-with-glmfamily-binomial.html#cb435-7" tabindex="-1"></a><span class="do">## color        -0.3836     0.2481  -1.547 1.220e-01</span></span></code></pre></div>
 <p>Just like with regular regression with <code>lm()</code>, we can get the fitted values from the model and put them back into our dataset to see how well the model fit the data:</p>
-<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="logistic-regression-with-glmfamily-binomial.html#cb438-1" tabindex="-1"></a><span class="co"># Add logistic fitted values back to dataframe as</span></span>
-<span id="cb438-2"><a href="logistic-regression-with-glmfamily-binomial.html#cb438-2" tabindex="-1"></a><span class="co">#  new column pred.g190</span></span>
-<span id="cb438-3"><a href="logistic-regression-with-glmfamily-binomial.html#cb438-3" tabindex="-1"></a>diamonds<span class="sc">$</span>pred.g190 <span class="ot">&lt;-</span> diamond.glm<span class="sc">$</span>fitted.values</span>
-<span id="cb438-4"><a href="logistic-regression-with-glmfamily-binomial.html#cb438-4" tabindex="-1"></a></span>
-<span id="cb438-5"><a href="logistic-regression-with-glmfamily-binomial.html#cb438-5" tabindex="-1"></a><span class="co"># Look at the first few rows (of the named columns)</span></span>
-<span id="cb438-6"><a href="logistic-regression-with-glmfamily-binomial.html#cb438-6" tabindex="-1"></a><span class="fu">head</span>(diamonds[<span class="fu">c</span>(<span class="st">&quot;weight&quot;</span>, <span class="st">&quot;clarity&quot;</span>, <span class="st">&quot;color&quot;</span>, <span class="st">&quot;value&quot;</span>, <span class="st">&quot;pred.g190&quot;</span>)])</span>
-<span id="cb438-7"><a href="logistic-regression-with-glmfamily-binomial.html#cb438-7" tabindex="-1"></a><span class="do">##   weight clarity color value pred.g190</span></span>
-<span id="cb438-8"><a href="logistic-regression-with-glmfamily-binomial.html#cb438-8" tabindex="-1"></a><span class="do">## 1   9.35    0.88     4 182.5   0.16252</span></span>
-<span id="cb438-9"><a href="logistic-regression-with-glmfamily-binomial.html#cb438-9" tabindex="-1"></a><span class="do">## 2  11.10    1.05     5 191.2   0.82130</span></span>
-<span id="cb438-10"><a href="logistic-regression-with-glmfamily-binomial.html#cb438-10" tabindex="-1"></a><span class="do">## 3   8.65    0.85     6 175.7   0.03008</span></span>
-<span id="cb438-11"><a href="logistic-regression-with-glmfamily-binomial.html#cb438-11" tabindex="-1"></a><span class="do">## 4  10.43    1.15     5 195.2   0.84559</span></span>
-<span id="cb438-12"><a href="logistic-regression-with-glmfamily-binomial.html#cb438-12" tabindex="-1"></a><span class="do">## 5  10.62    0.92     5 181.6   0.44455</span></span>
-<span id="cb438-13"><a href="logistic-regression-with-glmfamily-binomial.html#cb438-13" tabindex="-1"></a><span class="do">## 6  12.35    0.44     4 182.9   0.08688</span></span></code></pre></div>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="logistic-regression-with-glmfamily-binomial.html#cb436-1" tabindex="-1"></a><span class="co"># Add logistic fitted values back to dataframe as</span></span>
+<span id="cb436-2"><a href="logistic-regression-with-glmfamily-binomial.html#cb436-2" tabindex="-1"></a><span class="co">#  new column pred.g190</span></span>
+<span id="cb436-3"><a href="logistic-regression-with-glmfamily-binomial.html#cb436-3" tabindex="-1"></a>diamonds<span class="sc">$</span>pred.g190 <span class="ot">&lt;-</span> diamond.glm<span class="sc">$</span>fitted.values</span>
+<span id="cb436-4"><a href="logistic-regression-with-glmfamily-binomial.html#cb436-4" tabindex="-1"></a></span>
+<span id="cb436-5"><a href="logistic-regression-with-glmfamily-binomial.html#cb436-5" tabindex="-1"></a><span class="co"># Look at the first few rows (of the named columns)</span></span>
+<span id="cb436-6"><a href="logistic-regression-with-glmfamily-binomial.html#cb436-6" tabindex="-1"></a><span class="fu">head</span>(diamonds[<span class="fu">c</span>(<span class="st">&quot;weight&quot;</span>, <span class="st">&quot;clarity&quot;</span>, <span class="st">&quot;color&quot;</span>, <span class="st">&quot;value&quot;</span>, <span class="st">&quot;pred.g190&quot;</span>)])</span>
+<span id="cb436-7"><a href="logistic-regression-with-glmfamily-binomial.html#cb436-7" tabindex="-1"></a><span class="do">##   weight clarity color value pred.g190</span></span>
+<span id="cb436-8"><a href="logistic-regression-with-glmfamily-binomial.html#cb436-8" tabindex="-1"></a><span class="do">## 1   9.35    0.88     4 182.5   0.16252</span></span>
+<span id="cb436-9"><a href="logistic-regression-with-glmfamily-binomial.html#cb436-9" tabindex="-1"></a><span class="do">## 2  11.10    1.05     5 191.2   0.82130</span></span>
+<span id="cb436-10"><a href="logistic-regression-with-glmfamily-binomial.html#cb436-10" tabindex="-1"></a><span class="do">## 3   8.65    0.85     6 175.7   0.03008</span></span>
+<span id="cb436-11"><a href="logistic-regression-with-glmfamily-binomial.html#cb436-11" tabindex="-1"></a><span class="do">## 4  10.43    1.15     5 195.2   0.84559</span></span>
+<span id="cb436-12"><a href="logistic-regression-with-glmfamily-binomial.html#cb436-12" tabindex="-1"></a><span class="do">## 5  10.62    0.92     5 181.6   0.44455</span></span>
+<span id="cb436-13"><a href="logistic-regression-with-glmfamily-binomial.html#cb436-13" tabindex="-1"></a><span class="do">## 6  12.35    0.44     4 182.9   0.08688</span></span></code></pre></div>
 <p>Looking at the first few observations, it looks like the probabilities match the data pretty well. For example, the first diamond with a value of 182.5 had a fitted probability of just 0.16 of being valued greater than 190. In contrast, the second diamond, which had a value of 191.2 had a much higher fitted probability of 0.82.</p>
 <p>Just like we did with regular regression, you can use the <code>predict()</code> function along with the results of a <code>glm()</code> object to predict new data. Let’s use the <code>diamond.glm</code> object to predict the probability that the new diamonds will have a value greater than 190:</p>
-<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="logistic-regression-with-glmfamily-binomial.html#cb439-1" tabindex="-1"></a><span class="co"># Predict the &#39;probability&#39; that the 3 new diamonds </span></span>
-<span id="cb439-2"><a href="logistic-regression-with-glmfamily-binomial.html#cb439-2" tabindex="-1"></a><span class="co">#  will have a value greater than 190</span></span>
-<span id="cb439-3"><a href="logistic-regression-with-glmfamily-binomial.html#cb439-3" tabindex="-1"></a></span>
-<span id="cb439-4"><a href="logistic-regression-with-glmfamily-binomial.html#cb439-4" tabindex="-1"></a><span class="fu">predict</span>(<span class="at">object =</span> diamond.glm,</span>
-<span id="cb439-5"><a href="logistic-regression-with-glmfamily-binomial.html#cb439-5" tabindex="-1"></a>        <span class="at">newdata =</span> diamonds.new)</span>
-<span id="cb439-6"><a href="logistic-regression-with-glmfamily-binomial.html#cb439-6" tabindex="-1"></a><span class="do">##       1       2       3 </span></span>
-<span id="cb439-7"><a href="logistic-regression-with-glmfamily-binomial.html#cb439-7" tabindex="-1"></a><span class="do">##  4.8605 -3.5265 -0.3898</span></span></code></pre></div>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="logistic-regression-with-glmfamily-binomial.html#cb437-1" tabindex="-1"></a><span class="co"># Predict the &#39;probability&#39; that the 3 new diamonds </span></span>
+<span id="cb437-2"><a href="logistic-regression-with-glmfamily-binomial.html#cb437-2" tabindex="-1"></a><span class="co">#  will have a value greater than 190</span></span>
+<span id="cb437-3"><a href="logistic-regression-with-glmfamily-binomial.html#cb437-3" tabindex="-1"></a></span>
+<span id="cb437-4"><a href="logistic-regression-with-glmfamily-binomial.html#cb437-4" tabindex="-1"></a><span class="fu">predict</span>(<span class="at">object =</span> diamond.glm,</span>
+<span id="cb437-5"><a href="logistic-regression-with-glmfamily-binomial.html#cb437-5" tabindex="-1"></a>        <span class="at">newdata =</span> diamonds.new)</span>
+<span id="cb437-6"><a href="logistic-regression-with-glmfamily-binomial.html#cb437-6" tabindex="-1"></a><span class="do">##       1       2       3 </span></span>
+<span id="cb437-7"><a href="logistic-regression-with-glmfamily-binomial.html#cb437-7" tabindex="-1"></a><span class="do">##  4.8605 -3.5265 -0.3898</span></span></code></pre></div>
 <p>What the heck, these don’t look like probabilities! True, they’re not. They are <em>logit-transformed</em> probabilities. To turn them back into probabilities, we need to invert them by applying the inverse logit function:</p>
-<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="logistic-regression-with-glmfamily-binomial.html#cb440-1" tabindex="-1"></a><span class="co"># Get logit predictions of new diamonds</span></span>
-<span id="cb440-2"><a href="logistic-regression-with-glmfamily-binomial.html#cb440-2" tabindex="-1"></a>logit.predictions <span class="ot">&lt;-</span> <span class="fu">predict</span>(<span class="at">object =</span> diamond.glm,</span>
-<span id="cb440-3"><a href="logistic-regression-with-glmfamily-binomial.html#cb440-3" tabindex="-1"></a>                             <span class="at">newdata =</span> diamonds.new</span>
-<span id="cb440-4"><a href="logistic-regression-with-glmfamily-binomial.html#cb440-4" tabindex="-1"></a>                             )</span>
-<span id="cb440-5"><a href="logistic-regression-with-glmfamily-binomial.html#cb440-5" tabindex="-1"></a></span>
-<span id="cb440-6"><a href="logistic-regression-with-glmfamily-binomial.html#cb440-6" tabindex="-1"></a><span class="co"># Apply inverse logit to transform to probabilities</span></span>
-<span id="cb440-7"><a href="logistic-regression-with-glmfamily-binomial.html#cb440-7" tabindex="-1"></a><span class="co">#  (See Equation in the margin)</span></span>
-<span id="cb440-8"><a href="logistic-regression-with-glmfamily-binomial.html#cb440-8" tabindex="-1"></a>prob.predictions <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span>logit.predictions))</span>
-<span id="cb440-9"><a href="logistic-regression-with-glmfamily-binomial.html#cb440-9" tabindex="-1"></a></span>
-<span id="cb440-10"><a href="logistic-regression-with-glmfamily-binomial.html#cb440-10" tabindex="-1"></a><span class="co"># Print final predictions!</span></span>
-<span id="cb440-11"><a href="logistic-regression-with-glmfamily-binomial.html#cb440-11" tabindex="-1"></a>prob.predictions</span>
-<span id="cb440-12"><a href="logistic-regression-with-glmfamily-binomial.html#cb440-12" tabindex="-1"></a><span class="do">##       1       2       3 </span></span>
-<span id="cb440-13"><a href="logistic-regression-with-glmfamily-binomial.html#cb440-13" tabindex="-1"></a><span class="do">## 0.99231 0.02857 0.40376</span></span></code></pre></div>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="logistic-regression-with-glmfamily-binomial.html#cb438-1" tabindex="-1"></a><span class="co"># Get logit predictions of new diamonds</span></span>
+<span id="cb438-2"><a href="logistic-regression-with-glmfamily-binomial.html#cb438-2" tabindex="-1"></a>logit.predictions <span class="ot">&lt;-</span> <span class="fu">predict</span>(<span class="at">object =</span> diamond.glm,</span>
+<span id="cb438-3"><a href="logistic-regression-with-glmfamily-binomial.html#cb438-3" tabindex="-1"></a>                             <span class="at">newdata =</span> diamonds.new</span>
+<span id="cb438-4"><a href="logistic-regression-with-glmfamily-binomial.html#cb438-4" tabindex="-1"></a>                             )</span>
+<span id="cb438-5"><a href="logistic-regression-with-glmfamily-binomial.html#cb438-5" tabindex="-1"></a></span>
+<span id="cb438-6"><a href="logistic-regression-with-glmfamily-binomial.html#cb438-6" tabindex="-1"></a><span class="co"># Apply inverse logit to transform to probabilities</span></span>
+<span id="cb438-7"><a href="logistic-regression-with-glmfamily-binomial.html#cb438-7" tabindex="-1"></a><span class="co">#  (See Equation in the margin)</span></span>
+<span id="cb438-8"><a href="logistic-regression-with-glmfamily-binomial.html#cb438-8" tabindex="-1"></a>prob.predictions <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span>logit.predictions))</span>
+<span id="cb438-9"><a href="logistic-regression-with-glmfamily-binomial.html#cb438-9" tabindex="-1"></a></span>
+<span id="cb438-10"><a href="logistic-regression-with-glmfamily-binomial.html#cb438-10" tabindex="-1"></a><span class="co"># Print final predictions!</span></span>
+<span id="cb438-11"><a href="logistic-regression-with-glmfamily-binomial.html#cb438-11" tabindex="-1"></a>prob.predictions</span>
+<span id="cb438-12"><a href="logistic-regression-with-glmfamily-binomial.html#cb438-12" tabindex="-1"></a><span class="do">##       1       2       3 </span></span>
+<span id="cb438-13"><a href="logistic-regression-with-glmfamily-binomial.html#cb438-13" tabindex="-1"></a><span class="do">## 0.99231 0.02857 0.40376</span></span></code></pre></div>
 <p>So, the model predicts that the probability that the three new diamonds will be valued over 190 is 99.23%, 2.86%, and 40.38% respectively.</p>
 <div id="adding-a-regression-line-to-a-plot" class="section level3 hasAnchor" number="15.5.1">
 <h3><span class="header-section-number">15.5.1</span> Adding a regression line to a plot<a href="logistic-regression-with-glmfamily-binomial.html#adding-a-regression-line-to-a-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>You can easily add a regression line to a scatterplot. To do this, just put the regression object you created with as the main argument to . For example, the following code will create the scatterplot on the right (Figure~<span class="math inline">\(\ref{fig:scatterreg}\)</span>) showing the relationship between a diamond’s weight and its value including a red regression line:</p>
-<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="logistic-regression-with-glmfamily-binomial.html#cb441-1" tabindex="-1"></a><span class="co"># Scatterplot of diamond weight and value</span></span>
-<span id="cb441-2"><a href="logistic-regression-with-glmfamily-binomial.html#cb441-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> diamonds<span class="sc">$</span>weight,</span>
-<span id="cb441-3"><a href="logistic-regression-with-glmfamily-binomial.html#cb441-3" tabindex="-1"></a>     <span class="at">y =</span> diamonds<span class="sc">$</span>value,</span>
-<span id="cb441-4"><a href="logistic-regression-with-glmfamily-binomial.html#cb441-4" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Weight&quot;</span>,</span>
-<span id="cb441-5"><a href="logistic-regression-with-glmfamily-binomial.html#cb441-5" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Value&quot;</span>,</span>
-<span id="cb441-6"><a href="logistic-regression-with-glmfamily-binomial.html#cb441-6" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Adding a regression line with abline()&quot;</span></span>
-<span id="cb441-7"><a href="logistic-regression-with-glmfamily-binomial.html#cb441-7" tabindex="-1"></a>     )</span>
-<span id="cb441-8"><a href="logistic-regression-with-glmfamily-binomial.html#cb441-8" tabindex="-1"></a></span>
-<span id="cb441-9"><a href="logistic-regression-with-glmfamily-binomial.html#cb441-9" tabindex="-1"></a><span class="co"># Calculate regression model</span></span>
-<span id="cb441-10"><a href="logistic-regression-with-glmfamily-binomial.html#cb441-10" tabindex="-1"></a>diamonds.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> value <span class="sc">~</span> weight,</span>
-<span id="cb441-11"><a href="logistic-regression-with-glmfamily-binomial.html#cb441-11" tabindex="-1"></a>                  <span class="at">data =</span> diamonds)</span>
-<span id="cb441-12"><a href="logistic-regression-with-glmfamily-binomial.html#cb441-12" tabindex="-1"></a></span>
-<span id="cb441-13"><a href="logistic-regression-with-glmfamily-binomial.html#cb441-13" tabindex="-1"></a><span class="co"># Add regression line</span></span>
-<span id="cb441-14"><a href="logistic-regression-with-glmfamily-binomial.html#cb441-14" tabindex="-1"></a><span class="fu">abline</span>(diamonds.lm,</span>
-<span id="cb441-15"><a href="logistic-regression-with-glmfamily-binomial.html#cb441-15" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="logistic-regression-with-glmfamily-binomial.html#cb439-1" tabindex="-1"></a><span class="co"># Scatterplot of diamond weight and value</span></span>
+<span id="cb439-2"><a href="logistic-regression-with-glmfamily-binomial.html#cb439-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> diamonds<span class="sc">$</span>weight,</span>
+<span id="cb439-3"><a href="logistic-regression-with-glmfamily-binomial.html#cb439-3" tabindex="-1"></a>     <span class="at">y =</span> diamonds<span class="sc">$</span>value,</span>
+<span id="cb439-4"><a href="logistic-regression-with-glmfamily-binomial.html#cb439-4" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Weight&quot;</span>,</span>
+<span id="cb439-5"><a href="logistic-regression-with-glmfamily-binomial.html#cb439-5" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Value&quot;</span>,</span>
+<span id="cb439-6"><a href="logistic-regression-with-glmfamily-binomial.html#cb439-6" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Adding a regression line with abline()&quot;</span></span>
+<span id="cb439-7"><a href="logistic-regression-with-glmfamily-binomial.html#cb439-7" tabindex="-1"></a>     )</span>
+<span id="cb439-8"><a href="logistic-regression-with-glmfamily-binomial.html#cb439-8" tabindex="-1"></a></span>
+<span id="cb439-9"><a href="logistic-regression-with-glmfamily-binomial.html#cb439-9" tabindex="-1"></a><span class="co"># Calculate regression model</span></span>
+<span id="cb439-10"><a href="logistic-regression-with-glmfamily-binomial.html#cb439-10" tabindex="-1"></a>diamonds.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> value <span class="sc">~</span> weight,</span>
+<span id="cb439-11"><a href="logistic-regression-with-glmfamily-binomial.html#cb439-11" tabindex="-1"></a>                  <span class="at">data =</span> diamonds)</span>
+<span id="cb439-12"><a href="logistic-regression-with-glmfamily-binomial.html#cb439-12" tabindex="-1"></a></span>
+<span id="cb439-13"><a href="logistic-regression-with-glmfamily-binomial.html#cb439-13" tabindex="-1"></a><span class="co"># Add regression line</span></span>
+<span id="cb439-14"><a href="logistic-regression-with-glmfamily-binomial.html#cb439-14" tabindex="-1"></a><span class="fu">abline</span>(diamonds.lm,</span>
+<span id="cb439-15"><a href="logistic-regression-with-glmfamily-binomial.html#cb439-15" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:addrline"></span>
 <img src="YaRrr_files/figure-html/addrline-1.png" alt="Adding a regression line to a scatterplot using abline()" width="672" />
 <p class="caption">
@@ -605,10 +605,10 @@ Figure 15.4: Adding a regression line to a scatterplot using abline()
 </div>
 <div id="transforming-skewed-variables-prior-to-standard-regression" class="section level3 hasAnchor" number="15.5.2">
 <h3><span class="header-section-number">15.5.2</span> Transforming skewed variables prior to standard regression<a href="logistic-regression-with-glmfamily-binomial.html#transforming-skewed-variables-prior-to-standard-regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="logistic-regression-with-glmfamily-binomial.html#cb442-1" tabindex="-1"></a><span class="co"># The distribution of movie revenus is highly</span></span>
-<span id="cb442-2"><a href="logistic-regression-with-glmfamily-binomial.html#cb442-2" tabindex="-1"></a><span class="co">#  skewed.</span></span>
-<span id="cb442-3"><a href="logistic-regression-with-glmfamily-binomial.html#cb442-3" tabindex="-1"></a><span class="fu">hist</span>(movies<span class="sc">$</span>revenue.all, </span>
-<span id="cb442-4"><a href="logistic-regression-with-glmfamily-binomial.html#cb442-4" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Movie revenue</span><span class="sc">\n</span><span class="st">Before log-transformation&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="logistic-regression-with-glmfamily-binomial.html#cb440-1" tabindex="-1"></a><span class="co"># The distribution of movie revenus is highly</span></span>
+<span id="cb440-2"><a href="logistic-regression-with-glmfamily-binomial.html#cb440-2" tabindex="-1"></a><span class="co">#  skewed.</span></span>
+<span id="cb440-3"><a href="logistic-regression-with-glmfamily-binomial.html#cb440-3" tabindex="-1"></a><span class="fu">hist</span>(movies<span class="sc">$</span>revenue.all, </span>
+<span id="cb440-4"><a href="logistic-regression-with-glmfamily-binomial.html#cb440-4" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Movie revenue</span><span class="sc">\n</span><span class="st">Before log-transformation&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:moviedist"></span>
 <img src="YaRrr_files/figure-html/moviedist-1.png" alt="Distribution of movie revenues without a log-transformation" width="672" />
 <p class="caption">
@@ -618,14 +618,14 @@ Figure 15.5: Distribution of movie revenues without a log-transformation
 <p>If you have a highly skewed variable that you want to include in a regression analysis, you can do one of two things. Option 1 is to use the general linear model <code>glm()</code> with an appropriate family (like <code>family = "gamma"</code>). Option 2 is to do a standard regression analysis with <code>lm()</code>, but before doing so, transforming the variable into something less skewed. For highly skewed data, the most common transformation is a log-transformation.</p>
 <p>For example, look at the distribution of movie revenues in the movies dataset in the margin Figure <a href="logistic-regression-with-glmfamily-binomial.html#fig:moviedist">15.5</a>:</p>
 <p>As you can see, these data don’t look Normally distributed at all. There are a few movies (like Avatar) that just an obscene amount of money, and many movies that made much less. If we want to conduct a standard regression analysis on these data, we need to create a new log-transformed version of the variable. In the following code, I’ll create a new variable called <code>revenue.all.log</code> defined as the logarithm of <code>revenue.all</code></p>
-<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="logistic-regression-with-glmfamily-binomial.html#cb443-1" tabindex="-1"></a><span class="co"># Create a new log-transformed version of movie revenue</span></span>
-<span id="cb443-2"><a href="logistic-regression-with-glmfamily-binomial.html#cb443-2" tabindex="-1"></a>movies<span class="sc">$</span>revenue.all.log <span class="ot">&lt;-</span> <span class="fu">log</span>(movies<span class="sc">$</span>revenue.all)</span></code></pre></div>
+<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="logistic-regression-with-glmfamily-binomial.html#cb441-1" tabindex="-1"></a><span class="co"># Create a new log-transformed version of movie revenue</span></span>
+<span id="cb441-2"><a href="logistic-regression-with-glmfamily-binomial.html#cb441-2" tabindex="-1"></a>movies<span class="sc">$</span>revenue.all.log <span class="ot">&lt;-</span> <span class="fu">log</span>(movies<span class="sc">$</span>revenue.all)</span></code></pre></div>
 <p>In Figure <a href="logistic-regression-with-glmfamily-binomial.html#fig:loghist">15.6</a> you can see a histogram of the new log-transformed variable. It’s still skewed, but not nearly as badly as before, so I would be feel much better using this variable in a standard regression analysis with <code>lm()</code>.</p>
-<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="logistic-regression-with-glmfamily-binomial.html#cb444-1" tabindex="-1"></a><span class="co"># Distribution of log-transformed</span></span>
-<span id="cb444-2"><a href="logistic-regression-with-glmfamily-binomial.html#cb444-2" tabindex="-1"></a><span class="co">#  revenue is much less skewed</span></span>
-<span id="cb444-3"><a href="logistic-regression-with-glmfamily-binomial.html#cb444-3" tabindex="-1"></a></span>
-<span id="cb444-4"><a href="logistic-regression-with-glmfamily-binomial.html#cb444-4" tabindex="-1"></a><span class="fu">hist</span>(movies<span class="sc">$</span>revenue.all.log, </span>
-<span id="cb444-5"><a href="logistic-regression-with-glmfamily-binomial.html#cb444-5" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Log-transformed Movie revenue&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="logistic-regression-with-glmfamily-binomial.html#cb442-1" tabindex="-1"></a><span class="co"># Distribution of log-transformed</span></span>
+<span id="cb442-2"><a href="logistic-regression-with-glmfamily-binomial.html#cb442-2" tabindex="-1"></a><span class="co">#  revenue is much less skewed</span></span>
+<span id="cb442-3"><a href="logistic-regression-with-glmfamily-binomial.html#cb442-3" tabindex="-1"></a></span>
+<span id="cb442-4"><a href="logistic-regression-with-glmfamily-binomial.html#cb442-4" tabindex="-1"></a><span class="fu">hist</span>(movies<span class="sc">$</span>revenue.all.log, </span>
+<span id="cb442-5"><a href="logistic-regression-with-glmfamily-binomial.html#cb442-5" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Log-transformed Movie revenue&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:loghist"></span>
 <img src="YaRrr_files/figure-html/loghist-1.png" alt="Distribution of log-transformed movie revenues. It's still skewed, but not nearly as badly as before." width="672" />
 <p class="caption">

@@ -410,9 +410,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.2" data-path="t-test-t.html"><a href="t-test-t.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.2.2</b> 2-sample t-test</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="correlation-cor.html"><a href="correlation-cor.html"><i class="fa fa-check"></i><b>13.3</b> Correlation: <code>cor.test()</code></a></li>
-<li class="chapter" data-level="13.4" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chsq.test()</code></a>
+<li class="chapter" data-level="13.4" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chisq.test()</code></a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+<li class="chapter" data-level="13.4.1" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="test-your-r-might-3.html"><a href="test-your-r-might-3.html"><i class="fa fa-check"></i><b>13.5</b> Test your R might!</a></li>
 </ul></li>
@@ -591,22 +591,22 @@ Figure 11.5: The pirateplot(), an R pirate’s favorite plot!
 </table>
 <p>The two main arguments to <code>pirateplot()</code> are <code>formula</code> and <code>data</code>. In <code>formula</code>, you specify plotting variables in the form <code>y ~ x</code>, where <code>y</code> is the name of the dependent variable, and <code>x</code> is the name of the independent variable. In <code>data</code>, you specify the name of the dataframe object where the variables are stored.</p>
 <p>Let’s create a pirateplot of the ChickWeight data. I’ll set the dependent variable to <code>weight</code>, and the independent variable to <code>Time</code> using the argument <code>formula = weight ~ Time</code>:</p>
-<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="pirateplot.html#cb308-1" tabindex="-1"></a>yarrr<span class="sc">::</span><span class="fu">pirateplot</span>(<span class="at">formula =</span> weight <span class="sc">~</span> Time, <span class="co"># dv is weight, iv is Diet</span></span>
-<span id="cb308-2"><a href="pirateplot.html#cb308-2" tabindex="-1"></a>                   <span class="at">data =</span> ChickWeight,</span>
-<span id="cb308-3"><a href="pirateplot.html#cb308-3" tabindex="-1"></a>                   <span class="at">main =</span> <span class="st">&quot;Pirateplot of chicken weights&quot;</span>,</span>
-<span id="cb308-4"><a href="pirateplot.html#cb308-4" tabindex="-1"></a>                   <span class="at">xlab =</span> <span class="st">&quot;Diet&quot;</span>,</span>
-<span id="cb308-5"><a href="pirateplot.html#cb308-5" tabindex="-1"></a>                   <span class="at">ylab =</span> <span class="st">&quot;Weight&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="pirateplot.html#cb307-1" tabindex="-1"></a>yarrr<span class="sc">::</span><span class="fu">pirateplot</span>(<span class="at">formula =</span> weight <span class="sc">~</span> Time, <span class="co"># dv is weight, iv is Diet</span></span>
+<span id="cb307-2"><a href="pirateplot.html#cb307-2" tabindex="-1"></a>                   <span class="at">data =</span> ChickWeight,</span>
+<span id="cb307-3"><a href="pirateplot.html#cb307-3" tabindex="-1"></a>                   <span class="at">main =</span> <span class="st">&quot;Pirateplot of chicken weights&quot;</span>,</span>
+<span id="cb307-4"><a href="pirateplot.html#cb307-4" tabindex="-1"></a>                   <span class="at">xlab =</span> <span class="st">&quot;Diet&quot;</span>,</span>
+<span id="cb307-5"><a href="pirateplot.html#cb307-5" tabindex="-1"></a>                   <span class="at">ylab =</span> <span class="st">&quot;Weight&quot;</span>)</span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/chickpirateplot-1.png" width="768" style="display: block; margin: auto;" /></p>
 <div id="pirateplot-themes" class="section level3 hasAnchor" number="11.6.1">
 <h3><span class="header-section-number">11.6.1</span> Pirateplot themes<a href="pirateplot.html#pirateplot-themes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>There are many different pirateplot themes, these themes dictate the overall look of the plot. To specify a theme, just use the <code>theme = x</code> argument, where <code>x</code> is the theme number:</p>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-290-1.png" width="768" style="display: block; margin: auto;" /><img src="YaRrr_files/figure-html/unnamed-chunk-290-2.png" width="768" style="display: block; margin: auto;" /><img src="YaRrr_files/figure-html/unnamed-chunk-290-3.png" width="768" style="display: block; margin: auto;" /><img src="YaRrr_files/figure-html/unnamed-chunk-290-4.png" width="768" style="display: block; margin: auto;" /></p>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-290-1.png" width="768" style="display: block; margin: auto;" /></p>
 <p>For example, here is a pirateplot height data from the <code>pirates</code> dataframe using <code>theme = 3</code>. Here, I’ll plot pirates’ heights as a function of their sex and whether or not they wear a headband. I’ll also make the plot all grayscale by using the <code>pal = "gray"</code> argument:</p>
-<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="pirateplot.html#cb309-1" tabindex="-1"></a>yarrr<span class="sc">::</span><span class="fu">pirateplot</span>(<span class="at">formula =</span> height <span class="sc">~</span> sex <span class="sc">+</span> headband,    <span class="co"># DV = height, IV1 = sex, IV2 = headband</span></span>
-<span id="cb309-2"><a href="pirateplot.html#cb309-2" tabindex="-1"></a>                  <span class="at">data =</span> pirates,           </span>
-<span id="cb309-3"><a href="pirateplot.html#cb309-3" tabindex="-1"></a>                  <span class="at">theme =</span> <span class="dv">3</span>,</span>
-<span id="cb309-4"><a href="pirateplot.html#cb309-4" tabindex="-1"></a>                  <span class="at">main =</span> <span class="st">&quot;Pirate Heights&quot;</span>,</span>
-<span id="cb309-5"><a href="pirateplot.html#cb309-5" tabindex="-1"></a>                  <span class="at">pal =</span> <span class="st">&quot;gray&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="pirateplot.html#cb308-1" tabindex="-1"></a>yarrr<span class="sc">::</span><span class="fu">pirateplot</span>(<span class="at">formula =</span> height <span class="sc">~</span> sex <span class="sc">+</span> headband,    <span class="co"># DV = height, IV1 = sex, IV2 = headband</span></span>
+<span id="cb308-2"><a href="pirateplot.html#cb308-2" tabindex="-1"></a>                  <span class="at">data =</span> pirates,           </span>
+<span id="cb308-3"><a href="pirateplot.html#cb308-3" tabindex="-1"></a>                  <span class="at">theme =</span> <span class="dv">3</span>,</span>
+<span id="cb308-4"><a href="pirateplot.html#cb308-4" tabindex="-1"></a>                  <span class="at">main =</span> <span class="st">&quot;Pirate Heights&quot;</span>,</span>
+<span id="cb308-5"><a href="pirateplot.html#cb308-5" tabindex="-1"></a>                  <span class="at">pal =</span> <span class="st">&quot;gray&quot;</span>)</span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-291-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="customizing-pirateplots" class="section level3 hasAnchor" number="11.6.2">
@@ -650,51 +650,51 @@ Figure 11.5: The pirateplot(), an R pirate’s favorite plot!
 </tbody>
 </table>
 <p>For example, I could create the following pirateplots using <code>theme = 0</code> and specifying elements explicitly:</p>
-<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="pirateplot.html#cb310-1" tabindex="-1"></a><span class="fu">pirateplot</span>(<span class="at">formula =</span> weight <span class="sc">~</span> Time,</span>
-<span id="cb310-2"><a href="pirateplot.html#cb310-2" tabindex="-1"></a>           <span class="at">data =</span> ChickWeight,</span>
-<span id="cb310-3"><a href="pirateplot.html#cb310-3" tabindex="-1"></a>           <span class="at">theme =</span> <span class="dv">0</span>,</span>
-<span id="cb310-4"><a href="pirateplot.html#cb310-4" tabindex="-1"></a>           <span class="at">main =</span> <span class="st">&quot;Fully customized pirateplot&quot;</span>,</span>
-<span id="cb310-5"><a href="pirateplot.html#cb310-5" tabindex="-1"></a>           <span class="at">pal =</span> <span class="st">&quot;southpark&quot;</span>, <span class="co"># southpark color palette</span></span>
-<span id="cb310-6"><a href="pirateplot.html#cb310-6" tabindex="-1"></a>           <span class="at">bean.f.o =</span> .<span class="dv">6</span>, <span class="co"># Bean fill</span></span>
-<span id="cb310-7"><a href="pirateplot.html#cb310-7" tabindex="-1"></a>           <span class="at">point.o =</span> .<span class="dv">3</span>, <span class="co"># Points</span></span>
-<span id="cb310-8"><a href="pirateplot.html#cb310-8" tabindex="-1"></a>           <span class="at">inf.f.o =</span> .<span class="dv">7</span>, <span class="co"># Inference fill</span></span>
-<span id="cb310-9"><a href="pirateplot.html#cb310-9" tabindex="-1"></a>           <span class="at">inf.b.o =</span> .<span class="dv">8</span>, <span class="co"># Inference border</span></span>
-<span id="cb310-10"><a href="pirateplot.html#cb310-10" tabindex="-1"></a>           <span class="at">avg.line.o =</span> <span class="dv">1</span>, <span class="co"># Average line</span></span>
-<span id="cb310-11"><a href="pirateplot.html#cb310-11" tabindex="-1"></a>           <span class="at">bar.f.o =</span> .<span class="dv">5</span>, <span class="co"># Bar</span></span>
-<span id="cb310-12"><a href="pirateplot.html#cb310-12" tabindex="-1"></a>           <span class="at">inf.f.col =</span> <span class="st">&quot;white&quot;</span>, <span class="co"># Inf fill col</span></span>
-<span id="cb310-13"><a href="pirateplot.html#cb310-13" tabindex="-1"></a>           <span class="at">inf.b.col =</span> <span class="st">&quot;black&quot;</span>, <span class="co"># Inf border col</span></span>
-<span id="cb310-14"><a href="pirateplot.html#cb310-14" tabindex="-1"></a>           <span class="at">avg.line.col =</span> <span class="st">&quot;black&quot;</span>, <span class="co"># avg line col</span></span>
-<span id="cb310-15"><a href="pirateplot.html#cb310-15" tabindex="-1"></a>           <span class="at">bar.f.col =</span> <span class="fu">gray</span>(.<span class="dv">8</span>), <span class="co"># bar filling color</span></span>
-<span id="cb310-16"><a href="pirateplot.html#cb310-16" tabindex="-1"></a>           <span class="at">point.pch =</span> <span class="dv">21</span>,</span>
-<span id="cb310-17"><a href="pirateplot.html#cb310-17" tabindex="-1"></a>           <span class="at">point.bg =</span> <span class="st">&quot;white&quot;</span>,</span>
-<span id="cb310-18"><a href="pirateplot.html#cb310-18" tabindex="-1"></a>           <span class="at">point.col =</span> <span class="st">&quot;black&quot;</span>,</span>
-<span id="cb310-19"><a href="pirateplot.html#cb310-19" tabindex="-1"></a>           <span class="at">point.cex =</span> .<span class="dv">7</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="pirateplot.html#cb309-1" tabindex="-1"></a><span class="fu">pirateplot</span>(<span class="at">formula =</span> weight <span class="sc">~</span> Time,</span>
+<span id="cb309-2"><a href="pirateplot.html#cb309-2" tabindex="-1"></a>           <span class="at">data =</span> ChickWeight,</span>
+<span id="cb309-3"><a href="pirateplot.html#cb309-3" tabindex="-1"></a>           <span class="at">theme =</span> <span class="dv">0</span>,</span>
+<span id="cb309-4"><a href="pirateplot.html#cb309-4" tabindex="-1"></a>           <span class="at">main =</span> <span class="st">&quot;Fully customized pirateplot&quot;</span>,</span>
+<span id="cb309-5"><a href="pirateplot.html#cb309-5" tabindex="-1"></a>           <span class="at">pal =</span> <span class="st">&quot;southpark&quot;</span>, <span class="co"># southpark color palette</span></span>
+<span id="cb309-6"><a href="pirateplot.html#cb309-6" tabindex="-1"></a>           <span class="at">bean.f.o =</span> .<span class="dv">6</span>, <span class="co"># Bean fill</span></span>
+<span id="cb309-7"><a href="pirateplot.html#cb309-7" tabindex="-1"></a>           <span class="at">point.o =</span> .<span class="dv">3</span>, <span class="co"># Points</span></span>
+<span id="cb309-8"><a href="pirateplot.html#cb309-8" tabindex="-1"></a>           <span class="at">inf.f.o =</span> .<span class="dv">7</span>, <span class="co"># Inference fill</span></span>
+<span id="cb309-9"><a href="pirateplot.html#cb309-9" tabindex="-1"></a>           <span class="at">inf.b.o =</span> .<span class="dv">8</span>, <span class="co"># Inference border</span></span>
+<span id="cb309-10"><a href="pirateplot.html#cb309-10" tabindex="-1"></a>           <span class="at">avg.line.o =</span> <span class="dv">1</span>, <span class="co"># Average line</span></span>
+<span id="cb309-11"><a href="pirateplot.html#cb309-11" tabindex="-1"></a>           <span class="at">bar.f.o =</span> .<span class="dv">5</span>, <span class="co"># Bar</span></span>
+<span id="cb309-12"><a href="pirateplot.html#cb309-12" tabindex="-1"></a>           <span class="at">inf.f.col =</span> <span class="st">&quot;white&quot;</span>, <span class="co"># Inf fill col</span></span>
+<span id="cb309-13"><a href="pirateplot.html#cb309-13" tabindex="-1"></a>           <span class="at">inf.b.col =</span> <span class="st">&quot;black&quot;</span>, <span class="co"># Inf border col</span></span>
+<span id="cb309-14"><a href="pirateplot.html#cb309-14" tabindex="-1"></a>           <span class="at">avg.line.col =</span> <span class="st">&quot;black&quot;</span>, <span class="co"># avg line col</span></span>
+<span id="cb309-15"><a href="pirateplot.html#cb309-15" tabindex="-1"></a>           <span class="at">bar.f.col =</span> <span class="fu">gray</span>(.<span class="dv">8</span>), <span class="co"># bar filling color</span></span>
+<span id="cb309-16"><a href="pirateplot.html#cb309-16" tabindex="-1"></a>           <span class="at">point.pch =</span> <span class="dv">21</span>,</span>
+<span id="cb309-17"><a href="pirateplot.html#cb309-17" tabindex="-1"></a>           <span class="at">point.bg =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb309-18"><a href="pirateplot.html#cb309-18" tabindex="-1"></a>           <span class="at">point.col =</span> <span class="st">&quot;black&quot;</span>,</span>
+<span id="cb309-19"><a href="pirateplot.html#cb309-19" tabindex="-1"></a>           <span class="at">point.cex =</span> .<span class="dv">7</span>)</span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-293-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>If you don’t want to start from scratch, you can also start with a theme, and then make selective adjustments:</p>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="pirateplot.html#cb311-1" tabindex="-1"></a><span class="fu">pirateplot</span>(<span class="at">formula =</span> weight <span class="sc">~</span> Time,</span>
-<span id="cb311-2"><a href="pirateplot.html#cb311-2" tabindex="-1"></a>           <span class="at">data =</span> ChickWeight,</span>
-<span id="cb311-3"><a href="pirateplot.html#cb311-3" tabindex="-1"></a>           <span class="at">main =</span> <span class="st">&quot;Adjusting an existing theme&quot;</span>,</span>
-<span id="cb311-4"><a href="pirateplot.html#cb311-4" tabindex="-1"></a>           <span class="at">theme =</span> <span class="dv">2</span>,  <span class="co"># Start with theme 2</span></span>
-<span id="cb311-5"><a href="pirateplot.html#cb311-5" tabindex="-1"></a>           <span class="at">inf.f.o =</span> <span class="dv">0</span>, <span class="co"># Turn off inf fill</span></span>
-<span id="cb311-6"><a href="pirateplot.html#cb311-6" tabindex="-1"></a>           <span class="at">inf.b.o =</span> <span class="dv">0</span>, <span class="co"># Turn off inf border</span></span>
-<span id="cb311-7"><a href="pirateplot.html#cb311-7" tabindex="-1"></a>           <span class="at">point.o =</span> .<span class="dv">2</span>,   <span class="co"># Turn up points</span></span>
-<span id="cb311-8"><a href="pirateplot.html#cb311-8" tabindex="-1"></a>           <span class="at">bar.f.o =</span> .<span class="dv">5</span>, <span class="co"># Turn up bars</span></span>
-<span id="cb311-9"><a href="pirateplot.html#cb311-9" tabindex="-1"></a>           <span class="at">bean.f.o =</span> .<span class="dv">4</span>, <span class="co"># Light bean filling</span></span>
-<span id="cb311-10"><a href="pirateplot.html#cb311-10" tabindex="-1"></a>           <span class="at">bean.b.o =</span> .<span class="dv">2</span>, <span class="co"># Light bean border</span></span>
-<span id="cb311-11"><a href="pirateplot.html#cb311-11" tabindex="-1"></a>           <span class="at">avg.line.o =</span> <span class="dv">0</span>, <span class="co"># Turn off average line</span></span>
-<span id="cb311-12"><a href="pirateplot.html#cb311-12" tabindex="-1"></a>           <span class="at">point.col =</span> <span class="st">&quot;black&quot;</span>) <span class="co"># Black points</span></span></code></pre></div>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="pirateplot.html#cb310-1" tabindex="-1"></a><span class="fu">pirateplot</span>(<span class="at">formula =</span> weight <span class="sc">~</span> Time,</span>
+<span id="cb310-2"><a href="pirateplot.html#cb310-2" tabindex="-1"></a>           <span class="at">data =</span> ChickWeight,</span>
+<span id="cb310-3"><a href="pirateplot.html#cb310-3" tabindex="-1"></a>           <span class="at">main =</span> <span class="st">&quot;Adjusting an existing theme&quot;</span>,</span>
+<span id="cb310-4"><a href="pirateplot.html#cb310-4" tabindex="-1"></a>           <span class="at">theme =</span> <span class="dv">2</span>,  <span class="co"># Start with theme 2</span></span>
+<span id="cb310-5"><a href="pirateplot.html#cb310-5" tabindex="-1"></a>           <span class="at">inf.f.o =</span> <span class="dv">0</span>, <span class="co"># Turn off inf fill</span></span>
+<span id="cb310-6"><a href="pirateplot.html#cb310-6" tabindex="-1"></a>           <span class="at">inf.b.o =</span> <span class="dv">0</span>, <span class="co"># Turn off inf border</span></span>
+<span id="cb310-7"><a href="pirateplot.html#cb310-7" tabindex="-1"></a>           <span class="at">point.o =</span> .<span class="dv">2</span>,   <span class="co"># Turn up points</span></span>
+<span id="cb310-8"><a href="pirateplot.html#cb310-8" tabindex="-1"></a>           <span class="at">bar.f.o =</span> .<span class="dv">5</span>, <span class="co"># Turn up bars</span></span>
+<span id="cb310-9"><a href="pirateplot.html#cb310-9" tabindex="-1"></a>           <span class="at">bean.f.o =</span> .<span class="dv">4</span>, <span class="co"># Light bean filling</span></span>
+<span id="cb310-10"><a href="pirateplot.html#cb310-10" tabindex="-1"></a>           <span class="at">bean.b.o =</span> .<span class="dv">2</span>, <span class="co"># Light bean border</span></span>
+<span id="cb310-11"><a href="pirateplot.html#cb310-11" tabindex="-1"></a>           <span class="at">avg.line.o =</span> <span class="dv">0</span>, <span class="co"># Turn off average line</span></span>
+<span id="cb310-12"><a href="pirateplot.html#cb310-12" tabindex="-1"></a>           <span class="at">point.col =</span> <span class="st">&quot;black&quot;</span>) <span class="co"># Black points</span></span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-294-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Just to drive the point home, as a barplot is a special case of a pirateplot, you can even reduce a pirateplot into a horrible barplot:</p>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="pirateplot.html#cb312-1" tabindex="-1"></a><span class="co"># Reducing a pirateplot to a (at least colorful) barplot</span></span>
-<span id="cb312-2"><a href="pirateplot.html#cb312-2" tabindex="-1"></a><span class="fu">pirateplot</span>(<span class="at">formula =</span> weight <span class="sc">~</span> Diet,</span>
-<span id="cb312-3"><a href="pirateplot.html#cb312-3" tabindex="-1"></a>           <span class="at">data =</span> ChickWeight,</span>
-<span id="cb312-4"><a href="pirateplot.html#cb312-4" tabindex="-1"></a>           <span class="at">main =</span> <span class="st">&quot;Reducing a pirateplot to a (horrible) barplot&quot;</span>,</span>
-<span id="cb312-5"><a href="pirateplot.html#cb312-5" tabindex="-1"></a>           <span class="at">theme =</span> <span class="dv">0</span>,                                    <span class="co"># Start from scratch</span></span>
-<span id="cb312-6"><a href="pirateplot.html#cb312-6" tabindex="-1"></a>           <span class="at">pal =</span> <span class="st">&quot;black&quot;</span>,</span>
-<span id="cb312-7"><a href="pirateplot.html#cb312-7" tabindex="-1"></a>           <span class="at">inf.disp =</span> <span class="st">&quot;line&quot;</span>,                            <span class="co"># Use a line for inference</span></span>
-<span id="cb312-8"><a href="pirateplot.html#cb312-8" tabindex="-1"></a>           <span class="at">inf.f.o =</span> <span class="dv">1</span>,                                  <span class="co"># Turn up inference opacity</span></span>
-<span id="cb312-9"><a href="pirateplot.html#cb312-9" tabindex="-1"></a>           <span class="at">inf.f.col =</span> <span class="st">&quot;black&quot;</span>,                          <span class="co"># Set inference line color</span></span>
-<span id="cb312-10"><a href="pirateplot.html#cb312-10" tabindex="-1"></a>           <span class="at">bar.f.o =</span> .<span class="dv">3</span>)                                </span></code></pre></div>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="pirateplot.html#cb311-1" tabindex="-1"></a><span class="co"># Reducing a pirateplot to a (at least colorful) barplot</span></span>
+<span id="cb311-2"><a href="pirateplot.html#cb311-2" tabindex="-1"></a><span class="fu">pirateplot</span>(<span class="at">formula =</span> weight <span class="sc">~</span> Diet,</span>
+<span id="cb311-3"><a href="pirateplot.html#cb311-3" tabindex="-1"></a>           <span class="at">data =</span> ChickWeight,</span>
+<span id="cb311-4"><a href="pirateplot.html#cb311-4" tabindex="-1"></a>           <span class="at">main =</span> <span class="st">&quot;Reducing a pirateplot to a (horrible) barplot&quot;</span>,</span>
+<span id="cb311-5"><a href="pirateplot.html#cb311-5" tabindex="-1"></a>           <span class="at">theme =</span> <span class="dv">0</span>,                                    <span class="co"># Start from scratch</span></span>
+<span id="cb311-6"><a href="pirateplot.html#cb311-6" tabindex="-1"></a>           <span class="at">pal =</span> <span class="st">&quot;black&quot;</span>,</span>
+<span id="cb311-7"><a href="pirateplot.html#cb311-7" tabindex="-1"></a>           <span class="at">inf.disp =</span> <span class="st">&quot;line&quot;</span>,                            <span class="co"># Use a line for inference</span></span>
+<span id="cb311-8"><a href="pirateplot.html#cb311-8" tabindex="-1"></a>           <span class="at">inf.f.o =</span> <span class="dv">1</span>,                                  <span class="co"># Turn up inference opacity</span></span>
+<span id="cb311-9"><a href="pirateplot.html#cb311-9" tabindex="-1"></a>           <span class="at">inf.f.col =</span> <span class="st">&quot;black&quot;</span>,                          <span class="co"># Set inference line color</span></span>
+<span id="cb311-10"><a href="pirateplot.html#cb311-10" tabindex="-1"></a>           <span class="at">bar.f.o =</span> .<span class="dv">3</span>)                                </span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-295-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>There are many additional arguments to <code>pirateplot()</code> that you can use to complete customize the look of your plot. To see them all, look at the help menu with <code>?pirateplot</code> or look at the vignette at <a href=""></a></p>
 <table>
@@ -744,54 +744,54 @@ Figure 11.5: The pirateplot(), an R pirate’s favorite plot!
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="pirateplot.html#cb313-1" tabindex="-1"></a><span class="co"># Additional pirateplot customizations</span></span>
-<span id="cb313-2"><a href="pirateplot.html#cb313-2" tabindex="-1"></a><span class="fu">pirateplot</span>(<span class="at">formula =</span> weight <span class="sc">~</span> Diet, </span>
-<span id="cb313-3"><a href="pirateplot.html#cb313-3" tabindex="-1"></a>           <span class="at">data =</span> ChickWeight,</span>
-<span id="cb313-4"><a href="pirateplot.html#cb313-4" tabindex="-1"></a>           <span class="at">main =</span> <span class="st">&quot;Adding quantile lines and background colors&quot;</span>,</span>
-<span id="cb313-5"><a href="pirateplot.html#cb313-5" tabindex="-1"></a>           <span class="at">theme =</span> <span class="dv">2</span>,</span>
-<span id="cb313-6"><a href="pirateplot.html#cb313-6" tabindex="-1"></a>           <span class="at">cap.beans =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb313-7"><a href="pirateplot.html#cb313-7" tabindex="-1"></a>           <span class="at">back.col =</span> <span class="fu">transparent</span>(<span class="st">&quot;blue&quot;</span>, .<span class="dv">95</span>), <span class="co"># Add light blue background</span></span>
-<span id="cb313-8"><a href="pirateplot.html#cb313-8" tabindex="-1"></a>           <span class="at">gl.col =</span> <span class="st">&quot;gray&quot;</span>, <span class="co"># Gray gridlines</span></span>
-<span id="cb313-9"><a href="pirateplot.html#cb313-9" tabindex="-1"></a>           <span class="at">gl.lwd =</span> <span class="fu">c</span>(.<span class="dv">75</span>, <span class="dv">0</span>),</span>
-<span id="cb313-10"><a href="pirateplot.html#cb313-10" tabindex="-1"></a>           <span class="at">inf.f.o =</span> .<span class="dv">6</span>, <span class="co"># Turn up inf filling</span></span>
-<span id="cb313-11"><a href="pirateplot.html#cb313-11" tabindex="-1"></a>           <span class="at">inf.disp =</span> <span class="st">&quot;bean&quot;</span>, <span class="co"># Wrap inference around bean</span></span>
-<span id="cb313-12"><a href="pirateplot.html#cb313-12" tabindex="-1"></a>           <span class="at">bean.b.o =</span> .<span class="dv">4</span>, <span class="co"># Turn down bean borders</span></span>
-<span id="cb313-13"><a href="pirateplot.html#cb313-13" tabindex="-1"></a>           <span class="at">quant =</span> <span class="fu">c</span>(.<span class="dv">1</span>, .<span class="dv">9</span>), <span class="co"># 10th and 90th quantiles</span></span>
-<span id="cb313-14"><a href="pirateplot.html#cb313-14" tabindex="-1"></a>           <span class="at">quant.col =</span> <span class="st">&quot;black&quot;</span>) <span class="co"># Black quantile lines</span></span></code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="pirateplot.html#cb312-1" tabindex="-1"></a><span class="co"># Additional pirateplot customizations</span></span>
+<span id="cb312-2"><a href="pirateplot.html#cb312-2" tabindex="-1"></a><span class="fu">pirateplot</span>(<span class="at">formula =</span> weight <span class="sc">~</span> Diet, </span>
+<span id="cb312-3"><a href="pirateplot.html#cb312-3" tabindex="-1"></a>           <span class="at">data =</span> ChickWeight,</span>
+<span id="cb312-4"><a href="pirateplot.html#cb312-4" tabindex="-1"></a>           <span class="at">main =</span> <span class="st">&quot;Adding quantile lines and background colors&quot;</span>,</span>
+<span id="cb312-5"><a href="pirateplot.html#cb312-5" tabindex="-1"></a>           <span class="at">theme =</span> <span class="dv">2</span>,</span>
+<span id="cb312-6"><a href="pirateplot.html#cb312-6" tabindex="-1"></a>           <span class="at">cap.beans =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb312-7"><a href="pirateplot.html#cb312-7" tabindex="-1"></a>           <span class="at">back.col =</span> <span class="fu">transparent</span>(<span class="st">&quot;blue&quot;</span>, .<span class="dv">95</span>), <span class="co"># Add light blue background</span></span>
+<span id="cb312-8"><a href="pirateplot.html#cb312-8" tabindex="-1"></a>           <span class="at">gl.col =</span> <span class="st">&quot;gray&quot;</span>, <span class="co"># Gray gridlines</span></span>
+<span id="cb312-9"><a href="pirateplot.html#cb312-9" tabindex="-1"></a>           <span class="at">gl.lwd =</span> <span class="fu">c</span>(.<span class="dv">75</span>, <span class="dv">0</span>),</span>
+<span id="cb312-10"><a href="pirateplot.html#cb312-10" tabindex="-1"></a>           <span class="at">inf.f.o =</span> .<span class="dv">6</span>, <span class="co"># Turn up inf filling</span></span>
+<span id="cb312-11"><a href="pirateplot.html#cb312-11" tabindex="-1"></a>           <span class="at">inf.disp =</span> <span class="st">&quot;bean&quot;</span>, <span class="co"># Wrap inference around bean</span></span>
+<span id="cb312-12"><a href="pirateplot.html#cb312-12" tabindex="-1"></a>           <span class="at">bean.b.o =</span> .<span class="dv">4</span>, <span class="co"># Turn down bean borders</span></span>
+<span id="cb312-13"><a href="pirateplot.html#cb312-13" tabindex="-1"></a>           <span class="at">quant =</span> <span class="fu">c</span>(.<span class="dv">1</span>, .<span class="dv">9</span>), <span class="co"># 10th and 90th quantiles</span></span>
+<span id="cb312-14"><a href="pirateplot.html#cb312-14" tabindex="-1"></a>           <span class="at">quant.col =</span> <span class="st">&quot;black&quot;</span>) <span class="co"># Black quantile lines</span></span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-296-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="saving-output" class="section level3 hasAnchor" number="11.6.3">
 <h3><span class="header-section-number">11.6.3</span> Saving output<a href="pirateplot.html#saving-output" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If you include the <code>plot = FALSE</code> argument to a pirateplot, the function will return some values associated with each bean in the plot. In the next chunk, I’ll</p>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="pirateplot.html#cb314-1" tabindex="-1"></a><span class="co"># Create a pirateplot</span></span>
-<span id="cb314-2"><a href="pirateplot.html#cb314-2" tabindex="-1"></a><span class="fu">pirateplot</span>(<span class="at">formula =</span> tattoos <span class="sc">~</span> sex <span class="sc">+</span> headband,</span>
-<span id="cb314-3"><a href="pirateplot.html#cb314-3" tabindex="-1"></a>           <span class="at">data =</span> pirates)</span></code></pre></div>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="pirateplot.html#cb313-1" tabindex="-1"></a><span class="co"># Create a pirateplot</span></span>
+<span id="cb313-2"><a href="pirateplot.html#cb313-2" tabindex="-1"></a><span class="fu">pirateplot</span>(<span class="at">formula =</span> tattoos <span class="sc">~</span> sex <span class="sc">+</span> headband,</span>
+<span id="cb313-3"><a href="pirateplot.html#cb313-3" tabindex="-1"></a>           <span class="at">data =</span> pirates)</span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-297-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="pirateplot.html#cb315-1" tabindex="-1"></a></span>
-<span id="cb315-2"><a href="pirateplot.html#cb315-2" tabindex="-1"></a><span class="co"># Save data from the pirateplot to an object</span></span>
-<span id="cb315-3"><a href="pirateplot.html#cb315-3" tabindex="-1"></a>tattoos.pp <span class="ot">&lt;-</span> <span class="fu">pirateplot</span>(<span class="at">formula =</span> tattoos <span class="sc">~</span> sex <span class="sc">+</span> headband,</span>
-<span id="cb315-4"><a href="pirateplot.html#cb315-4" tabindex="-1"></a>                         <span class="at">data =</span> pirates,</span>
-<span id="cb315-5"><a href="pirateplot.html#cb315-5" tabindex="-1"></a>                         <span class="at">plot =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="pirateplot.html#cb314-1" tabindex="-1"></a></span>
+<span id="cb314-2"><a href="pirateplot.html#cb314-2" tabindex="-1"></a><span class="co"># Save data from the pirateplot to an object</span></span>
+<span id="cb314-3"><a href="pirateplot.html#cb314-3" tabindex="-1"></a>tattoos.pp <span class="ot">&lt;-</span> <span class="fu">pirateplot</span>(<span class="at">formula =</span> tattoos <span class="sc">~</span> sex <span class="sc">+</span> headband,</span>
+<span id="cb314-4"><a href="pirateplot.html#cb314-4" tabindex="-1"></a>                         <span class="at">data =</span> pirates,</span>
+<span id="cb314-5"><a href="pirateplot.html#cb314-5" tabindex="-1"></a>                         <span class="at">plot =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p>Now I can access the summary and inferential statistics from the plot in the <code>tattoos.pp</code> object. The most interesting element is <code>$summary</code> which shows summary statistics for each bean (aka, group):</p>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="pirateplot.html#cb316-1" tabindex="-1"></a><span class="co"># Show me statistics from groups in the pirateplot</span></span>
-<span id="cb316-2"><a href="pirateplot.html#cb316-2" tabindex="-1"></a>tattoos.pp</span>
-<span id="cb316-3"><a href="pirateplot.html#cb316-3" tabindex="-1"></a><span class="do">## $summary</span></span>
-<span id="cb316-4"><a href="pirateplot.html#cb316-4" tabindex="-1"></a><span class="do">##      sex headband bean.num   n  avg inf.lb inf.ub</span></span>
-<span id="cb316-5"><a href="pirateplot.html#cb316-5" tabindex="-1"></a><span class="do">## 1 female       no        1  55  5.0    4.3    5.5</span></span>
-<span id="cb316-6"><a href="pirateplot.html#cb316-6" tabindex="-1"></a><span class="do">## 2   male       no        2  47  4.3    3.2    5.0</span></span>
-<span id="cb316-7"><a href="pirateplot.html#cb316-7" tabindex="-1"></a><span class="do">## 3  other       no        3  11  5.3    2.5    7.2</span></span>
-<span id="cb316-8"><a href="pirateplot.html#cb316-8" tabindex="-1"></a><span class="do">## 4 female      yes        4 409 10.0    9.8   10.3</span></span>
-<span id="cb316-9"><a href="pirateplot.html#cb316-9" tabindex="-1"></a><span class="do">## 5   male      yes        5 443 10.0    9.7   10.3</span></span>
-<span id="cb316-10"><a href="pirateplot.html#cb316-10" tabindex="-1"></a><span class="do">## 6  other      yes        6  35 10.6    9.9   11.4</span></span>
-<span id="cb316-11"><a href="pirateplot.html#cb316-11" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb316-12"><a href="pirateplot.html#cb316-12" tabindex="-1"></a><span class="do">## $avg.line.fun</span></span>
-<span id="cb316-13"><a href="pirateplot.html#cb316-13" tabindex="-1"></a><span class="do">## [1] &quot;mean&quot;</span></span>
-<span id="cb316-14"><a href="pirateplot.html#cb316-14" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb316-15"><a href="pirateplot.html#cb316-15" tabindex="-1"></a><span class="do">## $inf.method</span></span>
-<span id="cb316-16"><a href="pirateplot.html#cb316-16" tabindex="-1"></a><span class="do">## [1] &quot;hdi&quot;</span></span>
-<span id="cb316-17"><a href="pirateplot.html#cb316-17" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb316-18"><a href="pirateplot.html#cb316-18" tabindex="-1"></a><span class="do">## $inf.p</span></span>
-<span id="cb316-19"><a href="pirateplot.html#cb316-19" tabindex="-1"></a><span class="do">## [1] 0.95</span></span></code></pre></div>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="pirateplot.html#cb315-1" tabindex="-1"></a><span class="co"># Show me statistics from groups in the pirateplot</span></span>
+<span id="cb315-2"><a href="pirateplot.html#cb315-2" tabindex="-1"></a>tattoos.pp</span>
+<span id="cb315-3"><a href="pirateplot.html#cb315-3" tabindex="-1"></a><span class="do">## $summary</span></span>
+<span id="cb315-4"><a href="pirateplot.html#cb315-4" tabindex="-1"></a><span class="do">##      sex headband bean.num   n  avg inf.lb inf.ub</span></span>
+<span id="cb315-5"><a href="pirateplot.html#cb315-5" tabindex="-1"></a><span class="do">## 1 female       no        1  55  5.0    4.3    5.5</span></span>
+<span id="cb315-6"><a href="pirateplot.html#cb315-6" tabindex="-1"></a><span class="do">## 2   male       no        2  47  4.3    3.2    5.0</span></span>
+<span id="cb315-7"><a href="pirateplot.html#cb315-7" tabindex="-1"></a><span class="do">## 3  other       no        3  11  5.3    2.5    7.2</span></span>
+<span id="cb315-8"><a href="pirateplot.html#cb315-8" tabindex="-1"></a><span class="do">## 4 female      yes        4 409 10.0    9.8   10.3</span></span>
+<span id="cb315-9"><a href="pirateplot.html#cb315-9" tabindex="-1"></a><span class="do">## 5   male      yes        5 443 10.0    9.7   10.3</span></span>
+<span id="cb315-10"><a href="pirateplot.html#cb315-10" tabindex="-1"></a><span class="do">## 6  other      yes        6  35 10.6    9.9   11.4</span></span>
+<span id="cb315-11"><a href="pirateplot.html#cb315-11" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb315-12"><a href="pirateplot.html#cb315-12" tabindex="-1"></a><span class="do">## $avg.line.fun</span></span>
+<span id="cb315-13"><a href="pirateplot.html#cb315-13" tabindex="-1"></a><span class="do">## [1] &quot;mean&quot;</span></span>
+<span id="cb315-14"><a href="pirateplot.html#cb315-14" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb315-15"><a href="pirateplot.html#cb315-15" tabindex="-1"></a><span class="do">## $inf.method</span></span>
+<span id="cb315-16"><a href="pirateplot.html#cb315-16" tabindex="-1"></a><span class="do">## [1] &quot;hdi&quot;</span></span>
+<span id="cb315-17"><a href="pirateplot.html#cb315-17" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb315-18"><a href="pirateplot.html#cb315-18" tabindex="-1"></a><span class="do">## $inf.p</span></span>
+<span id="cb315-19"><a href="pirateplot.html#cb315-19" tabindex="-1"></a><span class="do">## [1] 0.95</span></span></code></pre></div>
 <p>Once you’ve created a plot with a high-level plotting function, you can add additional elements with <em>low-level</em> functions. For example, you can add data points with <code>points()</code>, reference lines with <code>abline()</code>, text with <code>text()</code>, and legends with <code>legend()</code>.</p>
 </div>
 </div>

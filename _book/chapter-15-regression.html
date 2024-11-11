@@ -410,9 +410,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.2" data-path="t-test-t.html"><a href="t-test-t.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.2.2</b> 2-sample t-test</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="correlation-cor.html"><a href="correlation-cor.html"><i class="fa fa-check"></i><b>13.3</b> Correlation: <code>cor.test()</code></a></li>
-<li class="chapter" data-level="13.4" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chsq.test()</code></a>
+<li class="chapter" data-level="13.4" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chisq.test()</code></a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+<li class="chapter" data-level="13.4.1" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="test-your-r-might-3.html"><a href="test-your-r-might-3.html"><i class="fa fa-check"></i><b>13.5</b> Test your R might!</a></li>
 </ul></li>
@@ -520,129 +520,129 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: decimal">
 <li>The column jbb is the “Jack’s Blue Book” value of a ship. Create a regression object called <code>jbb.cannon.lm</code> predicting the JBB value of ships based on the number of cannons it has. Based on your result, how much value does each additional cannon bring to a ship?</li>
 </ol>
-<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb589-1"><a href="chapter-15-regression.html#cb589-1" tabindex="-1"></a><span class="fu">library</span>(yarrr)</span>
-<span id="cb589-2"><a href="chapter-15-regression.html#cb589-2" tabindex="-1"></a></span>
-<span id="cb589-3"><a href="chapter-15-regression.html#cb589-3" tabindex="-1"></a><span class="co"># jbb.cannon.lm model</span></span>
-<span id="cb589-4"><a href="chapter-15-regression.html#cb589-4" tabindex="-1"></a><span class="co"># DV = jbb, IV = cannons</span></span>
-<span id="cb589-5"><a href="chapter-15-regression.html#cb589-5" tabindex="-1"></a>jbb.cannon.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> jbb <span class="sc">~</span> cannons, </span>
-<span id="cb589-6"><a href="chapter-15-regression.html#cb589-6" tabindex="-1"></a>                    <span class="at">data =</span> auction)</span>
-<span id="cb589-7"><a href="chapter-15-regression.html#cb589-7" tabindex="-1"></a></span>
-<span id="cb589-8"><a href="chapter-15-regression.html#cb589-8" tabindex="-1"></a><span class="co"># Print jbb.cannon.lm coefficients</span></span>
-<span id="cb589-9"><a href="chapter-15-regression.html#cb589-9" tabindex="-1"></a><span class="fu">summary</span>(jbb.cannon.lm)<span class="sc">$</span>coefficients</span>
-<span id="cb589-10"><a href="chapter-15-regression.html#cb589-10" tabindex="-1"></a><span class="do">##             Estimate Std. Error t value Pr(&gt;|t|)</span></span>
-<span id="cb589-11"><a href="chapter-15-regression.html#cb589-11" tabindex="-1"></a><span class="do">## (Intercept)     1396         61      23  1.3e-94</span></span>
-<span id="cb589-12"><a href="chapter-15-regression.html#cb589-12" tabindex="-1"></a><span class="do">## cannons          101          3      34 1.9e-169</span></span></code></pre></div>
+<div class="sourceCode" id="cb587"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb587-1"><a href="chapter-15-regression.html#cb587-1" tabindex="-1"></a><span class="fu">library</span>(yarrr)</span>
+<span id="cb587-2"><a href="chapter-15-regression.html#cb587-2" tabindex="-1"></a></span>
+<span id="cb587-3"><a href="chapter-15-regression.html#cb587-3" tabindex="-1"></a><span class="co"># jbb.cannon.lm model</span></span>
+<span id="cb587-4"><a href="chapter-15-regression.html#cb587-4" tabindex="-1"></a><span class="co"># DV = jbb, IV = cannons</span></span>
+<span id="cb587-5"><a href="chapter-15-regression.html#cb587-5" tabindex="-1"></a>jbb.cannon.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> jbb <span class="sc">~</span> cannons, </span>
+<span id="cb587-6"><a href="chapter-15-regression.html#cb587-6" tabindex="-1"></a>                    <span class="at">data =</span> auction)</span>
+<span id="cb587-7"><a href="chapter-15-regression.html#cb587-7" tabindex="-1"></a></span>
+<span id="cb587-8"><a href="chapter-15-regression.html#cb587-8" tabindex="-1"></a><span class="co"># Print jbb.cannon.lm coefficients</span></span>
+<span id="cb587-9"><a href="chapter-15-regression.html#cb587-9" tabindex="-1"></a><span class="fu">summary</span>(jbb.cannon.lm)<span class="sc">$</span>coefficients</span>
+<span id="cb587-10"><a href="chapter-15-regression.html#cb587-10" tabindex="-1"></a><span class="do">##             Estimate Std. Error t value Pr(&gt;|t|)</span></span>
+<span id="cb587-11"><a href="chapter-15-regression.html#cb587-11" tabindex="-1"></a><span class="do">## (Intercept)     1396         61      23  1.3e-94</span></span>
+<span id="cb587-12"><a href="chapter-15-regression.html#cb587-12" tabindex="-1"></a><span class="do">## cannons          101          3      34 1.9e-169</span></span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Repeat your previous regression, but do two separate regressions: one on modern ships and one on classic ships. Is there relationship between cannons and JBB the same for both types of ships?</li>
 </ol>
-<div class="sourceCode" id="cb590"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb590-1"><a href="chapter-15-regression.html#cb590-1" tabindex="-1"></a><span class="co"># jbb.cannon.modern.lm  model</span></span>
-<span id="cb590-2"><a href="chapter-15-regression.html#cb590-2" tabindex="-1"></a><span class="co"># DV = jbb, IV = cannons. Only include modern ships</span></span>
-<span id="cb590-3"><a href="chapter-15-regression.html#cb590-3" tabindex="-1"></a>jbb.cannon.modern.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> jbb <span class="sc">~</span> cannons, </span>
-<span id="cb590-4"><a href="chapter-15-regression.html#cb590-4" tabindex="-1"></a>                          <span class="at">data =</span> <span class="fu">subset</span>(auction, style <span class="sc">==</span> <span class="st">&quot;modern&quot;</span>))</span>
-<span id="cb590-5"><a href="chapter-15-regression.html#cb590-5" tabindex="-1"></a></span>
-<span id="cb590-6"><a href="chapter-15-regression.html#cb590-6" tabindex="-1"></a><span class="co"># jbb.cannon.classic.lm model</span></span>
-<span id="cb590-7"><a href="chapter-15-regression.html#cb590-7" tabindex="-1"></a><span class="co"># DV = jbb, IV = cannons. Only include classic ships</span></span>
-<span id="cb590-8"><a href="chapter-15-regression.html#cb590-8" tabindex="-1"></a>jbb.cannon.classic.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> jbb <span class="sc">~</span> cannons, </span>
-<span id="cb590-9"><a href="chapter-15-regression.html#cb590-9" tabindex="-1"></a>                          <span class="at">data =</span> <span class="fu">subset</span>(auction, style <span class="sc">==</span> <span class="st">&quot;classic&quot;</span>))</span>
-<span id="cb590-10"><a href="chapter-15-regression.html#cb590-10" tabindex="-1"></a></span>
-<span id="cb590-11"><a href="chapter-15-regression.html#cb590-11" tabindex="-1"></a><span class="co"># Print jbb.cannon.modern.lm coefficients</span></span>
-<span id="cb590-12"><a href="chapter-15-regression.html#cb590-12" tabindex="-1"></a><span class="fu">summary</span>(jbb.cannon.modern.lm)<span class="sc">$</span>coefficients</span>
-<span id="cb590-13"><a href="chapter-15-regression.html#cb590-13" tabindex="-1"></a><span class="do">##             Estimate Std. Error t value Pr(&gt;|t|)</span></span>
-<span id="cb590-14"><a href="chapter-15-regression.html#cb590-14" tabindex="-1"></a><span class="do">## (Intercept)     1217       71.8      17  3.5e-51</span></span>
-<span id="cb590-15"><a href="chapter-15-regression.html#cb590-15" tabindex="-1"></a><span class="do">## cannons          100        3.5      29 3.1e-107</span></span></code></pre></div>
-<div class="sourceCode" id="cb591"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb591-1"><a href="chapter-15-regression.html#cb591-1" tabindex="-1"></a></span>
-<span id="cb591-2"><a href="chapter-15-regression.html#cb591-2" tabindex="-1"></a><span class="co"># Print jbb.cannon.classic.lm coefficients</span></span>
-<span id="cb591-3"><a href="chapter-15-regression.html#cb591-3" tabindex="-1"></a><span class="fu">summary</span>(jbb.cannon.classic.lm)<span class="sc">$</span>coefficients</span>
-<span id="cb591-4"><a href="chapter-15-regression.html#cb591-4" tabindex="-1"></a><span class="do">##             Estimate Std. Error t value Pr(&gt;|t|)</span></span>
-<span id="cb591-5"><a href="chapter-15-regression.html#cb591-5" tabindex="-1"></a><span class="do">## (Intercept)     1537       75.9      20  5.9e-67</span></span>
-<span id="cb591-6"><a href="chapter-15-regression.html#cb591-6" tabindex="-1"></a><span class="do">## cannons          104        3.7      28 2.0e-103</span></span></code></pre></div>
+<div class="sourceCode" id="cb588"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb588-1"><a href="chapter-15-regression.html#cb588-1" tabindex="-1"></a><span class="co"># jbb.cannon.modern.lm  model</span></span>
+<span id="cb588-2"><a href="chapter-15-regression.html#cb588-2" tabindex="-1"></a><span class="co"># DV = jbb, IV = cannons. Only include modern ships</span></span>
+<span id="cb588-3"><a href="chapter-15-regression.html#cb588-3" tabindex="-1"></a>jbb.cannon.modern.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> jbb <span class="sc">~</span> cannons, </span>
+<span id="cb588-4"><a href="chapter-15-regression.html#cb588-4" tabindex="-1"></a>                          <span class="at">data =</span> <span class="fu">subset</span>(auction, style <span class="sc">==</span> <span class="st">&quot;modern&quot;</span>))</span>
+<span id="cb588-5"><a href="chapter-15-regression.html#cb588-5" tabindex="-1"></a></span>
+<span id="cb588-6"><a href="chapter-15-regression.html#cb588-6" tabindex="-1"></a><span class="co"># jbb.cannon.classic.lm model</span></span>
+<span id="cb588-7"><a href="chapter-15-regression.html#cb588-7" tabindex="-1"></a><span class="co"># DV = jbb, IV = cannons. Only include classic ships</span></span>
+<span id="cb588-8"><a href="chapter-15-regression.html#cb588-8" tabindex="-1"></a>jbb.cannon.classic.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> jbb <span class="sc">~</span> cannons, </span>
+<span id="cb588-9"><a href="chapter-15-regression.html#cb588-9" tabindex="-1"></a>                          <span class="at">data =</span> <span class="fu">subset</span>(auction, style <span class="sc">==</span> <span class="st">&quot;classic&quot;</span>))</span>
+<span id="cb588-10"><a href="chapter-15-regression.html#cb588-10" tabindex="-1"></a></span>
+<span id="cb588-11"><a href="chapter-15-regression.html#cb588-11" tabindex="-1"></a><span class="co"># Print jbb.cannon.modern.lm coefficients</span></span>
+<span id="cb588-12"><a href="chapter-15-regression.html#cb588-12" tabindex="-1"></a><span class="fu">summary</span>(jbb.cannon.modern.lm)<span class="sc">$</span>coefficients</span>
+<span id="cb588-13"><a href="chapter-15-regression.html#cb588-13" tabindex="-1"></a><span class="do">##             Estimate Std. Error t value Pr(&gt;|t|)</span></span>
+<span id="cb588-14"><a href="chapter-15-regression.html#cb588-14" tabindex="-1"></a><span class="do">## (Intercept)     1217       71.8      17  3.5e-51</span></span>
+<span id="cb588-15"><a href="chapter-15-regression.html#cb588-15" tabindex="-1"></a><span class="do">## cannons          100        3.5      29 3.1e-107</span></span></code></pre></div>
+<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb589-1"><a href="chapter-15-regression.html#cb589-1" tabindex="-1"></a></span>
+<span id="cb589-2"><a href="chapter-15-regression.html#cb589-2" tabindex="-1"></a><span class="co"># Print jbb.cannon.classic.lm coefficients</span></span>
+<span id="cb589-3"><a href="chapter-15-regression.html#cb589-3" tabindex="-1"></a><span class="fu">summary</span>(jbb.cannon.classic.lm)<span class="sc">$</span>coefficients</span>
+<span id="cb589-4"><a href="chapter-15-regression.html#cb589-4" tabindex="-1"></a><span class="do">##             Estimate Std. Error t value Pr(&gt;|t|)</span></span>
+<span id="cb589-5"><a href="chapter-15-regression.html#cb589-5" tabindex="-1"></a><span class="do">## (Intercept)     1537       75.9      20  5.9e-67</span></span>
+<span id="cb589-6"><a href="chapter-15-regression.html#cb589-6" tabindex="-1"></a><span class="do">## cannons          104        3.7      28 2.0e-103</span></span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>Is there a significant interaction between a ship’s style and its age on its JBB value? If so, how do you interpret the interaction?</li>
 </ol>
-<div class="sourceCode" id="cb592"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb592-1"><a href="chapter-15-regression.html#cb592-1" tabindex="-1"></a><span class="co"># int.lm model</span></span>
-<span id="cb592-2"><a href="chapter-15-regression.html#cb592-2" tabindex="-1"></a><span class="co"># DV = jbb, IV = interaction between style and age</span></span>
-<span id="cb592-3"><a href="chapter-15-regression.html#cb592-3" tabindex="-1"></a>int.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> jbb <span class="sc">~</span> style <span class="sc">*</span> age,</span>
-<span id="cb592-4"><a href="chapter-15-regression.html#cb592-4" tabindex="-1"></a>             <span class="at">data =</span> auction</span>
-<span id="cb592-5"><a href="chapter-15-regression.html#cb592-5" tabindex="-1"></a>             )</span>
-<span id="cb592-6"><a href="chapter-15-regression.html#cb592-6" tabindex="-1"></a></span>
-<span id="cb592-7"><a href="chapter-15-regression.html#cb592-7" tabindex="-1"></a><span class="co"># Print int.lm coefficients</span></span>
-<span id="cb592-8"><a href="chapter-15-regression.html#cb592-8" tabindex="-1"></a><span class="fu">summary</span>(int.lm)<span class="sc">$</span>coefficients</span>
-<span id="cb592-9"><a href="chapter-15-regression.html#cb592-9" tabindex="-1"></a><span class="do">##                 Estimate Std. Error t value Pr(&gt;|t|)</span></span>
-<span id="cb592-10"><a href="chapter-15-regression.html#cb592-10" tabindex="-1"></a><span class="do">## (Intercept)       3414.2      79.20   43.11 6.0e-230</span></span>
-<span id="cb592-11"><a href="chapter-15-regression.html#cb592-11" tabindex="-1"></a><span class="do">## stylemodern        -15.7     111.74   -0.14  8.9e-01</span></span>
-<span id="cb592-12"><a href="chapter-15-regression.html#cb592-12" tabindex="-1"></a><span class="do">## age                  1.9       0.76    2.57  1.0e-02</span></span>
-<span id="cb592-13"><a href="chapter-15-regression.html#cb592-13" tabindex="-1"></a><span class="do">## stylemodern:age     -3.7       1.07   -3.43  6.2e-04</span></span></code></pre></div>
+<div class="sourceCode" id="cb590"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb590-1"><a href="chapter-15-regression.html#cb590-1" tabindex="-1"></a><span class="co"># int.lm model</span></span>
+<span id="cb590-2"><a href="chapter-15-regression.html#cb590-2" tabindex="-1"></a><span class="co"># DV = jbb, IV = interaction between style and age</span></span>
+<span id="cb590-3"><a href="chapter-15-regression.html#cb590-3" tabindex="-1"></a>int.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> jbb <span class="sc">~</span> style <span class="sc">*</span> age,</span>
+<span id="cb590-4"><a href="chapter-15-regression.html#cb590-4" tabindex="-1"></a>             <span class="at">data =</span> auction</span>
+<span id="cb590-5"><a href="chapter-15-regression.html#cb590-5" tabindex="-1"></a>             )</span>
+<span id="cb590-6"><a href="chapter-15-regression.html#cb590-6" tabindex="-1"></a></span>
+<span id="cb590-7"><a href="chapter-15-regression.html#cb590-7" tabindex="-1"></a><span class="co"># Print int.lm coefficients</span></span>
+<span id="cb590-8"><a href="chapter-15-regression.html#cb590-8" tabindex="-1"></a><span class="fu">summary</span>(int.lm)<span class="sc">$</span>coefficients</span>
+<span id="cb590-9"><a href="chapter-15-regression.html#cb590-9" tabindex="-1"></a><span class="do">##                 Estimate Std. Error t value Pr(&gt;|t|)</span></span>
+<span id="cb590-10"><a href="chapter-15-regression.html#cb590-10" tabindex="-1"></a><span class="do">## (Intercept)       3414.2      79.20   43.11 6.0e-230</span></span>
+<span id="cb590-11"><a href="chapter-15-regression.html#cb590-11" tabindex="-1"></a><span class="do">## stylemodern        -15.7     111.74   -0.14  8.9e-01</span></span>
+<span id="cb590-12"><a href="chapter-15-regression.html#cb590-12" tabindex="-1"></a><span class="do">## age                  1.9       0.76    2.57  1.0e-02</span></span>
+<span id="cb590-13"><a href="chapter-15-regression.html#cb590-13" tabindex="-1"></a><span class="do">## stylemodern:age     -3.7       1.07   -3.43  6.2e-04</span></span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li>Create a regression object called predicting the JBB value of ships based on cannons, rooms, age, condition, color, and style. Which aspects of a ship significantly affect its JBB value?</li>
 </ol>
-<div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb593-1"><a href="chapter-15-regression.html#cb593-1" tabindex="-1"></a><span class="co"># jbb.all.lm model</span></span>
-<span id="cb593-2"><a href="chapter-15-regression.html#cb593-2" tabindex="-1"></a><span class="co"># DV = jbb, IV = everything (except price)]</span></span>
-<span id="cb593-3"><a href="chapter-15-regression.html#cb593-3" tabindex="-1"></a>jbb.all.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(jbb <span class="sc">~</span> cannons <span class="sc">+</span> rooms <span class="sc">+</span> age <span class="sc">+</span> condition <span class="sc">+</span> color <span class="sc">+</span> style,</span>
-<span id="cb593-4"><a href="chapter-15-regression.html#cb593-4" tabindex="-1"></a>                 <span class="at">data =</span> auction</span>
-<span id="cb593-5"><a href="chapter-15-regression.html#cb593-5" tabindex="-1"></a>                 )</span>
-<span id="cb593-6"><a href="chapter-15-regression.html#cb593-6" tabindex="-1"></a></span>
-<span id="cb593-7"><a href="chapter-15-regression.html#cb593-7" tabindex="-1"></a><span class="co"># Print jbb.all.lm coefficients</span></span>
-<span id="cb593-8"><a href="chapter-15-regression.html#cb593-8" tabindex="-1"></a><span class="fu">summary</span>(jbb.all.lm)<span class="sc">$</span>coefficients</span>
-<span id="cb593-9"><a href="chapter-15-regression.html#cb593-9" tabindex="-1"></a><span class="do">##             Estimate Std. Error t value Pr(&gt;|t|)</span></span>
-<span id="cb593-10"><a href="chapter-15-regression.html#cb593-10" tabindex="-1"></a><span class="do">## (Intercept)    134.4       52.9    2.54  1.1e-02</span></span>
-<span id="cb593-11"><a href="chapter-15-regression.html#cb593-11" tabindex="-1"></a><span class="do">## cannons        100.7        1.6   64.92  0.0e+00</span></span>
-<span id="cb593-12"><a href="chapter-15-regression.html#cb593-12" tabindex="-1"></a><span class="do">## rooms           50.5        1.6   30.80 1.2e-146</span></span>
-<span id="cb593-13"><a href="chapter-15-regression.html#cb593-13" tabindex="-1"></a><span class="do">## age              1.1        0.2    5.58  3.1e-08</span></span>
-<span id="cb593-14"><a href="chapter-15-regression.html#cb593-14" tabindex="-1"></a><span class="do">## condition      107.6        3.9   27.51 3.4e-124</span></span>
-<span id="cb593-15"><a href="chapter-15-regression.html#cb593-15" tabindex="-1"></a><span class="do">## colorbrown       4.9       16.6    0.30  7.7e-01</span></span>
-<span id="cb593-16"><a href="chapter-15-regression.html#cb593-16" tabindex="-1"></a><span class="do">## colorplum      -29.8       31.3   -0.95  3.4e-01</span></span>
-<span id="cb593-17"><a href="chapter-15-regression.html#cb593-17" tabindex="-1"></a><span class="do">## colorred        15.1       18.3    0.82  4.1e-01</span></span>
-<span id="cb593-18"><a href="chapter-15-regression.html#cb593-18" tabindex="-1"></a><span class="do">## colorsalmon    -19.4       20.7   -0.94  3.5e-01</span></span>
-<span id="cb593-19"><a href="chapter-15-regression.html#cb593-19" tabindex="-1"></a><span class="do">## stylemodern   -397.8       12.8  -30.98 6.7e-148</span></span></code></pre></div>
+<div class="sourceCode" id="cb591"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb591-1"><a href="chapter-15-regression.html#cb591-1" tabindex="-1"></a><span class="co"># jbb.all.lm model</span></span>
+<span id="cb591-2"><a href="chapter-15-regression.html#cb591-2" tabindex="-1"></a><span class="co"># DV = jbb, IV = everything (except price)]</span></span>
+<span id="cb591-3"><a href="chapter-15-regression.html#cb591-3" tabindex="-1"></a>jbb.all.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(jbb <span class="sc">~</span> cannons <span class="sc">+</span> rooms <span class="sc">+</span> age <span class="sc">+</span> condition <span class="sc">+</span> color <span class="sc">+</span> style,</span>
+<span id="cb591-4"><a href="chapter-15-regression.html#cb591-4" tabindex="-1"></a>                 <span class="at">data =</span> auction</span>
+<span id="cb591-5"><a href="chapter-15-regression.html#cb591-5" tabindex="-1"></a>                 )</span>
+<span id="cb591-6"><a href="chapter-15-regression.html#cb591-6" tabindex="-1"></a></span>
+<span id="cb591-7"><a href="chapter-15-regression.html#cb591-7" tabindex="-1"></a><span class="co"># Print jbb.all.lm coefficients</span></span>
+<span id="cb591-8"><a href="chapter-15-regression.html#cb591-8" tabindex="-1"></a><span class="fu">summary</span>(jbb.all.lm)<span class="sc">$</span>coefficients</span>
+<span id="cb591-9"><a href="chapter-15-regression.html#cb591-9" tabindex="-1"></a><span class="do">##             Estimate Std. Error t value Pr(&gt;|t|)</span></span>
+<span id="cb591-10"><a href="chapter-15-regression.html#cb591-10" tabindex="-1"></a><span class="do">## (Intercept)    134.4       52.9    2.54  1.1e-02</span></span>
+<span id="cb591-11"><a href="chapter-15-regression.html#cb591-11" tabindex="-1"></a><span class="do">## cannons        100.7        1.6   64.92  0.0e+00</span></span>
+<span id="cb591-12"><a href="chapter-15-regression.html#cb591-12" tabindex="-1"></a><span class="do">## rooms           50.5        1.6   30.80 1.2e-146</span></span>
+<span id="cb591-13"><a href="chapter-15-regression.html#cb591-13" tabindex="-1"></a><span class="do">## age              1.1        0.2    5.58  3.1e-08</span></span>
+<span id="cb591-14"><a href="chapter-15-regression.html#cb591-14" tabindex="-1"></a><span class="do">## condition      107.6        3.9   27.51 3.4e-124</span></span>
+<span id="cb591-15"><a href="chapter-15-regression.html#cb591-15" tabindex="-1"></a><span class="do">## colorbrown       4.9       16.6    0.30  7.7e-01</span></span>
+<span id="cb591-16"><a href="chapter-15-regression.html#cb591-16" tabindex="-1"></a><span class="do">## colorplum      -29.8       31.3   -0.95  3.4e-01</span></span>
+<span id="cb591-17"><a href="chapter-15-regression.html#cb591-17" tabindex="-1"></a><span class="do">## colorred        15.1       18.3    0.82  4.1e-01</span></span>
+<span id="cb591-18"><a href="chapter-15-regression.html#cb591-18" tabindex="-1"></a><span class="do">## colorsalmon    -19.4       20.7   -0.94  3.5e-01</span></span>
+<span id="cb591-19"><a href="chapter-15-regression.html#cb591-19" tabindex="-1"></a><span class="do">## stylemodern   -397.8       12.8  -30.98 6.7e-148</span></span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li>Create a regression object called predicting the actual selling value of ships based on cannons, rooms, age, condition, color, and style. Based on the results, does the JBB do a good job of capturing the effect of each variable on a ship’s selling price?</li>
 </ol>
-<div class="sourceCode" id="cb594"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb594-1"><a href="chapter-15-regression.html#cb594-1" tabindex="-1"></a><span class="co"># price.all.lm model</span></span>
-<span id="cb594-2"><a href="chapter-15-regression.html#cb594-2" tabindex="-1"></a><span class="co"># DV = price, IV = everything (except jbb)]</span></span>
-<span id="cb594-3"><a href="chapter-15-regression.html#cb594-3" tabindex="-1"></a>price.all.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(price <span class="sc">~</span> cannons <span class="sc">+</span> rooms <span class="sc">+</span> age <span class="sc">+</span> condition <span class="sc">+</span> color <span class="sc">+</span> style,</span>
-<span id="cb594-4"><a href="chapter-15-regression.html#cb594-4" tabindex="-1"></a>                 <span class="at">data =</span> auction</span>
-<span id="cb594-5"><a href="chapter-15-regression.html#cb594-5" tabindex="-1"></a>                 )</span>
-<span id="cb594-6"><a href="chapter-15-regression.html#cb594-6" tabindex="-1"></a></span>
-<span id="cb594-7"><a href="chapter-15-regression.html#cb594-7" tabindex="-1"></a><span class="co"># Print price.all.lm coefficients</span></span>
-<span id="cb594-8"><a href="chapter-15-regression.html#cb594-8" tabindex="-1"></a><span class="fu">summary</span>(price.all.lm)<span class="sc">$</span>coefficients</span>
-<span id="cb594-9"><a href="chapter-15-regression.html#cb594-9" tabindex="-1"></a><span class="do">##             Estimate Std. Error t value Pr(&gt;|t|)</span></span>
-<span id="cb594-10"><a href="chapter-15-regression.html#cb594-10" tabindex="-1"></a><span class="do">## (Intercept)    302.5      73.81    4.10  4.5e-05</span></span>
-<span id="cb594-11"><a href="chapter-15-regression.html#cb594-11" tabindex="-1"></a><span class="do">## cannons        100.0       2.17   46.17 4.0e-249</span></span>
-<span id="cb594-12"><a href="chapter-15-regression.html#cb594-12" tabindex="-1"></a><span class="do">## rooms           48.8       2.29   21.34  2.0e-83</span></span>
-<span id="cb594-13"><a href="chapter-15-regression.html#cb594-13" tabindex="-1"></a><span class="do">## age              1.2       0.29    4.28  2.0e-05</span></span>
-<span id="cb594-14"><a href="chapter-15-regression.html#cb594-14" tabindex="-1"></a><span class="do">## condition      104.1       5.46   19.05  3.4e-69</span></span>
-<span id="cb594-15"><a href="chapter-15-regression.html#cb594-15" tabindex="-1"></a><span class="do">## colorbrown    -119.2      23.19   -5.14  3.3e-07</span></span>
-<span id="cb594-16"><a href="chapter-15-regression.html#cb594-16" tabindex="-1"></a><span class="do">## colorplum       15.6      43.74    0.36  7.2e-01</span></span>
-<span id="cb594-17"><a href="chapter-15-regression.html#cb594-17" tabindex="-1"></a><span class="do">## colorred      -603.6      25.59  -23.59  5.4e-98</span></span>
-<span id="cb594-18"><a href="chapter-15-regression.html#cb594-18" tabindex="-1"></a><span class="do">## colorsalmon     70.4      28.97    2.43  1.5e-02</span></span>
-<span id="cb594-19"><a href="chapter-15-regression.html#cb594-19" tabindex="-1"></a><span class="do">## stylemodern   -419.2      17.93  -23.38  1.3e-96</span></span></code></pre></div>
+<div class="sourceCode" id="cb592"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb592-1"><a href="chapter-15-regression.html#cb592-1" tabindex="-1"></a><span class="co"># price.all.lm model</span></span>
+<span id="cb592-2"><a href="chapter-15-regression.html#cb592-2" tabindex="-1"></a><span class="co"># DV = price, IV = everything (except jbb)]</span></span>
+<span id="cb592-3"><a href="chapter-15-regression.html#cb592-3" tabindex="-1"></a>price.all.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(price <span class="sc">~</span> cannons <span class="sc">+</span> rooms <span class="sc">+</span> age <span class="sc">+</span> condition <span class="sc">+</span> color <span class="sc">+</span> style,</span>
+<span id="cb592-4"><a href="chapter-15-regression.html#cb592-4" tabindex="-1"></a>                 <span class="at">data =</span> auction</span>
+<span id="cb592-5"><a href="chapter-15-regression.html#cb592-5" tabindex="-1"></a>                 )</span>
+<span id="cb592-6"><a href="chapter-15-regression.html#cb592-6" tabindex="-1"></a></span>
+<span id="cb592-7"><a href="chapter-15-regression.html#cb592-7" tabindex="-1"></a><span class="co"># Print price.all.lm coefficients</span></span>
+<span id="cb592-8"><a href="chapter-15-regression.html#cb592-8" tabindex="-1"></a><span class="fu">summary</span>(price.all.lm)<span class="sc">$</span>coefficients</span>
+<span id="cb592-9"><a href="chapter-15-regression.html#cb592-9" tabindex="-1"></a><span class="do">##             Estimate Std. Error t value Pr(&gt;|t|)</span></span>
+<span id="cb592-10"><a href="chapter-15-regression.html#cb592-10" tabindex="-1"></a><span class="do">## (Intercept)    302.5      73.81    4.10  4.5e-05</span></span>
+<span id="cb592-11"><a href="chapter-15-regression.html#cb592-11" tabindex="-1"></a><span class="do">## cannons        100.0       2.17   46.17 4.0e-249</span></span>
+<span id="cb592-12"><a href="chapter-15-regression.html#cb592-12" tabindex="-1"></a><span class="do">## rooms           48.8       2.29   21.34  2.0e-83</span></span>
+<span id="cb592-13"><a href="chapter-15-regression.html#cb592-13" tabindex="-1"></a><span class="do">## age              1.2       0.29    4.28  2.0e-05</span></span>
+<span id="cb592-14"><a href="chapter-15-regression.html#cb592-14" tabindex="-1"></a><span class="do">## condition      104.1       5.46   19.05  3.4e-69</span></span>
+<span id="cb592-15"><a href="chapter-15-regression.html#cb592-15" tabindex="-1"></a><span class="do">## colorbrown    -119.2      23.19   -5.14  3.3e-07</span></span>
+<span id="cb592-16"><a href="chapter-15-regression.html#cb592-16" tabindex="-1"></a><span class="do">## colorplum       15.6      43.74    0.36  7.2e-01</span></span>
+<span id="cb592-17"><a href="chapter-15-regression.html#cb592-17" tabindex="-1"></a><span class="do">## colorred      -603.6      25.59  -23.59  5.4e-98</span></span>
+<span id="cb592-18"><a href="chapter-15-regression.html#cb592-18" tabindex="-1"></a><span class="do">## colorsalmon     70.4      28.97    2.43  1.5e-02</span></span>
+<span id="cb592-19"><a href="chapter-15-regression.html#cb592-19" tabindex="-1"></a><span class="do">## stylemodern   -419.2      17.93  -23.38  1.3e-96</span></span></code></pre></div>
 <ol start="6" style="list-style-type: decimal">
 <li>Repeat your previous regression analysis, but instead of using the price as the dependent variable, use the binary variable <em>price.gt.3500</em> indicating whether or not the ship had a selling price greater than 3500. Call the new regression object <code>price.all.blr</code>. Make sure to use the appropriate regression function!!.</li>
 </ol>
-<div class="sourceCode" id="cb595"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb595-1"><a href="chapter-15-regression.html#cb595-1" tabindex="-1"></a><span class="co"># Create new binary variable indicating whether</span></span>
-<span id="cb595-2"><a href="chapter-15-regression.html#cb595-2" tabindex="-1"></a><span class="co">#   a ship sold for more than 3500</span></span>
-<span id="cb595-3"><a href="chapter-15-regression.html#cb595-3" tabindex="-1"></a>auction<span class="sc">$</span>price.gt<span class="fl">.3500</span> <span class="ot">&lt;-</span> auction<span class="sc">$</span>price <span class="sc">&gt;</span> <span class="dv">3500</span></span>
-<span id="cb595-4"><a href="chapter-15-regression.html#cb595-4" tabindex="-1"></a></span>
-<span id="cb595-5"><a href="chapter-15-regression.html#cb595-5" tabindex="-1"></a><span class="co"># price.all.blr model</span></span>
-<span id="cb595-6"><a href="chapter-15-regression.html#cb595-6" tabindex="-1"></a><span class="co"># DV = price.gt.3500, IV = everything (except jbb)</span></span>
-<span id="cb595-7"><a href="chapter-15-regression.html#cb595-7" tabindex="-1"></a>price.all.blr <span class="ot">&lt;-</span> <span class="fu">glm</span>(price.gt<span class="fl">.3500</span> <span class="sc">~</span> cannons <span class="sc">+</span> rooms <span class="sc">+</span> age <span class="sc">+</span> condition <span class="sc">+</span> color <span class="sc">+</span> style,</span>
-<span id="cb595-8"><a href="chapter-15-regression.html#cb595-8" tabindex="-1"></a>                 <span class="at">data =</span> auction,</span>
-<span id="cb595-9"><a href="chapter-15-regression.html#cb595-9" tabindex="-1"></a>                 <span class="at">family =</span> binomial   <span class="co"># Logistic regression</span></span>
-<span id="cb595-10"><a href="chapter-15-regression.html#cb595-10" tabindex="-1"></a>                 )</span>
-<span id="cb595-11"><a href="chapter-15-regression.html#cb595-11" tabindex="-1"></a></span>
-<span id="cb595-12"><a href="chapter-15-regression.html#cb595-12" tabindex="-1"></a><span class="co"># price.all.blr coefficients</span></span>
-<span id="cb595-13"><a href="chapter-15-regression.html#cb595-13" tabindex="-1"></a><span class="fu">summary</span>(price.all.blr)<span class="sc">$</span>coefficients</span>
-<span id="cb595-14"><a href="chapter-15-regression.html#cb595-14" tabindex="-1"></a><span class="do">##             Estimate Std. Error z value Pr(&gt;|z|)</span></span>
-<span id="cb595-15"><a href="chapter-15-regression.html#cb595-15" tabindex="-1"></a><span class="do">## (Intercept) -19.7401     1.4240  -13.86  1.1e-43</span></span>
-<span id="cb595-16"><a href="chapter-15-regression.html#cb595-16" tabindex="-1"></a><span class="do">## cannons       0.6251     0.0442   14.14  2.2e-45</span></span>
-<span id="cb595-17"><a href="chapter-15-regression.html#cb595-17" tabindex="-1"></a><span class="do">## rooms         0.2688     0.0296    9.07  1.2e-19</span></span>
-<span id="cb595-18"><a href="chapter-15-regression.html#cb595-18" tabindex="-1"></a><span class="do">## age           0.0097     0.0033    2.93  3.4e-03</span></span>
-<span id="cb595-19"><a href="chapter-15-regression.html#cb595-19" tabindex="-1"></a><span class="do">## condition     0.6825     0.0745    9.16  5.4e-20</span></span>
-<span id="cb595-20"><a href="chapter-15-regression.html#cb595-20" tabindex="-1"></a><span class="do">## colorbrown   -0.8924     0.2549   -3.50  4.6e-04</span></span>
-<span id="cb595-21"><a href="chapter-15-regression.html#cb595-21" tabindex="-1"></a><span class="do">## colorplum    -0.1291     0.5090   -0.25  8.0e-01</span></span>
-<span id="cb595-22"><a href="chapter-15-regression.html#cb595-22" tabindex="-1"></a><span class="do">## colorred     -4.0764     0.4107   -9.93  3.2e-23</span></span>
-<span id="cb595-23"><a href="chapter-15-regression.html#cb595-23" tabindex="-1"></a><span class="do">## colorsalmon   0.2479     0.3172    0.78  4.3e-01</span></span>
-<span id="cb595-24"><a href="chapter-15-regression.html#cb595-24" tabindex="-1"></a><span class="do">## stylemodern  -2.4037     0.2432   -9.88  4.9e-23</span></span></code></pre></div>
+<div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb593-1"><a href="chapter-15-regression.html#cb593-1" tabindex="-1"></a><span class="co"># Create new binary variable indicating whether</span></span>
+<span id="cb593-2"><a href="chapter-15-regression.html#cb593-2" tabindex="-1"></a><span class="co">#   a ship sold for more than 3500</span></span>
+<span id="cb593-3"><a href="chapter-15-regression.html#cb593-3" tabindex="-1"></a>auction<span class="sc">$</span>price.gt<span class="fl">.3500</span> <span class="ot">&lt;-</span> auction<span class="sc">$</span>price <span class="sc">&gt;</span> <span class="dv">3500</span></span>
+<span id="cb593-4"><a href="chapter-15-regression.html#cb593-4" tabindex="-1"></a></span>
+<span id="cb593-5"><a href="chapter-15-regression.html#cb593-5" tabindex="-1"></a><span class="co"># price.all.blr model</span></span>
+<span id="cb593-6"><a href="chapter-15-regression.html#cb593-6" tabindex="-1"></a><span class="co"># DV = price.gt.3500, IV = everything (except jbb)</span></span>
+<span id="cb593-7"><a href="chapter-15-regression.html#cb593-7" tabindex="-1"></a>price.all.blr <span class="ot">&lt;-</span> <span class="fu">glm</span>(price.gt<span class="fl">.3500</span> <span class="sc">~</span> cannons <span class="sc">+</span> rooms <span class="sc">+</span> age <span class="sc">+</span> condition <span class="sc">+</span> color <span class="sc">+</span> style,</span>
+<span id="cb593-8"><a href="chapter-15-regression.html#cb593-8" tabindex="-1"></a>                 <span class="at">data =</span> auction,</span>
+<span id="cb593-9"><a href="chapter-15-regression.html#cb593-9" tabindex="-1"></a>                 <span class="at">family =</span> binomial   <span class="co"># Logistic regression</span></span>
+<span id="cb593-10"><a href="chapter-15-regression.html#cb593-10" tabindex="-1"></a>                 )</span>
+<span id="cb593-11"><a href="chapter-15-regression.html#cb593-11" tabindex="-1"></a></span>
+<span id="cb593-12"><a href="chapter-15-regression.html#cb593-12" tabindex="-1"></a><span class="co"># price.all.blr coefficients</span></span>
+<span id="cb593-13"><a href="chapter-15-regression.html#cb593-13" tabindex="-1"></a><span class="fu">summary</span>(price.all.blr)<span class="sc">$</span>coefficients</span>
+<span id="cb593-14"><a href="chapter-15-regression.html#cb593-14" tabindex="-1"></a><span class="do">##             Estimate Std. Error z value Pr(&gt;|z|)</span></span>
+<span id="cb593-15"><a href="chapter-15-regression.html#cb593-15" tabindex="-1"></a><span class="do">## (Intercept) -19.7401     1.4240  -13.86  1.1e-43</span></span>
+<span id="cb593-16"><a href="chapter-15-regression.html#cb593-16" tabindex="-1"></a><span class="do">## cannons       0.6251     0.0442   14.14  2.2e-45</span></span>
+<span id="cb593-17"><a href="chapter-15-regression.html#cb593-17" tabindex="-1"></a><span class="do">## rooms         0.2688     0.0296    9.07  1.2e-19</span></span>
+<span id="cb593-18"><a href="chapter-15-regression.html#cb593-18" tabindex="-1"></a><span class="do">## age           0.0097     0.0033    2.93  3.4e-03</span></span>
+<span id="cb593-19"><a href="chapter-15-regression.html#cb593-19" tabindex="-1"></a><span class="do">## condition     0.6825     0.0745    9.16  5.4e-20</span></span>
+<span id="cb593-20"><a href="chapter-15-regression.html#cb593-20" tabindex="-1"></a><span class="do">## colorbrown   -0.8924     0.2549   -3.50  4.6e-04</span></span>
+<span id="cb593-21"><a href="chapter-15-regression.html#cb593-21" tabindex="-1"></a><span class="do">## colorplum    -0.1291     0.5090   -0.25  8.0e-01</span></span>
+<span id="cb593-22"><a href="chapter-15-regression.html#cb593-22" tabindex="-1"></a><span class="do">## colorred     -4.0764     0.4107   -9.93  3.2e-23</span></span>
+<span id="cb593-23"><a href="chapter-15-regression.html#cb593-23" tabindex="-1"></a><span class="do">## colorsalmon   0.2479     0.3172    0.78  4.3e-01</span></span>
+<span id="cb593-24"><a href="chapter-15-regression.html#cb593-24" tabindex="-1"></a><span class="do">## stylemodern  -2.4037     0.2432   -9.88  4.9e-23</span></span></code></pre></div>
 <ol start="7" style="list-style-type: decimal">
 <li>Using <code>price.all.lm</code>, predict the selling price of the 3 new ships</li>
 </ol>
@@ -684,33 +684,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb596"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb596-1"><a href="chapter-15-regression.html#cb596-1" tabindex="-1"></a><span class="co"># Create a dataframe with new ship data</span></span>
-<span id="cb596-2"><a href="chapter-15-regression.html#cb596-2" tabindex="-1"></a>new.ships <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">cannons =</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">8</span>, <span class="dv">32</span>),</span>
-<span id="cb596-3"><a href="chapter-15-regression.html#cb596-3" tabindex="-1"></a>                  <span class="at">rooms =</span> <span class="fu">c</span>(<span class="dv">34</span>, <span class="dv">26</span>, <span class="dv">65</span>),</span>
-<span id="cb596-4"><a href="chapter-15-regression.html#cb596-4" tabindex="-1"></a>                  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">43</span>, <span class="dv">54</span>, <span class="dv">100</span>),</span>
-<span id="cb596-5"><a href="chapter-15-regression.html#cb596-5" tabindex="-1"></a>                  <span class="at">condition =</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">5</span>),</span>
-<span id="cb596-6"><a href="chapter-15-regression.html#cb596-6" tabindex="-1"></a>                  <span class="at">color =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>),</span>
-<span id="cb596-7"><a href="chapter-15-regression.html#cb596-7" tabindex="-1"></a>                  <span class="at">style =</span> <span class="fu">c</span>(<span class="st">&quot;classic&quot;</span>, <span class="st">&quot;modern&quot;</span>, <span class="st">&quot;modern&quot;</span>),</span>
-<span id="cb596-8"><a href="chapter-15-regression.html#cb596-8" tabindex="-1"></a>                  <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb596-9"><a href="chapter-15-regression.html#cb596-9" tabindex="-1"></a></span>
-<span id="cb596-10"><a href="chapter-15-regression.html#cb596-10" tabindex="-1"></a><span class="co"># Predict new ship data based on price.all.lm model</span></span>
-<span id="cb596-11"><a href="chapter-15-regression.html#cb596-11" tabindex="-1"></a><span class="fu">predict</span>(<span class="at">object =</span> price.all.lm,</span>
-<span id="cb596-12"><a href="chapter-15-regression.html#cb596-12" tabindex="-1"></a>        <span class="at">newdata =</span> new.ships</span>
-<span id="cb596-13"><a href="chapter-15-regression.html#cb596-13" tabindex="-1"></a>        )</span>
-<span id="cb596-14"><a href="chapter-15-regression.html#cb596-14" tabindex="-1"></a><span class="do">##    1    2    3 </span></span>
-<span id="cb596-15"><a href="chapter-15-regression.html#cb596-15" tabindex="-1"></a><span class="do">## 3944 2331 6296</span></span></code></pre></div>
+<div class="sourceCode" id="cb594"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb594-1"><a href="chapter-15-regression.html#cb594-1" tabindex="-1"></a><span class="co"># Create a dataframe with new ship data</span></span>
+<span id="cb594-2"><a href="chapter-15-regression.html#cb594-2" tabindex="-1"></a>new.ships <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">cannons =</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">8</span>, <span class="dv">32</span>),</span>
+<span id="cb594-3"><a href="chapter-15-regression.html#cb594-3" tabindex="-1"></a>                  <span class="at">rooms =</span> <span class="fu">c</span>(<span class="dv">34</span>, <span class="dv">26</span>, <span class="dv">65</span>),</span>
+<span id="cb594-4"><a href="chapter-15-regression.html#cb594-4" tabindex="-1"></a>                  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">43</span>, <span class="dv">54</span>, <span class="dv">100</span>),</span>
+<span id="cb594-5"><a href="chapter-15-regression.html#cb594-5" tabindex="-1"></a>                  <span class="at">condition =</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">5</span>),</span>
+<span id="cb594-6"><a href="chapter-15-regression.html#cb594-6" tabindex="-1"></a>                  <span class="at">color =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>),</span>
+<span id="cb594-7"><a href="chapter-15-regression.html#cb594-7" tabindex="-1"></a>                  <span class="at">style =</span> <span class="fu">c</span>(<span class="st">&quot;classic&quot;</span>, <span class="st">&quot;modern&quot;</span>, <span class="st">&quot;modern&quot;</span>),</span>
+<span id="cb594-8"><a href="chapter-15-regression.html#cb594-8" tabindex="-1"></a>                  <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb594-9"><a href="chapter-15-regression.html#cb594-9" tabindex="-1"></a></span>
+<span id="cb594-10"><a href="chapter-15-regression.html#cb594-10" tabindex="-1"></a><span class="co"># Predict new ship data based on price.all.lm model</span></span>
+<span id="cb594-11"><a href="chapter-15-regression.html#cb594-11" tabindex="-1"></a><span class="fu">predict</span>(<span class="at">object =</span> price.all.lm,</span>
+<span id="cb594-12"><a href="chapter-15-regression.html#cb594-12" tabindex="-1"></a>        <span class="at">newdata =</span> new.ships</span>
+<span id="cb594-13"><a href="chapter-15-regression.html#cb594-13" tabindex="-1"></a>        )</span>
+<span id="cb594-14"><a href="chapter-15-regression.html#cb594-14" tabindex="-1"></a><span class="do">##    1    2    3 </span></span>
+<span id="cb594-15"><a href="chapter-15-regression.html#cb594-15" tabindex="-1"></a><span class="do">## 3944 2331 6296</span></span></code></pre></div>
 <ol start="8" style="list-style-type: decimal">
 <li>Using <code>price.all.blr</code>, predict the probability that the three new ships will have a selling price greater than 3500.</li>
 </ol>
-<div class="sourceCode" id="cb597"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb597-1"><a href="chapter-15-regression.html#cb597-1" tabindex="-1"></a><span class="co"># Calculate logit of predictions</span></span>
-<span id="cb597-2"><a href="chapter-15-regression.html#cb597-2" tabindex="-1"></a>log.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(<span class="at">object =</span> price.all.blr,</span>
-<span id="cb597-3"><a href="chapter-15-regression.html#cb597-3" tabindex="-1"></a>                    <span class="at">newdata =</span> new.ships</span>
-<span id="cb597-4"><a href="chapter-15-regression.html#cb597-4" tabindex="-1"></a>                    )</span>
-<span id="cb597-5"><a href="chapter-15-regression.html#cb597-5" tabindex="-1"></a></span>
-<span id="cb597-6"><a href="chapter-15-regression.html#cb597-6" tabindex="-1"></a><span class="co"># Convert logits to probabilities</span></span>
-<span id="cb597-7"><a href="chapter-15-regression.html#cb597-7" tabindex="-1"></a><span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span>log.pred))</span>
-<span id="cb597-8"><a href="chapter-15-regression.html#cb597-8" tabindex="-1"></a><span class="do">##       1       2       3 </span></span>
-<span id="cb597-9"><a href="chapter-15-regression.html#cb597-9" tabindex="-1"></a><span class="do">## 0.89038 0.00051 1.00000</span></span></code></pre></div>
+<div class="sourceCode" id="cb595"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb595-1"><a href="chapter-15-regression.html#cb595-1" tabindex="-1"></a><span class="co"># Calculate logit of predictions</span></span>
+<span id="cb595-2"><a href="chapter-15-regression.html#cb595-2" tabindex="-1"></a>log.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(<span class="at">object =</span> price.all.blr,</span>
+<span id="cb595-3"><a href="chapter-15-regression.html#cb595-3" tabindex="-1"></a>                    <span class="at">newdata =</span> new.ships</span>
+<span id="cb595-4"><a href="chapter-15-regression.html#cb595-4" tabindex="-1"></a>                    )</span>
+<span id="cb595-5"><a href="chapter-15-regression.html#cb595-5" tabindex="-1"></a></span>
+<span id="cb595-6"><a href="chapter-15-regression.html#cb595-6" tabindex="-1"></a><span class="co"># Convert logits to probabilities</span></span>
+<span id="cb595-7"><a href="chapter-15-regression.html#cb595-7" tabindex="-1"></a><span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span>log.pred))</span>
+<span id="cb595-8"><a href="chapter-15-regression.html#cb595-8" tabindex="-1"></a><span class="do">##       1       2       3 </span></span>
+<span id="cb595-9"><a href="chapter-15-regression.html#cb595-9" tabindex="-1"></a><span class="do">## 0.89038 0.00051 1.00000</span></span></code></pre></div>
 
 </div>
 <!-- </div> -->

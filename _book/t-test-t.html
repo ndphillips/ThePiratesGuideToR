@@ -410,9 +410,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.2" data-path="t-test-t.html"><a href="t-test-t.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.2.2</b> 2-sample t-test</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="correlation-cor.html"><a href="correlation-cor.html"><i class="fa fa-check"></i><b>13.3</b> Correlation: <code>cor.test()</code></a></li>
-<li class="chapter" data-level="13.4" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chsq.test()</code></a>
+<li class="chapter" data-level="13.4" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chisq.test()</code></a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+<li class="chapter" data-level="13.4.1" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="test-your-r-might-3.html"><a href="test-your-r-might-3.html"><i class="fa fa-check"></i><b>13.5</b> Test your R might!</a></li>
 </ul></li>
@@ -548,115 +548,116 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <p>In a one-sample t-test, you compare the data from one group of data to some hypothesized mean. For example, if someone said that pirates on average have 5 tattoos, we could conduct a one-sample test comparing the data from a sample of pirates to a hypothesized mean of 5. To conduct a one-sample t-test in R using <code>t.test()</code>, enter a vector as the main argument <code>x</code>, and the null hypothesis as the argument <code>mu</code></p>
 <p>Here, I’ll conduct a t-test to see if the average number of tattoos owned by pirates is different from 5:</p>
-<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="t-test-t.html#cb369-1" tabindex="-1"></a>tattoo.ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(<span class="at">x =</span> pirates<span class="sc">$</span>tattoos,  <span class="co"># Vector of data</span></span>
-<span id="cb369-2"><a href="t-test-t.html#cb369-2" tabindex="-1"></a>                       <span class="at">mu =</span> <span class="dv">5</span>)               <span class="co"># Null: Mean is 5</span></span>
-<span id="cb369-3"><a href="t-test-t.html#cb369-3" tabindex="-1"></a></span>
-<span id="cb369-4"><a href="t-test-t.html#cb369-4" tabindex="-1"></a><span class="co"># Print the result</span></span>
-<span id="cb369-5"><a href="t-test-t.html#cb369-5" tabindex="-1"></a>tattoo.ttest</span>
-<span id="cb369-6"><a href="t-test-t.html#cb369-6" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb369-7"><a href="t-test-t.html#cb369-7" tabindex="-1"></a><span class="do">##  One Sample t-test</span></span>
-<span id="cb369-8"><a href="t-test-t.html#cb369-8" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb369-9"><a href="t-test-t.html#cb369-9" tabindex="-1"></a><span class="do">## data:  pirates$tattoos</span></span>
-<span id="cb369-10"><a href="t-test-t.html#cb369-10" tabindex="-1"></a><span class="do">## t = 42, df = 999, p-value &lt;2e-16</span></span>
-<span id="cb369-11"><a href="t-test-t.html#cb369-11" tabindex="-1"></a><span class="do">## alternative hypothesis: true mean is not equal to 5</span></span>
-<span id="cb369-12"><a href="t-test-t.html#cb369-12" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
-<span id="cb369-13"><a href="t-test-t.html#cb369-13" tabindex="-1"></a><span class="do">##  9.2 9.6</span></span>
-<span id="cb369-14"><a href="t-test-t.html#cb369-14" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
-<span id="cb369-15"><a href="t-test-t.html#cb369-15" tabindex="-1"></a><span class="do">## mean of x </span></span>
-<span id="cb369-16"><a href="t-test-t.html#cb369-16" tabindex="-1"></a><span class="do">##       9.4</span></span></code></pre></div>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="t-test-t.html#cb367-1" tabindex="-1"></a>tattoo.ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(<span class="at">x =</span> pirates<span class="sc">$</span>tattoos,  <span class="co"># Vector of data</span></span>
+<span id="cb367-2"><a href="t-test-t.html#cb367-2" tabindex="-1"></a>                       <span class="at">mu =</span> <span class="dv">5</span>)               <span class="co"># Null: Mean is 5</span></span>
+<span id="cb367-3"><a href="t-test-t.html#cb367-3" tabindex="-1"></a></span>
+<span id="cb367-4"><a href="t-test-t.html#cb367-4" tabindex="-1"></a><span class="co"># Print the result</span></span>
+<span id="cb367-5"><a href="t-test-t.html#cb367-5" tabindex="-1"></a>tattoo.ttest</span>
+<span id="cb367-6"><a href="t-test-t.html#cb367-6" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb367-7"><a href="t-test-t.html#cb367-7" tabindex="-1"></a><span class="do">##  One Sample t-test</span></span>
+<span id="cb367-8"><a href="t-test-t.html#cb367-8" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb367-9"><a href="t-test-t.html#cb367-9" tabindex="-1"></a><span class="do">## data:  pirates$tattoos</span></span>
+<span id="cb367-10"><a href="t-test-t.html#cb367-10" tabindex="-1"></a><span class="do">## t = 42, df = 999, p-value &lt;2e-16</span></span>
+<span id="cb367-11"><a href="t-test-t.html#cb367-11" tabindex="-1"></a><span class="do">## alternative hypothesis: true mean is not equal to 5</span></span>
+<span id="cb367-12"><a href="t-test-t.html#cb367-12" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb367-13"><a href="t-test-t.html#cb367-13" tabindex="-1"></a><span class="do">##  9.2 9.6</span></span>
+<span id="cb367-14"><a href="t-test-t.html#cb367-14" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb367-15"><a href="t-test-t.html#cb367-15" tabindex="-1"></a><span class="do">## mean of x </span></span>
+<span id="cb367-16"><a href="t-test-t.html#cb367-16" tabindex="-1"></a><span class="do">##       9.4</span></span></code></pre></div>
 <p>As you can see, the function printed lots of information: the sample mean was 9.43, the test statistic (41.59), and the p-value was <code>2e-16</code> (which is virtually 0). Because 2e-16 is less than 0.05, we would reject the null hypothesis that the true mean is equal to 5.</p>
 <p>Now, what happens if I change the null hypothesis to a mean of 9.4? Because the sample mean was 9.43, quite close to 9.4, the test statistic should decrease, and the p-value should increase:</p>
-<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="t-test-t.html#cb370-1" tabindex="-1"></a>tattoo.ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(<span class="at">x =</span> pirates<span class="sc">$</span>tattoos,</span>
-<span id="cb370-2"><a href="t-test-t.html#cb370-2" tabindex="-1"></a>                       <span class="at">mu =</span> <span class="fl">9.5</span>)  <span class="co"># Null: Mean is 9.4</span></span>
-<span id="cb370-3"><a href="t-test-t.html#cb370-3" tabindex="-1"></a></span>
-<span id="cb370-4"><a href="t-test-t.html#cb370-4" tabindex="-1"></a>tattoo.ttest</span>
-<span id="cb370-5"><a href="t-test-t.html#cb370-5" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb370-6"><a href="t-test-t.html#cb370-6" tabindex="-1"></a><span class="do">##  One Sample t-test</span></span>
-<span id="cb370-7"><a href="t-test-t.html#cb370-7" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb370-8"><a href="t-test-t.html#cb370-8" tabindex="-1"></a><span class="do">## data:  pirates$tattoos</span></span>
-<span id="cb370-9"><a href="t-test-t.html#cb370-9" tabindex="-1"></a><span class="do">## t = -0.7, df = 999, p-value = 0.5</span></span>
-<span id="cb370-10"><a href="t-test-t.html#cb370-10" tabindex="-1"></a><span class="do">## alternative hypothesis: true mean is not equal to 9.5</span></span>
-<span id="cb370-11"><a href="t-test-t.html#cb370-11" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
-<span id="cb370-12"><a href="t-test-t.html#cb370-12" tabindex="-1"></a><span class="do">##  9.2 9.6</span></span>
-<span id="cb370-13"><a href="t-test-t.html#cb370-13" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
-<span id="cb370-14"><a href="t-test-t.html#cb370-14" tabindex="-1"></a><span class="do">## mean of x </span></span>
-<span id="cb370-15"><a href="t-test-t.html#cb370-15" tabindex="-1"></a><span class="do">##       9.4</span></span></code></pre></div>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="t-test-t.html#cb368-1" tabindex="-1"></a>tattoo.ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(<span class="at">x =</span> pirates<span class="sc">$</span>tattoos,</span>
+<span id="cb368-2"><a href="t-test-t.html#cb368-2" tabindex="-1"></a>                       <span class="at">mu =</span> <span class="fl">9.5</span>)  <span class="co"># Null: Mean is 9.4</span></span>
+<span id="cb368-3"><a href="t-test-t.html#cb368-3" tabindex="-1"></a></span>
+<span id="cb368-4"><a href="t-test-t.html#cb368-4" tabindex="-1"></a>tattoo.ttest</span>
+<span id="cb368-5"><a href="t-test-t.html#cb368-5" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb368-6"><a href="t-test-t.html#cb368-6" tabindex="-1"></a><span class="do">##  One Sample t-test</span></span>
+<span id="cb368-7"><a href="t-test-t.html#cb368-7" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb368-8"><a href="t-test-t.html#cb368-8" tabindex="-1"></a><span class="do">## data:  pirates$tattoos</span></span>
+<span id="cb368-9"><a href="t-test-t.html#cb368-9" tabindex="-1"></a><span class="do">## t = -0.7, df = 999, p-value = 0.5</span></span>
+<span id="cb368-10"><a href="t-test-t.html#cb368-10" tabindex="-1"></a><span class="do">## alternative hypothesis: true mean is not equal to 9.5</span></span>
+<span id="cb368-11"><a href="t-test-t.html#cb368-11" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb368-12"><a href="t-test-t.html#cb368-12" tabindex="-1"></a><span class="do">##  9.2 9.6</span></span>
+<span id="cb368-13"><a href="t-test-t.html#cb368-13" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb368-14"><a href="t-test-t.html#cb368-14" tabindex="-1"></a><span class="do">## mean of x </span></span>
+<span id="cb368-15"><a href="t-test-t.html#cb368-15" tabindex="-1"></a><span class="do">##       9.4</span></span></code></pre></div>
 <p>Just as we predicted! The test statistic decreased to just -0.67, and the p-value increased to 0.51. In other words, our sample mean of 9.43 is reasonably consistent with the hypothesis that the true population mean is 9.50.</p>
 </div>
 <div id="sample-t-test-1" class="section level3 hasAnchor" number="13.2.2">
 <h3><span class="header-section-number">13.2.2</span> 2-sample t-test<a href="t-test-t.html#sample-t-test-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In a two-sample t-test, you compare the means of two groups of data and test whether or not they are the same. We can specify two-sample t-tests in one of two ways. If the dependent and independent variables are in a dataframe, you can use the formula notation in the form <code>y ~ x</code>, and specify the dataset containing the data in <code>data</code></p>
-<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="t-test-t.html#cb371-1" tabindex="-1"></a><span class="co"># Fomulation of a two-sample t-test</span></span>
-<span id="cb371-2"><a href="t-test-t.html#cb371-2" tabindex="-1"></a></span>
-<span id="cb371-3"><a href="t-test-t.html#cb371-3" tabindex="-1"></a><span class="co"># Method 1: Formula</span></span>
-<span id="cb371-4"><a href="t-test-t.html#cb371-4" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">formula =</span> y <span class="sc">~</span> x,  <span class="co"># Formula</span></span>
-<span id="cb371-5"><a href="t-test-t.html#cb371-5" tabindex="-1"></a>       <span class="at">data =</span> df) <span class="co"># Dataframe containing the variables</span></span></code></pre></div>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="t-test-t.html#cb369-1" tabindex="-1"></a><span class="co"># Fomulation of a two-sample t-test</span></span>
+<span id="cb369-2"><a href="t-test-t.html#cb369-2" tabindex="-1"></a></span>
+<span id="cb369-3"><a href="t-test-t.html#cb369-3" tabindex="-1"></a><span class="co"># Method 1: Formula</span></span>
+<span id="cb369-4"><a href="t-test-t.html#cb369-4" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">formula =</span> y <span class="sc">~</span> x,  <span class="co"># Formula</span></span>
+<span id="cb369-5"><a href="t-test-t.html#cb369-5" tabindex="-1"></a>       <span class="at">data =</span> df) <span class="co"># Dataframe containing the variables</span></span></code></pre></div>
 <p>Alternatively, if the data you want to compare are in individual vectors (not together in a dataframe), you can use the vector notation:</p>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="t-test-t.html#cb372-1" tabindex="-1"></a><span class="co"># Method 2: Vector</span></span>
-<span id="cb372-2"><a href="t-test-t.html#cb372-2" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> x,  <span class="co"># First vector</span></span>
-<span id="cb372-3"><a href="t-test-t.html#cb372-3" tabindex="-1"></a>       <span class="at">y =</span> y)  <span class="co"># Second vector</span></span></code></pre></div>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="t-test-t.html#cb370-1" tabindex="-1"></a><span class="co"># Method 2: Vector</span></span>
+<span id="cb370-2"><a href="t-test-t.html#cb370-2" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> x,  <span class="co"># First vector</span></span>
+<span id="cb370-3"><a href="t-test-t.html#cb370-3" tabindex="-1"></a>       <span class="at">y =</span> y)  <span class="co"># Second vector</span></span></code></pre></div>
 <p>For example, let’s test a prediction that pirates who wear eye patches have fewer tattoos on average than those who don’t wear eye patches. Because the data are in the <code>pirates</code> dataframe, we can do this using the formula method:</p>
-<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="t-test-t.html#cb373-1" tabindex="-1"></a><span class="co"># 2-sample t-test</span></span>
-<span id="cb373-2"><a href="t-test-t.html#cb373-2" tabindex="-1"></a><span class="co">#  IV = eyepatch (0 or 1)</span></span>
-<span id="cb373-3"><a href="t-test-t.html#cb373-3" tabindex="-1"></a><span class="co">#  DV = tattoos</span></span>
-<span id="cb373-4"><a href="t-test-t.html#cb373-4" tabindex="-1"></a></span>
-<span id="cb373-5"><a href="t-test-t.html#cb373-5" tabindex="-1"></a>tat.patch.htest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(<span class="at">formula =</span> tattoos <span class="sc">~</span> eyepatch,</span>
-<span id="cb373-6"><a href="t-test-t.html#cb373-6" tabindex="-1"></a>                          <span class="at">data =</span> pirates)</span></code></pre></div>
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="t-test-t.html#cb371-1" tabindex="-1"></a><span class="co"># 2-sample t-test</span></span>
+<span id="cb371-2"><a href="t-test-t.html#cb371-2" tabindex="-1"></a><span class="co">#  IV = eyepatch (0 or 1)</span></span>
+<span id="cb371-3"><a href="t-test-t.html#cb371-3" tabindex="-1"></a><span class="co">#  DV = tattoos</span></span>
+<span id="cb371-4"><a href="t-test-t.html#cb371-4" tabindex="-1"></a></span>
+<span id="cb371-5"><a href="t-test-t.html#cb371-5" tabindex="-1"></a>tat.patch.htest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(<span class="at">formula =</span> tattoos <span class="sc">~</span> eyepatch,</span>
+<span id="cb371-6"><a href="t-test-t.html#cb371-6" tabindex="-1"></a>                          <span class="at">data =</span> pirates)</span></code></pre></div>
 <p>This test gave us a test statistic of 1.22 and a p-value of 0.22. Because the p-value is greater than 0.05, we would fail to reject the null hypothesis.</p>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="t-test-t.html#cb374-1" tabindex="-1"></a><span class="co"># Show me all of the elements in the htest object</span></span>
-<span id="cb374-2"><a href="t-test-t.html#cb374-2" tabindex="-1"></a><span class="fu">names</span>(tat.patch.htest)</span>
-<span id="cb374-3"><a href="t-test-t.html#cb374-3" tabindex="-1"></a><span class="do">##  [1] &quot;statistic&quot;   &quot;parameter&quot;   &quot;p.value&quot;     &quot;conf.int&quot;    &quot;estimate&quot;    &quot;null.value&quot;  &quot;stderr&quot;      &quot;alternative&quot; &quot;method&quot;      &quot;data.name&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="t-test-t.html#cb372-1" tabindex="-1"></a><span class="co"># Show me all of the elements in the htest object</span></span>
+<span id="cb372-2"><a href="t-test-t.html#cb372-2" tabindex="-1"></a><span class="fu">names</span>(tat.patch.htest)</span>
+<span id="cb372-3"><a href="t-test-t.html#cb372-3" tabindex="-1"></a><span class="do">##  [1] &quot;statistic&quot;   &quot;parameter&quot;   &quot;p.value&quot;     &quot;conf.int&quot;    &quot;estimate&quot;    &quot;null.value&quot;  &quot;stderr&quot;      &quot;alternative&quot; &quot;method&quot;     </span></span>
+<span id="cb372-4"><a href="t-test-t.html#cb372-4" tabindex="-1"></a><span class="do">## [10] &quot;data.name&quot;</span></span></code></pre></div>
 <p>Now, we can, for example, access the confidence interval for the mean differences using <code>$</code></p>
-<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="t-test-t.html#cb375-1" tabindex="-1"></a><span class="co"># Confidence interval for mean differences</span></span>
-<span id="cb375-2"><a href="t-test-t.html#cb375-2" tabindex="-1"></a>tat.patch.htest<span class="sc">$</span>conf.int</span>
-<span id="cb375-3"><a href="t-test-t.html#cb375-3" tabindex="-1"></a><span class="do">## [1] -0.16  0.71</span></span>
-<span id="cb375-4"><a href="t-test-t.html#cb375-4" tabindex="-1"></a><span class="do">## attr(,&quot;conf.level&quot;)</span></span>
-<span id="cb375-5"><a href="t-test-t.html#cb375-5" tabindex="-1"></a><span class="do">## [1] 0.95</span></span></code></pre></div>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="t-test-t.html#cb373-1" tabindex="-1"></a><span class="co"># Confidence interval for mean differences</span></span>
+<span id="cb373-2"><a href="t-test-t.html#cb373-2" tabindex="-1"></a>tat.patch.htest<span class="sc">$</span>conf.int</span>
+<span id="cb373-3"><a href="t-test-t.html#cb373-3" tabindex="-1"></a><span class="do">## [1] -0.16  0.71</span></span>
+<span id="cb373-4"><a href="t-test-t.html#cb373-4" tabindex="-1"></a><span class="do">## attr(,&quot;conf.level&quot;)</span></span>
+<span id="cb373-5"><a href="t-test-t.html#cb373-5" tabindex="-1"></a><span class="do">## [1] 0.95</span></span></code></pre></div>
 <div id="using-subset-to-select-levels-of-an-iv" class="section level4 hasAnchor" number="13.2.2.1">
 <h4><span class="header-section-number">13.2.2.1</span> Using <code>subset</code> to select levels of an IV<a href="t-test-t.html#using-subset-to-select-levels-of-an-iv" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>If your independent variable has more than two values, the <code>t.test()</code> function will return an error because it doesn’t know which two groups you want to compare. For example, let’s say I want to compare the number of tattoos of pirates of different ages. Now, the age column has many different values, so if I don’t tell <code>t.test()</code> which two values of <code>age</code> I want to compare, I will get an error like this:</p>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="t-test-t.html#cb376-1" tabindex="-1"></a><span class="co"># Will return an error because there are more than</span></span>
-<span id="cb376-2"><a href="t-test-t.html#cb376-2" tabindex="-1"></a><span class="co">#  2 levels of the age IV</span></span>
-<span id="cb376-3"><a href="t-test-t.html#cb376-3" tabindex="-1"></a></span>
-<span id="cb376-4"><a href="t-test-t.html#cb376-4" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">formula =</span> tattoos <span class="sc">~</span> age,</span>
-<span id="cb376-5"><a href="t-test-t.html#cb376-5" tabindex="-1"></a>       <span class="at">data =</span> pirates)</span></code></pre></div>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="t-test-t.html#cb374-1" tabindex="-1"></a><span class="co"># Will return an error because there are more than</span></span>
+<span id="cb374-2"><a href="t-test-t.html#cb374-2" tabindex="-1"></a><span class="co">#  2 levels of the age IV</span></span>
+<span id="cb374-3"><a href="t-test-t.html#cb374-3" tabindex="-1"></a></span>
+<span id="cb374-4"><a href="t-test-t.html#cb374-4" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">formula =</span> tattoos <span class="sc">~</span> age,</span>
+<span id="cb374-5"><a href="t-test-t.html#cb374-5" tabindex="-1"></a>       <span class="at">data =</span> pirates)</span></code></pre></div>
 <p>To fix this, I need to tell the <code>t.test()</code> function which two values of <code>age</code> I want to test. To do this, use the <code>subset</code> argument and indicate which values of the IV you want to test using the <code>%in%</code> operator. For example, to compare the number of tattoos between pirates of age 29 and 30, I would add the <code>subset = age %in% c(29, 30)</code> argument like this:</p>
-<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="t-test-t.html#cb377-1" tabindex="-1"></a><span class="co"># Compare the tattoos of pirates aged 29 and 30:</span></span>
-<span id="cb377-2"><a href="t-test-t.html#cb377-2" tabindex="-1"></a>tatage.htest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(<span class="at">formula =</span> tattoos <span class="sc">~</span> age,</span>
-<span id="cb377-3"><a href="t-test-t.html#cb377-3" tabindex="-1"></a>                       <span class="at">data =</span> pirates,</span>
-<span id="cb377-4"><a href="t-test-t.html#cb377-4" tabindex="-1"></a>                       <span class="at">subset =</span> age <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">29</span>, <span class="dv">30</span>))  <span class="co"># Compare age of 29 to 30</span></span>
-<span id="cb377-5"><a href="t-test-t.html#cb377-5" tabindex="-1"></a></span>
-<span id="cb377-6"><a href="t-test-t.html#cb377-6" tabindex="-1"></a>tatage.htest</span>
-<span id="cb377-7"><a href="t-test-t.html#cb377-7" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb377-8"><a href="t-test-t.html#cb377-8" tabindex="-1"></a><span class="do">##  Welch Two Sample t-test</span></span>
-<span id="cb377-9"><a href="t-test-t.html#cb377-9" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb377-10"><a href="t-test-t.html#cb377-10" tabindex="-1"></a><span class="do">## data:  tattoos by age</span></span>
-<span id="cb377-11"><a href="t-test-t.html#cb377-11" tabindex="-1"></a><span class="do">## t = 0.3, df = 119, p-value = 0.8</span></span>
-<span id="cb377-12"><a href="t-test-t.html#cb377-12" tabindex="-1"></a><span class="do">## alternative hypothesis: true difference in means between group 29 and group 30 is not equal to 0</span></span>
-<span id="cb377-13"><a href="t-test-t.html#cb377-13" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
-<span id="cb377-14"><a href="t-test-t.html#cb377-14" tabindex="-1"></a><span class="do">##  -1.1  1.4</span></span>
-<span id="cb377-15"><a href="t-test-t.html#cb377-15" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
-<span id="cb377-16"><a href="t-test-t.html#cb377-16" tabindex="-1"></a><span class="do">## mean in group 29 mean in group 30 </span></span>
-<span id="cb377-17"><a href="t-test-t.html#cb377-17" tabindex="-1"></a><span class="do">##             10.1              9.9</span></span></code></pre></div>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="t-test-t.html#cb375-1" tabindex="-1"></a><span class="co"># Compare the tattoos of pirates aged 29 and 30:</span></span>
+<span id="cb375-2"><a href="t-test-t.html#cb375-2" tabindex="-1"></a>tatage.htest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(<span class="at">formula =</span> tattoos <span class="sc">~</span> age,</span>
+<span id="cb375-3"><a href="t-test-t.html#cb375-3" tabindex="-1"></a>                       <span class="at">data =</span> pirates,</span>
+<span id="cb375-4"><a href="t-test-t.html#cb375-4" tabindex="-1"></a>                       <span class="at">subset =</span> age <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">29</span>, <span class="dv">30</span>))  <span class="co"># Compare age of 29 to 30</span></span>
+<span id="cb375-5"><a href="t-test-t.html#cb375-5" tabindex="-1"></a></span>
+<span id="cb375-6"><a href="t-test-t.html#cb375-6" tabindex="-1"></a>tatage.htest</span>
+<span id="cb375-7"><a href="t-test-t.html#cb375-7" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb375-8"><a href="t-test-t.html#cb375-8" tabindex="-1"></a><span class="do">##  Welch Two Sample t-test</span></span>
+<span id="cb375-9"><a href="t-test-t.html#cb375-9" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb375-10"><a href="t-test-t.html#cb375-10" tabindex="-1"></a><span class="do">## data:  tattoos by age</span></span>
+<span id="cb375-11"><a href="t-test-t.html#cb375-11" tabindex="-1"></a><span class="do">## t = 0.3, df = 119, p-value = 0.8</span></span>
+<span id="cb375-12"><a href="t-test-t.html#cb375-12" tabindex="-1"></a><span class="do">## alternative hypothesis: true difference in means between group 29 and group 30 is not equal to 0</span></span>
+<span id="cb375-13"><a href="t-test-t.html#cb375-13" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb375-14"><a href="t-test-t.html#cb375-14" tabindex="-1"></a><span class="do">##  -1.1  1.4</span></span>
+<span id="cb375-15"><a href="t-test-t.html#cb375-15" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb375-16"><a href="t-test-t.html#cb375-16" tabindex="-1"></a><span class="do">## mean in group 29 mean in group 30 </span></span>
+<span id="cb375-17"><a href="t-test-t.html#cb375-17" tabindex="-1"></a><span class="do">##             10.1              9.9</span></span></code></pre></div>
 <p>Looks like we got a p-value of 0.79 which is pretty high and suggests that we should fail to reject the null hypothesis.</p>
 <p>You can select any subset of data in the <code>subset</code> argument to the <code>t.test()</code> function – not just the primary independent variable. For example, if I wanted to compare the number of tattoos between pirates who wear headbands or not, but only for female pirates, I would do the following</p>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="t-test-t.html#cb378-1" tabindex="-1"></a><span class="co"># Is there an effect of college on # of tattoos</span></span>
-<span id="cb378-2"><a href="t-test-t.html#cb378-2" tabindex="-1"></a><span class="co">#  only for female pirates?</span></span>
-<span id="cb378-3"><a href="t-test-t.html#cb378-3" tabindex="-1"></a></span>
-<span id="cb378-4"><a href="t-test-t.html#cb378-4" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">formula =</span> tattoos <span class="sc">~</span> college,</span>
-<span id="cb378-5"><a href="t-test-t.html#cb378-5" tabindex="-1"></a>       <span class="at">data =</span> pirates,</span>
-<span id="cb378-6"><a href="t-test-t.html#cb378-6" tabindex="-1"></a>       <span class="at">subset =</span> sex <span class="sc">==</span> <span class="st">&quot;female&quot;</span>)</span>
-<span id="cb378-7"><a href="t-test-t.html#cb378-7" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb378-8"><a href="t-test-t.html#cb378-8" tabindex="-1"></a><span class="do">##  Welch Two Sample t-test</span></span>
-<span id="cb378-9"><a href="t-test-t.html#cb378-9" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb378-10"><a href="t-test-t.html#cb378-10" tabindex="-1"></a><span class="do">## data:  tattoos by college</span></span>
-<span id="cb378-11"><a href="t-test-t.html#cb378-11" tabindex="-1"></a><span class="do">## t = 1, df = 461, p-value = 0.3</span></span>
-<span id="cb378-12"><a href="t-test-t.html#cb378-12" tabindex="-1"></a><span class="do">## alternative hypothesis: true difference in means between group CCCC and group JSSFP is not equal to 0</span></span>
-<span id="cb378-13"><a href="t-test-t.html#cb378-13" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
-<span id="cb378-14"><a href="t-test-t.html#cb378-14" tabindex="-1"></a><span class="do">##  -0.27  0.92</span></span>
-<span id="cb378-15"><a href="t-test-t.html#cb378-15" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
-<span id="cb378-16"><a href="t-test-t.html#cb378-16" tabindex="-1"></a><span class="do">##  mean in group CCCC mean in group JSSFP </span></span>
-<span id="cb378-17"><a href="t-test-t.html#cb378-17" tabindex="-1"></a><span class="do">##                 9.6                 9.3</span></span></code></pre></div>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="t-test-t.html#cb376-1" tabindex="-1"></a><span class="co"># Is there an effect of college on # of tattoos</span></span>
+<span id="cb376-2"><a href="t-test-t.html#cb376-2" tabindex="-1"></a><span class="co">#  only for female pirates?</span></span>
+<span id="cb376-3"><a href="t-test-t.html#cb376-3" tabindex="-1"></a></span>
+<span id="cb376-4"><a href="t-test-t.html#cb376-4" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">formula =</span> tattoos <span class="sc">~</span> college,</span>
+<span id="cb376-5"><a href="t-test-t.html#cb376-5" tabindex="-1"></a>       <span class="at">data =</span> pirates,</span>
+<span id="cb376-6"><a href="t-test-t.html#cb376-6" tabindex="-1"></a>       <span class="at">subset =</span> sex <span class="sc">==</span> <span class="st">&quot;female&quot;</span>)</span>
+<span id="cb376-7"><a href="t-test-t.html#cb376-7" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb376-8"><a href="t-test-t.html#cb376-8" tabindex="-1"></a><span class="do">##  Welch Two Sample t-test</span></span>
+<span id="cb376-9"><a href="t-test-t.html#cb376-9" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb376-10"><a href="t-test-t.html#cb376-10" tabindex="-1"></a><span class="do">## data:  tattoos by college</span></span>
+<span id="cb376-11"><a href="t-test-t.html#cb376-11" tabindex="-1"></a><span class="do">## t = 1, df = 461, p-value = 0.3</span></span>
+<span id="cb376-12"><a href="t-test-t.html#cb376-12" tabindex="-1"></a><span class="do">## alternative hypothesis: true difference in means between group CCCC and group JSSFP is not equal to 0</span></span>
+<span id="cb376-13"><a href="t-test-t.html#cb376-13" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb376-14"><a href="t-test-t.html#cb376-14" tabindex="-1"></a><span class="do">##  -0.27  0.92</span></span>
+<span id="cb376-15"><a href="t-test-t.html#cb376-15" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb376-16"><a href="t-test-t.html#cb376-16" tabindex="-1"></a><span class="do">##  mean in group CCCC mean in group JSSFP </span></span>
+<span id="cb376-17"><a href="t-test-t.html#cb376-17" tabindex="-1"></a><span class="do">##                 9.6                 9.3</span></span></code></pre></div>
 </div>
 </div>
 </div>

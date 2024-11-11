@@ -410,9 +410,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.2" data-path="t-test-t.html"><a href="t-test-t.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.2.2</b> 2-sample t-test</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="correlation-cor.html"><a href="correlation-cor.html"><i class="fa fa-check"></i><b>13.3</b> Correlation: <code>cor.test()</code></a></li>
-<li class="chapter" data-level="13.4" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chsq.test()</code></a>
+<li class="chapter" data-level="13.4" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chisq.test()</code></a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+<li class="chapter" data-level="13.4.1" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="test-your-r-might-3.html"><a href="test-your-r-might-3.html"><i class="fa fa-check"></i><b>13.5</b> Test your R might!</a></li>
 </ul></li>
@@ -519,59 +519,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>A good function is like a person who knows what to wear for each occasion – it should put on different things depending on the occasion. In other words, rather than doing (i.e.; wearing) a tuxedo for every event, a good <code>dress()</code> function needs to first make sure that the input was (<code>event == "ball"</code>) rather than (<code>event == "jobinterview"</code>). To selectively evaluate code based on criteria, R uses <em>if-then</em> statements</p>
 <p>To run an if-then statement in R, we use the <code>if() {}</code> function. The function has two main elements, a <em>logical test</em> in the parentheses, and <em>conditional code</em> in curly braces. The code in the curly braces is conditional because it is <em>only</em> evaluated if the logical test contained in the parentheses is <code>TRUE</code>. If the logical test is <code>FALSE</code>, R will completely ignore all of the conditional code.</p>
 <p>Let’s put some simple <code>if() {}</code> statements in a new function called <code>is.it.true()</code>. The function will take a single input <code>x</code>. If the input x is <code>TRUE</code>, the function will print one sentence. If the input x is <code>FALSE</code>, it will return a different sentence:</p>
-<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="using-if-then-statements-in-functions.html#cb457-1" tabindex="-1"></a>is.it.true <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb457-2"><a href="using-if-then-statements-in-functions.html#cb457-2" tabindex="-1"></a>  </span>
-<span id="cb457-3"><a href="using-if-then-statements-in-functions.html#cb457-3" tabindex="-1"></a><span class="cf">if</span>(x <span class="sc">==</span> <span class="cn">TRUE</span>) {<span class="fu">print</span>(<span class="st">&quot;x was true!&quot;</span>)}</span>
-<span id="cb457-4"><a href="using-if-then-statements-in-functions.html#cb457-4" tabindex="-1"></a><span class="cf">if</span>(x <span class="sc">==</span> <span class="cn">FALSE</span>) {<span class="fu">print</span>(<span class="st">&quot;x was false!&quot;</span>)}</span>
-<span id="cb457-5"><a href="using-if-then-statements-in-functions.html#cb457-5" tabindex="-1"></a>  </span>
-<span id="cb457-6"><a href="using-if-then-statements-in-functions.html#cb457-6" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="using-if-then-statements-in-functions.html#cb455-1" tabindex="-1"></a>is.it.true <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb455-2"><a href="using-if-then-statements-in-functions.html#cb455-2" tabindex="-1"></a>  </span>
+<span id="cb455-3"><a href="using-if-then-statements-in-functions.html#cb455-3" tabindex="-1"></a><span class="cf">if</span>(x <span class="sc">==</span> <span class="cn">TRUE</span>) {<span class="fu">print</span>(<span class="st">&quot;x was true!&quot;</span>)}</span>
+<span id="cb455-4"><a href="using-if-then-statements-in-functions.html#cb455-4" tabindex="-1"></a><span class="cf">if</span>(x <span class="sc">==</span> <span class="cn">FALSE</span>) {<span class="fu">print</span>(<span class="st">&quot;x was false!&quot;</span>)}</span>
+<span id="cb455-5"><a href="using-if-then-statements-in-functions.html#cb455-5" tabindex="-1"></a>  </span>
+<span id="cb455-6"><a href="using-if-then-statements-in-functions.html#cb455-6" tabindex="-1"></a>}</span></code></pre></div>
 <p>Let’s try evaluating the function on a few different inputs:</p>
-<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="using-if-then-statements-in-functions.html#cb458-1" tabindex="-1"></a><span class="fu">is.it.true</span>(<span class="cn">TRUE</span>)</span>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="using-if-then-statements-in-functions.html#cb456-1" tabindex="-1"></a><span class="fu">is.it.true</span>(<span class="cn">TRUE</span>)</span>
+<span id="cb456-2"><a href="using-if-then-statements-in-functions.html#cb456-2" tabindex="-1"></a><span class="do">## [1] &quot;x was true!&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="using-if-then-statements-in-functions.html#cb457-1" tabindex="-1"></a><span class="fu">is.it.true</span>(<span class="cn">FALSE</span>)</span>
+<span id="cb457-2"><a href="using-if-then-statements-in-functions.html#cb457-2" tabindex="-1"></a><span class="do">## [1] &quot;x was false!&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="using-if-then-statements-in-functions.html#cb458-1" tabindex="-1"></a><span class="fu">is.it.true</span>(<span class="dv">10</span> <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
 <span id="cb458-2"><a href="using-if-then-statements-in-functions.html#cb458-2" tabindex="-1"></a><span class="do">## [1] &quot;x was true!&quot;</span></span></code></pre></div>
-<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="using-if-then-statements-in-functions.html#cb459-1" tabindex="-1"></a><span class="fu">is.it.true</span>(<span class="cn">FALSE</span>)</span>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="using-if-then-statements-in-functions.html#cb459-1" tabindex="-1"></a><span class="fu">is.it.true</span>(<span class="dv">10</span> <span class="sc">&lt;</span> <span class="dv">0</span>)</span>
 <span id="cb459-2"><a href="using-if-then-statements-in-functions.html#cb459-2" tabindex="-1"></a><span class="do">## [1] &quot;x was false!&quot;</span></span></code></pre></div>
-<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="using-if-then-statements-in-functions.html#cb460-1" tabindex="-1"></a><span class="fu">is.it.true</span>(<span class="dv">10</span> <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
-<span id="cb460-2"><a href="using-if-then-statements-in-functions.html#cb460-2" tabindex="-1"></a><span class="do">## [1] &quot;x was true!&quot;</span></span></code></pre></div>
-<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="using-if-then-statements-in-functions.html#cb461-1" tabindex="-1"></a><span class="fu">is.it.true</span>(<span class="dv">10</span> <span class="sc">&lt;</span> <span class="dv">0</span>)</span>
-<span id="cb461-2"><a href="using-if-then-statements-in-functions.html#cb461-2" tabindex="-1"></a><span class="do">## [1] &quot;x was false!&quot;</span></span></code></pre></div>
 <p>Using <code>if()</code> statements in your functions can allow you to do some really neat things. Let’s create a function called <code>show.me()</code> that takes a vector of data, and either creates a plot, tells the user some statistics, or tells a joke! The function has two inputs: <code>x</code> – a vector of data, and <code>what</code> – a string value that tells the function what to do with x. We’ll set the function up to accept three different values of <code>what</code> – either <code>"plot"</code>, which will plot the data, <code>"stats"</code>, which will return basic statistics about the vector, or <code>"tellmeajoke"</code>, which will return a funny joke!</p>
-<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="using-if-then-statements-in-functions.html#cb462-1" tabindex="-1"></a>show.me <span class="ot">&lt;-</span> <span class="cf">function</span>(x, what) {</span>
-<span id="cb462-2"><a href="using-if-then-statements-in-functions.html#cb462-2" tabindex="-1"></a></span>
-<span id="cb462-3"><a href="using-if-then-statements-in-functions.html#cb462-3" tabindex="-1"></a><span class="cf">if</span>(what <span class="sc">==</span> <span class="st">&quot;plot&quot;</span>) {</span>
-<span id="cb462-4"><a href="using-if-then-statements-in-functions.html#cb462-4" tabindex="-1"></a>  </span>
-<span id="cb462-5"><a href="using-if-then-statements-in-functions.html#cb462-5" tabindex="-1"></a>  <span class="fu">hist</span>(x, <span class="at">yaxt =</span> <span class="st">&quot;n&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>, <span class="at">border =</span> <span class="st">&quot;white&quot;</span>, </span>
-<span id="cb462-6"><a href="using-if-then-statements-in-functions.html#cb462-6" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">&quot;skyblue&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb462-7"><a href="using-if-then-statements-in-functions.html#cb462-7" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">&quot;Ok! I hope you like the plot...&quot;</span>)</span>
-<span id="cb462-8"><a href="using-if-then-statements-in-functions.html#cb462-8" tabindex="-1"></a>  </span>
-<span id="cb462-9"><a href="using-if-then-statements-in-functions.html#cb462-9" tabindex="-1"></a>}</span>
-<span id="cb462-10"><a href="using-if-then-statements-in-functions.html#cb462-10" tabindex="-1"></a></span>
-<span id="cb462-11"><a href="using-if-then-statements-in-functions.html#cb462-11" tabindex="-1"></a><span class="cf">if</span>(what <span class="sc">==</span> <span class="st">&quot;stats&quot;</span>) {</span>
-<span id="cb462-12"><a href="using-if-then-statements-in-functions.html#cb462-12" tabindex="-1"></a>  </span>
-<span id="cb462-13"><a href="using-if-then-statements-in-functions.html#cb462-13" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Yarr! The mean of this data be &quot;</span>, </span>
-<span id="cb462-14"><a href="using-if-then-statements-in-functions.html#cb462-14" tabindex="-1"></a>                  <span class="fu">round</span>(<span class="fu">mean</span>(x), <span class="dv">2</span>),</span>
-<span id="cb462-15"><a href="using-if-then-statements-in-functions.html#cb462-15" tabindex="-1"></a>              <span class="st">&quot; and the standard deviation be &quot;</span>, </span>
-<span id="cb462-16"><a href="using-if-then-statements-in-functions.html#cb462-16" tabindex="-1"></a>              <span class="fu">round</span>(<span class="fu">sd</span>(x), <span class="dv">2</span>),</span>
-<span id="cb462-17"><a href="using-if-then-statements-in-functions.html#cb462-17" tabindex="-1"></a>              <span class="at">sep =</span> <span class="st">&quot;&quot;</span>))</span>
-<span id="cb462-18"><a href="using-if-then-statements-in-functions.html#cb462-18" tabindex="-1"></a>  </span>
-<span id="cb462-19"><a href="using-if-then-statements-in-functions.html#cb462-19" tabindex="-1"></a>}</span>
-<span id="cb462-20"><a href="using-if-then-statements-in-functions.html#cb462-20" tabindex="-1"></a></span>
-<span id="cb462-21"><a href="using-if-then-statements-in-functions.html#cb462-21" tabindex="-1"></a><span class="cf">if</span>(what <span class="sc">==</span> <span class="st">&quot;tellmeajoke&quot;</span>) {</span>
-<span id="cb462-22"><a href="using-if-then-statements-in-functions.html#cb462-22" tabindex="-1"></a>  </span>
-<span id="cb462-23"><a href="using-if-then-statements-in-functions.html#cb462-23" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;I am a pirate, not your joke monkey.&quot;</span>)</span>
-<span id="cb462-24"><a href="using-if-then-statements-in-functions.html#cb462-24" tabindex="-1"></a>  </span>
-<span id="cb462-25"><a href="using-if-then-statements-in-functions.html#cb462-25" tabindex="-1"></a>}</span>
-<span id="cb462-26"><a href="using-if-then-statements-in-functions.html#cb462-26" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="using-if-then-statements-in-functions.html#cb460-1" tabindex="-1"></a>show.me <span class="ot">&lt;-</span> <span class="cf">function</span>(x, what) {</span>
+<span id="cb460-2"><a href="using-if-then-statements-in-functions.html#cb460-2" tabindex="-1"></a></span>
+<span id="cb460-3"><a href="using-if-then-statements-in-functions.html#cb460-3" tabindex="-1"></a><span class="cf">if</span>(what <span class="sc">==</span> <span class="st">&quot;plot&quot;</span>) {</span>
+<span id="cb460-4"><a href="using-if-then-statements-in-functions.html#cb460-4" tabindex="-1"></a>  </span>
+<span id="cb460-5"><a href="using-if-then-statements-in-functions.html#cb460-5" tabindex="-1"></a>  <span class="fu">hist</span>(x, <span class="at">yaxt =</span> <span class="st">&quot;n&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>, <span class="at">border =</span> <span class="st">&quot;white&quot;</span>, </span>
+<span id="cb460-6"><a href="using-if-then-statements-in-functions.html#cb460-6" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">&quot;skyblue&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb460-7"><a href="using-if-then-statements-in-functions.html#cb460-7" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">&quot;Ok! I hope you like the plot...&quot;</span>)</span>
+<span id="cb460-8"><a href="using-if-then-statements-in-functions.html#cb460-8" tabindex="-1"></a>  </span>
+<span id="cb460-9"><a href="using-if-then-statements-in-functions.html#cb460-9" tabindex="-1"></a>}</span>
+<span id="cb460-10"><a href="using-if-then-statements-in-functions.html#cb460-10" tabindex="-1"></a></span>
+<span id="cb460-11"><a href="using-if-then-statements-in-functions.html#cb460-11" tabindex="-1"></a><span class="cf">if</span>(what <span class="sc">==</span> <span class="st">&quot;stats&quot;</span>) {</span>
+<span id="cb460-12"><a href="using-if-then-statements-in-functions.html#cb460-12" tabindex="-1"></a>  </span>
+<span id="cb460-13"><a href="using-if-then-statements-in-functions.html#cb460-13" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Yarr! The mean of this data be &quot;</span>, </span>
+<span id="cb460-14"><a href="using-if-then-statements-in-functions.html#cb460-14" tabindex="-1"></a>                  <span class="fu">round</span>(<span class="fu">mean</span>(x), <span class="dv">2</span>),</span>
+<span id="cb460-15"><a href="using-if-then-statements-in-functions.html#cb460-15" tabindex="-1"></a>              <span class="st">&quot; and the standard deviation be &quot;</span>, </span>
+<span id="cb460-16"><a href="using-if-then-statements-in-functions.html#cb460-16" tabindex="-1"></a>              <span class="fu">round</span>(<span class="fu">sd</span>(x), <span class="dv">2</span>),</span>
+<span id="cb460-17"><a href="using-if-then-statements-in-functions.html#cb460-17" tabindex="-1"></a>              <span class="at">sep =</span> <span class="st">&quot;&quot;</span>))</span>
+<span id="cb460-18"><a href="using-if-then-statements-in-functions.html#cb460-18" tabindex="-1"></a>  </span>
+<span id="cb460-19"><a href="using-if-then-statements-in-functions.html#cb460-19" tabindex="-1"></a>}</span>
+<span id="cb460-20"><a href="using-if-then-statements-in-functions.html#cb460-20" tabindex="-1"></a></span>
+<span id="cb460-21"><a href="using-if-then-statements-in-functions.html#cb460-21" tabindex="-1"></a><span class="cf">if</span>(what <span class="sc">==</span> <span class="st">&quot;tellmeajoke&quot;</span>) {</span>
+<span id="cb460-22"><a href="using-if-then-statements-in-functions.html#cb460-22" tabindex="-1"></a>  </span>
+<span id="cb460-23"><a href="using-if-then-statements-in-functions.html#cb460-23" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;I am a pirate, not your joke monkey.&quot;</span>)</span>
+<span id="cb460-24"><a href="using-if-then-statements-in-functions.html#cb460-24" tabindex="-1"></a>  </span>
+<span id="cb460-25"><a href="using-if-then-statements-in-functions.html#cb460-25" tabindex="-1"></a>}</span>
+<span id="cb460-26"><a href="using-if-then-statements-in-functions.html#cb460-26" tabindex="-1"></a>}</span></code></pre></div>
 <p>Let’s try the <code>show.me()</code> function with different arguments:</p>
-<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="using-if-then-statements-in-functions.html#cb463-1" tabindex="-1"></a><span class="fu">show.me</span>(<span class="at">x =</span> pirates<span class="sc">$</span>beard.length, </span>
-<span id="cb463-2"><a href="using-if-then-statements-in-functions.html#cb463-2" tabindex="-1"></a>        <span class="at">what =</span> <span class="st">&quot;plot&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="using-if-then-statements-in-functions.html#cb461-1" tabindex="-1"></a><span class="fu">show.me</span>(<span class="at">x =</span> pirates<span class="sc">$</span>beard.length, </span>
+<span id="cb461-2"><a href="using-if-then-statements-in-functions.html#cb461-2" tabindex="-1"></a>        <span class="at">what =</span> <span class="st">&quot;plot&quot;</span>)</span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-442-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Looks good! Now let’s get the same function to tell us some statistics about the data by setting <code>what = "stats"</code>:</p>
-<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="using-if-then-statements-in-functions.html#cb464-1" tabindex="-1"></a><span class="fu">show.me</span>(<span class="at">x =</span> pirates<span class="sc">$</span>beard.length, </span>
-<span id="cb464-2"><a href="using-if-then-statements-in-functions.html#cb464-2" tabindex="-1"></a>        <span class="at">what =</span> <span class="st">&quot;stats&quot;</span>)</span>
-<span id="cb464-3"><a href="using-if-then-statements-in-functions.html#cb464-3" tabindex="-1"></a><span class="do">## [1] &quot;Yarr! The mean of this data be 10.38 and the standard deviation be 10.31&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="using-if-then-statements-in-functions.html#cb462-1" tabindex="-1"></a><span class="fu">show.me</span>(<span class="at">x =</span> pirates<span class="sc">$</span>beard.length, </span>
+<span id="cb462-2"><a href="using-if-then-statements-in-functions.html#cb462-2" tabindex="-1"></a>        <span class="at">what =</span> <span class="st">&quot;stats&quot;</span>)</span>
+<span id="cb462-3"><a href="using-if-then-statements-in-functions.html#cb462-3" tabindex="-1"></a><span class="do">## [1] &quot;Yarr! The mean of this data be 10.38 and the standard deviation be 10.31&quot;</span></span></code></pre></div>
 <p>Phew that was exhausting, I need to hear a funny joke. Let’s set <code>what = "tellmeajoke"</code>:</p>
-<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="using-if-then-statements-in-functions.html#cb465-1" tabindex="-1"></a><span class="fu">show.me</span>(<span class="at">what =</span> <span class="st">&quot;tellmeajoke&quot;</span>)</span>
-<span id="cb465-2"><a href="using-if-then-statements-in-functions.html#cb465-2" tabindex="-1"></a><span class="do">## [1] &quot;I am a pirate, not your joke monkey.&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="using-if-then-statements-in-functions.html#cb463-1" tabindex="-1"></a><span class="fu">show.me</span>(<span class="at">what =</span> <span class="st">&quot;tellmeajoke&quot;</span>)</span>
+<span id="cb463-2"><a href="using-if-then-statements-in-functions.html#cb463-2" tabindex="-1"></a><span class="do">## [1] &quot;I am a pirate, not your joke monkey.&quot;</span></span></code></pre></div>
 <p>That wasn’t very funny.</p>
 </div>
             </section>

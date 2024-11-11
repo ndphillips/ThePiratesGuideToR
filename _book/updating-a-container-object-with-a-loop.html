@@ -410,9 +410,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.2" data-path="t-test-t.html"><a href="t-test-t.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.2.2</b> 2-sample t-test</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="correlation-cor.html"><a href="correlation-cor.html"><i class="fa fa-check"></i><b>13.3</b> Correlation: <code>cor.test()</code></a></li>
-<li class="chapter" data-level="13.4" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chsq.test()</code></a>
+<li class="chapter" data-level="13.4" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chisq.test()</code></a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+<li class="chapter" data-level="13.4.1" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="test-your-r-might-3.html"><a href="test-your-r-might-3.html"><i class="fa fa-check"></i><b>13.5</b> Test your R might!</a></li>
 </ul></li>
@@ -524,33 +524,33 @@ Figure 17.3: This is what I got when I googled ``funny container’’.
 </div>
 <p>For many loops, you may want to update values of a ‘container’ object with each iteration of a loop. We can easily do this using indexing and assignment within a loop.</p>
 <p>Let’s do an example with the <code>examscores</code> dataframe. We’ll use a loop to calculate how many students failed each of the 4 exams – where failing is a score less than 50. To do this, we will start by creating an NA vector called <code>failure.percent</code>. This will be a container object that we’ll update later with the loop.</p>
-<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="updating-a-container-object-with-a-loop.html#cb491-1" tabindex="-1"></a><span class="co"># Create a container object of 4 NA values</span></span>
-<span id="cb491-2"><a href="updating-a-container-object-with-a-loop.html#cb491-2" tabindex="-1"></a>failure.percent <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="updating-a-container-object-with-a-loop.html#cb489-1" tabindex="-1"></a><span class="co"># Create a container object of 4 NA values</span></span>
+<span id="cb489-2"><a href="updating-a-container-object-with-a-loop.html#cb489-2" tabindex="-1"></a>failure.percent <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">4</span>)</span></code></pre></div>
 <p>We will then use a loop that fills this object with the percentage of failures for each exam. The loop will go over each column in <code>examscores</code>, calculates the percentage of scores less than 50 for that column, and assigns the result to the ith value of <code>failure.percent</code>. For the loop, our loop object will be <code>i</code> and our loop vector will be <code>1:4</code>.</p>
-<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="updating-a-container-object-with-a-loop.html#cb492-1" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) { <span class="co"># Loop over columns 1 through 4</span></span>
-<span id="cb492-2"><a href="updating-a-container-object-with-a-loop.html#cb492-2" tabindex="-1"></a></span>
-<span id="cb492-3"><a href="updating-a-container-object-with-a-loop.html#cb492-3" tabindex="-1"></a>  <span class="co"># Get the scores for the ith column</span></span>
-<span id="cb492-4"><a href="updating-a-container-object-with-a-loop.html#cb492-4" tabindex="-1"></a>  x <span class="ot">&lt;-</span> examscores[,i] </span>
-<span id="cb492-5"><a href="updating-a-container-object-with-a-loop.html#cb492-5" tabindex="-1"></a>  </span>
-<span id="cb492-6"><a href="updating-a-container-object-with-a-loop.html#cb492-6" tabindex="-1"></a>  <span class="co"># Calculate the percent of failures</span></span>
-<span id="cb492-7"><a href="updating-a-container-object-with-a-loop.html#cb492-7" tabindex="-1"></a>  failures.i <span class="ot">&lt;-</span> <span class="fu">mean</span>(x <span class="sc">&lt;</span> <span class="dv">50</span>)  </span>
-<span id="cb492-8"><a href="updating-a-container-object-with-a-loop.html#cb492-8" tabindex="-1"></a>  </span>
-<span id="cb492-9"><a href="updating-a-container-object-with-a-loop.html#cb492-9" tabindex="-1"></a>   <span class="co"># Assign result to the ith value of failure.percent</span></span>
-<span id="cb492-10"><a href="updating-a-container-object-with-a-loop.html#cb492-10" tabindex="-1"></a>  failure.percent[i] <span class="ot">&lt;-</span> failures.i </span>
-<span id="cb492-11"><a href="updating-a-container-object-with-a-loop.html#cb492-11" tabindex="-1"></a></span>
-<span id="cb492-12"><a href="updating-a-container-object-with-a-loop.html#cb492-12" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="updating-a-container-object-with-a-loop.html#cb490-1" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) { <span class="co"># Loop over columns 1 through 4</span></span>
+<span id="cb490-2"><a href="updating-a-container-object-with-a-loop.html#cb490-2" tabindex="-1"></a></span>
+<span id="cb490-3"><a href="updating-a-container-object-with-a-loop.html#cb490-3" tabindex="-1"></a>  <span class="co"># Get the scores for the ith column</span></span>
+<span id="cb490-4"><a href="updating-a-container-object-with-a-loop.html#cb490-4" tabindex="-1"></a>  x <span class="ot">&lt;-</span> examscores[,i] </span>
+<span id="cb490-5"><a href="updating-a-container-object-with-a-loop.html#cb490-5" tabindex="-1"></a>  </span>
+<span id="cb490-6"><a href="updating-a-container-object-with-a-loop.html#cb490-6" tabindex="-1"></a>  <span class="co"># Calculate the percent of failures</span></span>
+<span id="cb490-7"><a href="updating-a-container-object-with-a-loop.html#cb490-7" tabindex="-1"></a>  failures.i <span class="ot">&lt;-</span> <span class="fu">mean</span>(x <span class="sc">&lt;</span> <span class="dv">50</span>)  </span>
+<span id="cb490-8"><a href="updating-a-container-object-with-a-loop.html#cb490-8" tabindex="-1"></a>  </span>
+<span id="cb490-9"><a href="updating-a-container-object-with-a-loop.html#cb490-9" tabindex="-1"></a>   <span class="co"># Assign result to the ith value of failure.percent</span></span>
+<span id="cb490-10"><a href="updating-a-container-object-with-a-loop.html#cb490-10" tabindex="-1"></a>  failure.percent[i] <span class="ot">&lt;-</span> failures.i </span>
+<span id="cb490-11"><a href="updating-a-container-object-with-a-loop.html#cb490-11" tabindex="-1"></a></span>
+<span id="cb490-12"><a href="updating-a-container-object-with-a-loop.html#cb490-12" tabindex="-1"></a>}</span></code></pre></div>
 <p>Now let’s look at the result.</p>
-<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="updating-a-container-object-with-a-loop.html#cb493-1" tabindex="-1"></a>failure.percent</span>
-<span id="cb493-2"><a href="updating-a-container-object-with-a-loop.html#cb493-2" tabindex="-1"></a><span class="do">## [1] 0.50 1.00 0.03 0.97</span></span></code></pre></div>
+<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="updating-a-container-object-with-a-loop.html#cb491-1" tabindex="-1"></a>failure.percent</span>
+<span id="cb491-2"><a href="updating-a-container-object-with-a-loop.html#cb491-2" tabindex="-1"></a><span class="do">## [1] 0.50 1.00 0.03 0.97</span></span></code></pre></div>
 <p>It looks like about 50% of the students failed exam 1, <em>everyone</em> (100%) failed exam 2, 3% failed exam 3, and 97% percent failed exam 4. To calculate <code>failure.percent</code> without a loop, we’d do the following:</p>
-<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="updating-a-container-object-with-a-loop.html#cb494-1" tabindex="-1"></a><span class="co"># Calculate failure percent without a loop</span></span>
-<span id="cb494-2"><a href="updating-a-container-object-with-a-loop.html#cb494-2" tabindex="-1"></a>failure.percent <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">4</span>)</span>
-<span id="cb494-3"><a href="updating-a-container-object-with-a-loop.html#cb494-3" tabindex="-1"></a>failure.percent[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">mean</span>(examscores[,<span class="dv">1</span>] <span class="sc">&lt;</span> <span class="dv">50</span>)</span>
-<span id="cb494-4"><a href="updating-a-container-object-with-a-loop.html#cb494-4" tabindex="-1"></a>failure.percent[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">mean</span>(examscores[,<span class="dv">2</span>] <span class="sc">&lt;</span> <span class="dv">50</span>)</span>
-<span id="cb494-5"><a href="updating-a-container-object-with-a-loop.html#cb494-5" tabindex="-1"></a>failure.percent[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">mean</span>(examscores[,<span class="dv">3</span>] <span class="sc">&lt;</span> <span class="dv">50</span>)</span>
-<span id="cb494-6"><a href="updating-a-container-object-with-a-loop.html#cb494-6" tabindex="-1"></a>failure.percent[<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="fu">mean</span>(examscores[,<span class="dv">4</span>] <span class="sc">&lt;</span> <span class="dv">50</span>)</span>
-<span id="cb494-7"><a href="updating-a-container-object-with-a-loop.html#cb494-7" tabindex="-1"></a>failure.percent</span>
-<span id="cb494-8"><a href="updating-a-container-object-with-a-loop.html#cb494-8" tabindex="-1"></a><span class="do">## [1] 0.50 1.00 0.03 0.97</span></span></code></pre></div>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="updating-a-container-object-with-a-loop.html#cb492-1" tabindex="-1"></a><span class="co"># Calculate failure percent without a loop</span></span>
+<span id="cb492-2"><a href="updating-a-container-object-with-a-loop.html#cb492-2" tabindex="-1"></a>failure.percent <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">4</span>)</span>
+<span id="cb492-3"><a href="updating-a-container-object-with-a-loop.html#cb492-3" tabindex="-1"></a>failure.percent[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">mean</span>(examscores[,<span class="dv">1</span>] <span class="sc">&lt;</span> <span class="dv">50</span>)</span>
+<span id="cb492-4"><a href="updating-a-container-object-with-a-loop.html#cb492-4" tabindex="-1"></a>failure.percent[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">mean</span>(examscores[,<span class="dv">2</span>] <span class="sc">&lt;</span> <span class="dv">50</span>)</span>
+<span id="cb492-5"><a href="updating-a-container-object-with-a-loop.html#cb492-5" tabindex="-1"></a>failure.percent[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">mean</span>(examscores[,<span class="dv">3</span>] <span class="sc">&lt;</span> <span class="dv">50</span>)</span>
+<span id="cb492-6"><a href="updating-a-container-object-with-a-loop.html#cb492-6" tabindex="-1"></a>failure.percent[<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="fu">mean</span>(examscores[,<span class="dv">4</span>] <span class="sc">&lt;</span> <span class="dv">50</span>)</span>
+<span id="cb492-7"><a href="updating-a-container-object-with-a-loop.html#cb492-7" tabindex="-1"></a>failure.percent</span>
+<span id="cb492-8"><a href="updating-a-container-object-with-a-loop.html#cb492-8" tabindex="-1"></a><span class="do">## [1] 0.50 1.00 0.03 0.97</span></span></code></pre></div>
 <p>As you can see, the results are identical.</p>
 </div>
             </section>

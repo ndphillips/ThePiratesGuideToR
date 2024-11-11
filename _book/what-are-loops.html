@@ -410,9 +410,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.2" data-path="t-test-t.html"><a href="t-test-t.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.2.2</b> 2-sample t-test</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="correlation-cor.html"><a href="correlation-cor.html"><i class="fa fa-check"></i><b>13.3</b> Correlation: <code>cor.test()</code></a></li>
-<li class="chapter" data-level="13.4" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chsq.test()</code></a>
+<li class="chapter" data-level="13.4" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chisq.test()</code></a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+<li class="chapter" data-level="13.4.1" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="test-your-r-might-3.html"><a href="test-your-r-might-3.html"><i class="fa fa-check"></i><b>13.5</b> Test your R might!</a></li>
 </ul></li>
@@ -517,12 +517,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="what-are-loops" class="section level2 hasAnchor" number="17.1">
 <h2><span class="header-section-number">17.1</span> What are loops?<a href="what-are-loops.html#what-are-loops" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A loop is, very simply, code that tells a program like R to repeat a certain chunk of code several times with different values of a <em>loop object</em> that changes for every run of the loop. In R, the format of a for-loop is as follows:</p>
-<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="what-are-loops.html#cb484-1" tabindex="-1"></a><span class="co"># General structure of a loop</span></span>
-<span id="cb484-2"><a href="what-are-loops.html#cb484-2" tabindex="-1"></a><span class="cf">for</span>(loop.object <span class="cf">in</span> loop.vector) {</span>
-<span id="cb484-3"><a href="what-are-loops.html#cb484-3" tabindex="-1"></a></span>
-<span id="cb484-4"><a href="what-are-loops.html#cb484-4" tabindex="-1"></a>  LOOP.CODE</span>
-<span id="cb484-5"><a href="what-are-loops.html#cb484-5" tabindex="-1"></a></span>
-<span id="cb484-6"><a href="what-are-loops.html#cb484-6" tabindex="-1"></a>  }</span></code></pre></div>
+<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="what-are-loops.html#cb482-1" tabindex="-1"></a><span class="co"># General structure of a loop</span></span>
+<span id="cb482-2"><a href="what-are-loops.html#cb482-2" tabindex="-1"></a><span class="cf">for</span>(loop.object <span class="cf">in</span> loop.vector) {</span>
+<span id="cb482-3"><a href="what-are-loops.html#cb482-3" tabindex="-1"></a></span>
+<span id="cb482-4"><a href="what-are-loops.html#cb482-4" tabindex="-1"></a>  LOOP.CODE</span>
+<span id="cb482-5"><a href="what-are-loops.html#cb482-5" tabindex="-1"></a></span>
+<span id="cb482-6"><a href="what-are-loops.html#cb482-6" tabindex="-1"></a>  }</span></code></pre></div>
 <p>As you can see, there are three key aspects of loops: The <em>loop object</em>, the <em>loop vector</em>, and the <em>loop code</em>:</p>
 <ol style="list-style-type: decimal">
 <li><p>Loop object: The object that will change for each iteration of the loop. This is usually a letter like <code>i</code>, or an object with subscript like <code>column.i</code> or <code>participant.i</code>. You can use any object name that you want for the index. While most people use single character object names, sometimes it’s more transparent to use names that tell you something about the data the object represents. For example, if you are doing a loop over participants in a study, you can call the index <code>participant.i</code></p></li>
@@ -532,49 +532,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="printing-numbers-from-1-to-100" class="section level3 hasAnchor" number="17.1.1">
 <h3><span class="header-section-number">17.1.1</span> Printing numbers from 1 to 100<a href="what-are-loops.html#printing-numbers-from-1-to-100" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s do a really simple loop that prints the integers from 1 to 10. For this code, our loop object is <code>i</code>, our loop vector is <code>1:10</code>, and our loop code is <code>print(i)</code>. You can verbally describe this loop as: <em>For every integer i between 1 and 10, print the integer i</em>:</p>
-<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="what-are-loops.html#cb485-1" tabindex="-1"></a><span class="co"># Print the integers from 1 to 10</span></span>
-<span id="cb485-2"><a href="what-are-loops.html#cb485-2" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
-<span id="cb485-3"><a href="what-are-loops.html#cb485-3" tabindex="-1"></a>  </span>
-<span id="cb485-4"><a href="what-are-loops.html#cb485-4" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
-<span id="cb485-5"><a href="what-are-loops.html#cb485-5" tabindex="-1"></a>  </span>
-<span id="cb485-6"><a href="what-are-loops.html#cb485-6" tabindex="-1"></a>}</span>
-<span id="cb485-7"><a href="what-are-loops.html#cb485-7" tabindex="-1"></a><span class="do">## [1] 1</span></span>
-<span id="cb485-8"><a href="what-are-loops.html#cb485-8" tabindex="-1"></a><span class="do">## [1] 2</span></span>
-<span id="cb485-9"><a href="what-are-loops.html#cb485-9" tabindex="-1"></a><span class="do">## [1] 3</span></span>
-<span id="cb485-10"><a href="what-are-loops.html#cb485-10" tabindex="-1"></a><span class="do">## [1] 4</span></span>
-<span id="cb485-11"><a href="what-are-loops.html#cb485-11" tabindex="-1"></a><span class="do">## [1] 5</span></span>
-<span id="cb485-12"><a href="what-are-loops.html#cb485-12" tabindex="-1"></a><span class="do">## [1] 6</span></span>
-<span id="cb485-13"><a href="what-are-loops.html#cb485-13" tabindex="-1"></a><span class="do">## [1] 7</span></span>
-<span id="cb485-14"><a href="what-are-loops.html#cb485-14" tabindex="-1"></a><span class="do">## [1] 8</span></span>
-<span id="cb485-15"><a href="what-are-loops.html#cb485-15" tabindex="-1"></a><span class="do">## [1] 9</span></span>
-<span id="cb485-16"><a href="what-are-loops.html#cb485-16" tabindex="-1"></a><span class="do">## [1] 10</span></span></code></pre></div>
+<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="what-are-loops.html#cb483-1" tabindex="-1"></a><span class="co"># Print the integers from 1 to 10</span></span>
+<span id="cb483-2"><a href="what-are-loops.html#cb483-2" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb483-3"><a href="what-are-loops.html#cb483-3" tabindex="-1"></a>  </span>
+<span id="cb483-4"><a href="what-are-loops.html#cb483-4" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb483-5"><a href="what-are-loops.html#cb483-5" tabindex="-1"></a>  </span>
+<span id="cb483-6"><a href="what-are-loops.html#cb483-6" tabindex="-1"></a>}</span>
+<span id="cb483-7"><a href="what-are-loops.html#cb483-7" tabindex="-1"></a><span class="do">## [1] 1</span></span>
+<span id="cb483-8"><a href="what-are-loops.html#cb483-8" tabindex="-1"></a><span class="do">## [1] 2</span></span>
+<span id="cb483-9"><a href="what-are-loops.html#cb483-9" tabindex="-1"></a><span class="do">## [1] 3</span></span>
+<span id="cb483-10"><a href="what-are-loops.html#cb483-10" tabindex="-1"></a><span class="do">## [1] 4</span></span>
+<span id="cb483-11"><a href="what-are-loops.html#cb483-11" tabindex="-1"></a><span class="do">## [1] 5</span></span>
+<span id="cb483-12"><a href="what-are-loops.html#cb483-12" tabindex="-1"></a><span class="do">## [1] 6</span></span>
+<span id="cb483-13"><a href="what-are-loops.html#cb483-13" tabindex="-1"></a><span class="do">## [1] 7</span></span>
+<span id="cb483-14"><a href="what-are-loops.html#cb483-14" tabindex="-1"></a><span class="do">## [1] 8</span></span>
+<span id="cb483-15"><a href="what-are-loops.html#cb483-15" tabindex="-1"></a><span class="do">## [1] 9</span></span>
+<span id="cb483-16"><a href="what-are-loops.html#cb483-16" tabindex="-1"></a><span class="do">## [1] 10</span></span></code></pre></div>
 <p>As you can see, the loop applied the loop code (which in this case was <code>print(i)</code>) to every value of the loop object <code>i</code> specified in the <code>loop vector</code>, <code>1:10</code>.</p>
 </div>
 <div id="adding-the-integers-from-1-to-100" class="section level3 hasAnchor" number="17.1.2">
 <h3><span class="header-section-number">17.1.2</span> Adding the integers from 1 to 100<a href="what-are-loops.html#adding-the-integers-from-1-to-100" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s use a loop to add all the integers from 1 to 100. To do this, we’ll need to create an object called <code>current.sum</code> that stores the latest sum of the numbers as we go through the loop. We’ll set the loop object to <code>i</code>, the loop vector to <code>1:100</code>, and the loop code to <code>current.sum &lt;- current.sum + i</code>. Because we want the starting sum to be 0, we’ll set the initial value of <code>current.sum</code> to 0. Here is the code:</p>
-<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="what-are-loops.html#cb486-1" tabindex="-1"></a><span class="co"># Loop to add integers from 1 to 100</span></span>
-<span id="cb486-2"><a href="what-are-loops.html#cb486-2" tabindex="-1"></a></span>
-<span id="cb486-3"><a href="what-are-loops.html#cb486-3" tabindex="-1"></a>current.sum <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co"># The starting value of current.sum</span></span>
-<span id="cb486-4"><a href="what-are-loops.html#cb486-4" tabindex="-1"></a></span>
-<span id="cb486-5"><a href="what-are-loops.html#cb486-5" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) {</span>
-<span id="cb486-6"><a href="what-are-loops.html#cb486-6" tabindex="-1"></a></span>
-<span id="cb486-7"><a href="what-are-loops.html#cb486-7" tabindex="-1"></a> current.sum <span class="ot">&lt;-</span> current.sum <span class="sc">+</span> i <span class="co"># Add i to current.sum</span></span>
-<span id="cb486-8"><a href="what-are-loops.html#cb486-8" tabindex="-1"></a></span>
-<span id="cb486-9"><a href="what-are-loops.html#cb486-9" tabindex="-1"></a>}</span>
-<span id="cb486-10"><a href="what-are-loops.html#cb486-10" tabindex="-1"></a></span>
-<span id="cb486-11"><a href="what-are-loops.html#cb486-11" tabindex="-1"></a>current.sum <span class="co"># Print the result!</span></span>
-<span id="cb486-12"><a href="what-are-loops.html#cb486-12" tabindex="-1"></a><span class="do">## [1] 5050</span></span></code></pre></div>
+<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="what-are-loops.html#cb484-1" tabindex="-1"></a><span class="co"># Loop to add integers from 1 to 100</span></span>
+<span id="cb484-2"><a href="what-are-loops.html#cb484-2" tabindex="-1"></a></span>
+<span id="cb484-3"><a href="what-are-loops.html#cb484-3" tabindex="-1"></a>current.sum <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co"># The starting value of current.sum</span></span>
+<span id="cb484-4"><a href="what-are-loops.html#cb484-4" tabindex="-1"></a></span>
+<span id="cb484-5"><a href="what-are-loops.html#cb484-5" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) {</span>
+<span id="cb484-6"><a href="what-are-loops.html#cb484-6" tabindex="-1"></a></span>
+<span id="cb484-7"><a href="what-are-loops.html#cb484-7" tabindex="-1"></a> current.sum <span class="ot">&lt;-</span> current.sum <span class="sc">+</span> i <span class="co"># Add i to current.sum</span></span>
+<span id="cb484-8"><a href="what-are-loops.html#cb484-8" tabindex="-1"></a></span>
+<span id="cb484-9"><a href="what-are-loops.html#cb484-9" tabindex="-1"></a>}</span>
+<span id="cb484-10"><a href="what-are-loops.html#cb484-10" tabindex="-1"></a></span>
+<span id="cb484-11"><a href="what-are-loops.html#cb484-11" tabindex="-1"></a>current.sum <span class="co"># Print the result!</span></span>
+<span id="cb484-12"><a href="what-are-loops.html#cb484-12" tabindex="-1"></a><span class="do">## [1] 5050</span></span></code></pre></div>
 <p>Looks like we get an answer of 5050. To see if our loop gave us the correct answer, we can do the same calculation without a loop by using <code>a:b</code> and the <code>sum()</code> function:</p>
-<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="what-are-loops.html#cb487-1" tabindex="-1"></a><span class="co"># Add the integers from 1 to 100 without a loop</span></span>
-<span id="cb487-2"><a href="what-are-loops.html#cb487-2" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>)</span>
-<span id="cb487-3"><a href="what-are-loops.html#cb487-3" tabindex="-1"></a><span class="do">## [1] 5050</span></span></code></pre></div>
+<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="what-are-loops.html#cb485-1" tabindex="-1"></a><span class="co"># Add the integers from 1 to 100 without a loop</span></span>
+<span id="cb485-2"><a href="what-are-loops.html#cb485-2" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>)</span>
+<span id="cb485-3"><a href="what-are-loops.html#cb485-3" tabindex="-1"></a><span class="do">## [1] 5050</span></span></code></pre></div>
 <p>As you can see, the <code>sum(1:100)</code> code gives us the same answer as the loop (and is much simpler).</p>
 <p>There’s actually a funny story about how to quickly add integers (without a loop). According to the story, a lazy teacher who wanted to take a nap decided that the best way to occupy his students was to ask them to privately count all the integers from 1 to 100 at their desks. To his surprise, a young student approached him after a few moments with the correct answer: 5050. The teacher suspected a cheat, but the student didn’t count the numbers. Instead he realized that he could use the formula <code>n(n+1) / 2</code>. Don’t believe the story? Check it out:</p>
-<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="what-are-loops.html#cb488-1" tabindex="-1"></a><span class="co"># Calculate the sum of integers from 1 to 100 using Gauss&#39; method</span></span>
-<span id="cb488-2"><a href="what-are-loops.html#cb488-2" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb488-3"><a href="what-are-loops.html#cb488-3" tabindex="-1"></a>n <span class="sc">*</span> (n <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span></span>
-<span id="cb488-4"><a href="what-are-loops.html#cb488-4" tabindex="-1"></a><span class="do">## [1] 5050</span></span></code></pre></div>
+<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="what-are-loops.html#cb486-1" tabindex="-1"></a><span class="co"># Calculate the sum of integers from 1 to 100 using Gauss&#39; method</span></span>
+<span id="cb486-2"><a href="what-are-loops.html#cb486-2" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb486-3"><a href="what-are-loops.html#cb486-3" tabindex="-1"></a>n <span class="sc">*</span> (n <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb486-4"><a href="what-are-loops.html#cb486-4" tabindex="-1"></a><span class="do">## [1] 5050</span></span></code></pre></div>
 <p>This boy grew up to be Gauss, a super legit mathematician.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-474"></span>
 <img src="images/gauss.jpg" alt="Gauss. The guy was a total pirate. And totally would give us shit for using a loop to calculate the sum of 1 to 100..." width="60%" />

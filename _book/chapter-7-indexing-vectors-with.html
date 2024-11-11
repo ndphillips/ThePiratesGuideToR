@@ -410,9 +410,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.2" data-path="t-test-t.html"><a href="t-test-t.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.2.2</b> 2-sample t-test</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="correlation-cor.html"><a href="correlation-cor.html"><i class="fa fa-check"></i><b>13.3</b> Correlation: <code>cor.test()</code></a></li>
-<li class="chapter" data-level="13.4" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chsq.test()</code></a>
+<li class="chapter" data-level="13.4" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chisq.test()</code></a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+<li class="chapter" data-level="13.4.1" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="test-your-r-might-3.html"><a href="test-your-r-might-3.html"><i class="fa fa-check"></i><b>13.5</b> Test your R might!</a></li>
 </ul></li>
@@ -614,85 +614,85 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol start="0" style="list-style-type: decimal">
 <li>Create new data vectors for each column.</li>
 </ol>
-<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="chapter-7-indexing-vectors-with.html#cb541-1" tabindex="-1"></a>movie <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Whatever Works&quot;</span>, <span class="st">&quot;It Follows&quot;</span>, <span class="st">&quot;Love and Mercy&quot;</span>, </span>
-<span id="cb541-2"><a href="chapter-7-indexing-vectors-with.html#cb541-2" tabindex="-1"></a>             <span class="st">&quot;The Goonies&quot;</span>, <span class="st">&quot;Jiro Dreams of Sushi&quot;</span>,</span>
-<span id="cb541-3"><a href="chapter-7-indexing-vectors-with.html#cb541-3" tabindex="-1"></a>             <span class="st">&quot;There Will be Blood&quot;</span>, <span class="st">&quot;Moon&quot;</span>, </span>
-<span id="cb541-4"><a href="chapter-7-indexing-vectors-with.html#cb541-4" tabindex="-1"></a>             <span class="st">&quot;Spice World&quot;</span>, <span class="st">&quot;Serenity&quot;</span>, <span class="st">&quot;Finding Vivian Maier&quot;</span>)</span>
-<span id="cb541-5"><a href="chapter-7-indexing-vectors-with.html#cb541-5" tabindex="-1"></a></span>
-<span id="cb541-6"><a href="chapter-7-indexing-vectors-with.html#cb541-6" tabindex="-1"></a>year <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2009</span>, <span class="dv">2015</span>, <span class="dv">2015</span>, <span class="dv">1985</span>, <span class="dv">2012</span>, <span class="dv">2007</span>, <span class="dv">2009</span>, <span class="dv">1988</span>, <span class="dv">2005</span>, <span class="dv">2014</span>)</span>
-<span id="cb541-7"><a href="chapter-7-indexing-vectors-with.html#cb541-7" tabindex="-1"></a></span>
-<span id="cb541-8"><a href="chapter-7-indexing-vectors-with.html#cb541-8" tabindex="-1"></a>boxoffice <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">35</span>, <span class="dv">15</span>, <span class="dv">15</span>, <span class="dv">62</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">321</span>, <span class="dv">79</span>, <span class="dv">39</span>, <span class="fl">1.5</span>)</span>
-<span id="cb541-9"><a href="chapter-7-indexing-vectors-with.html#cb541-9" tabindex="-1"></a></span>
-<span id="cb541-10"><a href="chapter-7-indexing-vectors-with.html#cb541-10" tabindex="-1"></a>genre <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Comedy&quot;</span>, <span class="st">&quot;Horror&quot;</span>, <span class="st">&quot;Drama&quot;</span>, <span class="st">&quot;Adventure&quot;</span>, <span class="st">&quot;Documentary&quot;</span>, </span>
-<span id="cb541-11"><a href="chapter-7-indexing-vectors-with.html#cb541-11" tabindex="-1"></a>           <span class="st">&quot;Drama&quot;</span>, <span class="st">&quot;Science Fiction&quot;</span>, <span class="st">&quot;Comedy&quot;</span>, <span class="st">&quot;Science Fiction&quot;</span>, </span>
-<span id="cb541-12"><a href="chapter-7-indexing-vectors-with.html#cb541-12" tabindex="-1"></a>           <span class="st">&quot;Documentary&quot;</span>)</span>
-<span id="cb541-13"><a href="chapter-7-indexing-vectors-with.html#cb541-13" tabindex="-1"></a></span>
-<span id="cb541-14"><a href="chapter-7-indexing-vectors-with.html#cb541-14" tabindex="-1"></a>time <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">92</span>, <span class="dv">97</span>, <span class="dv">120</span>, <span class="dv">90</span>, <span class="dv">81</span>, <span class="dv">158</span>, <span class="dv">97</span>, <span class="sc">-</span><span class="dv">84</span>, <span class="dv">119</span>, <span class="dv">84</span>)</span>
-<span id="cb541-15"><a href="chapter-7-indexing-vectors-with.html#cb541-15" tabindex="-1"></a></span>
-<span id="cb541-16"><a href="chapter-7-indexing-vectors-with.html#cb541-16" tabindex="-1"></a>rating <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;PG-13&quot;</span>, <span class="st">&quot;R&quot;</span>, <span class="st">&quot;R&quot;</span>, <span class="st">&quot;PG&quot;</span>, <span class="st">&quot;G&quot;</span>, <span class="st">&quot;R&quot;</span>, <span class="st">&quot;R&quot;</span>, </span>
-<span id="cb541-17"><a href="chapter-7-indexing-vectors-with.html#cb541-17" tabindex="-1"></a>            <span class="st">&quot;PG-13&quot;</span>, <span class="st">&quot;PG-13&quot;</span>, <span class="st">&quot;Unrated&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb539-1"><a href="chapter-7-indexing-vectors-with.html#cb539-1" tabindex="-1"></a>movie <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Whatever Works&quot;</span>, <span class="st">&quot;It Follows&quot;</span>, <span class="st">&quot;Love and Mercy&quot;</span>, </span>
+<span id="cb539-2"><a href="chapter-7-indexing-vectors-with.html#cb539-2" tabindex="-1"></a>             <span class="st">&quot;The Goonies&quot;</span>, <span class="st">&quot;Jiro Dreams of Sushi&quot;</span>,</span>
+<span id="cb539-3"><a href="chapter-7-indexing-vectors-with.html#cb539-3" tabindex="-1"></a>             <span class="st">&quot;There Will be Blood&quot;</span>, <span class="st">&quot;Moon&quot;</span>, </span>
+<span id="cb539-4"><a href="chapter-7-indexing-vectors-with.html#cb539-4" tabindex="-1"></a>             <span class="st">&quot;Spice World&quot;</span>, <span class="st">&quot;Serenity&quot;</span>, <span class="st">&quot;Finding Vivian Maier&quot;</span>)</span>
+<span id="cb539-5"><a href="chapter-7-indexing-vectors-with.html#cb539-5" tabindex="-1"></a></span>
+<span id="cb539-6"><a href="chapter-7-indexing-vectors-with.html#cb539-6" tabindex="-1"></a>year <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2009</span>, <span class="dv">2015</span>, <span class="dv">2015</span>, <span class="dv">1985</span>, <span class="dv">2012</span>, <span class="dv">2007</span>, <span class="dv">2009</span>, <span class="dv">1988</span>, <span class="dv">2005</span>, <span class="dv">2014</span>)</span>
+<span id="cb539-7"><a href="chapter-7-indexing-vectors-with.html#cb539-7" tabindex="-1"></a></span>
+<span id="cb539-8"><a href="chapter-7-indexing-vectors-with.html#cb539-8" tabindex="-1"></a>boxoffice <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">35</span>, <span class="dv">15</span>, <span class="dv">15</span>, <span class="dv">62</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">321</span>, <span class="dv">79</span>, <span class="dv">39</span>, <span class="fl">1.5</span>)</span>
+<span id="cb539-9"><a href="chapter-7-indexing-vectors-with.html#cb539-9" tabindex="-1"></a></span>
+<span id="cb539-10"><a href="chapter-7-indexing-vectors-with.html#cb539-10" tabindex="-1"></a>genre <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Comedy&quot;</span>, <span class="st">&quot;Horror&quot;</span>, <span class="st">&quot;Drama&quot;</span>, <span class="st">&quot;Adventure&quot;</span>, <span class="st">&quot;Documentary&quot;</span>, </span>
+<span id="cb539-11"><a href="chapter-7-indexing-vectors-with.html#cb539-11" tabindex="-1"></a>           <span class="st">&quot;Drama&quot;</span>, <span class="st">&quot;Science Fiction&quot;</span>, <span class="st">&quot;Comedy&quot;</span>, <span class="st">&quot;Science Fiction&quot;</span>, </span>
+<span id="cb539-12"><a href="chapter-7-indexing-vectors-with.html#cb539-12" tabindex="-1"></a>           <span class="st">&quot;Documentary&quot;</span>)</span>
+<span id="cb539-13"><a href="chapter-7-indexing-vectors-with.html#cb539-13" tabindex="-1"></a></span>
+<span id="cb539-14"><a href="chapter-7-indexing-vectors-with.html#cb539-14" tabindex="-1"></a>time <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">92</span>, <span class="dv">97</span>, <span class="dv">120</span>, <span class="dv">90</span>, <span class="dv">81</span>, <span class="dv">158</span>, <span class="dv">97</span>, <span class="sc">-</span><span class="dv">84</span>, <span class="dv">119</span>, <span class="dv">84</span>)</span>
+<span id="cb539-15"><a href="chapter-7-indexing-vectors-with.html#cb539-15" tabindex="-1"></a></span>
+<span id="cb539-16"><a href="chapter-7-indexing-vectors-with.html#cb539-16" tabindex="-1"></a>rating <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;PG-13&quot;</span>, <span class="st">&quot;R&quot;</span>, <span class="st">&quot;R&quot;</span>, <span class="st">&quot;PG&quot;</span>, <span class="st">&quot;G&quot;</span>, <span class="st">&quot;R&quot;</span>, <span class="st">&quot;R&quot;</span>, </span>
+<span id="cb539-17"><a href="chapter-7-indexing-vectors-with.html#cb539-17" tabindex="-1"></a>            <span class="st">&quot;PG-13&quot;</span>, <span class="st">&quot;PG-13&quot;</span>, <span class="st">&quot;Unrated&quot;</span>)</span></code></pre></div>
 <ol style="list-style-type: decimal">
 <li>What is the name of the 10th movie in the list?</li>
 </ol>
-<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="chapter-7-indexing-vectors-with.html#cb542-1" tabindex="-1"></a>movie[<span class="dv">10</span>]</span>
-<span id="cb542-2"><a href="chapter-7-indexing-vectors-with.html#cb542-2" tabindex="-1"></a><span class="do">## [1] &quot;Finding Vivian Maier&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="chapter-7-indexing-vectors-with.html#cb540-1" tabindex="-1"></a>movie[<span class="dv">10</span>]</span>
+<span id="cb540-2"><a href="chapter-7-indexing-vectors-with.html#cb540-2" tabindex="-1"></a><span class="do">## [1] &quot;Finding Vivian Maier&quot;</span></span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>What are the genres of the first 4 movies?</li>
 </ol>
-<div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb543-1"><a href="chapter-7-indexing-vectors-with.html#cb543-1" tabindex="-1"></a>genre[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span>
-<span id="cb543-2"><a href="chapter-7-indexing-vectors-with.html#cb543-2" tabindex="-1"></a><span class="do">## [1] &quot;Comedy&quot;    &quot;Horror&quot;    &quot;Drama&quot;     &quot;Adventure&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="chapter-7-indexing-vectors-with.html#cb541-1" tabindex="-1"></a>genre[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span>
+<span id="cb541-2"><a href="chapter-7-indexing-vectors-with.html#cb541-2" tabindex="-1"></a><span class="do">## [1] &quot;Comedy&quot;    &quot;Horror&quot;    &quot;Drama&quot;     &quot;Adventure&quot;</span></span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>Some joker put Spice World in the movie names – it should be ``The Naked Gun’’ Please correct the name.</li>
 </ol>
-<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="chapter-7-indexing-vectors-with.html#cb544-1" tabindex="-1"></a>movie[movie <span class="sc">==</span> <span class="st">&quot;Spice World&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;The Naked Gun&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="chapter-7-indexing-vectors-with.html#cb542-1" tabindex="-1"></a>movie[movie <span class="sc">==</span> <span class="st">&quot;Spice World&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;The Naked Gun&quot;</span></span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li>What were the names of the movies made before 1990?</li>
 </ol>
-<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="chapter-7-indexing-vectors-with.html#cb545-1" tabindex="-1"></a>movie[year <span class="sc">&lt;</span> <span class="dv">1990</span>]</span>
-<span id="cb545-2"><a href="chapter-7-indexing-vectors-with.html#cb545-2" tabindex="-1"></a><span class="do">## [1] &quot;The Goonies&quot;   &quot;The Naked Gun&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb543-1"><a href="chapter-7-indexing-vectors-with.html#cb543-1" tabindex="-1"></a>movie[year <span class="sc">&lt;</span> <span class="dv">1990</span>]</span>
+<span id="cb543-2"><a href="chapter-7-indexing-vectors-with.html#cb543-2" tabindex="-1"></a><span class="do">## [1] &quot;The Goonies&quot;   &quot;The Naked Gun&quot;</span></span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li>How many movies were Dramas? What percent of the 10 movies were Comedies?</li>
 </ol>
-<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="chapter-7-indexing-vectors-with.html#cb546-1" tabindex="-1"></a><span class="fu">sum</span>(genre <span class="sc">==</span> <span class="st">&quot;Drama&quot;</span>)</span>
-<span id="cb546-2"><a href="chapter-7-indexing-vectors-with.html#cb546-2" tabindex="-1"></a><span class="do">## [1] 2</span></span></code></pre></div>
-<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb547-1"><a href="chapter-7-indexing-vectors-with.html#cb547-1" tabindex="-1"></a></span>
-<span id="cb547-2"><a href="chapter-7-indexing-vectors-with.html#cb547-2" tabindex="-1"></a><span class="fu">mean</span>(genre <span class="sc">==</span> <span class="st">&quot;Comedy&quot;</span>)</span>
-<span id="cb547-3"><a href="chapter-7-indexing-vectors-with.html#cb547-3" tabindex="-1"></a><span class="do">## [1] 0.2</span></span></code></pre></div>
+<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="chapter-7-indexing-vectors-with.html#cb544-1" tabindex="-1"></a><span class="fu">sum</span>(genre <span class="sc">==</span> <span class="st">&quot;Drama&quot;</span>)</span>
+<span id="cb544-2"><a href="chapter-7-indexing-vectors-with.html#cb544-2" tabindex="-1"></a><span class="do">## [1] 2</span></span></code></pre></div>
+<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="chapter-7-indexing-vectors-with.html#cb545-1" tabindex="-1"></a></span>
+<span id="cb545-2"><a href="chapter-7-indexing-vectors-with.html#cb545-2" tabindex="-1"></a><span class="fu">mean</span>(genre <span class="sc">==</span> <span class="st">&quot;Comedy&quot;</span>)</span>
+<span id="cb545-3"><a href="chapter-7-indexing-vectors-with.html#cb545-3" tabindex="-1"></a><span class="do">## [1] 0.2</span></span></code></pre></div>
 <ol start="6" style="list-style-type: decimal">
 <li>One of the values in the <code>time</code> vector is invalid. Convert any invalid values in this vector to NA. Then, calculate the mean movie time</li>
 </ol>
-<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="chapter-7-indexing-vectors-with.html#cb548-1" tabindex="-1"></a>time[time <span class="sc">&lt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb548-2"><a href="chapter-7-indexing-vectors-with.html#cb548-2" tabindex="-1"></a></span>
-<span id="cb548-3"><a href="chapter-7-indexing-vectors-with.html#cb548-3" tabindex="-1"></a><span class="fu">mean</span>(time, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb548-4"><a href="chapter-7-indexing-vectors-with.html#cb548-4" tabindex="-1"></a><span class="do">## [1] 104</span></span></code></pre></div>
+<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="chapter-7-indexing-vectors-with.html#cb546-1" tabindex="-1"></a>time[time <span class="sc">&lt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb546-2"><a href="chapter-7-indexing-vectors-with.html#cb546-2" tabindex="-1"></a></span>
+<span id="cb546-3"><a href="chapter-7-indexing-vectors-with.html#cb546-3" tabindex="-1"></a><span class="fu">mean</span>(time, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb546-4"><a href="chapter-7-indexing-vectors-with.html#cb546-4" tabindex="-1"></a><span class="do">## [1] 104</span></span></code></pre></div>
 <ol start="7" style="list-style-type: decimal">
 <li>What were the names of the Comedy movies? What were their boxoffice totals? (Two separate questions)</li>
 </ol>
-<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb549-1"><a href="chapter-7-indexing-vectors-with.html#cb549-1" tabindex="-1"></a>movie[genre <span class="sc">==</span> <span class="st">&quot;Comedy&quot;</span>]</span>
-<span id="cb549-2"><a href="chapter-7-indexing-vectors-with.html#cb549-2" tabindex="-1"></a><span class="do">## [1] &quot;Whatever Works&quot; &quot;The Naked Gun&quot;</span></span></code></pre></div>
-<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb550-1"><a href="chapter-7-indexing-vectors-with.html#cb550-1" tabindex="-1"></a></span>
-<span id="cb550-2"><a href="chapter-7-indexing-vectors-with.html#cb550-2" tabindex="-1"></a>boxoffice[genre <span class="sc">==</span> <span class="st">&quot;Comedy&quot;</span>]</span>
-<span id="cb550-3"><a href="chapter-7-indexing-vectors-with.html#cb550-3" tabindex="-1"></a><span class="do">## [1] 35 79</span></span></code></pre></div>
+<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb547-1"><a href="chapter-7-indexing-vectors-with.html#cb547-1" tabindex="-1"></a>movie[genre <span class="sc">==</span> <span class="st">&quot;Comedy&quot;</span>]</span>
+<span id="cb547-2"><a href="chapter-7-indexing-vectors-with.html#cb547-2" tabindex="-1"></a><span class="do">## [1] &quot;Whatever Works&quot; &quot;The Naked Gun&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="chapter-7-indexing-vectors-with.html#cb548-1" tabindex="-1"></a></span>
+<span id="cb548-2"><a href="chapter-7-indexing-vectors-with.html#cb548-2" tabindex="-1"></a>boxoffice[genre <span class="sc">==</span> <span class="st">&quot;Comedy&quot;</span>]</span>
+<span id="cb548-3"><a href="chapter-7-indexing-vectors-with.html#cb548-3" tabindex="-1"></a><span class="do">## [1] 35 79</span></span></code></pre></div>
 <ol start="8" style="list-style-type: decimal">
 <li>What were the names of the movies that made less than $50 Million dollars AND were Comedies?</li>
 </ol>
-<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="chapter-7-indexing-vectors-with.html#cb551-1" tabindex="-1"></a>movie[boxoffice <span class="sc">&lt;</span> <span class="dv">50</span> <span class="sc">&amp;</span> genre <span class="sc">==</span> <span class="st">&quot;Comedy&quot;</span>]</span>
-<span id="cb551-2"><a href="chapter-7-indexing-vectors-with.html#cb551-2" tabindex="-1"></a><span class="do">## [1] &quot;Whatever Works&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb549-1"><a href="chapter-7-indexing-vectors-with.html#cb549-1" tabindex="-1"></a>movie[boxoffice <span class="sc">&lt;</span> <span class="dv">50</span> <span class="sc">&amp;</span> genre <span class="sc">==</span> <span class="st">&quot;Comedy&quot;</span>]</span>
+<span id="cb549-2"><a href="chapter-7-indexing-vectors-with.html#cb549-2" tabindex="-1"></a><span class="do">## [1] &quot;Whatever Works&quot;</span></span></code></pre></div>
 <ol start="9" style="list-style-type: decimal">
 <li>What was the median boxoffice revenue of movies rated either G or PG?</li>
 </ol>
-<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="chapter-7-indexing-vectors-with.html#cb552-1" tabindex="-1"></a><span class="fu">median</span>(boxoffice[rating <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;G&quot;</span>, <span class="st">&quot;PG&quot;</span>)])</span>
-<span id="cb552-2"><a href="chapter-7-indexing-vectors-with.html#cb552-2" tabindex="-1"></a><span class="do">## [1] 32</span></span></code></pre></div>
-<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb553-1"><a href="chapter-7-indexing-vectors-with.html#cb553-1" tabindex="-1"></a></span>
-<span id="cb553-2"><a href="chapter-7-indexing-vectors-with.html#cb553-2" tabindex="-1"></a><span class="co"># OR</span></span>
-<span id="cb553-3"><a href="chapter-7-indexing-vectors-with.html#cb553-3" tabindex="-1"></a></span>
-<span id="cb553-4"><a href="chapter-7-indexing-vectors-with.html#cb553-4" tabindex="-1"></a><span class="fu">median</span>(boxoffice[rating <span class="sc">==</span> <span class="st">&quot;G&quot;</span> <span class="sc">|</span> rating <span class="sc">==</span> <span class="st">&quot;PG&quot;</span>])</span>
-<span id="cb553-5"><a href="chapter-7-indexing-vectors-with.html#cb553-5" tabindex="-1"></a><span class="do">## [1] 32</span></span></code></pre></div>
+<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb550-1"><a href="chapter-7-indexing-vectors-with.html#cb550-1" tabindex="-1"></a><span class="fu">median</span>(boxoffice[rating <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;G&quot;</span>, <span class="st">&quot;PG&quot;</span>)])</span>
+<span id="cb550-2"><a href="chapter-7-indexing-vectors-with.html#cb550-2" tabindex="-1"></a><span class="do">## [1] 32</span></span></code></pre></div>
+<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="chapter-7-indexing-vectors-with.html#cb551-1" tabindex="-1"></a></span>
+<span id="cb551-2"><a href="chapter-7-indexing-vectors-with.html#cb551-2" tabindex="-1"></a><span class="co"># OR</span></span>
+<span id="cb551-3"><a href="chapter-7-indexing-vectors-with.html#cb551-3" tabindex="-1"></a></span>
+<span id="cb551-4"><a href="chapter-7-indexing-vectors-with.html#cb551-4" tabindex="-1"></a><span class="fu">median</span>(boxoffice[rating <span class="sc">==</span> <span class="st">&quot;G&quot;</span> <span class="sc">|</span> rating <span class="sc">==</span> <span class="st">&quot;PG&quot;</span>])</span>
+<span id="cb551-5"><a href="chapter-7-indexing-vectors-with.html#cb551-5" tabindex="-1"></a><span class="do">## [1] 32</span></span></code></pre></div>
 <ol start="10" style="list-style-type: decimal">
 <li>What percent of the movies were either rated R OR were comedies?</li>
 </ol>
-<div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb554-1"><a href="chapter-7-indexing-vectors-with.html#cb554-1" tabindex="-1"></a><span class="fu">mean</span>(rating <span class="sc">==</span> <span class="st">&quot;R&quot;</span> <span class="sc">|</span> genre <span class="sc">==</span> <span class="st">&quot;Comedy&quot;</span>)</span>
-<span id="cb554-2"><a href="chapter-7-indexing-vectors-with.html#cb554-2" tabindex="-1"></a><span class="do">## [1] 0.6</span></span></code></pre></div>
+<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="chapter-7-indexing-vectors-with.html#cb552-1" tabindex="-1"></a><span class="fu">mean</span>(rating <span class="sc">==</span> <span class="st">&quot;R&quot;</span> <span class="sc">|</span> genre <span class="sc">==</span> <span class="st">&quot;Comedy&quot;</span>)</span>
+<span id="cb552-2"><a href="chapter-7-indexing-vectors-with.html#cb552-2" tabindex="-1"></a><span class="do">## [1] 0.6</span></span></code></pre></div>
 </div>
             </section>
 

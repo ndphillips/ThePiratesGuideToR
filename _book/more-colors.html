@@ -410,9 +410,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.2" data-path="t-test-t.html"><a href="t-test-t.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.2.2</b> 2-sample t-test</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="correlation-cor.html"><a href="correlation-cor.html"><i class="fa fa-check"></i><b>13.3</b> Correlation: <code>cor.test()</code></a></li>
-<li class="chapter" data-level="13.4" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chsq.test()</code></a>
+<li class="chapter" data-level="13.4" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chisq.test()</code></a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+<li class="chapter" data-level="13.4.1" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="test-your-r-might-3.html"><a href="test-your-r-might-3.html"><i class="fa fa-check"></i><b>13.5</b> Test your R might!</a></li>
 </ul></li>
@@ -519,41 +519,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="piratepal" class="section level3 hasAnchor" number="12.1.1">
 <h3><span class="header-section-number">12.1.1</span> <code>piratepal()</code><a href="more-colors.html#piratepal" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>yarrr</code> package comes with several color palettes ready for you to use. The palettes are contained in the <code>piratepal()</code> function. To see all the palettes, run <code>piratepal("all")</code></p>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="more-colors.html#cb336-1" tabindex="-1"></a>yarrr<span class="sc">::</span><span class="fu">piratepal</span>(<span class="st">&quot;all&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="more-colors.html#cb335-1" tabindex="-1"></a>yarrr<span class="sc">::</span><span class="fu">piratepal</span>(<span class="st">&quot;all&quot;</span>)</span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-310-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>To see a palette in detail, including a picture of what inspired the palette, include the name of the palette in the first argument, (e.g.; <code>"basel"</code>) and then specify the argument <code>plot.result = TRUE</code>. Here are a few of my personal favorite palettes:</p>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="more-colors.html#cb337-1" tabindex="-1"></a><span class="co"># Show me the basel palette</span></span>
-<span id="cb337-2"><a href="more-colors.html#cb337-2" tabindex="-1"></a>yarrr<span class="sc">::</span><span class="fu">piratepal</span>(<span class="st">&quot;basel&quot;</span>,            </span>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="more-colors.html#cb336-1" tabindex="-1"></a><span class="co"># Show me the basel palette</span></span>
+<span id="cb336-2"><a href="more-colors.html#cb336-2" tabindex="-1"></a>yarrr<span class="sc">::</span><span class="fu">piratepal</span>(<span class="st">&quot;basel&quot;</span>,            </span>
+<span id="cb336-3"><a href="more-colors.html#cb336-3" tabindex="-1"></a>                 <span class="at">plot.result =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb336-4"><a href="more-colors.html#cb336-4" tabindex="-1"></a>                 <span class="at">trans =</span> .<span class="dv">1</span>)          <span class="co"># Slightly transparent</span></span></code></pre></div>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-311-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="more-colors.html#cb337-1" tabindex="-1"></a><span class="co"># Show me the pony palette</span></span>
+<span id="cb337-2"><a href="more-colors.html#cb337-2" tabindex="-1"></a>yarrr<span class="sc">::</span><span class="fu">piratepal</span>(<span class="st">&quot;pony&quot;</span>,            </span>
 <span id="cb337-3"><a href="more-colors.html#cb337-3" tabindex="-1"></a>                 <span class="at">plot.result =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb337-4"><a href="more-colors.html#cb337-4" tabindex="-1"></a>                 <span class="at">trans =</span> .<span class="dv">1</span>)          <span class="co"># Slightly transparent</span></span></code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-311-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="more-colors.html#cb338-1" tabindex="-1"></a><span class="co"># Show me the pony palette</span></span>
-<span id="cb338-2"><a href="more-colors.html#cb338-2" tabindex="-1"></a>yarrr<span class="sc">::</span><span class="fu">piratepal</span>(<span class="st">&quot;pony&quot;</span>,            </span>
+<p><img src="YaRrr_files/figure-html/unnamed-chunk-312-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="more-colors.html#cb338-1" tabindex="-1"></a><span class="co"># Show me the evildead palette</span></span>
+<span id="cb338-2"><a href="more-colors.html#cb338-2" tabindex="-1"></a>yarrr<span class="sc">::</span><span class="fu">piratepal</span>(<span class="st">&quot;evildead&quot;</span>,            </span>
 <span id="cb338-3"><a href="more-colors.html#cb338-3" tabindex="-1"></a>                 <span class="at">plot.result =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb338-4"><a href="more-colors.html#cb338-4" tabindex="-1"></a>                 <span class="at">trans =</span> .<span class="dv">1</span>)          <span class="co"># Slightly transparent</span></span></code></pre></div>
-<p><img src="YaRrr_files/figure-html/unnamed-chunk-312-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="more-colors.html#cb339-1" tabindex="-1"></a><span class="co"># Show me the evildead palette</span></span>
-<span id="cb339-2"><a href="more-colors.html#cb339-2" tabindex="-1"></a>yarrr<span class="sc">::</span><span class="fu">piratepal</span>(<span class="st">&quot;evildead&quot;</span>,            </span>
-<span id="cb339-3"><a href="more-colors.html#cb339-3" tabindex="-1"></a>                 <span class="at">plot.result =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb339-4"><a href="more-colors.html#cb339-4" tabindex="-1"></a>                 <span class="at">trans =</span> .<span class="dv">1</span>)          <span class="co"># Slightly transparent</span></span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-313-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Once you find a color palette you like, you can save the colors as a vector and assigning the result to an object. For example, if I want to use the <code>"google"</code> palette and use them in a barplot, I would do the following:</p>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="more-colors.html#cb340-1" tabindex="-1"></a><span class="co"># Save the South Park palette to a vector</span></span>
-<span id="cb340-2"><a href="more-colors.html#cb340-2" tabindex="-1"></a>google.cols <span class="ot">&lt;-</span> <span class="fu">piratepal</span>(<span class="at">palette =</span> <span class="st">&quot;google&quot;</span>, </span>
-<span id="cb340-3"><a href="more-colors.html#cb340-3" tabindex="-1"></a>                         <span class="at">trans =</span> .<span class="dv">2</span>)</span>
-<span id="cb340-4"><a href="more-colors.html#cb340-4" tabindex="-1"></a></span>
-<span id="cb340-5"><a href="more-colors.html#cb340-5" tabindex="-1"></a><span class="co"># Create a barplot with the google colors</span></span>
-<span id="cb340-6"><a href="more-colors.html#cb340-6" tabindex="-1"></a><span class="fu">barplot</span>(<span class="at">height =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
-<span id="cb340-7"><a href="more-colors.html#cb340-7" tabindex="-1"></a>       <span class="at">col =</span> google.cols,</span>
-<span id="cb340-8"><a href="more-colors.html#cb340-8" tabindex="-1"></a>       <span class="at">border =</span> <span class="st">&quot;white&quot;</span>,</span>
-<span id="cb340-9"><a href="more-colors.html#cb340-9" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">&quot;Barplot with the google palette&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="more-colors.html#cb339-1" tabindex="-1"></a><span class="co"># Save the South Park palette to a vector</span></span>
+<span id="cb339-2"><a href="more-colors.html#cb339-2" tabindex="-1"></a>google.cols <span class="ot">&lt;-</span> <span class="fu">piratepal</span>(<span class="at">palette =</span> <span class="st">&quot;google&quot;</span>, </span>
+<span id="cb339-3"><a href="more-colors.html#cb339-3" tabindex="-1"></a>                         <span class="at">trans =</span> .<span class="dv">2</span>)</span>
+<span id="cb339-4"><a href="more-colors.html#cb339-4" tabindex="-1"></a></span>
+<span id="cb339-5"><a href="more-colors.html#cb339-5" tabindex="-1"></a><span class="co"># Create a barplot with the google colors</span></span>
+<span id="cb339-6"><a href="more-colors.html#cb339-6" tabindex="-1"></a><span class="fu">barplot</span>(<span class="at">height =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb339-7"><a href="more-colors.html#cb339-7" tabindex="-1"></a>       <span class="at">col =</span> google.cols,</span>
+<span id="cb339-8"><a href="more-colors.html#cb339-8" tabindex="-1"></a>       <span class="at">border =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb339-9"><a href="more-colors.html#cb339-9" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">&quot;Barplot with the google palette&quot;</span>)</span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-314-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="rcolorbrewer" class="section level3 hasAnchor" number="12.1.2">
 <h3><span class="header-section-number">12.1.2</span> RColorBrewer<a href="more-colors.html#rcolorbrewer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>One package that is great for getting (and even creating) palettes is <code>RColorBrewer</code>. Here are some of the palettes in the package. The name of each palette is in the first column, and the colors in each palette are in each row:</p>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="more-colors.html#cb341-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;RColorBrewer&quot;</span>)</span>
-<span id="cb341-2"><a href="more-colors.html#cb341-2" tabindex="-1"></a><span class="fu">display.brewer.all</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="more-colors.html#cb340-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;RColorBrewer&quot;</span>)</span>
+<span id="cb340-2"><a href="more-colors.html#cb340-2" tabindex="-1"></a><span class="fu">display.brewer.all</span>()</span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-315-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="colorramp2" class="section level3 hasAnchor" number="12.1.3">
@@ -562,50 +562,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The best way to explain how <code>colorRamp2</code> works is by giving you an example. Let’s say that you want to want to plot data showing the relationship between the number of drinks someone has on average per week and the resulting risk of some adverse health effect. Further, let’s say you want to color the points as a function of the number of packs of cigarettes per week that person smokes, where a value of 0 packs is colored Blue, 10 packs is Orange, and 30 packs is Red. Moreover, you want the values in between these <em>break points</em> of 0, 10 and 30 to be a mix of the colors. For example, the value of 5 (half way between 0 and 10) should be an equal mix of Blue and Orange.</p>
 <p>When you run the function, the function will actually <em>return</em> another function that you can then use to generate colors. Once you store the resulting function as an object (something like <code>my.color.fun</code> You can then apply this new function on numerical data (in our example, the number of cigarettes someone smokes) to obtain the correct color for each data point.</p>
 <p>For example, let’s create the color ramp function for our smoking data points. I’ll use <code>colorRamp2</code> to create a function that I’ll call <code>smoking.colors</code> which takes a number as an argument, and returns the corresponding color:</p>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="more-colors.html#cb342-1" tabindex="-1"></a><span class="co"># Create color function from colorRamp2</span></span>
-<span id="cb342-2"><a href="more-colors.html#cb342-2" tabindex="-1"></a>smoking.colors <span class="ot">&lt;-</span> circlize<span class="sc">::</span><span class="fu">colorRamp2</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="dv">25</span>),</span>
-<span id="cb342-3"><a href="more-colors.html#cb342-3" tabindex="-1"></a>                  <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;red&quot;</span>),</span>
-<span id="cb342-4"><a href="more-colors.html#cb342-4" tabindex="-1"></a>                  <span class="at">transparency =</span> .<span class="dv">2</span>)</span>
-<span id="cb342-5"><a href="more-colors.html#cb342-5" tabindex="-1"></a></span>
-<span id="cb342-6"><a href="more-colors.html#cb342-6" tabindex="-1"></a></span>
-<span id="cb342-7"><a href="more-colors.html#cb342-7" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span>.<span class="dv">5</span>, <span class="fl">31.5</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, .<span class="dv">3</span>),</span>
-<span id="cb342-8"><a href="more-colors.html#cb342-8" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Cigarette Packs&quot;</span>,</span>
-<span id="cb342-9"><a href="more-colors.html#cb342-9" tabindex="-1"></a>     <span class="at">yaxt =</span> <span class="st">&quot;n&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>, <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>,</span>
-<span id="cb342-10"><a href="more-colors.html#cb342-10" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;colorRamp2 Example&quot;</span>)</span>
-<span id="cb342-11"><a href="more-colors.html#cb342-11" tabindex="-1"></a></span>
-<span id="cb342-12"><a href="more-colors.html#cb342-12" tabindex="-1"></a><span class="fu">segments</span>(<span class="at">x0 =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="dv">30</span>),</span>
-<span id="cb342-13"><a href="more-colors.html#cb342-13" tabindex="-1"></a>         <span class="at">y0 =</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">3</span>),</span>
-<span id="cb342-14"><a href="more-colors.html#cb342-14" tabindex="-1"></a>         <span class="at">x1 =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="dv">30</span>),</span>
-<span id="cb342-15"><a href="more-colors.html#cb342-15" tabindex="-1"></a>         <span class="at">y1 =</span> <span class="fu">rep</span>(.<span class="dv">1</span>, <span class="dv">3</span>),</span>
-<span id="cb342-16"><a href="more-colors.html#cb342-16" tabindex="-1"></a>         <span class="at">lty =</span> <span class="dv">2</span>)</span>
-<span id="cb342-17"><a href="more-colors.html#cb342-17" tabindex="-1"></a></span>
-<span id="cb342-18"><a href="more-colors.html#cb342-18" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">30</span>,</span>
-<span id="cb342-19"><a href="more-colors.html#cb342-19" tabindex="-1"></a>       <span class="at">y =</span> <span class="fu">rep</span>(.<span class="dv">1</span>, <span class="dv">31</span>), <span class="at">pch =</span> <span class="dv">16</span>,</span>
-<span id="cb342-20"><a href="more-colors.html#cb342-20" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">smoking.colors</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">30</span>))</span>
-<span id="cb342-21"><a href="more-colors.html#cb342-21" tabindex="-1"></a></span>
-<span id="cb342-22"><a href="more-colors.html#cb342-22" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="dv">30</span>), <span class="at">y =</span> <span class="fu">rep</span>(.<span class="dv">2</span>, <span class="dv">3</span>),</span>
-<span id="cb342-23"><a href="more-colors.html#cb342-23" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Blue&quot;</span>, <span class="st">&quot;Green&quot;</span>, <span class="st">&quot;Red&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="more-colors.html#cb341-1" tabindex="-1"></a><span class="co"># Create color function from colorRamp2</span></span>
+<span id="cb341-2"><a href="more-colors.html#cb341-2" tabindex="-1"></a>smoking.colors <span class="ot">&lt;-</span> circlize<span class="sc">::</span><span class="fu">colorRamp2</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="dv">25</span>),</span>
+<span id="cb341-3"><a href="more-colors.html#cb341-3" tabindex="-1"></a>                  <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;red&quot;</span>),</span>
+<span id="cb341-4"><a href="more-colors.html#cb341-4" tabindex="-1"></a>                  <span class="at">transparency =</span> .<span class="dv">2</span>)</span>
+<span id="cb341-5"><a href="more-colors.html#cb341-5" tabindex="-1"></a></span>
+<span id="cb341-6"><a href="more-colors.html#cb341-6" tabindex="-1"></a></span>
+<span id="cb341-7"><a href="more-colors.html#cb341-7" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span>.<span class="dv">5</span>, <span class="fl">31.5</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, .<span class="dv">3</span>),</span>
+<span id="cb341-8"><a href="more-colors.html#cb341-8" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Cigarette Packs&quot;</span>,</span>
+<span id="cb341-9"><a href="more-colors.html#cb341-9" tabindex="-1"></a>     <span class="at">yaxt =</span> <span class="st">&quot;n&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>, <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>,</span>
+<span id="cb341-10"><a href="more-colors.html#cb341-10" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;colorRamp2 Example&quot;</span>)</span>
+<span id="cb341-11"><a href="more-colors.html#cb341-11" tabindex="-1"></a></span>
+<span id="cb341-12"><a href="more-colors.html#cb341-12" tabindex="-1"></a><span class="fu">segments</span>(<span class="at">x0 =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="dv">30</span>),</span>
+<span id="cb341-13"><a href="more-colors.html#cb341-13" tabindex="-1"></a>         <span class="at">y0 =</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">3</span>),</span>
+<span id="cb341-14"><a href="more-colors.html#cb341-14" tabindex="-1"></a>         <span class="at">x1 =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="dv">30</span>),</span>
+<span id="cb341-15"><a href="more-colors.html#cb341-15" tabindex="-1"></a>         <span class="at">y1 =</span> <span class="fu">rep</span>(.<span class="dv">1</span>, <span class="dv">3</span>),</span>
+<span id="cb341-16"><a href="more-colors.html#cb341-16" tabindex="-1"></a>         <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb341-17"><a href="more-colors.html#cb341-17" tabindex="-1"></a></span>
+<span id="cb341-18"><a href="more-colors.html#cb341-18" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">30</span>,</span>
+<span id="cb341-19"><a href="more-colors.html#cb341-19" tabindex="-1"></a>       <span class="at">y =</span> <span class="fu">rep</span>(.<span class="dv">1</span>, <span class="dv">31</span>), <span class="at">pch =</span> <span class="dv">16</span>,</span>
+<span id="cb341-20"><a href="more-colors.html#cb341-20" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">smoking.colors</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">30</span>))</span>
+<span id="cb341-21"><a href="more-colors.html#cb341-21" tabindex="-1"></a></span>
+<span id="cb341-22"><a href="more-colors.html#cb341-22" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="dv">30</span>), <span class="at">y =</span> <span class="fu">rep</span>(.<span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb341-23"><a href="more-colors.html#cb341-23" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Blue&quot;</span>, <span class="st">&quot;Green&quot;</span>, <span class="st">&quot;Red&quot;</span>))</span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-316-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>To see this function in action, check out the the margin Figure~<span class="math inline">\(\ref{fig:colorramp}\)</span> for an example, and check out the help menu for more information and examples.</p>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="more-colors.html#cb343-1" tabindex="-1"></a><span class="co"># Create Data</span></span>
-<span id="cb343-2"><a href="more-colors.html#cb343-2" tabindex="-1"></a>drinks <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">4</span>), <span class="dv">2</span>)</span>
-<span id="cb343-3"><a href="more-colors.html#cb343-3" tabindex="-1"></a>smokes <span class="ot">&lt;-</span> drinks <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
-<span id="cb343-4"><a href="more-colors.html#cb343-4" tabindex="-1"></a>risk <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span>(drinks <span class="sc">+</span> smokes) <span class="sc">/</span> <span class="dv">20</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)))</span>
-<span id="cb343-5"><a href="more-colors.html#cb343-5" tabindex="-1"></a></span>
-<span id="cb343-6"><a href="more-colors.html#cb343-6" tabindex="-1"></a><span class="co"># Create color function from colorRamp2</span></span>
-<span id="cb343-7"><a href="more-colors.html#cb343-7" tabindex="-1"></a>smoking.colors <span class="ot">&lt;-</span> circlize<span class="sc">::</span><span class="fu">colorRamp2</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="dv">30</span>),</span>
-<span id="cb343-8"><a href="more-colors.html#cb343-8" tabindex="-1"></a>                  <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;red&quot;</span>),</span>
-<span id="cb343-9"><a href="more-colors.html#cb343-9" tabindex="-1"></a>                  <span class="at">transparency =</span> .<span class="dv">3</span>)</span>
-<span id="cb343-10"><a href="more-colors.html#cb343-10" tabindex="-1"></a></span>
-<span id="cb343-11"><a href="more-colors.html#cb343-11" tabindex="-1"></a><span class="co"># Bottom Plot</span></span>
-<span id="cb343-12"><a href="more-colors.html#cb343-12" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">1</span>))</span>
-<span id="cb343-13"><a href="more-colors.html#cb343-13" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> drinks, </span>
-<span id="cb343-14"><a href="more-colors.html#cb343-14" tabindex="-1"></a>     <span class="at">y =</span> risk, </span>
-<span id="cb343-15"><a href="more-colors.html#cb343-15" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">smoking.colors</span>(smokes),</span>
-<span id="cb343-16"><a href="more-colors.html#cb343-16" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">cex =</span> <span class="fl">1.2</span>, <span class="at">main =</span> <span class="st">&quot;Plot of (Made-up) Data&quot;</span>,</span>
-<span id="cb343-17"><a href="more-colors.html#cb343-17" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Drinks&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Risk&quot;</span>)</span>
-<span id="cb343-18"><a href="more-colors.html#cb343-18" tabindex="-1"></a></span>
-<span id="cb343-19"><a href="more-colors.html#cb343-19" tabindex="-1"></a><span class="fu">mtext</span>(<span class="at">text =</span> <span class="st">&quot;Point color indicates smoking rate&quot;</span>, <span class="at">line =</span> .<span class="dv">5</span>, <span class="at">side =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="more-colors.html#cb342-1" tabindex="-1"></a><span class="co"># Create Data</span></span>
+<span id="cb342-2"><a href="more-colors.html#cb342-2" tabindex="-1"></a>drinks <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">4</span>), <span class="dv">2</span>)</span>
+<span id="cb342-3"><a href="more-colors.html#cb342-3" tabindex="-1"></a>smokes <span class="ot">&lt;-</span> drinks <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
+<span id="cb342-4"><a href="more-colors.html#cb342-4" tabindex="-1"></a>risk <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span>(drinks <span class="sc">+</span> smokes) <span class="sc">/</span> <span class="dv">20</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)))</span>
+<span id="cb342-5"><a href="more-colors.html#cb342-5" tabindex="-1"></a></span>
+<span id="cb342-6"><a href="more-colors.html#cb342-6" tabindex="-1"></a><span class="co"># Create color function from colorRamp2</span></span>
+<span id="cb342-7"><a href="more-colors.html#cb342-7" tabindex="-1"></a>smoking.colors <span class="ot">&lt;-</span> circlize<span class="sc">::</span><span class="fu">colorRamp2</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="dv">30</span>),</span>
+<span id="cb342-8"><a href="more-colors.html#cb342-8" tabindex="-1"></a>                  <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;red&quot;</span>),</span>
+<span id="cb342-9"><a href="more-colors.html#cb342-9" tabindex="-1"></a>                  <span class="at">transparency =</span> .<span class="dv">3</span>)</span>
+<span id="cb342-10"><a href="more-colors.html#cb342-10" tabindex="-1"></a></span>
+<span id="cb342-11"><a href="more-colors.html#cb342-11" tabindex="-1"></a><span class="co"># Bottom Plot</span></span>
+<span id="cb342-12"><a href="more-colors.html#cb342-12" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">1</span>))</span>
+<span id="cb342-13"><a href="more-colors.html#cb342-13" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> drinks, </span>
+<span id="cb342-14"><a href="more-colors.html#cb342-14" tabindex="-1"></a>     <span class="at">y =</span> risk, </span>
+<span id="cb342-15"><a href="more-colors.html#cb342-15" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">smoking.colors</span>(smokes),</span>
+<span id="cb342-16"><a href="more-colors.html#cb342-16" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">cex =</span> <span class="fl">1.2</span>, <span class="at">main =</span> <span class="st">&quot;Plot of (Made-up) Data&quot;</span>,</span>
+<span id="cb342-17"><a href="more-colors.html#cb342-17" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Drinks&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Risk&quot;</span>)</span>
+<span id="cb342-18"><a href="more-colors.html#cb342-18" tabindex="-1"></a></span>
+<span id="cb342-19"><a href="more-colors.html#cb342-19" tabindex="-1"></a><span class="fu">mtext</span>(<span class="at">text =</span> <span class="st">&quot;Point color indicates smoking rate&quot;</span>, <span class="at">line =</span> .<span class="dv">5</span>, <span class="at">side =</span> <span class="dv">3</span>)</span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-317-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="getting-colors-with-a-kuler" class="section level3 hasAnchor" number="12.1.4">
@@ -617,34 +617,34 @@ Figure 12.1: Stealing colors from the internet. Not illegal (yet).
 </p>
 </div>
 <p>One of my favorite tricks for getting great colors in R is to use a <em>color kuler</em>. A color kuler is a tool that allows you to determine the exact RGB values for a color on a screen. For example, let’s say that you wanted to use the exact colors used in the Google logo. To do this, you need to use an app that allows you to pick colors off your computer screen. On a Mac, you can use the program called “Digital Color Meter.” If you then move your mouse over the color you want, the software will tell you the exact RGB values of that color. In the image below, you can see me figuring out that the RGB value of the G in Google is R: 19, G: 72, B: 206. Using the <code>rgb()</code> function, I can convert these RGB values to colors in R. Using this method, I figured out the four colors of Google!</p>
-<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="more-colors.html#cb344-1" tabindex="-1"></a><span class="co"># Store the colors of google as a vector:</span></span>
-<span id="cb344-2"><a href="more-colors.html#cb344-2" tabindex="-1"></a>google.col <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb344-3"><a href="more-colors.html#cb344-3" tabindex="-1"></a>  <span class="fu">rgb</span>(<span class="dv">19</span>, <span class="dv">72</span>, <span class="dv">206</span>, <span class="at">maxColorValue =</span> <span class="dv">255</span>),    <span class="co"># Google blue</span></span>
-<span id="cb344-4"><a href="more-colors.html#cb344-4" tabindex="-1"></a>  <span class="fu">rgb</span>(<span class="dv">206</span>, <span class="dv">45</span>, <span class="dv">35</span>, <span class="at">maxColorValue =</span> <span class="dv">255</span>),    <span class="co"># Google red</span></span>
-<span id="cb344-5"><a href="more-colors.html#cb344-5" tabindex="-1"></a>  <span class="fu">rgb</span>(<span class="dv">253</span>, <span class="dv">172</span>, <span class="dv">10</span>, <span class="at">maxColorValue =</span> <span class="dv">255</span>),   <span class="co"># Google yellow</span></span>
-<span id="cb344-6"><a href="more-colors.html#cb344-6" tabindex="-1"></a>  <span class="fu">rgb</span>(<span class="dv">18</span>, <span class="dv">140</span>, <span class="dv">70</span>, <span class="at">maxColorValue =</span> <span class="dv">255</span>))    <span class="co"># Google green</span></span>
-<span id="cb344-7"><a href="more-colors.html#cb344-7" tabindex="-1"></a></span>
-<span id="cb344-8"><a href="more-colors.html#cb344-8" tabindex="-1"></a><span class="co"># Print the result</span></span>
-<span id="cb344-9"><a href="more-colors.html#cb344-9" tabindex="-1"></a>google.col</span>
-<span id="cb344-10"><a href="more-colors.html#cb344-10" tabindex="-1"></a><span class="do">## [1] &quot;#1348CE&quot; &quot;#CE2D23&quot; &quot;#FDAC0A&quot; &quot;#128C46&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="more-colors.html#cb343-1" tabindex="-1"></a><span class="co"># Store the colors of google as a vector:</span></span>
+<span id="cb343-2"><a href="more-colors.html#cb343-2" tabindex="-1"></a>google.col <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb343-3"><a href="more-colors.html#cb343-3" tabindex="-1"></a>  <span class="fu">rgb</span>(<span class="dv">19</span>, <span class="dv">72</span>, <span class="dv">206</span>, <span class="at">maxColorValue =</span> <span class="dv">255</span>),    <span class="co"># Google blue</span></span>
+<span id="cb343-4"><a href="more-colors.html#cb343-4" tabindex="-1"></a>  <span class="fu">rgb</span>(<span class="dv">206</span>, <span class="dv">45</span>, <span class="dv">35</span>, <span class="at">maxColorValue =</span> <span class="dv">255</span>),    <span class="co"># Google red</span></span>
+<span id="cb343-5"><a href="more-colors.html#cb343-5" tabindex="-1"></a>  <span class="fu">rgb</span>(<span class="dv">253</span>, <span class="dv">172</span>, <span class="dv">10</span>, <span class="at">maxColorValue =</span> <span class="dv">255</span>),   <span class="co"># Google yellow</span></span>
+<span id="cb343-6"><a href="more-colors.html#cb343-6" tabindex="-1"></a>  <span class="fu">rgb</span>(<span class="dv">18</span>, <span class="dv">140</span>, <span class="dv">70</span>, <span class="at">maxColorValue =</span> <span class="dv">255</span>))    <span class="co"># Google green</span></span>
+<span id="cb343-7"><a href="more-colors.html#cb343-7" tabindex="-1"></a></span>
+<span id="cb343-8"><a href="more-colors.html#cb343-8" tabindex="-1"></a><span class="co"># Print the result</span></span>
+<span id="cb343-9"><a href="more-colors.html#cb343-9" tabindex="-1"></a>google.col</span>
+<span id="cb343-10"><a href="more-colors.html#cb343-10" tabindex="-1"></a><span class="do">## [1] &quot;#1348CE&quot; &quot;#CE2D23&quot; &quot;#FDAC0A&quot; &quot;#128C46&quot;</span></span></code></pre></div>
 <p>The vector <code>google.col</code> now contains the values #1348CE, #CE2D23, #FDAC0A, #128C46. These are string values that represent colors in a way R understands. Now I can use these colors in a plot by specifying <code>col = google.col</code>!</p>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="more-colors.html#cb345-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span>, </span>
-<span id="cb345-2"><a href="more-colors.html#cb345-2" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">7</span>), </span>
-<span id="cb345-3"><a href="more-colors.html#cb345-3" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
-<span id="cb345-4"><a href="more-colors.html#cb345-4" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, </span>
-<span id="cb345-5"><a href="more-colors.html#cb345-5" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Using colors stolen from a webpage&quot;</span>)</span>
-<span id="cb345-6"><a href="more-colors.html#cb345-6" tabindex="-1"></a></span>
-<span id="cb345-7"><a href="more-colors.html#cb345-7" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, </span>
-<span id="cb345-8"><a href="more-colors.html#cb345-8" tabindex="-1"></a>       <span class="at">y =</span> <span class="fu">rep</span>(.<span class="dv">4</span>, <span class="dv">6</span>),</span>
-<span id="cb345-9"><a href="more-colors.html#cb345-9" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">16</span>,</span>
-<span id="cb345-10"><a href="more-colors.html#cb345-10" tabindex="-1"></a>       <span class="at">col =</span> google.col[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>)],</span>
-<span id="cb345-11"><a href="more-colors.html#cb345-11" tabindex="-1"></a>       <span class="at">cex =</span> <span class="dv">4</span>)</span>
-<span id="cb345-12"><a href="more-colors.html#cb345-12" tabindex="-1"></a></span>
-<span id="cb345-13"><a href="more-colors.html#cb345-13" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, </span>
-<span id="cb345-14"><a href="more-colors.html#cb345-14" tabindex="-1"></a>     <span class="at">y =</span> <span class="fu">rep</span>(.<span class="dv">7</span>, <span class="dv">6</span>),</span>
-<span id="cb345-15"><a href="more-colors.html#cb345-15" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;G&quot;</span>, <span class="st">&quot;O&quot;</span>, <span class="st">&quot;O&quot;</span>, <span class="st">&quot;G&quot;</span>, <span class="st">&quot;L&quot;</span>, <span class="st">&quot;E&quot;</span>), </span>
-<span id="cb345-16"><a href="more-colors.html#cb345-16" tabindex="-1"></a>     <span class="at">col =</span> google.col[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>)],</span>
-<span id="cb345-17"><a href="more-colors.html#cb345-17" tabindex="-1"></a>     <span class="at">cex =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="more-colors.html#cb344-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span>, </span>
+<span id="cb344-2"><a href="more-colors.html#cb344-2" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">7</span>), </span>
+<span id="cb344-3"><a href="more-colors.html#cb344-3" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb344-4"><a href="more-colors.html#cb344-4" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, </span>
+<span id="cb344-5"><a href="more-colors.html#cb344-5" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Using colors stolen from a webpage&quot;</span>)</span>
+<span id="cb344-6"><a href="more-colors.html#cb344-6" tabindex="-1"></a></span>
+<span id="cb344-7"><a href="more-colors.html#cb344-7" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, </span>
+<span id="cb344-8"><a href="more-colors.html#cb344-8" tabindex="-1"></a>       <span class="at">y =</span> <span class="fu">rep</span>(.<span class="dv">4</span>, <span class="dv">6</span>),</span>
+<span id="cb344-9"><a href="more-colors.html#cb344-9" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">16</span>,</span>
+<span id="cb344-10"><a href="more-colors.html#cb344-10" tabindex="-1"></a>       <span class="at">col =</span> google.col[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>)],</span>
+<span id="cb344-11"><a href="more-colors.html#cb344-11" tabindex="-1"></a>       <span class="at">cex =</span> <span class="dv">4</span>)</span>
+<span id="cb344-12"><a href="more-colors.html#cb344-12" tabindex="-1"></a></span>
+<span id="cb344-13"><a href="more-colors.html#cb344-13" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, </span>
+<span id="cb344-14"><a href="more-colors.html#cb344-14" tabindex="-1"></a>     <span class="at">y =</span> <span class="fu">rep</span>(.<span class="dv">7</span>, <span class="dv">6</span>),</span>
+<span id="cb344-15"><a href="more-colors.html#cb344-15" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;G&quot;</span>, <span class="st">&quot;O&quot;</span>, <span class="st">&quot;O&quot;</span>, <span class="st">&quot;G&quot;</span>, <span class="st">&quot;L&quot;</span>, <span class="st">&quot;E&quot;</span>), </span>
+<span id="cb344-16"><a href="more-colors.html#cb344-16" tabindex="-1"></a>     <span class="at">col =</span> google.col[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>)],</span>
+<span id="cb344-17"><a href="more-colors.html#cb344-17" tabindex="-1"></a>     <span class="at">cex =</span> <span class="dv">3</span>)</span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-319-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 </div>

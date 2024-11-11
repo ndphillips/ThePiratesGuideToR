@@ -410,9 +410,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.2" data-path="t-test-t.html"><a href="t-test-t.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.2.2</b> 2-sample t-test</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="correlation-cor.html"><a href="correlation-cor.html"><i class="fa fa-check"></i><b>13.3</b> Correlation: <code>cor.test()</code></a></li>
-<li class="chapter" data-level="13.4" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chsq.test()</code></a>
+<li class="chapter" data-level="13.4" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chisq.test()</code></a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+<li class="chapter" data-level="13.4.1" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="test-your-r-might-3.html"><a href="test-your-r-might-3.html"><i class="fa fa-check"></i><b>13.5</b> Test your R might!</a></li>
 </ul></li>
@@ -524,26 +524,26 @@ Figure 17.1: Loops in R can be fun. Just…you know…don’t screw it up.
 </div>
 <p>One of the golden rules of programming is D.R.Y. ``Don’t repeat yourself.” Why? Not because you can’t, but because it’s almost certainly a waste of time. You see, while computers are still much, much worse than humans at some tasks (like recognizing faces), they are much, much better than humans at doing a few key things - like doing the same thing over…and over…and over. To tell R to do something over and over, we use a loop. Loops are absolutely critical in conducting many analyses because they allow you to write code once but evaluate it tens, hundreds, thousands, or millions of times without ever repeating yourself.</p>
 <p>For example, imagine that you conduct a survey of 50 people containing 100 yes/no questions. Question 1 might be “Do you ever pick your nose?” and Question 2 might be “No seriously, do you ever pick your nose?!” When you finish the survey, you could store the data as a dataframe with 50 rows (one row for each person surveyed), and 100 columns representing all 100 questions. Now, because every question should have a yes or no answer, the only values in the dataframe should be “yes” or “no” Unfortunately, as is the case with all real world data collection, you will likely get some invalid responses – like “Maybe” or “What be yee phone number?!’’. For this reason, you’d like to go through all the data, and recode any invalid response as NA (aka, missing). To do this sequentially, you’d have to write the following 100 lines of code…</p>
-<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="loops.html#cb482-1" tabindex="-1"></a><span class="co"># SLOW way to convert any values that aren&#39;t equal to &quot;Y&quot;, or &quot;N&quot; to NA</span></span>
-<span id="cb482-2"><a href="loops.html#cb482-2" tabindex="-1"></a>survey.df<span class="sc">$</span>q<span class="fl">.1</span>[(survey.data<span class="sc">$</span>q1 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Y&quot;</span>, <span class="st">&quot;N&quot;</span>)) <span class="sc">==</span> <span class="cn">FALSE</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb482-3"><a href="loops.html#cb482-3" tabindex="-1"></a>survey.df<span class="sc">$</span>q<span class="fl">.2</span>[(survey.data<span class="sc">$</span>q2 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Y&quot;</span>, <span class="st">&quot;N&quot;</span>)) <span class="sc">==</span> <span class="cn">FALSE</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb482-4"><a href="loops.html#cb482-4" tabindex="-1"></a><span class="co"># . ... Wait...I have to type this 98 more times?!</span></span>
-<span id="cb482-5"><a href="loops.html#cb482-5" tabindex="-1"></a><span class="co"># .</span></span>
-<span id="cb482-6"><a href="loops.html#cb482-6" tabindex="-1"></a><span class="co"># . ... My god this is boring...</span></span>
-<span id="cb482-7"><a href="loops.html#cb482-7" tabindex="-1"></a><span class="co"># .</span></span>
-<span id="cb482-8"><a href="loops.html#cb482-8" tabindex="-1"></a>survey.df<span class="sc">$</span>q<span class="fl">.100</span>[(survey.data<span class="sc">$</span>q100 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Y&quot;</span>, <span class="st">&quot;N&quot;</span>)) <span class="sc">==</span> <span class="cn">FALSE</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="loops.html#cb480-1" tabindex="-1"></a><span class="co"># SLOW way to convert any values that aren&#39;t equal to &quot;Y&quot;, or &quot;N&quot; to NA</span></span>
+<span id="cb480-2"><a href="loops.html#cb480-2" tabindex="-1"></a>survey.df<span class="sc">$</span>q<span class="fl">.1</span>[(survey.data<span class="sc">$</span>q1 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Y&quot;</span>, <span class="st">&quot;N&quot;</span>)) <span class="sc">==</span> <span class="cn">FALSE</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb480-3"><a href="loops.html#cb480-3" tabindex="-1"></a>survey.df<span class="sc">$</span>q<span class="fl">.2</span>[(survey.data<span class="sc">$</span>q2 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Y&quot;</span>, <span class="st">&quot;N&quot;</span>)) <span class="sc">==</span> <span class="cn">FALSE</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb480-4"><a href="loops.html#cb480-4" tabindex="-1"></a><span class="co"># . ... Wait...I have to type this 98 more times?!</span></span>
+<span id="cb480-5"><a href="loops.html#cb480-5" tabindex="-1"></a><span class="co"># .</span></span>
+<span id="cb480-6"><a href="loops.html#cb480-6" tabindex="-1"></a><span class="co"># . ... My god this is boring...</span></span>
+<span id="cb480-7"><a href="loops.html#cb480-7" tabindex="-1"></a><span class="co"># .</span></span>
+<span id="cb480-8"><a href="loops.html#cb480-8" tabindex="-1"></a>survey.df<span class="sc">$</span>q<span class="fl">.100</span>[(survey.data<span class="sc">$</span>q100 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Y&quot;</span>, <span class="st">&quot;N&quot;</span>)) <span class="sc">==</span> <span class="cn">FALSE</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span></code></pre></div>
 <p>Pretty brutal right? Imagine if you have a huge dataset with 1,000 columns, now you’re really doing a lot of typing. Thankfully, with a loop you can take care of this in no time. Check out this following code chunk which uses a loop to convert the data for <em>all</em> 100 columns in our survey dataframe.</p>
-<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="loops.html#cb483-1" tabindex="-1"></a><span class="co"># FAST way to convert values that aren&#39;t &quot;Y&quot;, or &quot;N&quot; to NA</span></span>
-<span id="cb483-2"><a href="loops.html#cb483-2" tabindex="-1"></a></span>
-<span id="cb483-3"><a href="loops.html#cb483-3" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) { <span class="co"># Loop over all 100 columns</span></span>
-<span id="cb483-4"><a href="loops.html#cb483-4" tabindex="-1"></a></span>
-<span id="cb483-5"><a href="loops.html#cb483-5" tabindex="-1"></a>temp <span class="ot">&lt;-</span> survey.df[, i]  <span class="co"># Get data for ith column and save in a new temporary object temp</span></span>
-<span id="cb483-6"><a href="loops.html#cb483-6" tabindex="-1"></a></span>
-<span id="cb483-7"><a href="loops.html#cb483-7" tabindex="-1"></a>temp[(temp <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Y&quot;</span>, <span class="st">&quot;N&quot;</span>)) <span class="sc">==</span> <span class="cn">FALSE</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span> <span class="co"># Convert invalid values in temp to NA</span></span>
-<span id="cb483-8"><a href="loops.html#cb483-8" tabindex="-1"></a></span>
-<span id="cb483-9"><a href="loops.html#cb483-9" tabindex="-1"></a>survey.df[, i] <span class="ot">&lt;-</span> temp <span class="co"># Assign temp back to survey.df!</span></span>
-<span id="cb483-10"><a href="loops.html#cb483-10" tabindex="-1"></a></span>
-<span id="cb483-11"><a href="loops.html#cb483-11" tabindex="-1"></a>} <span class="co"># Close loop!</span></span></code></pre></div>
+<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="loops.html#cb481-1" tabindex="-1"></a><span class="co"># FAST way to convert values that aren&#39;t &quot;Y&quot;, or &quot;N&quot; to NA</span></span>
+<span id="cb481-2"><a href="loops.html#cb481-2" tabindex="-1"></a></span>
+<span id="cb481-3"><a href="loops.html#cb481-3" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) { <span class="co"># Loop over all 100 columns</span></span>
+<span id="cb481-4"><a href="loops.html#cb481-4" tabindex="-1"></a></span>
+<span id="cb481-5"><a href="loops.html#cb481-5" tabindex="-1"></a>temp <span class="ot">&lt;-</span> survey.df[, i]  <span class="co"># Get data for ith column and save in a new temporary object temp</span></span>
+<span id="cb481-6"><a href="loops.html#cb481-6" tabindex="-1"></a></span>
+<span id="cb481-7"><a href="loops.html#cb481-7" tabindex="-1"></a>temp[(temp <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Y&quot;</span>, <span class="st">&quot;N&quot;</span>)) <span class="sc">==</span> <span class="cn">FALSE</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span> <span class="co"># Convert invalid values in temp to NA</span></span>
+<span id="cb481-8"><a href="loops.html#cb481-8" tabindex="-1"></a></span>
+<span id="cb481-9"><a href="loops.html#cb481-9" tabindex="-1"></a>survey.df[, i] <span class="ot">&lt;-</span> temp <span class="co"># Assign temp back to survey.df!</span></span>
+<span id="cb481-10"><a href="loops.html#cb481-10" tabindex="-1"></a></span>
+<span id="cb481-11"><a href="loops.html#cb481-11" tabindex="-1"></a>} <span class="co"># Close loop!</span></span></code></pre></div>
 <p>Done. All 100 columns. Take a look at the code and see if you can understand the general idea. But if not, no worries. By the end of this chapter, you’ll know all the basics of how to construct loops like this one.</p>
 </div>
             </section>

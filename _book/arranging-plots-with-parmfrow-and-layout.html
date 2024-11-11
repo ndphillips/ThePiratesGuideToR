@@ -410,9 +410,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.2" data-path="t-test-t.html"><a href="t-test-t.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.2.2</b> 2-sample t-test</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="correlation-cor.html"><a href="correlation-cor.html"><i class="fa fa-check"></i><b>13.3</b> Correlation: <code>cor.test()</code></a></li>
-<li class="chapter" data-level="13.4" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chsq.test()</code></a>
+<li class="chapter" data-level="13.4" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chisq.test()</code></a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+<li class="chapter" data-level="13.4.1" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="test-your-r-might-3.html"><a href="test-your-r-might-3.html"><i class="fa fa-check"></i><b>13.5</b> Test your R might!</a></li>
 </ul></li>
@@ -524,41 +524,35 @@ Figure 12.3: A 3 x 3 matrix of plotting regions created by par(mfrow = c(3, 3))
 </p>
 </div>
 <p>The <code>mfrow</code> and <code>mfcol</code> parameters allow you to create a matrix of plots in one plotting space. Both parameters take a vector of length two as an argument, corresponding to the number of rows and columns in the resulting plotting matrix. For example, the following code sets up a 3 x 3 plotting matrix.</p>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="arranging-plots-with-parmfrow-and-layout.html#cb347-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) <span class="co"># Create a 2 x 2 plotting matrix</span></span>
-<span id="cb347-2"><a href="arranging-plots-with-parmfrow-and-layout.html#cb347-2" tabindex="-1"></a><span class="co"># The next 4 plots created will be plotted next to each other</span></span>
-<span id="cb347-3"><a href="arranging-plots-with-parmfrow-and-layout.html#cb347-3" tabindex="-1"></a></span>
-<span id="cb347-4"><a href="arranging-plots-with-parmfrow-and-layout.html#cb347-4" tabindex="-1"></a><span class="co"># Plot 1</span></span>
-<span id="cb347-5"><a href="arranging-plots-with-parmfrow-and-layout.html#cb347-5" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>))</span>
-<span id="cb347-6"><a href="arranging-plots-with-parmfrow-and-layout.html#cb347-6" tabindex="-1"></a></span>
-<span id="cb347-7"><a href="arranging-plots-with-parmfrow-and-layout.html#cb347-7" tabindex="-1"></a><span class="co"># Plot 2</span></span>
-<span id="cb347-8"><a href="arranging-plots-with-parmfrow-and-layout.html#cb347-8" tabindex="-1"></a><span class="fu">plot</span>(pirates<span class="sc">$</span>weight, </span>
-<span id="cb347-9"><a href="arranging-plots-with-parmfrow-and-layout.html#cb347-9" tabindex="-1"></a>     pirates<span class="sc">$</span>height, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="fu">gray</span>(.<span class="dv">3</span>, .<span class="dv">1</span>))</span>
-<span id="cb347-10"><a href="arranging-plots-with-parmfrow-and-layout.html#cb347-10" tabindex="-1"></a></span>
-<span id="cb347-11"><a href="arranging-plots-with-parmfrow-and-layout.html#cb347-11" tabindex="-1"></a><span class="co"># Plot 3</span></span>
-<span id="cb347-12"><a href="arranging-plots-with-parmfrow-and-layout.html#cb347-12" tabindex="-1"></a><span class="fu">pirateplot</span>(weight <span class="sc">~</span> Diet, </span>
-<span id="cb347-13"><a href="arranging-plots-with-parmfrow-and-layout.html#cb347-13" tabindex="-1"></a>           <span class="at">data =</span> ChickWeight, </span>
-<span id="cb347-14"><a href="arranging-plots-with-parmfrow-and-layout.html#cb347-14" tabindex="-1"></a>           <span class="at">pal =</span> <span class="st">&quot;info&quot;</span>, <span class="at">theme =</span> <span class="dv">3</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:mfrow-1"></span>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="arranging-plots-with-parmfrow-and-layout.html#cb346-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) <span class="co"># Create a 2 x 2 plotting matrix</span></span>
+<span id="cb346-2"><a href="arranging-plots-with-parmfrow-and-layout.html#cb346-2" tabindex="-1"></a><span class="co"># The next 4 plots created will be plotted next to each other</span></span>
+<span id="cb346-3"><a href="arranging-plots-with-parmfrow-and-layout.html#cb346-3" tabindex="-1"></a></span>
+<span id="cb346-4"><a href="arranging-plots-with-parmfrow-and-layout.html#cb346-4" tabindex="-1"></a><span class="co"># Plot 1</span></span>
+<span id="cb346-5"><a href="arranging-plots-with-parmfrow-and-layout.html#cb346-5" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>))</span>
+<span id="cb346-6"><a href="arranging-plots-with-parmfrow-and-layout.html#cb346-6" tabindex="-1"></a></span>
+<span id="cb346-7"><a href="arranging-plots-with-parmfrow-and-layout.html#cb346-7" tabindex="-1"></a><span class="co"># Plot 2</span></span>
+<span id="cb346-8"><a href="arranging-plots-with-parmfrow-and-layout.html#cb346-8" tabindex="-1"></a><span class="fu">plot</span>(pirates<span class="sc">$</span>weight, </span>
+<span id="cb346-9"><a href="arranging-plots-with-parmfrow-and-layout.html#cb346-9" tabindex="-1"></a>     pirates<span class="sc">$</span>height, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="fu">gray</span>(.<span class="dv">3</span>, .<span class="dv">1</span>))</span>
+<span id="cb346-10"><a href="arranging-plots-with-parmfrow-and-layout.html#cb346-10" tabindex="-1"></a></span>
+<span id="cb346-11"><a href="arranging-plots-with-parmfrow-and-layout.html#cb346-11" tabindex="-1"></a><span class="co"># Plot 3</span></span>
+<span id="cb346-12"><a href="arranging-plots-with-parmfrow-and-layout.html#cb346-12" tabindex="-1"></a><span class="fu">pirateplot</span>(weight <span class="sc">~</span> Diet, </span>
+<span id="cb346-13"><a href="arranging-plots-with-parmfrow-and-layout.html#cb346-13" tabindex="-1"></a>           <span class="at">data =</span> ChickWeight, </span>
+<span id="cb346-14"><a href="arranging-plots-with-parmfrow-and-layout.html#cb346-14" tabindex="-1"></a>           <span class="at">pal =</span> <span class="st">&quot;info&quot;</span>, <span class="at">theme =</span> <span class="dv">3</span>)</span>
+<span id="cb346-15"><a href="arranging-plots-with-parmfrow-and-layout.html#cb346-15" tabindex="-1"></a></span>
+<span id="cb346-16"><a href="arranging-plots-with-parmfrow-and-layout.html#cb346-16" tabindex="-1"></a><span class="co"># Plot 4</span></span>
+<span id="cb346-17"><a href="arranging-plots-with-parmfrow-and-layout.html#cb346-17" tabindex="-1"></a><span class="fu">boxplot</span>(weight <span class="sc">~</span> Diet, </span>
+<span id="cb346-18"><a href="arranging-plots-with-parmfrow-and-layout.html#cb346-18" tabindex="-1"></a>           <span class="at">data =</span> ChickWeight)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:mfrow"></span>
 <img src="YaRrr_files/figure-html/mfrow-1.png" alt="Arranging plots into a 2x2 matrix with par(mfrow = c(2, 2))" width="768" />
 <p class="caption">
 Figure 12.4: Arranging plots into a 2x2 matrix with par(mfrow = c(2, 2))
 </p>
 </div>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="arranging-plots-with-parmfrow-and-layout.html#cb348-1" tabindex="-1"></a></span>
-<span id="cb348-2"><a href="arranging-plots-with-parmfrow-and-layout.html#cb348-2" tabindex="-1"></a><span class="co"># Plot 4</span></span>
-<span id="cb348-3"><a href="arranging-plots-with-parmfrow-and-layout.html#cb348-3" tabindex="-1"></a><span class="fu">boxplot</span>(weight <span class="sc">~</span> Diet, </span>
-<span id="cb348-4"><a href="arranging-plots-with-parmfrow-and-layout.html#cb348-4" tabindex="-1"></a>           <span class="at">data =</span> ChickWeight)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:mfrow-2"></span>
-<img src="YaRrr_files/figure-html/mfrow-2.png" alt="Arranging plots into a 2x2 matrix with par(mfrow = c(2, 2))" width="768" />
-<p class="caption">
-Figure 12.5: Arranging plots into a 2x2 matrix with par(mfrow = c(2, 2))
-</p>
-</div>
 <p>When you execute this code, you won’t see anything happen. However, when you execute your first high-level plotting command, you’ll see that the plot will show up in the space reserved for the first plot (the top left). When you execute a second high-level plotting command, R will place that plot in the second place in the plotting matrix - either the top middle (if using <code>par(mfrow)</code> or the left middle (if using <code>par(mfcol)</code>). As you continue to add high-level plots, R will continue to fill the plotting matrix.</p>
 <p>So what’s the difference between <code>par(mfrow)</code> and <code>par(mfcol)</code>? The only difference is that while <code>par(mfrow)</code> puts sequential plots into the plotting matrix by row, <code>par(mfcol)</code> will fill them by column.</p>
 <p>When you are finished using a plotting matrix, be sure to reset the plotting parameter back to its default state by running <code>par(mfrow = c(1, 1))</code>:</p>
-<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="arranging-plots-with-parmfrow-and-layout.html#cb349-1" tabindex="-1"></a><span class="co"># Put plotting arrangement back to its original state</span></span>
-<span id="cb349-2"><a href="arranging-plots-with-parmfrow-and-layout.html#cb349-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="arranging-plots-with-parmfrow-and-layout.html#cb347-1" tabindex="-1"></a><span class="co"># Put plotting arrangement back to its original state</span></span>
+<span id="cb347-2"><a href="arranging-plots-with-parmfrow-and-layout.html#cb347-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
 <div id="complex-plot-layouts-with-layout" class="section level3 hasAnchor" number="12.3.1">
 <h3><span class="header-section-number">12.3.1</span> Complex plot layouts with <code>layout()</code><a href="arranging-plots-with-parmfrow-and-layout.html#complex-plot-layouts-with-layout" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table>
@@ -589,61 +583,61 @@ Figure 12.5: Arranging plots into a 2x2 matrix with par(mfrow = c(2, 2))
 </table>
 <p>While <code>par(mfrow)</code> allows you to create matrices of plots, it does not allow you to create plots of different sizes. In order to arrange plots in different sized plotting spaces, you need to use the <code>layout()</code> function. Unlike <code>par(mfrow)</code>, <code>layout</code> is not a plotting parameter, rather it is a function all on its own. The function can be a bit confusing at first, so I think it’s best to start with an example. Let’s say you want to place histograms next to a scatterplot: Let’s do this using layout:</p>
 <p>We’ll begin by creating the <em>layout matrix</em>, this matrix will tell R in which order to create the plots:</p>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="arranging-plots-with-parmfrow-and-layout.html#cb350-1" tabindex="-1"></a>layout.matrix <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb350-2"><a href="arranging-plots-with-parmfrow-and-layout.html#cb350-2" tabindex="-1"></a>layout.matrix</span>
-<span id="cb350-3"><a href="arranging-plots-with-parmfrow-and-layout.html#cb350-3" tabindex="-1"></a><span class="do">##      [,1] [,2]</span></span>
-<span id="cb350-4"><a href="arranging-plots-with-parmfrow-and-layout.html#cb350-4" tabindex="-1"></a><span class="do">## [1,]    0    3</span></span>
-<span id="cb350-5"><a href="arranging-plots-with-parmfrow-and-layout.html#cb350-5" tabindex="-1"></a><span class="do">## [2,]    2    1</span></span></code></pre></div>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="arranging-plots-with-parmfrow-and-layout.html#cb348-1" tabindex="-1"></a>layout.matrix <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb348-2"><a href="arranging-plots-with-parmfrow-and-layout.html#cb348-2" tabindex="-1"></a>layout.matrix</span>
+<span id="cb348-3"><a href="arranging-plots-with-parmfrow-and-layout.html#cb348-3" tabindex="-1"></a><span class="do">##      [,1] [,2]</span></span>
+<span id="cb348-4"><a href="arranging-plots-with-parmfrow-and-layout.html#cb348-4" tabindex="-1"></a><span class="do">## [1,]    0    3</span></span>
+<span id="cb348-5"><a href="arranging-plots-with-parmfrow-and-layout.html#cb348-5" tabindex="-1"></a><span class="do">## [2,]    2    1</span></span></code></pre></div>
 <p>Looking at the values of <code>layout.matrix</code>, you can see that we’ve told R to put the first plot in the bottom right, the second plot on the bottom left, and the third plot in the top right. Because we put a 0 in the first element, R knows that we don’t plan to put anything in the top left area.</p>
 <p>Now, because our layout matrix has two rows and two columns, we need to set the widths and heights of the two columns. We do this using a numeric vector of length 2. I’ll set the heights of the two rows to 1 and 2 respectively, and the widths of the columns to 1 and 2 respectively. Now, when I run the code <code>layout.show(3)</code>, R will show us the plotting region we set up:</p>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="arranging-plots-with-parmfrow-and-layout.html#cb351-1" tabindex="-1"></a>layout.matrix <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb351-2"><a href="arranging-plots-with-parmfrow-and-layout.html#cb351-2" tabindex="-1"></a></span>
-<span id="cb351-3"><a href="arranging-plots-with-parmfrow-and-layout.html#cb351-3" tabindex="-1"></a><span class="fu">layout</span>(<span class="at">mat =</span> layout.matrix,</span>
-<span id="cb351-4"><a href="arranging-plots-with-parmfrow-and-layout.html#cb351-4" tabindex="-1"></a>       <span class="at">heights =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="co"># Heights of the two rows</span></span>
-<span id="cb351-5"><a href="arranging-plots-with-parmfrow-and-layout.html#cb351-5" tabindex="-1"></a>       <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) <span class="co"># Widths of the two columns</span></span>
-<span id="cb351-6"><a href="arranging-plots-with-parmfrow-and-layout.html#cb351-6" tabindex="-1"></a></span>
-<span id="cb351-7"><a href="arranging-plots-with-parmfrow-and-layout.html#cb351-7" tabindex="-1"></a><span class="fu">layout.show</span>(<span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="arranging-plots-with-parmfrow-and-layout.html#cb349-1" tabindex="-1"></a>layout.matrix <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb349-2"><a href="arranging-plots-with-parmfrow-and-layout.html#cb349-2" tabindex="-1"></a></span>
+<span id="cb349-3"><a href="arranging-plots-with-parmfrow-and-layout.html#cb349-3" tabindex="-1"></a><span class="fu">layout</span>(<span class="at">mat =</span> layout.matrix,</span>
+<span id="cb349-4"><a href="arranging-plots-with-parmfrow-and-layout.html#cb349-4" tabindex="-1"></a>       <span class="at">heights =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="co"># Heights of the two rows</span></span>
+<span id="cb349-5"><a href="arranging-plots-with-parmfrow-and-layout.html#cb349-5" tabindex="-1"></a>       <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) <span class="co"># Widths of the two columns</span></span>
+<span id="cb349-6"><a href="arranging-plots-with-parmfrow-and-layout.html#cb349-6" tabindex="-1"></a></span>
+<span id="cb349-7"><a href="arranging-plots-with-parmfrow-and-layout.html#cb349-7" tabindex="-1"></a><span class="fu">layout.show</span>(<span class="dv">3</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-325"></span>
 <img src="YaRrr_files/figure-html/unnamed-chunk-325-1.png" alt="A plotting layout created by setting a layout matrix with two rows and two columns. The first row has a height of 1, and the second row has a hight of 2. Both columns have the same width of 2." width="672" />
 <p class="caption">
-Figure 12.6: A plotting layout created by setting a layout matrix with two rows and two columns. The first row has a height of 1, and the second row has a hight of 2. Both columns have the same width of 2.
+Figure 12.5: A plotting layout created by setting a layout matrix with two rows and two columns. The first row has a height of 1, and the second row has a hight of 2. Both columns have the same width of 2.
 </p>
 </div>
 <p>Now we’re ready to put the plots together</p>
-<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="arranging-plots-with-parmfrow-and-layout.html#cb352-1" tabindex="-1"></a></span>
-<span id="cb352-2"><a href="arranging-plots-with-parmfrow-and-layout.html#cb352-2" tabindex="-1"></a><span class="co"># Set plot layout</span></span>
-<span id="cb352-3"><a href="arranging-plots-with-parmfrow-and-layout.html#cb352-3" tabindex="-1"></a><span class="fu">layout</span>(<span class="at">mat =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>), </span>
-<span id="cb352-4"><a href="arranging-plots-with-parmfrow-and-layout.html#cb352-4" tabindex="-1"></a>                        <span class="at">nrow =</span> <span class="dv">2</span>, </span>
-<span id="cb352-5"><a href="arranging-plots-with-parmfrow-and-layout.html#cb352-5" tabindex="-1"></a>                        <span class="at">ncol =</span> <span class="dv">2</span>),</span>
-<span id="cb352-6"><a href="arranging-plots-with-parmfrow-and-layout.html#cb352-6" tabindex="-1"></a>       <span class="at">heights =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),    <span class="co"># Heights of the two rows</span></span>
-<span id="cb352-7"><a href="arranging-plots-with-parmfrow-and-layout.html#cb352-7" tabindex="-1"></a>       <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>))     <span class="co"># Widths of the two columns</span></span>
-<span id="cb352-8"><a href="arranging-plots-with-parmfrow-and-layout.html#cb352-8" tabindex="-1"></a></span>
-<span id="cb352-9"><a href="arranging-plots-with-parmfrow-and-layout.html#cb352-9" tabindex="-1"></a><span class="co"># Plot 1: Scatterplot</span></span>
-<span id="cb352-10"><a href="arranging-plots-with-parmfrow-and-layout.html#cb352-10" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
-<span id="cb352-11"><a href="arranging-plots-with-parmfrow-and-layout.html#cb352-11" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> pirates<span class="sc">$</span>height, </span>
-<span id="cb352-12"><a href="arranging-plots-with-parmfrow-and-layout.html#cb352-12" tabindex="-1"></a>     <span class="at">y =</span> pirates<span class="sc">$</span>weight,</span>
-<span id="cb352-13"><a href="arranging-plots-with-parmfrow-and-layout.html#cb352-13" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;height&quot;</span>, </span>
-<span id="cb352-14"><a href="arranging-plots-with-parmfrow-and-layout.html#cb352-14" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;weight&quot;</span>, </span>
-<span id="cb352-15"><a href="arranging-plots-with-parmfrow-and-layout.html#cb352-15" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>, </span>
-<span id="cb352-16"><a href="arranging-plots-with-parmfrow-and-layout.html#cb352-16" tabindex="-1"></a>     <span class="at">col =</span> yarrr<span class="sc">::</span><span class="fu">piratepal</span>(<span class="st">&quot;pony&quot;</span>, <span class="at">trans =</span> .<span class="dv">7</span>))</span>
-<span id="cb352-17"><a href="arranging-plots-with-parmfrow-and-layout.html#cb352-17" tabindex="-1"></a></span>
-<span id="cb352-18"><a href="arranging-plots-with-parmfrow-and-layout.html#cb352-18" tabindex="-1"></a><span class="co"># Plot 2: Top (height) boxplot</span></span>
-<span id="cb352-19"><a href="arranging-plots-with-parmfrow-and-layout.html#cb352-19" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
-<span id="cb352-20"><a href="arranging-plots-with-parmfrow-and-layout.html#cb352-20" tabindex="-1"></a><span class="fu">boxplot</span>(pirates<span class="sc">$</span>height, <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>,</span>
-<span id="cb352-21"><a href="arranging-plots-with-parmfrow-and-layout.html#cb352-21" tabindex="-1"></a>        <span class="at">yaxt =</span> <span class="st">&quot;n&quot;</span>, <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="at">yaxt =</span> <span class="st">&quot;n&quot;</span>,</span>
-<span id="cb352-22"><a href="arranging-plots-with-parmfrow-and-layout.html#cb352-22" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">&quot;white&quot;</span>, <span class="at">frame =</span> <span class="cn">FALSE</span>, <span class="at">horizontal =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb352-23"><a href="arranging-plots-with-parmfrow-and-layout.html#cb352-23" tabindex="-1"></a><span class="do">## Warning in (function (z, notch = FALSE, width = NULL, varwidth = FALSE, : Duplicated argument yaxt = &quot;n&quot; is disregarded</span></span></code></pre></div>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="arranging-plots-with-parmfrow-and-layout.html#cb353-1" tabindex="-1"></a></span>
-<span id="cb353-2"><a href="arranging-plots-with-parmfrow-and-layout.html#cb353-2" tabindex="-1"></a><span class="co"># Plot 3: Right (weight) boxplot</span></span>
-<span id="cb353-3"><a href="arranging-plots-with-parmfrow-and-layout.html#cb353-3" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
-<span id="cb353-4"><a href="arranging-plots-with-parmfrow-and-layout.html#cb353-4" tabindex="-1"></a><span class="fu">boxplot</span>(pirates<span class="sc">$</span>weight, <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>,</span>
-<span id="cb353-5"><a href="arranging-plots-with-parmfrow-and-layout.html#cb353-5" tabindex="-1"></a>        <span class="at">yaxt =</span> <span class="st">&quot;n&quot;</span>, <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="at">yaxt =</span> <span class="st">&quot;n&quot;</span>,</span>
-<span id="cb353-6"><a href="arranging-plots-with-parmfrow-and-layout.html#cb353-6" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">&quot;white&quot;</span>, <span class="at">frame =</span> F)</span>
-<span id="cb353-7"><a href="arranging-plots-with-parmfrow-and-layout.html#cb353-7" tabindex="-1"></a><span class="do">## Warning in (function (z, notch = FALSE, width = NULL, varwidth = FALSE, : Duplicated argument yaxt = &quot;n&quot; is disregarded</span></span></code></pre></div>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="arranging-plots-with-parmfrow-and-layout.html#cb350-1" tabindex="-1"></a></span>
+<span id="cb350-2"><a href="arranging-plots-with-parmfrow-and-layout.html#cb350-2" tabindex="-1"></a><span class="co"># Set plot layout</span></span>
+<span id="cb350-3"><a href="arranging-plots-with-parmfrow-and-layout.html#cb350-3" tabindex="-1"></a><span class="fu">layout</span>(<span class="at">mat =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>), </span>
+<span id="cb350-4"><a href="arranging-plots-with-parmfrow-and-layout.html#cb350-4" tabindex="-1"></a>                        <span class="at">nrow =</span> <span class="dv">2</span>, </span>
+<span id="cb350-5"><a href="arranging-plots-with-parmfrow-and-layout.html#cb350-5" tabindex="-1"></a>                        <span class="at">ncol =</span> <span class="dv">2</span>),</span>
+<span id="cb350-6"><a href="arranging-plots-with-parmfrow-and-layout.html#cb350-6" tabindex="-1"></a>       <span class="at">heights =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),    <span class="co"># Heights of the two rows</span></span>
+<span id="cb350-7"><a href="arranging-plots-with-parmfrow-and-layout.html#cb350-7" tabindex="-1"></a>       <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>))     <span class="co"># Widths of the two columns</span></span>
+<span id="cb350-8"><a href="arranging-plots-with-parmfrow-and-layout.html#cb350-8" tabindex="-1"></a></span>
+<span id="cb350-9"><a href="arranging-plots-with-parmfrow-and-layout.html#cb350-9" tabindex="-1"></a><span class="co"># Plot 1: Scatterplot</span></span>
+<span id="cb350-10"><a href="arranging-plots-with-parmfrow-and-layout.html#cb350-10" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
+<span id="cb350-11"><a href="arranging-plots-with-parmfrow-and-layout.html#cb350-11" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> pirates<span class="sc">$</span>height, </span>
+<span id="cb350-12"><a href="arranging-plots-with-parmfrow-and-layout.html#cb350-12" tabindex="-1"></a>     <span class="at">y =</span> pirates<span class="sc">$</span>weight,</span>
+<span id="cb350-13"><a href="arranging-plots-with-parmfrow-and-layout.html#cb350-13" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;height&quot;</span>, </span>
+<span id="cb350-14"><a href="arranging-plots-with-parmfrow-and-layout.html#cb350-14" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;weight&quot;</span>, </span>
+<span id="cb350-15"><a href="arranging-plots-with-parmfrow-and-layout.html#cb350-15" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>, </span>
+<span id="cb350-16"><a href="arranging-plots-with-parmfrow-and-layout.html#cb350-16" tabindex="-1"></a>     <span class="at">col =</span> yarrr<span class="sc">::</span><span class="fu">piratepal</span>(<span class="st">&quot;pony&quot;</span>, <span class="at">trans =</span> .<span class="dv">7</span>))</span>
+<span id="cb350-17"><a href="arranging-plots-with-parmfrow-and-layout.html#cb350-17" tabindex="-1"></a></span>
+<span id="cb350-18"><a href="arranging-plots-with-parmfrow-and-layout.html#cb350-18" tabindex="-1"></a><span class="co"># Plot 2: Top (height) boxplot</span></span>
+<span id="cb350-19"><a href="arranging-plots-with-parmfrow-and-layout.html#cb350-19" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
+<span id="cb350-20"><a href="arranging-plots-with-parmfrow-and-layout.html#cb350-20" tabindex="-1"></a><span class="fu">boxplot</span>(pirates<span class="sc">$</span>height, <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>,</span>
+<span id="cb350-21"><a href="arranging-plots-with-parmfrow-and-layout.html#cb350-21" tabindex="-1"></a>        <span class="at">yaxt =</span> <span class="st">&quot;n&quot;</span>, <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="at">yaxt =</span> <span class="st">&quot;n&quot;</span>,</span>
+<span id="cb350-22"><a href="arranging-plots-with-parmfrow-and-layout.html#cb350-22" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">&quot;white&quot;</span>, <span class="at">frame =</span> <span class="cn">FALSE</span>, <span class="at">horizontal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb350-23"><a href="arranging-plots-with-parmfrow-and-layout.html#cb350-23" tabindex="-1"></a><span class="do">## Warning in (function (z, notch = FALSE, width = NULL, varwidth = FALSE, : Duplicated argument yaxt = &quot;n&quot; is disregarded</span></span></code></pre></div>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="arranging-plots-with-parmfrow-and-layout.html#cb351-1" tabindex="-1"></a></span>
+<span id="cb351-2"><a href="arranging-plots-with-parmfrow-and-layout.html#cb351-2" tabindex="-1"></a><span class="co"># Plot 3: Right (weight) boxplot</span></span>
+<span id="cb351-3"><a href="arranging-plots-with-parmfrow-and-layout.html#cb351-3" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
+<span id="cb351-4"><a href="arranging-plots-with-parmfrow-and-layout.html#cb351-4" tabindex="-1"></a><span class="fu">boxplot</span>(pirates<span class="sc">$</span>weight, <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>,</span>
+<span id="cb351-5"><a href="arranging-plots-with-parmfrow-and-layout.html#cb351-5" tabindex="-1"></a>        <span class="at">yaxt =</span> <span class="st">&quot;n&quot;</span>, <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="at">yaxt =</span> <span class="st">&quot;n&quot;</span>,</span>
+<span id="cb351-6"><a href="arranging-plots-with-parmfrow-and-layout.html#cb351-6" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">&quot;white&quot;</span>, <span class="at">frame =</span> F)</span>
+<span id="cb351-7"><a href="arranging-plots-with-parmfrow-and-layout.html#cb351-7" tabindex="-1"></a><span class="do">## Warning in (function (z, notch = FALSE, width = NULL, varwidth = FALSE, : Duplicated argument yaxt = &quot;n&quot; is disregarded</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-326"></span>
 <img src="YaRrr_files/figure-html/unnamed-chunk-326-1.png" alt="Adding boxplots to margins of a scatterplot with layout()." width="672" />
 <p class="caption">
-Figure 12.7: Adding boxplots to margins of a scatterplot with layout().
+Figure 12.6: Adding boxplots to margins of a scatterplot with layout().
 </p>
 </div>
 </div>

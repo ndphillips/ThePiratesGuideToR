@@ -410,9 +410,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.2" data-path="t-test-t.html"><a href="t-test-t.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.2.2</b> 2-sample t-test</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="correlation-cor.html"><a href="correlation-cor.html"><i class="fa fa-check"></i><b>13.3</b> Correlation: <code>cor.test()</code></a></li>
-<li class="chapter" data-level="13.4" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chsq.test()</code></a>
+<li class="chapter" data-level="13.4" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chisq.test()</code></a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+<li class="chapter" data-level="13.4.1" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="test-your-r-might-3.html"><a href="test-your-r-might-3.html"><i class="fa fa-check"></i><b>13.5</b> Test your R might!</a></li>
 </ul></li>
@@ -567,20 +567,20 @@ Figure 11.3: Examples of gray(level, alpha)
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-276-1.png" width="480" style="display: block; margin: auto;" /></p>
 <p>Unfortunately, as far as I know, base-R does not make it easy to make transparent colors. Thankfully, there is a function in the <code>yarrr</code> package called <code>transparent</code> that makes it very easy to make any color transparent. To use it, just enter the original color as the main argument <code>orig.col</code>, then enter how transparent you want to make it (from 0 to 1) as the second argument <code>trans.val</code>.</p>
 <p>Here is a basic scatterplot with standard (non-transparent) colors:</p>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="colors.html#cb298-1" tabindex="-1"></a><span class="co"># Plot with Standard Colors</span></span>
-<span id="cb298-2"><a href="colors.html#cb298-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> pirates<span class="sc">$</span>height, </span>
-<span id="cb298-3"><a href="colors.html#cb298-3" tabindex="-1"></a>     <span class="at">y =</span> pirates<span class="sc">$</span>weight, </span>
-<span id="cb298-4"><a href="colors.html#cb298-4" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, </span>
-<span id="cb298-5"><a href="colors.html#cb298-5" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>, </span>
-<span id="cb298-6"><a href="colors.html#cb298-6" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;col =&#39;blue&#39;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="colors.html#cb297-1" tabindex="-1"></a><span class="co"># Plot with Standard Colors</span></span>
+<span id="cb297-2"><a href="colors.html#cb297-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> pirates<span class="sc">$</span>height, </span>
+<span id="cb297-3"><a href="colors.html#cb297-3" tabindex="-1"></a>     <span class="at">y =</span> pirates<span class="sc">$</span>weight, </span>
+<span id="cb297-4"><a href="colors.html#cb297-4" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, </span>
+<span id="cb297-5"><a href="colors.html#cb297-5" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>, </span>
+<span id="cb297-6"><a href="colors.html#cb297-6" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;col =&#39;blue&#39;&quot;</span>)</span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-277-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Now here’s the same plot using the <code>transparent()</code> function in the <code>yarrr</code> package:</p>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="colors.html#cb299-1" tabindex="-1"></a><span class="co"># Plot with transparent colors using the transparent() function in the yarrr package</span></span>
-<span id="cb299-2"><a href="colors.html#cb299-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> pirates<span class="sc">$</span>height, </span>
-<span id="cb299-3"><a href="colors.html#cb299-3" tabindex="-1"></a>     <span class="at">y =</span> pirates<span class="sc">$</span>weight, </span>
-<span id="cb299-4"><a href="colors.html#cb299-4" tabindex="-1"></a>     <span class="at">col =</span> yarrr<span class="sc">::</span><span class="fu">transparent</span>(<span class="st">&quot;blue&quot;</span>, <span class="at">trans.val =</span> .<span class="dv">9</span>), </span>
-<span id="cb299-5"><a href="colors.html#cb299-5" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>, </span>
-<span id="cb299-6"><a href="colors.html#cb299-6" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;col = yarrr::transparent(&#39;blue&#39;, .9)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="colors.html#cb298-1" tabindex="-1"></a><span class="co"># Plot with transparent colors using the transparent() function in the yarrr package</span></span>
+<span id="cb298-2"><a href="colors.html#cb298-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> pirates<span class="sc">$</span>height, </span>
+<span id="cb298-3"><a href="colors.html#cb298-3" tabindex="-1"></a>     <span class="at">y =</span> pirates<span class="sc">$</span>weight, </span>
+<span id="cb298-4"><a href="colors.html#cb298-4" tabindex="-1"></a>     <span class="at">col =</span> yarrr<span class="sc">::</span><span class="fu">transparent</span>(<span class="st">&quot;blue&quot;</span>, <span class="at">trans.val =</span> .<span class="dv">9</span>), </span>
+<span id="cb298-5"><a href="colors.html#cb298-5" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>, </span>
+<span id="cb298-6"><a href="colors.html#cb298-6" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;col = yarrr::transparent(&#39;blue&#39;, .9)&quot;</span>)</span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-278-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Later on in the book, we’ll cover more advanced ways to come up with colors using color palettes (using the RColorBrewer package or the <code>piratepal()</code> function in the yarrr package) and functions that generate shades of colors based on numeric data (like the <code>colorRamp2()</code> function in the <code>circlize</code> package).</p>
 <!-- ## High vs. low-level plotting commands -->

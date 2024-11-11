@@ -410,9 +410,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.2" data-path="t-test-t.html"><a href="t-test-t.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.2.2</b> 2-sample t-test</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="correlation-cor.html"><a href="correlation-cor.html"><i class="fa fa-check"></i><b>13.3</b> Correlation: <code>cor.test()</code></a></li>
-<li class="chapter" data-level="13.4" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chsq.test()</code></a>
+<li class="chapter" data-level="13.4" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chisq.test()</code></a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+<li class="chapter" data-level="13.4.1" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="test-your-r-might-3.html"><a href="test-your-r-might-3.html"><i class="fa fa-check"></i><b>13.5</b> Test your R might!</a></li>
 </ul></li>
@@ -521,18 +521,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>First, let’s take a look at the first few rows of the dataset using the <code>head()</code> function. This will show you the first few rows of the data.</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="exploring-data.html#cb24-1" tabindex="-1"></a><span class="co"># Look at the first few rows of the data</span></span>
 <span id="cb24-2"><a href="exploring-data.html#cb24-2" tabindex="-1"></a><span class="fu">head</span>(pirates)</span>
-<span id="cb24-3"><a href="exploring-data.html#cb24-3" tabindex="-1"></a><span class="do">##      id  sex age height weight headband college tattoos tchests parrots favorite.pirate sword.type eyepatch sword.time beard.length           fav.pixar grogg</span></span>
-<span id="cb24-4"><a href="exploring-data.html#cb24-4" tabindex="-1"></a><span class="do">## 2     2 male  31    209    106      yes   JSSFP       9      11       0    Jack Sparrow    cutlass        0        1.1           21              WALL-E     9</span></span>
-<span id="cb24-5"><a href="exploring-data.html#cb24-5" tabindex="-1"></a><span class="do">## 793 793 male  25    209    104      yes    CCCC       8      27       9        Anicetus    cutlass        1        1.1           16 Monsters University     8</span></span>
-<span id="cb24-6"><a href="exploring-data.html#cb24-6" tabindex="-1"></a><span class="do">## 430 430 male  26    201     99      yes    CCCC       4       7       1    Jack Sparrow    cutlass        1        0.9           14              WALL-E     9</span></span>
-<span id="cb24-7"><a href="exploring-data.html#cb24-7" tabindex="-1"></a><span class="do">## 292 292 male  29    201    102      yes    CCCC       9       2       3    Jack Sparrow      sabre        1        9.9           14              WALL-E     6</span></span>
-<span id="cb24-8"><a href="exploring-data.html#cb24-8" tabindex="-1"></a><span class="do">## 895 895 male  27    201    103      yes    CCCC      12       1       1            Hook    cutlass        1        2.3           25               Brave    14</span></span>
-<span id="cb24-9"><a href="exploring-data.html#cb24-9" tabindex="-1"></a><span class="do">## 409 409 male  28    201     97      yes    CCCC       7      10       0    Jack Sparrow    cutlass        1        1.2           15          Inside Out     7</span></span></code></pre></div>
+<span id="cb24-3"><a href="exploring-data.html#cb24-3" tabindex="-1"></a><span class="do">##   id    sex age height weight headband college tattoos tchests parrots favorite.pirate sword.type eyepatch sword.time</span></span>
+<span id="cb24-4"><a href="exploring-data.html#cb24-4" tabindex="-1"></a><span class="do">## 1  1   male  28    173     70      yes   JSSFP       9       0       0    Jack Sparrow    cutlass        1       0.58</span></span>
+<span id="cb24-5"><a href="exploring-data.html#cb24-5" tabindex="-1"></a><span class="do">## 2  2   male  31    209    106      yes   JSSFP       9      11       0    Jack Sparrow    cutlass        0       1.11</span></span>
+<span id="cb24-6"><a href="exploring-data.html#cb24-6" tabindex="-1"></a><span class="do">## 3  3   male  26    170     77      yes    CCCC      10      10       1    Jack Sparrow    cutlass        1       1.44</span></span>
+<span id="cb24-7"><a href="exploring-data.html#cb24-7" tabindex="-1"></a><span class="do">## 4  4 female  31    144     58       no   JSSFP       2       0       2    Jack Sparrow   scimitar        1      36.11</span></span>
+<span id="cb24-8"><a href="exploring-data.html#cb24-8" tabindex="-1"></a><span class="do">## 5  5 female  41    158     58      yes   JSSFP       9       6       4            Hook    cutlass        1       0.11</span></span>
+<span id="cb24-9"><a href="exploring-data.html#cb24-9" tabindex="-1"></a><span class="do">## 6  6   male  26    190     85      yes    CCCC       7      19       0    Jack Sparrow    cutlass        1       0.59</span></span>
+<span id="cb24-10"><a href="exploring-data.html#cb24-10" tabindex="-1"></a><span class="do">##   beard.length           fav.pixar grogg</span></span>
+<span id="cb24-11"><a href="exploring-data.html#cb24-11" tabindex="-1"></a><span class="do">## 1           16      Monsters, Inc.    11</span></span>
+<span id="cb24-12"><a href="exploring-data.html#cb24-12" tabindex="-1"></a><span class="do">## 2           21              WALL-E     9</span></span>
+<span id="cb24-13"><a href="exploring-data.html#cb24-13" tabindex="-1"></a><span class="do">## 3           19          Inside Out     7</span></span>
+<span id="cb24-14"><a href="exploring-data.html#cb24-14" tabindex="-1"></a><span class="do">## 4            2          Inside Out     9</span></span>
+<span id="cb24-15"><a href="exploring-data.html#cb24-15" tabindex="-1"></a><span class="do">## 5            0          Inside Out    14</span></span>
+<span id="cb24-16"><a href="exploring-data.html#cb24-16" tabindex="-1"></a><span class="do">## 6           17 Monsters University     7</span></span></code></pre></div>
 <p>You can look at the names of the columns in the dataset with the <code>names()</code> function</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="exploring-data.html#cb25-1" tabindex="-1"></a><span class="co"># What are the names of the columns?</span></span>
 <span id="cb25-2"><a href="exploring-data.html#cb25-2" tabindex="-1"></a><span class="fu">names</span>(pirates)</span>
-<span id="cb25-3"><a href="exploring-data.html#cb25-3" tabindex="-1"></a><span class="do">##  [1] &quot;id&quot;              &quot;sex&quot;             &quot;age&quot;             &quot;height&quot;          &quot;weight&quot;          &quot;headband&quot;        &quot;college&quot;         &quot;tattoos&quot;         &quot;tchests&quot;        </span></span>
-<span id="cb25-4"><a href="exploring-data.html#cb25-4" tabindex="-1"></a><span class="do">## [10] &quot;parrots&quot;         &quot;favorite.pirate&quot; &quot;sword.type&quot;      &quot;eyepatch&quot;        &quot;sword.time&quot;      &quot;beard.length&quot;    &quot;fav.pixar&quot;       &quot;grogg&quot;</span></span></code></pre></div>
+<span id="cb25-3"><a href="exploring-data.html#cb25-3" tabindex="-1"></a><span class="do">##  [1] &quot;id&quot;              &quot;sex&quot;             &quot;age&quot;             &quot;height&quot;          &quot;weight&quot;          &quot;headband&quot;        &quot;college&quot;        </span></span>
+<span id="cb25-4"><a href="exploring-data.html#cb25-4" tabindex="-1"></a><span class="do">##  [8] &quot;tattoos&quot;         &quot;tchests&quot;         &quot;parrots&quot;         &quot;favorite.pirate&quot; &quot;sword.type&quot;      &quot;eyepatch&quot;        &quot;sword.time&quot;     </span></span>
+<span id="cb25-5"><a href="exploring-data.html#cb25-5" tabindex="-1"></a><span class="do">## [15] &quot;beard.length&quot;    &quot;fav.pixar&quot;       &quot;grogg&quot;</span></span></code></pre></div>
 <p>Finally, you can also view the entire dataset in a separate window using the <code>View()</code> function:</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="exploring-data.html#cb26-1" tabindex="-1"></a><span class="co"># View the entire dataset in a new window</span></span>
 <span id="cb26-2"><a href="exploring-data.html#cb26-2" tabindex="-1"></a><span class="fu">View</span>(pirates)</span></code></pre></div>

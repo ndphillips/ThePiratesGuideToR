@@ -410,9 +410,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.2" data-path="t-test-t.html"><a href="t-test-t.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.2.2</b> 2-sample t-test</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="correlation-cor.html"><a href="correlation-cor.html"><i class="fa fa-check"></i><b>13.3</b> Correlation: <code>cor.test()</code></a></li>
-<li class="chapter" data-level="13.4" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chsq.test()</code></a>
+<li class="chapter" data-level="13.4" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chisq.test()</code></a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+<li class="chapter" data-level="13.4.1" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="test-your-r-might-3.html"><a href="test-your-r-might-3.html"><i class="fa fa-check"></i><b>13.5</b> Test your R might!</a></li>
 </ul></li>
@@ -602,8 +602,8 @@ Figure 8.5: Ah the ToothGrowth dataframe. Yes, one of the dataframes stored in R
 <p>Similarly, to get the entire 2nd column, set the column index to 2 and leave the row index blank:</p>
 <div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="slicing-dataframes.html#cb239-1" tabindex="-1"></a><span class="co"># Give me the 2nd column (and all rows) of ToothGrowth</span></span>
 <span id="cb239-2"><a href="slicing-dataframes.html#cb239-2" tabindex="-1"></a>ToothGrowth[, <span class="dv">2</span>]</span>
-<span id="cb239-3"><a href="slicing-dataframes.html#cb239-3" tabindex="-1"></a><span class="do">##  [1] VC VC VC VC VC VC VC VC VC VC VC VC VC VC VC VC VC VC VC VC VC VC VC VC VC VC VC VC VC VC OJ OJ OJ OJ OJ OJ OJ OJ OJ OJ OJ OJ OJ OJ OJ OJ OJ OJ OJ OJ OJ OJ OJ OJ OJ</span></span>
-<span id="cb239-4"><a href="slicing-dataframes.html#cb239-4" tabindex="-1"></a><span class="do">## [56] OJ OJ OJ OJ OJ</span></span>
+<span id="cb239-3"><a href="slicing-dataframes.html#cb239-3" tabindex="-1"></a><span class="do">##  [1] VC VC VC VC VC VC VC VC VC VC VC VC VC VC VC VC VC VC VC VC VC VC VC VC VC VC VC VC VC VC OJ OJ OJ OJ OJ OJ OJ OJ OJ OJ OJ OJ</span></span>
+<span id="cb239-4"><a href="slicing-dataframes.html#cb239-4" tabindex="-1"></a><span class="do">## [43] OJ OJ OJ OJ OJ OJ OJ OJ OJ OJ OJ OJ OJ OJ OJ OJ OJ OJ</span></span>
 <span id="cb239-5"><a href="slicing-dataframes.html#cb239-5" tabindex="-1"></a><span class="do">## Levels: OJ VC</span></span></code></pre></div>
 <p>Many, if not all, of the analyses you will be doing will be on subsets of data, rather than entire datasets. For example, if you have data from an experiment, you may wish to calculate the mean of participants in one group separately from another. To do this, we’ll use <em>subsetting</em> – selecting subsets of data based on some criteria. To do this, we can use one of two methods: indexing with logical vectors, or the <code>subset()</code> function. We’ll start with logical indexing first.</p>
 </div>

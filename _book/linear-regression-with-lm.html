@@ -410,9 +410,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.2" data-path="t-test-t.html"><a href="t-test-t.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.2.2</b> 2-sample t-test</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="correlation-cor.html"><a href="correlation-cor.html"><i class="fa fa-check"></i><b>13.3</b> Correlation: <code>cor.test()</code></a></li>
-<li class="chapter" data-level="13.4" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chsq.test()</code></a>
+<li class="chapter" data-level="13.4" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chisq.test()</code></a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+<li class="chapter" data-level="13.4.1" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="test-your-r-might-3.html"><a href="test-your-r-might-3.html"><i class="fa fa-check"></i><b>13.5</b> Test your R might!</a></li>
 </ul></li>
@@ -542,47 +542,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="estimating-the-value-of-diamonds-with-lm" class="section level3 hasAnchor" number="15.2.1">
 <h3><span class="header-section-number">15.2.1</span> Estimating the value of diamonds with <code>lm()</code><a href="linear-regression-with-lm.html#estimating-the-value-of-diamonds-with-lm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We’ll start with a simple example using a dataset in the yarrr package called . The dataset includes data on 150 diamonds sold at an auction. Here are the first few rows of the dataset:</p>
-<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="linear-regression-with-lm.html#cb420-1" tabindex="-1"></a><span class="fu">library</span>(yarrr)</span>
-<span id="cb420-2"><a href="linear-regression-with-lm.html#cb420-2" tabindex="-1"></a><span class="fu">head</span>(diamonds)</span>
-<span id="cb420-3"><a href="linear-regression-with-lm.html#cb420-3" tabindex="-1"></a><span class="do">##   weight clarity color value value.lm weight.c clarity.c value.g190 pred.g190</span></span>
-<span id="cb420-4"><a href="linear-regression-with-lm.html#cb420-4" tabindex="-1"></a><span class="do">## 1    9.3    0.88     4   182      186    -0.55     -0.12      FALSE     0.163</span></span>
-<span id="cb420-5"><a href="linear-regression-with-lm.html#cb420-5" tabindex="-1"></a><span class="do">## 2   11.1    1.05     5   191      193     1.20      0.05       TRUE     0.821</span></span>
-<span id="cb420-6"><a href="linear-regression-with-lm.html#cb420-6" tabindex="-1"></a><span class="do">## 3    8.7    0.85     6   176      183    -1.25     -0.15      FALSE     0.030</span></span>
-<span id="cb420-7"><a href="linear-regression-with-lm.html#cb420-7" tabindex="-1"></a><span class="do">## 4   10.4    1.15     5   195      194     0.53      0.15       TRUE     0.846</span></span>
-<span id="cb420-8"><a href="linear-regression-with-lm.html#cb420-8" tabindex="-1"></a><span class="do">## 5   10.6    0.92     5   182      189     0.72     -0.08      FALSE     0.445</span></span>
-<span id="cb420-9"><a href="linear-regression-with-lm.html#cb420-9" tabindex="-1"></a><span class="do">## 6   12.3    0.44     4   183      183     2.45     -0.56      FALSE     0.087</span></span></code></pre></div>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="linear-regression-with-lm.html#cb418-1" tabindex="-1"></a><span class="fu">library</span>(yarrr)</span>
+<span id="cb418-2"><a href="linear-regression-with-lm.html#cb418-2" tabindex="-1"></a><span class="fu">head</span>(diamonds)</span>
+<span id="cb418-3"><a href="linear-regression-with-lm.html#cb418-3" tabindex="-1"></a><span class="do">##   weight clarity color value</span></span>
+<span id="cb418-4"><a href="linear-regression-with-lm.html#cb418-4" tabindex="-1"></a><span class="do">## 1    9.3    0.88     4   182</span></span>
+<span id="cb418-5"><a href="linear-regression-with-lm.html#cb418-5" tabindex="-1"></a><span class="do">## 2   11.1    1.05     5   191</span></span>
+<span id="cb418-6"><a href="linear-regression-with-lm.html#cb418-6" tabindex="-1"></a><span class="do">## 3    8.7    0.85     6   176</span></span>
+<span id="cb418-7"><a href="linear-regression-with-lm.html#cb418-7" tabindex="-1"></a><span class="do">## 4   10.4    1.15     5   195</span></span>
+<span id="cb418-8"><a href="linear-regression-with-lm.html#cb418-8" tabindex="-1"></a><span class="do">## 5   10.6    0.92     5   182</span></span>
+<span id="cb418-9"><a href="linear-regression-with-lm.html#cb418-9" tabindex="-1"></a><span class="do">## 6   12.3    0.44     4   183</span></span></code></pre></div>
 <p>Our goal is to come up with a linear model we can use to estimate the value of each diamond (DV = <code>value</code>) as a linear combination of three independent variables: its weight, clarity, and color. The linear model will estimate each diamond’s value using the following equation:</p>
 <p><span class="math inline">\(\beta_{Int} + \beta_{weight} \times weight + \beta_{clarity} \times clarity + \beta_{color} \times color\)</span></p>
 <p>where <span class="math inline">\(\beta_{weight}\)</span> is the increase in value for each increase of 1 in weight, <span class="math inline">\(\beta_{clarity}\)</span> is the increase in value for each increase of 1 in clarity (etc.). Finally, <span class="math inline">\(\beta_{Int}\)</span> is the baseline value of a diamond with a value of 0 in all independent variables.</p>
 <p>To estimate each of the 4 weights, we’ll use <code>lm()</code>. Because <code>value</code> is the dependent variable, we’ll specify the formula as <code>formula = value ~ weight + clarity + color</code>. We’ll assign the result of the function to a new object called <code>diamonds.lm</code>:</p>
-<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="linear-regression-with-lm.html#cb421-1" tabindex="-1"></a><span class="co"># Create a linear model of diamond values</span></span>
-<span id="cb421-2"><a href="linear-regression-with-lm.html#cb421-2" tabindex="-1"></a><span class="co">#   DV = value, IVs = weight, clarity, color</span></span>
-<span id="cb421-3"><a href="linear-regression-with-lm.html#cb421-3" tabindex="-1"></a></span>
-<span id="cb421-4"><a href="linear-regression-with-lm.html#cb421-4" tabindex="-1"></a>diamonds.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> value <span class="sc">~</span> weight <span class="sc">+</span> clarity <span class="sc">+</span> color,</span>
-<span id="cb421-5"><a href="linear-regression-with-lm.html#cb421-5" tabindex="-1"></a>                  <span class="at">data =</span> diamonds)</span></code></pre></div>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="linear-regression-with-lm.html#cb419-1" tabindex="-1"></a><span class="co"># Create a linear model of diamond values</span></span>
+<span id="cb419-2"><a href="linear-regression-with-lm.html#cb419-2" tabindex="-1"></a><span class="co">#   DV = value, IVs = weight, clarity, color</span></span>
+<span id="cb419-3"><a href="linear-regression-with-lm.html#cb419-3" tabindex="-1"></a></span>
+<span id="cb419-4"><a href="linear-regression-with-lm.html#cb419-4" tabindex="-1"></a>diamonds.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> value <span class="sc">~</span> weight <span class="sc">+</span> clarity <span class="sc">+</span> color,</span>
+<span id="cb419-5"><a href="linear-regression-with-lm.html#cb419-5" tabindex="-1"></a>                  <span class="at">data =</span> diamonds)</span></code></pre></div>
 <p>To see the results of the regression analysis, including estimates for each of the beta values, we’ll use the <code>summary()</code> function:</p>
-<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="linear-regression-with-lm.html#cb422-1" tabindex="-1"></a><span class="co"># Print summary statistics from diamond model</span></span>
-<span id="cb422-2"><a href="linear-regression-with-lm.html#cb422-2" tabindex="-1"></a><span class="fu">summary</span>(diamonds.lm)</span>
-<span id="cb422-3"><a href="linear-regression-with-lm.html#cb422-3" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb422-4"><a href="linear-regression-with-lm.html#cb422-4" tabindex="-1"></a><span class="do">## Call:</span></span>
-<span id="cb422-5"><a href="linear-regression-with-lm.html#cb422-5" tabindex="-1"></a><span class="do">## lm(formula = value ~ weight + clarity + color, data = diamonds)</span></span>
-<span id="cb422-6"><a href="linear-regression-with-lm.html#cb422-6" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb422-7"><a href="linear-regression-with-lm.html#cb422-7" tabindex="-1"></a><span class="do">## Residuals:</span></span>
-<span id="cb422-8"><a href="linear-regression-with-lm.html#cb422-8" tabindex="-1"></a><span class="do">##     Min      1Q  Median      3Q     Max </span></span>
-<span id="cb422-9"><a href="linear-regression-with-lm.html#cb422-9" tabindex="-1"></a><span class="do">## -10.405  -3.547  -0.113   3.255  11.046 </span></span>
-<span id="cb422-10"><a href="linear-regression-with-lm.html#cb422-10" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb422-11"><a href="linear-regression-with-lm.html#cb422-11" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
-<span id="cb422-12"><a href="linear-regression-with-lm.html#cb422-12" tabindex="-1"></a><span class="do">##             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
-<span id="cb422-13"><a href="linear-regression-with-lm.html#cb422-13" tabindex="-1"></a><span class="do">## (Intercept)  148.335      3.625   40.92   &lt;2e-16 ***</span></span>
-<span id="cb422-14"><a href="linear-regression-with-lm.html#cb422-14" tabindex="-1"></a><span class="do">## weight         2.189      0.200   10.95   &lt;2e-16 ***</span></span>
-<span id="cb422-15"><a href="linear-regression-with-lm.html#cb422-15" tabindex="-1"></a><span class="do">## clarity       21.692      2.143   10.12   &lt;2e-16 ***</span></span>
-<span id="cb422-16"><a href="linear-regression-with-lm.html#cb422-16" tabindex="-1"></a><span class="do">## color         -0.455      0.365   -1.25     0.21    </span></span>
-<span id="cb422-17"><a href="linear-regression-with-lm.html#cb422-17" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb422-18"><a href="linear-regression-with-lm.html#cb422-18" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb422-19"><a href="linear-regression-with-lm.html#cb422-19" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb422-20"><a href="linear-regression-with-lm.html#cb422-20" tabindex="-1"></a><span class="do">## Residual standard error: 4.7 on 146 degrees of freedom</span></span>
-<span id="cb422-21"><a href="linear-regression-with-lm.html#cb422-21" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.637,  Adjusted R-squared:  0.63 </span></span>
-<span id="cb422-22"><a href="linear-regression-with-lm.html#cb422-22" tabindex="-1"></a><span class="do">## F-statistic: 85.5 on 3 and 146 DF,  p-value: &lt;2e-16</span></span></code></pre></div>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="linear-regression-with-lm.html#cb420-1" tabindex="-1"></a><span class="co"># Print summary statistics from diamond model</span></span>
+<span id="cb420-2"><a href="linear-regression-with-lm.html#cb420-2" tabindex="-1"></a><span class="fu">summary</span>(diamonds.lm)</span>
+<span id="cb420-3"><a href="linear-regression-with-lm.html#cb420-3" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb420-4"><a href="linear-regression-with-lm.html#cb420-4" tabindex="-1"></a><span class="do">## Call:</span></span>
+<span id="cb420-5"><a href="linear-regression-with-lm.html#cb420-5" tabindex="-1"></a><span class="do">## lm(formula = value ~ weight + clarity + color, data = diamonds)</span></span>
+<span id="cb420-6"><a href="linear-regression-with-lm.html#cb420-6" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb420-7"><a href="linear-regression-with-lm.html#cb420-7" tabindex="-1"></a><span class="do">## Residuals:</span></span>
+<span id="cb420-8"><a href="linear-regression-with-lm.html#cb420-8" tabindex="-1"></a><span class="do">##     Min      1Q  Median      3Q     Max </span></span>
+<span id="cb420-9"><a href="linear-regression-with-lm.html#cb420-9" tabindex="-1"></a><span class="do">## -10.405  -3.547  -0.113   3.255  11.046 </span></span>
+<span id="cb420-10"><a href="linear-regression-with-lm.html#cb420-10" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb420-11"><a href="linear-regression-with-lm.html#cb420-11" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
+<span id="cb420-12"><a href="linear-regression-with-lm.html#cb420-12" tabindex="-1"></a><span class="do">##             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb420-13"><a href="linear-regression-with-lm.html#cb420-13" tabindex="-1"></a><span class="do">## (Intercept)  148.335      3.625   40.92   &lt;2e-16 ***</span></span>
+<span id="cb420-14"><a href="linear-regression-with-lm.html#cb420-14" tabindex="-1"></a><span class="do">## weight         2.189      0.200   10.95   &lt;2e-16 ***</span></span>
+<span id="cb420-15"><a href="linear-regression-with-lm.html#cb420-15" tabindex="-1"></a><span class="do">## clarity       21.692      2.143   10.12   &lt;2e-16 ***</span></span>
+<span id="cb420-16"><a href="linear-regression-with-lm.html#cb420-16" tabindex="-1"></a><span class="do">## color         -0.455      0.365   -1.25     0.21    </span></span>
+<span id="cb420-17"><a href="linear-regression-with-lm.html#cb420-17" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb420-18"><a href="linear-regression-with-lm.html#cb420-18" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb420-19"><a href="linear-regression-with-lm.html#cb420-19" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb420-20"><a href="linear-regression-with-lm.html#cb420-20" tabindex="-1"></a><span class="do">## Residual standard error: 4.7 on 146 degrees of freedom</span></span>
+<span id="cb420-21"><a href="linear-regression-with-lm.html#cb420-21" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.637,  Adjusted R-squared:  0.63 </span></span>
+<span id="cb420-22"><a href="linear-regression-with-lm.html#cb420-22" tabindex="-1"></a><span class="do">## F-statistic: 85.5 on 3 and 146 DF,  p-value: &lt;2e-16</span></span></code></pre></div>
 <p>Here, we can see from the summary table that the model estimated <span class="math inline">\(\beta_{Int}\)</span> (the intercept), to be 148.34, <span class="math inline">\(\beta_{weight}\)</span> to be 2.19, <span class="math inline">\(\beta_{clarity}\)</span> to be 21.69, and , <span class="math inline">\(\beta_{color}\)</span> to be -0.45. You can see the full linear model in Figure <a href="linear-regression-with-lm.html#fig:diamondlm">15.2</a>:</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:diamondlm"></span>
 <img src="YaRrr_files/figure-html/diamondlm-1.png" alt="A linear model estimating the values of diamonds based on their weight, clarity, and color." width="576" />
@@ -591,50 +591,50 @@ Figure 15.2: A linear model estimating the values of diamonds based on their wei
 </p>
 </div>
 <p>You can access lots of different aspects of the regression object. To see what’s inside, use <code>names()</code></p>
-<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="linear-regression-with-lm.html#cb423-1" tabindex="-1"></a><span class="co"># Which components are in the regression object?</span></span>
-<span id="cb423-2"><a href="linear-regression-with-lm.html#cb423-2" tabindex="-1"></a><span class="fu">names</span>(diamonds.lm)</span>
-<span id="cb423-3"><a href="linear-regression-with-lm.html#cb423-3" tabindex="-1"></a><span class="do">##  [1] &quot;coefficients&quot;  &quot;residuals&quot;     &quot;effects&quot;       &quot;rank&quot;          &quot;fitted.values&quot; &quot;assign&quot;        &quot;qr&quot;            &quot;df.residual&quot;   &quot;xlevels&quot;       &quot;call&quot;         </span></span>
-<span id="cb423-4"><a href="linear-regression-with-lm.html#cb423-4" tabindex="-1"></a><span class="do">## [11] &quot;terms&quot;         &quot;model&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="linear-regression-with-lm.html#cb421-1" tabindex="-1"></a><span class="co"># Which components are in the regression object?</span></span>
+<span id="cb421-2"><a href="linear-regression-with-lm.html#cb421-2" tabindex="-1"></a><span class="fu">names</span>(diamonds.lm)</span>
+<span id="cb421-3"><a href="linear-regression-with-lm.html#cb421-3" tabindex="-1"></a><span class="do">##  [1] &quot;coefficients&quot;  &quot;residuals&quot;     &quot;effects&quot;       &quot;rank&quot;          &quot;fitted.values&quot; &quot;assign&quot;        &quot;qr&quot;           </span></span>
+<span id="cb421-4"><a href="linear-regression-with-lm.html#cb421-4" tabindex="-1"></a><span class="do">##  [8] &quot;df.residual&quot;   &quot;xlevels&quot;       &quot;call&quot;          &quot;terms&quot;         &quot;model&quot;</span></span></code></pre></div>
 <p>For example, to get the estimated coefficients from the model, just access the <code>coefficients</code> attribute:</p>
-<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="linear-regression-with-lm.html#cb424-1" tabindex="-1"></a><span class="co"># The coefficients in the diamond model</span></span>
-<span id="cb424-2"><a href="linear-regression-with-lm.html#cb424-2" tabindex="-1"></a>diamonds.lm<span class="sc">$</span>coefficients</span>
-<span id="cb424-3"><a href="linear-regression-with-lm.html#cb424-3" tabindex="-1"></a><span class="do">## (Intercept)      weight     clarity       color </span></span>
-<span id="cb424-4"><a href="linear-regression-with-lm.html#cb424-4" tabindex="-1"></a><span class="do">##    148.3354      2.1894     21.6922     -0.4549</span></span></code></pre></div>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="linear-regression-with-lm.html#cb422-1" tabindex="-1"></a><span class="co"># The coefficients in the diamond model</span></span>
+<span id="cb422-2"><a href="linear-regression-with-lm.html#cb422-2" tabindex="-1"></a>diamonds.lm<span class="sc">$</span>coefficients</span>
+<span id="cb422-3"><a href="linear-regression-with-lm.html#cb422-3" tabindex="-1"></a><span class="do">## (Intercept)      weight     clarity       color </span></span>
+<span id="cb422-4"><a href="linear-regression-with-lm.html#cb422-4" tabindex="-1"></a><span class="do">##    148.3354      2.1894     21.6922     -0.4549</span></span></code></pre></div>
 <p>If you want to access the entire statistical summary table of the coefficients, you just need to access them from the <code>summary</code> object:</p>
-<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="linear-regression-with-lm.html#cb425-1" tabindex="-1"></a><span class="co"># Coefficient statistics in the diamond model</span></span>
-<span id="cb425-2"><a href="linear-regression-with-lm.html#cb425-2" tabindex="-1"></a><span class="fu">summary</span>(diamonds.lm)<span class="sc">$</span>coefficients</span>
-<span id="cb425-3"><a href="linear-regression-with-lm.html#cb425-3" tabindex="-1"></a><span class="do">##             Estimate Std. Error t value  Pr(&gt;|t|)</span></span>
-<span id="cb425-4"><a href="linear-regression-with-lm.html#cb425-4" tabindex="-1"></a><span class="do">## (Intercept) 148.3354     3.6253  40.917 7.009e-82</span></span>
-<span id="cb425-5"><a href="linear-regression-with-lm.html#cb425-5" tabindex="-1"></a><span class="do">## weight        2.1894     0.2000  10.948 9.706e-21</span></span>
-<span id="cb425-6"><a href="linear-regression-with-lm.html#cb425-6" tabindex="-1"></a><span class="do">## clarity      21.6922     2.1429  10.123 1.411e-18</span></span>
-<span id="cb425-7"><a href="linear-regression-with-lm.html#cb425-7" tabindex="-1"></a><span class="do">## color        -0.4549     0.3646  -1.248 2.141e-01</span></span></code></pre></div>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="linear-regression-with-lm.html#cb423-1" tabindex="-1"></a><span class="co"># Coefficient statistics in the diamond model</span></span>
+<span id="cb423-2"><a href="linear-regression-with-lm.html#cb423-2" tabindex="-1"></a><span class="fu">summary</span>(diamonds.lm)<span class="sc">$</span>coefficients</span>
+<span id="cb423-3"><a href="linear-regression-with-lm.html#cb423-3" tabindex="-1"></a><span class="do">##             Estimate Std. Error t value  Pr(&gt;|t|)</span></span>
+<span id="cb423-4"><a href="linear-regression-with-lm.html#cb423-4" tabindex="-1"></a><span class="do">## (Intercept) 148.3354     3.6253  40.917 7.009e-82</span></span>
+<span id="cb423-5"><a href="linear-regression-with-lm.html#cb423-5" tabindex="-1"></a><span class="do">## weight        2.1894     0.2000  10.948 9.706e-21</span></span>
+<span id="cb423-6"><a href="linear-regression-with-lm.html#cb423-6" tabindex="-1"></a><span class="do">## clarity      21.6922     2.1429  10.123 1.411e-18</span></span>
+<span id="cb423-7"><a href="linear-regression-with-lm.html#cb423-7" tabindex="-1"></a><span class="do">## color        -0.4549     0.3646  -1.248 2.141e-01</span></span></code></pre></div>
 <p>###Getting model fits with <code>fitted.values</code></p>
 <p>To see the fitted values from a regression object (the values of the dependent variable predicted by the model), access the <code>fitted.values</code> attribute from a regression object with <code>$fitted.values</code>.</p>
 <p>Here, I’ll add the fitted values from the diamond regression model as a new column in the diamonds dataframe:</p>
-<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="linear-regression-with-lm.html#cb426-1" tabindex="-1"></a><span class="co"># Add the fitted values as a new column in the dataframe</span></span>
-<span id="cb426-2"><a href="linear-regression-with-lm.html#cb426-2" tabindex="-1"></a>diamonds<span class="sc">$</span>value.lm <span class="ot">&lt;-</span> diamonds.lm<span class="sc">$</span>fitted.values</span>
-<span id="cb426-3"><a href="linear-regression-with-lm.html#cb426-3" tabindex="-1"></a></span>
-<span id="cb426-4"><a href="linear-regression-with-lm.html#cb426-4" tabindex="-1"></a><span class="co"># Show the result</span></span>
-<span id="cb426-5"><a href="linear-regression-with-lm.html#cb426-5" tabindex="-1"></a><span class="fu">head</span>(diamonds)</span>
-<span id="cb426-6"><a href="linear-regression-with-lm.html#cb426-6" tabindex="-1"></a><span class="do">##   weight clarity color value value.lm weight.c clarity.c value.g190 pred.g190</span></span>
-<span id="cb426-7"><a href="linear-regression-with-lm.html#cb426-7" tabindex="-1"></a><span class="do">## 1   9.35    0.88     4 182.5    186.1  -0.5511   -0.1196      FALSE   0.16252</span></span>
-<span id="cb426-8"><a href="linear-regression-with-lm.html#cb426-8" tabindex="-1"></a><span class="do">## 2  11.10    1.05     5 191.2    193.1   1.1989    0.0504       TRUE   0.82130</span></span>
-<span id="cb426-9"><a href="linear-regression-with-lm.html#cb426-9" tabindex="-1"></a><span class="do">## 3   8.65    0.85     6 175.7    183.0  -1.2511   -0.1496      FALSE   0.03008</span></span>
-<span id="cb426-10"><a href="linear-regression-with-lm.html#cb426-10" tabindex="-1"></a><span class="do">## 4  10.43    1.15     5 195.2    193.8   0.5289    0.1504       TRUE   0.84559</span></span>
-<span id="cb426-11"><a href="linear-regression-with-lm.html#cb426-11" tabindex="-1"></a><span class="do">## 5  10.62    0.92     5 181.6    189.3   0.7189   -0.0796      FALSE   0.44455</span></span>
-<span id="cb426-12"><a href="linear-regression-with-lm.html#cb426-12" tabindex="-1"></a><span class="do">## 6  12.35    0.44     4 182.9    183.1   2.4489   -0.5596      FALSE   0.08688</span></span></code></pre></div>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="linear-regression-with-lm.html#cb424-1" tabindex="-1"></a><span class="co"># Add the fitted values as a new column in the dataframe</span></span>
+<span id="cb424-2"><a href="linear-regression-with-lm.html#cb424-2" tabindex="-1"></a>diamonds<span class="sc">$</span>value.lm <span class="ot">&lt;-</span> diamonds.lm<span class="sc">$</span>fitted.values</span>
+<span id="cb424-3"><a href="linear-regression-with-lm.html#cb424-3" tabindex="-1"></a></span>
+<span id="cb424-4"><a href="linear-regression-with-lm.html#cb424-4" tabindex="-1"></a><span class="co"># Show the result</span></span>
+<span id="cb424-5"><a href="linear-regression-with-lm.html#cb424-5" tabindex="-1"></a><span class="fu">head</span>(diamonds)</span>
+<span id="cb424-6"><a href="linear-regression-with-lm.html#cb424-6" tabindex="-1"></a><span class="do">##   weight clarity color value value.lm</span></span>
+<span id="cb424-7"><a href="linear-regression-with-lm.html#cb424-7" tabindex="-1"></a><span class="do">## 1   9.35    0.88     4 182.5    186.1</span></span>
+<span id="cb424-8"><a href="linear-regression-with-lm.html#cb424-8" tabindex="-1"></a><span class="do">## 2  11.10    1.05     5 191.2    193.1</span></span>
+<span id="cb424-9"><a href="linear-regression-with-lm.html#cb424-9" tabindex="-1"></a><span class="do">## 3   8.65    0.85     6 175.7    183.0</span></span>
+<span id="cb424-10"><a href="linear-regression-with-lm.html#cb424-10" tabindex="-1"></a><span class="do">## 4  10.43    1.15     5 195.2    193.8</span></span>
+<span id="cb424-11"><a href="linear-regression-with-lm.html#cb424-11" tabindex="-1"></a><span class="do">## 5  10.62    0.92     5 181.6    189.3</span></span>
+<span id="cb424-12"><a href="linear-regression-with-lm.html#cb424-12" tabindex="-1"></a><span class="do">## 6  12.35    0.44     4 182.9    183.1</span></span></code></pre></div>
 <p>According to the model, the first diamond, with a weight of 9.35, a clarity of 0.88, and a color of 4 should have a value of 186.08. As we can see, this is not far off from the true value of 182.5.</p>
 <p>You can use the fitted values from a regression object to plot the relationship between the true values and the model fits. If the model does a good job in fitting the data, the data should fall on a diagonal line:</p>
-<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="linear-regression-with-lm.html#cb427-1" tabindex="-1"></a><span class="co"># Plot the relationship between true diamond values</span></span>
-<span id="cb427-2"><a href="linear-regression-with-lm.html#cb427-2" tabindex="-1"></a><span class="co">#   and linear model fitted values</span></span>
-<span id="cb427-3"><a href="linear-regression-with-lm.html#cb427-3" tabindex="-1"></a></span>
-<span id="cb427-4"><a href="linear-regression-with-lm.html#cb427-4" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> diamonds<span class="sc">$</span>value,                          <span class="co"># True values on x-axis</span></span>
-<span id="cb427-5"><a href="linear-regression-with-lm.html#cb427-5" tabindex="-1"></a>     <span class="at">y =</span> diamonds.lm<span class="sc">$</span>fitted.values,               <span class="co"># fitted values on y-axis</span></span>
-<span id="cb427-6"><a href="linear-regression-with-lm.html#cb427-6" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;True Values&quot;</span>,</span>
-<span id="cb427-7"><a href="linear-regression-with-lm.html#cb427-7" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Model Fitted Values&quot;</span>,</span>
-<span id="cb427-8"><a href="linear-regression-with-lm.html#cb427-8" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Regression fits of diamond values&quot;</span>)</span>
-<span id="cb427-9"><a href="linear-regression-with-lm.html#cb427-9" tabindex="-1"></a></span>
-<span id="cb427-10"><a href="linear-regression-with-lm.html#cb427-10" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">b =</span> <span class="dv">1</span>, <span class="at">a =</span> <span class="dv">0</span>)                             <span class="co"># Values should fall around this line!</span></span></code></pre></div>
+<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="linear-regression-with-lm.html#cb425-1" tabindex="-1"></a><span class="co"># Plot the relationship between true diamond values</span></span>
+<span id="cb425-2"><a href="linear-regression-with-lm.html#cb425-2" tabindex="-1"></a><span class="co">#   and linear model fitted values</span></span>
+<span id="cb425-3"><a href="linear-regression-with-lm.html#cb425-3" tabindex="-1"></a></span>
+<span id="cb425-4"><a href="linear-regression-with-lm.html#cb425-4" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> diamonds<span class="sc">$</span>value,                          <span class="co"># True values on x-axis</span></span>
+<span id="cb425-5"><a href="linear-regression-with-lm.html#cb425-5" tabindex="-1"></a>     <span class="at">y =</span> diamonds.lm<span class="sc">$</span>fitted.values,               <span class="co"># fitted values on y-axis</span></span>
+<span id="cb425-6"><a href="linear-regression-with-lm.html#cb425-6" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;True Values&quot;</span>,</span>
+<span id="cb425-7"><a href="linear-regression-with-lm.html#cb425-7" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Model Fitted Values&quot;</span>,</span>
+<span id="cb425-8"><a href="linear-regression-with-lm.html#cb425-8" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Regression fits of diamond values&quot;</span>)</span>
+<span id="cb425-9"><a href="linear-regression-with-lm.html#cb425-9" tabindex="-1"></a></span>
+<span id="cb425-10"><a href="linear-regression-with-lm.html#cb425-10" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">b =</span> <span class="dv">1</span>, <span class="at">a =</span> <span class="dv">0</span>)                             <span class="co"># Values should fall around this line!</span></span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-407-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="using-predict-to-predict-new-data-from-a-model" class="section level3 hasAnchor" number="15.2.2">
@@ -669,71 +669,71 @@ Figure 15.2: A linear model estimating the values of diamonds based on their wei
 </tbody>
 </table>
 <p>I’ll use the <code>predict()</code> function to predict the value of each of these diamonds using the regression model <code>diamond.lm</code> that I created before. The two main arguments to <code>predict()</code> are <code>object</code> – the regression object we’ve already defined), and <code>newdata</code> – the dataframe of new data. Warning! The dataframe that you use in the <code>newdata</code> argument to <code>predict()</code> must have column names equal to the names of the coefficients in the model. If the names are different, the <code>predict()</code> function won’t know which column of data applies to which coefficient and will return an error.</p>
-<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="linear-regression-with-lm.html#cb428-1" tabindex="-1"></a><span class="co"># Create a dataframe of new diamond data</span></span>
-<span id="cb428-2"><a href="linear-regression-with-lm.html#cb428-2" tabindex="-1"></a>diamonds.new <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">weight =</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">6</span>, <span class="dv">5</span>),</span>
-<span id="cb428-3"><a href="linear-regression-with-lm.html#cb428-3" tabindex="-1"></a>                           <span class="at">clarity =</span> <span class="fu">c</span>(<span class="fl">1.3</span>, <span class="dv">1</span>, <span class="fl">1.5</span>),</span>
-<span id="cb428-4"><a href="linear-regression-with-lm.html#cb428-4" tabindex="-1"></a>                           <span class="at">color =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span>
-<span id="cb428-5"><a href="linear-regression-with-lm.html#cb428-5" tabindex="-1"></a></span>
-<span id="cb428-6"><a href="linear-regression-with-lm.html#cb428-6" tabindex="-1"></a><span class="co"># Predict the value of the new diamonds using</span></span>
-<span id="cb428-7"><a href="linear-regression-with-lm.html#cb428-7" tabindex="-1"></a><span class="co">#  the diamonds.lm regression model</span></span>
-<span id="cb428-8"><a href="linear-regression-with-lm.html#cb428-8" tabindex="-1"></a><span class="fu">predict</span>(<span class="at">object =</span> diamonds.lm,     <span class="co"># The regression model</span></span>
-<span id="cb428-9"><a href="linear-regression-with-lm.html#cb428-9" tabindex="-1"></a>        <span class="at">newdata =</span> diamonds.new)   <span class="co"># dataframe of new data</span></span>
-<span id="cb428-10"><a href="linear-regression-with-lm.html#cb428-10" tabindex="-1"></a><span class="do">##     1     2     3 </span></span>
-<span id="cb428-11"><a href="linear-regression-with-lm.html#cb428-11" tabindex="-1"></a><span class="do">## 200.5 182.3 190.5</span></span></code></pre></div>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="linear-regression-with-lm.html#cb426-1" tabindex="-1"></a><span class="co"># Create a dataframe of new diamond data</span></span>
+<span id="cb426-2"><a href="linear-regression-with-lm.html#cb426-2" tabindex="-1"></a>diamonds.new <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">weight =</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">6</span>, <span class="dv">5</span>),</span>
+<span id="cb426-3"><a href="linear-regression-with-lm.html#cb426-3" tabindex="-1"></a>                           <span class="at">clarity =</span> <span class="fu">c</span>(<span class="fl">1.3</span>, <span class="dv">1</span>, <span class="fl">1.5</span>),</span>
+<span id="cb426-4"><a href="linear-regression-with-lm.html#cb426-4" tabindex="-1"></a>                           <span class="at">color =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span>
+<span id="cb426-5"><a href="linear-regression-with-lm.html#cb426-5" tabindex="-1"></a></span>
+<span id="cb426-6"><a href="linear-regression-with-lm.html#cb426-6" tabindex="-1"></a><span class="co"># Predict the value of the new diamonds using</span></span>
+<span id="cb426-7"><a href="linear-regression-with-lm.html#cb426-7" tabindex="-1"></a><span class="co">#  the diamonds.lm regression model</span></span>
+<span id="cb426-8"><a href="linear-regression-with-lm.html#cb426-8" tabindex="-1"></a><span class="fu">predict</span>(<span class="at">object =</span> diamonds.lm,     <span class="co"># The regression model</span></span>
+<span id="cb426-9"><a href="linear-regression-with-lm.html#cb426-9" tabindex="-1"></a>        <span class="at">newdata =</span> diamonds.new)   <span class="co"># dataframe of new data</span></span>
+<span id="cb426-10"><a href="linear-regression-with-lm.html#cb426-10" tabindex="-1"></a><span class="do">##     1     2     3 </span></span>
+<span id="cb426-11"><a href="linear-regression-with-lm.html#cb426-11" tabindex="-1"></a><span class="do">## 200.5 182.3 190.5</span></span></code></pre></div>
 <p>This result tells us the the new diamonds are expected to have values of 200.5, 182.3, and 190.5 respectively according to our regression model.</p>
 </div>
 <div id="including-interactions-in-models-y-x1-x2" class="section level3 hasAnchor" number="15.2.3">
 <h3><span class="header-section-number">15.2.3</span> Including interactions in models: <code>y ~ x1 * x2</code><a href="linear-regression-with-lm.html#including-interactions-in-models-y-x1-x2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To include interaction terms in a regression model, just put an asterix (*) between the independent variables. For example, to create a regression model on the diamonds data with an interaction term between <code>weight</code> and <code>clarity</code>, we’d use the formula <code>formula = value ~ weight * clarity</code>:</p>
-<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="linear-regression-with-lm.html#cb429-1" tabindex="-1"></a><span class="co"># Create a regression model with interactions between </span></span>
-<span id="cb429-2"><a href="linear-regression-with-lm.html#cb429-2" tabindex="-1"></a><span class="co">#   IVS weight and clarity</span></span>
-<span id="cb429-3"><a href="linear-regression-with-lm.html#cb429-3" tabindex="-1"></a>diamonds.int.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> value <span class="sc">~</span> weight <span class="sc">*</span> clarity,</span>
-<span id="cb429-4"><a href="linear-regression-with-lm.html#cb429-4" tabindex="-1"></a>                      <span class="at">data =</span> diamonds)</span>
-<span id="cb429-5"><a href="linear-regression-with-lm.html#cb429-5" tabindex="-1"></a></span>
-<span id="cb429-6"><a href="linear-regression-with-lm.html#cb429-6" tabindex="-1"></a><span class="co"># Show summary statistics of model coefficients</span></span>
-<span id="cb429-7"><a href="linear-regression-with-lm.html#cb429-7" tabindex="-1"></a><span class="fu">summary</span>(diamonds.int.lm)<span class="sc">$</span>coefficients</span>
-<span id="cb429-8"><a href="linear-regression-with-lm.html#cb429-8" tabindex="-1"></a><span class="do">##                Estimate Std. Error t value  Pr(&gt;|t|)</span></span>
-<span id="cb429-9"><a href="linear-regression-with-lm.html#cb429-9" tabindex="-1"></a><span class="do">## (Intercept)    157.4721     10.569 14.8987 4.170e-31</span></span>
-<span id="cb429-10"><a href="linear-regression-with-lm.html#cb429-10" tabindex="-1"></a><span class="do">## weight           0.9787      1.070  0.9149 3.617e-01</span></span>
-<span id="cb429-11"><a href="linear-regression-with-lm.html#cb429-11" tabindex="-1"></a><span class="do">## clarity          9.9245     10.485  0.9465 3.454e-01</span></span>
-<span id="cb429-12"><a href="linear-regression-with-lm.html#cb429-12" tabindex="-1"></a><span class="do">## weight:clarity   1.2447      1.055  1.1797 2.401e-01</span></span></code></pre></div>
+<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="linear-regression-with-lm.html#cb427-1" tabindex="-1"></a><span class="co"># Create a regression model with interactions between </span></span>
+<span id="cb427-2"><a href="linear-regression-with-lm.html#cb427-2" tabindex="-1"></a><span class="co">#   IVS weight and clarity</span></span>
+<span id="cb427-3"><a href="linear-regression-with-lm.html#cb427-3" tabindex="-1"></a>diamonds.int.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> value <span class="sc">~</span> weight <span class="sc">*</span> clarity,</span>
+<span id="cb427-4"><a href="linear-regression-with-lm.html#cb427-4" tabindex="-1"></a>                      <span class="at">data =</span> diamonds)</span>
+<span id="cb427-5"><a href="linear-regression-with-lm.html#cb427-5" tabindex="-1"></a></span>
+<span id="cb427-6"><a href="linear-regression-with-lm.html#cb427-6" tabindex="-1"></a><span class="co"># Show summary statistics of model coefficients</span></span>
+<span id="cb427-7"><a href="linear-regression-with-lm.html#cb427-7" tabindex="-1"></a><span class="fu">summary</span>(diamonds.int.lm)<span class="sc">$</span>coefficients</span>
+<span id="cb427-8"><a href="linear-regression-with-lm.html#cb427-8" tabindex="-1"></a><span class="do">##                Estimate Std. Error t value  Pr(&gt;|t|)</span></span>
+<span id="cb427-9"><a href="linear-regression-with-lm.html#cb427-9" tabindex="-1"></a><span class="do">## (Intercept)    157.4721     10.569 14.8987 4.170e-31</span></span>
+<span id="cb427-10"><a href="linear-regression-with-lm.html#cb427-10" tabindex="-1"></a><span class="do">## weight           0.9787      1.070  0.9149 3.617e-01</span></span>
+<span id="cb427-11"><a href="linear-regression-with-lm.html#cb427-11" tabindex="-1"></a><span class="do">## clarity          9.9245     10.485  0.9465 3.454e-01</span></span>
+<span id="cb427-12"><a href="linear-regression-with-lm.html#cb427-12" tabindex="-1"></a><span class="do">## weight:clarity   1.2447      1.055  1.1797 2.401e-01</span></span></code></pre></div>
 </div>
 <div id="center-variables-before-computing-interactions" class="section level3 hasAnchor" number="15.2.4">
 <h3><span class="header-section-number">15.2.4</span> Center variables before computing interactions!<a href="linear-regression-with-lm.html#center-variables-before-computing-interactions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Hey what happened? Why are all the variables now non-significant? Does this mean that there is really no relationship between weight and clarity on value after all? No. Recall from your second-year pirate statistics class that when you include interaction terms in a model, you should always <em>center</em> the independent variables first. Centering a variable means simply subtracting the mean of the variable from all observations.</p>
 <p>In the following code, I’ll repeat the previous regression, but first I’ll create new centered variables <code>weight.c</code> and <code>clarity.c</code>, and then run the regression on the interaction between these centered variables:</p>
-<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="linear-regression-with-lm.html#cb430-1" tabindex="-1"></a><span class="co"># Create centered versions of weight and clarity</span></span>
-<span id="cb430-2"><a href="linear-regression-with-lm.html#cb430-2" tabindex="-1"></a>diamonds<span class="sc">$</span>weight.c <span class="ot">&lt;-</span> diamonds<span class="sc">$</span>weight <span class="sc">-</span> <span class="fu">mean</span>(diamonds<span class="sc">$</span>weight)</span>
-<span id="cb430-3"><a href="linear-regression-with-lm.html#cb430-3" tabindex="-1"></a>diamonds<span class="sc">$</span>clarity.c <span class="ot">&lt;-</span> diamonds<span class="sc">$</span>clarity <span class="sc">-</span> <span class="fu">mean</span>(diamonds<span class="sc">$</span>clarity)</span>
-<span id="cb430-4"><a href="linear-regression-with-lm.html#cb430-4" tabindex="-1"></a></span>
-<span id="cb430-5"><a href="linear-regression-with-lm.html#cb430-5" tabindex="-1"></a><span class="co"># Create a regression model with interactions of centered variables</span></span>
-<span id="cb430-6"><a href="linear-regression-with-lm.html#cb430-6" tabindex="-1"></a>diamonds.int.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> value <span class="sc">~</span> weight.c <span class="sc">*</span> clarity.c,</span>
-<span id="cb430-7"><a href="linear-regression-with-lm.html#cb430-7" tabindex="-1"></a>                      <span class="at">data =</span> diamonds)</span>
-<span id="cb430-8"><a href="linear-regression-with-lm.html#cb430-8" tabindex="-1"></a></span>
-<span id="cb430-9"><a href="linear-regression-with-lm.html#cb430-9" tabindex="-1"></a><span class="co"># Print summary</span></span>
-<span id="cb430-10"><a href="linear-regression-with-lm.html#cb430-10" tabindex="-1"></a><span class="fu">summary</span>(diamonds.int.lm)<span class="sc">$</span>coefficients</span>
-<span id="cb430-11"><a href="linear-regression-with-lm.html#cb430-11" tabindex="-1"></a><span class="do">##                    Estimate Std. Error t value   Pr(&gt;|t|)</span></span>
-<span id="cb430-12"><a href="linear-regression-with-lm.html#cb430-12" tabindex="-1"></a><span class="do">## (Intercept)         189.402     0.3831  494.39 2.908e-237</span></span>
-<span id="cb430-13"><a href="linear-regression-with-lm.html#cb430-13" tabindex="-1"></a><span class="do">## weight.c              2.223     0.1988   11.18  2.322e-21</span></span>
-<span id="cb430-14"><a href="linear-regression-with-lm.html#cb430-14" tabindex="-1"></a><span class="do">## clarity.c            22.248     2.1338   10.43  2.272e-19</span></span>
-<span id="cb430-15"><a href="linear-regression-with-lm.html#cb430-15" tabindex="-1"></a><span class="do">## weight.c:clarity.c    1.245     1.0551    1.18  2.401e-01</span></span></code></pre></div>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="linear-regression-with-lm.html#cb428-1" tabindex="-1"></a><span class="co"># Create centered versions of weight and clarity</span></span>
+<span id="cb428-2"><a href="linear-regression-with-lm.html#cb428-2" tabindex="-1"></a>diamonds<span class="sc">$</span>weight.c <span class="ot">&lt;-</span> diamonds<span class="sc">$</span>weight <span class="sc">-</span> <span class="fu">mean</span>(diamonds<span class="sc">$</span>weight)</span>
+<span id="cb428-3"><a href="linear-regression-with-lm.html#cb428-3" tabindex="-1"></a>diamonds<span class="sc">$</span>clarity.c <span class="ot">&lt;-</span> diamonds<span class="sc">$</span>clarity <span class="sc">-</span> <span class="fu">mean</span>(diamonds<span class="sc">$</span>clarity)</span>
+<span id="cb428-4"><a href="linear-regression-with-lm.html#cb428-4" tabindex="-1"></a></span>
+<span id="cb428-5"><a href="linear-regression-with-lm.html#cb428-5" tabindex="-1"></a><span class="co"># Create a regression model with interactions of centered variables</span></span>
+<span id="cb428-6"><a href="linear-regression-with-lm.html#cb428-6" tabindex="-1"></a>diamonds.int.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> value <span class="sc">~</span> weight.c <span class="sc">*</span> clarity.c,</span>
+<span id="cb428-7"><a href="linear-regression-with-lm.html#cb428-7" tabindex="-1"></a>                      <span class="at">data =</span> diamonds)</span>
+<span id="cb428-8"><a href="linear-regression-with-lm.html#cb428-8" tabindex="-1"></a></span>
+<span id="cb428-9"><a href="linear-regression-with-lm.html#cb428-9" tabindex="-1"></a><span class="co"># Print summary</span></span>
+<span id="cb428-10"><a href="linear-regression-with-lm.html#cb428-10" tabindex="-1"></a><span class="fu">summary</span>(diamonds.int.lm)<span class="sc">$</span>coefficients</span>
+<span id="cb428-11"><a href="linear-regression-with-lm.html#cb428-11" tabindex="-1"></a><span class="do">##                    Estimate Std. Error t value   Pr(&gt;|t|)</span></span>
+<span id="cb428-12"><a href="linear-regression-with-lm.html#cb428-12" tabindex="-1"></a><span class="do">## (Intercept)         189.402     0.3831  494.39 2.908e-237</span></span>
+<span id="cb428-13"><a href="linear-regression-with-lm.html#cb428-13" tabindex="-1"></a><span class="do">## weight.c              2.223     0.1988   11.18  2.322e-21</span></span>
+<span id="cb428-14"><a href="linear-regression-with-lm.html#cb428-14" tabindex="-1"></a><span class="do">## clarity.c            22.248     2.1338   10.43  2.272e-19</span></span>
+<span id="cb428-15"><a href="linear-regression-with-lm.html#cb428-15" tabindex="-1"></a><span class="do">## weight.c:clarity.c    1.245     1.0551    1.18  2.401e-01</span></span></code></pre></div>
 <p>Hey that looks much better! Now we see that the main effects are significant and the interaction is non-significant.</p>
 </div>
 <div id="getting-an-anova-from-a-regression-model-with-aov" class="section level3 hasAnchor" number="15.2.5">
 <h3><span class="header-section-number">15.2.5</span> Getting an ANOVA from a regression model with <code>aov()</code><a href="linear-regression-with-lm.html#getting-an-anova-from-a-regression-model-with-aov" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Once you’ve created a regression object with <code>lm()</code> or <code>glm()</code>, you can summarize the results in an ANOVA table with <code>aov()</code>:</p>
-<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="linear-regression-with-lm.html#cb431-1" tabindex="-1"></a><span class="co"># Create ANOVA object from regression</span></span>
-<span id="cb431-2"><a href="linear-regression-with-lm.html#cb431-2" tabindex="-1"></a>diamonds.aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(diamonds.lm)</span>
-<span id="cb431-3"><a href="linear-regression-with-lm.html#cb431-3" tabindex="-1"></a></span>
-<span id="cb431-4"><a href="linear-regression-with-lm.html#cb431-4" tabindex="-1"></a><span class="co"># Print summary results</span></span>
-<span id="cb431-5"><a href="linear-regression-with-lm.html#cb431-5" tabindex="-1"></a><span class="fu">summary</span>(diamonds.aov)</span>
-<span id="cb431-6"><a href="linear-regression-with-lm.html#cb431-6" tabindex="-1"></a><span class="do">##              Df Sum Sq Mean Sq F value Pr(&gt;F)    </span></span>
-<span id="cb431-7"><a href="linear-regression-with-lm.html#cb431-7" tabindex="-1"></a><span class="do">## weight        1   3218    3218  147.40 &lt;2e-16 ***</span></span>
-<span id="cb431-8"><a href="linear-regression-with-lm.html#cb431-8" tabindex="-1"></a><span class="do">## clarity       1   2347    2347  107.53 &lt;2e-16 ***</span></span>
-<span id="cb431-9"><a href="linear-regression-with-lm.html#cb431-9" tabindex="-1"></a><span class="do">## color         1     34      34    1.56   0.21    </span></span>
-<span id="cb431-10"><a href="linear-regression-with-lm.html#cb431-10" tabindex="-1"></a><span class="do">## Residuals   146   3187      22                   </span></span>
-<span id="cb431-11"><a href="linear-regression-with-lm.html#cb431-11" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb431-12"><a href="linear-regression-with-lm.html#cb431-12" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="linear-regression-with-lm.html#cb429-1" tabindex="-1"></a><span class="co"># Create ANOVA object from regression</span></span>
+<span id="cb429-2"><a href="linear-regression-with-lm.html#cb429-2" tabindex="-1"></a>diamonds.aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(diamonds.lm)</span>
+<span id="cb429-3"><a href="linear-regression-with-lm.html#cb429-3" tabindex="-1"></a></span>
+<span id="cb429-4"><a href="linear-regression-with-lm.html#cb429-4" tabindex="-1"></a><span class="co"># Print summary results</span></span>
+<span id="cb429-5"><a href="linear-regression-with-lm.html#cb429-5" tabindex="-1"></a><span class="fu">summary</span>(diamonds.aov)</span>
+<span id="cb429-6"><a href="linear-regression-with-lm.html#cb429-6" tabindex="-1"></a><span class="do">##              Df Sum Sq Mean Sq F value Pr(&gt;F)    </span></span>
+<span id="cb429-7"><a href="linear-regression-with-lm.html#cb429-7" tabindex="-1"></a><span class="do">## weight        1   3218    3218  147.40 &lt;2e-16 ***</span></span>
+<span id="cb429-8"><a href="linear-regression-with-lm.html#cb429-8" tabindex="-1"></a><span class="do">## clarity       1   2347    2347  107.53 &lt;2e-16 ***</span></span>
+<span id="cb429-9"><a href="linear-regression-with-lm.html#cb429-9" tabindex="-1"></a><span class="do">## color         1     34      34    1.56   0.21    </span></span>
+<span id="cb429-10"><a href="linear-regression-with-lm.html#cb429-10" tabindex="-1"></a><span class="do">## Residuals   146   3187      22                   </span></span>
+<span id="cb429-11"><a href="linear-regression-with-lm.html#cb429-11" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb429-12"><a href="linear-regression-with-lm.html#cb429-12" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span></code></pre></div>
 </div>
 </div>
             </section>

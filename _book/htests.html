@@ -410,9 +410,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.2" data-path="t-test-t.html"><a href="t-test-t.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.2.2</b> 2-sample t-test</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="correlation-cor.html"><a href="correlation-cor.html"><i class="fa fa-check"></i><b>13.3</b> Correlation: <code>cor.test()</code></a></li>
-<li class="chapter" data-level="13.4" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chsq.test()</code></a>
+<li class="chapter" data-level="13.4" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chisq.test()</code></a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+<li class="chapter" data-level="13.4.1" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="test-your-r-might-3.html"><a href="test-your-r-might-3.html"><i class="fa fa-check"></i><b>13.5</b> Test your R might!</a></li>
 </ul></li>
@@ -523,34 +523,34 @@ Figure 13.1: Sadly, this still counts as just one tattoo.
 </p>
 </div>
 <p>In this chapter we’ll cover 1 and 2 sample null hypothesis tests: like the t-test, correlation test, and chi-square test:</p>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="htests.html#cb356-1" tabindex="-1"></a><span class="fu">library</span>(yarrr) <span class="co"># Load yarrr to get the pirates data</span></span>
-<span id="cb356-2"><a href="htests.html#cb356-2" tabindex="-1"></a></span>
-<span id="cb356-3"><a href="htests.html#cb356-3" tabindex="-1"></a><span class="co"># 1 sample t-test</span></span>
-<span id="cb356-4"><a href="htests.html#cb356-4" tabindex="-1"></a><span class="co"># Are pirate ages different than 30 on average?</span></span>
-<span id="cb356-5"><a href="htests.html#cb356-5" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> pirates<span class="sc">$</span>age, </span>
-<span id="cb356-6"><a href="htests.html#cb356-6" tabindex="-1"></a>       <span class="at">mu =</span> <span class="dv">30</span>)</span>
-<span id="cb356-7"><a href="htests.html#cb356-7" tabindex="-1"></a></span>
-<span id="cb356-8"><a href="htests.html#cb356-8" tabindex="-1"></a><span class="co"># 2 sample t-test</span></span>
-<span id="cb356-9"><a href="htests.html#cb356-9" tabindex="-1"></a><span class="co"># Do females and males have different numbers of  tattoos?</span></span>
-<span id="cb356-10"><a href="htests.html#cb356-10" tabindex="-1"></a>sex.ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(<span class="at">formula =</span> tattoos <span class="sc">~</span> sex,</span>
-<span id="cb356-11"><a href="htests.html#cb356-11" tabindex="-1"></a>                    <span class="at">data =</span> pirates, </span>
-<span id="cb356-12"><a href="htests.html#cb356-12" tabindex="-1"></a>                    <span class="at">subset =</span> sex <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>))</span>
-<span id="cb356-13"><a href="htests.html#cb356-13" tabindex="-1"></a>sex.ttest <span class="co"># Print result</span></span>
-<span id="cb356-14"><a href="htests.html#cb356-14" tabindex="-1"></a></span>
-<span id="cb356-15"><a href="htests.html#cb356-15" tabindex="-1"></a><span class="do">## Access specific values from test</span></span>
-<span id="cb356-16"><a href="htests.html#cb356-16" tabindex="-1"></a>sex.ttest<span class="sc">$</span>statistic</span>
-<span id="cb356-17"><a href="htests.html#cb356-17" tabindex="-1"></a>sex.ttest<span class="sc">$</span>p.value</span>
-<span id="cb356-18"><a href="htests.html#cb356-18" tabindex="-1"></a>sex.ttest<span class="sc">$</span>conf.int</span>
-<span id="cb356-19"><a href="htests.html#cb356-19" tabindex="-1"></a></span>
-<span id="cb356-20"><a href="htests.html#cb356-20" tabindex="-1"></a><span class="co"># Correlation test</span></span>
-<span id="cb356-21"><a href="htests.html#cb356-21" tabindex="-1"></a><span class="co"># Is there a relationship between age and height?</span></span>
-<span id="cb356-22"><a href="htests.html#cb356-22" tabindex="-1"></a> <span class="fu">cor.test</span>(<span class="at">formula =</span> <span class="sc">~</span> age <span class="sc">+</span> height,</span>
-<span id="cb356-23"><a href="htests.html#cb356-23" tabindex="-1"></a>          <span class="at">data =</span> pirates)</span>
-<span id="cb356-24"><a href="htests.html#cb356-24" tabindex="-1"></a></span>
-<span id="cb356-25"><a href="htests.html#cb356-25" tabindex="-1"></a><span class="co"># Chi-Square test</span></span>
-<span id="cb356-26"><a href="htests.html#cb356-26" tabindex="-1"></a><span class="co"># Is there a relationship between college and favorite pirate?</span></span>
-<span id="cb356-27"><a href="htests.html#cb356-27" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="at">x =</span> pirates<span class="sc">$</span>college,</span>
-<span id="cb356-28"><a href="htests.html#cb356-28" tabindex="-1"></a>           <span class="at">y =</span> pirates<span class="sc">$</span>favorite.pirate)</span></code></pre></div>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="htests.html#cb354-1" tabindex="-1"></a><span class="fu">library</span>(yarrr) <span class="co"># Load yarrr to get the pirates data</span></span>
+<span id="cb354-2"><a href="htests.html#cb354-2" tabindex="-1"></a></span>
+<span id="cb354-3"><a href="htests.html#cb354-3" tabindex="-1"></a><span class="co"># 1 sample t-test</span></span>
+<span id="cb354-4"><a href="htests.html#cb354-4" tabindex="-1"></a><span class="co"># Are pirate ages different than 30 on average?</span></span>
+<span id="cb354-5"><a href="htests.html#cb354-5" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> pirates<span class="sc">$</span>age, </span>
+<span id="cb354-6"><a href="htests.html#cb354-6" tabindex="-1"></a>       <span class="at">mu =</span> <span class="dv">30</span>)</span>
+<span id="cb354-7"><a href="htests.html#cb354-7" tabindex="-1"></a></span>
+<span id="cb354-8"><a href="htests.html#cb354-8" tabindex="-1"></a><span class="co"># 2 sample t-test</span></span>
+<span id="cb354-9"><a href="htests.html#cb354-9" tabindex="-1"></a><span class="co"># Do females and males have different numbers of  tattoos?</span></span>
+<span id="cb354-10"><a href="htests.html#cb354-10" tabindex="-1"></a>sex.ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(<span class="at">formula =</span> tattoos <span class="sc">~</span> sex,</span>
+<span id="cb354-11"><a href="htests.html#cb354-11" tabindex="-1"></a>                    <span class="at">data =</span> pirates, </span>
+<span id="cb354-12"><a href="htests.html#cb354-12" tabindex="-1"></a>                    <span class="at">subset =</span> sex <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>))</span>
+<span id="cb354-13"><a href="htests.html#cb354-13" tabindex="-1"></a>sex.ttest <span class="co"># Print result</span></span>
+<span id="cb354-14"><a href="htests.html#cb354-14" tabindex="-1"></a></span>
+<span id="cb354-15"><a href="htests.html#cb354-15" tabindex="-1"></a><span class="do">## Access specific values from test</span></span>
+<span id="cb354-16"><a href="htests.html#cb354-16" tabindex="-1"></a>sex.ttest<span class="sc">$</span>statistic</span>
+<span id="cb354-17"><a href="htests.html#cb354-17" tabindex="-1"></a>sex.ttest<span class="sc">$</span>p.value</span>
+<span id="cb354-18"><a href="htests.html#cb354-18" tabindex="-1"></a>sex.ttest<span class="sc">$</span>conf.int</span>
+<span id="cb354-19"><a href="htests.html#cb354-19" tabindex="-1"></a></span>
+<span id="cb354-20"><a href="htests.html#cb354-20" tabindex="-1"></a><span class="co"># Correlation test</span></span>
+<span id="cb354-21"><a href="htests.html#cb354-21" tabindex="-1"></a><span class="co"># Is there a relationship between age and height?</span></span>
+<span id="cb354-22"><a href="htests.html#cb354-22" tabindex="-1"></a> <span class="fu">cor.test</span>(<span class="at">formula =</span> <span class="sc">~</span> age <span class="sc">+</span> height,</span>
+<span id="cb354-23"><a href="htests.html#cb354-23" tabindex="-1"></a>          <span class="at">data =</span> pirates)</span>
+<span id="cb354-24"><a href="htests.html#cb354-24" tabindex="-1"></a></span>
+<span id="cb354-25"><a href="htests.html#cb354-25" tabindex="-1"></a><span class="co"># Chi-Square test</span></span>
+<span id="cb354-26"><a href="htests.html#cb354-26" tabindex="-1"></a><span class="co"># Is there a relationship between college and favorite pirate?</span></span>
+<span id="cb354-27"><a href="htests.html#cb354-27" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="at">x =</span> pirates<span class="sc">$</span>college,</span>
+<span id="cb354-28"><a href="htests.html#cb354-28" tabindex="-1"></a>           <span class="at">y =</span> pirates<span class="sc">$</span>favorite.pirate)</span></code></pre></div>
 <p>Do we get more treasure from chests buried in sand or at the bottom of the ocean? Is there a relationship between the number of scars a pirate has and how much grogg he can drink? Are pirates with body piercings more likely to wear bandannas than those without body piercings? Glad you asked, in this chapter, we’ll answer these questions using 1 and 2 sample frequentist hypothesis tests.</p>
 <p>As this is a Pirate’s Guide to R, and not a Pirate’s Guide to Statistics, we won’t cover all the theoretical background behind frequentist null hypothesis tests (like t-tests) in much detail. However, it’s important to cover three main concepts: Descriptive statistics, Test statistics, and p-values. To do this, let’s talk about body piercings.</p>
 <p><img src="images/horseshoe.jpg" width="40%" style="display: block; margin: auto;" /></p>

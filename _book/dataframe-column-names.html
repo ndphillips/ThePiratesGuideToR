@@ -410,9 +410,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.2" data-path="t-test-t.html"><a href="t-test-t.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.2.2</b> 2-sample t-test</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="correlation-cor.html"><a href="correlation-cor.html"><i class="fa fa-check"></i><b>13.3</b> Correlation: <code>cor.test()</code></a></li>
-<li class="chapter" data-level="13.4" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chsq.test()</code></a>
+<li class="chapter" data-level="13.4" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chisq.test()</code></a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+<li class="chapter" data-level="13.4.1" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="test-your-r-might-3.html"><a href="test-your-r-might-3.html"><i class="fa fa-check"></i><b>13.5</b> Test your R might!</a></li>
 </ul></li>
@@ -525,8 +525,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Let’s use the <code>$</code> operator to get a vector of just the length column (called <code>len</code>) from the <code>ToothGrowth</code> dataframe:</p>
 <div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="dataframe-column-names.html#cb225-1" tabindex="-1"></a><span class="co"># Return the len column of ToothGrowth</span></span>
 <span id="cb225-2"><a href="dataframe-column-names.html#cb225-2" tabindex="-1"></a>ToothGrowth<span class="sc">$</span>len</span>
-<span id="cb225-3"><a href="dataframe-column-names.html#cb225-3" tabindex="-1"></a><span class="do">##  [1]  4.2 11.5  7.3  5.8  6.4 10.0 11.2 11.2  5.2  7.0 16.5 16.5 15.2 17.3 22.5 17.3 13.6 14.5 18.8 15.5 23.6 18.5 33.9 25.5 26.4 32.5 26.7 21.5 23.3 29.5 15.2 21.5 17.6</span></span>
-<span id="cb225-4"><a href="dataframe-column-names.html#cb225-4" tabindex="-1"></a><span class="do">## [34]  9.7 14.5 10.0  8.2  9.4 16.5  9.7 19.7 23.3 23.6 26.4 20.0 25.2 25.8 21.2 14.5 27.3 25.5 26.4 22.4 24.5 24.8 30.9 26.4 27.3 29.4 23.0</span></span></code></pre></div>
+<span id="cb225-3"><a href="dataframe-column-names.html#cb225-3" tabindex="-1"></a><span class="do">##  [1]  4.2 11.5  7.3  5.8  6.4 10.0 11.2 11.2  5.2  7.0 16.5 16.5 15.2 17.3 22.5 17.3 13.6 14.5 18.8 15.5 23.6 18.5 33.9 25.5 26.4</span></span>
+<span id="cb225-4"><a href="dataframe-column-names.html#cb225-4" tabindex="-1"></a><span class="do">## [26] 32.5 26.7 21.5 23.3 29.5 15.2 21.5 17.6  9.7 14.5 10.0  8.2  9.4 16.5  9.7 19.7 23.3 23.6 26.4 20.0 25.2 25.8 21.2 14.5 27.3</span></span>
+<span id="cb225-5"><a href="dataframe-column-names.html#cb225-5" tabindex="-1"></a><span class="do">## [51] 25.5 26.4 22.4 24.5 24.8 30.9 26.4 27.3 29.4 23.0</span></span></code></pre></div>
 <p>Because the <code>$</code> operator returns a vector, you can easily calculate descriptive statistics on columns of a dataframe by applying your favorite vector function (like <code>mean()</code> or <code>table()</code>) to a column using <code>$</code>. Let’s calculate the mean tooth length with <code>mean()</code>, and the frequency of each supplement with <code>table()</code>:</p>
 <div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="dataframe-column-names.html#cb226-1" tabindex="-1"></a><span class="co"># What is the mean of the len column of ToothGrowth?</span></span>
 <span id="cb226-2"><a href="dataframe-column-names.html#cb226-2" tabindex="-1"></a><span class="fu">mean</span>(ToothGrowth<span class="sc">$</span>len)</span>

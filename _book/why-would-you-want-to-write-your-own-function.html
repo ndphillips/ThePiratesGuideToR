@@ -410,9 +410,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.2" data-path="t-test-t.html"><a href="t-test-t.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.2.2</b> 2-sample t-test</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="correlation-cor.html"><a href="correlation-cor.html"><i class="fa fa-check"></i><b>13.3</b> Correlation: <code>cor.test()</code></a></li>
-<li class="chapter" data-level="13.4" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chsq.test()</code></a>
+<li class="chapter" data-level="13.4" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chisq.test()</code></a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+<li class="chapter" data-level="13.4.1" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="test-your-r-might-3.html"><a href="test-your-r-might-3.html"><i class="fa fa-check"></i><b>13.5</b> Test your R might!</a></li>
 </ul></li>
@@ -519,35 +519,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Throughout this book, you have been using tons of functions either built into base-R – like <code>mean()</code>, <code>hist()</code>, <code>t.test()</code>, or written by other people and saved in packages – like <code>pirateplot()</code> and <code>apa()</code> in the <code>yarrr</code> package. However, because R is a complete programming language, you can easily write your <em>own</em> functions that perform specific tasks you want.</p>
 <p>For example, let’s say you think the standard histograms made with <code>hist()</code> are pretty boring. Instead, you’d like to you’d like use a fancier version with a more modern design that also displays statistical information. Now of course you know from an earlier chapter that you can customize plots in R any way that you’d like by adding customer parameter values like <code>col</code>, <code>bg</code> (etc.). However, it would be a pain to have to specify all of these custom parameters every time you want to create your custom histogram. To accomplish this, you can write your own custom function called <code>piratehist()</code> that automatically includes your custom specifications.</p>
 <p>In the following code, I will define a new function called <code>piratehist()</code>. Just like the standard <code>hist()</code> function,<code>piratehist()</code> will take a vector of data (plus optional arguments indicated by <code>...</code>), create a light gray histogram, and adds text to the top of the figure indicating the mean and 95% CI of the data.</p>
-<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="why-would-you-want-to-write-your-own-function.html#cb446-1" tabindex="-1"></a><span class="co"># Create a function called piratehist</span></span>
-<span id="cb446-2"><a href="why-would-you-want-to-write-your-own-function.html#cb446-2" tabindex="-1"></a>piratehist <span class="ot">&lt;-</span> <span class="cf">function</span>(x, ...) {</span>
-<span id="cb446-3"><a href="why-would-you-want-to-write-your-own-function.html#cb446-3" tabindex="-1"></a></span>
-<span id="cb446-4"><a href="why-would-you-want-to-write-your-own-function.html#cb446-4" tabindex="-1"></a><span class="co"># Create a customized histogram  </span></span>
-<span id="cb446-5"><a href="why-would-you-want-to-write-your-own-function.html#cb446-5" tabindex="-1"></a><span class="fu">hist</span>(x,</span>
-<span id="cb446-6"><a href="why-would-you-want-to-write-your-own-function.html#cb446-6" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">gray</span>(.<span class="dv">5</span>, .<span class="dv">2</span>),</span>
-<span id="cb446-7"><a href="why-would-you-want-to-write-your-own-function.html#cb446-7" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;white&quot;</span>,</span>
-<span id="cb446-8"><a href="why-would-you-want-to-write-your-own-function.html#cb446-8" tabindex="-1"></a>     <span class="at">yaxt =</span> <span class="st">&quot;n&quot;</span>,</span>
-<span id="cb446-9"><a href="why-would-you-want-to-write-your-own-function.html#cb446-9" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb446-10"><a href="why-would-you-want-to-write-your-own-function.html#cb446-10" tabindex="-1"></a>     ...)</span>
-<span id="cb446-11"><a href="why-would-you-want-to-write-your-own-function.html#cb446-11" tabindex="-1"></a></span>
-<span id="cb446-12"><a href="why-would-you-want-to-write-your-own-function.html#cb446-12" tabindex="-1"></a><span class="co"># Calculate the conf interval</span></span>
-<span id="cb446-13"><a href="why-would-you-want-to-write-your-own-function.html#cb446-13" tabindex="-1"></a>ci <span class="ot">&lt;-</span> <span class="fu">t.test</span>(x)<span class="sc">$</span>conf.int</span>
-<span id="cb446-14"><a href="why-would-you-want-to-write-your-own-function.html#cb446-14" tabindex="-1"></a></span>
-<span id="cb446-15"><a href="why-would-you-want-to-write-your-own-function.html#cb446-15" tabindex="-1"></a><span class="co"># Define and add top-text</span></span>
-<span id="cb446-16"><a href="why-would-you-want-to-write-your-own-function.html#cb446-16" tabindex="-1"></a>top.text <span class="ot">&lt;-</span> <span class="fu">paste</span>(</span>
-<span id="cb446-17"><a href="why-would-you-want-to-write-your-own-function.html#cb446-17" tabindex="-1"></a>  <span class="st">&quot;Mean = &quot;</span>, <span class="fu">round</span>(<span class="fu">mean</span>(x), <span class="dv">2</span>),</span>
-<span id="cb446-18"><a href="why-would-you-want-to-write-your-own-function.html#cb446-18" tabindex="-1"></a>  <span class="st">&quot; (95% CI [&quot;</span>, <span class="fu">round</span>(ci[<span class="dv">1</span>], <span class="dv">2</span>),</span>
-<span id="cb446-19"><a href="why-would-you-want-to-write-your-own-function.html#cb446-19" tabindex="-1"></a>  <span class="st">&quot;, &quot;</span>, <span class="fu">round</span>(ci[<span class="dv">2</span>], <span class="dv">2</span>), </span>
-<span id="cb446-20"><a href="why-would-you-want-to-write-your-own-function.html#cb446-20" tabindex="-1"></a>  <span class="st">&quot;]), SD = &quot;</span>, <span class="fu">round</span>(<span class="fu">sd</span>(x), <span class="dv">2</span>), </span>
-<span id="cb446-21"><a href="why-would-you-want-to-write-your-own-function.html#cb446-21" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb446-22"><a href="why-would-you-want-to-write-your-own-function.html#cb446-22" tabindex="-1"></a></span>
-<span id="cb446-23"><a href="why-would-you-want-to-write-your-own-function.html#cb446-23" tabindex="-1"></a><span class="fu">mtext</span>(top.text, <span class="at">side =</span> <span class="dv">3</span>)</span>
-<span id="cb446-24"><a href="why-would-you-want-to-write-your-own-function.html#cb446-24" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="why-would-you-want-to-write-your-own-function.html#cb444-1" tabindex="-1"></a><span class="co"># Create a function called piratehist</span></span>
+<span id="cb444-2"><a href="why-would-you-want-to-write-your-own-function.html#cb444-2" tabindex="-1"></a>piratehist <span class="ot">&lt;-</span> <span class="cf">function</span>(x, ...) {</span>
+<span id="cb444-3"><a href="why-would-you-want-to-write-your-own-function.html#cb444-3" tabindex="-1"></a></span>
+<span id="cb444-4"><a href="why-would-you-want-to-write-your-own-function.html#cb444-4" tabindex="-1"></a><span class="co"># Create a customized histogram  </span></span>
+<span id="cb444-5"><a href="why-would-you-want-to-write-your-own-function.html#cb444-5" tabindex="-1"></a><span class="fu">hist</span>(x,</span>
+<span id="cb444-6"><a href="why-would-you-want-to-write-your-own-function.html#cb444-6" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">gray</span>(.<span class="dv">5</span>, .<span class="dv">2</span>),</span>
+<span id="cb444-7"><a href="why-would-you-want-to-write-your-own-function.html#cb444-7" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb444-8"><a href="why-would-you-want-to-write-your-own-function.html#cb444-8" tabindex="-1"></a>     <span class="at">yaxt =</span> <span class="st">&quot;n&quot;</span>,</span>
+<span id="cb444-9"><a href="why-would-you-want-to-write-your-own-function.html#cb444-9" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb444-10"><a href="why-would-you-want-to-write-your-own-function.html#cb444-10" tabindex="-1"></a>     ...)</span>
+<span id="cb444-11"><a href="why-would-you-want-to-write-your-own-function.html#cb444-11" tabindex="-1"></a></span>
+<span id="cb444-12"><a href="why-would-you-want-to-write-your-own-function.html#cb444-12" tabindex="-1"></a><span class="co"># Calculate the conf interval</span></span>
+<span id="cb444-13"><a href="why-would-you-want-to-write-your-own-function.html#cb444-13" tabindex="-1"></a>ci <span class="ot">&lt;-</span> <span class="fu">t.test</span>(x)<span class="sc">$</span>conf.int</span>
+<span id="cb444-14"><a href="why-would-you-want-to-write-your-own-function.html#cb444-14" tabindex="-1"></a></span>
+<span id="cb444-15"><a href="why-would-you-want-to-write-your-own-function.html#cb444-15" tabindex="-1"></a><span class="co"># Define and add top-text</span></span>
+<span id="cb444-16"><a href="why-would-you-want-to-write-your-own-function.html#cb444-16" tabindex="-1"></a>top.text <span class="ot">&lt;-</span> <span class="fu">paste</span>(</span>
+<span id="cb444-17"><a href="why-would-you-want-to-write-your-own-function.html#cb444-17" tabindex="-1"></a>  <span class="st">&quot;Mean = &quot;</span>, <span class="fu">round</span>(<span class="fu">mean</span>(x), <span class="dv">2</span>),</span>
+<span id="cb444-18"><a href="why-would-you-want-to-write-your-own-function.html#cb444-18" tabindex="-1"></a>  <span class="st">&quot; (95% CI [&quot;</span>, <span class="fu">round</span>(ci[<span class="dv">1</span>], <span class="dv">2</span>),</span>
+<span id="cb444-19"><a href="why-would-you-want-to-write-your-own-function.html#cb444-19" tabindex="-1"></a>  <span class="st">&quot;, &quot;</span>, <span class="fu">round</span>(ci[<span class="dv">2</span>], <span class="dv">2</span>), </span>
+<span id="cb444-20"><a href="why-would-you-want-to-write-your-own-function.html#cb444-20" tabindex="-1"></a>  <span class="st">&quot;]), SD = &quot;</span>, <span class="fu">round</span>(<span class="fu">sd</span>(x), <span class="dv">2</span>), </span>
+<span id="cb444-21"><a href="why-would-you-want-to-write-your-own-function.html#cb444-21" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb444-22"><a href="why-would-you-want-to-write-your-own-function.html#cb444-22" tabindex="-1"></a></span>
+<span id="cb444-23"><a href="why-would-you-want-to-write-your-own-function.html#cb444-23" tabindex="-1"></a><span class="fu">mtext</span>(top.text, <span class="at">side =</span> <span class="dv">3</span>)</span>
+<span id="cb444-24"><a href="why-would-you-want-to-write-your-own-function.html#cb444-24" tabindex="-1"></a>}</span></code></pre></div>
 <p>Now that I’ve defined the <code>piratehist()</code> function, let’s evaluate it on a vector of data!</p>
-<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="why-would-you-want-to-write-your-own-function.html#cb447-1" tabindex="-1"></a><span class="co"># Create a pirate histogram!</span></span>
-<span id="cb447-2"><a href="why-would-you-want-to-write-your-own-function.html#cb447-2" tabindex="-1"></a><span class="fu">piratehist</span>(pirates<span class="sc">$</span>age,</span>
-<span id="cb447-3"><a href="why-would-you-want-to-write-your-own-function.html#cb447-3" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;Age&quot;</span>,</span>
-<span id="cb447-4"><a href="why-would-you-want-to-write-your-own-function.html#cb447-4" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Pirates&#39; Ages&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="why-would-you-want-to-write-your-own-function.html#cb445-1" tabindex="-1"></a><span class="co"># Create a pirate histogram!</span></span>
+<span id="cb445-2"><a href="why-would-you-want-to-write-your-own-function.html#cb445-2" tabindex="-1"></a><span class="fu">piratehist</span>(pirates<span class="sc">$</span>age,</span>
+<span id="cb445-3"><a href="why-would-you-want-to-write-your-own-function.html#cb445-3" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;Age&quot;</span>,</span>
+<span id="cb445-4"><a href="why-would-you-want-to-write-your-own-function.html#cb445-4" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Pirates&#39; Ages&quot;</span>)</span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-430-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>As you can see, the resulting plot has all the customisations I specified in the function. So now, anytime I want to make a fancy pirate-y histogram, I can just use the <code>piratehist()</code> function rather than having to always write all the raw code from scratch.</p>
 <p>Of course, functions are limited to creating plots…oh no. You can write a function to do <em>anything</em> that you can program in R. Just think about a function as a container for R-code stored behind the scenes for you to use without having to see (or write) the code again. Now, if there’s anything you like to do repeatedly in R (like making multiple customized plots, you can define the code just once in a new function rather than having to write it all again and again.Some of you reading this will quickly see how how writing your own functions can save you tons of time. For those of you who haven’t…trust me, this is a big deal.</p>

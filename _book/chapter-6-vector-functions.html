@@ -410,9 +410,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.2" data-path="t-test-t.html"><a href="t-test-t.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.2.2</b> 2-sample t-test</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="correlation-cor.html"><a href="correlation-cor.html"><i class="fa fa-check"></i><b>13.3</b> Correlation: <code>cor.test()</code></a></li>
-<li class="chapter" data-level="13.4" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chsq.test()</code></a>
+<li class="chapter" data-level="13.4" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chisq.test()</code></a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+<li class="chapter" data-level="13.4.1" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="test-your-r-might-3.html"><a href="test-your-r-might-3.html"><i class="fa fa-check"></i><b>13.5</b> Test your R might!</a></li>
 </ul></li>
@@ -519,13 +519,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: decimal">
 <li>Create a vector that shows the square root of the integers from 1 to 10.</li>
 </ol>
-<div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb527-1"><a href="chapter-6-vector-functions.html#cb527-1" tabindex="-1"></a>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) <span class="sc">^</span> .<span class="dv">5</span></span>
-<span id="cb527-2"><a href="chapter-6-vector-functions.html#cb527-2" tabindex="-1"></a><span class="do">##  [1] 1.0 1.4 1.7 2.0 2.2 2.4 2.6 2.8 3.0 3.2</span></span></code></pre></div>
-<div class="sourceCode" id="cb528"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb528-1"><a href="chapter-6-vector-functions.html#cb528-1" tabindex="-1"></a></span>
-<span id="cb528-2"><a href="chapter-6-vector-functions.html#cb528-2" tabindex="-1"></a><span class="co">#or</span></span>
-<span id="cb528-3"><a href="chapter-6-vector-functions.html#cb528-3" tabindex="-1"></a></span>
-<span id="cb528-4"><a href="chapter-6-vector-functions.html#cb528-4" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
-<span id="cb528-5"><a href="chapter-6-vector-functions.html#cb528-5" tabindex="-1"></a><span class="do">##  [1] 1.0 1.4 1.7 2.0 2.2 2.4 2.6 2.8 3.0 3.2</span></span></code></pre></div>
+<div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb525-1"><a href="chapter-6-vector-functions.html#cb525-1" tabindex="-1"></a>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) <span class="sc">^</span> .<span class="dv">5</span></span>
+<span id="cb525-2"><a href="chapter-6-vector-functions.html#cb525-2" tabindex="-1"></a><span class="do">##  [1] 1.0 1.4 1.7 2.0 2.2 2.4 2.6 2.8 3.0 3.2</span></span></code></pre></div>
+<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb526-1"><a href="chapter-6-vector-functions.html#cb526-1" tabindex="-1"></a></span>
+<span id="cb526-2"><a href="chapter-6-vector-functions.html#cb526-2" tabindex="-1"></a><span class="co">#or</span></span>
+<span id="cb526-3"><a href="chapter-6-vector-functions.html#cb526-3" tabindex="-1"></a></span>
+<span id="cb526-4"><a href="chapter-6-vector-functions.html#cb526-4" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb526-5"><a href="chapter-6-vector-functions.html#cb526-5" tabindex="-1"></a><span class="do">##  [1] 1.0 1.4 1.7 2.0 2.2 2.4 2.6 2.8 3.0 3.2</span></span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Renata thinks that she finds more treasure when she’s had a mug of grogg than when she doesn’t. To test this, she recorded how much treasure she found over 7 days without drinking any grogg (ie., sober), and then did the same over 7 days while drinking grogg (ie., drunk). Here are her results:</li>
 </ol>
@@ -577,69 +577,69 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>How much treasure did Renata find on average when she was sober? What about when she was drunk?</p>
-<div class="sourceCode" id="cb529"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb529-1"><a href="chapter-6-vector-functions.html#cb529-1" tabindex="-1"></a>sober <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">5</span>)</span>
-<span id="cb529-2"><a href="chapter-6-vector-functions.html#cb529-2" tabindex="-1"></a>drunk <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb529-3"><a href="chapter-6-vector-functions.html#cb529-3" tabindex="-1"></a></span>
-<span id="cb529-4"><a href="chapter-6-vector-functions.html#cb529-4" tabindex="-1"></a><span class="fu">mean</span>(sober)</span>
-<span id="cb529-5"><a href="chapter-6-vector-functions.html#cb529-5" tabindex="-1"></a><span class="do">## [1] 2</span></span></code></pre></div>
-<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="chapter-6-vector-functions.html#cb530-1" tabindex="-1"></a><span class="fu">mean</span>(drunk)</span>
-<span id="cb530-2"><a href="chapter-6-vector-functions.html#cb530-2" tabindex="-1"></a><span class="do">## [1] 0.86</span></span></code></pre></div>
+<div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb527-1"><a href="chapter-6-vector-functions.html#cb527-1" tabindex="-1"></a>sober <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">5</span>)</span>
+<span id="cb527-2"><a href="chapter-6-vector-functions.html#cb527-2" tabindex="-1"></a>drunk <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb527-3"><a href="chapter-6-vector-functions.html#cb527-3" tabindex="-1"></a></span>
+<span id="cb527-4"><a href="chapter-6-vector-functions.html#cb527-4" tabindex="-1"></a><span class="fu">mean</span>(sober)</span>
+<span id="cb527-5"><a href="chapter-6-vector-functions.html#cb527-5" tabindex="-1"></a><span class="do">## [1] 2</span></span></code></pre></div>
+<div class="sourceCode" id="cb528"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb528-1"><a href="chapter-6-vector-functions.html#cb528-1" tabindex="-1"></a><span class="fu">mean</span>(drunk)</span>
+<span id="cb528-2"><a href="chapter-6-vector-functions.html#cb528-2" tabindex="-1"></a><span class="do">## [1] 0.86</span></span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>Using Renata’s data again, create a new vector called <code>difference</code> that shows how much more treasure Renata found when she was drunk and when she was not. What was the mean, median, and standard deviation of the difference?</li>
 </ol>
-<div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb531-1"><a href="chapter-6-vector-functions.html#cb531-1" tabindex="-1"></a>difference <span class="ot">&lt;-</span> sober <span class="sc">-</span> drunk</span>
-<span id="cb531-2"><a href="chapter-6-vector-functions.html#cb531-2" tabindex="-1"></a></span>
-<span id="cb531-3"><a href="chapter-6-vector-functions.html#cb531-3" tabindex="-1"></a><span class="fu">mean</span>(difference)</span>
-<span id="cb531-4"><a href="chapter-6-vector-functions.html#cb531-4" tabindex="-1"></a><span class="do">## [1] 1.1</span></span></code></pre></div>
-<div class="sourceCode" id="cb532"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb532-1"><a href="chapter-6-vector-functions.html#cb532-1" tabindex="-1"></a><span class="fu">median</span>(difference)</span>
-<span id="cb532-2"><a href="chapter-6-vector-functions.html#cb532-2" tabindex="-1"></a><span class="do">## [1] 1</span></span></code></pre></div>
-<div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb533-1"><a href="chapter-6-vector-functions.html#cb533-1" tabindex="-1"></a><span class="fu">sd</span>(difference)</span>
-<span id="cb533-2"><a href="chapter-6-vector-functions.html#cb533-2" tabindex="-1"></a><span class="do">## [1] 1.3</span></span></code></pre></div>
+<div class="sourceCode" id="cb529"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb529-1"><a href="chapter-6-vector-functions.html#cb529-1" tabindex="-1"></a>difference <span class="ot">&lt;-</span> sober <span class="sc">-</span> drunk</span>
+<span id="cb529-2"><a href="chapter-6-vector-functions.html#cb529-2" tabindex="-1"></a></span>
+<span id="cb529-3"><a href="chapter-6-vector-functions.html#cb529-3" tabindex="-1"></a><span class="fu">mean</span>(difference)</span>
+<span id="cb529-4"><a href="chapter-6-vector-functions.html#cb529-4" tabindex="-1"></a><span class="do">## [1] 1.1</span></span></code></pre></div>
+<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="chapter-6-vector-functions.html#cb530-1" tabindex="-1"></a><span class="fu">median</span>(difference)</span>
+<span id="cb530-2"><a href="chapter-6-vector-functions.html#cb530-2" tabindex="-1"></a><span class="do">## [1] 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb531-1"><a href="chapter-6-vector-functions.html#cb531-1" tabindex="-1"></a><span class="fu">sd</span>(difference)</span>
+<span id="cb531-2"><a href="chapter-6-vector-functions.html#cb531-2" tabindex="-1"></a><span class="do">## [1] 1.3</span></span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li>There’s an old parable that goes something like this. A man does some work for a king and needs to be paid. Because the man loves rice (who doesn’t?!), the man offers the king two different ways that he can be paid. <em>You can either pay me 100 kilograms of rice, or, you can pay me as follows: get a chessboard and put one grain of rice in the top left square. Then put 2 grains of rice on the next square, followed by 4 grains on the next, 8 grains on the next…and so on, where the amount of rice doubles on each square, until you get to the last square. When you are finished, give me all the grains of rice that would (in theory), fit on the chessboard.</em> The king, sensing that the man was an idiot for making such a stupid offer, immediately accepts the second option. He summons a chessboard, and begins counting out grains of rice one by one… Assuming that there are 64 squares on a chessboard, calculate how many grains of rice the main will receive. If one grain of rice weights 1/64000 kilograms, how many kilograms of rice did he get? <em>Hint: If you have trouble coming up with the answer, imagine how many grains are on the first, second, third and fourth squares, then try to create the vector that shows the number of grains on each square. Once you come up with that vector, you can easily calculate the final answer with the <code>sum()</code> function.</em></li>
 </ol>
-<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb534-1"><a href="chapter-6-vector-functions.html#cb534-1" tabindex="-1"></a><span class="co"># First, let&#39;s create a vector of the amount of rice on each square:</span></span>
-<span id="cb534-2"><a href="chapter-6-vector-functions.html#cb534-2" tabindex="-1"></a><span class="co"># It should be 1, 2, 4, 8, ...</span></span>
-<span id="cb534-3"><a href="chapter-6-vector-functions.html#cb534-3" tabindex="-1"></a>rice <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">^</span> (<span class="dv">0</span><span class="sc">:</span><span class="dv">63</span>)</span>
-<span id="cb534-4"><a href="chapter-6-vector-functions.html#cb534-4" tabindex="-1"></a></span>
-<span id="cb534-5"><a href="chapter-6-vector-functions.html#cb534-5" tabindex="-1"></a><span class="co"># Here are the first few spaces</span></span>
-<span id="cb534-6"><a href="chapter-6-vector-functions.html#cb534-6" tabindex="-1"></a><span class="fu">head</span>(rice)</span>
-<span id="cb534-7"><a href="chapter-6-vector-functions.html#cb534-7" tabindex="-1"></a><span class="do">## [1]  1  2  4  8 16 32</span></span></code></pre></div>
+<div class="sourceCode" id="cb532"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb532-1"><a href="chapter-6-vector-functions.html#cb532-1" tabindex="-1"></a><span class="co"># First, let&#39;s create a vector of the amount of rice on each square:</span></span>
+<span id="cb532-2"><a href="chapter-6-vector-functions.html#cb532-2" tabindex="-1"></a><span class="co"># It should be 1, 2, 4, 8, ...</span></span>
+<span id="cb532-3"><a href="chapter-6-vector-functions.html#cb532-3" tabindex="-1"></a>rice <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">^</span> (<span class="dv">0</span><span class="sc">:</span><span class="dv">63</span>)</span>
+<span id="cb532-4"><a href="chapter-6-vector-functions.html#cb532-4" tabindex="-1"></a></span>
+<span id="cb532-5"><a href="chapter-6-vector-functions.html#cb532-5" tabindex="-1"></a><span class="co"># Here are the first few spaces</span></span>
+<span id="cb532-6"><a href="chapter-6-vector-functions.html#cb532-6" tabindex="-1"></a><span class="fu">head</span>(rice)</span>
+<span id="cb532-7"><a href="chapter-6-vector-functions.html#cb532-7" tabindex="-1"></a><span class="do">## [1]  1  2  4  8 16 32</span></span></code></pre></div>
+<div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb533-1"><a href="chapter-6-vector-functions.html#cb533-1" tabindex="-1"></a></span>
+<span id="cb533-2"><a href="chapter-6-vector-functions.html#cb533-2" tabindex="-1"></a><span class="co"># The result is just the sum!</span></span>
+<span id="cb533-3"><a href="chapter-6-vector-functions.html#cb533-3" tabindex="-1"></a>rice.total <span class="ot">&lt;-</span> <span class="fu">sum</span>(rice)</span>
+<span id="cb533-4"><a href="chapter-6-vector-functions.html#cb533-4" tabindex="-1"></a>rice.total</span>
+<span id="cb533-5"><a href="chapter-6-vector-functions.html#cb533-5" tabindex="-1"></a><span class="do">## [1] 1.8e+19</span></span></code></pre></div>
+<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb534-1"><a href="chapter-6-vector-functions.html#cb534-1" tabindex="-1"></a></span>
+<span id="cb534-2"><a href="chapter-6-vector-functions.html#cb534-2" tabindex="-1"></a><span class="co"># How much does that weigh? Each grain weights 1/6400 kilograms:</span></span>
+<span id="cb534-3"><a href="chapter-6-vector-functions.html#cb534-3" tabindex="-1"></a>rice.kg <span class="ot">&lt;-</span> <span class="fu">sum</span>(rice) <span class="sc">*</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">6400</span></span>
+<span id="cb534-4"><a href="chapter-6-vector-functions.html#cb534-4" tabindex="-1"></a>rice.kg</span>
+<span id="cb534-5"><a href="chapter-6-vector-functions.html#cb534-5" tabindex="-1"></a><span class="do">## [1] 2.9e+15</span></span></code></pre></div>
 <div class="sourceCode" id="cb535"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb535-1"><a href="chapter-6-vector-functions.html#cb535-1" tabindex="-1"></a></span>
-<span id="cb535-2"><a href="chapter-6-vector-functions.html#cb535-2" tabindex="-1"></a><span class="co"># The result is just the sum!</span></span>
-<span id="cb535-3"><a href="chapter-6-vector-functions.html#cb535-3" tabindex="-1"></a>rice.total <span class="ot">&lt;-</span> <span class="fu">sum</span>(rice)</span>
-<span id="cb535-4"><a href="chapter-6-vector-functions.html#cb535-4" tabindex="-1"></a>rice.total</span>
-<span id="cb535-5"><a href="chapter-6-vector-functions.html#cb535-5" tabindex="-1"></a><span class="do">## [1] 1.8e+19</span></span></code></pre></div>
+<span id="cb535-2"><a href="chapter-6-vector-functions.html#cb535-2" tabindex="-1"></a><span class="co"># That&#39;s 2,900,000,000,000,000 kilograms of rice. Let&#39;s keep going....</span></span>
+<span id="cb535-3"><a href="chapter-6-vector-functions.html#cb535-3" tabindex="-1"></a><span class="co"># A kg of rice is 1,300 calories</span></span>
+<span id="cb535-4"><a href="chapter-6-vector-functions.html#cb535-4" tabindex="-1"></a></span>
+<span id="cb535-5"><a href="chapter-6-vector-functions.html#cb535-5" tabindex="-1"></a>rice.cal <span class="ot">&lt;-</span> rice.kg <span class="sc">*</span> <span class="dv">1300</span></span>
+<span id="cb535-6"><a href="chapter-6-vector-functions.html#cb535-6" tabindex="-1"></a>rice.cal</span>
+<span id="cb535-7"><a href="chapter-6-vector-functions.html#cb535-7" tabindex="-1"></a><span class="do">## [1] 3.7e+18</span></span></code></pre></div>
 <div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb536-1"><a href="chapter-6-vector-functions.html#cb536-1" tabindex="-1"></a></span>
-<span id="cb536-2"><a href="chapter-6-vector-functions.html#cb536-2" tabindex="-1"></a><span class="co"># How much does that weigh? Each grain weights 1/6400 kilograms:</span></span>
-<span id="cb536-3"><a href="chapter-6-vector-functions.html#cb536-3" tabindex="-1"></a>rice.kg <span class="ot">&lt;-</span> <span class="fu">sum</span>(rice) <span class="sc">*</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">6400</span></span>
-<span id="cb536-4"><a href="chapter-6-vector-functions.html#cb536-4" tabindex="-1"></a>rice.kg</span>
-<span id="cb536-5"><a href="chapter-6-vector-functions.html#cb536-5" tabindex="-1"></a><span class="do">## [1] 2.9e+15</span></span></code></pre></div>
+<span id="cb536-2"><a href="chapter-6-vector-functions.html#cb536-2" tabindex="-1"></a><span class="co"># How many people can that feed for a year?</span></span>
+<span id="cb536-3"><a href="chapter-6-vector-functions.html#cb536-3" tabindex="-1"></a><span class="co"># A person needs about 2,250 calories a day, or 2,250 * 365 per year</span></span>
+<span id="cb536-4"><a href="chapter-6-vector-functions.html#cb536-4" tabindex="-1"></a></span>
+<span id="cb536-5"><a href="chapter-6-vector-functions.html#cb536-5" tabindex="-1"></a>rice.people.year <span class="ot">&lt;-</span> rice.cal <span class="sc">/</span> (<span class="dv">2250</span> <span class="sc">*</span> <span class="dv">365</span>)</span>
+<span id="cb536-6"><a href="chapter-6-vector-functions.html#cb536-6" tabindex="-1"></a>rice.people.year</span>
+<span id="cb536-7"><a href="chapter-6-vector-functions.html#cb536-7" tabindex="-1"></a><span class="do">## [1] 4.6e+12</span></span></code></pre></div>
 <div class="sourceCode" id="cb537"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb537-1"><a href="chapter-6-vector-functions.html#cb537-1" tabindex="-1"></a></span>
-<span id="cb537-2"><a href="chapter-6-vector-functions.html#cb537-2" tabindex="-1"></a><span class="co"># That&#39;s 2,900,000,000,000,000 kilograms of rice. Let&#39;s keep going....</span></span>
-<span id="cb537-3"><a href="chapter-6-vector-functions.html#cb537-3" tabindex="-1"></a><span class="co"># A kg of rice is 1,300 calories</span></span>
+<span id="cb537-2"><a href="chapter-6-vector-functions.html#cb537-2" tabindex="-1"></a><span class="co"># So, that amount of rice could feed 4,600,000,000,000 for a year</span></span>
+<span id="cb537-3"><a href="chapter-6-vector-functions.html#cb537-3" tabindex="-1"></a><span class="co"># Assuming that the averge lifespan is 70 years, how many lifespans could this feed?</span></span>
 <span id="cb537-4"><a href="chapter-6-vector-functions.html#cb537-4" tabindex="-1"></a></span>
-<span id="cb537-5"><a href="chapter-6-vector-functions.html#cb537-5" tabindex="-1"></a>rice.cal <span class="ot">&lt;-</span> rice.kg <span class="sc">*</span> <span class="dv">1300</span></span>
-<span id="cb537-6"><a href="chapter-6-vector-functions.html#cb537-6" tabindex="-1"></a>rice.cal</span>
-<span id="cb537-7"><a href="chapter-6-vector-functions.html#cb537-7" tabindex="-1"></a><span class="do">## [1] 3.7e+18</span></span></code></pre></div>
+<span id="cb537-5"><a href="chapter-6-vector-functions.html#cb537-5" tabindex="-1"></a>rice.people.life <span class="ot">&lt;-</span> rice.people.year <span class="sc">/</span> <span class="dv">70</span></span>
+<span id="cb537-6"><a href="chapter-6-vector-functions.html#cb537-6" tabindex="-1"></a>rice.people.life</span>
+<span id="cb537-7"><a href="chapter-6-vector-functions.html#cb537-7" tabindex="-1"></a><span class="do">## [1] 6.5e+10</span></span></code></pre></div>
 <div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb538-1"><a href="chapter-6-vector-functions.html#cb538-1" tabindex="-1"></a></span>
-<span id="cb538-2"><a href="chapter-6-vector-functions.html#cb538-2" tabindex="-1"></a><span class="co"># How many people can that feed for a year?</span></span>
-<span id="cb538-3"><a href="chapter-6-vector-functions.html#cb538-3" tabindex="-1"></a><span class="co"># A person needs about 2,250 calories a day, or 2,250 * 365 per year</span></span>
-<span id="cb538-4"><a href="chapter-6-vector-functions.html#cb538-4" tabindex="-1"></a></span>
-<span id="cb538-5"><a href="chapter-6-vector-functions.html#cb538-5" tabindex="-1"></a>rice.people.year <span class="ot">&lt;-</span> rice.cal <span class="sc">/</span> (<span class="dv">2250</span> <span class="sc">*</span> <span class="dv">365</span>)</span>
-<span id="cb538-6"><a href="chapter-6-vector-functions.html#cb538-6" tabindex="-1"></a>rice.people.year</span>
-<span id="cb538-7"><a href="chapter-6-vector-functions.html#cb538-7" tabindex="-1"></a><span class="do">## [1] 4.6e+12</span></span></code></pre></div>
-<div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb539-1"><a href="chapter-6-vector-functions.html#cb539-1" tabindex="-1"></a></span>
-<span id="cb539-2"><a href="chapter-6-vector-functions.html#cb539-2" tabindex="-1"></a><span class="co"># So, that amount of rice could feed 4,600,000,000,000 for a year</span></span>
-<span id="cb539-3"><a href="chapter-6-vector-functions.html#cb539-3" tabindex="-1"></a><span class="co"># Assuming that the averge lifespan is 70 years, how many lifespans could this feed?</span></span>
-<span id="cb539-4"><a href="chapter-6-vector-functions.html#cb539-4" tabindex="-1"></a></span>
-<span id="cb539-5"><a href="chapter-6-vector-functions.html#cb539-5" tabindex="-1"></a>rice.people.life <span class="ot">&lt;-</span> rice.people.year <span class="sc">/</span> <span class="dv">70</span></span>
-<span id="cb539-6"><a href="chapter-6-vector-functions.html#cb539-6" tabindex="-1"></a>rice.people.life</span>
-<span id="cb539-7"><a href="chapter-6-vector-functions.html#cb539-7" tabindex="-1"></a><span class="do">## [1] 6.5e+10</span></span></code></pre></div>
-<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="chapter-6-vector-functions.html#cb540-1" tabindex="-1"></a></span>
-<span id="cb540-2"><a href="chapter-6-vector-functions.html#cb540-2" tabindex="-1"></a><span class="co"># Ok...so it could feed 65,000,000,000 (65 billion) people over their lives</span></span>
-<span id="cb540-3"><a href="chapter-6-vector-functions.html#cb540-3" tabindex="-1"></a></span>
-<span id="cb540-4"><a href="chapter-6-vector-functions.html#cb540-4" tabindex="-1"></a><span class="co"># Conclusion: King done screwed up.</span></span></code></pre></div>
+<span id="cb538-2"><a href="chapter-6-vector-functions.html#cb538-2" tabindex="-1"></a><span class="co"># Ok...so it could feed 65,000,000,000 (65 billion) people over their lives</span></span>
+<span id="cb538-3"><a href="chapter-6-vector-functions.html#cb538-3" tabindex="-1"></a></span>
+<span id="cb538-4"><a href="chapter-6-vector-functions.html#cb538-4" tabindex="-1"></a><span class="co"># Conclusion: King done screwed up.</span></span></code></pre></div>
 </div>
             </section>
 

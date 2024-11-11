@@ -410,9 +410,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.2" data-path="t-test-t.html"><a href="t-test-t.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.2.2</b> 2-sample t-test</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="correlation-cor.html"><a href="correlation-cor.html"><i class="fa fa-check"></i><b>13.3</b> Correlation: <code>cor.test()</code></a></li>
-<li class="chapter" data-level="13.4" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chsq.test()</code></a>
+<li class="chapter" data-level="13.4" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chisq.test()</code></a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+<li class="chapter" data-level="13.4.1" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="test-your-r-might-3.html"><a href="test-your-r-might-3.html"><i class="fa fa-check"></i><b>13.5</b> Test your R might!</a></li>
 </ul></li>
@@ -527,12 +527,12 @@ Figure 11.1: The great Sammy Davis Jr. Do yourself a favor and spend an evening
 <p>You can think of these plotting locations as canvases. You only have one canvas active at any given time, and any plotting command you run will put more plotting elements on your active canvas. Certain high–level plotting functions like <code>plot()</code> and <code>hist()</code> create brand new canvases, while other low–level plotting functions like <code>points()</code> and <code>segments()</code> place elements on top of existing canvases.</p>
 <p>Don’t worry if that’s confusing for now – we’ll go over all the details soon.</p>
 <p>Let’s start by looking at a basic scatterplot in R using the <code>plot()</code> function. When you execute the following code, you should see a plot open in a new window:</p>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="plotting1.html#cb297-1" tabindex="-1"></a><span class="co"># A basic scatterplot</span></span>
-<span id="cb297-2"><a href="plotting1.html#cb297-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
-<span id="cb297-3"><a href="plotting1.html#cb297-3" tabindex="-1"></a>     <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
-<span id="cb297-4"><a href="plotting1.html#cb297-4" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;X Axis label&quot;</span>,</span>
-<span id="cb297-5"><a href="plotting1.html#cb297-5" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Y Axis label&quot;</span>,</span>
-<span id="cb297-6"><a href="plotting1.html#cb297-6" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Main Title&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="plotting1.html#cb296-1" tabindex="-1"></a><span class="co"># A basic scatterplot</span></span>
+<span id="cb296-2"><a href="plotting1.html#cb296-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
+<span id="cb296-3"><a href="plotting1.html#cb296-3" tabindex="-1"></a>     <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
+<span id="cb296-4"><a href="plotting1.html#cb296-4" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;X Axis label&quot;</span>,</span>
+<span id="cb296-5"><a href="plotting1.html#cb296-5" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Y Axis label&quot;</span>,</span>
+<span id="cb296-6"><a href="plotting1.html#cb296-6" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Main Title&quot;</span>)</span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/basicplot-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Let’s take a look at the result. We see an x–axis, a y–axis, 10 data points, an x–axis label, a y–axis label, and a main plot title. Some of these items, like the labels and data points, were entered as arguments to the function. For example, the main arguments x and y are vectors indicating the x and y coordinates of the (in this case, 10) data points. The arguments <code>xlab</code>, <code>ylab</code>, and <code>main</code> set the labels to the plot. However, there were many elements that I did not specify – from the x and y axis limits, to the color of the plotting points. As you’ll discover later, you can change all of these elements (and many, many more) by specifying additional arguments to the <code>plot()</code> function. However, because I did not specify them, R used <strong>default</strong> values – values that R uses unless you tell it to use something else.</p>
 <p>For the rest of this chapter, we’ll go over the main plotting functions, along with the most common arguments you can use to customize the look of your plot.</p>

@@ -97,8 +97,7 @@ fig:scatter3rd
 fig:kuler
 fig:marginplot
 fig:unnamed-chunk-322
-fig:mfrow-1
-fig:mfrow-2
+fig:mfrow
 fig:unnamed-chunk-325
 fig:unnamed-chunk-326
 fig:unnamed-chunk-328
@@ -108,8 +107,7 @@ fig:unnamed-chunk-338
 fig:unnamed-chunk-339
 fig:unnamed-chunk-355
 fig:unnamed-chunk-371
-fig:unnamed-chunk-374-1
-fig:unnamed-chunk-374-2
+fig:unnamed-chunk-374
 fig:unnamed-chunk-399
 fig:diamondlm
 tab:unnamed-chunk-408
@@ -309,7 +307,7 @@ sample-t-test
 sample-t-test-1
 using-subset-to-select-levels-of-an-iv
 correlation-cor.test
-chi-square-chsq.test
+chi-square-chisq.test
 sample-chi-square-test
 sample-chi-square-test-1
 getting-apa-style-conclusions-with-the-apa-function

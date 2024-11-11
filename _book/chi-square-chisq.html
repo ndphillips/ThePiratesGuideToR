@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.2 The four RStudio Windows | YaRrr! The Pirate’s Guide to R</title>
+  <title>13.4 Chi-square: chisq.test() | YaRrr! The Pirate’s Guide to R</title>
   <meta name="description" content="An introductory book to R written by, and for, R pirates" />
   <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.2 The four RStudio Windows | YaRrr! The Pirate’s Guide to R" />
+  <meta property="og:title" content="13.4 Chi-square: chisq.test() | YaRrr! The Pirate’s Guide to R" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="https://bookdown.org/ndphillips/YaRrr//images/YaRrr_Cover.jpg" />
   <meta property="og:description" content="An introductory book to R written by, and for, R pirates" />
   <meta name="github-repo" content="ndphillips/ThePiratesGuideToR" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.2 The four RStudio Windows | YaRrr! The Pirate’s Guide to R" />
+  <meta name="twitter:title" content="13.4 Chi-square: chisq.test() | YaRrr! The Pirate’s Guide to R" />
   
   <meta name="twitter:description" content="An introductory book to R written by, and for, R pirates" />
   <meta name="twitter:image" content="https://bookdown.org/ndphillips/YaRrr//images/YaRrr_Cover.jpg" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="installing-base-r-and-rstudio.html"/>
-<link rel="next" href="packages.html"/>
+<link rel="prev" href="correlation-cor.html"/>
+<link rel="next" href="test-your-r-might-3.html"/>
 <script src="assets/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -514,80 +514,106 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="the-four-rstudio-windows" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> The four RStudio Windows<a href="the-four-rstudio-windows.html#the-four-rstudio-windows" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>When you open RStudio, you’ll see the following four windows (also called panes) shown in in Figure <a href="the-four-rstudio-windows.html#fig:rstudiowindows">2.2</a>. However, your windows might be in a different order that those in Figure <a href="the-four-rstudio-windows.html#fig:rstudiowindows">2.2</a>. If you’d like, you can change the order of the windows under RStudio preferences. You can also change their shape by either clicking the minimize or maximize buttons on the top right of each panel, or by clicking and dragging the middle of the borders of the windows.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:rstudiowindows"></span>
-<img src="images/RStudio_Screenshot_Labels.png" alt="The four panes of RStudio." width="100%" />
-<p class="caption">
-Figure 2.2: The four panes of RStudio.
-</p>
+<div id="chi-square-chisq.test" class="section level2 hasAnchor" number="13.4">
+<h2><span class="header-section-number">13.4</span> Chi-square: <code>chisq.test()</code><a href="chi-square-chisq.html#chi-square-chisq.test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Next, we’ll cover chi-square tests. In a chi-square test test, we test whether or not there is a difference in the rates of outcomes on a nominal scale (like sex, eye color, first name etc.). The test statistic of a chi-square text is <span class="math inline">\(\chi^2\)</span> and can range from 0 to Infinity. The null-hypothesis of a chi-square test is that <span class="math inline">\(\chi^2\)</span> = 0 which means no relationship.</p>
+<p>A key difference between the <code>chisq.test()</code> and the other hypothesis tests we’ve covered is that <code>chisq.test()</code> requires a <em>table</em> created using the <code>table()</code> function as its main argument. You’ll see how this works when we get to the examples.</p>
+<div id="sample-chi-square-test" class="section level4 hasAnchor" number="13.4.0.1">
+<h4><span class="header-section-number">13.4.0.1</span> 1-sample Chi-square test<a href="chi-square-chisq.html#sample-chi-square-test" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>If you conduct a 1-sample chi-square test, you are testing if there is a difference in the number of members of each category in the vector. Or in other words, are all category memberships equally prevalent? Here’s the general form of a one-sample chi-square test:</p>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="chi-square-chisq.html#cb383-1" tabindex="-1"></a><span class="co"># General form of a one-sample chi-square test</span></span>
+<span id="cb383-2"><a href="chi-square-chisq.html#cb383-2" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="at">x =</span> <span class="fu">table</span>(x))</span></code></pre></div>
+<p>As you can see, the main argument to <code>chisq.test()</code> should be a <em>table</em> of values created using the <code>table()</code> function. For example, let’s conduct a chi-square test to see if all pirate colleges are equally prevalent in the <code>pirates</code> data. We’ll start by creating a table of the college data:</p>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="chi-square-chisq.html#cb384-1" tabindex="-1"></a><span class="co"># Frequency table of pirate colleges</span></span>
+<span id="cb384-2"><a href="chi-square-chisq.html#cb384-2" tabindex="-1"></a><span class="fu">table</span>(pirates<span class="sc">$</span>college)</span>
+<span id="cb384-3"><a href="chi-square-chisq.html#cb384-3" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb384-4"><a href="chi-square-chisq.html#cb384-4" tabindex="-1"></a><span class="do">##  CCCC JSSFP </span></span>
+<span id="cb384-5"><a href="chi-square-chisq.html#cb384-5" tabindex="-1"></a><span class="do">##   658   342</span></span></code></pre></div>
+<p>Just by looking at the table, it looks like pirates are much more likely to come from Captain Chunk’s Cannon Crew (CCCC) than Jack Sparrow’s School of Fashion and Piratery (JSSFP). For this reason, we should expect a very large test statistic and a very small p-value. Let’s test it using the <code>chisq.test()</code> function.</p>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="chi-square-chisq.html#cb385-1" tabindex="-1"></a><span class="co"># Are all colleges equally prevelant?</span></span>
+<span id="cb385-2"><a href="chi-square-chisq.html#cb385-2" tabindex="-1"></a>college.cstest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(<span class="at">x =</span> <span class="fu">table</span>(pirates<span class="sc">$</span>college))</span>
+<span id="cb385-3"><a href="chi-square-chisq.html#cb385-3" tabindex="-1"></a></span>
+<span id="cb385-4"><a href="chi-square-chisq.html#cb385-4" tabindex="-1"></a>college.cstest</span>
+<span id="cb385-5"><a href="chi-square-chisq.html#cb385-5" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb385-6"><a href="chi-square-chisq.html#cb385-6" tabindex="-1"></a><span class="do">##  Chi-squared test for given probabilities</span></span>
+<span id="cb385-7"><a href="chi-square-chisq.html#cb385-7" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb385-8"><a href="chi-square-chisq.html#cb385-8" tabindex="-1"></a><span class="do">## data:  table(pirates$college)</span></span>
+<span id="cb385-9"><a href="chi-square-chisq.html#cb385-9" tabindex="-1"></a><span class="do">## X-squared = 100, df = 1, p-value &lt;2e-16</span></span></code></pre></div>
+<p>Indeed, with a test statistic of 99.86 and a tiny p-value, we can safely reject the null hypothesis and conclude that certain college <em>are</em> more popular than others.</p>
 </div>
-<p>Now, let’s see what each window does in detail.</p>
-<div id="source---your-notepad-for-code" class="section level3 hasAnchor" number="2.2.1">
-<h3><span class="header-section-number">2.2.1</span> Source - Your notepad for code<a href="the-four-rstudio-windows.html#source---your-notepad-for-code" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sourcewindow"></span>
-<img src="images/piratesanalysisss.png" alt="The Source contains all of your individual R scripts. The code won't be evaluated until you send it to the Console." width="100%" />
-<p class="caption">
-Figure 2.3: The Source contains all of your individual R scripts. The code won’t be evaluated until you send it to the Console.
-</p>
+<div id="sample-chi-square-test-1" class="section level4 hasAnchor" number="13.4.0.2">
+<h4><span class="header-section-number">13.4.0.2</span> 2-sample Chi-square test<a href="chi-square-chisq.html#sample-chi-square-test-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>If you want to see if the frequency of one nominal variable depends on a second nominal variable, you’d conduct a 2-sample chi-square test. For example, we might want to know if there is a relationship between the college a pirate went to, and whether or not he/she wears an eyepatch. We can get a contingency table of the data from the <code>pirates</code> dataframe as follows:</p>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="chi-square-chisq.html#cb386-1" tabindex="-1"></a><span class="co"># Do pirates that wear eyepatches have come from different colleges</span></span>
+<span id="cb386-2"><a href="chi-square-chisq.html#cb386-2" tabindex="-1"></a><span class="co">#  than those that do not wear eyepatches?</span></span>
+<span id="cb386-3"><a href="chi-square-chisq.html#cb386-3" tabindex="-1"></a></span>
+<span id="cb386-4"><a href="chi-square-chisq.html#cb386-4" tabindex="-1"></a><span class="fu">table</span>(pirates<span class="sc">$</span>eyepatch, </span>
+<span id="cb386-5"><a href="chi-square-chisq.html#cb386-5" tabindex="-1"></a>      pirates<span class="sc">$</span>college)</span>
+<span id="cb386-6"><a href="chi-square-chisq.html#cb386-6" tabindex="-1"></a><span class="do">##    </span></span>
+<span id="cb386-7"><a href="chi-square-chisq.html#cb386-7" tabindex="-1"></a><span class="do">##     CCCC JSSFP</span></span>
+<span id="cb386-8"><a href="chi-square-chisq.html#cb386-8" tabindex="-1"></a><span class="do">##   0  225   117</span></span>
+<span id="cb386-9"><a href="chi-square-chisq.html#cb386-9" tabindex="-1"></a><span class="do">##   1  433   225</span></span></code></pre></div>
+<p>To conduct a chi-square test on these data, we will enter table of the two data vectors:</p>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="chi-square-chisq.html#cb387-1" tabindex="-1"></a><span class="co"># Is there a relationship between a pirate&#39;s</span></span>
+<span id="cb387-2"><a href="chi-square-chisq.html#cb387-2" tabindex="-1"></a><span class="co"># college and whether or not they wear an eyepatch?</span></span>
+<span id="cb387-3"><a href="chi-square-chisq.html#cb387-3" tabindex="-1"></a></span>
+<span id="cb387-4"><a href="chi-square-chisq.html#cb387-4" tabindex="-1"></a>colpatch.cstest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(<span class="at">x =</span> <span class="fu">table</span>(pirates<span class="sc">$</span>college,</span>
+<span id="cb387-5"><a href="chi-square-chisq.html#cb387-5" tabindex="-1"></a>                                        pirates<span class="sc">$</span>eyepatch))</span>
+<span id="cb387-6"><a href="chi-square-chisq.html#cb387-6" tabindex="-1"></a></span>
+<span id="cb387-7"><a href="chi-square-chisq.html#cb387-7" tabindex="-1"></a>colpatch.cstest</span>
+<span id="cb387-8"><a href="chi-square-chisq.html#cb387-8" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb387-9"><a href="chi-square-chisq.html#cb387-9" tabindex="-1"></a><span class="do">##  Pearson&#39;s Chi-squared test with Yates&#39; continuity correction</span></span>
+<span id="cb387-10"><a href="chi-square-chisq.html#cb387-10" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb387-11"><a href="chi-square-chisq.html#cb387-11" tabindex="-1"></a><span class="do">## data:  table(pirates$college, pirates$eyepatch)</span></span>
+<span id="cb387-12"><a href="chi-square-chisq.html#cb387-12" tabindex="-1"></a><span class="do">## X-squared = 0, df = 1, p-value = 1</span></span></code></pre></div>
+<p>It looks like we got a test statistic of <span class="math inline">\(\chi^2\)</span> = 0 and a p-value of 1. At the traditional p = .05 threshold for significance, we would conclude that we fail to reject the null hypothesis and state that we do not have enough information to determine if pirates from different colleges differ in how likely they are to wear eye patches.</p>
 </div>
-<p>The source pane is where you create and edit “R Scripts” - your collections of code. Don’t worry, R scripts are just text files with the “.R” extension. When you open RStudio, it will automatically start a new Untitled script. Before you start typing in an untitled R script, you should always save the file under a new file name (like, “2015PirateSurvey.R”). That way, if something on your computer crashes while you’re working, R will have your code waiting for you when you re-open RStudio.</p>
-<p>You’ll notice that when you’re typing code in a script in the Source panel, R won’t actually evaluate the code as you type. To have R actually evaluate your code, you need to first ‘send’ the code to the Console (we’ll talk about this in the next section).</p>
-<p>There are many ways to send your code from the Source to the Console. The slowest way is to copy and paste. A faster way is to highlight the code you wish to evaluate and clicking on the “Run” button on the top right of the Source. Alternatively, you can use the hot-key “Command + Return” on Mac, or “Control + Enter” on PC to send all highlighted code to the Console.</p>
-</div>
-<div id="console-rs-heart" class="section level3 hasAnchor" number="2.2.2">
-<h3><span class="header-section-number">2.2.2</span> Console: R’s Heart<a href="the-four-rstudio-windows.html#console-rs-heart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="figure"><span style="display:block;" id="fig:consolewindow"></span>
-<img src="images/consoless.png" alt="The console the calculation heart of R. All of your code will (eventually) go through here." width="75%" />
-<p class="caption">
-Figure 2.4: The console the calculation heart of R. All of your code will (eventually) go through here.
-</p>
-</div>
-<p>The Console is the heart of R. Here is where R actually evaluates code. At the beginning of the Console you’ll see the character <code>&gt;</code>. This is a prompt that tells you that R is ready for new code. You can type code directly into the Console after the <code>&gt;</code> prompt and get an immediate response. For example, if you type 1+1 into the Console and press enter, you’ll see that R immediately gives an output of 2.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="the-four-rstudio-windows.html#cb2-1" tabindex="-1"></a><span class="dv">1</span><span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb2-2"><a href="the-four-rstudio-windows.html#cb2-2" tabindex="-1"></a><span class="do">## [1] 2</span></span></code></pre></div>
-<p>Try calculating 1+1 by typing the code directly into the Console - then press Enter. You should see the result <code>[1] 2</code>. Don’t worry about the <code>[1]</code> for now, we’ll get to that later. For now, we’re happy if we just see the 2. Then, type the same code into the Source, and then send the code to the Console by highlighting the code and clicking the “Run” button on the top right hand corner of the Source window. Alternatively, you can use the hot-key “Command + Return” on Mac or “Control + Enter” on Windows.</p>
-<p><strong>Tip</strong>: Try to write most of your code in a document in the Source. Only type directly into the Console to de-bug or do quick analyses.</p>
-<p>So as you can see, you can execute code either by running it from the Source or by typing it directly into the Console. However, 99% of the time, you should be using the Source rather than the Console. The reason for this is straightforward: If you type code into the Console, it won’t be saved (though you can look back on your command History). And if you make a mistake in typing code into the Console, you’d have to re-type everything all over again. Instead, it’s better to write all your code in the Source. When you are ready to execute some code, you can then send “Run” it to the console.</p>
-</div>
-<div id="environment-history" class="section level3 hasAnchor" number="2.2.3">
-<h3><span class="header-section-number">2.2.3</span> Environment / History<a href="the-four-rstudio-windows.html#environment-history" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="figure"><span style="display:block;" id="fig:environment"></span>
-<img src="images/environmentss.png" alt="The environment panel shows you all the objects you have defined in your current workspace. You'll learn more about workspaces in Chapter 7." width="75%" />
-<p class="caption">
-Figure 2.5: The environment panel shows you all the objects you have defined in your current workspace. You’ll learn more about workspaces in Chapter 7.
-</p>
-</div>
-<p>The Environment tab of this panel shows you the names of all the data objects (like vectors, matrices, and dataframes) that you’ve defined in your current R session. You can also see information like the number of observations and rows in data objects. The tab also has a few clickable actions like “Import Dataset” which will open a graphical user interface (GUI) for importing data into R. However, I almost never look at this menu.</p>
-<p>The History tab of this panel simply shows you a history of all the code you’ve previously evaluated in the Console. To be honest, I never look at this. In fact, I didn’t realize it was even there until I started writing this tutorial.</p>
-<p>As you get more comfortable with R, you might find the Environment / History panel useful. But for now you can just ignore it. If you want to declutter your screen, you can even just minimize the window by clicking the minimize button on the top right of the panel.</p>
-</div>
-<div id="files-plots-packages-help" class="section level3 hasAnchor" number="2.2.4">
-<h3><span class="header-section-number">2.2.4</span> Files / Plots / Packages / Help<a href="the-four-rstudio-windows.html#files-plots-packages-help" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The Files / Plots / Packages / Help panel shows you lots of helpful information. Let’s go through each tab in detail:</p>
-<ol style="list-style-type: decimal">
-<li><p>Files - The files panel gives you access to the file directory on your hard drive. One nice feature of the “Files” panel is that you can use it to set your working directory - once you navigate to a folder you want to read and save files to, click “More” and then “Set As Working Directory.” We’ll talk about working directories in more detail soon.</p></li>
-<li><p>Plots - The Plots panel (no big surprise), shows all your plots. There are buttons for opening the plot in a separate window and exporting the plot as a pdf or jpeg (though you can also do this with code using the <code>pdf()</code> or <code>jpeg()</code> functions.)</p></li>
-</ol>
-<p>Let’s see how plots are displayed in the Plots panel. Run the code on the right to display a histogram of the weights of chickens stored in the <code>ChickWeight</code> dataset. When you do, you should see a plot similar to the one in Figure <a href="the-four-rstudio-windows.html#fig:plotpanel">2.6</a> show up in the Plots panel.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="the-four-rstudio-windows.html#cb3-1" tabindex="-1"></a><span class="fu">hist</span>(<span class="at">x =</span> ChickWeight<span class="sc">$</span>weight,</span>
-<span id="cb3-2"><a href="the-four-rstudio-windows.html#cb3-2" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Chicken Weights&quot;</span>,</span>
-<span id="cb3-3"><a href="the-four-rstudio-windows.html#cb3-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Weight&quot;</span>,</span>
-<span id="cb3-4"><a href="the-four-rstudio-windows.html#cb3-4" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;skyblue&quot;</span>,</span>
-<span id="cb3-5"><a href="the-four-rstudio-windows.html#cb3-5" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;white&quot;</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:plotpanel"></span>
-<img src="images/plotpanelss.png" alt="The plot panel contains all of your plots, like this histogram of the distribution of chicken weights." width="75%" />
-<p class="caption">
-Figure 2.6: The plot panel contains all of your plots, like this histogram of the distribution of chicken weights.
-</p>
-</div>
-<ol start="3" style="list-style-type: decimal">
-<li><p>Packages - Shows a list of all the R packages installed on your harddrive and indicates whether or not they are currently loaded. Packages that are loaded in the current session are checked while those that are installed but not yet loaded are unchecked. We’ll discuss packages in more detail in the next section.</p></li>
-<li><p>Help - Help menu for R functions. You can either type the name of a function in the search window, or use the code to search for a function with the name </p></li>
-</ol>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="the-four-rstudio-windows.html#cb4-1" tabindex="-1"></a>?hist   <span class="co"># How does the histogram function work?</span></span>
-<span id="cb4-2"><a href="the-four-rstudio-windows.html#cb4-2" tabindex="-1"></a>?t.test <span class="co"># What about a t-test?</span></span></code></pre></div>
+<div id="getting-apa-style-conclusions-with-the-apa-function" class="section level3 hasAnchor" number="13.4.1">
+<h3><span class="header-section-number">13.4.1</span> Getting APA-style conclusions with the <code>apa</code> function<a href="chi-square-chisq.html#getting-apa-style-conclusions-with-the-apa-function" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Most people think that R pirates are a completely unhinged, drunken bunch of pillaging buffoons. But nothing could be further from the truth! R pirates are a very organized and formal people who like their statistical output to follow strict rules. The most famous rules are those written by the American Pirate Association (APA). These rules specify exactly how an R pirate should report the results of the most common hypothesis tests to her fellow pirates.</p>
+<p>For example, in reporting a t-test, APA style dictates that the result should be in the form t(df) = X, p = Y (Z-tailed), where df is the degrees of freedom of the text, X is the test statistic, Y is the p-value, and Z is the number of tails in the test. Now you can of course read these values directly from the test result, but if you want to save some time and get the APA style conclusion quickly, just use the apa function. Here’s how it works:</p>
+<p>Consider the following two-sample t-test on the pirates dataset that compares whether or not there is a significant age difference between pirates who wear headbands and those who do not:</p>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="chi-square-chisq.html#cb388-1" tabindex="-1"></a>test.result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(age <span class="sc">~</span> headband,</span>
+<span id="cb388-2"><a href="chi-square-chisq.html#cb388-2" tabindex="-1"></a>                      <span class="at">data =</span> pirates)</span>
+<span id="cb388-3"><a href="chi-square-chisq.html#cb388-3" tabindex="-1"></a>test.result</span>
+<span id="cb388-4"><a href="chi-square-chisq.html#cb388-4" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb388-5"><a href="chi-square-chisq.html#cb388-5" tabindex="-1"></a><span class="do">##  Welch Two Sample t-test</span></span>
+<span id="cb388-6"><a href="chi-square-chisq.html#cb388-6" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb388-7"><a href="chi-square-chisq.html#cb388-7" tabindex="-1"></a><span class="do">## data:  age by headband</span></span>
+<span id="cb388-8"><a href="chi-square-chisq.html#cb388-8" tabindex="-1"></a><span class="do">## t = 0.4, df = 135, p-value = 0.7</span></span>
+<span id="cb388-9"><a href="chi-square-chisq.html#cb388-9" tabindex="-1"></a><span class="do">## alternative hypothesis: true difference in means between group no and group yes is not equal to 0</span></span>
+<span id="cb388-10"><a href="chi-square-chisq.html#cb388-10" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb388-11"><a href="chi-square-chisq.html#cb388-11" tabindex="-1"></a><span class="do">##  -1.0  1.5</span></span>
+<span id="cb388-12"><a href="chi-square-chisq.html#cb388-12" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb388-13"><a href="chi-square-chisq.html#cb388-13" tabindex="-1"></a><span class="do">##  mean in group no mean in group yes </span></span>
+<span id="cb388-14"><a href="chi-square-chisq.html#cb388-14" tabindex="-1"></a><span class="do">##                28                27</span></span></code></pre></div>
+<p>It looks like the test statistic is 0.35, degrees of freedom is 135.47, and the p-value is 0.73. Let’s see how the apa function gets these values directly from the test object:</p>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="chi-square-chisq.html#cb389-1" tabindex="-1"></a>yarrr<span class="sc">::</span><span class="fu">apa</span>(test.result)</span>
+<span id="cb389-2"><a href="chi-square-chisq.html#cb389-2" tabindex="-1"></a><span class="do">## [1] &quot;mean difference = -0.22, t(135.47) = 0.35, p = 0.73 (2-tailed)&quot;</span></span></code></pre></div>
+<p>As you can see, the apa function got the values we wanted and reported them in proper APA style. The apa function will even automatically adapt the output for Chi-Square and correlation tests if you enter such a test object. Let’s see how it works on a correlation test where we correlate a pirate’s age with the number of parrots she has owned:</p>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="chi-square-chisq.html#cb390-1" tabindex="-1"></a><span class="co"># Print an APA style conclusion of the correlation</span></span>
+<span id="cb390-2"><a href="chi-square-chisq.html#cb390-2" tabindex="-1"></a><span class="co">#  between a pirate&#39;s age and # of parrots</span></span>
+<span id="cb390-3"><a href="chi-square-chisq.html#cb390-3" tabindex="-1"></a>age.parrots.ctest <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(<span class="at">formula =</span> <span class="sc">~</span> age <span class="sc">+</span> parrots,</span>
+<span id="cb390-4"><a href="chi-square-chisq.html#cb390-4" tabindex="-1"></a>                              <span class="at">data =</span> pirates)</span>
+<span id="cb390-5"><a href="chi-square-chisq.html#cb390-5" tabindex="-1"></a></span>
+<span id="cb390-6"><a href="chi-square-chisq.html#cb390-6" tabindex="-1"></a><span class="co"># Pring result</span></span>
+<span id="cb390-7"><a href="chi-square-chisq.html#cb390-7" tabindex="-1"></a>age.parrots.ctest</span>
+<span id="cb390-8"><a href="chi-square-chisq.html#cb390-8" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb390-9"><a href="chi-square-chisq.html#cb390-9" tabindex="-1"></a><span class="do">##  Pearson&#39;s product-moment correlation</span></span>
+<span id="cb390-10"><a href="chi-square-chisq.html#cb390-10" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb390-11"><a href="chi-square-chisq.html#cb390-11" tabindex="-1"></a><span class="do">## data:  age and parrots</span></span>
+<span id="cb390-12"><a href="chi-square-chisq.html#cb390-12" tabindex="-1"></a><span class="do">## t = 6, df = 998, p-value = 1e-09</span></span>
+<span id="cb390-13"><a href="chi-square-chisq.html#cb390-13" tabindex="-1"></a><span class="do">## alternative hypothesis: true correlation is not equal to 0</span></span>
+<span id="cb390-14"><a href="chi-square-chisq.html#cb390-14" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb390-15"><a href="chi-square-chisq.html#cb390-15" tabindex="-1"></a><span class="do">##  0.13 0.25</span></span>
+<span id="cb390-16"><a href="chi-square-chisq.html#cb390-16" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb390-17"><a href="chi-square-chisq.html#cb390-17" tabindex="-1"></a><span class="do">##  cor </span></span>
+<span id="cb390-18"><a href="chi-square-chisq.html#cb390-18" tabindex="-1"></a><span class="do">## 0.19</span></span></code></pre></div>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="chi-square-chisq.html#cb391-1" tabindex="-1"></a></span>
+<span id="cb391-2"><a href="chi-square-chisq.html#cb391-2" tabindex="-1"></a><span class="co"># Print the apa style conclusion!</span></span>
+<span id="cb391-3"><a href="chi-square-chisq.html#cb391-3" tabindex="-1"></a>yarrr<span class="sc">::</span><span class="fu">apa</span>(age.parrots.ctest)</span>
+<span id="cb391-4"><a href="chi-square-chisq.html#cb391-4" tabindex="-1"></a><span class="do">## [1] &quot;r = 0.19, t(998) = 6.13, p &lt; 0.01 (2-tailed)&quot;</span></span></code></pre></div>
+<p>The apa function has a few optional arguments that control things like the number of significant digits in the output, and the number of tails in the test. Run <code>?apa</code> to see all the options.</p>
 </div>
 </div>
             </section>
@@ -595,8 +621,8 @@ Figure 2.6: The plot panel contains all of your plots, like this histogram of th
           </div>
         </div>
       </div>
-<a href="installing-base-r-and-rstudio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="packages.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="correlation-cor.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="test-your-r-might-3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>
@@ -627,7 +653,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ndphillips/ThePiratesGuideToR/edit/master/02-gettingstarted.Rmd",
+"link": "https://github.com/ndphillips/ThePiratesGuideToR/edit/master/13-htests.Rmd",
 "text": "Edit"
 },
 "history": {

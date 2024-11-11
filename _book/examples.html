@@ -410,9 +410,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.2" data-path="t-test-t.html"><a href="t-test-t.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.2.2</b> 2-sample t-test</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="correlation-cor.html"><a href="correlation-cor.html"><i class="fa fa-check"></i><b>13.3</b> Correlation: <code>cor.test()</code></a></li>
-<li class="chapter" data-level="13.4" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chsq.test()</code></a>
+<li class="chapter" data-level="13.4" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chisq.test()</code></a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+<li class="chapter" data-level="13.4.1" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="test-your-r-might-3.html"><a href="test-your-r-might-3.html"><i class="fa fa-check"></i><b>13.5</b> Test your R might!</a></li>
 </ul></li>
@@ -517,37 +517,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="examples" class="section level2 hasAnchor" number="11.9">
 <h2><span class="header-section-number">11.9</span> Examples<a href="examples.html#examples" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Figure <a href="examples.html#fig:balloonplot">11.17</a> shows a modified version of a scatterplot I call a <code>balloonplot</code>:</p>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="examples.html#cb334-1" tabindex="-1"></a><span class="co"># Turn a boring scatterplot into a  balloonplot! </span></span>
-<span id="cb334-2"><a href="examples.html#cb334-2" tabindex="-1"></a></span>
-<span id="cb334-3"><a href="examples.html#cb334-3" tabindex="-1"></a><span class="co"># Create some random correlated data</span></span>
-<span id="cb334-4"><a href="examples.html#cb334-4" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span>
-<span id="cb334-5"><a href="examples.html#cb334-5" tabindex="-1"></a>y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">20</span>, <span class="at">sd =</span> <span class="dv">8</span>)</span>
-<span id="cb334-6"><a href="examples.html#cb334-6" tabindex="-1"></a></span>
-<span id="cb334-7"><a href="examples.html#cb334-7" tabindex="-1"></a><span class="co"># Set up the plotting space</span></span>
-<span id="cb334-8"><a href="examples.html#cb334-8" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span>, </span>
-<span id="cb334-9"><a href="examples.html#cb334-9" tabindex="-1"></a>     <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>,</span>
-<span id="cb334-10"><a href="examples.html#cb334-10" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>),</span>
-<span id="cb334-11"><a href="examples.html#cb334-11" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>),</span>
-<span id="cb334-12"><a href="examples.html#cb334-12" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>, </span>
-<span id="cb334-13"><a href="examples.html#cb334-13" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Turning a scatterplot into a balloon plot!&quot;</span>)</span>
-<span id="cb334-14"><a href="examples.html#cb334-14" tabindex="-1"></a></span>
-<span id="cb334-15"><a href="examples.html#cb334-15" tabindex="-1"></a><span class="co"># Add gridlines</span></span>
-<span id="cb334-16"><a href="examples.html#cb334-16" tabindex="-1"></a><span class="fu">grid</span>()</span>
-<span id="cb334-17"><a href="examples.html#cb334-17" tabindex="-1"></a></span>
-<span id="cb334-18"><a href="examples.html#cb334-18" tabindex="-1"></a><span class="co"># Add Strings with segments()</span></span>
-<span id="cb334-19"><a href="examples.html#cb334-19" tabindex="-1"></a><span class="fu">segments</span>(<span class="at">x0 =</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="fu">length</span>(x), <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> .<span class="dv">5</span>), </span>
-<span id="cb334-20"><a href="examples.html#cb334-20" tabindex="-1"></a>         <span class="at">y0 =</span> y <span class="sc">-</span> <span class="dv">10</span>, </span>
-<span id="cb334-21"><a href="examples.html#cb334-21" tabindex="-1"></a>         <span class="at">x1 =</span> x, </span>
-<span id="cb334-22"><a href="examples.html#cb334-22" tabindex="-1"></a>         <span class="at">y1 =</span> y, </span>
-<span id="cb334-23"><a href="examples.html#cb334-23" tabindex="-1"></a>         <span class="at">col =</span> <span class="fu">gray</span>(.<span class="dv">1</span>, .<span class="dv">95</span>),</span>
-<span id="cb334-24"><a href="examples.html#cb334-24" tabindex="-1"></a>         <span class="at">lwd =</span> .<span class="dv">5</span>)</span>
-<span id="cb334-25"><a href="examples.html#cb334-25" tabindex="-1"></a></span>
-<span id="cb334-26"><a href="examples.html#cb334-26" tabindex="-1"></a><span class="co"># Add balloons</span></span>
-<span id="cb334-27"><a href="examples.html#cb334-27" tabindex="-1"></a><span class="fu">points</span>(x, y, </span>
-<span id="cb334-28"><a href="examples.html#cb334-28" tabindex="-1"></a>       <span class="at">cex =</span> <span class="dv">2</span>, <span class="co"># Size of the balloons</span></span>
-<span id="cb334-29"><a href="examples.html#cb334-29" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">21</span>, </span>
-<span id="cb334-30"><a href="examples.html#cb334-30" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">&quot;white&quot;</span>, <span class="co"># white border</span></span>
-<span id="cb334-31"><a href="examples.html#cb334-31" tabindex="-1"></a>       <span class="at">bg =</span> yarrr<span class="sc">::</span><span class="fu">piratepal</span>(<span class="st">&quot;basel&quot;</span>))  <span class="co"># Filling color</span></span></code></pre></div>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="examples.html#cb333-1" tabindex="-1"></a><span class="co"># Turn a boring scatterplot into a  balloonplot! </span></span>
+<span id="cb333-2"><a href="examples.html#cb333-2" tabindex="-1"></a></span>
+<span id="cb333-3"><a href="examples.html#cb333-3" tabindex="-1"></a><span class="co"># Create some random correlated data</span></span>
+<span id="cb333-4"><a href="examples.html#cb333-4" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span>
+<span id="cb333-5"><a href="examples.html#cb333-5" tabindex="-1"></a>y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">20</span>, <span class="at">sd =</span> <span class="dv">8</span>)</span>
+<span id="cb333-6"><a href="examples.html#cb333-6" tabindex="-1"></a></span>
+<span id="cb333-7"><a href="examples.html#cb333-7" tabindex="-1"></a><span class="co"># Set up the plotting space</span></span>
+<span id="cb333-8"><a href="examples.html#cb333-8" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span>, </span>
+<span id="cb333-9"><a href="examples.html#cb333-9" tabindex="-1"></a>     <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>,</span>
+<span id="cb333-10"><a href="examples.html#cb333-10" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>),</span>
+<span id="cb333-11"><a href="examples.html#cb333-11" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>),</span>
+<span id="cb333-12"><a href="examples.html#cb333-12" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>, </span>
+<span id="cb333-13"><a href="examples.html#cb333-13" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Turning a scatterplot into a balloon plot!&quot;</span>)</span>
+<span id="cb333-14"><a href="examples.html#cb333-14" tabindex="-1"></a></span>
+<span id="cb333-15"><a href="examples.html#cb333-15" tabindex="-1"></a><span class="co"># Add gridlines</span></span>
+<span id="cb333-16"><a href="examples.html#cb333-16" tabindex="-1"></a><span class="fu">grid</span>()</span>
+<span id="cb333-17"><a href="examples.html#cb333-17" tabindex="-1"></a></span>
+<span id="cb333-18"><a href="examples.html#cb333-18" tabindex="-1"></a><span class="co"># Add Strings with segments()</span></span>
+<span id="cb333-19"><a href="examples.html#cb333-19" tabindex="-1"></a><span class="fu">segments</span>(<span class="at">x0 =</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="fu">length</span>(x), <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> .<span class="dv">5</span>), </span>
+<span id="cb333-20"><a href="examples.html#cb333-20" tabindex="-1"></a>         <span class="at">y0 =</span> y <span class="sc">-</span> <span class="dv">10</span>, </span>
+<span id="cb333-21"><a href="examples.html#cb333-21" tabindex="-1"></a>         <span class="at">x1 =</span> x, </span>
+<span id="cb333-22"><a href="examples.html#cb333-22" tabindex="-1"></a>         <span class="at">y1 =</span> y, </span>
+<span id="cb333-23"><a href="examples.html#cb333-23" tabindex="-1"></a>         <span class="at">col =</span> <span class="fu">gray</span>(.<span class="dv">1</span>, .<span class="dv">95</span>),</span>
+<span id="cb333-24"><a href="examples.html#cb333-24" tabindex="-1"></a>         <span class="at">lwd =</span> .<span class="dv">5</span>)</span>
+<span id="cb333-25"><a href="examples.html#cb333-25" tabindex="-1"></a></span>
+<span id="cb333-26"><a href="examples.html#cb333-26" tabindex="-1"></a><span class="co"># Add balloons</span></span>
+<span id="cb333-27"><a href="examples.html#cb333-27" tabindex="-1"></a><span class="fu">points</span>(x, y, </span>
+<span id="cb333-28"><a href="examples.html#cb333-28" tabindex="-1"></a>       <span class="at">cex =</span> <span class="dv">2</span>, <span class="co"># Size of the balloons</span></span>
+<span id="cb333-29"><a href="examples.html#cb333-29" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">21</span>, </span>
+<span id="cb333-30"><a href="examples.html#cb333-30" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">&quot;white&quot;</span>, <span class="co"># white border</span></span>
+<span id="cb333-31"><a href="examples.html#cb333-31" tabindex="-1"></a>       <span class="at">bg =</span> yarrr<span class="sc">::</span><span class="fu">piratepal</span>(<span class="st">&quot;basel&quot;</span>))  <span class="co"># Filling color</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:balloonplot"></span>
 <img src="YaRrr_files/figure-html/balloonplot-1.png" alt="A balloon plot" width="672" />
 <p class="caption">
@@ -555,18 +555,18 @@ Figure 11.17: A balloon plot
 </p>
 </div>
 <p>You can use colors and point sizes in a scatterplot to represent third variables. In Figure <a href="examples.html#fig:scatter3rd">11.18</a>, I’ll plot the relationship between pirate height and weight, but now I’ll make the size and color of each point reflect how many tattoos the pirate has</p>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="examples.html#cb335-1" tabindex="-1"></a><span class="co"># Just the first 100 pirates</span></span>
-<span id="cb335-2"><a href="examples.html#cb335-2" tabindex="-1"></a>pirates.r <span class="ot">&lt;-</span> pirates[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,]</span>
-<span id="cb335-3"><a href="examples.html#cb335-3" tabindex="-1"></a></span>
-<span id="cb335-4"><a href="examples.html#cb335-4" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> pirates.r<span class="sc">$</span>height,</span>
-<span id="cb335-5"><a href="examples.html#cb335-5" tabindex="-1"></a>     <span class="at">y =</span> pirates.r<span class="sc">$</span>weight,</span>
-<span id="cb335-6"><a href="examples.html#cb335-6" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;height&quot;</span>,</span>
-<span id="cb335-7"><a href="examples.html#cb335-7" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;weight&quot;</span>,</span>
-<span id="cb335-8"><a href="examples.html#cb335-8" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Specifying point sizes and colors with a 3rd variable&quot;</span>,</span>
-<span id="cb335-9"><a href="examples.html#cb335-9" tabindex="-1"></a>     <span class="at">cex =</span> pirates.r<span class="sc">$</span>tattoos  <span class="sc">/</span> <span class="dv">8</span>,          <span class="co"># Point size reflects how many tattoos they have</span></span>
-<span id="cb335-10"><a href="examples.html#cb335-10" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">gray</span>(<span class="dv">1</span> <span class="sc">-</span> pirates.r<span class="sc">$</span>tattoos <span class="sc">/</span> <span class="dv">20</span>)) <span class="co"># color reflects tattoos</span></span>
-<span id="cb335-11"><a href="examples.html#cb335-11" tabindex="-1"></a></span>
-<span id="cb335-12"><a href="examples.html#cb335-12" tabindex="-1"></a><span class="fu">grid</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="examples.html#cb334-1" tabindex="-1"></a><span class="co"># Just the first 100 pirates</span></span>
+<span id="cb334-2"><a href="examples.html#cb334-2" tabindex="-1"></a>pirates.r <span class="ot">&lt;-</span> pirates[<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,]</span>
+<span id="cb334-3"><a href="examples.html#cb334-3" tabindex="-1"></a></span>
+<span id="cb334-4"><a href="examples.html#cb334-4" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> pirates.r<span class="sc">$</span>height,</span>
+<span id="cb334-5"><a href="examples.html#cb334-5" tabindex="-1"></a>     <span class="at">y =</span> pirates.r<span class="sc">$</span>weight,</span>
+<span id="cb334-6"><a href="examples.html#cb334-6" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;height&quot;</span>,</span>
+<span id="cb334-7"><a href="examples.html#cb334-7" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;weight&quot;</span>,</span>
+<span id="cb334-8"><a href="examples.html#cb334-8" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Specifying point sizes and colors with a 3rd variable&quot;</span>,</span>
+<span id="cb334-9"><a href="examples.html#cb334-9" tabindex="-1"></a>     <span class="at">cex =</span> pirates.r<span class="sc">$</span>tattoos  <span class="sc">/</span> <span class="dv">8</span>,          <span class="co"># Point size reflects how many tattoos they have</span></span>
+<span id="cb334-10"><a href="examples.html#cb334-10" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">gray</span>(<span class="dv">1</span> <span class="sc">-</span> pirates.r<span class="sc">$</span>tattoos <span class="sc">/</span> <span class="dv">20</span>)) <span class="co"># color reflects tattoos</span></span>
+<span id="cb334-11"><a href="examples.html#cb334-11" tabindex="-1"></a></span>
+<span id="cb334-12"><a href="examples.html#cb334-12" tabindex="-1"></a><span class="fu">grid</span>()</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:scatter3rd"></span>
 <img src="YaRrr_files/figure-html/scatter3rd-1.png" alt="Specifying the size and color of points with a third variable." width="672" />
 <p class="caption">

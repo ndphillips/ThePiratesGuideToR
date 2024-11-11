@@ -410,9 +410,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.2" data-path="t-test-t.html"><a href="t-test-t.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.2.2</b> 2-sample t-test</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="correlation-cor.html"><a href="correlation-cor.html"><i class="fa fa-check"></i><b>13.3</b> Correlation: <code>cor.test()</code></a></li>
-<li class="chapter" data-level="13.4" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chsq.test()</code></a>
+<li class="chapter" data-level="13.4" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chisq.test()</code></a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+<li class="chapter" data-level="13.4.1" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="test-your-r-might-3.html"><a href="test-your-r-might-3.html"><i class="fa fa-check"></i><b>13.5</b> Test your R might!</a></li>
 </ul></li>
@@ -551,19 +551,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Complete the file by executing the command <code>dev.off()</code>. This tells R that you’re done creating the file.</li>
 </ol>
 <p>The chunk below shows an example of the three steps in creating a pdf:</p>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="saving-plots-to-a-file-with-pdf-jpeg-and-png.html#cb333-1" tabindex="-1"></a><span class="co"># Step 1: Call the pdf command to start the plot</span></span>
-<span id="cb333-2"><a href="saving-plots-to-a-file-with-pdf-jpeg-and-png.html#cb333-2" tabindex="-1"></a><span class="fu">pdf</span>(<span class="at">file =</span> <span class="st">&quot;/Users/ndphillips/Desktop/My Plot.pdf&quot;</span>,   <span class="co"># The directory you want to save the file in</span></span>
-<span id="cb333-3"><a href="saving-plots-to-a-file-with-pdf-jpeg-and-png.html#cb333-3" tabindex="-1"></a>    <span class="at">width =</span> <span class="dv">4</span>, <span class="co"># The width of the plot in inches</span></span>
-<span id="cb333-4"><a href="saving-plots-to-a-file-with-pdf-jpeg-and-png.html#cb333-4" tabindex="-1"></a>    <span class="at">height =</span> <span class="dv">4</span>) <span class="co"># The height of the plot in inches</span></span>
-<span id="cb333-5"><a href="saving-plots-to-a-file-with-pdf-jpeg-and-png.html#cb333-5" tabindex="-1"></a></span>
-<span id="cb333-6"><a href="saving-plots-to-a-file-with-pdf-jpeg-and-png.html#cb333-6" tabindex="-1"></a><span class="co"># Step 2: Create the plot with R code</span></span>
-<span id="cb333-7"><a href="saving-plots-to-a-file-with-pdf-jpeg-and-png.html#cb333-7" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, </span>
-<span id="cb333-8"><a href="saving-plots-to-a-file-with-pdf-jpeg-and-png.html#cb333-8" tabindex="-1"></a>     <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
-<span id="cb333-9"><a href="saving-plots-to-a-file-with-pdf-jpeg-and-png.html#cb333-9" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">0</span>) <span class="co"># Additional low-level plotting commands</span></span>
-<span id="cb333-10"><a href="saving-plots-to-a-file-with-pdf-jpeg-and-png.html#cb333-10" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="dv">1</span>, <span class="at">labels =</span> <span class="st">&quot;Random text&quot;</span>)</span>
-<span id="cb333-11"><a href="saving-plots-to-a-file-with-pdf-jpeg-and-png.html#cb333-11" tabindex="-1"></a></span>
-<span id="cb333-12"><a href="saving-plots-to-a-file-with-pdf-jpeg-and-png.html#cb333-12" tabindex="-1"></a><span class="co"># Step 3: Run dev.off() to create the file!</span></span>
-<span id="cb333-13"><a href="saving-plots-to-a-file-with-pdf-jpeg-and-png.html#cb333-13" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="saving-plots-to-a-file-with-pdf-jpeg-and-png.html#cb332-1" tabindex="-1"></a><span class="co"># Step 1: Call the pdf command to start the plot</span></span>
+<span id="cb332-2"><a href="saving-plots-to-a-file-with-pdf-jpeg-and-png.html#cb332-2" tabindex="-1"></a><span class="fu">pdf</span>(<span class="at">file =</span> <span class="st">&quot;/Users/ndphillips/Desktop/My Plot.pdf&quot;</span>,   <span class="co"># The directory you want to save the file in</span></span>
+<span id="cb332-3"><a href="saving-plots-to-a-file-with-pdf-jpeg-and-png.html#cb332-3" tabindex="-1"></a>    <span class="at">width =</span> <span class="dv">4</span>, <span class="co"># The width of the plot in inches</span></span>
+<span id="cb332-4"><a href="saving-plots-to-a-file-with-pdf-jpeg-and-png.html#cb332-4" tabindex="-1"></a>    <span class="at">height =</span> <span class="dv">4</span>) <span class="co"># The height of the plot in inches</span></span>
+<span id="cb332-5"><a href="saving-plots-to-a-file-with-pdf-jpeg-and-png.html#cb332-5" tabindex="-1"></a></span>
+<span id="cb332-6"><a href="saving-plots-to-a-file-with-pdf-jpeg-and-png.html#cb332-6" tabindex="-1"></a><span class="co"># Step 2: Create the plot with R code</span></span>
+<span id="cb332-7"><a href="saving-plots-to-a-file-with-pdf-jpeg-and-png.html#cb332-7" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, </span>
+<span id="cb332-8"><a href="saving-plots-to-a-file-with-pdf-jpeg-and-png.html#cb332-8" tabindex="-1"></a>     <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb332-9"><a href="saving-plots-to-a-file-with-pdf-jpeg-and-png.html#cb332-9" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">0</span>) <span class="co"># Additional low-level plotting commands</span></span>
+<span id="cb332-10"><a href="saving-plots-to-a-file-with-pdf-jpeg-and-png.html#cb332-10" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="dv">1</span>, <span class="at">labels =</span> <span class="st">&quot;Random text&quot;</span>)</span>
+<span id="cb332-11"><a href="saving-plots-to-a-file-with-pdf-jpeg-and-png.html#cb332-11" tabindex="-1"></a></span>
+<span id="cb332-12"><a href="saving-plots-to-a-file-with-pdf-jpeg-and-png.html#cb332-12" tabindex="-1"></a><span class="co"># Step 3: Run dev.off() to create the file!</span></span>
+<span id="cb332-13"><a href="saving-plots-to-a-file-with-pdf-jpeg-and-png.html#cb332-13" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
 <p>You’ll notice that after you close the plot with <code>dev.off()</code>, you’ll see a message in the prompt like “null device”. That’s just R telling you that you can now create plots in the main R plotting window again.</p>
 <p>The functions <code>pdf()</code>, <code>jpeg()</code>, and <code>png()</code> all work the same way, they just return different file types. If you can, use <code>pdf()</code> it saves the plot in a high quality format.</p>
 </div>

@@ -410,9 +410,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.2" data-path="t-test-t.html"><a href="t-test-t.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.2.2</b> 2-sample t-test</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="correlation-cor.html"><a href="correlation-cor.html"><i class="fa fa-check"></i><b>13.3</b> Correlation: <code>cor.test()</code></a></li>
-<li class="chapter" data-level="13.4" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chsq.test()</code></a>
+<li class="chapter" data-level="13.4" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chisq.test()</code></a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+<li class="chapter" data-level="13.4.1" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="test-your-r-might-3.html"><a href="test-your-r-might-3.html"><i class="fa fa-check"></i><b>13.5</b> Test your R might!</a></li>
 </ul></li>
@@ -560,17 +560,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="scatterplot-plot.html#cb300-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,                         <span class="co"># x-coordinates</span></span>
-<span id="cb300-2"><a href="scatterplot-plot.html#cb300-2" tabindex="-1"></a>     <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,                         <span class="co"># y-coordinates</span></span>
-<span id="cb300-3"><a href="scatterplot-plot.html#cb300-3" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;p&quot;</span>,                       <span class="co"># Just draw points (no lines)</span></span>
-<span id="cb300-4"><a href="scatterplot-plot.html#cb300-4" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;My First Plot&quot;</span>,</span>
-<span id="cb300-5"><a href="scatterplot-plot.html#cb300-5" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;This is the x-axis label&quot;</span>,</span>
-<span id="cb300-6"><a href="scatterplot-plot.html#cb300-6" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;This is the y-axis label&quot;</span>,</span>
-<span id="cb300-7"><a href="scatterplot-plot.html#cb300-7" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">11</span>),                  <span class="co"># Min and max values for x-axis</span></span>
-<span id="cb300-8"><a href="scatterplot-plot.html#cb300-8" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">11</span>),                  <span class="co"># Min and max values for y-axis</span></span>
-<span id="cb300-9"><a href="scatterplot-plot.html#cb300-9" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>,                     <span class="co"># Color of the points</span></span>
-<span id="cb300-10"><a href="scatterplot-plot.html#cb300-10" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>,                         <span class="co"># Type of symbol (16 means Filled circle)</span></span>
-<span id="cb300-11"><a href="scatterplot-plot.html#cb300-11" tabindex="-1"></a>     <span class="at">cex =</span> <span class="dv">1</span>)                           <span class="co"># Size of the symbols</span></span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="scatterplot-plot.html#cb299-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,                         <span class="co"># x-coordinates</span></span>
+<span id="cb299-2"><a href="scatterplot-plot.html#cb299-2" tabindex="-1"></a>     <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,                         <span class="co"># y-coordinates</span></span>
+<span id="cb299-3"><a href="scatterplot-plot.html#cb299-3" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;p&quot;</span>,                       <span class="co"># Just draw points (no lines)</span></span>
+<span id="cb299-4"><a href="scatterplot-plot.html#cb299-4" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;My First Plot&quot;</span>,</span>
+<span id="cb299-5"><a href="scatterplot-plot.html#cb299-5" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;This is the x-axis label&quot;</span>,</span>
+<span id="cb299-6"><a href="scatterplot-plot.html#cb299-6" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;This is the y-axis label&quot;</span>,</span>
+<span id="cb299-7"><a href="scatterplot-plot.html#cb299-7" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">11</span>),                  <span class="co"># Min and max values for x-axis</span></span>
+<span id="cb299-8"><a href="scatterplot-plot.html#cb299-8" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">11</span>),                  <span class="co"># Min and max values for y-axis</span></span>
+<span id="cb299-9"><a href="scatterplot-plot.html#cb299-9" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>,                     <span class="co"># Color of the points</span></span>
+<span id="cb299-10"><a href="scatterplot-plot.html#cb299-10" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>,                         <span class="co"># Type of symbol (16 means Filled circle)</span></span>
+<span id="cb299-11"><a href="scatterplot-plot.html#cb299-11" tabindex="-1"></a>     <span class="at">cex =</span> <span class="dv">1</span>)                           <span class="co"># Size of the symbols</span></span></code></pre></div>
 <p><img src="YaRrr_files/figure-html/unnamed-chunk-279-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Aside from the x and y arguments, all of the arguments are optional. If you don’t specify a specific argument, then R will use a default value, or try to come up with a value that makes sense. For example, if you don’t specify the <code>xlim</code> and <code>ylim</code> arguments, R will set the limits so that all the points fit inside the plot.</p>
 <div id="symbol-types-pch" class="section level3 hasAnchor" number="11.3.1">

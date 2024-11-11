@@ -410,9 +410,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.2" data-path="t-test-t.html"><a href="t-test-t.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.2.2</b> 2-sample t-test</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="correlation-cor.html"><a href="correlation-cor.html"><i class="fa fa-check"></i><b>13.3</b> Correlation: <code>cor.test()</code></a></li>
-<li class="chapter" data-level="13.4" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chsq.test()</code></a>
+<li class="chapter" data-level="13.4" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chisq.test()</code></a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+<li class="chapter" data-level="13.4.1" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="test-your-r-might-3.html"><a href="test-your-r-might-3.html"><i class="fa fa-check"></i><b>13.5</b> Test your R might!</a></li>
 </ul></li>
@@ -540,55 +540,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb289-6"><a href="dplyr.html#cb289-6" tabindex="-1"></a>                        <span class="at">tat.med =</span> <span class="fu">median</span>(tattoos), <span class="co"># you get the idea...</span></span>
 <span id="cb289-7"><a href="dplyr.html#cb289-7" tabindex="-1"></a>                        <span class="at">n =</span> <span class="fu">n</span>()                    <span class="co"># How many are in each group?</span></span>
 <span id="cb289-8"><a href="dplyr.html#cb289-8" tabindex="-1"></a>               ) <span class="co"># End</span></span>
-<span id="cb289-9"><a href="dplyr.html#cb289-9" tabindex="-1"></a><span class="do">## `summarise()` has grouped output by &#39;sex&#39;. You can override using the `.groups` argument.</span></span></code></pre></div>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="dplyr.html#cb290-1" tabindex="-1"></a></span>
-<span id="cb290-2"><a href="dplyr.html#cb290-2" tabindex="-1"></a><span class="co"># Print the result</span></span>
-<span id="cb290-3"><a href="dplyr.html#cb290-3" tabindex="-1"></a>pirates.agg</span>
-<span id="cb290-4"><a href="dplyr.html#cb290-4" tabindex="-1"></a><span class="do">## # A tibble: 6 × 5</span></span>
-<span id="cb290-5"><a href="dplyr.html#cb290-5" tabindex="-1"></a><span class="do">## # Groups:   sex [3]</span></span>
-<span id="cb290-6"><a href="dplyr.html#cb290-6" tabindex="-1"></a><span class="do">##   sex    college age.mean tat.med     n</span></span>
-<span id="cb290-7"><a href="dplyr.html#cb290-7" tabindex="-1"></a><span class="do">##   &lt;chr&gt;  &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;</span></span>
-<span id="cb290-8"><a href="dplyr.html#cb290-8" tabindex="-1"></a><span class="do">## 1 female CCCC        26.0      10   206</span></span>
-<span id="cb290-9"><a href="dplyr.html#cb290-9" tabindex="-1"></a><span class="do">## 2 female JSSFP       33.8      10   203</span></span>
-<span id="cb290-10"><a href="dplyr.html#cb290-10" tabindex="-1"></a><span class="do">## 3 male   CCCC        23.4      10   358</span></span>
-<span id="cb290-11"><a href="dplyr.html#cb290-11" tabindex="-1"></a><span class="do">## 4 male   JSSFP       31.9      10    85</span></span>
-<span id="cb290-12"><a href="dplyr.html#cb290-12" tabindex="-1"></a><span class="do">## 5 other  CCCC        24.8      10    24</span></span>
-<span id="cb290-13"><a href="dplyr.html#cb290-13" tabindex="-1"></a><span class="do">## 6 other  JSSFP       32        12    11</span></span></code></pre></div>
+<span id="cb289-9"><a href="dplyr.html#cb289-9" tabindex="-1"></a></span>
+<span id="cb289-10"><a href="dplyr.html#cb289-10" tabindex="-1"></a><span class="co"># Print the result</span></span>
+<span id="cb289-11"><a href="dplyr.html#cb289-11" tabindex="-1"></a>pirates.agg</span>
+<span id="cb289-12"><a href="dplyr.html#cb289-12" tabindex="-1"></a><span class="do">## # A tibble: 6 × 5</span></span>
+<span id="cb289-13"><a href="dplyr.html#cb289-13" tabindex="-1"></a><span class="do">## # Groups:   sex [3]</span></span>
+<span id="cb289-14"><a href="dplyr.html#cb289-14" tabindex="-1"></a><span class="do">##   sex    college age.mean tat.med     n</span></span>
+<span id="cb289-15"><a href="dplyr.html#cb289-15" tabindex="-1"></a><span class="do">##   &lt;chr&gt;  &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;</span></span>
+<span id="cb289-16"><a href="dplyr.html#cb289-16" tabindex="-1"></a><span class="do">## 1 female CCCC        26.0      10   206</span></span>
+<span id="cb289-17"><a href="dplyr.html#cb289-17" tabindex="-1"></a><span class="do">## 2 female JSSFP       33.8      10   203</span></span>
+<span id="cb289-18"><a href="dplyr.html#cb289-18" tabindex="-1"></a><span class="do">## 3 male   CCCC        23.4      10   358</span></span>
+<span id="cb289-19"><a href="dplyr.html#cb289-19" tabindex="-1"></a><span class="do">## 4 male   JSSFP       31.9      10    85</span></span>
+<span id="cb289-20"><a href="dplyr.html#cb289-20" tabindex="-1"></a><span class="do">## 5 other  CCCC        24.8      10    24</span></span>
+<span id="cb289-21"><a href="dplyr.html#cb289-21" tabindex="-1"></a><span class="do">## 6 other  JSSFP       32        12    11</span></span></code></pre></div>
 <p>As you can see from the output on the right, our final object <code>pirates.agg</code> is the aggregated dataframe we want which aggregates all the columns we wanted for each combination of <code>sex</code> and <code>college</code> One key new function here is <code>n()</code>. This function is specific to dplyr and returns a frequency of values in a summary command.</p>
 <p>Let’s do a more complex example where we combine multiple verbs into one chunk of code. We’ll aggregate data from the movies dataframe.</p>
-<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="dplyr.html#cb291-1" tabindex="-1"></a>movies <span class="sc">%&gt;%</span> <span class="co"># From the movies dataframe...</span></span>
-<span id="cb291-2"><a href="dplyr.html#cb291-2" tabindex="-1"></a>    <span class="fu">filter</span>(genre <span class="sc">!=</span> <span class="st">&quot;Horror&quot;</span> <span class="sc">&amp;</span> time <span class="sc">&gt;</span> <span class="dv">50</span>) <span class="sc">%&gt;%</span> <span class="co"># Select only these rows</span></span>
-<span id="cb291-3"><a href="dplyr.html#cb291-3" tabindex="-1"></a>    <span class="fu">group_by</span>(rating, sequel) <span class="sc">%&gt;%</span> <span class="co"># Group by rating and sequel</span></span>
-<span id="cb291-4"><a href="dplyr.html#cb291-4" tabindex="-1"></a>    <span class="fu">summarise</span>( <span class="co">#</span></span>
-<span id="cb291-5"><a href="dplyr.html#cb291-5" tabindex="-1"></a>      <span class="at">frequency =</span> <span class="fu">n</span>(), <span class="co"># How many movies in each group?</span></span>
-<span id="cb291-6"><a href="dplyr.html#cb291-6" tabindex="-1"></a>      <span class="at">budget.mean =</span> <span class="fu">mean</span>(budget, <span class="at">na.rm =</span> T),  <span class="co"># Mean budget?</span></span>
-<span id="cb291-7"><a href="dplyr.html#cb291-7" tabindex="-1"></a>      <span class="at">revenue.mean =</span> <span class="fu">mean</span>(revenue.all), <span class="co"># Mean revenue?</span></span>
-<span id="cb291-8"><a href="dplyr.html#cb291-8" tabindex="-1"></a>      <span class="at">billion.p =</span> <span class="fu">mean</span>(revenue.all <span class="sc">&gt;</span> <span class="dv">1000</span>)) <span class="co"># Percent of movies with revenue &gt; 1000?</span></span>
-<span id="cb291-9"><a href="dplyr.html#cb291-9" tabindex="-1"></a><span class="do">## `summarise()` has grouped output by &#39;rating&#39;. You can override using the `.groups` argument.</span></span>
-<span id="cb291-10"><a href="dplyr.html#cb291-10" tabindex="-1"></a><span class="do">## # A tibble: 14 × 6</span></span>
-<span id="cb291-11"><a href="dplyr.html#cb291-11" tabindex="-1"></a><span class="do">## # Groups:   rating [7]</span></span>
-<span id="cb291-12"><a href="dplyr.html#cb291-12" tabindex="-1"></a><span class="do">##    rating    sequel frequency budget.mean revenue.mean billion.p</span></span>
-<span id="cb291-13"><a href="dplyr.html#cb291-13" tabindex="-1"></a><span class="do">##    &lt;chr&gt;      &lt;int&gt;     &lt;int&gt;       &lt;dbl&gt;        &lt;dbl&gt;     &lt;dbl&gt;</span></span>
-<span id="cb291-14"><a href="dplyr.html#cb291-14" tabindex="-1"></a><span class="do">##  1 G              0        59      41.2          234.    0      </span></span>
-<span id="cb291-15"><a href="dplyr.html#cb291-15" tabindex="-1"></a><span class="do">##  2 G              1        12      92.9          357.    0.0833 </span></span>
-<span id="cb291-16"><a href="dplyr.html#cb291-16" tabindex="-1"></a><span class="do">##  3 NC-17          0         2       3.75          18.5   0      </span></span>
-<span id="cb291-17"><a href="dplyr.html#cb291-17" tabindex="-1"></a><span class="do">##  4 Not Rated      0        84       1.74          55.5   0      </span></span>
-<span id="cb291-18"><a href="dplyr.html#cb291-18" tabindex="-1"></a><span class="do">##  5 Not Rated      1        12       0.667         66.1   0      </span></span>
-<span id="cb291-19"><a href="dplyr.html#cb291-19" tabindex="-1"></a><span class="do">##  6 PG             0       312      51.8          191.    0.00962</span></span>
-<span id="cb291-20"><a href="dplyr.html#cb291-20" tabindex="-1"></a><span class="do">##  7 PG             1        62      77.2          372.    0.0161 </span></span>
-<span id="cb291-21"><a href="dplyr.html#cb291-21" tabindex="-1"></a><span class="do">##  8 PG-13          0       645      52.1          168.    0.00620</span></span>
-<span id="cb291-22"><a href="dplyr.html#cb291-22" tabindex="-1"></a><span class="do">##  9 PG-13          1       120     124.           524.    0.117  </span></span>
-<span id="cb291-23"><a href="dplyr.html#cb291-23" tabindex="-1"></a><span class="do">## 10 R              0       623      31.4          109.    0      </span></span>
-<span id="cb291-24"><a href="dplyr.html#cb291-24" tabindex="-1"></a><span class="do">## 11 R              1        42      58.2          226.    0      </span></span>
-<span id="cb291-25"><a href="dplyr.html#cb291-25" tabindex="-1"></a><span class="do">## 12 &lt;NA&gt;           0        86       1.65          33.7   0      </span></span>
-<span id="cb291-26"><a href="dplyr.html#cb291-26" tabindex="-1"></a><span class="do">## 13 &lt;NA&gt;           1        15       5.51          48.1   0      </span></span>
-<span id="cb291-27"><a href="dplyr.html#cb291-27" tabindex="-1"></a><span class="do">## 14 &lt;NA&gt;          NA        11       0             34.1   0</span></span></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="dplyr.html#cb290-1" tabindex="-1"></a>movies <span class="sc">%&gt;%</span> <span class="co"># From the movies dataframe...</span></span>
+<span id="cb290-2"><a href="dplyr.html#cb290-2" tabindex="-1"></a>    <span class="fu">filter</span>(genre <span class="sc">!=</span> <span class="st">&quot;Horror&quot;</span> <span class="sc">&amp;</span> time <span class="sc">&gt;</span> <span class="dv">50</span>) <span class="sc">%&gt;%</span> <span class="co"># Select only these rows</span></span>
+<span id="cb290-3"><a href="dplyr.html#cb290-3" tabindex="-1"></a>    <span class="fu">group_by</span>(rating, sequel) <span class="sc">%&gt;%</span> <span class="co"># Group by rating and sequel</span></span>
+<span id="cb290-4"><a href="dplyr.html#cb290-4" tabindex="-1"></a>    <span class="fu">summarise</span>( <span class="co">#</span></span>
+<span id="cb290-5"><a href="dplyr.html#cb290-5" tabindex="-1"></a>      <span class="at">frequency =</span> <span class="fu">n</span>(), <span class="co"># How many movies in each group?</span></span>
+<span id="cb290-6"><a href="dplyr.html#cb290-6" tabindex="-1"></a>      <span class="at">budget.mean =</span> <span class="fu">mean</span>(budget, <span class="at">na.rm =</span> T),  <span class="co"># Mean budget?</span></span>
+<span id="cb290-7"><a href="dplyr.html#cb290-7" tabindex="-1"></a>      <span class="at">revenue.mean =</span> <span class="fu">mean</span>(revenue.all), <span class="co"># Mean revenue?</span></span>
+<span id="cb290-8"><a href="dplyr.html#cb290-8" tabindex="-1"></a>      <span class="at">billion.p =</span> <span class="fu">mean</span>(revenue.all <span class="sc">&gt;</span> <span class="dv">1000</span>)) <span class="co"># Percent of movies with revenue &gt; 1000?</span></span>
+<span id="cb290-9"><a href="dplyr.html#cb290-9" tabindex="-1"></a><span class="do">## # A tibble: 14 × 6</span></span>
+<span id="cb290-10"><a href="dplyr.html#cb290-10" tabindex="-1"></a><span class="do">## # Groups:   rating [7]</span></span>
+<span id="cb290-11"><a href="dplyr.html#cb290-11" tabindex="-1"></a><span class="do">##    rating    sequel frequency budget.mean revenue.mean billion.p</span></span>
+<span id="cb290-12"><a href="dplyr.html#cb290-12" tabindex="-1"></a><span class="do">##    &lt;chr&gt;      &lt;int&gt;     &lt;int&gt;       &lt;dbl&gt;        &lt;dbl&gt;     &lt;dbl&gt;</span></span>
+<span id="cb290-13"><a href="dplyr.html#cb290-13" tabindex="-1"></a><span class="do">##  1 G              0        59      41.2          234.    0      </span></span>
+<span id="cb290-14"><a href="dplyr.html#cb290-14" tabindex="-1"></a><span class="do">##  2 G              1        12      92.9          357.    0.0833 </span></span>
+<span id="cb290-15"><a href="dplyr.html#cb290-15" tabindex="-1"></a><span class="do">##  3 NC-17          0         2       3.75          18.5   0      </span></span>
+<span id="cb290-16"><a href="dplyr.html#cb290-16" tabindex="-1"></a><span class="do">##  4 Not Rated      0        84       1.74          55.5   0      </span></span>
+<span id="cb290-17"><a href="dplyr.html#cb290-17" tabindex="-1"></a><span class="do">##  5 Not Rated      1        12       0.667         66.1   0      </span></span>
+<span id="cb290-18"><a href="dplyr.html#cb290-18" tabindex="-1"></a><span class="do">##  6 PG             0       312      51.8          191.    0.00962</span></span>
+<span id="cb290-19"><a href="dplyr.html#cb290-19" tabindex="-1"></a><span class="do">##  7 PG             1        62      77.2          372.    0.0161 </span></span>
+<span id="cb290-20"><a href="dplyr.html#cb290-20" tabindex="-1"></a><span class="do">##  8 PG-13          0       645      52.1          168.    0.00620</span></span>
+<span id="cb290-21"><a href="dplyr.html#cb290-21" tabindex="-1"></a><span class="do">##  9 PG-13          1       120     124.           524.    0.117  </span></span>
+<span id="cb290-22"><a href="dplyr.html#cb290-22" tabindex="-1"></a><span class="do">## 10 R              0       623      31.4          109.    0      </span></span>
+<span id="cb290-23"><a href="dplyr.html#cb290-23" tabindex="-1"></a><span class="do">## 11 R              1        42      58.2          226.    0      </span></span>
+<span id="cb290-24"><a href="dplyr.html#cb290-24" tabindex="-1"></a><span class="do">## 12 &lt;NA&gt;           0        86       1.65          33.7   0      </span></span>
+<span id="cb290-25"><a href="dplyr.html#cb290-25" tabindex="-1"></a><span class="do">## 13 &lt;NA&gt;           1        15       5.51          48.1   0      </span></span>
+<span id="cb290-26"><a href="dplyr.html#cb290-26" tabindex="-1"></a><span class="do">## 14 &lt;NA&gt;          NA        11       0             34.1   0</span></span></code></pre></div>
 <p>As you can see, our result is a dataframe with 14 rows and 6 columns. The data are summarized from the movie dataframe, only include values where the genre is <em>not</em> Horror and the movie length is longer than 50 minutes, is grouped by rating and sequel, and shows several summary statistics.</p>
 <div id="additional-dplyr-help" class="section level3 hasAnchor" number="10.4.1">
 <h3><span class="header-section-number">10.4.1</span> Additional dplyr help<a href="dplyr.html#additional-dplyr-help" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We’ve only scratched the surface of what you can do with <code>dplyr</code>. In fact, you can perform almost all of your R tasks, from loading, to managing, to saving data, in the <code>dplyr</code> framework. For more tips on using dplyr, check out the dplyr vignette at <a href="https://cran.r-project.org/web/packages/dplyr/vignettes/introduction.html">https://cran.r-project.org/web/packages/dplyr/vignettes/introduction.html</a>. Or open it in RStudio by running the following command:</p>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="dplyr.html#cb292-1" tabindex="-1"></a><span class="co"># Open the dplyr introduction in R</span></span>
-<span id="cb292-2"><a href="dplyr.html#cb292-2" tabindex="-1"></a><span class="fu">vignette</span>(<span class="st">&quot;introduction&quot;</span>, <span class="at">package =</span> <span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="dplyr.html#cb291-1" tabindex="-1"></a><span class="co"># Open the dplyr introduction in R</span></span>
+<span id="cb291-2"><a href="dplyr.html#cb291-2" tabindex="-1"></a><span class="fu">vignette</span>(<span class="st">&quot;introduction&quot;</span>, <span class="at">package =</span> <span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
 <p>There is also a very nice YouTube video covering <code>dplyr</code> at <a href="https://goo.gl/UY2AE1">https://goo.gl/UY2AE1</a>. Finally, consider also reading <a href="http://r4ds.had.co.nz/">R for Data Science</a> written by Garrett Grolemund and Hadley Wickham, which teaches R from the ground-up using the dplyr framework.</p>
 </div>
 </div>

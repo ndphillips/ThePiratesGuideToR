@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="t-test-t.html"/>
-<link rel="next" href="chi-square-chsq.html"/>
+<link rel="next" href="chi-square-chisq.html"/>
 <script src="assets/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -410,9 +410,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.2" data-path="t-test-t.html"><a href="t-test-t.html#sample-t-test-1"><i class="fa fa-check"></i><b>13.2.2</b> 2-sample t-test</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="correlation-cor.html"><a href="correlation-cor.html"><i class="fa fa-check"></i><b>13.3</b> Correlation: <code>cor.test()</code></a></li>
-<li class="chapter" data-level="13.4" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chsq.test()</code></a>
+<li class="chapter" data-level="13.4" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html"><i class="fa fa-check"></i><b>13.4</b> Chi-square: <code>chisq.test()</code></a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="chi-square-chsq.html"><a href="chi-square-chsq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
+<li class="chapter" data-level="13.4.1" data-path="chi-square-chisq.html"><a href="chi-square-chisq.html#getting-apa-style-conclusions-with-the-apa-function"><i class="fa fa-check"></i><b>13.4.1</b> Getting APA-style conclusions with the <code>apa</code> function</a></li>
 </ul></li>
 <li class="chapter" data-level="13.5" data-path="test-your-r-might-3.html"><a href="test-your-r-might-3.html"><i class="fa fa-check"></i><b>13.5</b> Test your R might!</a></li>
 </ul></li>
@@ -558,84 +558,84 @@ Figure 13.5: Three different correlations. A strong negative correlation, a very
 </p>
 </div>
 <p>To run a correlation test between two variables x and y, use the <code>cor.test()</code> function. You can do this in one of two ways, if x and y are columns in a dataframe, use the formula notation (<code>formula = ~ x + y</code>). If x and y are separate vectors (not in a dataframe), use the vector notation (<code>x, y</code>):</p>
-<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="correlation-cor.html#cb379-1" tabindex="-1"></a><span class="co"># Correlation Test</span></span>
-<span id="cb379-2"><a href="correlation-cor.html#cb379-2" tabindex="-1"></a><span class="co">#   Correlating two variables x and y</span></span>
-<span id="cb379-3"><a href="correlation-cor.html#cb379-3" tabindex="-1"></a></span>
-<span id="cb379-4"><a href="correlation-cor.html#cb379-4" tabindex="-1"></a><span class="co"># Method 1: Formula notation</span></span>
-<span id="cb379-5"><a href="correlation-cor.html#cb379-5" tabindex="-1"></a><span class="do">##  Use if x and y are in a dataframe</span></span>
-<span id="cb379-6"><a href="correlation-cor.html#cb379-6" tabindex="-1"></a><span class="fu">cor.test</span>(<span class="at">formula =</span> <span class="sc">~</span> x <span class="sc">+</span> y,</span>
-<span id="cb379-7"><a href="correlation-cor.html#cb379-7" tabindex="-1"></a>         <span class="at">data =</span> df)</span>
-<span id="cb379-8"><a href="correlation-cor.html#cb379-8" tabindex="-1"></a></span>
-<span id="cb379-9"><a href="correlation-cor.html#cb379-9" tabindex="-1"></a><span class="co"># Method 2: Vector notation</span></span>
-<span id="cb379-10"><a href="correlation-cor.html#cb379-10" tabindex="-1"></a><span class="do">## Use if x and y are separate vectors</span></span>
-<span id="cb379-11"><a href="correlation-cor.html#cb379-11" tabindex="-1"></a><span class="fu">cor.test</span>(<span class="at">x =</span> x,</span>
-<span id="cb379-12"><a href="correlation-cor.html#cb379-12" tabindex="-1"></a>         <span class="at">y =</span> y)</span></code></pre></div>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="correlation-cor.html#cb377-1" tabindex="-1"></a><span class="co"># Correlation Test</span></span>
+<span id="cb377-2"><a href="correlation-cor.html#cb377-2" tabindex="-1"></a><span class="co">#   Correlating two variables x and y</span></span>
+<span id="cb377-3"><a href="correlation-cor.html#cb377-3" tabindex="-1"></a></span>
+<span id="cb377-4"><a href="correlation-cor.html#cb377-4" tabindex="-1"></a><span class="co"># Method 1: Formula notation</span></span>
+<span id="cb377-5"><a href="correlation-cor.html#cb377-5" tabindex="-1"></a><span class="do">##  Use if x and y are in a dataframe</span></span>
+<span id="cb377-6"><a href="correlation-cor.html#cb377-6" tabindex="-1"></a><span class="fu">cor.test</span>(<span class="at">formula =</span> <span class="sc">~</span> x <span class="sc">+</span> y,</span>
+<span id="cb377-7"><a href="correlation-cor.html#cb377-7" tabindex="-1"></a>         <span class="at">data =</span> df)</span>
+<span id="cb377-8"><a href="correlation-cor.html#cb377-8" tabindex="-1"></a></span>
+<span id="cb377-9"><a href="correlation-cor.html#cb377-9" tabindex="-1"></a><span class="co"># Method 2: Vector notation</span></span>
+<span id="cb377-10"><a href="correlation-cor.html#cb377-10" tabindex="-1"></a><span class="do">## Use if x and y are separate vectors</span></span>
+<span id="cb377-11"><a href="correlation-cor.html#cb377-11" tabindex="-1"></a><span class="fu">cor.test</span>(<span class="at">x =</span> x,</span>
+<span id="cb377-12"><a href="correlation-cor.html#cb377-12" tabindex="-1"></a>         <span class="at">y =</span> y)</span></code></pre></div>
 <p>Let’s conduct a correlation test on the <code>pirates</code> dataset to see if there is a relationship between a pirate’s age and number of parrots they’ve had in their lifetime. Because the variables (age and parrots) are in a dataframe, we can do this in formula notation:</p>
-<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="correlation-cor.html#cb380-1" tabindex="-1"></a><span class="co"># Is there a correlation between a pirate&#39;s age and</span></span>
-<span id="cb380-2"><a href="correlation-cor.html#cb380-2" tabindex="-1"></a><span class="co">#  the number of parrots (s)he&#39;s owned?</span></span>
-<span id="cb380-3"><a href="correlation-cor.html#cb380-3" tabindex="-1"></a></span>
-<span id="cb380-4"><a href="correlation-cor.html#cb380-4" tabindex="-1"></a><span class="co"># Method 1: Formula notation</span></span>
-<span id="cb380-5"><a href="correlation-cor.html#cb380-5" tabindex="-1"></a>age.parrots.ctest <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(<span class="at">formula =</span> <span class="sc">~</span> age <span class="sc">+</span> parrots,</span>
-<span id="cb380-6"><a href="correlation-cor.html#cb380-6" tabindex="-1"></a>                             <span class="at">data =</span> pirates)</span>
-<span id="cb380-7"><a href="correlation-cor.html#cb380-7" tabindex="-1"></a><span class="co"># Print result</span></span>
-<span id="cb380-8"><a href="correlation-cor.html#cb380-8" tabindex="-1"></a>age.parrots.ctest</span>
-<span id="cb380-9"><a href="correlation-cor.html#cb380-9" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb380-10"><a href="correlation-cor.html#cb380-10" tabindex="-1"></a><span class="do">##  Pearson&#39;s product-moment correlation</span></span>
-<span id="cb380-11"><a href="correlation-cor.html#cb380-11" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb380-12"><a href="correlation-cor.html#cb380-12" tabindex="-1"></a><span class="do">## data:  age and parrots</span></span>
-<span id="cb380-13"><a href="correlation-cor.html#cb380-13" tabindex="-1"></a><span class="do">## t = 6, df = 998, p-value = 1e-09</span></span>
-<span id="cb380-14"><a href="correlation-cor.html#cb380-14" tabindex="-1"></a><span class="do">## alternative hypothesis: true correlation is not equal to 0</span></span>
-<span id="cb380-15"><a href="correlation-cor.html#cb380-15" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
-<span id="cb380-16"><a href="correlation-cor.html#cb380-16" tabindex="-1"></a><span class="do">##  0.13 0.25</span></span>
-<span id="cb380-17"><a href="correlation-cor.html#cb380-17" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
-<span id="cb380-18"><a href="correlation-cor.html#cb380-18" tabindex="-1"></a><span class="do">##  cor </span></span>
-<span id="cb380-19"><a href="correlation-cor.html#cb380-19" tabindex="-1"></a><span class="do">## 0.19</span></span></code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="correlation-cor.html#cb378-1" tabindex="-1"></a><span class="co"># Is there a correlation between a pirate&#39;s age and</span></span>
+<span id="cb378-2"><a href="correlation-cor.html#cb378-2" tabindex="-1"></a><span class="co">#  the number of parrots (s)he&#39;s owned?</span></span>
+<span id="cb378-3"><a href="correlation-cor.html#cb378-3" tabindex="-1"></a></span>
+<span id="cb378-4"><a href="correlation-cor.html#cb378-4" tabindex="-1"></a><span class="co"># Method 1: Formula notation</span></span>
+<span id="cb378-5"><a href="correlation-cor.html#cb378-5" tabindex="-1"></a>age.parrots.ctest <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(<span class="at">formula =</span> <span class="sc">~</span> age <span class="sc">+</span> parrots,</span>
+<span id="cb378-6"><a href="correlation-cor.html#cb378-6" tabindex="-1"></a>                             <span class="at">data =</span> pirates)</span>
+<span id="cb378-7"><a href="correlation-cor.html#cb378-7" tabindex="-1"></a><span class="co"># Print result</span></span>
+<span id="cb378-8"><a href="correlation-cor.html#cb378-8" tabindex="-1"></a>age.parrots.ctest</span>
+<span id="cb378-9"><a href="correlation-cor.html#cb378-9" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb378-10"><a href="correlation-cor.html#cb378-10" tabindex="-1"></a><span class="do">##  Pearson&#39;s product-moment correlation</span></span>
+<span id="cb378-11"><a href="correlation-cor.html#cb378-11" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb378-12"><a href="correlation-cor.html#cb378-12" tabindex="-1"></a><span class="do">## data:  age and parrots</span></span>
+<span id="cb378-13"><a href="correlation-cor.html#cb378-13" tabindex="-1"></a><span class="do">## t = 6, df = 998, p-value = 1e-09</span></span>
+<span id="cb378-14"><a href="correlation-cor.html#cb378-14" tabindex="-1"></a><span class="do">## alternative hypothesis: true correlation is not equal to 0</span></span>
+<span id="cb378-15"><a href="correlation-cor.html#cb378-15" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb378-16"><a href="correlation-cor.html#cb378-16" tabindex="-1"></a><span class="do">##  0.13 0.25</span></span>
+<span id="cb378-17"><a href="correlation-cor.html#cb378-17" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb378-18"><a href="correlation-cor.html#cb378-18" tabindex="-1"></a><span class="do">##  cor </span></span>
+<span id="cb378-19"><a href="correlation-cor.html#cb378-19" tabindex="-1"></a><span class="do">## 0.19</span></span></code></pre></div>
 <p>We can also do the same thing using vector notation – the results will be exactly the same:</p>
-<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="correlation-cor.html#cb381-1" tabindex="-1"></a><span class="co"># Method 2: Vector notation</span></span>
-<span id="cb381-2"><a href="correlation-cor.html#cb381-2" tabindex="-1"></a>age.parrots.ctest <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(<span class="at">x =</span> pirates<span class="sc">$</span>age,</span>
-<span id="cb381-3"><a href="correlation-cor.html#cb381-3" tabindex="-1"></a>                             <span class="at">y =</span> pirates<span class="sc">$</span>parrots)</span>
-<span id="cb381-4"><a href="correlation-cor.html#cb381-4" tabindex="-1"></a></span>
-<span id="cb381-5"><a href="correlation-cor.html#cb381-5" tabindex="-1"></a><span class="co"># Print result</span></span>
-<span id="cb381-6"><a href="correlation-cor.html#cb381-6" tabindex="-1"></a>age.parrots.ctest</span>
-<span id="cb381-7"><a href="correlation-cor.html#cb381-7" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb381-8"><a href="correlation-cor.html#cb381-8" tabindex="-1"></a><span class="do">##  Pearson&#39;s product-moment correlation</span></span>
-<span id="cb381-9"><a href="correlation-cor.html#cb381-9" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb381-10"><a href="correlation-cor.html#cb381-10" tabindex="-1"></a><span class="do">## data:  pirates$age and pirates$parrots</span></span>
-<span id="cb381-11"><a href="correlation-cor.html#cb381-11" tabindex="-1"></a><span class="do">## t = 6, df = 998, p-value = 1e-09</span></span>
-<span id="cb381-12"><a href="correlation-cor.html#cb381-12" tabindex="-1"></a><span class="do">## alternative hypothesis: true correlation is not equal to 0</span></span>
-<span id="cb381-13"><a href="correlation-cor.html#cb381-13" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
-<span id="cb381-14"><a href="correlation-cor.html#cb381-14" tabindex="-1"></a><span class="do">##  0.13 0.25</span></span>
-<span id="cb381-15"><a href="correlation-cor.html#cb381-15" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
-<span id="cb381-16"><a href="correlation-cor.html#cb381-16" tabindex="-1"></a><span class="do">##  cor </span></span>
-<span id="cb381-17"><a href="correlation-cor.html#cb381-17" tabindex="-1"></a><span class="do">## 0.19</span></span></code></pre></div>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="correlation-cor.html#cb379-1" tabindex="-1"></a><span class="co"># Method 2: Vector notation</span></span>
+<span id="cb379-2"><a href="correlation-cor.html#cb379-2" tabindex="-1"></a>age.parrots.ctest <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(<span class="at">x =</span> pirates<span class="sc">$</span>age,</span>
+<span id="cb379-3"><a href="correlation-cor.html#cb379-3" tabindex="-1"></a>                             <span class="at">y =</span> pirates<span class="sc">$</span>parrots)</span>
+<span id="cb379-4"><a href="correlation-cor.html#cb379-4" tabindex="-1"></a></span>
+<span id="cb379-5"><a href="correlation-cor.html#cb379-5" tabindex="-1"></a><span class="co"># Print result</span></span>
+<span id="cb379-6"><a href="correlation-cor.html#cb379-6" tabindex="-1"></a>age.parrots.ctest</span>
+<span id="cb379-7"><a href="correlation-cor.html#cb379-7" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb379-8"><a href="correlation-cor.html#cb379-8" tabindex="-1"></a><span class="do">##  Pearson&#39;s product-moment correlation</span></span>
+<span id="cb379-9"><a href="correlation-cor.html#cb379-9" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb379-10"><a href="correlation-cor.html#cb379-10" tabindex="-1"></a><span class="do">## data:  pirates$age and pirates$parrots</span></span>
+<span id="cb379-11"><a href="correlation-cor.html#cb379-11" tabindex="-1"></a><span class="do">## t = 6, df = 998, p-value = 1e-09</span></span>
+<span id="cb379-12"><a href="correlation-cor.html#cb379-12" tabindex="-1"></a><span class="do">## alternative hypothesis: true correlation is not equal to 0</span></span>
+<span id="cb379-13"><a href="correlation-cor.html#cb379-13" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb379-14"><a href="correlation-cor.html#cb379-14" tabindex="-1"></a><span class="do">##  0.13 0.25</span></span>
+<span id="cb379-15"><a href="correlation-cor.html#cb379-15" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb379-16"><a href="correlation-cor.html#cb379-16" tabindex="-1"></a><span class="do">##  cor </span></span>
+<span id="cb379-17"><a href="correlation-cor.html#cb379-17" tabindex="-1"></a><span class="do">## 0.19</span></span></code></pre></div>
 <p>Looks like we have a positive correlation of 0.19 and a very small p-value. To see what information we can extract for this test, let’s run the command <code>names()</code> on the test object:</p>
-<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="correlation-cor.html#cb382-1" tabindex="-1"></a><span class="fu">names</span>(age.parrots.ctest)</span>
-<span id="cb382-2"><a href="correlation-cor.html#cb382-2" tabindex="-1"></a><span class="do">## [1] &quot;statistic&quot;   &quot;parameter&quot;   &quot;p.value&quot;     &quot;estimate&quot;    &quot;null.value&quot;  &quot;alternative&quot; &quot;method&quot;      &quot;data.name&quot;   &quot;conf.int&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="correlation-cor.html#cb380-1" tabindex="-1"></a><span class="fu">names</span>(age.parrots.ctest)</span>
+<span id="cb380-2"><a href="correlation-cor.html#cb380-2" tabindex="-1"></a><span class="do">## [1] &quot;statistic&quot;   &quot;parameter&quot;   &quot;p.value&quot;     &quot;estimate&quot;    &quot;null.value&quot;  &quot;alternative&quot; &quot;method&quot;      &quot;data.name&quot;   &quot;conf.int&quot;</span></span></code></pre></div>
 <p>Looks like we’ve got a lot of information in this test object. As an example, let’s look at the confidence interval for the population correlation coefficient:</p>
-<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="correlation-cor.html#cb383-1" tabindex="-1"></a><span class="co">#  95% confidence interval of the correlation</span></span>
-<span id="cb383-2"><a href="correlation-cor.html#cb383-2" tabindex="-1"></a><span class="co">#   coefficient</span></span>
-<span id="cb383-3"><a href="correlation-cor.html#cb383-3" tabindex="-1"></a>age.parrots.ctest<span class="sc">$</span>conf.int</span>
-<span id="cb383-4"><a href="correlation-cor.html#cb383-4" tabindex="-1"></a><span class="do">## [1] 0.13 0.25</span></span>
-<span id="cb383-5"><a href="correlation-cor.html#cb383-5" tabindex="-1"></a><span class="do">## attr(,&quot;conf.level&quot;)</span></span>
-<span id="cb383-6"><a href="correlation-cor.html#cb383-6" tabindex="-1"></a><span class="do">## [1] 0.95</span></span></code></pre></div>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="correlation-cor.html#cb381-1" tabindex="-1"></a><span class="co">#  95% confidence interval of the correlation</span></span>
+<span id="cb381-2"><a href="correlation-cor.html#cb381-2" tabindex="-1"></a><span class="co">#   coefficient</span></span>
+<span id="cb381-3"><a href="correlation-cor.html#cb381-3" tabindex="-1"></a>age.parrots.ctest<span class="sc">$</span>conf.int</span>
+<span id="cb381-4"><a href="correlation-cor.html#cb381-4" tabindex="-1"></a><span class="do">## [1] 0.13 0.25</span></span>
+<span id="cb381-5"><a href="correlation-cor.html#cb381-5" tabindex="-1"></a><span class="do">## attr(,&quot;conf.level&quot;)</span></span>
+<span id="cb381-6"><a href="correlation-cor.html#cb381-6" tabindex="-1"></a><span class="do">## [1] 0.95</span></span></code></pre></div>
 <p>Just like the <code>t.test()</code> function, we can use the <code>subset</code> argument in the <code>cor.test()</code> function to conduct a test on a subset of the entire dataframe. For example, to run the same correlation test between a pirate’s age and the number of parrot’s she’s owned, but <em>only</em> for female pirates, I can add the <code>subset = sex == "female"</code> argument:</p>
-<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="correlation-cor.html#cb384-1" tabindex="-1"></a><span class="co"># Is there a correlation between age and </span></span>
-<span id="cb384-2"><a href="correlation-cor.html#cb384-2" tabindex="-1"></a><span class="co">#  number parrots ONLY for female pirates?</span></span>
-<span id="cb384-3"><a href="correlation-cor.html#cb384-3" tabindex="-1"></a></span>
-<span id="cb384-4"><a href="correlation-cor.html#cb384-4" tabindex="-1"></a><span class="fu">cor.test</span>(<span class="at">formula =</span> <span class="sc">~</span> age <span class="sc">+</span> parrots,</span>
-<span id="cb384-5"><a href="correlation-cor.html#cb384-5" tabindex="-1"></a>         <span class="at">data =</span> pirates,</span>
-<span id="cb384-6"><a href="correlation-cor.html#cb384-6" tabindex="-1"></a>         <span class="at">subset =</span> sex <span class="sc">==</span> <span class="st">&quot;female&quot;</span>)</span>
-<span id="cb384-7"><a href="correlation-cor.html#cb384-7" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb384-8"><a href="correlation-cor.html#cb384-8" tabindex="-1"></a><span class="do">##  Pearson&#39;s product-moment correlation</span></span>
-<span id="cb384-9"><a href="correlation-cor.html#cb384-9" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb384-10"><a href="correlation-cor.html#cb384-10" tabindex="-1"></a><span class="do">## data:  age and parrots</span></span>
-<span id="cb384-11"><a href="correlation-cor.html#cb384-11" tabindex="-1"></a><span class="do">## t = 5, df = 462, p-value = 4e-06</span></span>
-<span id="cb384-12"><a href="correlation-cor.html#cb384-12" tabindex="-1"></a><span class="do">## alternative hypothesis: true correlation is not equal to 0</span></span>
-<span id="cb384-13"><a href="correlation-cor.html#cb384-13" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
-<span id="cb384-14"><a href="correlation-cor.html#cb384-14" tabindex="-1"></a><span class="do">##  0.12 0.30</span></span>
-<span id="cb384-15"><a href="correlation-cor.html#cb384-15" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
-<span id="cb384-16"><a href="correlation-cor.html#cb384-16" tabindex="-1"></a><span class="do">##  cor </span></span>
-<span id="cb384-17"><a href="correlation-cor.html#cb384-17" tabindex="-1"></a><span class="do">## 0.21</span></span></code></pre></div>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="correlation-cor.html#cb382-1" tabindex="-1"></a><span class="co"># Is there a correlation between age and </span></span>
+<span id="cb382-2"><a href="correlation-cor.html#cb382-2" tabindex="-1"></a><span class="co">#  number parrots ONLY for female pirates?</span></span>
+<span id="cb382-3"><a href="correlation-cor.html#cb382-3" tabindex="-1"></a></span>
+<span id="cb382-4"><a href="correlation-cor.html#cb382-4" tabindex="-1"></a><span class="fu">cor.test</span>(<span class="at">formula =</span> <span class="sc">~</span> age <span class="sc">+</span> parrots,</span>
+<span id="cb382-5"><a href="correlation-cor.html#cb382-5" tabindex="-1"></a>         <span class="at">data =</span> pirates,</span>
+<span id="cb382-6"><a href="correlation-cor.html#cb382-6" tabindex="-1"></a>         <span class="at">subset =</span> sex <span class="sc">==</span> <span class="st">&quot;female&quot;</span>)</span>
+<span id="cb382-7"><a href="correlation-cor.html#cb382-7" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb382-8"><a href="correlation-cor.html#cb382-8" tabindex="-1"></a><span class="do">##  Pearson&#39;s product-moment correlation</span></span>
+<span id="cb382-9"><a href="correlation-cor.html#cb382-9" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb382-10"><a href="correlation-cor.html#cb382-10" tabindex="-1"></a><span class="do">## data:  age and parrots</span></span>
+<span id="cb382-11"><a href="correlation-cor.html#cb382-11" tabindex="-1"></a><span class="do">## t = 5, df = 462, p-value = 4e-06</span></span>
+<span id="cb382-12"><a href="correlation-cor.html#cb382-12" tabindex="-1"></a><span class="do">## alternative hypothesis: true correlation is not equal to 0</span></span>
+<span id="cb382-13"><a href="correlation-cor.html#cb382-13" tabindex="-1"></a><span class="do">## 95 percent confidence interval:</span></span>
+<span id="cb382-14"><a href="correlation-cor.html#cb382-14" tabindex="-1"></a><span class="do">##  0.12 0.30</span></span>
+<span id="cb382-15"><a href="correlation-cor.html#cb382-15" tabindex="-1"></a><span class="do">## sample estimates:</span></span>
+<span id="cb382-16"><a href="correlation-cor.html#cb382-16" tabindex="-1"></a><span class="do">##  cor </span></span>
+<span id="cb382-17"><a href="correlation-cor.html#cb382-17" tabindex="-1"></a><span class="do">## 0.21</span></span></code></pre></div>
 <p>The results look pretty much identical. In other words, the strength of the relationship between a pirate’s age and the number of parrot’s they’ve owned is pretty much the same for female pirates and pirates in general.</p>
 </div>
             </section>
@@ -644,7 +644,7 @@ Figure 13.5: Three different correlations. A strong negative correlation, a very
         </div>
       </div>
 <a href="t-test-t.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="chi-square-chsq.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="chi-square-chisq.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>
