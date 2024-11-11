@@ -61,7 +61,7 @@ median(boat.prices[boat.colors == "black" & boat.ages < 100])
 sum(boat.colors == "pink")
 
 # What percent of boats were older than 100 years old?
-mean(boat.ages < 100)
+mean(boat.ages > 100)
 ```
 
 
