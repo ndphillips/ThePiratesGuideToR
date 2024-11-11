@@ -162,7 +162,7 @@ My name is Nathaniel -- not Nathan...not Nate...and *definitely* not Nat. I am a
 
 ### Please consider a donation!
 
-I am a huge proponent of open source software (like R) and open science. So a version of this book will always be freely available! That said translating and updating the book takes quite a bit of time. So if you like the book, and want to see it get even better with more pirate-speak and terrible jokes, consider throwing some gold my way at [https://github.com/sponsors/ndphillips](https://github.com/sponsors/ndphillips), or [https://buymeacoffee.com/ndphillips](https://buymeacoffee.com/ndphillips)It really means a lot to me!
+I am a huge proponent of open source software (like R) and open science. So a version of this book will always be freely available! That said translating and updating the book takes quite a bit of time. So if you like the book, and want to see it get even better with more pirate-speak and terrible jokes, consider throwing some gold my way at [https://github.com/sponsors/ndphillips](https://github.com/sponsors/ndphillips), or [https://buymeacoffee.com/ndphillips](https://buymeacoffee.com/ndphillips). It really means a lot to me!
 
 ### Acknowledgements
 
